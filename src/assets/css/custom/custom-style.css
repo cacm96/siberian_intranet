@@ -1,0 +1,69 @@
+/*Anderson*/
+/* Estilos para Adaptar la plantilla
+Versión 1.0.0
+23/06/2019
+*/
+/*Para que el cuerpo de la pagina abarque el 100% de la pantalla*/
+.main{
+    min-height: 100vh;
+}
+/*Para centrar el login*/
+.body{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+/*Fondo global de la pagina*/
+.cyan{
+	background-color: #121212 !important; 
+}
+/*Fondo nav, sidebar y footer*/
+nav,.cyan.darken-2,.side-nav,footer.page-footer{
+	background-color: #303030 !important;
+}
+/*Paleta para los botones*/
+.btn-primary{
+	background-color: #0B173B !important;
+}
+/*Paleta para los badge*/
+span.badge.new{
+	background-color: #FE2E2E !important;
+}
+
+/*Color de letras para los menus del sidebar*/
+.side-nav.fixed a{
+	color: #ffffff;
+}
+/*Hover de color para cuando pase con el mouse en los menus del sidebar*/
+ul.side-nav.leftside-navigation li:hover,ul.side-nav.leftside-navigation li.active,nav ul li:hover, nav ul li.active,.side-nav.fixed.leftside-navigation .collapsible-body li.active{
+	background-color: rgb(11,23,59); 
+}
+
+/*Color de letra en los enlaces del sidebar cuando estan active*/
+ul.side-nav.leftside-navigation li.active> a{
+	color: #ffffff !important;
+}
+/*Fondo para los menus desplegables del sidebar*/
+ul.side-nav.leftside-navigation ul.collapsible-accordion,.side-nav .collapsible-body{
+	background-color: #303030;
+}
+/*Color de letra general en todo el body cuando esta logeado*/
+body{
+	color: #ffffff;
+}
+/*Color de letra general en todo el body cuando no esta logeado*/
+body .cyan.body.main{
+	color: #000000 !important;
+}
+/*Elminacion del margin bottom de la caja donde se meustra la foto de perfil y el tipo de user en el sidebar*/
+ul.side-nav.leftside-navigation li.user-details {
+  margin-bottom: 0px;
+}
+/*Cambio el tamaño de la fuente en los menus del sidebar*/
+ul.side-nav.leftside-navigation li a{
+	font-size: 11px;
+}
+/*Centro el rol del usuario que esta arriba del sidebar*/
+.user-roal{
+	margin: auto;
+}
