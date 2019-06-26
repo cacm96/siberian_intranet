@@ -61,9 +61,41 @@ ul.side-nav.leftside-navigation li.user-details {
 }
 /*Cambio el tamaño de la fuente en los menus del sidebar*/
 ul.side-nav.leftside-navigation li a{
-	font-size: 11px;
+	font-size: 10px;
 }
 /*Centro el rol del usuario que esta arriba del sidebar*/
 .user-roal{
 	margin: auto;
+}
+
+/*Anderson*/
+/* Estilos para Adaptar la plantilla
+Versión 1.0.0
+26/06/2019
+*/
+/*Para que las tablas tenga color negro de fondo*/
+
+table.striped > tbody > tr:nth-child(odd),#breadcrumbs-wrapper{
+	background-color: rgba(0,0,0,0); !important;
+}
+
+/*Para centrar los textos */
+.text-center{
+	text-align: center;
+}
+/*Para acomodar los botonos*/
+.btn{
+	display: inline;
+	padding: 1rem 1rem;
+	margin-right: 1rem;
+}
+
+/*Quitar padding en los forms de create y edit*/
+.card-panel .btn{
+	padding: 0 1rem;
+}
+
+/*para que las letras en las listas del show tengan color negro*/
+.collection.with-header{
+	color: #000000;
 }
