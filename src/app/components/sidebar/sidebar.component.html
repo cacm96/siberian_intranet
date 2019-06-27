@@ -1,0 +1,270 @@
+<aside id="left-sidebar-nav">
+	<ul id="slide-out" class="side-nav fixed leftside-navigation">
+		<li class="user-details cyan darken-2">
+			<div class="row">
+				<div class="col col s4 m4 ">
+					<img src="../assets/img/profile/avatar.jpg" alt="" class="circle responsive-img valign profile-image">
+				</div>
+				<div class="col col s8 m8 ">
+					<p class="user-roal">{{ rol| titlecase}}</p>
+				</div>
+			</div>
+		</li>
+
+		<div *ngIf="rol=='client'">
+			<li class="bold" [routerLinkActive]="['active']"><a [routerLink]="['/dashboardClient']" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Dashboard</a>
+			</li>
+			<li class="no-padding">
+				<ul class="collapsible collapsible-accordion">
+					<li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-carousel"></i> Servicios</a>
+						<div class="collapsible-body">
+							<ul>
+								<li><a href="layout-fullscreen.html">Solicitar Servicio</a></li>
+								<li><a href="layout-horizontal-menu.html">Mis Servicios</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</li>
+			<li class="bold">
+				<a href="app-email.html" class="waves-effect waves-cyan"><i class="mdi-notification-event-note"></i> Agenda </a>
+			</li>
+			<li class="bold">
+				<a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-history"></i> Historia</a>
+			</li>
+			<li class="bold">
+				<a href="app-email.html" class="waves-effect waves-cyan"><i class="mdi-action-stars"></i> Promociones </a>
+			</li>
+			<li class="bold">
+				<a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-verified-user"></i> Garantía</a>
+			</li>
+			<li class="bold">
+				<a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-communication-textsms"></i> Sugerencias y Reclamos</a>
+			</li>
+			<li class="bold">
+				<a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-notification-phone-in-talk"></i> Canal de escucha</a>
+			</li>
+			<li class="bold">
+				<a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-perm-contact-cal"></i> Contáctanos</a>
+			</li>
+		</div>
+
+		<div *ngIf="rol=='lender'">
+			<li class="bold" [routerLinkActive]="['active']"><a [routerLink]="['/dashboardLender']" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Dashboard</a>
+			<li class="bold">
+				<a href="app-email.html" class="waves-effect waves-cyan"><i class="mdi-notification-event-note"></i> Servicios Actuales </a>
+			</li>
+			<li class="bold">
+				<a href="app-email.html" class="waves-effect waves-cyan"><i class="mdi-notification-event-note"></i> Agenda </a>
+			</li>
+			<li class="bold">
+				<a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-history"></i> Historia</a>
+			</li>
+			<li class="bold">
+				<a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-verified-user"></i> Garantía</a>
+			</li>
+			<li class="bold">
+				<a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-communication-textsms"></i> Incidencias</a>
+			</li>
+			<li class="bold">
+				<a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-notification-phone-in-talk"></i> Calificacion</a>
+			</li>
+			<li class="bold">
+				<a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-perm-contact-cal"></i> Solicitudes</a>
+			</li>
+			<li class="bold">
+				<a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-perm-contact-cal"></i> Canal de escucha</a>
+			</li>
+			<li class="bold">
+				<a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-perm-contact-cal"></i> Configuracion</a>
+			</li>
+		</div>
+
+		<div *ngIf="rol=='manager'">
+			<li class="bold" [routerLinkActive]="['active']"><a [routerLink]="['/dashboardManager']" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Dashboard</a>
+			<li class="no-padding">
+				<ul class="collapsible collapsible-accordion">
+					<li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-carousel"></i> Reportes</a>
+						<div class="collapsible-body">
+							<ul>
+								<li><a href="layout-fullscreen.html">Servicios</a></li>
+								<li><a href="layout-horizontal-menu.html">Prestador</a></li>
+								<li><a href="layout-horizontal-menu.html">Garantía</a></li>
+								<li><a href="layout-horizontal-menu.html">Reclamos</a></li>
+								<li><a href="layout-horizontal-menu.html">Sugerencias</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</li>
+			<li class="bold">
+				<a href="app-email.html" class="waves-effect waves-cyan"><i class="mdi-notification-event-note"></i> Promociones </a>
+			</li>
+		</div>
+
+		<div *ngIf="rol=='admin'">
+			<li class="no-padding">
+				<ul class="collapsible collapsible-accordion">
+					<li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-carousel"></i> Configurar Sistema</a>
+						<div class="collapsible-body">
+							<ul>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/system']">Configurar Nombre</a></li>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/function']">Configurar Funciones</a></li>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/permission']">Configurar Permisos</a></li>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/role']">Configurar Roles</a></li>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/assignFunction']">Asignar Funciones</a></li>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/parameter']">Configurar Parametros</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</li>
+			<li class="no-padding">
+				<ul class="collapsible collapsible-accordion">
+					<li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-carousel"></i> Configurar Usuario</a>
+						<div class="collapsible-body">
+							<ul>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/user']">Configurar Usuarios</a></li>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/parameterClient']">Configurar Parametros Cliente</a></li>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/parameterLender']">Configurar Parametros Prestador</a></li>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/assignRole']">Asignar Roles</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</li>
+			
+			<li class="no-padding">
+				<ul class="collapsible collapsible-accordion">
+					<li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-carousel"></i> Configurar Catalogo</a>
+						<div class="collapsible-body">
+							<ul>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/category']">Configurar Categorías</a></li>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/subcategory']">Configurar Sub Categorías</a></li>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/typeService']">Configurar Tipo de Servicios</a></li>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/typeVariety']">Configurar Tipo Variedad</a></li>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/variety']">Configurar Variedad</a></li>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/detailVariety']">Configurar Detalle Variedad</a></li>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/apparatusInfrastructure']">Configurar Equipo/Infraestrctura</a></li>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/catalogue']">Configurar Catalogos</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</li>
+			<li class="no-padding">
+				<ul class="collapsible collapsible-accordion">
+					<li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-carousel"></i> Configurar Servicio</a>
+						<div class="collapsible-body">
+							<ul>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/typeComponent']">Configurar Tipo Componente</a></li>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/component']">Configurar Componente</a></li>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/typeResource']">Configurar Tipo Recursos</a></li>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/categoryResource']">Configurar Categoría Recursos</a></li>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/resource']">Configurar Recursos</a></li>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/detailService']">Configurar Detalle Servicios</a></li>
+
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</li>
+			<li class="no-padding">
+				<ul class="collapsible collapsible-accordion">
+					<li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-carousel"></i> Configurar Habilidad</a>
+						<div class="collapsible-body">
+							<ul>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/skill']">Configurar Habilidad</a></li>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/skillService']">Asignar Habilidad Servicio</a></li>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/skillLender']">Asignar Habilidad Prestador</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</li>
+			<li class="no-padding">
+				<ul class="collapsible collapsible-accordion">
+					<li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-carousel"></i> Configurar Pago</a>
+						<div class="collapsible-body">
+							<ul>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/typePayment']">Configurar Tipo Pago</a></li>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/wayPayment']">Asignar Forma Pago</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</li>
+			<li class="no-padding">
+				<ul class="collapsible collapsible-accordion">
+					<li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-carousel"></i> Configurar Calificación</a>
+						<div class="collapsible-body">
+							<ul>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/typeCalifcation']">Configurar Tipo Calificación</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</li>
+			<li class="no-padding">
+				<ul class="collapsible collapsible-accordion">
+					<li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-carousel"></i> Configurar Incidencia</a>
+						<div class="collapsible-body">
+							<ul>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/typeIncidence']">Configurar Tipo Incidencias</a></li>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/incidence']">Configurar Incidencias</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</li>
+			<li class="no-padding">
+				<ul class="collapsible collapsible-accordion">
+					<li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-carousel"></i> Configurar Agenda</a>
+						<div class="collapsible-body">
+							<ul>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/typeSchedule']">Configurar Tipo Agendas</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</li>
+			<li class="no-padding">
+				<ul class="collapsible collapsible-accordion">
+					<li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-carousel"></i> Configurar Diagnóstico</a>
+						<div class="collapsible-body">
+							<ul>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/typeDiagnosis']">Configurar Tipo Diagnósticos</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</li>
+			<li class="no-padding">
+				<ul class="collapsible collapsible-accordion">
+					<li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-carousel"></i> Configurar Empresa</a>
+						<div class="collapsible-body">
+							<ul>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/company']">Configurar Empresa</a></li>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/parameterCompany']">Configurar Parametros Empresa</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</li>
+			<li class="no-padding">
+				<ul class="collapsible collapsible-accordion">
+					<li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-carousel"></i> Configurar Promoción</a>
+						<div class="collapsible-body">
+							<ul>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/typePromotion']">Configurar Tipo Promociones</a></li>
+								<li [routerLinkActive]="['active']"><a [routerLink]="['/promotion']">Configurar Promociones</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</li>
+		</div>
+
+	</ul>
+	<a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i class="mdi-navigation-menu"></i></a>
+</aside>
