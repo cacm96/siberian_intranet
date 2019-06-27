@@ -64,7 +64,33 @@ import { CategoryEditComponent } from './components/masters/configure-catalogue/
 import { CategoryShowComponent } from './components/masters/configure-catalogue/category-show/category-show.component';
 import { CategoryDeleteComponent } from './components/masters/configure-catalogue/category-delete/category-delete.component';
 
+import { PermissionFatherComponent } from './components/masters/configure-system/permission/permission-father/permission-father.component';
+import { PermissionsComponent } from './components/masters/configure-system/permission/permissions/permissions.component';
+import { PermissionCreateComponent } from './components/masters/configure-system/permission/permission-create/permission-create.component';
+import { PermissionEditComponent } from './components/masters/configure-system/permission/permission-edit/permission-edit.component';
+import { PermissionShowComponent } from './components/masters/configure-system/permission/permission-show/permission-show.component';
+import { PermissionDeleteComponent } from './components/masters/configure-system/permission/permission-delete/permission-delete.component';
 
+import { RoleFatherComponent } from './components/masters/configure-system/role/role-father/role-father.component';
+import { RolesComponent } from './components/masters/configure-system/role/roles/roles.component';
+import { RoleCreateComponent } from './components/masters/configure-system/role/role-create/role-create.component';
+import { RoleEditComponent } from './components/masters/configure-system/role/role-edit/role-edit.component';
+import { RoleShowComponent } from './components/masters/configure-system/role/role-show/role-show.component';
+import { RoleDeleteComponent } from './components/masters/configure-system/role/role-delete/role-delete.component';
+
+import { AssignFunctionFatherComponent } from './components/masters/configure-system/assignFunction/assign-function-father/assign-function-father.component';
+import { AssignFunctionsComponent } from './components/masters/configure-system/assignFunction/assign-functions/assign-functions.component';
+import { AssignFunctionCreateComponent } from './components/masters/configure-system/assignFunction/assign-function-create/assign-function-create.component';
+import { AssignFunctionEditComponent } from './components/masters/configure-system/assignFunction/assign-function-edit/assign-function-edit.component';
+import { AssignFunctionShowComponent } from './components/masters/configure-system/assignFunction/assign-function-show/assign-function-show.component';
+import { AssignFunctionDeleteComponent } from './components/masters/configure-system/assignFunction/assign-function-delete/assign-function-delete.component';
+
+import { ParameterFatherComponent } from './components/masters/configure-system/parameter/parameter-father/parameter-father.component';
+import { ParametersComponent } from './components/masters/configure-system/parameter/parameters/parameters.component';
+import { ParameterCreateComponent } from './components/masters/configure-system/parameter/parameter-create/parameter-create.component';
+import { ParameterEditComponent } from './components/masters/configure-system/parameter/parameter-edit/parameter-edit.component';
+import { ParameterShowComponent } from './components/masters/configure-system/parameter/parameter-show/parameter-show.component';
+import { ParameterDeleteComponent } from './components/masters/configure-system/parameter/parameter-delete/parameter-delete.component';
 
 
 @NgModule({
@@ -113,6 +139,30 @@ import { CategoryDeleteComponent } from './components/masters/configure-catalogu
     CategoryEditComponent,
     CategoryShowComponent,
     CategoryDeleteComponent,
+    PermissionFatherComponent,
+    PermissionsComponent,
+    PermissionCreateComponent,
+    PermissionEditComponent,
+    PermissionShowComponent,
+    PermissionDeleteComponent,
+    RoleFatherComponent,
+    RolesComponent,
+    RoleCreateComponent,
+    RoleEditComponent,
+    RoleShowComponent,
+    RoleDeleteComponent,
+    AssignFunctionFatherComponent,
+    AssignFunctionsComponent,
+    AssignFunctionCreateComponent,
+    AssignFunctionEditComponent,
+    AssignFunctionShowComponent,
+    AssignFunctionDeleteComponent,
+    ParameterFatherComponent,
+    ParametersComponent,
+    ParameterCreateComponent,
+    ParameterEditComponent,
+    ParameterShowComponent,
+    ParameterDeleteComponent,
     
   ],
   imports: [
