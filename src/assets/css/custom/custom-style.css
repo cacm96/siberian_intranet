@@ -3,6 +3,11 @@
 Versión 1.0.0
 23/06/2019
 */
+/* Dayana*/
+/* Cambio de colores en botones, hoover
+Versión 1.0.0
+26/06/2019*/
+
 /*Para que el cuerpo de la pagina abarque el 100% de la pantalla*/
 .main{
     min-height: 100vh;
@@ -21,9 +26,10 @@ Versión 1.0.0
 nav,.cyan.darken-2,.side-nav,footer.page-footer{
 	background-color: #303030 !important;
 }
-/*Paleta para los botones*/
+/*Paleta para los botones
+Dayana: Cambie el color de primary al azul #185a89, el nuevo azul de fondo del logo de SIBERIAN*/
 .btn-primary{
-	background-color: #0B173B !important;
+	background-color: #185a89 !important;
 }
 /*Paleta para los badge*/
 span.badge.new{
@@ -35,8 +41,10 @@ span.badge.new{
 	color: #ffffff;
 }
 /*Hover de color para cuando pase con el mouse en los menus del sidebar*/
+/*Dayana: Cambie el color del hover al azul #185a89 que es color primary, está establecido por estándares
+que el hoover debe ser el color carácteristico del sistema SIBERIAN*/
 ul.side-nav.leftside-navigation li:hover,ul.side-nav.leftside-navigation li.active,nav ul li:hover, nav ul li.active,.side-nav.fixed.leftside-navigation .collapsible-body li.active{
-	background-color: rgb(11,23,59); 
+	background-color: rgb(24,90,137); 
 }
 
 /*Color de letra en los enlaces del sidebar cuando estan active*/
