@@ -9,6 +9,7 @@ import { BlockComponent } from './components/block/block.component';
 import { ErrorComponent } from './components/error/error.component';
 
 import { LoginComponent } from './components/auth/login/login.component';
+import { LoginWeitComponent } from './components/auth/login-weit/login-weit.component';
 import { LogoutComponent } from './components/auth/logout/logout.component';
 
 import { UserFatherComponent } from './components/masters/configure-user/user/user-father/user-father.component';
@@ -44,18 +45,13 @@ import { IndexAdminComponent } from './components/dashboard/admin/index-admin/in
 import { IndexLenderComponent } from './components/dashboard/lender/index-lender/index-lender.component';
 import { IndexClienteComponent } from './components/dashboard/client/index-cliente/index-cliente.component';
 
-import { CategoryFatherComponent } from './components/masters/configure-catalogue/category-father/category-father.component';
-import { CategorysComponent } from './components/masters/configure-catalogue/categorys/categorys.component';
-import { CategoryCreateComponent } from './components/masters/configure-catalogue/category-create/category-create.component';
-import { CategoryEditComponent } from './components/masters/configure-catalogue/category-edit/category-edit.component';
-import { CategoryShowComponent } from './components/masters/configure-catalogue/category-show/category-show.component';
-import { CategoryDeleteComponent } from './components/masters/configure-catalogue/category-delete/category-delete.component';
 
 // Array de rutas
 const appRoutes: Routes = [
 
 	{path: '', redirectTo: 'login', pathMatch: 'full', canActivate: [RedirectAuthGuard]},
 	{path: 'login', component: LoginComponent, canActivate: [RedirectAuthGuard]},
+	{path: 'loginWeit', component: LoginWeitComponent, canActivate: []},
 	{path: 'logout', component: LogoutComponent},
 	
 	{path: 'user', component: UserFatherComponent, canActivate: [AuthGuard],
@@ -102,17 +98,6 @@ const appRoutes: Routes = [
 		]
 	},
 
-
-	{path: 'category', component: CategoryFatherComponent, canActivate: [AuthGuard],
-		children:
-		[
-			{path: '', component: CategorysComponent},
-			{path: 'create', component: CategoryCreateComponent},
-			{path: 'edit/:id', component: CategoryEditComponent},
-			{path: 'show/:id', component: CategoryShowComponent},
-			{path: 'delete/:id', component: CategoryDeleteComponent},
-		]
-	},
 
 	{path: 'dashboardClient', component: IndexClienteComponent, canActivate: [AuthGuard]},
 	{path: 'dashboardLender', component: IndexLenderComponent, canActivate: [AuthGuard]},

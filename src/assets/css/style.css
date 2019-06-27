@@ -43,12 +43,12 @@ select {
   background-color: transparent;
 }
 
-.container {
+/*.container {
   padding: 0 0.5rem;
   margin: 0 auto;
   max-width: 100% !important;
   width: 98%;
-}
+}*/
 
 #left-sidebar-nav {
   position: fixed;
