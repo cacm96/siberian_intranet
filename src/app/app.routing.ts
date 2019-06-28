@@ -9,6 +9,7 @@ import { BlockComponent } from './components/block/block.component';
 import { ErrorComponent } from './components/error/error.component';
 
 import { LoginComponent } from './components/auth/login/login.component';
+import { LoginWeitComponent } from './components/auth/login-weit/login-weit.component';
 import { LogoutComponent } from './components/auth/logout/logout.component';
 
 import { UserFatherComponent } from './components/masters/configure-user/user/user-father/user-father.component';
@@ -105,6 +106,7 @@ const appRoutes: Routes = [
 
 	{path: '', redirectTo: 'login', pathMatch: 'full', canActivate: [RedirectAuthGuard]},
 	{path: 'login', component: LoginComponent, canActivate: [RedirectAuthGuard]},
+	{path: 'loginWeit', component: LoginWeitComponent, canActivate: []},
 	{path: 'logout', component: LogoutComponent},
 	
 	{path: 'user', component: UserFatherComponent, canActivate: [AuthGuard],

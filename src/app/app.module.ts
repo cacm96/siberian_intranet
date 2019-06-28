@@ -17,6 +17,7 @@ import { SearchUserPipe } from './pipes/searchUser.pipe';
 import { SearchFunctionPipe } from './pipes/searchFunction.pipe';
 
 import { LoginComponent } from './components/auth/login/login.component';
+import { LoginWeitComponent } from './components/auth/login-weit/login-weit.component';
 import { LogoutComponent } from './components/auth/logout/logout.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -204,6 +205,7 @@ import { TypeServiceDeleteComponent } from './components/masters/configure-catal
     TypeServiceEditComponent,
     TypeServiceShowComponent,
     TypeServiceDeleteComponent,
+    LoginWeitComponent,
     
   ],
   imports: [
