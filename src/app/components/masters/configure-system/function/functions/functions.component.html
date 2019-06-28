@@ -1,3 +1,83 @@
-<p>
-  functions works!
-</p>
+<div id="breadcrumbs-wrapper">
+	<div class="container">
+		<div class="row">
+			<div class="col s12 m12 l12">
+				<h5 class="breadcrumbs-title text-center">Funciones</h5>
+				<div>
+					<p>
+						<a [routerLink]="['/function/create']" class="btn waves-effect waves-light blue">Nuevo Registro</a>
+					</p>
+				</div>
+				<br>
+			</div>
+		</div>
+	</div>
+</div>
+<div class='table-wrapper'>
+	<div id="striped-table">
+
+		<div class="row">
+			<div class="col s12">
+				<table class="striped">
+					<thead>
+						<tr>
+							<th data-field="id">Id</th>
+							<th data-field="name">Nombre</th>
+							<th data-field="price">Descripcion</th>
+							<th data-field="price">Estatus</th>
+							<th data-field="price">Acción</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><a [routerLink]="['/function/show','1']" class="btn waves-effect waves-light grey darken-4">Ver</a></td>
+							<td>Solicitar Servicio</td>
+							<td>Función de Solicitud del Servicio.</td>
+							<td>Activo</td>
+							<td>
+								<a [routerLink]="['/function/edit','1']"class="btn btn-small waves-effect waves-light yellow darken-4">Editar</a>
+								<a [routerLink]="['/function/delete','1']"class="btn waves-effect waves-light red darken-4">Eliminar</a>
+							</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td><a [routerLink]="['/function/show','2']" class="btn waves-effect waves-light grey darken-4">Ver</a></td>
+							<td>Registrar Prestador</td>
+							<td>Función de Registro del Prestador.</td>
+							<td>Activo</td>
+							<td>
+								<a [routerLink]="['/function/edit','2']"class="btn btn-small waves-effect waves-light yellow darken-4">Editar</a>
+								<a [routerLink]="['/function/delete','2']"class="btn waves-effect waves-light red darken-4">Eliminar</a>
+							</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td><a [routerLink]="['/function/show','3']" class="btn waves-effect waves-light grey darken-4">Ver</a></td>
+							<td>Modificar Usuario</td>
+							<td>Función de Modificación del Usuario.</td>
+							<td>Activo</td>
+							<td>
+								<a [routerLink]="['/function/edit','3']"class="btn btn-small waves-effect waves-light yellow darken-4">Editar</a>
+								<a [routerLink]="['/function/delete','3']"class="btn waves-effect waves-light red darken-4">Eliminar</a>
+							</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td><a [routerLink]="['/function/show','4']" class="btn waves-effect waves-light grey darken-4">Ver</a></td>
+							<td>Editar Catálogo</td>
+							<td>Función de Editar del Catálogo.</td>
+							<td>Activo</td>
+							<td>
+								<a [routerLink]="['/function/edit','4']"class="btn btn-small waves-effect waves-light yellow darken-4">Editar</a>
+								<a [routerLink]="['/function/delete','4']"class="btn waves-effect waves-light red darken-4">Eliminar</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
