@@ -3,27 +3,42 @@
 Versión 1.0.0
 23/06/2019
 */
+/* Dayana*/
+/* Cambio de colores en botones, hoover
+Versión 1.0.0
+26/06/2019*/
+
 /*Para que el cuerpo de la pagina abarque el 100% de la pantalla*/
 .main{
     min-height: 100vh;
 }
-/*Para centrar el login*/
-.body{
-	display: flex;
-	justify-content: center;
-	align-items: center;
+.main_login{
+	min-height: 97vh;
 }
-/*Fondo global de la pagina*/
+/*Para centrar el login*/
+.main_login{
+	/*display: flex;
+	justify-content: center;
+	align-items: center;*/
+}
+
+/*Fondo global de la pagina cuando esta logeado*/
 .cyan{
 	background-color: #121212 !important; 
+}
+/*Color de letra general y fondo en todo el body cuando no esta logeado*/
+.body,body{
+	/*color: #000000 !important;*/
+	background: linear-gradient(to bottom, #121212, #0B173B);
 }
 /*Fondo nav, sidebar y footer*/
 nav,.cyan.darken-2,.side-nav,footer.page-footer{
 	background-color: #303030 !important;
 }
-/*Paleta para los botones*/
+/*Paleta para los botones
+Dayana: Cambie el color de primary al azul #185a89, el nuevo azul de fondo del logo de SIBERIAN*/
 .btn-primary{
-	background-color: #0B173B !important;
+	background-color: #185a89 !important;
 }
 /*Paleta para los badge*/
 span.badge.new{
@@ -35,8 +50,10 @@ span.badge.new{
 	color: #ffffff;
 }
 /*Hover de color para cuando pase con el mouse en los menus del sidebar*/
+/*Dayana: Cambie el color del hover al azul #185a89 que es color primary, está establecido por estándares
+que el hoover debe ser el color carácteristico del sistema SIBERIAN*/
 ul.side-nav.leftside-navigation li:hover,ul.side-nav.leftside-navigation li.active,nav ul li:hover, nav ul li.active,.side-nav.fixed.leftside-navigation .collapsible-body li.active{
-	background-color: rgb(11,23,59); 
+	background-color: rgb(24,90,137); 
 }
 
 /*Color de letra en los enlaces del sidebar cuando estan active*/
@@ -51,19 +68,179 @@ ul.side-nav.leftside-navigation ul.collapsible-accordion,.side-nav .collapsible-
 body{
 	color: #ffffff;
 }
-/*Color de letra general en todo el body cuando no esta logeado*/
-body .cyan.body.main{
-	color: #000000 !important;
-}
+
 /*Elminacion del margin bottom de la caja donde se meustra la foto de perfil y el tipo de user en el sidebar*/
 ul.side-nav.leftside-navigation li.user-details {
   margin-bottom: 0px;
 }
 /*Cambio el tamaño de la fuente en los menus del sidebar*/
 ul.side-nav.leftside-navigation li a{
-	font-size: 11px;
+	font-size: 10px;
 }
 /*Centro el rol del usuario que esta arriba del sidebar*/
 .user-roal{
 	margin: auto;
+}
+
+/*Anderson*/
+/* Estilos para Adaptar la plantilla
+Versión 1.0.0
+26/06/2019
+*/
+/*Para que las tablas tenga color negro de fondo*/
+
+table.striped > tbody > tr:nth-child(odd),#breadcrumbs-wrapper{
+	background-color: rgba(0,0,0,0); !important;
+}
+
+/*Para centrar los textos */
+.text-center{
+	text-align: center;
+}
+/*Para acomodar los botonos*/
+.btn{
+	display: inline;
+	padding: 1rem 1rem;
+	margin-right: 1rem;
+}
+
+/*Quitar padding en los forms de create y edit*/
+.card-panel .btn{
+	padding: 0 1rem;
+}
+
+/*para que las letras en las listas del show tengan color negro*/
+.collection.with-header{
+	color: #000000;
+}
+
+
+/*Anderson*/
+/* Modificaciones en el login
+Versión 1.0.0
+27/06/2019
+*/
+
+/*Para que el form ocupe el 100% de la col*/
+.main_login .login-form {
+	width: 100%;
+}
+
+/*Estilizando los container y sus row para justar divs*/
+.main_login .container{
+	background-color: #303030 !important;
+	color:#ffffff !important;
+}
+.main_login .container .row{
+	margin-right: 0 !important;
+	margin-left: 0 !important;
+}
+
+/*Agregando padding al form login*/
+.main_login .login_sec{
+	padding: 3rem 5rem;
+}
+/*Redondeando los bordes de la img*/
+.main_login .img_slider{
+	border-radius: 0 10px 10px 0;
+}
+
+/*Para que haga efecto la posicion absoluta del texto de la imagen*/
+.main_login .banner{
+	position: relative;
+	padding: 0;
+	height: 600px;
+}
+/*Para que el text este encima de la imagen*/
+.main_login .banner_text {
+	width: 70%;
+	position: absolute;
+	bottom: 40px;
+	padding-left: 20px;
+}
+
+.main_login .login_sec h2 {
+	margin-bottom: 30px;
+	font-weight: 800;
+	font-size: 30px;
+	color: #fff;
+}
+
+/*Para agregar las rayas debajo del titulo ingrese y de la imagen*/
+
+.main_login .banner_text h2:after {
+	content: " ";
+    width: 100px;
+    height: 5px;
+    background: #FFF;
+    display: block;
+    margin-top: 20px;
+    border-radius: 3px;
+}
+
+.main_login .login_sec h2:after{
+	content: " ";
+    width: 100px;
+    height: 5px;
+    background: #185a89;
+    color: #fff;
+    display: block;
+    margin-top: 20px;
+    border-radius: 3px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*Anderson*/
+/* Modificaciones colocar la paleta de colores en los inputs
+Versión 1.0.0
+27/06/2019
+*/
+
+/*Para los inputs*/
+
+input[type=text]:focus:not([readonly]), input[type=password]:focus:not([readonly]), input[type=email]:focus:not([readonly]), input[type=url]:focus:not([readonly]), input[type=time]:focus:not([readonly]), input[type=date]:focus:not([readonly]), input[type=datetime-local]:focus:not([readonly]), input[type=tel]:focus:not([readonly]), input[type=number]:focus:not([readonly]), input[type=search]:focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly])
+{
+	border-bottom: 1px solid #185a89 !important;
+    box-shadow: 0 1px 0 0 #185a89 !important;
+}
+
+/*Para los labels*/
+
+input[type=text]:focus:not([readonly]) + label, input[type=password]:focus:not([readonly]) + label, input[type=email]:focus:not([readonly]) + label, input[type=url]:focus:not([readonly]) + label, input[type=time]:focus:not([readonly]) + label, input[type=date]:focus:not([readonly]) + label, input[type=datetime-local]:focus:not([readonly]) + label, input[type=tel]:focus:not([readonly]) + label, input[type=number]:focus:not([readonly]) + label, input[type=search]:focus:not([readonly]) + label, textarea.materialize-textarea:focus:not([readonly]) + label{
+	color: #185a89 !important;
+}
+
+/*Para los iconos*/
+.input-field .prefix.active{
+	color: #185a89 !important;
+}
+.input-field .prefix.active{
+	color: #185a89 !important;
+}
+
+/*para quitar estilos cunado se autocmpletan inputs*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: none;
+  -webkit-text-fill-color: #ffffff;
+  -webkit-box-shadow: none;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/*Anderson*/
+/* Refinando detalles
+Versión 1.0.0
+28/06/2019
+*/
+
+.img_footer{
+	vertical-align: middle;
 }

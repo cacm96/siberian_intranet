@@ -1,0 +1,85 @@
+<div id="breadcrumbs-wrapper">
+	<div class="container">
+		<div class="row">
+			<div class="col s12 m12 l12">
+				<h5 class="breadcrumbs-title text-center">Roles</h5>
+				<div>
+					<p>
+						<a [routerLink]="['/role/create']" class="btn waves-effect waves-light blue">Nuevo Registro</a>
+					</p>
+				</div>
+				<br>
+			</div>
+		</div>
+	</div>
+</div>
+<div class='table-wrapper'>
+	<div id="striped-table">
+
+		<div class="row">
+			<div class="col s12">
+				<table class="striped">
+					<thead>
+						<tr>
+							<th data-field="id">Id</th>
+							<th data-field="name">Nombre</th>
+							<th data-field="price">Descripcion</th>
+							<th data-field="price">Estatus</th>
+							<th data-field="price">Acción</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><a [routerLink]="['/role/show','1']" class="btn waves-effect waves-light grey darken-4">Ver</a></td>
+							<td>Administrador</td>
+							<td>Éste es el Rol del Administrador que hace diferentes funciones...</td>
+							<td>Activo</td>
+							<td>
+								<a [routerLink]="['/role/edit','1']"class="btn btn-small waves-effect waves-light yellow darken-4">Editar</a>
+								<a [routerLink]="['/role/delete','1']"class="btn waves-effect waves-light red darken-4">Eliminar</a>
+							</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td><a [routerLink]="['/role/show','2']" class="btn waves-effect waves-light grey darken-4">Ver</a></td>
+							<td>Gerente</td>
+							<td>Éste es el Rol para el Gerente que hace diferentes funciones...</td>
+							<td>Activo</td>
+							<td>
+								<a [routerLink]="['/role/edit','2']"class="btn btn-small waves-effect waves-light yellow darken-4">Editar</a>
+								<a [routerLink]="['/role/delete','2']"class="btn waves-effect waves-light red darken-4">Eliminar</a>
+							</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td><a [routerLink]="['/role/show','3']" class="btn waves-effect waves-light grey darken-4">Ver</a></td>
+							<td>Prestador</td>
+							<td>Éste es el Rol para el Prestador de Servicio que hace aquellas funciones...</td>
+							<td>Activo</td>
+							<td>
+								<a [routerLink]="['/role/edit','3']"class="btn btn-small waves-effect waves-light yellow darken-4">Editar</a>
+								<a [routerLink]="['/role/delete','3']"class="btn waves-effect waves-light red darken-4">Eliminar</a>
+							</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td><a [routerLink]="['/role/show','4']" class="btn waves-effect waves-light grey darken-4">Ver</a></td>
+							<td>Cliente</td>
+							<td>Éste es el Rol para el Cliente que hace aquellas funciones...</td>
+							<td>Activo</td>
+							<td>
+								<a [routerLink]="['/role/edit','4']"class="btn btn-small waves-effect waves-light yellow darken-4">Editar</a>
+								<a [routerLink]="['/role/delete','4']"class="btn waves-effect waves-light red darken-4">Eliminar</a>
+							</td>
+						</tr>
+					</tbody>
+
+
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

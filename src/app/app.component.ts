@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
 import { AuthService } from './services/auth.service';
 
 @Component({
@@ -10,16 +9,15 @@ import { AuthService } from './services/auth.service';
 
 
 export class AppComponent implements OnInit {
-  public ruta: string;
+  public ruta:string;
+  public loginWeit:boolean;
 
   constructor(
-    private _router: Router,
-    public _authService: AuthService,
-  ) {}
+  	private _authService: AuthService,
+  ){}
 
-  ngOnInit() {
-  	this.ruta = this._router.url;
-  	console.log(this._authService.loggedIn());
+  ngOnInit(){
+    
   }
 
 }
