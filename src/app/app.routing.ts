@@ -101,6 +101,34 @@ import { TypeServiceEditComponent } from './components/masters/configure-catalog
 import { TypeServiceShowComponent } from './components/masters/configure-catalogue/typeservice/type-service-show/type-service-show.component';
 import { TypeServiceDeleteComponent } from './components/masters/configure-catalogue/typeservice/type-service-delete/type-service-delete.component';
 
+import { PermissionFatherComponent } from './components/masters/configure-system/permission/permission-father/permission-father.component';
+import { PermissionsComponent } from './components/masters/configure-system/permission/permissions/permissions.component';
+import { PermissionCreateComponent } from './components/masters/configure-system/permission/permission-create/permission-create.component';
+import { PermissionEditComponent } from './components/masters/configure-system/permission/permission-edit/permission-edit.component';
+import { PermissionShowComponent } from './components/masters/configure-system/permission/permission-show/permission-show.component';
+import { PermissionDeleteComponent } from './components/masters/configure-system/permission/permission-delete/permission-delete.component';
+
+import { RoleFatherComponent } from './components/masters/configure-system/role/role-father/role-father.component';
+import { RolesComponent } from './components/masters/configure-system/role/roles/roles.component';
+import { RoleCreateComponent } from './components/masters/configure-system/role/role-create/role-create.component';
+import { RoleEditComponent } from './components/masters/configure-system/role/role-edit/role-edit.component';
+import { RoleShowComponent } from './components/masters/configure-system/role/role-show/role-show.component';
+import { RoleDeleteComponent } from './components/masters/configure-system/role/role-delete/role-delete.component';
+
+import { AssignFunctionFatherComponent } from './components/masters/configure-system/assignFunction/assign-function-father/assign-function-father.component';
+import { AssignFunctionsComponent } from './components/masters/configure-system/assignFunction/assign-functions/assign-functions.component';
+import { AssignFunctionCreateComponent } from './components/masters/configure-system/assignFunction/assign-function-create/assign-function-create.component';
+import { AssignFunctionEditComponent } from './components/masters/configure-system/assignFunction/assign-function-edit/assign-function-edit.component';
+import { AssignFunctionShowComponent } from './components/masters/configure-system/assignFunction/assign-function-show/assign-function-show.component';
+import { AssignFunctionDeleteComponent } from './components/masters/configure-system/assignFunction/assign-function-delete/assign-function-delete.component';
+
+import { ParameterFatherComponent } from './components/masters/configure-system/parameter/parameter-father/parameter-father.component';
+import { ParametersComponent } from './components/masters/configure-system/parameter/parameters/parameters.component';
+import { ParameterCreateComponent } from './components/masters/configure-system/parameter/parameter-create/parameter-create.component';
+import { ParameterEditComponent } from './components/masters/configure-system/parameter/parameter-edit/parameter-edit.component';
+import { ParameterShowComponent } from './components/masters/configure-system/parameter/parameter-show/parameter-show.component';
+import { ParameterDeleteComponent } from './components/masters/configure-system/parameter/parameter-delete/parameter-delete.component';
+
 // Array de rutas
 const appRoutes: Routes = [
 
@@ -153,6 +181,62 @@ const appRoutes: Routes = [
 		]
 	},
 
+	{path: 'category', component: CategoryFatherComponent, canActivate: [AuthGuard],
+		children:
+		[
+			{path: '', component: CategorysComponent},
+			{path: 'create', component: CategoryCreateComponent},
+			{path: 'edit/:id', component: CategoryEditComponent},
+			{path: 'show/:id', component: CategoryShowComponent},
+			{path: 'delete/:id', component: CategoryDeleteComponent},
+		]
+	},
+
+	{path: 'permission', component: PermissionFatherComponent, canActivate: [AuthGuard],
+		children:
+		[
+			{path: '', component: PermissionsComponent},
+			{path: 'create', component: PermissionCreateComponent},
+			{path: 'edit/:id', component: PermissionEditComponent},
+			{path: 'show/:id', component: PermissionShowComponent},
+			{path: 'delete/:id', component: PermissionDeleteComponent},
+		]
+	},
+
+	
+	{path: 'role', component: RoleFatherComponent, canActivate: [AuthGuard],
+		children:
+		[
+			{path: '', component: RolesComponent},
+			{path: 'create', component: RoleCreateComponent},
+			{path: 'edit/:id', component: RoleEditComponent},
+			{path: 'show/:id', component: RoleShowComponent},
+			{path: 'delete/:id', component: RoleDeleteComponent},
+		]
+	},
+
+
+	{path: 'assignFunction', component: AssignFunctionFatherComponent, canActivate: [AuthGuard],
+		children:
+		[
+			{path: '', component: AssignFunctionsComponent},
+			{path: 'create', component: AssignFunctionCreateComponent},
+			{path: 'edit/:id', component: AssignFunctionEditComponent},
+			{path: 'show/:id', component: AssignFunctionShowComponent},
+			{path: 'delete/:id', component: AssignFunctionDeleteComponent},
+		]
+	},
+
+	{path: 'parameter', component: ParameterFatherComponent, canActivate: [AuthGuard],
+		children:
+		[
+			{path: '', component: ParametersComponent},
+			{path: 'create', component: ParameterCreateComponent},
+			{path: 'edit/:id', component: ParameterEditComponent},
+			{path: 'show/:id', component: ParameterShowComponent},
+			{path: 'delete/:id', component: ParameterDeleteComponent},
+		]
+	},
 
 	{path: 'category', component: CategoryFatherComponent, canActivate: [AuthGuard],
 		children:
