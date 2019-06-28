@@ -103,6 +103,7 @@
 		</div>
 
 		<div *ngIf="rol=='admin'">
+			<li class="bold" [routerLinkActive]="['active']"><a [routerLink]="['/dashboardAdmin']" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Dashboard</a>
 			<li class="no-padding">
 				<ul class="collapsible collapsible-accordion">
 					<li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-carousel"></i> Configurar Sistema</a>
