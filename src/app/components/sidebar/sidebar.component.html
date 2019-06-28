@@ -19,64 +19,67 @@
 					<li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-carousel"></i> Servicios</a>
 						<div class="collapsible-body">
 							<ul>
-								<li><a href="layout-fullscreen.html">Solicitar Servicio</a></li>
-								<li><a href="layout-horizontal-menu.html">Mis Servicios</a></li>
+								<li><a [routerLink]="['/serviceRequest']">Solicitar Servicio</a></li>
+								<li><a [routerLink]="['/myService']">Mis Servicios</a></li>
 							</ul>
 						</div>
 					</li>
 				</ul>
 			</li>
 			<li class="bold">
-				<a href="app-email.html" class="waves-effect waves-cyan"><i class="mdi-notification-event-note"></i> Agenda </a>
+				<a [routerLink]="['/schedule']" class="waves-effect waves-cyan"><i class="mdi-notification-event-note"></i> Agenda </a>
 			</li>
 			<li class="bold">
-				<a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-history"></i> Historia</a>
+				<a [routerLink]="['/history']" class="waves-effect waves-cyan"><i class="mdi-action-history"></i> Historia</a>
 			</li>
 			<li class="bold">
-				<a href="app-email.html" class="waves-effect waves-cyan"><i class="mdi-action-stars"></i> Promociones </a>
+				<a [routerLink]="['/offers']" class="waves-effect waves-cyan"><i class="mdi-action-stars"></i> Promociones </a>
 			</li>
 			<li class="bold">
-				<a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-verified-user"></i> Garantía</a>
+				<a [routerLink]="['/warranty']" class="waves-effect waves-cyan"><i class="mdi-action-verified-user"></i> Garantía</a>
 			</li>
 			<li class="bold">
-				<a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-communication-textsms"></i> Sugerencias y Reclamos</a>
+				<a [routerLink]="['/suggestion']" class="waves-effect waves-cyan"><i class="mdi-communication-textsms"></i> Sugerencias</a>
 			</li>
 			<li class="bold">
-				<a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-notification-phone-in-talk"></i> Canal de escucha</a>
+				<a [routerLink]="['/claim']" class="waves-effect waves-cyan"><i class="mdi-notification-phone-in-talk"></i> Reclamos</a>
 			</li>
 			<li class="bold">
-				<a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-perm-contact-cal"></i> Contáctanos</a>
+				<a [routerLink]="['/channel']" class="waves-effect waves-cyan"><i class="mdi-action-perm-contact-cal"></i> Canal de Escucha</a>
+			</li>
+			<li class="bold">
+				<a [routerLink]="['/contact']" class="waves-effect waves-cyan"><i class="mdi-action-perm-contact-cal"></i> Contáctanos</a>
 			</li>
 		</div>
 
 		<div *ngIf="rol=='lender'">
 			<li class="bold" [routerLinkActive]="['active']"><a [routerLink]="['/dashboardLender']" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Dashboard</a>
 			<li class="bold">
-				<a href="app-email.html" class="waves-effect waves-cyan"><i class="mdi-notification-event-note"></i> Servicios Actuales </a>
+				<a [routerLink]="['/myService']" class="waves-effect waves-cyan"><i class="mdi-notification-event-note"></i> Servicios Actuales </a>
 			</li>
 			<li class="bold">
-				<a href="app-email.html" class="waves-effect waves-cyan"><i class="mdi-notification-event-note"></i> Agenda </a>
+				<a [routerLink]="['/schedule']" class="waves-effect waves-cyan"><i class="mdi-notification-event-note"></i> Agenda </a>
 			</li>
 			<li class="bold">
-				<a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-history"></i> Historia</a>
+				<a [routerLink]="['/history']" class="waves-effect waves-cyan"><i class="mdi-action-history"></i> Historia</a>
 			</li>
 			<li class="bold">
-				<a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-verified-user"></i> Garantía</a>
+				<a [routerLink]="['/warranty']" class="waves-effect waves-cyan"><i class="mdi-action-verified-user"></i> Garantía</a>
 			</li>
 			<li class="bold">
-				<a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-communication-textsms"></i> Incidencias</a>
+				<a [routerLink]="['/incidenceLender']" class="waves-effect waves-cyan"><i class="mdi-communication-textsms"></i> Incidencias</a>
 			</li>
 			<li class="bold">
-				<a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-notification-phone-in-talk"></i> Calificacion</a>
+				<a [routerLink]="['/calification']" class="waves-effect waves-cyan"><i class="mdi-notification-phone-in-talk"></i> Calificacion</a>
 			</li>
 			<li class="bold">
-				<a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-perm-contact-cal"></i> Solicitudes</a>
+				<a [routerLink]="['/serviceRequest']" class="waves-effect waves-cyan"><i class="mdi-action-perm-contact-cal"></i> Solicitudes de Revision</a>
 			</li>
 			<li class="bold">
-				<a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-perm-contact-cal"></i> Canal de escucha</a>
+				<a [routerLink]="['/channel']" class="waves-effect waves-cyan"><i class="mdi-action-perm-contact-cal"></i> Canal de escucha</a>
 			</li>
 			<li class="bold">
-				<a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-perm-contact-cal"></i> Configuracion</a>
+				<a [routerLink]="['/configure']" class="waves-effect waves-cyan"><i class="mdi-action-perm-contact-cal"></i> Configuracion</a>
 			</li>
 		</div>
 
@@ -87,18 +90,18 @@
 					<li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-carousel"></i> Reportes</a>
 						<div class="collapsible-body">
 							<ul>
-								<li><a href="layout-fullscreen.html">Servicios</a></li>
-								<li><a href="layout-horizontal-menu.html">Prestador</a></li>
-								<li><a href="layout-horizontal-menu.html">Garantía</a></li>
-								<li><a href="layout-horizontal-menu.html">Reclamos</a></li>
-								<li><a href="layout-horizontal-menu.html">Sugerencias</a></li>
+								<li><a [routerLink]="['/serviceReport']">Servicios</a></li>
+								<li><a [routerLink]="['/lenderReport']">Prestador</a></li>
+								<li><a [routerLink]="['/warrantyReport']">Garantía</a></li>
+								<li><a [routerLink]="['/claimReport']">Reclamos</a></li>
+								<li><a [routerLink]="['/suggestionReport']">Sugerencias</a></li>
 							</ul>
 						</div>
 					</li>
 				</ul>
 			</li>
 			<li class="bold">
-				<a href="app-email.html" class="waves-effect waves-cyan"><i class="mdi-notification-event-note"></i> Promociones </a>
+				<a [routerLink]="['/promotionRequest']" class="waves-effect waves-cyan"><i class="mdi-notification-event-note"></i> Promociones </a>
 			</li>
 		</div>
 
