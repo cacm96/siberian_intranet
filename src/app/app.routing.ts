@@ -131,6 +131,27 @@ import { CatalogueEditComponent } from './components/masters/configure-catalogue
 import { CatalogueShowComponent } from './components/masters/configure-catalogue/catalogue/catalogue-show/catalogue-show.component';
 import { CatalogueDeleteComponent } from './components/masters/configure-catalogue/catalogue/catalogue-delete/catalogue-delete.component';
 
+import { PaymentformFatherComponent } from './components/masters/configure-paymentform/paymentform-father/paymentform-father.component';
+import { PaymentformsComponent } from './components/masters/configure-paymentform/paymentforms/paymentforms.component';
+import { PaymentformCreateComponent } from './components/masters/configure-paymentform/paymentform-create/paymentform-create.component';
+import { PaymentformEditComponent } from './components/masters/configure-paymentform/paymentform-edit/paymentform-edit.component';
+import { PaymentformShowComponent } from './components/masters/configure-paymentform/paymentform-show/paymentform-show.component';
+import { PaymentformDeleteComponent } from './components/masters/configure-paymentform/paymentform-delete/paymentform-delete.component';
+
+import { PromotionFatherComponent } from './components/masters/configure-promotion/promotion-father/promotion-father.component';
+import { PromotionsComponent } from './components/masters/configure-promotion/promotions/promotions.component';
+import { PromotionCreateComponent } from './components/masters/configure-promotion/promotion-create/promotion-create.component';
+import { PromotionEditComponent } from './components/masters/configure-promotion/promotion-edit/promotion-edit.component';
+import { PromotionShowComponent } from './components/masters/configure-promotion/promotion-show/promotion-show.component';
+import { PromotionDeleteComponent } from './components/masters/configure-promotion/promotion-delete/promotion-delete.component';
+
+import { CalificationFatherComponent } from './components/masters/configure-calification/calification-father/calification-father.component';
+import { CalificationsComponent } from './components/masters/configure-calification/califications/califications.component';
+import { CalificationCreateComponent } from './components/masters/configure-calification/calification-create/calification-create.component';
+import { CalificationEditComponent } from './components/masters/configure-calification/calification-edit/calification-edit.component';
+import { CalificationShowComponent } from './components/masters/configure-calification/calification-show/calification-show.component';
+import { CalificationDeleteComponent } from './components/masters/configure-calification/calification-delete/calification-delete.component';
+
 // Array de rutas
 const appRoutes: Routes = [
 
@@ -322,9 +343,27 @@ const appRoutes: Routes = [
 		]
 	},
 	
+	{path: 'paymentform', component: CalificationFatherComponent, canActivate: [AuthGuard],
+		children:
+		[
+			{path: '', component: PaymentformsComponent},
+			{path: 'create', component: PaymentformCreateComponent},
+			{path: 'edit/:id', component: PaymentformEditComponent},
+			{path: 'show/:id', component: PaymentformShowComponent},
+			{path: 'delete/:id', component: PaymentformDeleteComponent},
+		]
+	},
 	
-
-	
+	{path: 'calification', component: CalificationFatherComponent, canActivate: [AuthGuard],
+		children:
+		[
+			{path: '', component: PaymentformsComponent},
+			{path: 'create', component: PaymentformCreateComponent},
+			{path: 'edit/:id', component: PaymentformEditComponent},
+			{path: 'show/:id', component: PaymentformShowComponent},
+			{path: 'delete/:id', component: PaymentformDeleteComponent},
+		]
+	},
 
 
 	
