@@ -234,3 +234,13 @@ select:-webkit-autofill:focus {
   -webkit-box-shadow: none;
   transition: background-color 5000s ease-in-out 0s;
 }
+
+/*Anderson*/
+/* Refinando detalles
+Versión 1.0.0
+28/06/2019
+*/
+
+.img_footer{
+	vertical-align: middle;
+}
