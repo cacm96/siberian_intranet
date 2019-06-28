@@ -12,12 +12,10 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { LoginWeitComponent } from './components/auth/login-weit/login-weit.component';
 import { LogoutComponent } from './components/auth/logout/logout.component';
 
-import { UserFatherComponent } from './components/masters/configure-user/user/user-father/user-father.component';
-import { UsersComponent } from './components/masters/configure-user/user/users/users.component';
-import { UserCreateComponent } from './components/masters/configure-user/user/user-create/user-create.component';
-import { UserEditComponent } from './components/masters/configure-user/user/user-edit/user-edit.component';
-import { UserShowComponent } from './components/masters/configure-user/user/user-show/user-show.component';
-import { UserDeleteComponent } from './components/masters/configure-user/user/user-delete/user-delete.component';
+import { IndexManagerComponent } from './components/dashboard/manager/index-manager/index-manager.component';
+import { IndexAdminComponent } from './components/dashboard/admin/index-admin/index-admin.component';
+import { IndexLenderComponent } from './components/dashboard/lender/index-lender/index-lender.component';
+import { IndexClienteComponent } from './components/dashboard/client/index-cliente/index-cliente.component';
 
 import { ProfileFatherComponent } from './components/profile/profile-father/profile-father.component';
 import { ProfilesComponent } from './components/profile/profiles/profiles.component';
@@ -39,67 +37,6 @@ import { FunctionCreateComponent } from './components/masters/configure-system/f
 import { FunctionEditComponent } from './components/masters/configure-system/function/function-edit/function-edit.component';
 import { FunctionShowComponent } from './components/masters/configure-system/function/function-show/function-show.component';
 import { FunctionDeleteComponent } from './components/masters/configure-system/function/function-delete/function-delete.component';
-
-import { IndexManagerComponent } from './components/dashboard/manager/index-manager/index-manager.component';
-import { IndexAdminComponent } from './components/dashboard/admin/index-admin/index-admin.component';
-import { IndexLenderComponent } from './components/dashboard/lender/index-lender/index-lender.component';
-import { IndexClienteComponent } from './components/dashboard/client/index-cliente/index-cliente.component';
-
-import { CategoryFatherComponent } from './components/masters/configure-catalogue/category/category-father/category-father.component';
-import { CategorysComponent } from './components/masters/configure-catalogue/category/categorys/categorys.component';
-import { CategoryCreateComponent } from './components/masters/configure-catalogue/category/category-create/category-create.component';
-import { CategoryEditComponent } from './components/masters/configure-catalogue/category/category-edit/category-edit.component';
-import { CategoryShowComponent } from './components/masters/configure-catalogue/category/category-show/category-show.component';
-import { CategoryDeleteComponent } from './components/masters/configure-catalogue/category/category-delete/category-delete.component';
-
-import { SubcategoryFatherComponent } from './components/masters/configure-catalogue/subcategory/subcategory-father/subcategory-father.component';
-import { SubcategorysComponent } from './components/masters/configure-catalogue/subcategory/subcategorys/subcategorys.component';
-import { SubcategoryCreateComponent } from './components/masters/configure-catalogue/subcategory/subcategory-create/subcategory-create.component';
-import { SubcategoryEditComponent } from './components/masters/configure-catalogue/subcategory/subcategory-edit/subcategory-edit.component';
-import { SubcategoryShowComponent } from './components/masters/configure-catalogue/subcategory/subcategory-show/subcategory-show.component';
-import { SubcategoryDeleteComponent } from './components/masters/configure-catalogue/subcategory/subcategory-delete/subcategory-delete.component';
-
-import { VarietyFatherComponent } from './components/masters/configure-catalogue/variety/variety-father/variety-father.component';
-import { VarietysComponent } from './components/masters/configure-catalogue/variety/varietys/varietys.component';
-import { VarietyCreateComponent } from './components/masters/configure-catalogue/variety/variety-create/variety-create.component';
-import { VarietyEditComponent } from './components/masters/configure-catalogue/variety/variety-edit/variety-edit.component';
-import { VarietyShowComponent } from './components/masters/configure-catalogue/variety/variety-show/variety-show.component';
-import { VarietyDeleteComponent } from './components/masters/configure-catalogue/variety/variety-delete/variety-delete.component';
-
-import { CatalogueFatherComponent } from './components/masters/configure-catalogue/catalogue/catalogue-father/catalogue-father.component';
-import { CataloguesComponent } from './components/masters/configure-catalogue/catalogue/catalogues/catalogues.component';
-import { CatalogueCreateComponent } from './components/masters/configure-catalogue/catalogue/catalogue-create/catalogue-create.component';
-import { CatalogueEditComponent } from './components/masters/configure-catalogue/catalogue/catalogue-edit/catalogue-edit.component';
-import { CatalogueShowComponent } from './components/masters/configure-catalogue/catalogue/catalogue-show/catalogue-show.component';
-import { CatalogueDeleteComponent } from './components/masters/configure-catalogue/catalogue/catalogue-delete/catalogue-delete.component';
-
-import { TypeVarietyFatherComponent } from './components/masters/configure-catalogue/typevariety/type-variety-father/type-variety-father.component';
-import { TypeVarietysComponent } from './components/masters/configure-catalogue/typevariety/type-varietys/type-varietys.component';
-import { TypeVarietyCreateComponent } from './components/masters/configure-catalogue/typevariety/type-variety-create/type-variety-create.component';
-import { TypeVarietyEditComponent } from './components/masters/configure-catalogue/typevariety/type-variety-edit/type-variety-edit.component';
-import { TypeVarietyShowComponent } from './components/masters/configure-catalogue/typevariety/type-variety-show/type-variety-show.component';
-import { TypeVarietyDeleteComponent } from './components/masters/configure-catalogue/typevariety/type-variety-delete/type-variety-delete.component';
-
-import { DetailVarietyFatherComponent } from './components/masters/configure-catalogue/detailvariety/detail-variety-father/detail-variety-father.component';
-import { DetailVarietysComponent } from './components/masters/configure-catalogue/detailvariety/detail-varietys/detail-varietys.component';
-import { DetailVarietyCreateComponent } from './components/masters/configure-catalogue/detailvariety/detail-variety-create/detail-variety-create.component';
-import { DetailVarietyEditComponent } from './components/masters/configure-catalogue/detailvariety/detail-variety-edit/detail-variety-edit.component';
-import { DetailVarietyShowComponent } from './components/masters/configure-catalogue/detailvariety/detail-variety-show/detail-variety-show.component';
-import { DetailVarietyDeleteComponent } from './components/masters/configure-catalogue/detailvariety/detail-variety-delete/detail-variety-delete.component';
-
-import { ApparatusInfrastructureFatherComponent } from './components/masters/configure-catalogue/apparatusinfrastructure/apparatus-infrastructure-father/apparatus-infrastructure-father.component';
-import { ApparatusInfrastructuresComponent } from './components/masters/configure-catalogue/apparatusinfrastructure/apparatus-infrastructures/apparatus-infrastructures.component';
-import { ApparatusInfrastructureCreateComponent } from './components/masters/configure-catalogue/apparatusinfrastructure/apparatus-infrastructure-create/apparatus-infrastructure-create.component';
-import { ApparatusInfrastructureEditComponent } from './components/masters/configure-catalogue/apparatusinfrastructure/apparatus-infrastructure-edit/apparatus-infrastructure-edit.component';
-import { ApparatusInfrastructureShowComponent } from './components/masters/configure-catalogue/apparatusinfrastructure/apparatus-infrastructure-show/apparatus-infrastructure-show.component';
-import { ApparatusInfrastructureDeleteComponent } from './components/masters/configure-catalogue/apparatusinfrastructure/apparatus-infrastructure-delete/apparatus-infrastructure-delete.component';
-
-import { TypeServiceFatherComponent } from './components/masters/configure-catalogue/typeservice/type-service-father/type-service-father.component';
-import { TypeServicesComponent } from './components/masters/configure-catalogue/typeservice/type-services/type-services.component';
-import { TypeServiceCreateComponent } from './components/masters/configure-catalogue/typeservice/type-service-create/type-service-create.component';
-import { TypeServiceEditComponent } from './components/masters/configure-catalogue/typeservice/type-service-edit/type-service-edit.component';
-import { TypeServiceShowComponent } from './components/masters/configure-catalogue/typeservice/type-service-show/type-service-show.component';
-import { TypeServiceDeleteComponent } from './components/masters/configure-catalogue/typeservice/type-service-delete/type-service-delete.component';
 
 import { PermissionFatherComponent } from './components/masters/configure-system/permission/permission-father/permission-father.component';
 import { PermissionsComponent } from './components/masters/configure-system/permission/permissions/permissions.component';
@@ -129,6 +66,71 @@ import { ParameterEditComponent } from './components/masters/configure-system/pa
 import { ParameterShowComponent } from './components/masters/configure-system/parameter/parameter-show/parameter-show.component';
 import { ParameterDeleteComponent } from './components/masters/configure-system/parameter/parameter-delete/parameter-delete.component';
 
+
+import { UserFatherComponent } from './components/masters/configure-user/user/user-father/user-father.component';
+import { UsersComponent } from './components/masters/configure-user/user/users/users.component';
+import { UserCreateComponent } from './components/masters/configure-user/user/user-create/user-create.component';
+import { UserEditComponent } from './components/masters/configure-user/user/user-edit/user-edit.component';
+import { UserShowComponent } from './components/masters/configure-user/user/user-show/user-show.component';
+import { UserDeleteComponent } from './components/masters/configure-user/user/user-delete/user-delete.component';
+
+
+import { CategoryFatherComponent } from './components/masters/configure-catalogue/category/category-father/category-father.component';
+import { CategorysComponent } from './components/masters/configure-catalogue/category/categorys/categorys.component';
+import { CategoryCreateComponent } from './components/masters/configure-catalogue/category/category-create/category-create.component';
+import { CategoryEditComponent } from './components/masters/configure-catalogue/category/category-edit/category-edit.component';
+import { CategoryShowComponent } from './components/masters/configure-catalogue/category/category-show/category-show.component';
+import { CategoryDeleteComponent } from './components/masters/configure-catalogue/category/category-delete/category-delete.component';
+
+import { SubcategoryFatherComponent } from './components/masters/configure-catalogue/subcategory/subcategory-father/subcategory-father.component';
+import { SubcategorysComponent } from './components/masters/configure-catalogue/subcategory/subcategorys/subcategorys.component';
+import { SubcategoryCreateComponent } from './components/masters/configure-catalogue/subcategory/subcategory-create/subcategory-create.component';
+import { SubcategoryEditComponent } from './components/masters/configure-catalogue/subcategory/subcategory-edit/subcategory-edit.component';
+import { SubcategoryShowComponent } from './components/masters/configure-catalogue/subcategory/subcategory-show/subcategory-show.component';
+import { SubcategoryDeleteComponent } from './components/masters/configure-catalogue/subcategory/subcategory-delete/subcategory-delete.component';
+
+import { TypeServiceFatherComponent } from './components/masters/configure-catalogue/typeservice/type-service-father/type-service-father.component';
+import { TypeServicesComponent } from './components/masters/configure-catalogue/typeservice/type-services/type-services.component';
+import { TypeServiceCreateComponent } from './components/masters/configure-catalogue/typeservice/type-service-create/type-service-create.component';
+import { TypeServiceEditComponent } from './components/masters/configure-catalogue/typeservice/type-service-edit/type-service-edit.component';
+import { TypeServiceShowComponent } from './components/masters/configure-catalogue/typeservice/type-service-show/type-service-show.component';
+import { TypeServiceDeleteComponent } from './components/masters/configure-catalogue/typeservice/type-service-delete/type-service-delete.component';
+
+import { TypeVarietyFatherComponent } from './components/masters/configure-catalogue/typevariety/type-variety-father/type-variety-father.component';
+import { TypeVarietysComponent } from './components/masters/configure-catalogue/typevariety/type-varietys/type-varietys.component';
+import { TypeVarietyCreateComponent } from './components/masters/configure-catalogue/typevariety/type-variety-create/type-variety-create.component';
+import { TypeVarietyEditComponent } from './components/masters/configure-catalogue/typevariety/type-variety-edit/type-variety-edit.component';
+import { TypeVarietyShowComponent } from './components/masters/configure-catalogue/typevariety/type-variety-show/type-variety-show.component';
+import { TypeVarietyDeleteComponent } from './components/masters/configure-catalogue/typevariety/type-variety-delete/type-variety-delete.component';
+
+import { VarietyFatherComponent } from './components/masters/configure-catalogue/variety/variety-father/variety-father.component';
+import { VarietysComponent } from './components/masters/configure-catalogue/variety/varietys/varietys.component';
+import { VarietyCreateComponent } from './components/masters/configure-catalogue/variety/variety-create/variety-create.component';
+import { VarietyEditComponent } from './components/masters/configure-catalogue/variety/variety-edit/variety-edit.component';
+import { VarietyShowComponent } from './components/masters/configure-catalogue/variety/variety-show/variety-show.component';
+import { VarietyDeleteComponent } from './components/masters/configure-catalogue/variety/variety-delete/variety-delete.component';
+
+import { DetailVarietyFatherComponent } from './components/masters/configure-catalogue/detailvariety/detail-variety-father/detail-variety-father.component';
+import { DetailVarietysComponent } from './components/masters/configure-catalogue/detailvariety/detail-varietys/detail-varietys.component';
+import { DetailVarietyCreateComponent } from './components/masters/configure-catalogue/detailvariety/detail-variety-create/detail-variety-create.component';
+import { DetailVarietyEditComponent } from './components/masters/configure-catalogue/detailvariety/detail-variety-edit/detail-variety-edit.component';
+import { DetailVarietyShowComponent } from './components/masters/configure-catalogue/detailvariety/detail-variety-show/detail-variety-show.component';
+import { DetailVarietyDeleteComponent } from './components/masters/configure-catalogue/detailvariety/detail-variety-delete/detail-variety-delete.component';
+
+import { ApparatusInfrastructureFatherComponent } from './components/masters/configure-catalogue/apparatusinfrastructure/apparatus-infrastructure-father/apparatus-infrastructure-father.component';
+import { ApparatusInfrastructuresComponent } from './components/masters/configure-catalogue/apparatusinfrastructure/apparatus-infrastructures/apparatus-infrastructures.component';
+import { ApparatusInfrastructureCreateComponent } from './components/masters/configure-catalogue/apparatusinfrastructure/apparatus-infrastructure-create/apparatus-infrastructure-create.component';
+import { ApparatusInfrastructureEditComponent } from './components/masters/configure-catalogue/apparatusinfrastructure/apparatus-infrastructure-edit/apparatus-infrastructure-edit.component';
+import { ApparatusInfrastructureShowComponent } from './components/masters/configure-catalogue/apparatusinfrastructure/apparatus-infrastructure-show/apparatus-infrastructure-show.component';
+import { ApparatusInfrastructureDeleteComponent } from './components/masters/configure-catalogue/apparatusinfrastructure/apparatus-infrastructure-delete/apparatus-infrastructure-delete.component';
+
+import { CatalogueFatherComponent } from './components/masters/configure-catalogue/catalogue/catalogue-father/catalogue-father.component';
+import { CataloguesComponent } from './components/masters/configure-catalogue/catalogue/catalogues/catalogues.component';
+import { CatalogueCreateComponent } from './components/masters/configure-catalogue/catalogue/catalogue-create/catalogue-create.component';
+import { CatalogueEditComponent } from './components/masters/configure-catalogue/catalogue/catalogue-edit/catalogue-edit.component';
+import { CatalogueShowComponent } from './components/masters/configure-catalogue/catalogue/catalogue-show/catalogue-show.component';
+import { CatalogueDeleteComponent } from './components/masters/configure-catalogue/catalogue/catalogue-delete/catalogue-delete.component';
+
 // Array de rutas
 const appRoutes: Routes = [
 
@@ -136,17 +138,13 @@ const appRoutes: Routes = [
 	{path: 'login', component: LoginComponent, canActivate: [RedirectAuthGuard]},
 	{path: 'loginWeit', component: LoginWeitComponent, canActivate: []},
 	{path: 'logout', component: LogoutComponent},
+
+	{path: 'dashboardClient', component: IndexClienteComponent, canActivate: [AuthGuard]},
+	{path: 'dashboardLender', component: IndexLenderComponent, canActivate: [AuthGuard]},
+	{path: 'dashboardManager', component: IndexManagerComponent, canActivate: [AuthGuard]},
+	{path: 'dashboardAdmin', component: IndexAdminComponent, canActivate: [AuthGuard]},
 	
-	{path: 'user', component: UserFatherComponent, canActivate: [AuthGuard],
-		children:
-		[
-			{path: '', component: UsersComponent},
-			{path: 'create', component: UserCreateComponent},
-			{path: 'edit/:id', component: UserEditComponent},
-			{path: 'show/:id', component: UserShowComponent},
-			{path: 'delete/:id', component: UserDeleteComponent},
-		]
-	},
+	
 
 	{path: 'profile', component: ProfileFatherComponent, canActivate: [AuthGuard],
 		children:
@@ -181,17 +179,6 @@ const appRoutes: Routes = [
 		]
 	},
 
-	{path: 'category', component: CategoryFatherComponent, canActivate: [AuthGuard],
-		children:
-		[
-			{path: '', component: CategorysComponent},
-			{path: 'create', component: CategoryCreateComponent},
-			{path: 'edit/:id', component: CategoryEditComponent},
-			{path: 'show/:id', component: CategoryShowComponent},
-			{path: 'delete/:id', component: CategoryDeleteComponent},
-		]
-	},
-
 	{path: 'permission', component: PermissionFatherComponent, canActivate: [AuthGuard],
 		children:
 		[
@@ -203,7 +190,6 @@ const appRoutes: Routes = [
 		]
 	},
 
-	
 	{path: 'role', component: RoleFatherComponent, canActivate: [AuthGuard],
 		children:
 		[
@@ -214,7 +200,6 @@ const appRoutes: Routes = [
 			{path: 'delete/:id', component: RoleDeleteComponent},
 		]
 	},
-
 
 	{path: 'assignFunction', component: AssignFunctionFatherComponent, canActivate: [AuthGuard],
 		children:
@@ -238,6 +223,17 @@ const appRoutes: Routes = [
 		]
 	},
 
+	{path: 'user', component: UserFatherComponent, canActivate: [AuthGuard],
+		children:
+		[
+			{path: '', component: UsersComponent},
+			{path: 'create', component: UserCreateComponent},
+			{path: 'edit/:id', component: UserEditComponent},
+			{path: 'show/:id', component: UserShowComponent},
+			{path: 'delete/:id', component: UserDeleteComponent},
+		]
+	},
+	
 	{path: 'category', component: CategoryFatherComponent, canActivate: [AuthGuard],
 		children:
 		[
@@ -260,6 +256,28 @@ const appRoutes: Routes = [
 		]
 	},
 
+	{path: 'typeService', component: TypeServiceFatherComponent, canActivate: [AuthGuard],
+		children:
+		[
+			{path: '', component: TypeServicesComponent},
+			{path: 'create', component: TypeServiceCreateComponent},
+			{path: 'edit/:id', component: TypeServiceEditComponent},
+			{path: 'show/:id', component: TypeServiceShowComponent},
+			{path: 'delete/:id', component: TypeServiceDeleteComponent},
+		]
+    },
+
+    {path: 'typeVariety', component: TypeVarietyFatherComponent, canActivate: [AuthGuard],
+		children:
+		[
+			{path: '', component: TypeVarietysComponent},
+			{path: 'create', component: TypeVarietyCreateComponent},
+			{path: 'edit/:id', component: TypeVarietyEditComponent},
+			{path: 'show/:id', component: TypeVarietyShowComponent},
+			{path: 'delete/:id', component: TypeVarietyDeleteComponent},
+		]
+	},
+
 	{path: 'variety', component: VarietyFatherComponent, canActivate: [AuthGuard],
 		children:
 		[
@@ -269,6 +287,28 @@ const appRoutes: Routes = [
 			{path: 'show/:id', component: VarietyShowComponent},
 			{path: 'delete/:id', component: VarietyDeleteComponent},
 		]
+	},
+
+	{path: 'detailVariety', component: DetailVarietyFatherComponent, canActivate: [AuthGuard],
+		children:
+		[
+			{path: '', component: DetailVarietysComponent},
+			{path: 'create', component: DetailVarietyCreateComponent},
+			{path: 'edit/:id', component: DetailVarietyEditComponent},
+			{path: 'show/:id', component: DetailVarietyShowComponent},
+			{path: 'delete/:id', component: DetailVarietyDeleteComponent},
+		]
+    },
+	 
+   {path: 'apparatusInfrastructure', component: ApparatusInfrastructureFatherComponent, canActivate: [AuthGuard],
+	   children:
+	    [
+		    {path: '', component: ApparatusInfrastructuresComponent},
+	        {path: 'create', component: ApparatusInfrastructureCreateComponent},
+		    {path: 'edit/:id', component: ApparatusInfrastructureEditComponent},
+		    {path: 'show/:id', component: ApparatusInfrastructureShowComponent},
+		    {path: 'delete/:id', component: ApparatusInfrastructureDeleteComponent},
+	    ]
 	},
 
 	{path: 'catalogue', component: CatalogueFatherComponent, canActivate: [AuthGuard],
@@ -281,55 +321,10 @@ const appRoutes: Routes = [
 			{path: 'delete/:id', component: CatalogueDeleteComponent},
 		]
 	},
-
-	{path: 'typeVariety', component: TypeVarietyFatherComponent, canActivate: [AuthGuard],
-		children:
-		[
-			{path: '', component: TypeVarietysComponent},
-			{path: 'create', component: TypeVarietyCreateComponent},
-			{path: 'edit/:id', component: TypeVarietyEditComponent},
-			{path: 'show/:id', component: TypeVarietyShowComponent},
-			{path: 'delete/:id', component: TypeVarietyDeleteComponent},
-		]
-	},
-
-	{path: 'detailVariety', component: DetailVarietyFatherComponent, canActivate: [AuthGuard],
-	children:
-	[
-		{path: '', component: DetailVarietysComponent},
-		{path: 'create', component: DetailVarietyCreateComponent},
-		{path: 'edit/:id', component: DetailVarietyEditComponent},
-		{path: 'show/:id', component: DetailVarietyShowComponent},
-		{path: 'delete/:id', component: DetailVarietyDeleteComponent},
-	]
-    },
-	 
-   {path: 'apparatusInfrastructure', component: ApparatusInfrastructureFatherComponent, canActivate: [AuthGuard],
-   children:
-    [
-	    {path: '', component: ApparatusInfrastructuresComponent},
-        {path: 'create', component: ApparatusInfrastructureCreateComponent},
-	    {path: 'edit/:id', component: ApparatusInfrastructureEditComponent},
-	    {path: 'show/:id', component: ApparatusInfrastructureShowComponent},
-	    {path: 'delete/:id', component: ApparatusInfrastructureDeleteComponent},
-    ]
-	},
 	
-	{path: 'typeService', component: TypeServiceFatherComponent, canActivate: [AuthGuard],
-	children:
-	[
-		{path: '', component: TypeServicesComponent},
-		{path: 'create', component: TypeServiceCreateComponent},
-		{path: 'edit/:id', component: TypeServiceEditComponent},
-		{path: 'show/:id', component: TypeServiceShowComponent},
-		{path: 'delete/:id', component: TypeServiceDeleteComponent},
-	]
-    },
+	
 
-	{path: 'dashboardClient', component: IndexClienteComponent, canActivate: [AuthGuard]},
-	{path: 'dashboardLender', component: IndexLenderComponent, canActivate: [AuthGuard]},
-	{path: 'dashboardManager', component: IndexManagerComponent, canActivate: [AuthGuard]},
-	{path: 'dashboardAdmin', component: IndexAdminComponent, canActivate: [AuthGuard]},
+	
 
 
 	
