@@ -241,6 +241,22 @@ Versión 1.0.0
 28/06/2019
 */
 
+/*Para centrar el loguito del footer*/
 .img_footer{
 	vertical-align: middle;
+}
+/*Cambiar el color de los botenes de los crud*/
+.btn.blue{
+	background-color: #185a89 !important;
+}
+
+/*Para estilizar los form select*/
+.dropdown-content li > a, .dropdown-content li > span{
+	color: #ffffff !important;
+}
+.card-panel,.dropdown-content{
+	background-color: #303030;
+}
+.select-dropdown li:hover,.select-dropdown li.active{
+	background-color: rgb(24,90,137) !important;
 }
