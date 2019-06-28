@@ -1,0 +1,52 @@
+<!--Wilmar
+/* Pantalla de  lista  tipo de servicio
+Versión 1.0.0
+27/06/2019
+*/ -->
+<div id="breadcrumbs-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m12 l12">
+          <h5 class="breadcrumbs-title text-center">Tipo de Servicio</h5>
+          <div>
+            <p>
+              <a [routerLink]="['/typeService/create']" class="btn waves-effect waves-light blue">Nuevo Registro</a>
+            </p>
+          </div>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='table-wrapper'>
+    <div id="striped-table">
+  
+      <div class="row">
+        <div class="col s12">
+          <table class="striped">
+            <thead>
+              <tr>
+                <th data-field="id">Id</th>
+                <th data-field="name">Nombre</th>
+                <th data-field="description">Descripción</th>
+                <th data-field="status">Estatus</th>
+                <th data-field="action">Acción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a [routerLink]="['/typeService/show','1']" class="btn waves-effect waves-light grey darken-4">Ver</a></td>
+                <td>Reparación</td>
+                <td> Reparación de los equipos electrodomésticos</td>
+                <td>Activo</td>
+                <td>
+                  <a [routerLink]="['/typeService/edit','1']"class="btn btn-small waves-effect waves-light yellow darken-4">Editar</a>
+                  <a [routerLink]="['/typeService/delete','1']"class="btn waves-effect waves-light red darken-4">Eliminar</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
