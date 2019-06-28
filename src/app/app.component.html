@@ -6,26 +6,27 @@ Versión 1.0.0
 
 <!--Layaout cuando esta logeado que se muestra el nav, el sidebar, el footer y los main-->
 
-<div *ngIf="_authService.loggedIn()" class="cyan">
-  <app-navbar></app-navbar>
-  <div id="main" class="main">
-    <div class="wrapper">
-      <app-sidebar></app-sidebar>
-      <section id="content">
-        <div class="container">
-          <div class="section">
-            <router-outlet></router-outlet>
+<div *ngIf="_authService.loggedIn()" [ngClass]="{'cyan': _authService.loggedIn(),'body': !_authService.loggedIn()}" >
+    <app-navbar></app-navbar>
+    <div id="main" class="main">
+      <div class="wrapper">
+        <app-sidebar></app-sidebar>
+        <section id="content">
+          <div class="container">
+            <div class="section">
+              <router-outlet></router-outlet>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
-  </div>
-  <app-footer></app-footer>
+    <app-footer></app-footer>
 </div>
 
+
 <!--Layaout cuando no esta logueado-->
-<div *ngIf="!_authService.loggedIn()" class="cyan body main">
-    <router-outlet></router-outlet>
+<div *ngIf="!_authService.loggedIn()" [ngClass]="{'cyan': _authService.loggedIn(),'body': !_authService.loggedIn()}">
+  <router-outlet></router-outlet>
 </div>
 
 

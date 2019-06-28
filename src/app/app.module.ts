@@ -17,6 +17,7 @@ import { SearchUserPipe } from './pipes/searchUser.pipe';
 import { SearchFunctionPipe } from './pipes/searchFunction.pipe';
 
 import { LoginComponent } from './components/auth/login/login.component';
+import { LoginWeitComponent } from './components/auth/login-weit/login-weit.component';
 import { LogoutComponent } from './components/auth/logout/logout.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -57,12 +58,6 @@ import { IndexAdminComponent } from './components/dashboard/admin/index-admin/in
 import { IndexLenderComponent } from './components/dashboard/lender/index-lender/index-lender.component';
 import { IndexClienteComponent } from './components/dashboard/client/index-cliente/index-cliente.component';
 
-import { CategoryFatherComponent } from './components/masters/configure-catalogue/category-father/category-father.component';
-import { CategorysComponent } from './components/masters/configure-catalogue/categorys/categorys.component';
-import { CategoryCreateComponent } from './components/masters/configure-catalogue/category-create/category-create.component';
-import { CategoryEditComponent } from './components/masters/configure-catalogue/category-edit/category-edit.component';
-import { CategoryShowComponent } from './components/masters/configure-catalogue/category-show/category-show.component';
-import { CategoryDeleteComponent } from './components/masters/configure-catalogue/category-delete/category-delete.component';
 
 import { PermissionFatherComponent } from './components/masters/configure-system/permission/permission-father/permission-father.component';
 import { PermissionsComponent } from './components/masters/configure-system/permission/permissions/permissions.component';
@@ -163,7 +158,7 @@ import { ParameterDeleteComponent } from './components/masters/configure-system/
     ParameterEditComponent,
     ParameterShowComponent,
     ParameterDeleteComponent,
-    
+    LoginWeitComponent,
   ],
   imports: [
     BrowserModule,
