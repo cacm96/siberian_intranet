@@ -58,6 +58,61 @@ import { IndexAdminComponent } from './components/dashboard/admin/index-admin/in
 import { IndexLenderComponent } from './components/dashboard/lender/index-lender/index-lender.component';
 import { IndexClienteComponent } from './components/dashboard/client/index-cliente/index-cliente.component';
 
+import { CategoryFatherComponent } from './components/masters/configure-catalogue/category/category-father/category-father.component';
+import { CategorysComponent } from './components/masters/configure-catalogue/category/categorys/categorys.component';
+import { CategoryCreateComponent } from './components/masters/configure-catalogue/category/category-create/category-create.component';
+import { CategoryEditComponent } from './components/masters/configure-catalogue/category/category-edit/category-edit.component';
+import { CategoryShowComponent } from './components/masters/configure-catalogue/category/category-show/category-show.component';
+import { CategoryDeleteComponent } from './components/masters/configure-catalogue/category/category-delete/category-delete.component';
+
+import { SubcategoryFatherComponent } from './components/masters/configure-catalogue/subcategory/subcategory-father/subcategory-father.component';
+import { SubcategorysComponent } from './components/masters/configure-catalogue/subcategory/subcategorys/subcategorys.component';
+import { SubcategoryCreateComponent } from './components/masters/configure-catalogue/subcategory/subcategory-create/subcategory-create.component';
+import { SubcategoryEditComponent } from './components/masters/configure-catalogue/subcategory/subcategory-edit/subcategory-edit.component';
+import { SubcategoryShowComponent } from './components/masters/configure-catalogue/subcategory/subcategory-show/subcategory-show.component';
+import { SubcategoryDeleteComponent } from './components/masters/configure-catalogue/subcategory/subcategory-delete/subcategory-delete.component';
+
+import { VarietyFatherComponent } from './components/masters/configure-catalogue/variety/variety-father/variety-father.component';
+import { VarietysComponent } from './components/masters/configure-catalogue/variety/varietys/varietys.component';
+import { VarietyCreateComponent } from './components/masters/configure-catalogue/variety/variety-create/variety-create.component';
+import { VarietyEditComponent } from './components/masters/configure-catalogue/variety/variety-edit/variety-edit.component';
+import { VarietyShowComponent } from './components/masters/configure-catalogue/variety/variety-show/variety-show.component';
+import { VarietyDeleteComponent } from './components/masters/configure-catalogue/variety/variety-delete/variety-delete.component';
+
+import { CatalogueFatherComponent } from './components/masters/configure-catalogue/catalogue/catalogue-father/catalogue-father.component';
+import { CataloguesComponent } from './components/masters/configure-catalogue/catalogue/catalogues/catalogues.component';
+import { CatalogueCreateComponent } from './components/masters/configure-catalogue/catalogue/catalogue-create/catalogue-create.component';
+import { CatalogueEditComponent } from './components/masters/configure-catalogue/catalogue/catalogue-edit/catalogue-edit.component';
+import { CatalogueShowComponent } from './components/masters/configure-catalogue/catalogue/catalogue-show/catalogue-show.component';
+import { CatalogueDeleteComponent } from './components/masters/configure-catalogue/catalogue/catalogue-delete/catalogue-delete.component';
+
+import { TypeVarietyFatherComponent } from './components/masters/configure-catalogue/typevariety/type-variety-father/type-variety-father.component';
+import { TypeVarietysComponent } from './components/masters/configure-catalogue/typevariety/type-varietys/type-varietys.component';
+import { TypeVarietyCreateComponent } from './components/masters/configure-catalogue/typevariety/type-variety-create/type-variety-create.component';
+import { TypeVarietyEditComponent } from './components/masters/configure-catalogue/typevariety/type-variety-edit/type-variety-edit.component';
+import { TypeVarietyShowComponent } from './components/masters/configure-catalogue/typevariety/type-variety-show/type-variety-show.component';
+import { TypeVarietyDeleteComponent } from './components/masters/configure-catalogue/typevariety/type-variety-delete/type-variety-delete.component';
+
+import { DetailVarietyFatherComponent } from './components/masters/configure-catalogue/detailvariety/detail-variety-father/detail-variety-father.component';
+import { DetailVarietysComponent } from './components/masters/configure-catalogue/detailvariety/detail-varietys/detail-varietys.component';
+import { DetailVarietyCreateComponent } from './components/masters/configure-catalogue/detailvariety/detail-variety-create/detail-variety-create.component';
+import { DetailVarietyEditComponent } from './components/masters/configure-catalogue/detailvariety/detail-variety-edit/detail-variety-edit.component';
+import { DetailVarietyShowComponent } from './components/masters/configure-catalogue/detailvariety/detail-variety-show/detail-variety-show.component';
+import { DetailVarietyDeleteComponent } from './components/masters/configure-catalogue/detailvariety/detail-variety-delete/detail-variety-delete.component';
+
+import { ApparatusInfrastructureFatherComponent } from './components/masters/configure-catalogue/apparatusinfrastructure/apparatus-infrastructure-father/apparatus-infrastructure-father.component';
+import { ApparatusInfrastructuresComponent } from './components/masters/configure-catalogue/apparatusinfrastructure/apparatus-infrastructures/apparatus-infrastructures.component';
+import { ApparatusInfrastructureCreateComponent } from './components/masters/configure-catalogue/apparatusinfrastructure/apparatus-infrastructure-create/apparatus-infrastructure-create.component';
+import { ApparatusInfrastructureEditComponent } from './components/masters/configure-catalogue/apparatusinfrastructure/apparatus-infrastructure-edit/apparatus-infrastructure-edit.component';
+import { ApparatusInfrastructureShowComponent } from './components/masters/configure-catalogue/apparatusinfrastructure/apparatus-infrastructure-show/apparatus-infrastructure-show.component';
+import { ApparatusInfrastructureDeleteComponent } from './components/masters/configure-catalogue/apparatusinfrastructure/apparatus-infrastructure-delete/apparatus-infrastructure-delete.component';
+
+import { TypeServiceFatherComponent } from './components/masters/configure-catalogue/typeservice/type-service-father/type-service-father.component';
+import { TypeServicesComponent } from './components/masters/configure-catalogue/typeservice/type-services/type-services.component';
+import { TypeServiceCreateComponent } from './components/masters/configure-catalogue/typeservice/type-service-create/type-service-create.component';
+import { TypeServiceEditComponent } from './components/masters/configure-catalogue/typeservice/type-service-edit/type-service-edit.component';
+import { TypeServiceShowComponent } from './components/masters/configure-catalogue/typeservice/type-service-show/type-service-show.component';
+import { TypeServiceDeleteComponent } from './components/masters/configure-catalogue/typeservice/type-service-delete/type-service-delete.component';
 
 
 
@@ -102,6 +157,54 @@ import { IndexClienteComponent } from './components/dashboard/client/index-clien
     IndexAdminComponent,
     IndexLenderComponent,
     IndexClienteComponent,
+    CategoryFatherComponent,
+    CategorysComponent,
+    CategoryCreateComponent,
+    CategoryEditComponent,
+    CategoryShowComponent,
+    CategoryDeleteComponent,
+    SubcategoryFatherComponent,
+    SubcategorysComponent,
+    SubcategoryCreateComponent,
+    SubcategoryEditComponent,
+    SubcategoryShowComponent,
+    SubcategoryDeleteComponent,
+    VarietyFatherComponent,
+    VarietysComponent,
+    VarietyCreateComponent,
+    VarietyEditComponent,
+    VarietyShowComponent,
+    VarietyDeleteComponent,
+    CatalogueFatherComponent,
+    CataloguesComponent,
+    CatalogueCreateComponent,
+    CatalogueEditComponent,
+    CatalogueShowComponent,
+    CatalogueDeleteComponent,
+    TypeVarietyFatherComponent,
+    TypeVarietysComponent,
+    TypeVarietyCreateComponent,
+    TypeVarietyEditComponent,
+    TypeVarietyShowComponent,
+    TypeVarietyDeleteComponent,
+    DetailVarietyFatherComponent,
+    DetailVarietysComponent,
+    DetailVarietyCreateComponent,
+    DetailVarietyEditComponent,
+    DetailVarietyShowComponent,
+    DetailVarietyDeleteComponent,
+    ApparatusInfrastructureFatherComponent,
+    ApparatusInfrastructuresComponent,
+    ApparatusInfrastructureCreateComponent,
+    ApparatusInfrastructureEditComponent,
+    ApparatusInfrastructureShowComponent,
+    ApparatusInfrastructureDeleteComponent,
+    TypeServiceFatherComponent,
+    TypeServicesComponent,
+    TypeServiceCreateComponent,
+    TypeServiceEditComponent,
+    TypeServiceShowComponent,
+    TypeServiceDeleteComponent,
     LoginWeitComponent,
     
   ],
