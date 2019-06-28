@@ -10,14 +10,14 @@ import { AuthService } from './services/auth.service';
 
 
 export class AppComponent implements OnInit {
-  public ruta:string;
+  public ruta: string;
 
   constructor(
     private _router: Router,
     public _authService: AuthService,
-  ){}
+  ) {}
 
-  ngOnInit(){
+  ngOnInit() {
   	this.ruta = this._router.url;
   	console.log(this._authService.loggedIn());
   }

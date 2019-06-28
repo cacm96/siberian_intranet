@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { routing,appRoutingProviders } from './app.routing';
+import { routing, appRoutingProviders } from './app.routing';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -100,7 +100,6 @@ import { IndexClienteComponent } from './components/dashboard/client/index-clien
     IndexAdminComponent,
     IndexLenderComponent,
     IndexClienteComponent,
-    
   ],
   imports: [
     BrowserModule,
@@ -121,7 +120,6 @@ import { IndexClienteComponent } from './components/dashboard/client/index-clien
       useClass : TokenInterceptorService,
       multi: true
     },
-    
    ],
   bootstrap: [AppComponent]
 })
