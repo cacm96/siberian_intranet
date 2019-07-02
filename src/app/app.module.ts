@@ -144,6 +144,20 @@ import { CatalogueEditComponent } from './components/masters/configure-catalogue
 import { CatalogueShowComponent } from './components/masters/configure-catalogue/catalogue/catalogue-show/catalogue-show.component';
 import { CatalogueDeleteComponent } from './components/masters/configure-catalogue/catalogue/catalogue-delete/catalogue-delete.component';
 
+import { SkillFatherComponent } from './components/masters/configure-skill/skill/skill-father/skill-father.component';
+import { SkillsComponent } from './components/masters/configure-skill/skill/skills/skills.component';
+import { SkillCreateComponent } from './components/masters/configure-skill/skill/skill-create/skill-create.component';
+import { SkillEditComponent } from './components/masters/configure-skill/skill/skill-edit/skill-edit.component';
+import { SkillShowComponent } from './components/masters/configure-skill/skill/skill-show/skill-show.component';
+import { SkillDeleteComponent } from './components/masters/configure-skill/skill/skill-delete/skill-delete.component';
+
+import { CompanyFatherComponent } from './components/masters/configure-company/company/company-father/company-father.component';
+import { CompaniesComponent } from './components/masters/configure-company/company/companies/companies.component';
+import { CompanyCreateComponent } from './components/masters/configure-company/company/company-create/company-create.component';
+import { CompanyEditComponent } from './components/masters/configure-company/company/company-edit/company-edit.component';
+import { CompanyShowComponent } from './components/masters/configure-company/company/company-show/company-show.component';
+import { CompanyDeleteComponent } from './components/masters/configure-company/company/company-delete/company-delete.component';
+
 
 @NgModule({
   declarations: [
@@ -267,6 +281,20 @@ import { CatalogueDeleteComponent } from './components/masters/configure-catalog
     CatalogueEditComponent,
     CatalogueShowComponent,
     CatalogueDeleteComponent,
+    
+    SkillFatherComponent,
+    SkillsComponent,
+    SkillCreateComponent,
+    SkillEditComponent,
+    SkillShowComponent,
+    SkillDeleteComponent,
+    
+    CompanyFatherComponent,
+    CompaniesComponent,
+    CompanyCreateComponent,
+    CompanyEditComponent,
+    CompanyShowComponent,
+    CompanyDeleteComponent,
 
   ],
   imports: [
