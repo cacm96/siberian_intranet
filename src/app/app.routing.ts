@@ -145,6 +145,13 @@ import { CompanyEditComponent } from './components/masters/configure-company/com
 import { CompanyShowComponent } from './components/masters/configure-company/company/company-show/company-show.component';
 import { CompanyDeleteComponent } from './components/masters/configure-company/company/company-delete/company-delete.component';
 
+import { ParameterCompanyFatherComponent } from './components/masters/configure-company/parameterCompany/parameter-company-father/parameter-company-father.component';
+import { ParametersCompanyComponent } from './components/masters/configure-company/parameterCompany/parameters-company/parameters-company.component';
+import { ParameterCompanyCreateComponent } from './components/masters/configure-company/parameterCompany/parameter-company-create/parameter-company-create.component';
+import { ParameterCompanyEditComponent } from './components/masters/configure-company/parameterCompany/parameter-company-edit/parameter-company-edit.component';
+import { ParameterCompanyShowComponent } from './components/masters/configure-company/parameterCompany/parameter-company-show/parameter-company-show.component';
+import { ParameterCompanyDeleteComponent } from './components/masters/configure-company/parameterCompany/parameter-company-delete/parameter-company-delete.component';
+
 // Array de rutas
 const appRoutes: Routes = [
 
@@ -358,8 +365,16 @@ const appRoutes: Routes = [
 		]
 	},
 
-
-	
+	{path: 'parameterCompany', component: ParameterCompanyFatherComponent, canActivate: [AuthGuard],
+		children:
+		[
+			{path: '', component: ParametersCompanyComponent},
+			{path: 'create', component: ParameterCompanyCreateComponent},
+			{path: 'edit/:id', component: ParameterCompanyEditComponent},
+			{path: 'show/:id', component: ParameterCompanyShowComponent},
+			{path: 'delete/:id', component: ParameterCompanyDeleteComponent},
+		]
+	},
 
 	{path: 'block', component: BlockComponent},
 	{path: '**', component: ErrorComponent},
