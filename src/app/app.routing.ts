@@ -371,31 +371,7 @@ const appRoutes: Routes = [
 			{path: 'delete/:id', component: CatalogueDeleteComponent},
 		]
 	},
-<<<<<<< src/app/app.routing.ts
 	
-	{path: 'incidence', component: IncidenceFatherComponent, canActivate: [AuthGuard],
-	children:
-	[
-		{path: '', component: IncidencesComponent},
-		{path: 'create', component: IncidenceCreateComponent},
-		{path: 'edit/:id', component: IncidenceEditComponent},
-		{path: 'show/:id', component: IncidenceShowComponent},
-		{path: 'delete/:id', component: IncidenceDeleteComponent},
-	]
-},
-
-{path: 'typeIncidence', component: TypeIncidenceFatherComponent, canActivate: [AuthGuard],
-children:
-[
-	{path: '', component: TypeIncidencesComponent},
-	{path: 'create', component:TypeIncidenceCreateComponent},
-	{path: 'edit/:id', component: TypeIncidenceEditComponent},
-	{path: 'show/:id', component: TypeIncidenceShowComponent},
-	{path: 'delete/:id', component: TypeIncidenceDeleteComponent},
-]
-},
-=======
-
 	{path: 'skill', component: SkillFatherComponent, canActivate: [AuthGuard],
 		children:
 		[
@@ -429,6 +405,28 @@ children:
 		]
 	},
 
+	{path: 'incidence', component: IncidenceFatherComponent, canActivate: [AuthGuard],
+	children:
+		[
+			{path: '', component: IncidencesComponent},
+			{path: 'create', component: IncidenceCreateComponent},
+			{path: 'edit/:id', component: IncidenceEditComponent},
+			{path: 'show/:id', component: IncidenceShowComponent},
+			{path: 'delete/:id', component: IncidenceDeleteComponent},
+		]
+	},
+
+	{path: 'typeIncidence', component: TypeIncidenceFatherComponent, canActivate: [AuthGuard],
+	children:
+		[
+			{path: '', component: TypeIncidencesComponent},
+			{path: 'create', component:TypeIncidenceCreateComponent},
+			{path: 'edit/:id', component: TypeIncidenceEditComponent},
+			{path: 'show/:id', component: TypeIncidenceShowComponent},
+			{path: 'delete/:id', component: TypeIncidenceDeleteComponent},
+		]
+	},
+
 	{path: 'company', component: CompanyFatherComponent, canActivate: [AuthGuard],
 		children:
 		[
@@ -450,8 +448,6 @@ children:
 			{path: 'delete/:id', component: ParameterCompanyDeleteComponent},
 		]
 	},
-
->>>>>>> src/app/app.routing.ts
 
 	{path: 'block', component: BlockComponent},
 	{path: '**', component: ErrorComponent},
