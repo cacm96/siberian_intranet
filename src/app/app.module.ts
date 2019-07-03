@@ -165,6 +165,21 @@ import { SkillServiceEditComponent } from './components/masters/configure-skill/
 import { SkillServiceShowComponent } from './components/masters/configure-skill/assignSkillService/skill-service-show/skill-service-show.component';
 import { SkillServiceDeleteComponent } from './components/masters/configure-skill/assignSkillService/skill-service-delete/skill-service-delete.component';
 
+import { IncidenceCreateComponent } from './components/masters/configure-incidence/incidence/incidence-create/incidence-create.component';
+import { IncidenceShowComponent } from './components/masters/configure-incidence/incidence/incidence-show/incidence-show.component';
+import { IncidenceEditComponent } from './components/masters/configure-incidence/incidence/incidence-edit/incidence-edit.component';
+import { IncidenceDeleteComponent } from './components/masters/configure-incidence/incidence/incidence-delete/incidence-delete.component';
+import { IncidenceFatherComponent } from './components/masters/configure-incidence/incidence/incidence-father/incidence-father.component';
+import { IncidencesComponent } from './components/masters/configure-incidence/incidence/incidences/incidences.component';
+
+import { TypeIncidenceCreateComponent } from './components/masters/configure-incidence/typeIncidence/type-incidence-create/type-incidence-create.component';
+import { TypeIncidenceShowComponent } from './components/masters/configure-incidence/typeIncidence/type-incidence-show/type-incidence-show.component';
+import { TypeIncidenceEditComponent } from './components/masters/configure-incidence/typeIncidence/type-incidence-edit/type-incidence-edit.component';
+import { TypeIncidenceDeleteComponent } from './components/masters/configure-incidence/typeIncidence/type-incidence-delete/type-incidence-delete.component';
+import { TypeIncidencesComponent } from './components/masters/configure-incidence/typeIncidence/type-incidences/type-incidences.component';
+import { TypeIncidenceFatherComponent } from './components/masters/configure-incidence/typeIncidence/type-incidence-father/type-incidence-father.component';
+
+
 import { CompanyFatherComponent } from './components/masters/configure-company/company/company-father/company-father.component';
 import { CompaniesComponent } from './components/masters/configure-company/company/companies/companies.component';
 import { CompanyCreateComponent } from './components/masters/configure-company/company/company-create/company-create.component';
@@ -301,6 +316,20 @@ import { ParameterCompanyDeleteComponent } from './components/masters/configure-
     CatalogueEditComponent,
     CatalogueShowComponent,
     CatalogueDeleteComponent,
+<<<<<<< src/app/app.module.ts
+    IncidenceCreateComponent,
+    IncidenceShowComponent,
+    IncidenceEditComponent,
+    IncidenceDeleteComponent,
+    IncidenceFatherComponent,
+    IncidencesComponent,
+    TypeIncidenceCreateComponent,
+    TypeIncidenceShowComponent,
+    TypeIncidenceEditComponent,
+    TypeIncidenceDeleteComponent,
+    TypeIncidencesComponent,
+    TypeIncidenceFatherComponent,
+=======
     
     SkillFatherComponent,
     SkillsComponent,
@@ -336,6 +365,7 @@ import { ParameterCompanyDeleteComponent } from './components/masters/configure-
     ParameterCompanyEditComponent,
     ParameterCompanyShowComponent,
     ParameterCompanyDeleteComponent,
+>>>>>>> src/app/app.module.ts
 
   ],
   imports: [

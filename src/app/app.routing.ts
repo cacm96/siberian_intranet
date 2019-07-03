@@ -152,6 +152,20 @@ import { SkillServiceEditComponent } from './components/masters/configure-skill/
 import { SkillServiceShowComponent } from './components/masters/configure-skill/assignSkillService/skill-service-show/skill-service-show.component';
 import { SkillServiceDeleteComponent } from './components/masters/configure-skill/assignSkillService/skill-service-delete/skill-service-delete.component';
 
+import { IncidenceCreateComponent } from './components/masters/configure-incidence/incidence/incidence-create/incidence-create.component';
+import { IncidenceShowComponent } from './components/masters/configure-incidence/incidence/incidence-show/incidence-show.component';
+import { IncidenceEditComponent } from './components/masters/configure-incidence/incidence/incidence-edit/incidence-edit.component';
+import { IncidenceDeleteComponent } from './components/masters/configure-incidence/incidence/incidence-delete/incidence-delete.component';
+import { IncidenceFatherComponent } from './components/masters/configure-incidence/incidence/incidence-father/incidence-father.component';
+import { IncidencesComponent } from './components/masters/configure-incidence/incidence/incidences/incidences.component';
+
+import { TypeIncidenceCreateComponent } from './components/masters/configure-incidence/typeIncidence/type-incidence-create/type-incidence-create.component';
+import { TypeIncidenceShowComponent } from './components/masters/configure-incidence/typeIncidence/type-incidence-show/type-incidence-show.component';
+import { TypeIncidenceEditComponent } from './components/masters/configure-incidence/typeIncidence/type-incidence-edit/type-incidence-edit.component';
+import { TypeIncidenceDeleteComponent } from './components/masters/configure-incidence/typeIncidence/type-incidence-delete/type-incidence-delete.component';
+import { TypeIncidencesComponent } from './components/masters/configure-incidence/typeIncidence/type-incidences/type-incidences.component';
+import { TypeIncidenceFatherComponent } from './components/masters/configure-incidence/typeIncidence/type-incidence-father/type-incidence-father.component';
+
 import { CompanyFatherComponent } from './components/masters/configure-company/company/company-father/company-father.component';
 import { CompaniesComponent } from './components/masters/configure-company/company/companies/companies.component';
 import { CompanyCreateComponent } from './components/masters/configure-company/company/company-create/company-create.component';
@@ -165,6 +179,7 @@ import { ParameterCompanyCreateComponent } from './components/masters/configure-
 import { ParameterCompanyEditComponent } from './components/masters/configure-company/parameterCompany/parameter-company-edit/parameter-company-edit.component';
 import { ParameterCompanyShowComponent } from './components/masters/configure-company/parameterCompany/parameter-company-show/parameter-company-show.component';
 import { ParameterCompanyDeleteComponent } from './components/masters/configure-company/parameterCompany/parameter-company-delete/parameter-company-delete.component';
+
 
 // Array de rutas
 const appRoutes: Routes = [
@@ -356,6 +371,30 @@ const appRoutes: Routes = [
 			{path: 'delete/:id', component: CatalogueDeleteComponent},
 		]
 	},
+<<<<<<< src/app/app.routing.ts
+	
+	{path: 'incidence', component: IncidenceFatherComponent, canActivate: [AuthGuard],
+	children:
+	[
+		{path: '', component: IncidencesComponent},
+		{path: 'create', component: IncidenceCreateComponent},
+		{path: 'edit/:id', component: IncidenceEditComponent},
+		{path: 'show/:id', component: IncidenceShowComponent},
+		{path: 'delete/:id', component: IncidenceDeleteComponent},
+	]
+},
+
+{path: 'typeIncidence', component: TypeIncidenceFatherComponent, canActivate: [AuthGuard],
+children:
+[
+	{path: '', component: TypeIncidencesComponent},
+	{path: 'create', component:TypeIncidenceCreateComponent},
+	{path: 'edit/:id', component: TypeIncidenceEditComponent},
+	{path: 'show/:id', component: TypeIncidenceShowComponent},
+	{path: 'delete/:id', component: TypeIncidenceDeleteComponent},
+]
+},
+=======
 
 	{path: 'skill', component: SkillFatherComponent, canActivate: [AuthGuard],
 		children:
@@ -412,6 +451,7 @@ const appRoutes: Routes = [
 		]
 	},
 
+>>>>>>> src/app/app.routing.ts
 
 	{path: 'block', component: BlockComponent},
 	{path: '**', component: ErrorComponent},
