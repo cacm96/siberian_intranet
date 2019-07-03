@@ -144,6 +144,21 @@ import { CatalogueEditComponent } from './components/masters/configure-catalogue
 import { CatalogueShowComponent } from './components/masters/configure-catalogue/catalogue/catalogue-show/catalogue-show.component';
 import { CatalogueDeleteComponent } from './components/masters/configure-catalogue/catalogue/catalogue-delete/catalogue-delete.component';
 
+import { IncidenceCreateComponent } from './components/masters/configure-incidence/incidence/incidence-create/incidence-create.component';
+import { IncidenceShowComponent } from './components/masters/configure-incidence/incidence/incidence-show/incidence-show.component';
+import { IncidenceEditComponent } from './components/masters/configure-incidence/incidence/incidence-edit/incidence-edit.component';
+import { IncidenceDeleteComponent } from './components/masters/configure-incidence/incidence/incidence-delete/incidence-delete.component';
+import { IncidenceFatherComponent } from './components/masters/configure-incidence/incidence/incidence-father/incidence-father.component';
+import { IncidencesComponent } from './components/masters/configure-incidence/incidence/incidences/incidences.component';
+
+import { TypeIncidenceCreateComponent } from './components/masters/configure-incidence/typeIncidence/type-incidence-create/type-incidence-create.component';
+import { TypeIncidenceShowComponent } from './components/masters/configure-incidence/typeIncidence/type-incidence-show/type-incidence-show.component';
+import { TypeIncidenceEditComponent } from './components/masters/configure-incidence/typeIncidence/type-incidence-edit/type-incidence-edit.component';
+import { TypeIncidenceDeleteComponent } from './components/masters/configure-incidence/typeIncidence/type-incidence-delete/type-incidence-delete.component';
+import { TypeIncidencesComponent } from './components/masters/configure-incidence/typeIncidence/type-incidences/type-incidences.component';
+import { TypeIncidenceFatherComponent } from './components/masters/configure-incidence/typeIncidence/type-incidence-father/type-incidence-father.component';
+
+
 
 @NgModule({
   declarations: [
@@ -267,6 +282,18 @@ import { CatalogueDeleteComponent } from './components/masters/configure-catalog
     CatalogueEditComponent,
     CatalogueShowComponent,
     CatalogueDeleteComponent,
+    IncidenceCreateComponent,
+    IncidenceShowComponent,
+    IncidenceEditComponent,
+    IncidenceDeleteComponent,
+    IncidenceFatherComponent,
+    IncidencesComponent,
+    TypeIncidenceCreateComponent,
+    TypeIncidenceShowComponent,
+    TypeIncidenceEditComponent,
+    TypeIncidenceDeleteComponent,
+    TypeIncidencesComponent,
+    TypeIncidenceFatherComponent,
 
   ],
   imports: [
