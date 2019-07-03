@@ -131,6 +131,27 @@ import { CatalogueEditComponent } from './components/masters/configure-catalogue
 import { CatalogueShowComponent } from './components/masters/configure-catalogue/catalogue/catalogue-show/catalogue-show.component';
 import { CatalogueDeleteComponent } from './components/masters/configure-catalogue/catalogue/catalogue-delete/catalogue-delete.component';
 
+import { SkillFatherComponent } from './components/masters/configure-skill/skill/skill-father/skill-father.component';
+import { SkillsComponent } from './components/masters/configure-skill/skill/skills/skills.component';
+import { SkillCreateComponent } from './components/masters/configure-skill/skill/skill-create/skill-create.component';
+import { SkillEditComponent } from './components/masters/configure-skill/skill/skill-edit/skill-edit.component';
+import { SkillShowComponent } from './components/masters/configure-skill/skill/skill-show/skill-show.component';
+import { SkillDeleteComponent } from './components/masters/configure-skill/skill/skill-delete/skill-delete.component';
+
+import { SkillLenderFatherComponent } from './components/masters/configure-skill/assignProviderSkill/skill-lender-father/skill-lender-father.component';
+import { SkillsLenderComponent } from './components/masters/configure-skill/assignProviderSkill/skills-lender/skills-lender.component';
+import { SkillLenderCreateComponent } from './components/masters/configure-skill/assignProviderSkill/skill-lender-create/skill-lender-create.component';
+import { SkillLenderEditComponent } from './components/masters/configure-skill/assignProviderSkill/skill-lender-edit/skill-lender-edit.component';
+import { SkillLenderShowComponent } from './components/masters/configure-skill/assignProviderSkill/skill-lender-show/skill-lender-show.component';
+import { SkillLenderDeleteComponent } from './components/masters/configure-skill/assignProviderSkill/skill-lender-delete/skill-lender-delete.component';
+
+import { SkillServiceFatherComponent } from './components/masters/configure-skill/assignSkillService/skill-service-father/skill-service-father.component';
+import { SkillsServiceComponent } from './components/masters/configure-skill/assignSkillService/skills-service/skills-service.component';
+import { SkillServiceCreateComponent } from './components/masters/configure-skill/assignSkillService/skill-service-create/skill-service-create.component';
+import { SkillServiceEditComponent } from './components/masters/configure-skill/assignSkillService/skill-service-edit/skill-service-edit.component';
+import { SkillServiceShowComponent } from './components/masters/configure-skill/assignSkillService/skill-service-show/skill-service-show.component';
+import { SkillServiceDeleteComponent } from './components/masters/configure-skill/assignSkillService/skill-service-delete/skill-service-delete.component';
+
 import { IncidenceCreateComponent } from './components/masters/configure-incidence/incidence/incidence-create/incidence-create.component';
 import { IncidenceShowComponent } from './components/masters/configure-incidence/incidence/incidence-show/incidence-show.component';
 import { IncidenceEditComponent } from './components/masters/configure-incidence/incidence/incidence-edit/incidence-edit.component';
@@ -144,6 +165,20 @@ import { TypeIncidenceEditComponent } from './components/masters/configure-incid
 import { TypeIncidenceDeleteComponent } from './components/masters/configure-incidence/typeIncidence/type-incidence-delete/type-incidence-delete.component';
 import { TypeIncidencesComponent } from './components/masters/configure-incidence/typeIncidence/type-incidences/type-incidences.component';
 import { TypeIncidenceFatherComponent } from './components/masters/configure-incidence/typeIncidence/type-incidence-father/type-incidence-father.component';
+
+import { CompanyFatherComponent } from './components/masters/configure-company/company/company-father/company-father.component';
+import { CompaniesComponent } from './components/masters/configure-company/company/companies/companies.component';
+import { CompanyCreateComponent } from './components/masters/configure-company/company/company-create/company-create.component';
+import { CompanyEditComponent } from './components/masters/configure-company/company/company-edit/company-edit.component';
+import { CompanyShowComponent } from './components/masters/configure-company/company/company-show/company-show.component';
+import { CompanyDeleteComponent } from './components/masters/configure-company/company/company-delete/company-delete.component';
+
+import { ParameterCompanyFatherComponent } from './components/masters/configure-company/parameterCompany/parameter-company-father/parameter-company-father.component';
+import { ParametersCompanyComponent } from './components/masters/configure-company/parameterCompany/parameters-company/parameters-company.component';
+import { ParameterCompanyCreateComponent } from './components/masters/configure-company/parameterCompany/parameter-company-create/parameter-company-create.component';
+import { ParameterCompanyEditComponent } from './components/masters/configure-company/parameterCompany/parameter-company-edit/parameter-company-edit.component';
+import { ParameterCompanyShowComponent } from './components/masters/configure-company/parameterCompany/parameter-company-show/parameter-company-show.component';
+import { ParameterCompanyDeleteComponent } from './components/masters/configure-company/parameterCompany/parameter-company-delete/parameter-company-delete.component';
 
 
 // Array de rutas
@@ -336,6 +371,7 @@ const appRoutes: Routes = [
 			{path: 'delete/:id', component: CatalogueDeleteComponent},
 		]
 	},
+<<<<<<< src/app/app.routing.ts
 	
 	{path: 'incidence', component: IncidenceFatherComponent, canActivate: [AuthGuard],
 	children:
@@ -358,6 +394,64 @@ children:
 	{path: 'delete/:id', component: TypeIncidenceDeleteComponent},
 ]
 },
+=======
+
+	{path: 'skill', component: SkillFatherComponent, canActivate: [AuthGuard],
+		children:
+		[
+			{path: '', component: SkillsComponent},
+			{path: 'create', component: SkillCreateComponent},
+			{path: 'edit/:id', component: SkillEditComponent},
+			{path: 'show/:id', component: SkillShowComponent},
+			{path: 'delete/:id', component: SkillDeleteComponent},
+		]
+	},
+
+	{path: 'skillLender', component: SkillLenderFatherComponent, canActivate: [AuthGuard],
+		children:
+		[
+			{path: '', component: SkillsLenderComponent},
+			{path: 'create', component: SkillLenderCreateComponent},
+			{path: 'edit/:id', component: SkillLenderEditComponent},
+			{path: 'show/:id', component: SkillLenderShowComponent},
+			{path: 'delete/:id', component: SkillLenderDeleteComponent},
+		]
+	},
+
+	{path: 'skillService', component: SkillServiceFatherComponent, canActivate: [AuthGuard],
+		children:
+		[
+			{path: '', component: SkillsServiceComponent},
+			{path: 'create', component: SkillServiceCreateComponent},
+			{path: 'edit/:id', component: SkillServiceEditComponent},
+			{path: 'show/:id', component: SkillServiceShowComponent},
+			{path: 'delete/:id', component: SkillServiceDeleteComponent},
+		]
+	},
+
+	{path: 'company', component: CompanyFatherComponent, canActivate: [AuthGuard],
+		children:
+		[
+			{path: '', component: CompaniesComponent},
+			{path: 'create', component: CompanyCreateComponent},
+			{path: 'edit/:id', component: CompanyEditComponent},
+			{path: 'show/:id', component: CompanyShowComponent},
+			{path: 'delete/:id', component: CompanyDeleteComponent},
+		]
+	},
+
+	{path: 'parameterCompany', component: ParameterCompanyFatherComponent, canActivate: [AuthGuard],
+		children:
+		[
+			{path: '', component: ParametersCompanyComponent},
+			{path: 'create', component: ParameterCompanyCreateComponent},
+			{path: 'edit/:id', component: ParameterCompanyEditComponent},
+			{path: 'show/:id', component: ParameterCompanyShowComponent},
+			{path: 'delete/:id', component: ParameterCompanyDeleteComponent},
+		]
+	},
+
+>>>>>>> src/app/app.routing.ts
 
 	{path: 'block', component: BlockComponent},
 	{path: '**', component: ErrorComponent},
