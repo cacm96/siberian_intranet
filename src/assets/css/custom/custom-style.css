@@ -37,8 +37,19 @@ nav,.cyan.darken-2,.side-nav,footer.page-footer{
 }
 /*Paleta para los botones
 Dayana: Cambie el color de primary al azul #185a89, el nuevo azul de fondo del logo de SIBERIAN*/
+.btn:hover{
+	
+}
 .btn-primary{
 	background-color: #185a89 !important;
+}
+.btn-primary:hover{
+	background-color: #155a99 !important;
+	box-shadow: 0 0 0 0.2rem rgba(82, 88, 93, 0.5)
+}
+.btn-primary:focus{
+	box-shadow: 0 0 0 0.2rem rgba(82, 88, 93, 0.5)
+
 }
 /*Paleta para los badge*/
 span.badge.new{
@@ -100,7 +111,7 @@ table.striped > tbody > tr:nth-child(odd),#breadcrumbs-wrapper{
 /*Para acomodar los botonos*/
 .btn{
 	display: inline;
-	padding: 1rem 1rem;
+	padding: 0 1rem;
 	margin-right: 1rem;
 }
 
@@ -126,7 +137,7 @@ Versión 1.0.0
 	width: 100%;
 }
 
-/*Estilizando los container y sus row para justar divs*/
+/*Estilizando los container y sus row para ajustar divs*/
 .main_login .container{
 	background-color: #303030 !important;
 	color:#ffffff !important;

@@ -5,7 +5,7 @@
 				<h5 class="breadcrumbs-title text-center">Asignar Funciones</h5>
 				<div>
 					<p>
-						<a [routerLink]="['/assignFunction/create']" class="btn waves-effect waves-light blue">Nuevo Registro</a>
+						<button [routerLink]="['/assignFunction/create']" class="btn btn-primary waves-effect">Nuevo Registro</button>
 					</p>
 				</div>
 				<br>
@@ -30,25 +30,13 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><a [routerLink]="['/assignFunction/show','1']" class="btn waves-effect waves-light grey darken-4">Ver</a></td>
+							<td><button [routerLink]="['/assignFunction/show','1']" class="btn btn-primary waves-effect">Ver</button></td>
 							<td>Administrador</td>
 							<td>Modificar Usuario.</td>
 							<td>Activo</td>
 							<td>
-								<a [routerLink]="['/assignFunction/edit','1']"class="btn btn-small waves-effect waves-light yellow darken-4">Editar</a>
-								<a [routerLink]="['/assignFunction/delete','1']"class="btn waves-effect waves-light red darken-4">Eliminar</a>
-							</td>
-						</tr>
-					</tbody>
-					<tbody>
-						<tr>
-							<td><a [routerLink]="['/assignFunction/show','2']" class="btn waves-effect waves-light grey darken-4">Ver</a></td>
-							<td>Gerente</td>
-							<td>Modificar Usuario.</td>
-							<td>Activo</td>
-							<td>
-								<a [routerLink]="['/assignFunction/edit','2']"class="btn btn-small waves-effect waves-light yellow darken-4">Editar</a>
-								<a [routerLink]="['/assignFunction/delete','2']"class="btn waves-effect waves-light red darken-4">Eliminar</a>
+								<button [routerLink]="['/assignFunction/edit','1']"class="btn btn-primary btn-small waves-effect">Editar</button>
+								<button [routerLink]="['/assignFunction/delete','1']"class="btn btn-primary btn-small waves-effect">Eliminar</button>
 							</td>
 						</tr>
 					</tbody>
