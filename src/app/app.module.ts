@@ -316,7 +316,26 @@ import { ParameterCompanyDeleteComponent } from './components/masters/configure-
     CatalogueEditComponent,
     CatalogueShowComponent,
     CatalogueDeleteComponent,
-<<<<<<< src/app/app.module.ts
+    
+    SkillFatherComponent,
+    SkillsComponent,
+    SkillCreateComponent,
+    SkillEditComponent,
+    SkillShowComponent,
+    SkillDeleteComponent,
+    SkillLenderFatherComponent,
+    SkillsLenderComponent,
+    SkillLenderCreateComponent,
+    SkillLenderEditComponent,
+    SkillLenderShowComponent,
+    SkillLenderDeleteComponent,
+    SkillServiceFatherComponent,
+    SkillsServiceComponent,
+    SkillServiceCreateComponent,
+    SkillServiceEditComponent,
+    SkillServiceShowComponent,
+    SkillServiceDeleteComponent,
+
     IncidenceCreateComponent,
     IncidenceShowComponent,
     IncidenceEditComponent,
@@ -329,28 +348,6 @@ import { ParameterCompanyDeleteComponent } from './components/masters/configure-
     TypeIncidenceDeleteComponent,
     TypeIncidencesComponent,
     TypeIncidenceFatherComponent,
-=======
-    
-    SkillFatherComponent,
-    SkillsComponent,
-    SkillCreateComponent,
-    SkillEditComponent,
-    SkillShowComponent,
-    SkillDeleteComponent,
-
-    SkillLenderFatherComponent,
-    SkillsLenderComponent,
-    SkillLenderCreateComponent,
-    SkillLenderEditComponent,
-    SkillLenderShowComponent,
-    SkillLenderDeleteComponent,
-
-    SkillServiceFatherComponent,
-    SkillsServiceComponent,
-    SkillServiceCreateComponent,
-    SkillServiceEditComponent,
-    SkillServiceShowComponent,
-    SkillServiceDeleteComponent,
 
     CompanyFatherComponent,
     CompaniesComponent,
@@ -358,14 +355,12 @@ import { ParameterCompanyDeleteComponent } from './components/masters/configure-
     CompanyEditComponent,
     CompanyShowComponent,
     CompanyDeleteComponent,
-    
     ParameterCompanyFatherComponent,
     ParametersCompanyComponent,
     ParameterCompanyCreateComponent,
     ParameterCompanyEditComponent,
     ParameterCompanyShowComponent,
     ParameterCompanyDeleteComponent,
->>>>>>> src/app/app.module.ts
 
   ],
   imports: [
