@@ -1,20 +1,21 @@
-<mat-sidenav-container class="sidenav_container">
-    <mat-sidenav #sidenav opened="true" mode="side" class="sidenav">
+<mat-sidenav-container class="mat_sidenav_container">
+    <mat-sidenav #sidenav opened="true" mode="side" class="mat_sidenav">
         <mat-toolbar color="primary">
-            <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+            Siberian
         </mat-toolbar>
+        <sib-sidenav></sib-sidenav>
     </mat-sidenav>
 
     <mat-sidenav-content class="white">
         <mat-toolbar color="primary">
-            Link
+            <sib-toolbar (trigger)="sidenav.toggle()"></sib-toolbar>
         </mat-toolbar>
         <main class="main">
             <router-outlet #main="outlet"></router-outlet>
         </main>
         <mat-divider></mat-divider>
         <mat-toolbar color="primary">
-            <app-footer></app-footer>
+            <sib-footer></sib-footer>
         </mat-toolbar>
     </mat-sidenav-content>
 </mat-sidenav-container>

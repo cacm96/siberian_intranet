@@ -5,20 +5,22 @@ import { DashboardComponent } from './dashboard.component';
 import { IndexManagerComponent } from './manager/index-manager/index-manager.component';
 import { IndexAdminComponent } from './admin/index-admin/index-admin.component';
 import { IndexLenderComponent } from './lender/index-lender/index-lender.component';
-import { IndexClienteComponent } from './client/index-cliente/index-cliente.component';
+import { IndexClientComponent } from './client/index-client/index-client.component';
+import { MaterialModule } from '../../../../core/ui/material.module';
 
 @NgModule({
   declarations:
   [
-	IndexManagerComponent,
+	  IndexManagerComponent,
     IndexAdminComponent,
     IndexLenderComponent,
-    IndexClienteComponent,
+    IndexClientComponent,
     DashboardComponent
   ],
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    MaterialModule
   ]
 })
 export class DashboardModule { }

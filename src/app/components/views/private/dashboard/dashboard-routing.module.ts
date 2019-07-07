@@ -5,13 +5,13 @@ import { DashboardComponent } from './dashboard.component';
 import { IndexManagerComponent } from './manager/index-manager/index-manager.component';
 import { IndexAdminComponent } from './admin/index-admin/index-admin.component';
 import { IndexLenderComponent } from './lender/index-lender/index-lender.component';
-import { IndexClienteComponent } from './client/index-cliente/index-cliente.component';
+import { IndexClientComponent } from './client/index-client/index-client.component';
 
 
 const routes: Routes = [
 
 	{path: '', component: DashboardComponent, canActivate: []},
-    {path: 'client', component: IndexClienteComponent, canActivate: []},
+    {path: 'client', component: IndexClientComponent, canActivate: []},
 	{path: 'lender', component: IndexLenderComponent, canActivate: []},
 	{path: 'manager', component: IndexManagerComponent, canActivate: []},
 	{path: 'admin', component: IndexAdminComponent, canActivate: []},

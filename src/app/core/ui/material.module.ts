@@ -6,6 +6,8 @@ import {
         MatDividerModule,
         MatIconModule,
         MatMenuModule,
+        MatListModule,
+        MatTabsModule,
         
 } from '@angular/material';
 
@@ -18,6 +20,8 @@ import {
         MatDividerModule,
         MatIconModule,
         MatMenuModule,
+        MatListModule,
+        MatTabsModule,
         
     ],
     exports: [
@@ -27,6 +31,8 @@ import {
         MatDividerModule,
         MatIconModule,
         MatMenuModule,
+        MatListModule,
+        MatTabsModule,
         
     ],
 

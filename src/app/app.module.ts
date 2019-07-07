@@ -18,8 +18,8 @@ import { SearchFunctionPipe } from './core/pipes/searchFunction.pipe';
 import { LoginComponent } from './components/views/public/auth/login/login.component';
 import { LoginWeitComponent } from './components/views/public/auth/login-weit/login-weit.component';
 import { LogoutComponent } from './components/views/public/auth/logout/logout.component';
-import { NavbarComponent } from './components/shared/navbar/navbar.component';
-import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
+import { ToolbarComponent } from './components/shared/toolbar/toolbar.component';
+import { SidenavComponent } from './components/shared/sidenav/sidenav.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { ErrorComponent } from './components/shared/error/error.component';
 import { BlockComponent } from './components/shared/block/block.component';
@@ -158,6 +158,7 @@ import { SkillWorkerDeleteComponent } from './components/views/private/configura
 
 
 
+
 @NgModule({
   declarations: [
     
@@ -167,10 +168,10 @@ import { SkillWorkerDeleteComponent } from './components/views/private/configura
     LoginWeitComponent,
     LogoutComponent,
 
-    NavbarComponent,
-    SidebarComponent,
-    FooterComponent,
 
+    FooterComponent,
+    ToolbarComponent,
+    SidenavComponent,
     ErrorComponent,
     BlockComponent,
 
@@ -299,6 +300,7 @@ import { SkillWorkerDeleteComponent } from './components/views/private/configura
     WorkerTypeEditComponent,
     WorkerTypeShowComponent,
     WorkerTypeDeleteComponent,
+    
     
 
   ],
