@@ -1,453 +1,359 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AuthGuard } from './auth.guard';
-import { RoleGuard } from './role.guard';
-import { RedirectAuthGuard } from './redirect-auth.guard';
+import { AuthGuard } from './core/guards/auth.guard';
+import { RoleGuard } from './core/guards/role.guard';
+import { RedirectAuthGuard } from './core/guards/redirect-auth.guard';
 
-import { BlockComponent } from './components/block/block.component';
-import { ErrorComponent } from './components/error/error.component';
+import { LoginComponent } from './components/views/public/auth/login/login.component';
+import { LoginWeitComponent } from './components/views/public/auth/login-weit/login-weit.component';
+import { LogoutComponent } from './components/views/public/auth/logout/logout.component';
+import { NavbarComponent } from './components/shared/navbar/navbar.component';
+import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
+import { ErrorComponent } from './components/shared/error/error.component';
+import { BlockComponent } from './components/shared/block/block.component';
 
-import { LoginComponent } from './components/auth/login/login.component';
-import { LoginWeitComponent } from './components/auth/login-weit/login-weit.component';
-import { LogoutComponent } from './components/auth/logout/logout.component';
+import { IndexManagerComponent } from './components/views/private/dashboard/manager/index-manager/index-manager.component';
+import { IndexAdminComponent } from './components/views/private/dashboard/admin/index-admin/index-admin.component';
+import { IndexLenderComponent } from './components/views/private/dashboard/lender/index-lender/index-lender.component';
+import { IndexClienteComponent } from './components/views/private/dashboard/client/index-cliente/index-cliente.component';
 
-import { IndexManagerComponent } from './components/dashboard/manager/index-manager/index-manager.component';
-import { IndexAdminComponent } from './components/dashboard/admin/index-admin/index-admin.component';
-import { IndexLenderComponent } from './components/dashboard/lender/index-lender/index-lender.component';
-import { IndexClienteComponent } from './components/dashboard/client/index-cliente/index-cliente.component';
+import { HomeComponent } from './components/shared/home/home.component';
 
-import { ProfileFatherComponent } from './components/profile/profile-father/profile-father.component';
-import { ProfilesComponent } from './components/profile/profiles/profiles.component';
-import { ProfileCreateComponent } from './components/profile/profile-create/profile-create.component';
-import { ProfileEditComponent } from './components/profile/profile-edit/profile-edit.component';
-import { ProfileShowComponent } from './components/profile/profile-show/profile-show.component';
-import { ProfileDeleteComponent } from './components/profile/profile-delete/profile-delete.component';
+import { ParameterFatherComponent } from './components/views/private/parameters/parameter/parameter-father/parameter-father.component';
+import { ParametersComponent } from './components/views/private/parameters/parameter/parameters/parameters.component';
+import { ParameterCreateComponent } from './components/views/private/parameters/parameter/parameter-create/parameter-create.component';
+import { ParameterEditComponent } from './components/views/private/parameters/parameter/parameter-edit/parameter-edit.component';
+import { ParameterShowComponent } from './components/views/private/parameters/parameter/parameter-show/parameter-show.component';
+import { ParameterDeleteComponent } from './components/views/private/parameters/parameter/parameter-delete/parameter-delete.component';
 
-import { SystemFatherComponent } from './components/masters/configure-system/system/system-father/system-father.component';
-import { SystemsComponent } from './components/masters/configure-system/system/systems/systems.component';
-import { SystemCreateComponent } from './components/masters/configure-system/system/system-create/system-create.component';
-import { SystemEditComponent } from './components/masters/configure-system/system/system-edit/system-edit.component';
-import { SystemShowComponent } from './components/masters/configure-system/system/system-show/system-show.component';
-import { SystemDeleteComponent } from './components/masters/configure-system/system/system-delete/system-delete.component';
+import { ParameterClientFatherComponent } from './components/views/private/configurations/parameter-client/parameter-client-father/parameter-client-father.component';
+import { ParameterClientsComponent } from './components/views/private/configurations/parameter-client/parameter-clients/parameter-clients.component';
+import { ParameterClientCreateComponent } from './components/views/private/configurations/parameter-client/parameter-client-create/parameter-client-create.component';
+import { ParameterClientEditComponent } from './components/views/private/configurations/parameter-client/parameter-client-edit/parameter-client-edit.component';
+import { ParameterClientShowComponent } from './components/views/private/configurations/parameter-client/parameter-client-show/parameter-client-show.component';
+import { ParameterClientDeleteComponent } from './components/views/private/configurations/parameter-client/parameter-client-delete/parameter-client-delete.component';
 
-import { FunctionFatherComponent } from './components/masters/configure-system/function/function-father/function-father.component';
-import { FunctionsComponent } from './components/masters/configure-system/function/functions/functions.component';
-import { FunctionCreateComponent } from './components/masters/configure-system/function/function-create/function-create.component';
-import { FunctionEditComponent } from './components/masters/configure-system/function/function-edit/function-edit.component';
-import { FunctionShowComponent } from './components/masters/configure-system/function/function-show/function-show.component';
-import { FunctionDeleteComponent } from './components/masters/configure-system/function/function-delete/function-delete.component';
+import { ClientFatherComponent } from './components/views/private/masters/client/client-father/client-father.component';
+import { ClientsComponent } from './components/views/private/masters/client/clients/clients.component';
+import { ClientCreateComponent } from './components/views/private/masters/client/client-create/client-create.component';
+import { ClientEditComponent } from './components/views/private/masters/client/client-edit/client-edit.component';
+import { ClientShowComponent } from './components/views/private/masters/client/client-show/client-show.component';
+import { ClientDeleteComponent } from './components/views/private/masters/client/client-delete/client-delete.component';
 
-import { PermissionFatherComponent } from './components/masters/configure-system/permission/permission-father/permission-father.component';
-import { PermissionsComponent } from './components/masters/configure-system/permission/permissions/permissions.component';
-import { PermissionCreateComponent } from './components/masters/configure-system/permission/permission-create/permission-create.component';
-import { PermissionEditComponent } from './components/masters/configure-system/permission/permission-edit/permission-edit.component';
-import { PermissionShowComponent } from './components/masters/configure-system/permission/permission-show/permission-show.component';
-import { PermissionDeleteComponent } from './components/masters/configure-system/permission/permission-delete/permission-delete.component';
+import { PhoneTypeFatherComponent } from './components/views/private/parameters/phone-type/phone-type-father/phone-type-father.component';
+import { PhoneTypesComponent } from './components/views/private/parameters/phone-type/phone-types/phone-types.component';
+import { PhoneTypeCreateComponent } from './components/views/private/parameters/phone-type/phone-type-create/phone-type-create.component';
+import { PhoneTypeEditComponent } from './components/views/private/parameters/phone-type/phone-type-edit/phone-type-edit.component';
+import { PhoneTypeShowComponent } from './components/views/private/parameters/phone-type/phone-type-show/phone-type-show.component';
+import { PhoneTypeDeleteComponent } from './components/views/private/parameters/phone-type/phone-type-delete/phone-type-delete.component';
 
-import { RoleFatherComponent } from './components/masters/configure-system/role/role-father/role-father.component';
-import { RolesComponent } from './components/masters/configure-system/role/roles/roles.component';
-import { RoleCreateComponent } from './components/masters/configure-system/role/role-create/role-create.component';
-import { RoleEditComponent } from './components/masters/configure-system/role/role-edit/role-edit.component';
-import { RoleShowComponent } from './components/masters/configure-system/role/role-show/role-show.component';
-import { RoleDeleteComponent } from './components/masters/configure-system/role/role-delete/role-delete.component';
+import { PhoneFatherComponent } from './components/views/private/configurations/phone/phone-father/phone-father.component';
+import { PhonesComponent } from './components/views/private/configurations/phone/phones/phones.component';
+import { PhoneCreateComponent } from './components/views/private/configurations/phone/phone-create/phone-create.component';
+import { PhoneEditComponent } from './components/views/private/configurations/phone/phone-edit/phone-edit.component';
+import { PhoneShowComponent } from './components/views/private/configurations/phone/phone-show/phone-show.component';
+import { PhoneDeleteComponent } from './components/views/private/configurations/phone/phone-delete/phone-delete.component';
 
-import { AssignFunctionFatherComponent } from './components/masters/configure-system/assignFunction/assign-function-father/assign-function-father.component';
-import { AssignFunctionsComponent } from './components/masters/configure-system/assignFunction/assign-functions/assign-functions.component';
-import { AssignFunctionCreateComponent } from './components/masters/configure-system/assignFunction/assign-function-create/assign-function-create.component';
-import { AssignFunctionEditComponent } from './components/masters/configure-system/assignFunction/assign-function-edit/assign-function-edit.component';
-import { AssignFunctionShowComponent } from './components/masters/configure-system/assignFunction/assign-function-show/assign-function-show.component';
-import { AssignFunctionDeleteComponent } from './components/masters/configure-system/assignFunction/assign-function-delete/assign-function-delete.component';
+import { GenderFatherComponent } from './components/views/private/parameters/gender/gender-father/gender-father.component';
+import { GendersComponent } from './components/views/private/parameters/gender/genders/genders.component';
+import { GenderCreateComponent } from './components/views/private/parameters/gender/gender-create/gender-create.component';
+import { GenderEditComponent } from './components/views/private/parameters/gender/gender-edit/gender-edit.component';
+import { GenderShowComponent } from './components/views/private/parameters/gender/gender-show/gender-show.component';
+import { GenderDeleteComponent } from './components/views/private/parameters/gender/gender-delete/gender-delete.component';
 
-import { ParameterFatherComponent } from './components/masters/configure-system/parameter/parameter-father/parameter-father.component';
-import { ParametersComponent } from './components/masters/configure-system/parameter/parameters/parameters.component';
-import { ParameterCreateComponent } from './components/masters/configure-system/parameter/parameter-create/parameter-create.component';
-import { ParameterEditComponent } from './components/masters/configure-system/parameter/parameter-edit/parameter-edit.component';
-import { ParameterShowComponent } from './components/masters/configure-system/parameter/parameter-show/parameter-show.component';
-import { ParameterDeleteComponent } from './components/masters/configure-system/parameter/parameter-delete/parameter-delete.component';
+import { DniTypeFatherComponent } from './components/views/private/parameters/dni-type/dni-type-father/dni-type-father.component';
+import { DniTypesComponent } from './components/views/private/parameters/dni-type/dni-types/dni-types.component';
+import { DniTypeCreateComponent } from './components/views/private/parameters/dni-type/dni-type-create/dni-type-create.component';
+import { DniTypeEditComponent } from './components/views/private/parameters/dni-type/dni-type-edit/dni-type-edit.component';
+import { DniTypeShowComponent } from './components/views/private/parameters/dni-type/dni-type-show/dni-type-show.component';
+import { DniTypeDeleteComponent } from './components/views/private/parameters/dni-type/dni-type-delete/dni-type-delete.component';
 
+import { UserFatherComponent } from './components/views/private/masters/user/user-father/user-father.component';
+import { UsersComponent } from './components/views/private/masters/user/users/users.component';
+import { UserCreateComponent } from './components/views/private/masters/user/user-create/user-create.component';
+import { UserEditComponent } from './components/views/private/masters/user/user-edit/user-edit.component';
+import { UserShowComponent } from './components/views/private/masters/user/user-show/user-show.component';
+import { UserDeleteComponent } from './components/views/private/masters/user/user-delete/user-delete.component';
 
-import { UserFatherComponent } from './components/masters/configure-user/user/user-father/user-father.component';
-import { UsersComponent } from './components/masters/configure-user/user/users/users.component';
-import { UserCreateComponent } from './components/masters/configure-user/user/user-create/user-create.component';
-import { UserEditComponent } from './components/masters/configure-user/user/user-edit/user-edit.component';
-import { UserShowComponent } from './components/masters/configure-user/user/user-show/user-show.component';
-import { UserDeleteComponent } from './components/masters/configure-user/user/user-delete/user-delete.component';
+import { RoleFatherComponent } from './components/views/private/masters/role/role-father/role-father.component';
+import { RolesComponent } from './components/views/private/masters/role/roles/roles.component';
+import { RoleCreateComponent } from './components/views/private/masters/role/role-create/role-create.component';
+import { RoleEditComponent } from './components/views/private/masters/role/role-edit/role-edit.component';
+import { RoleShowComponent } from './components/views/private/masters/role/role-show/role-show.component';
+import { RoleDeleteComponent } from './components/views/private/masters/role/role-delete/role-delete.component';
 
+import { UserRoleFatherComponent } from './components/views/private/configurations/user-role/user-role-father/user-role-father.component';
+import { UserRolesComponent } from './components/views/private/configurations/user-role/user-roles/user-roles.component';
+import { UserRoleCreateComponent } from './components/views/private/configurations/user-role/user-role-create/user-role-create.component';
+import { UserRoleEditComponent } from './components/views/private/configurations/user-role/user-role-edit/user-role-edit.component';
+import { UserRoleShowComponent } from './components/views/private/configurations/user-role/user-role-show/user-role-show.component';
+import { UserRoleDeleteComponent } from './components/views/private/configurations/user-role/user-role-delete/user-role-delete.component';
 
-import { CategoryFatherComponent } from './components/masters/configure-catalogue/category/category-father/category-father.component';
-import { CategorysComponent } from './components/masters/configure-catalogue/category/categorys/categorys.component';
-import { CategoryCreateComponent } from './components/masters/configure-catalogue/category/category-create/category-create.component';
-import { CategoryEditComponent } from './components/masters/configure-catalogue/category/category-edit/category-edit.component';
-import { CategoryShowComponent } from './components/masters/configure-catalogue/category/category-show/category-show.component';
-import { CategoryDeleteComponent } from './components/masters/configure-catalogue/category/category-delete/category-delete.component';
+import { FunctionFatherComponent } from './components/views/private/masters/function/function-father/function-father.component';
+import { FunctionsComponent } from './components/views/private/masters/function/functions/functions.component';
+import { FunctionCreateComponent } from './components/views/private/masters/function/function-create/function-create.component';
+import { FunctionEditComponent } from './components/views/private/masters/function/function-edit/function-edit.component';
+import { FunctionShowComponent } from './components/views/private/masters/function/function-show/function-show.component';
+import { FunctionDeleteComponent } from './components/views/private/masters/function/function-delete/function-delete.component';
 
-import { SubcategoryFatherComponent } from './components/masters/configure-catalogue/subcategory/subcategory-father/subcategory-father.component';
-import { SubcategorysComponent } from './components/masters/configure-catalogue/subcategory/subcategorys/subcategorys.component';
-import { SubcategoryCreateComponent } from './components/masters/configure-catalogue/subcategory/subcategory-create/subcategory-create.component';
-import { SubcategoryEditComponent } from './components/masters/configure-catalogue/subcategory/subcategory-edit/subcategory-edit.component';
-import { SubcategoryShowComponent } from './components/masters/configure-catalogue/subcategory/subcategory-show/subcategory-show.component';
-import { SubcategoryDeleteComponent } from './components/masters/configure-catalogue/subcategory/subcategory-delete/subcategory-delete.component';
+import { FunctionRoleFatherComponent } from './components/views/private/configurations/function-role/function-role-father/function-role-father.component';
+import { FunctionRolesComponent } from './components/views/private/configurations/function-role/function-roles/function-roles.component';
+import { FunctionRoleCreateComponent } from './components/views/private/configurations/function-role/function-role-create/function-role-create.component';
+import { FunctionRoleEditComponent } from './components/views/private/configurations/function-role/function-role-edit/function-role-edit.component';
+import { FunctionRoleShowComponent } from './components/views/private/configurations/function-role/function-role-show/function-role-show.component';
+import { FunctionRoleDeleteComponent } from './components/views/private/configurations/function-role/function-role-delete/function-role-delete.component';
 
-import { TypeServiceFatherComponent } from './components/masters/configure-catalogue/typeservice/type-service-father/type-service-father.component';
-import { TypeServicesComponent } from './components/masters/configure-catalogue/typeservice/type-services/type-services.component';
-import { TypeServiceCreateComponent } from './components/masters/configure-catalogue/typeservice/type-service-create/type-service-create.component';
-import { TypeServiceEditComponent } from './components/masters/configure-catalogue/typeservice/type-service-edit/type-service-edit.component';
-import { TypeServiceShowComponent } from './components/masters/configure-catalogue/typeservice/type-service-show/type-service-show.component';
-import { TypeServiceDeleteComponent } from './components/masters/configure-catalogue/typeservice/type-service-delete/type-service-delete.component';
+import { WorkerTypeFatherComponent } from './components/views/private/parameters/worker-type/worker-type-father/worker-type-father.component';
+import { WorkerTypesComponent } from './components/views/private/parameters/worker-type/worker-types/worker-types.component';
+import { WorkerTypeCreateComponent } from './components/views/private/parameters/worker-type/worker-type-create/worker-type-create.component';
+import { WorkerTypeEditComponent } from './components/views/private/parameters/worker-type/worker-type-edit/worker-type-edit.component';
+import { WorkerTypeShowComponent } from './components/views/private/parameters/worker-type/worker-type-show/worker-type-show.component';
+import { WorkerTypeDeleteComponent } from './components/views/private/parameters/worker-type/worker-type-delete/worker-type-delete.component';
 
-import { TypeVarietyFatherComponent } from './components/masters/configure-catalogue/typevariety/type-variety-father/type-variety-father.component';
-import { TypeVarietysComponent } from './components/masters/configure-catalogue/typevariety/type-varietys/type-varietys.component';
-import { TypeVarietyCreateComponent } from './components/masters/configure-catalogue/typevariety/type-variety-create/type-variety-create.component';
-import { TypeVarietyEditComponent } from './components/masters/configure-catalogue/typevariety/type-variety-edit/type-variety-edit.component';
-import { TypeVarietyShowComponent } from './components/masters/configure-catalogue/typevariety/type-variety-show/type-variety-show.component';
-import { TypeVarietyDeleteComponent } from './components/masters/configure-catalogue/typevariety/type-variety-delete/type-variety-delete.component';
+import { WorkerFatherComponent } from './components/views/private/masters/worker/worker-father/worker-father.component';
+import { WorkersComponent } from './components/views/private/masters/worker/workers/workers.component';
+import { WorkerCreateComponent } from './components/views/private/masters/worker/worker-create/worker-create.component';
+import { WorkerEditComponent } from './components/views/private/masters/worker/worker-edit/worker-edit.component';
+import { WorkerShowComponent } from './components/views/private/masters/worker/worker-show/worker-show.component';
+import { WorkerDeleteComponent } from './components/views/private/masters/worker/worker-delete/worker-delete.component';
 
-import { VarietyFatherComponent } from './components/masters/configure-catalogue/variety/variety-father/variety-father.component';
-import { VarietysComponent } from './components/masters/configure-catalogue/variety/varietys/varietys.component';
-import { VarietyCreateComponent } from './components/masters/configure-catalogue/variety/variety-create/variety-create.component';
-import { VarietyEditComponent } from './components/masters/configure-catalogue/variety/variety-edit/variety-edit.component';
-import { VarietyShowComponent } from './components/masters/configure-catalogue/variety/variety-show/variety-show.component';
-import { VarietyDeleteComponent } from './components/masters/configure-catalogue/variety/variety-delete/variety-delete.component';
+import { CompanyFatherComponent } from './components/views/private/masters/company/company-father/company-father.component';
+import { CompaniesComponent } from './components/views/private/masters/company/companies/companies.component';
+import { CompanyCreateComponent } from './components/views/private/masters/company/company-create/company-create.component';
+import { CompanyEditComponent } from './components/views/private/masters/company/company-edit/company-edit.component';
+import { CompanyShowComponent } from './components/views/private/masters/company/company-show/company-show.component';
+import { CompanyDeleteComponent } from './components/views/private/masters/company/company-delete/company-delete.component';
 
-import { DetailVarietyFatherComponent } from './components/masters/configure-catalogue/detailvariety/detail-variety-father/detail-variety-father.component';
-import { DetailVarietysComponent } from './components/masters/configure-catalogue/detailvariety/detail-varietys/detail-varietys.component';
-import { DetailVarietyCreateComponent } from './components/masters/configure-catalogue/detailvariety/detail-variety-create/detail-variety-create.component';
-import { DetailVarietyEditComponent } from './components/masters/configure-catalogue/detailvariety/detail-variety-edit/detail-variety-edit.component';
-import { DetailVarietyShowComponent } from './components/masters/configure-catalogue/detailvariety/detail-variety-show/detail-variety-show.component';
-import { DetailVarietyDeleteComponent } from './components/masters/configure-catalogue/detailvariety/detail-variety-delete/detail-variety-delete.component';
+import { SkillFatherComponent } from './components/views/private/masters/skill/skill-father/skill-father.component';
+import { SkillsComponent } from './components/views/private/masters/skill/skills/skills.component';
+import { SkillCreateComponent } from './components/views/private/masters/skill/skill-create/skill-create.component';
+import { SkillEditComponent } from './components/views/private/masters/skill/skill-edit/skill-edit.component';
+import { SkillShowComponent } from './components/views/private/masters/skill/skill-show/skill-show.component';
+import { SkillDeleteComponent } from './components/views/private/masters/skill/skill-delete/skill-delete.component';
 
-import { ApparatusInfrastructureFatherComponent } from './components/masters/configure-catalogue/apparatusinfrastructure/apparatus-infrastructure-father/apparatus-infrastructure-father.component';
-import { ApparatusInfrastructuresComponent } from './components/masters/configure-catalogue/apparatusinfrastructure/apparatus-infrastructures/apparatus-infrastructures.component';
-import { ApparatusInfrastructureCreateComponent } from './components/masters/configure-catalogue/apparatusinfrastructure/apparatus-infrastructure-create/apparatus-infrastructure-create.component';
-import { ApparatusInfrastructureEditComponent } from './components/masters/configure-catalogue/apparatusinfrastructure/apparatus-infrastructure-edit/apparatus-infrastructure-edit.component';
-import { ApparatusInfrastructureShowComponent } from './components/masters/configure-catalogue/apparatusinfrastructure/apparatus-infrastructure-show/apparatus-infrastructure-show.component';
-import { ApparatusInfrastructureDeleteComponent } from './components/masters/configure-catalogue/apparatusinfrastructure/apparatus-infrastructure-delete/apparatus-infrastructure-delete.component';
-
-import { CatalogueFatherComponent } from './components/masters/configure-catalogue/catalogue/catalogue-father/catalogue-father.component';
-import { CataloguesComponent } from './components/masters/configure-catalogue/catalogue/catalogues/catalogues.component';
-import { CatalogueCreateComponent } from './components/masters/configure-catalogue/catalogue/catalogue-create/catalogue-create.component';
-import { CatalogueEditComponent } from './components/masters/configure-catalogue/catalogue/catalogue-edit/catalogue-edit.component';
-import { CatalogueShowComponent } from './components/masters/configure-catalogue/catalogue/catalogue-show/catalogue-show.component';
-import { CatalogueDeleteComponent } from './components/masters/configure-catalogue/catalogue/catalogue-delete/catalogue-delete.component';
-
-import { SkillFatherComponent } from './components/masters/configure-skill/skill/skill-father/skill-father.component';
-import { SkillsComponent } from './components/masters/configure-skill/skill/skills/skills.component';
-import { SkillCreateComponent } from './components/masters/configure-skill/skill/skill-create/skill-create.component';
-import { SkillEditComponent } from './components/masters/configure-skill/skill/skill-edit/skill-edit.component';
-import { SkillShowComponent } from './components/masters/configure-skill/skill/skill-show/skill-show.component';
-import { SkillDeleteComponent } from './components/masters/configure-skill/skill/skill-delete/skill-delete.component';
-
-import { SkillLenderFatherComponent } from './components/masters/configure-skill/assignProviderSkill/skill-lender-father/skill-lender-father.component';
-import { SkillsLenderComponent } from './components/masters/configure-skill/assignProviderSkill/skills-lender/skills-lender.component';
-import { SkillLenderCreateComponent } from './components/masters/configure-skill/assignProviderSkill/skill-lender-create/skill-lender-create.component';
-import { SkillLenderEditComponent } from './components/masters/configure-skill/assignProviderSkill/skill-lender-edit/skill-lender-edit.component';
-import { SkillLenderShowComponent } from './components/masters/configure-skill/assignProviderSkill/skill-lender-show/skill-lender-show.component';
-import { SkillLenderDeleteComponent } from './components/masters/configure-skill/assignProviderSkill/skill-lender-delete/skill-lender-delete.component';
-
-import { SkillServiceFatherComponent } from './components/masters/configure-skill/assignSkillService/skill-service-father/skill-service-father.component';
-import { SkillsServiceComponent } from './components/masters/configure-skill/assignSkillService/skills-service/skills-service.component';
-import { SkillServiceCreateComponent } from './components/masters/configure-skill/assignSkillService/skill-service-create/skill-service-create.component';
-import { SkillServiceEditComponent } from './components/masters/configure-skill/assignSkillService/skill-service-edit/skill-service-edit.component';
-import { SkillServiceShowComponent } from './components/masters/configure-skill/assignSkillService/skill-service-show/skill-service-show.component';
-import { SkillServiceDeleteComponent } from './components/masters/configure-skill/assignSkillService/skill-service-delete/skill-service-delete.component';
-
-import { IncidenceCreateComponent } from './components/masters/configure-incidence/incidence/incidence-create/incidence-create.component';
-import { IncidenceShowComponent } from './components/masters/configure-incidence/incidence/incidence-show/incidence-show.component';
-import { IncidenceEditComponent } from './components/masters/configure-incidence/incidence/incidence-edit/incidence-edit.component';
-import { IncidenceDeleteComponent } from './components/masters/configure-incidence/incidence/incidence-delete/incidence-delete.component';
-import { IncidenceFatherComponent } from './components/masters/configure-incidence/incidence/incidence-father/incidence-father.component';
-import { IncidencesComponent } from './components/masters/configure-incidence/incidence/incidences/incidences.component';
-
-import { TypeIncidenceCreateComponent } from './components/masters/configure-incidence/typeIncidence/type-incidence-create/type-incidence-create.component';
-import { TypeIncidenceShowComponent } from './components/masters/configure-incidence/typeIncidence/type-incidence-show/type-incidence-show.component';
-import { TypeIncidenceEditComponent } from './components/masters/configure-incidence/typeIncidence/type-incidence-edit/type-incidence-edit.component';
-import { TypeIncidenceDeleteComponent } from './components/masters/configure-incidence/typeIncidence/type-incidence-delete/type-incidence-delete.component';
-import { TypeIncidencesComponent } from './components/masters/configure-incidence/typeIncidence/type-incidences/type-incidences.component';
-import { TypeIncidenceFatherComponent } from './components/masters/configure-incidence/typeIncidence/type-incidence-father/type-incidence-father.component';
-
-import { CompanyFatherComponent } from './components/masters/configure-company/company/company-father/company-father.component';
-import { CompaniesComponent } from './components/masters/configure-company/company/companies/companies.component';
-import { CompanyCreateComponent } from './components/masters/configure-company/company/company-create/company-create.component';
-import { CompanyEditComponent } from './components/masters/configure-company/company/company-edit/company-edit.component';
-import { CompanyShowComponent } from './components/masters/configure-company/company/company-show/company-show.component';
-import { CompanyDeleteComponent } from './components/masters/configure-company/company/company-delete/company-delete.component';
-
-import { ParameterCompanyFatherComponent } from './components/masters/configure-company/parameterCompany/parameter-company-father/parameter-company-father.component';
-import { ParametersCompanyComponent } from './components/masters/configure-company/parameterCompany/parameters-company/parameters-company.component';
-import { ParameterCompanyCreateComponent } from './components/masters/configure-company/parameterCompany/parameter-company-create/parameter-company-create.component';
-import { ParameterCompanyEditComponent } from './components/masters/configure-company/parameterCompany/parameter-company-edit/parameter-company-edit.component';
-import { ParameterCompanyShowComponent } from './components/masters/configure-company/parameterCompany/parameter-company-show/parameter-company-show.component';
-import { ParameterCompanyDeleteComponent } from './components/masters/configure-company/parameterCompany/parameter-company-delete/parameter-company-delete.component';
+import { SkillWorkerFatherComponent } from './components/views/private/configurations/skill-worker/skill-worker-father/skill-worker-father.component';
+import { SkillWorkersComponent } from './components/views/private/configurations/skill-worker/skill-workers/skill-workers.component';
+import { SkillWorkerCreateComponent } from './components/views/private/configurations/skill-worker/skill-worker-create/skill-worker-create.component';
+import { SkillWorkerEditComponent } from './components/views/private/configurations/skill-worker/skill-worker-edit/skill-worker-edit.component';
+import { SkillWorkerShowComponent } from './components/views/private/configurations/skill-worker/skill-worker-show/skill-worker-show.component';
+import { SkillWorkerDeleteComponent } from './components/views/private/configurations/skill-worker/skill-worker-delete/skill-worker-delete.component';
 
 
 // Array de rutas
 const appRoutes: Routes = [
 
-	{path: '', redirectTo: 'login', pathMatch: 'full', canActivate: [RedirectAuthGuard]},
-	{path: 'login', component: LoginComponent, canActivate: [RedirectAuthGuard]},
+	{path: '', redirectTo: 'login', pathMatch: 'full', canActivate: []},
+	{path: 'login', component: LoginComponent, canActivate: []},
 	{path: 'loginWeit', component: LoginWeitComponent, canActivate: []},
 	{path: 'logout', component: LogoutComponent},
 
-	{path: 'dashboardClient', component: IndexClienteComponent, canActivate: [AuthGuard]},
-	{path: 'dashboardLender', component: IndexLenderComponent, canActivate: [AuthGuard]},
-	{path: 'dashboardManager', component: IndexManagerComponent, canActivate: [AuthGuard]},
-	{path: 'dashboardAdmin', component: IndexAdminComponent, canActivate: [AuthGuard]},
+	{path: 'app', component: HomeComponent, canActivate: [],
+		children:
+		[
+			{path: 'dashboardClient', component: IndexClienteComponent, canActivate: []},
+			{path: 'dashboardLender', component: IndexLenderComponent, canActivate: []},
+			{path: 'dashboardManager', component: IndexManagerComponent, canActivate: []},
+			{path: 'dashboardAdmin', component: IndexAdminComponent, canActivate: []},
 	
+			{path: 'parameters', component: HomeComponent, canActivate: [],
+				children:
+				[
+					{path: 'parameter', component: ParameterFatherComponent, canActivate: [],
+						children:
+						[
+							{path: '', component: ParametersComponent},
+							{path: 'create', component: ParameterCreateComponent},
+							{path: 'edit/:id', component: ParameterEditComponent},
+							{path: 'show/:id', component: ParameterShowComponent},
+							{path: 'delete/:id', component: ParameterDeleteComponent},
+						]
+					},
+					{path: 'phone-type', component: PhoneTypeFatherComponent, canActivate: [],
+						children:
+						[
+							{path: '', component: PhoneTypesComponent},
+							{path: 'create', component: PhoneTypeCreateComponent},
+							{path: 'edit/:id', component: PhoneTypeEditComponent},
+							{path: 'show/:id', component: PhoneTypeShowComponent},
+							{path: 'delete/:id', component: PhoneTypeDeleteComponent},
+						]
+					},
+					{path: 'phone', component: PhoneFatherComponent, canActivate: [],
+						children:
+						[
+							{path: '', component: PhonesComponent},
+							{path: 'create', component: PhoneCreateComponent},
+							{path: 'edit/:id', component: PhoneEditComponent},
+							{path: 'show/:id', component: PhoneShowComponent},
+							{path: 'delete/:id', component: PhoneDeleteComponent},
+						]
+					},
+					{path: 'gender', component: GenderFatherComponent, canActivate: [],
+						children:
+						[
+							{path: '', component: GendersComponent},
+							{path: 'create', component: GenderCreateComponent},
+							{path: 'edit/:id', component: GenderEditComponent},
+							{path: 'show/:id', component: GenderShowComponent},
+							{path: 'delete/:id', component: GenderDeleteComponent},
+						]
+					},
+					{path: 'dni-type', component: DniTypeFatherComponent, canActivate: [],
+						children:
+						[
+							{path: '', component: DniTypesComponent},
+							{path: 'create', component: DniTypeCreateComponent},
+							{path: 'edit/:id', component: DniTypeEditComponent},
+							{path: 'show/:id', component: DniTypeShowComponent},
+							{path: 'delete/:id', component: DniTypeDeleteComponent},
+						]
+					},
+					{path: 'worker-type', component: WorkerTypeFatherComponent, canActivate: [],
+						children:
+						[
+							{path: '', component: WorkerTypesComponent},
+							{path: 'create', component: WorkerTypeCreateComponent},
+							{path: 'edit/:id', component: WorkerTypeEditComponent},
+							{path: 'show/:id', component: WorkerTypeShowComponent},
+							{path: 'delete/:id', component: WorkerTypeDeleteComponent},
+						]
+					},
+				]
+			},
+
+			{path: 'masters', component: HomeComponent, canActivate: [],
+				children:
+				[
+					{path: 'client', component: ClientFatherComponent, canActivate: [],
+						children:
+						[
+							{path: '', component: ClientsComponent},
+							{path: 'create', component: ClientCreateComponent},
+							{path: 'edit/:id', component: ClientEditComponent},
+							{path: 'show/:id', component: ClientShowComponent},
+							{path: 'delete/:id', component: ClientDeleteComponent},
+						]
+					},
+
+					{path: 'user', component: UserFatherComponent, canActivate: [],
+						children:
+						[
+							{path: '', component: UsersComponent},
+							{path: 'create', component: UserCreateComponent},
+							{path: 'edit/:id', component: UserEditComponent},
+							{path: 'show/:id', component: UserShowComponent},
+							{path: 'delete/:id', component: UserDeleteComponent},
+						]
+					},
+
+					{path: 'function', component: FunctionFatherComponent, canActivate: [],
+						children:
+						[
+							{path: '', component: FunctionsComponent},
+							{path: 'create', component: FunctionCreateComponent},
+							{path: 'edit/:id', component: FunctionEditComponent},
+							{path: 'show/:id', component: FunctionShowComponent},
+							{path: 'delete/:id', component: FunctionDeleteComponent},
+						]
+					},
+					{path: 'role', component: RoleFatherComponent, canActivate: [],
+						children:
+						[
+							{path: '', component: RolesComponent},
+							{path: 'create', component: RoleCreateComponent},
+							{path: 'edit/:id', component: RoleEditComponent},
+							{path: 'show/:id', component: RoleShowComponent},
+							{path: 'delete/:id', component: RoleDeleteComponent},
+						]
+					},
+					{path: 'worker', component: WorkerFatherComponent, canActivate: [],
+						children:
+						[
+							{path: '', component: WorkersComponent},
+							{path: 'create', component: WorkerCreateComponent},
+							{path: 'edit/:id', component: WorkerEditComponent},
+							{path: 'show/:id', component: WorkerShowComponent},
+							{path: 'delete/:id', component: WorkerDeleteComponent},
+						]
+					},
+					{path: 'skill', component: SkillFatherComponent, canActivate: [],
+						children:
+						[
+							{path: '', component: SkillsComponent},
+							{path: 'create', component: SkillCreateComponent},
+							{path: 'edit/:id', component: SkillEditComponent},
+							{path: 'show/:id', component: SkillShowComponent},
+							{path: 'delete/:id', component: SkillDeleteComponent},
+						]
+					},
+					{path: 'skill-worker', component: SkillWorkerFatherComponent, canActivate: [],
+						children:
+						[
+							{path: '', component: SkillWorkersComponent},
+							{path: 'create', component: SkillWorkerCreateComponent},
+							{path: 'edit/:id', component: SkillWorkerEditComponent},
+							{path: 'show/:id', component: SkillWorkerShowComponent},
+							{path: 'delete/:id', component: SkillWorkerDeleteComponent},
+						]
+					},
+				]
+			},
+
+			{path: 'configurations', component: HomeComponent, canActivate: [],
+				children:
+				[
+					{path: 'parameter-client', component: ParameterClientFatherComponent, canActivate: [],
+						children:
+						[
+							{path: '', component: ParameterClientsComponent},
+							{path: 'create', component: ParameterClientCreateComponent},
+							{path: 'edit/:id', component: ParameterClientEditComponent},
+							{path: 'show/:id', component: ParameterClientShowComponent},
+							{path: 'delete/:id', component: ParameterClientDeleteComponent},
+						]
+					},
+					{path: 'phone', component: PhoneFatherComponent, canActivate: [],
+						children:
+						[
+							{path: '', component: PhonesComponent},
+							{path: 'create', component: PhoneCreateComponent},
+							{path: 'edit/:id', component: PhoneEditComponent},
+							{path: 'show/:id', component: PhoneShowComponent},
+							{path: 'delete/:id', component: PhoneDeleteComponent},
+						]
+					},
+					{path: 'user-role', component: UserRoleFatherComponent, canActivate: [],
+						children:
+						[
+							{path: '', component: UserRolesComponent},
+							{path: 'create', component: UserRoleCreateComponent},
+							{path: 'edit/:id', component: UserRoleEditComponent},
+							{path: 'show/:id', component: UserRoleShowComponent},
+							{path: 'delete/:id', component: UserRoleDeleteComponent},
+						]
+					},
+					{path: 'function-role', component: FunctionRoleFatherComponent, canActivate: [],
+						children:
+						[
+							{path: '', component: FunctionRolesComponent},
+							{path: 'create', component: FunctionRoleCreateComponent},
+							{path: 'edit/:id', component: FunctionRoleEditComponent},
+							{path: 'show/:id', component: FunctionRoleShowComponent},
+							{path: 'delete/:id', component: FunctionRoleDeleteComponent},
+						]
+					},
+				]
+			},
+		]
+	},
+
+
 	
 
-	{path: 'profile', component: ProfileFatherComponent, canActivate: [AuthGuard],
-		children:
-		[
-			{path: '', component: ProfilesComponent},
-			{path: 'create', component: ProfileCreateComponent},
-			{path: 'edit/:id', component: ProfileEditComponent},
-			{path: 'show/:id', component: ProfileShowComponent},
-			{path: 'delete/:id', component: ProfileDeleteComponent},
-		]
-	},
 
-	{path: 'system', component: SystemFatherComponent, canActivate: [AuthGuard],
-		children:
-		[
-			{path: '', component: SystemsComponent},
-			{path: 'create', component: SystemCreateComponent},
-			{path: 'edit/:id', component: SystemEditComponent},
-			{path: 'show/:id', component: SystemShowComponent},
-			{path: 'delete/:id', component: SystemDeleteComponent},
-		]
-	},
-
-	{path: 'function', component: FunctionFatherComponent, canActivate: [AuthGuard],
-		children:
-		[
-			{path: '', component: FunctionsComponent},
-			{path: 'create', component: FunctionCreateComponent},
-			{path: 'edit/:id', component: FunctionEditComponent},
-			{path: 'show/:id', component: FunctionShowComponent},
-			{path: 'delete/:id', component: FunctionDeleteComponent},
-		]
-	},
-
-	{path: 'permission', component: PermissionFatherComponent, canActivate: [AuthGuard],
-		children:
-		[
-			{path: '', component: PermissionsComponent},
-			{path: 'create', component: PermissionCreateComponent},
-			{path: 'edit/:id', component: PermissionEditComponent},
-			{path: 'show/:id', component: PermissionShowComponent},
-			{path: 'delete/:id', component: PermissionDeleteComponent},
-		]
-	},
-
-	{path: 'role', component: RoleFatherComponent, canActivate: [AuthGuard],
-		children:
-		[
-			{path: '', component: RolesComponent},
-			{path: 'create', component: RoleCreateComponent},
-			{path: 'edit/:id', component: RoleEditComponent},
-			{path: 'show/:id', component: RoleShowComponent},
-			{path: 'delete/:id', component: RoleDeleteComponent},
-		]
-	},
-
-	{path: 'assignFunction', component: AssignFunctionFatherComponent, canActivate: [AuthGuard],
-		children:
-		[
-			{path: '', component: AssignFunctionsComponent},
-			{path: 'create', component: AssignFunctionCreateComponent},
-			{path: 'edit/:id', component: AssignFunctionEditComponent},
-			{path: 'show/:id', component: AssignFunctionShowComponent},
-			{path: 'delete/:id', component: AssignFunctionDeleteComponent},
-		]
-	},
-
-	{path: 'parameter', component: ParameterFatherComponent, canActivate: [AuthGuard],
-		children:
-		[
-			{path: '', component: ParametersComponent},
-			{path: 'create', component: ParameterCreateComponent},
-			{path: 'edit/:id', component: ParameterEditComponent},
-			{path: 'show/:id', component: ParameterShowComponent},
-			{path: 'delete/:id', component: ParameterDeleteComponent},
-		]
-	},
-
-	{path: 'user', component: UserFatherComponent, canActivate: [AuthGuard],
-		children:
-		[
-			{path: '', component: UsersComponent},
-			{path: 'create', component: UserCreateComponent},
-			{path: 'edit/:id', component: UserEditComponent},
-			{path: 'show/:id', component: UserShowComponent},
-			{path: 'delete/:id', component: UserDeleteComponent},
-		]
-	},
 	
-	{path: 'category', component: CategoryFatherComponent, canActivate: [AuthGuard],
-		children:
-		[
-			{path: '', component: CategorysComponent},
-			{path: 'create', component: CategoryCreateComponent},
-			{path: 'edit/:id', component: CategoryEditComponent},
-			{path: 'show/:id', component: CategoryShowComponent},
-			{path: 'delete/:id', component: CategoryDeleteComponent},
-		]
-	},
-
-	{path: 'subcategory', component: SubcategoryFatherComponent, canActivate: [AuthGuard],
-		children:
-		[
-			{path: '', component: SubcategorysComponent},
-			{path: 'create', component: SubcategoryCreateComponent},
-			{path: 'edit/:id', component: SubcategoryEditComponent},
-			{path: 'show/:id', component: SubcategoryShowComponent},
-			{path: 'delete/:id', component: SubcategoryDeleteComponent},
-		]
-	},
-
-	{path: 'typeService', component: TypeServiceFatherComponent, canActivate: [AuthGuard],
-		children:
-		[
-			{path: '', component: TypeServicesComponent},
-			{path: 'create', component: TypeServiceCreateComponent},
-			{path: 'edit/:id', component: TypeServiceEditComponent},
-			{path: 'show/:id', component: TypeServiceShowComponent},
-			{path: 'delete/:id', component: TypeServiceDeleteComponent},
-		]
-    },
-
-    {path: 'typeVariety', component: TypeVarietyFatherComponent, canActivate: [AuthGuard],
-		children:
-		[
-			{path: '', component: TypeVarietysComponent},
-			{path: 'create', component: TypeVarietyCreateComponent},
-			{path: 'edit/:id', component: TypeVarietyEditComponent},
-			{path: 'show/:id', component: TypeVarietyShowComponent},
-			{path: 'delete/:id', component: TypeVarietyDeleteComponent},
-		]
-	},
-
-	{path: 'variety', component: VarietyFatherComponent, canActivate: [AuthGuard],
-		children:
-		[
-			{path: '', component: VarietysComponent},
-			{path: 'create', component: VarietyCreateComponent},
-			{path: 'edit/:id', component: VarietyEditComponent},
-			{path: 'show/:id', component: VarietyShowComponent},
-			{path: 'delete/:id', component: VarietyDeleteComponent},
-		]
-	},
-
-	{path: 'detailVariety', component: DetailVarietyFatherComponent, canActivate: [AuthGuard],
-		children:
-		[
-			{path: '', component: DetailVarietysComponent},
-			{path: 'create', component: DetailVarietyCreateComponent},
-			{path: 'edit/:id', component: DetailVarietyEditComponent},
-			{path: 'show/:id', component: DetailVarietyShowComponent},
-			{path: 'delete/:id', component: DetailVarietyDeleteComponent},
-		]
-    },
-	 
-   {path: 'apparatusInfrastructure', component: ApparatusInfrastructureFatherComponent, canActivate: [AuthGuard],
-	   children:
-	    [
-		    {path: '', component: ApparatusInfrastructuresComponent},
-	        {path: 'create', component: ApparatusInfrastructureCreateComponent},
-		    {path: 'edit/:id', component: ApparatusInfrastructureEditComponent},
-		    {path: 'show/:id', component: ApparatusInfrastructureShowComponent},
-		    {path: 'delete/:id', component: ApparatusInfrastructureDeleteComponent},
-	    ]
-	},
-
-	{path: 'catalogue', component: CatalogueFatherComponent, canActivate: [AuthGuard],
-		children:
-		[
-			{path: '', component: CataloguesComponent},
-			{path: 'create', component: CatalogueCreateComponent},
-			{path: 'edit/:id', component: CatalogueEditComponent},
-			{path: 'show/:id', component: CatalogueShowComponent},
-			{path: 'delete/:id', component: CatalogueDeleteComponent},
-		]
-	},
-	
-	{path: 'skill', component: SkillFatherComponent, canActivate: [AuthGuard],
-		children:
-		[
-			{path: '', component: SkillsComponent},
-			{path: 'create', component: SkillCreateComponent},
-			{path: 'edit/:id', component: SkillEditComponent},
-			{path: 'show/:id', component: SkillShowComponent},
-			{path: 'delete/:id', component: SkillDeleteComponent},
-		]
-	},
-
-	{path: 'skillLender', component: SkillLenderFatherComponent, canActivate: [AuthGuard],
-		children:
-		[
-			{path: '', component: SkillsLenderComponent},
-			{path: 'create', component: SkillLenderCreateComponent},
-			{path: 'edit/:id', component: SkillLenderEditComponent},
-			{path: 'show/:id', component: SkillLenderShowComponent},
-			{path: 'delete/:id', component: SkillLenderDeleteComponent},
-		]
-	},
-
-	{path: 'skillService', component: SkillServiceFatherComponent, canActivate: [AuthGuard],
-		children:
-		[
-			{path: '', component: SkillsServiceComponent},
-			{path: 'create', component: SkillServiceCreateComponent},
-			{path: 'edit/:id', component: SkillServiceEditComponent},
-			{path: 'show/:id', component: SkillServiceShowComponent},
-			{path: 'delete/:id', component: SkillServiceDeleteComponent},
-		]
-	},
-
-	{path: 'incidence', component: IncidenceFatherComponent, canActivate: [AuthGuard],
-	children:
-		[
-			{path: '', component: IncidencesComponent},
-			{path: 'create', component: IncidenceCreateComponent},
-			{path: 'edit/:id', component: IncidenceEditComponent},
-			{path: 'show/:id', component: IncidenceShowComponent},
-			{path: 'delete/:id', component: IncidenceDeleteComponent},
-		]
-	},
-
-	{path: 'typeIncidence', component: TypeIncidenceFatherComponent, canActivate: [AuthGuard],
-	children:
-		[
-			{path: '', component: TypeIncidencesComponent},
-			{path: 'create', component:TypeIncidenceCreateComponent},
-			{path: 'edit/:id', component: TypeIncidenceEditComponent},
-			{path: 'show/:id', component: TypeIncidenceShowComponent},
-			{path: 'delete/:id', component: TypeIncidenceDeleteComponent},
-		]
-	},
-
-	{path: 'company', component: CompanyFatherComponent, canActivate: [AuthGuard],
-		children:
-		[
-			{path: '', component: CompaniesComponent},
-			{path: 'create', component: CompanyCreateComponent},
-			{path: 'edit/:id', component: CompanyEditComponent},
-			{path: 'show/:id', component: CompanyShowComponent},
-			{path: 'delete/:id', component: CompanyDeleteComponent},
-		]
-	},
-
-	{path: 'parameterCompany', component: ParameterCompanyFatherComponent, canActivate: [AuthGuard],
-		children:
-		[
-			{path: '', component: ParametersCompanyComponent},
-			{path: 'create', component: ParameterCompanyCreateComponent},
-			{path: 'edit/:id', component: ParameterCompanyEditComponent},
-			{path: 'show/:id', component: ParameterCompanyShowComponent},
-			{path: 'delete/:id', component: ParameterCompanyDeleteComponent},
-		]
-	},
 
 	{path: 'block', component: BlockComponent},
 	{path: '**', component: ErrorComponent},
