@@ -26,7 +26,7 @@ export class LoginWeitComponent implements OnInit {
     	localStorage.setItem('roleID', 'admin');
 
 		var actualRoute = window.location.origin;		
-		window.location.replace(actualRoute+'/app/dashboardAdmin');
+		window.location.replace(actualRoute+'/app/masters/client');
 	}
 
 }

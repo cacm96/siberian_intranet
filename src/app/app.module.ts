@@ -4,11 +4,13 @@ import { routing,appRoutingProviders } from './app.routing';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { MaterialModule } from './core/ui/material.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+
 import { AppComponent } from './app.component';
 
-
 import { TokenInterceptorService } from './core/services/token-interceptor.service';
-
 import { AuthService } from './core/services/auth.service';
 import { SearchUserPipe } from './core/pipes/searchUser.pipe';
 import { SearchFunctionPipe } from './core/pipes/searchFunction.pipe';
@@ -161,6 +163,8 @@ import { SkillWorkerDeleteComponent } from './components/views/private/configura
 
 @NgModule({
   declarations: [
+
+    
     AppComponent,
 
     LoginComponent,
@@ -314,6 +318,8 @@ import { SkillWorkerDeleteComponent } from './components/views/private/configura
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers:
   [

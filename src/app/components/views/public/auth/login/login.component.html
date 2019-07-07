@@ -2,37 +2,38 @@
     <section class="login_block">
         <div class="container">
             <div class="row">
-                    <div class="col s4 login_sec">
+                    <div class="col-xs-4">
                         <h2 class="text-center">Ingresa</h2>
                         <form class="login-form">
                             <div class="row">
-                                <div class="input-field col s12 center">
+                                <div class="input-field col-xs-12 center">
                                     <img src="../../../assets/img/logos/logo_login.png" alt="" class="responsive-img valign profile-image-login">
                                 </div>
                             </div>
-                            <div class="row margin">
-                                <div class="input-field col s12">
+                            <div class="row">
+                                <div class="input-field col-xs-12">
     
                                     <i class="mdi-social-person-outline prefix"></i>
                                     <input id="username" type="text">
                                     <label for="username" class="center-align">Correo</label>
                                 </div>
                             </div>
-                            <div class="row margin">
-                                <div class="input-field col s12">
+                            <div class="row">
+                                <div class="input-field col-xs-12">
                                     <i class="mdi-action-lock-outline prefix"></i>
                                     <input id="password" type="password">
                                     <label for="password">Contraseña</label>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="input-field col s12">
-                                    <a (click)="login()" class="btn btn-primary waves-effect waves-light col s12">Iniciar Sesión</a>
+                                <div class="input-field col-xs-12">
+                                    <button (click)="login()" mat-button>Iniciar Sesión</button>
+
                                 </div>
                             </div>
                         </form>
                     </div>
-                    <div class="col s8 banner">
+                    <div class="col-xs-8">
                         <img src="../../../assets/img/sliders/login_slider_1.jpg" alt="" class="img_slider" width="100%" height="100%">
                         <div class="banner_text">
                             <h2>This is Heaven</h2>

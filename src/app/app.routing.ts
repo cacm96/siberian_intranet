@@ -5,9 +5,7 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { RoleGuard } from './core/guards/role.guard';
 import { RedirectAuthGuard } from './core/guards/redirect-auth.guard';
 
-import { LoginComponent } from './components/views/public/auth/login/login.component';
-import { LoginWeitComponent } from './components/views/public/auth/login-weit/login-weit.component';
-import { LogoutComponent } from './components/views/public/auth/logout/logout.component';
+
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
@@ -144,18 +142,39 @@ import { SkillWorkerDeleteComponent } from './components/views/private/configura
 // Array de rutas
 const appRoutes: Routes = [
 
-	{path: '', redirectTo: 'login', pathMatch: 'full', canActivate: []},
-	{path: 'login', component: LoginComponent, canActivate: []},
-	{path: 'loginWeit', component: LoginWeitComponent, canActivate: []},
-	{path: 'logout', component: LogoutComponent},
+	{path: '', redirectTo: 'auth', pathMatch: 'full', canActivate: [],
+		children:
+		[
+			{path: 'auth', canActivate: [],
+				children:
+				[
+					{
+						path: '',
+		                loadChildren: './components/views/public/auth/auth.module#AuthModule',
+					}
+				]
+			},
+
+			
+
+			{path: 'dashboard', component: DashboardComponent, canActivate: [],
+				children:
+				[
+					{
+						path: '',
+		                loadChildren: './components/admin/admin.module#AdminModule',
+					}
+				]
+			},
+			
+		]
+	},
+
 
 	{path: 'app', component: HomeComponent, canActivate: [],
 		children:
 		[
-			{path: 'dashboardClient', component: IndexClienteComponent, canActivate: []},
-			{path: 'dashboardLender', component: IndexLenderComponent, canActivate: []},
-			{path: 'dashboardManager', component: IndexManagerComponent, canActivate: []},
-			{path: 'dashboardAdmin', component: IndexAdminComponent, canActivate: []},
+			
 	
 			{path: 'parameters', component: HomeComponent, canActivate: [],
 				children:
