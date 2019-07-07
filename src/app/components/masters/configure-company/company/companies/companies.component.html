@@ -1,0 +1,53 @@
+<div id="breadcrumbs-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m12 l12">
+        <h5 class="breadcrumbs-title text-center"> Empresa</h5>
+        <div>
+          <p>
+            <a [routerLink]="['/company/create']" class="btn waves-effect waves-light blue">Nuevo Registro</a>
+          </p>
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>
+<div class='table-wrapper'>
+  <div id="striped-table">
+
+    <div class="row">
+      <div class="col s12">
+        <table class="striped">
+          <thead>
+            <tr>
+              <th data-field="id">Id</th>
+              <th data-field="name">Nombre</th>
+              <th data-field="direccion">Direccion</th>
+              <th data-field="mission">Misión</th>
+              <th data-field="view">Visión</th>
+              <th data-field="values">Valores</th>
+              <th data-field="status">Estatus</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a [routerLink]="['/company/show','1']" class="btn waves-effect waves-light grey darken-4">Ver</a></td>
+              <td>Pitijoc</td>
+              <td>Calle 23 con carrera 19</td>
+              <td> Dejar como nuevo lo que quiera reparar o mantener </td>
+              <td>Ser la empresa lider en reparación y mantenemiento</td>
+              <td>Responsabilidad y Compromiso</td>
+              <td>Activo</td>
+              <td>
+                <a [routerLink]="['/company/edit','1']"class="btn btn-small waves-effect waves-light yellow darken-4">Editar</a>
+                <a [routerLink]="['/company/delete','1']"class="btn waves-effect waves-light red darken-4">Eliminar</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
