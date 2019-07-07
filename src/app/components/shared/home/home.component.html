@@ -1,1 +1,20 @@
-<router-outlet></router-outlet>
+<mat-sidenav-container class="sidenav_container">
+    <mat-sidenav #sidenav opened="true" mode="side" class="sidenav">
+        <mat-toolbar color="primary">
+            <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+        </mat-toolbar>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="white">
+        <mat-toolbar color="primary">
+            Link
+        </mat-toolbar>
+        <main class="main">
+            <router-outlet #main="outlet"></router-outlet>
+        </main>
+        <mat-divider></mat-divider>
+        <mat-toolbar color="primary">
+            <app-footer></app-footer>
+        </mat-toolbar>
+    </mat-sidenav-content>
+</mat-sidenav-container>

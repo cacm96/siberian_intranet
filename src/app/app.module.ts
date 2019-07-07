@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { routing,appRoutingProviders } from './app.routing';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { routing,appRoutingProviders } from './app.routing';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './core/ui/material.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -24,10 +24,7 @@ import { FooterComponent } from './components/shared/footer/footer.component';
 import { ErrorComponent } from './components/shared/error/error.component';
 import { BlockComponent } from './components/shared/block/block.component';
 
-import { IndexManagerComponent } from './components/views/private/dashboard/manager/index-manager/index-manager.component';
-import { IndexAdminComponent } from './components/views/private/dashboard/admin/index-admin/index-admin.component';
-import { IndexLenderComponent } from './components/views/private/dashboard/lender/index-lender/index-lender.component';
-import { IndexClienteComponent } from './components/views/private/dashboard/client/index-cliente/index-cliente.component';
+
 import { HomeComponent } from './components/shared/home/home.component';
 
 import { ParameterFatherComponent } from './components/views/private/parameters/parameter/parameter-father/parameter-father.component';
@@ -163,7 +160,6 @@ import { SkillWorkerDeleteComponent } from './components/views/private/configura
 
 @NgModule({
   declarations: [
-
     
     AppComponent,
 
@@ -180,11 +176,6 @@ import { SkillWorkerDeleteComponent } from './components/views/private/configura
 
     SearchUserPipe,
     SearchFunctionPipe,
-
-    IndexManagerComponent,
-    IndexAdminComponent,
-    IndexLenderComponent,
-    IndexClienteComponent,
     
     HomeComponent,
 

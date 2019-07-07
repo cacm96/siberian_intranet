@@ -5,17 +5,15 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { RoleGuard } from './core/guards/role.guard';
 import { RedirectAuthGuard } from './core/guards/redirect-auth.guard';
 
-
+import { LoginComponent } from './components/views/public/auth/login/login.component';
+import { LoginWeitComponent } from './components/views/public/auth/login-weit/login-weit.component';
+import { LogoutComponent } from './components/views/public/auth/logout/logout.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { ErrorComponent } from './components/shared/error/error.component';
 import { BlockComponent } from './components/shared/block/block.component';
 
-import { IndexManagerComponent } from './components/views/private/dashboard/manager/index-manager/index-manager.component';
-import { IndexAdminComponent } from './components/views/private/dashboard/admin/index-admin/index-admin.component';
-import { IndexLenderComponent } from './components/views/private/dashboard/lender/index-lender/index-lender.component';
-import { IndexClienteComponent } from './components/views/private/dashboard/client/index-cliente/index-cliente.component';
 
 import { HomeComponent } from './components/shared/home/home.component';
 
@@ -140,6 +138,37 @@ import { SkillWorkerDeleteComponent } from './components/views/private/configura
 
 
 // Array de rutas
+
+
+const routes: Routes =
+[
+	{path: '', redirectTo: 'login', pathMatch: 'full', canActivate: []},
+	{path: 'login', component: LoginComponent, canActivate: []},
+	{path: 'loginWeit', component: LoginWeitComponent, canActivate: []},
+	{path: 'logout', component: LogoutComponent},
+
+	{path: 'auth', canActivate: [], component: HomeComponent,
+		children:
+		[
+			{path: '', redirectTo: 'dashboard', pathMatch: 'full', canActivate: []},
+			{path: 'dashboard', canActivate: [],
+				children:
+				[
+					{
+						path: '',
+		                loadChildren: './components/views/private/dashboard/dashboard.module#DashboardModule',
+					}
+				]
+			},
+		]
+	},
+
+	{path: '**', component: ErrorComponent},
+    {path: 'block', component: BlockComponent},
+
+];
+
+/*
 const appRoutes: Routes = [
 
 	{path: '', redirectTo: 'auth', pathMatch: 'full', canActivate: [],
@@ -157,12 +186,12 @@ const appRoutes: Routes = [
 
 			
 
-			{path: 'dashboard', component: DashboardComponent, canActivate: [],
+			{path: 'dashboard', canActivate: [],
 				children:
 				[
 					{
 						path: '',
-		                loadChildren: './components/admin/admin.module#AdminModule',
+		                loadChildren: './components/views/private/dashboard/dashboard.module#DashboardModule',
 					}
 				]
 			},
@@ -368,17 +397,11 @@ const appRoutes: Routes = [
 		]
 	},
 
-
-	
-
-
-	
-
 	{path: 'block', component: BlockComponent},
 	{path: '**', component: ErrorComponent},
 
 ];
-
+*/
 // Exportar el modulo del router
 export const appRoutingProviders: any[] = [];
-export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes, {scrollPositionRestoration: 'enabled' });
+export const routing: ModuleWithProviders = RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled' });
