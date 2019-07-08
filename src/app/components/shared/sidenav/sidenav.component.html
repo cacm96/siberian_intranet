@@ -1,0 +1,17 @@
+<mat-nav-list>
+	<mat-nav-list>
+		<mat-card-header class="side_nav_header">
+			<mat-card-title>Anderson Díaz</mat-card-title>
+			<mat-card-subtitle>Admin</mat-card-subtitle>
+			<div mat-card-avatar class="side_nav_avatar"></div>
+		</mat-card-header>
+	</mat-nav-list>
+
+	
+	<a mat-list-item [routerLink]="['/auth/dashboard']" ><mat-icon matListIcon class="side_nav_icon">folder</mat-icon> <h3 matLine>Dashboard </h3></a>
+	<a mat-list-item [routerLink]="['/auth/masters']" ><mat-icon matListIcon class="side_nav_icon">folder</mat-icon> <h3 matLine>Datos Básicos</h3></a>
+	<a mat-list-item [routerLink]="['/auth/parameters']" ><mat-icon matListIcon class="side_nav_icon">folder</mat-icon> <h3 matLine>Parametros</h3></a>
+	<a mat-list-item [routerLink]="['/auth/configurations']" ><mat-icon matListIcon class="side_nav_icon">folder</mat-icon> <h3 matLine>Configuración</h3></a>
+	<a mat-list-item [routerLink]="['/auth/transactions']" ><mat-icon matListIcon class="side_nav_icon">folder</mat-icon> <h3 matLine>Transacciones</h3></a>
+
+</mat-nav-list>
