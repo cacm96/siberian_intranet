@@ -7,9 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+	public isToggle=true;
+	public isContent:boolean;
+	public contentMargin:any;
 
-  ngOnInit() {
-  }
+	constructor() { }
+
+	ngOnInit() {
+	}
+
+	shoot(){
+		console.log(this.isToggle);
+		this.isToggle = !this.isToggle;
+		if(!this.isToggle){
+			this.contentMargin=75;
+			this.isContent=true;
+		}else{
+			this.contentMargin=250;
+			this.isContent=false;
+		}
+	}
 
 }
