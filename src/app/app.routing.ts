@@ -152,6 +152,21 @@ import { CalificationEditComponent } from './components/masters/configure-califi
 import { CalificationShowComponent } from './components/masters/configure-calification/calification-show/calification-show.component';
 import { CalificationDeleteComponent } from './components/masters/configure-calification/calification-delete/calification-delete.component';
 
+import { PaymenttypeFatherComponent } from './components/masters/configure-paymentType/paymenttype-father/paymenttype-father.component';
+import { PaymenttypesComponent } from './components/masters/configure-paymentType/paymenttypes/paymenttypes.component';
+import { PaymenttypeCreateComponent } from './components/masters/configure-paymentType/paymenttype-create/paymenttype-create.component';
+import { PaymenttypeEditComponent } from './components/masters/configure-paymentType/paymenttype-edit/paymenttype-edit.component';
+import { PaymenttypeShowComponent } from './components/masters/configure-paymentType/paymenttype-show/paymenttype-show.component';
+import { PaymenttypeDeleteComponent } from './components/masters/configure-paymentType/paymenttype-delete/paymenttype-delete.component';
+
+import { PromotiontypeFatherComponent } from './components/masters/configure-promotiontype/promotiontype-father/promotiontype-father.component';
+import { PromotiontypesComponent } from './components/masters/configure-promotiontype/promotiontypes/promotiontypes.component';
+import { PromotiontypeCreateComponent } from './components/masters/configure-promotiontype/promotiontype-create/promotiontype-create.component';
+import { PromotiontypeEditComponent } from './components/masters/configure-promotiontype/promotiontype-edit/promotiontype-edit.component';
+import { PromotiontypeDeleteComponent } from './components/masters/configure-promotiontype/promotiontype-delete/promotiontype-delete.component';
+import { PromotiontypeShowComponent } from './components/masters/configure-promotiontype/promotiontype-show/promotiontype-show.component';
+
+
 // Array de rutas
 const appRoutes: Routes = [
 
@@ -343,7 +358,7 @@ const appRoutes: Routes = [
 		]
 	},
 	
-	{path: 'paymentform', component: CalificationFatherComponent, canActivate: [AuthGuard],
+	{path: 'paymentform', component: PaymentformFatherComponent, canActivate: [AuthGuard],
 		children:
 		[
 			{path: '', component: PaymentformsComponent},
@@ -365,6 +380,27 @@ const appRoutes: Routes = [
 		]
 	},
 
+	{path: 'paymenttype', component: PaymenttypeFatherComponent, canActivate: [AuthGuard],
+		children:
+		[
+			{path: '', component: PaymentformsComponent},
+			{path: 'create', component: PaymentformCreateComponent},
+			{path: 'edit/:id', component: PaymentformEditComponent},
+			{path: 'show/:id', component: PaymentformShowComponent},
+			{path: 'delete/:id', component: PaymentformDeleteComponent},
+		]
+	},
+
+	{path: 'promotiontype', component: PromotiontypeFatherComponent, canActivate: [AuthGuard],
+		children:
+		[
+			{path: '', component: PromotiontypesComponent},
+			{path: 'create', component: PromotiontypeCreateComponent},
+			{path: 'edit/:id', component: PromotiontypeEditComponent},
+			{path: 'show/:id', component: PromotiontypeShowComponent},
+			{path: 'delete/:id', component: PromotiontypeDeleteComponent},
+		]
+	},
 
 	
 

@@ -163,8 +163,22 @@ import { CalificationsComponent } from './components/masters/configure-calificat
 import { CalificationCreateComponent } from './components/masters/configure-calification/calification-create/calification-create.component';
 import { CalificationEditComponent } from './components/masters/configure-calification/calification-edit/calification-edit.component';
 import { CalificationShowComponent } from './components/masters/configure-calification/calification-show/calification-show.component';
-import { CalificationEdiComponent } from './components/masters/configure-calification/calification-edi/calification-edi.component';
 import { CalificationDeleteComponent } from './components/masters/configure-calification/calification-delete/calification-delete.component';
+
+import { PaymenttypeFatherComponent } from './components/masters/configure-paymentType/paymenttype-father/paymenttype-father.component';
+import { PaymenttypeEditComponent } from './components/masters/configure-paymentType/paymenttype-edit/paymenttype-edit.component';
+import { PaymenttypeShowComponent } from './components/masters/configure-paymentType/paymenttype-show/paymenttype-show.component';
+import { PaymenttypeDeleteComponent } from './components/masters/configure-paymentType/paymenttype-delete/paymenttype-delete.component';
+import { PaymenttypeCreateComponent } from './components/masters/configure-paymentType/paymenttype-create/paymenttype-create.component';
+import { PaymenttypesComponent } from './components/masters/configure-paymentType/paymenttypes/paymenttypes.component';
+
+
+import { PromotiontypeFatherComponent } from './components/masters/configure-promotiontype/promotiontype-father/promotiontype-father.component';
+import { PromotiontypesComponent } from './components/masters/configure-promotiontype/promotiontypes/promotiontypes.component';
+import { PromotiontypeCreateComponent } from './components/masters/configure-promotiontype/promotiontype-create/promotiontype-create.component';
+import { PromotiontypeEditComponent } from './components/masters/configure-promotiontype/promotiontype-edit/promotiontype-edit.component';
+import { PromotiontypeDeleteComponent } from './components/masters/configure-promotiontype/promotiontype-delete/promotiontype-delete.component';
+import { PromotiontypeShowComponent } from './components/masters/configure-promotiontype/promotiontype-show/promotiontype-show.component';
 
 
 @NgModule({
@@ -303,13 +317,27 @@ import { CalificationDeleteComponent } from './components/masters/configure-cali
     PromotionEditComponent,
     PromotionShowComponent,
     PromotionDeleteComponent,
+
     CalificationFatherComponent,
     CalificationsComponent,
     CalificationCreateComponent,
     CalificationEditComponent,
     CalificationShowComponent,
-    CalificationEdiComponent,
     CalificationDeleteComponent,
+
+    PaymenttypeFatherComponent,
+    PaymenttypeCreateComponent,
+    PaymenttypeEditComponent,
+    PaymenttypeShowComponent,
+    PaymenttypeDeleteComponent,
+    PaymenttypesComponent,
+
+    PromotiontypeFatherComponent,
+    PromotiontypesComponent,
+    PromotiontypeCreateComponent,
+    PromotiontypeEditComponent,
+    PromotiontypeDeleteComponent,
+    PromotiontypeShowComponent,
 
   ],
   imports: [
