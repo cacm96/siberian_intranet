@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../../../core/ui/material.module';
 import { ConfigurationRoutingModule } from './configuration-routing.module';
+import { ConfigurationComponent } from './configuration.component';
 
 import { ParameterClientFatherComponent } from './parameter-client/parameter-client-father/parameter-client-father.component';
 import { ParameterClientsComponent } from './parameter-client/parameter-clients/parameter-clients.component';
@@ -38,7 +39,7 @@ import { SkillWorkerEditComponent } from './skill-worker/skill-worker-edit/skill
 import { SkillWorkerShowComponent } from './skill-worker/skill-worker-show/skill-worker-show.component';
 import { SkillWorkerDeleteComponent } from './skill-worker/skill-worker-delete/skill-worker-delete.component';
 
-import { ConfigurationComponent } from './configuration.component';
+import { CatalogueVarietyDetailComponent } from './catalogue-variety-detail/catalogue-variety-detail.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,8 @@ import { ConfigurationComponent } from './configuration.component';
     SkillWorkerEditComponent,
     SkillWorkerShowComponent,
     SkillWorkerDeleteComponent,
+    
+    CatalogueVarietyDetailComponent,
   ],
   imports:
   [
