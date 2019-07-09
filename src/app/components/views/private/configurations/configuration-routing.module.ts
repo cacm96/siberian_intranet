@@ -7,6 +7,15 @@ import { ConfigurationComponent } from './configuration.component';
 const routes: Routes = [
 
 	{path: '', component: ConfigurationComponent, canActivate: []},
+	{path: 'catalogue', canActivate: [],
+		children:
+		[
+			{
+				path: '',
+                loadChildren: './catalogue/catalogue.module#CatalogueModule',
+			}
+		]
+	},
 	/*{path: 'catalogue-variety-detail', canActivate: [],
 		children:
 		[
