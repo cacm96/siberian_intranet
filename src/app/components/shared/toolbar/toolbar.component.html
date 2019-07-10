@@ -1,6 +1,7 @@
 <mat-toolbar color="primary" class="">
     <span>Siberian</span>
     <span class="example-spacer"></span>
-    <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
-    <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">delete</mat-icon>
+    <a [routerLink]="['dashboard']" class="link_toolbar">Ayuda</a>
+    <a [routerLink]="['dashboard']" class="link_toolbar">Perfil</a>
+    <a [routerLink]="['/']" class="link_toolbar">Cerrar Sesión</a>
 </mat-toolbar>
