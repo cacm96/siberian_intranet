@@ -1,6 +1,17 @@
-<p>
-  request-show works!
-</p>
-<mat-nav-list>
-	<a mat-list-item [routerLink]="['/auth/transactions/request']">Regresar </a>
-</mat-nav-list>
+
+<div class="main_catalogue">
+	<h2 class="text-center">Solicitud</h2>
+	<button mat-raised-button color="primary" [routerLink]="['/auth/transactions/request']">Volver</button>
+	<hr>
+	<mat-card>
+		<mat-list>
+			<mat-list-item> <b>Codigo: 001</b> </mat-list-item>
+		 	<mat-list-item> <b>Cliente: Dayana Suarez</b> </mat-list-item>
+		 	<mat-list-item> <b>Catálogo Detalle Variedad: Catálogo 020 </b></mat-list-item>
+		 	<mat-list-item> <b>Locación: Barquisimeto</b> </mat-list-item>
+			<mat-list-item> <b>Descripción: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias voluptas, dignissimos saepe laudantium deserunt nulla quis harum. Voluptatum illum facere temporibus magnam pariatur, rerum cumque! Eos recusandae sunt, esse asperiores. </b></mat-list-item>
+			<mat-list-item> <b>Estatus: </b> <span class="badge badge-danger">Pendiente</span> </mat-list-item>
+		</mat-list>
+	</mat-card>
+
+</div>
