@@ -1,0 +1,37 @@
+<div class="main_request">
+	<h2 class="text-center">Solicitudes</h2>
+	<button mat-raised-button color="primary" class="mr-3" [routerLink]="['/auth/transactions/request/create']">Nueva Solicitud</button>
+	<button mat-raised-button color="primary" [routerLink]="['/auth/transactions/']">Volver</button>
+	<hr>
+	
+	<div class="table-responsive">
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Ver</th>
+					<th scope="col">Cliente</th>
+					<th scope="col">Catalogo</th>
+					<th scope="col">Locación</th>
+					<th scope="col">Descripción</th>
+					<th scope="col">Estatus</th>
+					<th scope="col">Editar</th>
+					<th scope="col">Eliminar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr >
+					<th scope="row">
+						<button mat-raised-button color="primary" [routerLink]="['/auth/transactions/request/show/1']">Ver</button>
+					</th>
+					<td>Anderson Díaz</td>
+					<td>Catálogo 1</td>
+					<td>Barquisimeto</td>
+					<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia repellat nobis ex amet quo fuga possimus soluta iure labore.</td>
+					<td><span class="badge badge-danger">Pendiente</span></td>
+					<td><button mat-raised-button color="primary" [routerLink]="['/auth/transactions/request/edit/1']">Editar</button></td>
+					<td><button mat-raised-button color="primary" [routerLink]="['/auth/transactions/request']">Eliminar</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

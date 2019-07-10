@@ -1,0 +1,61 @@
+<div class="main_catalogue">
+		<h2 class="text-center"> Catálogo Detalle Variedad </h2>
+		<button mat-raised-button color="primary" class="mr-3" [routerLink]="['/auth/configurations/catalogue-variety-detail/create']">Nuevo Catálogo Detalle Variedad</button>
+		<button mat-raised-button color="primary" [routerLink]="['/auth/configurations/']">Volver</button>
+		<hr>
+		
+		<div class="table-responsive">
+			<table class="table">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">Ver</th>
+						<th scope="col">Código</th>
+						<th scope="col">Catálogo</th>
+						<th scope="col">Detalle Variedad</th>
+						<th scope="col">Estatus</th>
+						<th scope="col">Precio de revisón</th>
+						<th scope="col">Editar</th>
+						<th scope="col">Eliminar</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr >
+						<th scope="row">
+							<button mat-raised-button color="primary" [routerLink]="['/auth/configurations/catalogue-variety-detail/show/1']">Ver</button>
+						</th>
+						<td>1</td>
+						<td>Catálogo 1</td>
+						<td>Modelo 2</td>
+						<td>Activo</td>
+						<td>100.000</td>
+						<td><button mat-raised-button color="primary" [routerLink]="['/auth/configurations/catalogue-variety-detail/edit/1']">Editar</button></td>
+						<td><button mat-raised-button color="primary" [routerLink]="['/auth/configurations/catalogue']">Eliminar</button></td>
+					</tr>
+					<tr >
+						<th scope="row">
+							<button mat-raised-button color="primary" [routerLink]="['/auth/configurations/catalogue-variety-detail/show/1']">Ver</button>
+						</th>
+						<td>2</td>
+						<td>Catálogo 2</td>
+						<td>Modelo 6</td>
+						<td>Activo</td>
+						<td>150.000</td>
+						<td><button mat-raised-button color="primary" [routerLink]="['/auth/configurations/catalogue-variety-detail/edit/1']">Editar</button></td>
+						<td><button mat-raised-button color="primary" [routerLink]="['/auth/configurations/catalogue']">Eliminar</button></td>
+					</tr>
+					<tr >
+						<th scope="row">
+							<button mat-raised-button color="primary" [routerLink]="['/auth/configurations/catalogue-variety-detail/show/1']">Ver</button>
+						</th>
+						<td>3</td>
+						<td>Catálogo 3</td>
+						<td>Modelo 10</td>
+						<td>Activo</td>
+						<td>200.000</td>
+						<td><button mat-raised-button color="primary" [routerLink]="['/auth/configurations/catalogue-variety-detail/edit/1']">Editar</button></td>
+						<td><button mat-raised-button color="primary" [routerLink]="['/auth/configurations/catalogue']">Eliminar</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
