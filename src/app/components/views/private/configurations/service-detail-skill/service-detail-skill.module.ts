@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MaterialModule } from '../../../../../core/ui/material.module';
+import { ServiceDetailSkillRoutingModule } from './service-detail-skill-routing.module';
 import { ServiceDetailSkillComponent } from './service-detail-skill.component';
 import { ServiceDetailSkillsComponent } from './service-detail-skills/service-detail-skills.component';
 import { ServiceDetailSkillCreateComponent } from './service-detail-skill-create/service-detail-skill-create.component';
@@ -8,9 +10,17 @@ import { ServiceDetailSkillShowComponent } from './service-detail-skill-show/ser
 import { ServiceDetailSkillDeleteComponent } from './service-detail-skill-delete/service-detail-skill-delete.component';
 
 @NgModule({
-  declarations: [ServiceDetailSkillComponent, ServiceDetailSkillsComponent, ServiceDetailSkillCreateComponent, ServiceDetailSkillEditComponent, ServiceDetailSkillShowComponent, ServiceDetailSkillDeleteComponent],
+  declarations: [
+	ServiceDetailSkillComponent,
+	ServiceDetailSkillsComponent,
+	ServiceDetailSkillCreateComponent,
+	ServiceDetailSkillEditComponent,
+	ServiceDetailSkillShowComponent,
+	ServiceDetailSkillDeleteComponent
+  ],
   imports: [
-    CommonModule
+    MaterialModule,
+    ServiceDetailSkillRoutingModule
   ]
 })
 export class ServiceDetailSkillModule { }

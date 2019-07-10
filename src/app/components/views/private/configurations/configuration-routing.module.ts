@@ -16,24 +16,15 @@ const routes: Routes = [
 			}
 		]
 	},
-	/*{path: 'catalogue-variety-detail', canActivate: [],
+	{path: 'catalogue-variety-detail', canActivate: [],
 		children:
 		[
 			{
 				path: '',
-                loadChildren: './components/views/private/catalogue-variety-detail/catalogue-variety-detail.module#CatalogueVarietyDetailModule',
+                loadChildren: './catalogue-variety-detail/catalogue-variety-detail.module#CatalogueVarietyDetailModule',
 			}
 		]
 	},
-	{path: 'function-role', canActivate: [],
-		children:
-		[
-			{
-				path: '',
-                loadChildren: './components/views/private/function-role/function-role.module#FunctionRoleModule',
-			}
-		]
-	},*/
 	{path: 'location', canActivate: [],
 		children:
 		[
@@ -43,13 +34,12 @@ const routes: Routes = [
 			}
 		]
 	},
-	/*
 	{path: 'parameter-client', canActivate: [],
 		children:
 		[
 			{
 				path: '',
-                loadChildren: './components/views/private/parameter-client/parameter-client.module#ParameterClientModule',
+                loadChildren: './parameter-client/parameter-client.module#ParameterClientModule',
 			}
 		]
 	},
@@ -58,7 +48,34 @@ const routes: Routes = [
 		[
 			{
 				path: '',
-                loadChildren: './components/views/private/phone/phone.module#PhoneModule',
+                loadChildren: './phone/phone.module#PhoneModule',
+			}
+		]
+	},
+	{path: 'role-function', canActivate: [],
+		children:
+		[
+			{
+				path: '',
+                loadChildren: './role-function/role-function.module#RoleFunctionModule',
+			}
+		]
+	},
+	{path: 'role-user', canActivate: [],
+		children:
+		[
+			{
+				path: '',
+                loadChildren: './role-user/role-user.module#RoleUserModule',
+			}
+		]
+	},
+	{path: 'service-detail', canActivate: [],
+		children:
+		[
+			{
+				path: '',
+                loadChildren: './service-detail/service-detail.module#ServiceDetailModule',
 			}
 		]
 	},
@@ -67,7 +84,7 @@ const routes: Routes = [
 		[
 			{
 				path: '',
-                loadChildren: './components/views/private/service-detail-activity/service-detail-activity.module#ServiceDetailActivityModule',
+                loadChildren: './service-detail-activity/service-detail-activity.module#ServiceDetailActivityModule',
 			}
 		]
 	},
@@ -76,7 +93,7 @@ const routes: Routes = [
 		[
 			{
 				path: '',
-                loadChildren: './components/views/private/service-detail-catalogue-variety-detail/service-detail-catalogue-variety-detail.module#ServiceDetailCatalogueVarietyDetailModule',
+                loadChildren: './service-detail-catalogue-variety-detail/service-detail-catalogue-variety-detail.module#ServiceDetailCatalogueVarietyDetailModule',
 			}
 		]
 	},
@@ -85,7 +102,7 @@ const routes: Routes = [
 		[
 			{
 				path: '',
-                loadChildren: './components/views/private/service-detail-politic/service-detail-politic.module#ServiceDetailPoliticModule',
+                loadChildren: './service-detail-politic/service-detail-politic.module#ServiceDetailPoliticModule',
 			}
 		]
 	},
@@ -94,16 +111,16 @@ const routes: Routes = [
 		[
 			{
 				path: '',
-                loadChildren: './components/views/private/service-detail-resource/service-detail-resource.module#ServiceDetailResourceModule',
+                loadChildren: './service-detail-resource/service-detail-resource.module#ServiceDetailResourceModule',
 			}
 		]
 	},
-	{path: 'skill-service-detail', canActivate: [],
+	{path: 'service-detail-skill', canActivate: [],
 		children:
 		[
 			{
 				path: '',
-                loadChildren: './components/views/private/skill-service-detail/skill-service-detail.module#SkillServiceDetailModule',
+                loadChildren: './service-detail-skill/service-detail-skill.module#ServiceDetailSkillModule',
 			}
 		]
 	},
@@ -112,19 +129,10 @@ const routes: Routes = [
 		[
 			{
 				path: '',
-                loadChildren: './components/views/private/skill-worker/skill-worker.module#SkillWorkerModule',
+                loadChildren: './skill-worker/skill-worker.module#SkillWorkerModule',
 			}
 		]
 	},
-	{path: 'user-role', canActivate: [],
-		children:
-		[
-			{
-				path: '',
-                loadChildren: './components/views/private/user-role/user-role.module#UserRoleModule',
-			}
-		]
-	},*/
 
 ];
 

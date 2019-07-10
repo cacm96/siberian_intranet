@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MaterialModule } from '../../../../../core/ui/material.module';
+import { CatalogueRoutingModule } from './catalogue-routing.module';
 import { CatalogueComponent } from './catalogue.component';
 import { CatalogsComponent } from './catalogs/catalogs.component';
 import { CatalogueCreateComponent } from './catalogue-create/catalogue-create.component';
@@ -9,14 +11,16 @@ import { CatalogueDeleteComponent } from './catalogue-delete/catalogue-delete.co
 
 @NgModule({
   declarations: [
-  	CatalogueComponent,
-  	CatalogsComponent,
-  	CatalogueCreateComponent,
-  	CatalogueEditComponent,
-  	CatalogueShowComponent,
-  	CatalogueDeleteComponent],
+    CatalogueComponent,
+    CatalogsComponent,
+    CatalogueCreateComponent,
+    CatalogueEditComponent,
+    CatalogueShowComponent,
+    CatalogueDeleteComponent
+  ],
   imports: [
-    CommonModule
+    MaterialModule,
+    CatalogueRoutingModule
   ]
 })
 export class CatalogueModule { }
