@@ -2,6 +2,9 @@ html,body{
 	padding:0;
 	margin:0;
 }
+a{
+  text-decoration: none !important;
+}
 .main{
 	min-height:100vh;
   padding: 2rem;
@@ -65,4 +68,12 @@ table{
 
 .example-container > * {
   width: 100%;
+}
+
+.link_toolbar{
+  color:#ffffff;
+  margin-right: 10px;
+}
+.link_toolbar:hover{
+  color: #000000;
 }
