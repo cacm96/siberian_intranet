@@ -27,7 +27,7 @@ table{
 
 /*Color de letra general y fondo en todo el body cuando no esta logeado*/
 .body,body{
-  background: linear-gradient(to bottom, #f2f2f2f2, #0B173B);
+  background: #f2f2f2f2;
 }
 nav,.indigo.light-2,.side-nav,footer.page-footer{
 	background-color: #f2f2f2f2 !important;
