@@ -121,6 +121,21 @@ span.badge.new{
   background-color: #0B173B !important;
 }
 
-.mat-nav-list a.active {
-    background-color: rgb(24,24,51); 
+/*Para eliminar el border al rededor del boton hamburguesa*/
+:focus {
+    outline: none !important;
+}
+
+/*Agrega el fondo del hover, focus y active en el sidenav y toolbar*/
+.mat-nav-list .mat-list-item-content:hover, .mat-nav-list .mat-list-item:focus,.mat-nav-list .mat-list-item.active {
+  background-color: rgb(24,24,51) !important;
+  color: #ffffff
+}
+
+.toolbar a{
+  color: #121212 !important;
+}
+
+.toolbar a:hover,.toolbar a.active{
+  color:  #283593 !important;
 }
