@@ -46,7 +46,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              {
+                "input": "src/theme/theme.scss"
+              },
+              "src/styles.scss",
             ],
             "scripts": [],
             "es5BrowserSupport": true
