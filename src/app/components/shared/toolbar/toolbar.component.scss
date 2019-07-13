@@ -1,3 +1,6 @@
+/*Junior*/
+/*Dando estilo al toolbar
+10/07/2019*/
 .example-icon {
   padding: 0 14px;
 }
@@ -5,3 +8,9 @@
 .example-spacer {
   flex: 1 1 auto;
 }
+
+mat-toolbar {
+  background: #f2f2f2f2 !important;
+  color: #121212 !important;
+}
+
