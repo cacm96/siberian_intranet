@@ -1,10 +1,81 @@
-<p>
-  clients works!
-</p>
-<mat-nav-list>
-	<a mat-list-item [routerLink]="['/auth/masters/']">Regresar </a>
-	<a mat-list-item [routerLink]="['/auth/masters/client/create']">Create </a>
-	<a mat-list-item [routerLink]="['/auth/masters/client/edit/1']">Edit </a>
-	<a mat-list-item [routerLink]="['/auth/masters/client/show/1']">Show </a>
-	<a mat-list-item [routerLink]="['/auth/masters/client/delete/1']">Delete </a>
-</mat-nav-list>
+<div class="main_catalogue">
+	<h2 class="text-center">Cliente</h2>
+	<button mat-raised-button color="primary" class="mr-3" [routerLink]="['/auth/masters/client/create']">Nuevo Cliente</button>
+	<button mat-raised-button color="primary" [routerLink]="['/auth/masters/']">Volver</button>
+	<hr>
+	
+	<div class="table-responsive">
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Ver</th>
+					<th scope="col">Código</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Apellido</th>
+					<th scope="col">Dni</th>
+					<th scope="col">Fecha de Nacimiento</th>
+					<th scope="col">Nota</th>
+					<th scope="col">Estatus</th>
+					<th scope="col">Género</th>
+					<th scope="col">Tipo de Dni</th>
+					<th scope="col">Usuario</th>
+					<th scope="col">Editar</th>
+					<th scope="col">Eliminar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr >
+					<th scope="row">
+						<button mat-raised-button color="primary" [routerLink]="['/auth/masters/client/show/1']">Ver</button>
+					</th>
+					<td>1</td>
+					<td>Andreina</td>
+					<td>López</td>
+					<td>21.225.225</td>
+					<td>01/02/1992</td>
+					<td>Buen clinte</td>
+					<td>Activo</td>
+					<td>Femenino</td>
+					<td>Cédula de identidad</td>
+					<td>andre@gmail.com</td>
+					<td><button mat-raised-button color="accent" [routerLink]="['/auth/masters/client/edit/1']">Editar</button></td>
+					<td><button mat-raised-button color="warn" [routerLink]="['/auth/masters/client']">Eliminar</button></td>
+				</tr>
+				<tr >
+					<th scope="row">
+						<button mat-raised-button color="primary" [routerLink]="['/auth/masters/client/show/1']">Ver</button>
+					</th>
+					<td>2</td>
+					<td>José</td>
+					<td>Parra</td>
+					<td>15.333.555</td>
+					<td>25/12/1985</td>
+					<td>Buen clinte</td>
+					<td>Activo</td>
+					<td>Masculino</td>
+					<td>Cédula de identidad</td>
+					<td>jos@gmail.com</td>
+					<td><button mat-raised-button color="accent" [routerLink]="['/auth/masters/client/edit/1']">Editar</button></td>
+					<td><button mat-raised-button color="warn" [routerLink]="['/auth/masters/client']">Eliminar</button></td>
+				</tr>
+				<tr >
+					<th scope="row">
+						<button mat-raised-button color="primary" [routerLink]="['/auth/masters/client/show/1']">Ver</button>
+					</th>
+					<td>3</td>
+					<td>Yasmin</td>
+					<td>Nieto</td>
+					<td>18.333.880</td>
+					<td>02/08/1988/td>
+					<td>Buen clinte</td>
+					<td>Activo</td>
+					<td>Femenino</td>
+					<td>Cédula de identidad</td>
+					<td>Yasm@gmail.com</td>
+					<td><button mat-raised-button color="accent" [routerLink]="['/auth/masters/client/edit/1']">Editar</button></td>
+					<td><button mat-raised-button color="warn" [routerLink]="['/auth/masters/client']">Eliminar</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

@@ -1,10 +1,61 @@
-<p>
-  equip-infrass works!
-</p>
-<mat-nav-list>
-	<a mat-list-item [routerLink]="['/auth/masters/']">Regresar </a>
-	<a mat-list-item [routerLink]="['/auth/masters/equip-infras/create']">Create </a>
-	<a mat-list-item [routerLink]="['/auth/masters/equip-infras/edit/1']">Edit </a>
-	<a mat-list-item [routerLink]="['/auth/masters/equip-infras/show/1']">Show </a>
-	<a mat-list-item [routerLink]="['/auth/masters/equip-infras/delete/1']">Delete </a>
-</mat-nav-list>
+<div class="main_catalogue">
+		<h2 class="text-center">Equipo/Infraestructura</h2>
+		<button mat-raised-button color="primary" class="mr-3" [routerLink]="['/auth/masters/equip-infras/create']">Nuevo Equipo/Infraestructura</button>
+		<button mat-raised-button color="primary" [routerLink]="['/auth/masters/']">Volver</button>
+		<hr>
+		
+		<div class="table-responsive">
+			<table class="table">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">Ver</th>
+						<th scope="col">Código</th>
+						<th scope="col">Nombre</th>
+						<th scope="col">Descripción</th>
+						<th scope="col">Imagen</th>
+						<th scope="col">Estatus</th>
+						<th scope="col">Editar</th>
+					    <th scope="col">Eliminar</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr >
+						<th scope="row">
+							<button mat-raised-button color="primary" [routerLink]="['/auth/masters/equip-infras/show/1']">Ver</button>
+						</th>
+						<td>1</td>
+						<td>Pared</td>
+						<td>Pared de hogares y oficinas</td>
+						<td>Imagen</td>
+						<td>Activo</td>
+						<td><button mat-raised-button color="accent" [routerLink]="['/auth/masters/equip-infras/edit/1']">Editar</button></td>
+						<td><button mat-raised-button color="warn" [routerLink]="['/auth/masters/equip-infras']">Eliminar</button></td>
+					</tr>
+					<tr >
+						<th scope="row">
+							<button mat-raised-button color="primary" [routerLink]="['/auth/masters/equip-infras/show/1']">Ver</button>
+						</th>
+						<td>2</td>
+						<td>Aire Acondicionado</td>
+						<td>En hogares y oficinas</td>
+						<td>Imagen</td>
+						<td>Activo</td>
+						<td><button mat-raised-button color="accent" [routerLink]="['/auth/masters/equip-infras/edit/1']">Editar</button></td>
+						<td><button mat-raised-button color="warn" [routerLink]="['/auth/masters/equip-infras']">Eliminar</button></td>
+					</tr>
+					<tr >
+						<th scope="row">
+							<button mat-raised-button color="primary" [routerLink]="['/auth/masters/equip-infras/show/1']">Ver</button>
+						</th>
+						<td>3</td>
+						<td>Piso</td>
+						<td>Piso de en los hogares y oficinas</td>
+						<td>Imagen</td>
+						<td>Activo</td>
+						<td><button mat-raised-button color="accent" [routerLink]="['/auth/masters/equip-infras/edit/1']">Editar</button></td>
+						<td><button mat-raised-button color="warn" [routerLink]="['/auth/masters/equip-infras']">Eliminar</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>

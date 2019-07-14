@@ -1,6 +1,14 @@
-<p>
-  category-show works!
-</p>
-<mat-nav-list>
-	<a mat-list-item [routerLink]="['/auth/masters/category']">Regresar </a>
-</mat-nav-list>
+<div class="main_catalogue">
+    <h2 class="text-center">Categoría</h2>
+    <button mat-raised-button color="primary" [routerLink]="['/auth/masters/category']">Volver</button>
+    <hr>
+    <mat-card>
+      <mat-list>
+        <mat-list-item> <b>Código: </b> </mat-list-item>
+        <mat-list-item> <b>Nombre: </b> </mat-list-item>
+        <mat-list-item> <b>Descripción: </b></mat-list-item>
+        <mat-list-item> <b>Estatus: </b></mat-list-item>
+      </mat-list>
+    </mat-card>
+  
+  </div>
