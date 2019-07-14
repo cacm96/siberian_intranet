@@ -1,6 +1,25 @@
-<p>
-  sub-category-create works!
-</p>
-<mat-nav-list>
-	<a mat-list-item [routerLink]="['/auth/masters/sub-category']">Regresar </a>
-</mat-nav-list>
+<div class="main_catalogue">
+    <h2 class="text-center">Nuevo Subcategoría</h2>
+    <button mat-raised-button color="primary" [routerLink]="['/auth/masters/sub-category']">Volver</button>
+    <hr>
+  
+    <div class="example-container">
+    	  <mat-form-field>
+       		<mat-select placeholder="Categoría">
+       			<mat-option value="option">Línea Blanca</mat-option>
+            <mat-option value="option">Electrodomésticos</mat-option>
+      		</mat-select>
+  		  </mat-form-field>
+
+      	<mat-form-field>
+        	<input matInput placeholder="Nombre">
+      	</mat-form-field>
+      
+      	<mat-form-field>
+          	<textarea matInput placeholder="Descripción"></textarea>
+       	</mat-form-field>
+  
+    </div>
+
+    <button mat-raised-button color="primary" [routerLink]="['/auth/masters/category/create']">Registrar</button>
+</div>

@@ -1,10 +1,81 @@
-<p>
-  workers works!
-</p>
-<mat-nav-list>
-	<a mat-list-item [routerLink]="['/auth/masters/']">Regresar </a>
-	<a mat-list-item [routerLink]="['/auth/masters/worker/create']">Create </a>
-	<a mat-list-item [routerLink]="['/auth/masters/worker/edit/1']">Edit </a>
-	<a mat-list-item [routerLink]="['/auth/masters/worker/show/1']">Show </a>
-	<a mat-list-item [routerLink]="['/auth/masters/worker/delete/1']">Delete </a>
-</mat-nav-list>
+<div class="main_catalogue">
+	<h2 class="text-center">Empleado</h2>
+	<button mat-raised-button color="primary" class="mr-3" [routerLink]="['/auth/masters/worker/create']">Nuevo Empleado</button>
+	<button mat-raised-button color="primary" [routerLink]="['/auth/masters/']">Volver</button>
+	<hr>
+	
+	<div class="table-responsive">
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Ver</th>
+					<th scope="col">Código</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Apellido</th>
+					<th scope="col">Dni</th>
+					<th scope="col">Fecha de Nacimiento</th>
+					<th scope="col">Nota</th>
+					<th scope="col">Estatus</th>
+					<th scope="col">Género</th>
+					<th scope="col">Tipo de Dni</th>
+					<th scope="col">Usuario</th>
+					<th scope="col">Editar</th>
+					<th scope="col">Eliminar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr >
+					<th scope="row">
+						<button mat-raised-button color="primary" [routerLink]="['/auth/masters/worker/show/1']">Ver</button>
+					</th>
+					<td>1</td>
+					<td>Andrea</td>
+					<td>López</td>
+					<td>22.222.222</td>
+					<td>01/02/1995</td>
+					<td>Buen empleado</td>
+					<td>Activo</td>
+					<td>Femenino</td>
+					<td>Cédula de identidad</td>
+					<td>andrea@gmail.com</td>
+					<td><button mat-raised-button color="accent" [routerLink]="['/auth/masters/worker/edit/1']">Editar</button></td>
+					<td><button mat-raised-button color="warn" [routerLink]="['/auth/masters/worker']">Eliminar</button></td>
+				</tr>
+				<tr >
+					<th scope="row">
+						<button mat-raised-button color="primary" [routerLink]="['/auth/masters/worker/show/1']">Ver</button>
+					</th>
+					<td>2</td>
+					<td>Joan</td>
+					<td>Pérez</td>
+					<td>16.123.555</td>
+					<td>02/10/1985</td>
+					<td>Buen empleado</td>
+					<td>Activo</td>
+					<td>Masculino</td>
+					<td>Cédula de identidad</td>
+					<td>joan@gmail.com</td>
+					<td><button mat-raised-button color="accent" [routerLink]="['/auth/masters/worker/edit/1']">Editar</button></td>
+					<td><button mat-raised-button color="warn" [routerLink]="['/auth/masters/worker']">Eliminar</button></td>
+				</tr>
+				<tr >
+					<th scope="row">
+						<button mat-raised-button color="primary" [routerLink]="['/auth/masters/worker/show/1']">Ver</button>
+					</th>
+					<td>3</td>
+					<td>Yalitza</td>
+					<td>Prieto</td>
+					<td>18.333.333</td>
+					<td>22/06/1988</td>
+					<td>Buen empleado</td>
+					<td>Activo</td>
+					<td>Femenino</td>
+					<td>Cédula de identidad</td>
+					<td>Yalitza@gmail.com</td>
+					<td><button mat-raised-button color="accent" [routerLink]="['/auth/masters/worker/edit/1']">Editar</button></td>
+					<td><button mat-raised-button color="warn" [routerLink]="['/auth/masters/worker/delete/1']">Eliminar</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

@@ -1,6 +1,18 @@
-<p>
-  variety-edit works!
-</p>
-<mat-nav-list>
-	<a mat-list-item [routerLink]="['/auth/masters/variety']">Regresar </a>
-</mat-nav-list>
+<div class="main_catalogue">
+    <h2 class="text-center">Editar Variedad</h2>
+    <button mat-raised-button color="primary" [routerLink]="['/auth/masters/variety']">Volver</button>
+    <hr>
+  
+    <div class="example-container">
+          <mat-form-field>
+            <input matInput placeholder="Nombre">
+          </mat-form-field>
+          
+          <mat-form-field>
+              <textarea matInput placeholder="Descripción"></textarea>
+          </mat-form-field>
+      
+    </div>
+    <button mat-raised-button color="primary" [routerLink]="['/auth/masters/variety/edit/1']">Guardar</button>
+  
+  </div>

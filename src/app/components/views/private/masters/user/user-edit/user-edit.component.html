@@ -1,6 +1,32 @@
-<p>
-  user-edit works!
-</p>
-<mat-nav-list>
-	<a mat-list-item [routerLink]="['/auth/masters/user']">Regresar </a>
-</mat-nav-list>
+<div class="main_catalogue">
+	<h2 class="text-center">Editar Usuario</h2>
+	<button mat-raised-button color="primary" [routerLink]="['/auth/masters/user']">Volver</button>
+	<hr>
+
+	<div class="example-container">
+    	<mat-form-field>
+    	    <input matInput placeholder="Código">
+    	</mat-form-field>
+
+    	<mat-form-field>
+			<input matInput placeholder="Email">
+    	</mat-form-field>
+    
+   		<mat-form-field>
+        	<input matInput placeholder="Contraseña">
+    	</mat-form-field>
+
+		<mat-form-field>
+			<mat-select placeholder="Rol">
+				<mat-option value="option">Administrador</mat-option>
+				<mat-option value="option">Gerente</mat-option>
+				<mat-option value="option">Prestador</mat-option>
+				<mat-option value="option">Cliente</mat-option>
+			</mat-select>
+		</mat-form-field>
+
+	</div>
+
+	<button mat-raised-button color="primary" [routerLink]="['/auth/masters/client/user/edit/1']">Registrar</button>
+
+</div>
