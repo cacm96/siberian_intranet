@@ -1,6 +1,15 @@
-<p>
-  user-show works!
-</p>
-<mat-nav-list>
-	<a mat-list-item [routerLink]="['/auth/masters/user']">Regresar </a>
-</mat-nav-list>
+<div class="main_catalogue">
+	<h2 class="text-center">Usuario</h2>
+	<button mat-raised-button color="primary" [routerLink]="['/auth/masters/user']">Volver</button>
+	<hr>
+	<mat-card>
+		<mat-list>
+			<mat-list-item> <b>Código: </b> </mat-list-item>
+		 	<mat-list-item> <b>Email: </b> </mat-list-item>
+		 	<mat-list-item> <b>Contraseña: </b></mat-list-item>
+      		<mat-list-item> <b>Estatus: </b></mat-list-item>
+      		<mat-list-item> <b>Rol: </b></mat-list-item>
+		</mat-list>
+	</mat-card>
+
+</div>
