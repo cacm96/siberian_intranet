@@ -19,6 +19,7 @@ import { LocationDeleteComponent } from './location-delete/location-delete.compo
 	LocationDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     LocationRoutingModule
   ]

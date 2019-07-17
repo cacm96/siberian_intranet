@@ -40,8 +40,17 @@ mat-divider {
 }
 
 /*Paleta para los badge*/
-span.badge.new{
-	background-color: #2b90d9!important;
+span.badge{
+  color:#ffffff !important;
+}
+span.badge-primary{
+	background-color: #283593!important;
+}
+span.badge-accent{
+  background-color: #2979ff!important;
+}
+span.badge-warn{
+  background-color: #f44336!important;
 }
 
 

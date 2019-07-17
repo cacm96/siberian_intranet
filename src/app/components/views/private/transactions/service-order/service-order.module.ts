@@ -19,6 +19,7 @@ import { ServiceOrderDeleteComponent } from './service-order-delete/service-orde
 	ServiceOrderDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     ServiceOrderRoutingModule
   ]

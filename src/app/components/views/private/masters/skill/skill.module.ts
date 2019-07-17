@@ -19,6 +19,7 @@ import { SkillDeleteComponent } from './skill-delete/skill-delete.component';
 	SkillDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     SkillRoutingModule
   ]

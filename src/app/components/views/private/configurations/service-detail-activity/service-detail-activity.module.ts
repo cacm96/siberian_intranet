@@ -19,6 +19,7 @@ import { ServiceDetailActivityDeleteComponent } from './service-detail-activity-
 	ServiceDetailActivityDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     ServiceDetailActivityRoutingModule
   ]

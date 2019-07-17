@@ -19,6 +19,7 @@ import { DniTypeDeleteComponent } from './dni-type-delete/dni-type-delete.compon
 	DniTypeDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     DniTypeRoutingModule
   ]

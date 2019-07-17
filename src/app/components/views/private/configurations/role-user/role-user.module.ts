@@ -19,6 +19,7 @@ import { RoleUserDeleteComponent } from './role-user-delete/role-user-delete.com
 	RoleUserDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     RoleUserRoutingModule
   ]
