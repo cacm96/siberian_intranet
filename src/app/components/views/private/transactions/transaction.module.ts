@@ -8,8 +8,8 @@ import { TransactionComponent } from './transaction.component';
   declarations: [
     TransactionComponent
   ],
-  imports:
-  [
+  imports:[
+    CommonModule,
   	MaterialModule,
   	TransactionRoutingModule
   ],

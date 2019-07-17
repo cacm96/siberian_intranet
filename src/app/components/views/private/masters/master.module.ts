@@ -8,10 +8,10 @@ import { MasterComponent } from './master.component';
   declarations: [
     MasterComponent,
   ],
-  imports:
-  [
-      MaterialModule,
-      MasterRoutingModule
+  imports:[
+  	CommonModule,
+    MaterialModule,
+    MasterRoutingModule
   ],
 })
 export class MasterModule { }

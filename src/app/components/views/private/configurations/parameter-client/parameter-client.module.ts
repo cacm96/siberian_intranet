@@ -19,6 +19,7 @@ import { ParameterClientDeleteComponent } from './parameter-client-delete/parame
 	ParameterClientDeleteComponent,
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     ParameterClientRoutingModule
   ]

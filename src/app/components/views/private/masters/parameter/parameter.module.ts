@@ -19,6 +19,7 @@ import { ParameterDeleteComponent } from './parameter-delete/parameter-delete.co
 	ParameterDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     ParameterRoutingModule
   ]

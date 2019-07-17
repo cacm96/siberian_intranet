@@ -19,6 +19,7 @@ import { RevitionDeleteComponent } from './revition-delete/revition-delete.compo
 	RevitionDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     RevitionRoutingModule
   ]

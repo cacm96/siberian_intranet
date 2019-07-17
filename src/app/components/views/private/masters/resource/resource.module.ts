@@ -19,6 +19,7 @@ import { ResourceDeleteComponent } from './resource-delete/resource-delete.compo
 	ResourceDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     ResourceRoutingModule
   ]

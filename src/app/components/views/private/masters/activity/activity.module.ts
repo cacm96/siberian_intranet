@@ -19,6 +19,7 @@ import { ActivityDeleteComponent } from './activity-delete/activity-delete.compo
 	ActivityDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     ActivityRoutingModule
   ]

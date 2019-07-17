@@ -19,6 +19,7 @@ import { VarietyDetailDeleteComponent } from './variety-detail-delete/variety-de
 	VarietyDetailDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     VarietyDetailRoutingModule
   ]

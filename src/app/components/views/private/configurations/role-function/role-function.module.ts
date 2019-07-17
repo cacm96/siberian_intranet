@@ -19,6 +19,7 @@ import { RoleFunctionDeleteComponent } from './role-function-delete/role-functio
 	RoleFunctionDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     RoleFunctionRoutingModule
   ]

@@ -19,6 +19,7 @@ import { ServiceDetailSkillDeleteComponent } from './service-detail-skill-delete
 	ServiceDetailSkillDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     ServiceDetailSkillRoutingModule
   ]
