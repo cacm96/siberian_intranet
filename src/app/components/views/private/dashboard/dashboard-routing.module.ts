@@ -8,6 +8,7 @@ import { IndexLenderComponent } from './lender/index-lender/index-lender.compone
 import { IndexClientComponent } from './client/index-client/index-client.component';
 
 
+
 const routes: Routes = [
 
 	{path: '', component: DashboardComponent, canActivate: []},
