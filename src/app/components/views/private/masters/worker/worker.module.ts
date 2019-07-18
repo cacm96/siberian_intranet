@@ -19,6 +19,7 @@ import { WorkerDeleteComponent } from './worker-delete/worker-delete.component';
 	WorkerDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     WorkerRoutingModule
   ]

@@ -19,6 +19,7 @@ import { PaymentFormDeleteComponent } from './payment-form-delete/payment-form-d
 	PaymentFormDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     PaymentFormRoutingModule
   ]

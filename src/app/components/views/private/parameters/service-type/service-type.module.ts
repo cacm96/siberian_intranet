@@ -19,6 +19,7 @@ import { ServiceTypeDeleteComponent } from './service-type-delete/service-type-d
 	ServiceTypeDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     ServiceTypeRoutingModule
   ]

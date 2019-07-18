@@ -19,6 +19,7 @@ import { CatalogueDeleteComponent } from './catalogue-delete/catalogue-delete.co
     CatalogueDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     CatalogueRoutingModule
   ]

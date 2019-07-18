@@ -19,6 +19,7 @@ import { WorkerTypeDeleteComponent } from './worker-type-delete/worker-type-dele
 	WorkerTypeDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     WorkerTypeRoutingModule
   ]

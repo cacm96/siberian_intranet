@@ -1,6 +1,30 @@
-<p>
-  equip-infras-create works!
-</p>
-<mat-nav-list>
-	<a mat-list-item [routerLink]="['/auth/masters/equip-infras']">Regresar </a>
-</mat-nav-list>
+
+<div class="main_catalogue">
+    <h2 class="text-center">Nuevo Equipo/Infraestructura</h2>
+    <button mat-raised-button color="primary" [routerLink]="['/auth/masters/equip-infras']">Volver</button>
+    <hr>
+  
+    <div class="example-container">
+        <mat-form-field>
+          <input matInput placeholder="Nombre">
+        </mat-form-field>
+
+        <mat-form-field>
+          <textarea matInput placeholder="Descripción"></textarea>
+        </mat-form-field>	
+
+
+        <mat-label>Subir Imagen</mat-label>
+        <input id="fileInput" type="file">
+
+        <mat-form-field>
+          <input matInput placeholder="Estatus">
+        </mat-form-field>
+        
+      
+    </div>
+  
+    
+    <button mat-raised-button color="primary" [routerLink]="['/auth/masters/equip-infras/create']">Registrar</button>
+  
+  </div>

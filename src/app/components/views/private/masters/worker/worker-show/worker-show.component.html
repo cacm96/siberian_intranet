@@ -1,6 +1,20 @@
-<p>
-  worker-show works!
-</p>
-<mat-nav-list>
-	<a mat-list-item [routerLink]="['/auth/masters/worker']">Regresar </a>
-</mat-nav-list>
+<div class="main_catalogue">
+	<h2 class="text-center">Empleado</h2>
+	<button mat-raised-button color="primary" [routerLink]="['/auth/masters/worker']">Volver</button>
+	<hr>
+	<mat-card>
+		<mat-list>
+			<mat-list-item> <b>Código: </b> </mat-list-item>
+		 	<mat-list-item> <b>Nombre: </b> </mat-list-item>
+		 	<mat-list-item> <b>Apellido: </b></mat-list-item>
+			<mat-list-item> <b>Dni: </b></mat-list-item>
+			<mat-list-item> <b>Fecha de Nacimiento: </b> </mat-list-item>
+		 	<mat-list-item> <b>Nota: </b> </mat-list-item>
+      <mat-list-item> <b>Estatus: </b></mat-list-item>
+      <mat-list-item> <b>Género: </b></mat-list-item>
+      <mat-list-item> <b>Tipo de Dni: </b></mat-list-item>
+      <mat-list-item> <b>Usuario </b></mat-list-item>
+		</mat-list>
+	</mat-card>
+
+</div>

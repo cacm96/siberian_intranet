@@ -40,8 +40,20 @@ mat-divider {
 }
 
 /*Paleta para los badge*/
-span.badge.new{
-	background-color: #2b90d9!important;
+span.badge{
+  color:#ffffff !important;
+}
+span.badge-primary{
+	background-color: #283593!important;
+}
+span.badge-success{
+  background-color: #94ce9b!important;
+}
+span.badge-warning{
+  background-color: #d0667a!important;
+}
+span.badge-danger{
+  background-color: #f44336!important;
 }
 
 
@@ -138,4 +150,19 @@ span.badge.new{
 
 .toolbar a:hover,.toolbar a.active{
   color:  #283593 !important;
+}
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}
+.mat-dialog-actions{
+  display: block !important;
 }

@@ -19,6 +19,7 @@ import { FunctionDeleteComponent } from './function-delete/function-delete.compo
 	FunctionDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     FunctionRoutingModule
   ]

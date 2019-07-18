@@ -19,6 +19,7 @@ import { SubCategoryDeleteComponent } from './sub-category-delete/sub-category-d
 	SubCategoryDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     SubCategoryRoutingModule
   ]

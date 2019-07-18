@@ -1,6 +1,30 @@
-<p>
-  variety-detail-create works!
-</p>
-<mat-nav-list>
-	<a mat-list-item [routerLink]="['/auth/masters/variety-detail']">Regresar </a>
-</mat-nav-list>
+<div class="main_catalogue">
+    <h2 class="text-center">Nuevo Variedad Detalle</h2>
+    <button mat-raised-button color="primary" [routerLink]="['/auth/masters/variety-detail']">Volver</button>
+    <hr>
+  
+    <div class="example-container">
+        <mat-form-field>
+            <mat-select placeholder="Variedad">
+                <mat-option value="option">Easy</mat-option>
+                <mat-option value="option">Mabe</mat-option>
+                <mat-option value="option">Dace</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Nombre">
+        </mat-form-field>
+
+        <mat-label>Subir Imagen</mat-label>
+        <input id="fileInput" type="file">
+
+        <mat-form-field>
+          <textarea matInput placeholder="Descripción"></textarea>
+        </mat-form-field>   
+
+    </div>
+  
+    <button mat-raised-button color="primary" [routerLink]="['/auth/masters/variety-detail/create']">Registrar</button>
+  
+</div>

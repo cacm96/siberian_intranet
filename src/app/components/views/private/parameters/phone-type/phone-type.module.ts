@@ -19,6 +19,7 @@ import { PhoneTypeDeleteComponent } from './phone-type-delete/phone-type-delete.
 	PhoneTypeDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     PhoneTypeRoutingModule
   ]

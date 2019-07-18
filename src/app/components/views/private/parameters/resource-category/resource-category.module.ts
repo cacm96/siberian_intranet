@@ -19,6 +19,7 @@ import { ResourceCategoryDeleteComponent } from './resource-category-delete/reso
 	ResourceCategoryDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     ResourceCategoryRoutingModule
   ]

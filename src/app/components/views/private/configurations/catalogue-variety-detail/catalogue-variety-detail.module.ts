@@ -19,6 +19,7 @@ import { CatalogueVarietyDetailDeleteComponent } from './catalogue-variety-detai
 	CatalogueVarietyDetailDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     CatalogueVarietyDetailRoutingModule
   ]
