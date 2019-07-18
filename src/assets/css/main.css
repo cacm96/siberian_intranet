@@ -46,10 +46,13 @@ span.badge{
 span.badge-primary{
 	background-color: #283593!important;
 }
-span.badge-accent{
-  background-color: #2979ff!important;
+span.badge-success{
+  background-color: #94ce9b!important;
 }
-span.badge-warn{
+span.badge-warning{
+  background-color: #d0667a!important;
+}
+span.badge-danger{
   background-color: #f44336!important;
 }
 
@@ -148,3 +151,52 @@ span.badge-warn{
 .toolbar a:hover,.toolbar a.active{
   color:  #283593 !important;
 }
+<<<<<<< HEAD
+=======
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}
+.mat-dialog-actions{
+  display: block !important;
+}
+
+
+.ec-stars-wrapper {
+  /* Espacio entre los inline-block (los hijos, los `a`) 
+     http://ksesocss.blogspot.com/2012/03/display-inline-block-y-sus-empeno-en.html */
+  font-size: 0;
+  /* Podríamos quitarlo, 
+    pero de esta manera (siempre que no le demos padding), 
+    sólo aplicará la regla .ec-stars-wrapper:hover a cuando
+    también se esté haciendo hover a alguna estrella */
+  display: inline-block;
+}
+.ec-stars-wrapper a {
+  text-decoration: none;
+  display: inline-block;
+  /* Volver a dar tamaño al texto */
+  font-size: 32px;
+  font-size: 2rem;
+  
+  color: rgb(39, 130, 228);
+}
+
+/*.ec-stars-wrapper:hover a {
+  color: rgb(39, 130, 228);
+}
+/*
+ * El selector de hijo, es necesario para aumentar la especifidad
+ */
+/*.ec-stars-wrapper > a:hover ~ a {
+  color: #888;
+}*/
+>>>>>>> 1792876da2479f7fbec35e81eb73797c46c72018

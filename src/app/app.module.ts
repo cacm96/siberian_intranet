@@ -22,6 +22,8 @@ import { FooterComponent } from './components/shared/footer/footer.component';
 import { ErrorComponent } from './components/shared/error/error.component';
 import { BlockComponent } from './components/shared/block/block.component';
 import { HomeComponent } from './components/shared/home/home.component';
+import { ConfirmDialogComponent } from './components/shared/confirm-dialog/confirm-dialog.component';
+import { SnackBarDeleteComponent } from './components/shared/snack-bar-delete/snack-bar-delete.component';
 
 
 @NgModule({
@@ -38,6 +40,8 @@ import { HomeComponent } from './components/shared/home/home.component';
     SearchUserPipe,
     SearchFunctionPipe,
     HomeComponent,
+    ConfirmDialogComponent,
+    SnackBarDeleteComponent,
   ],
   imports: [
     CommonModule,
@@ -61,6 +65,7 @@ import { HomeComponent } from './components/shared/home/home.component';
     },
     
    ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[ConfirmDialogComponent,SnackBarDeleteComponent]
 })
 export class AppModule { }
