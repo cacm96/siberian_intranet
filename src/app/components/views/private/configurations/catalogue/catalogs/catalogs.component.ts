@@ -14,3 +14,4 @@ export class CatalogsComponent implements OnInit {
   }
 
 }
+
