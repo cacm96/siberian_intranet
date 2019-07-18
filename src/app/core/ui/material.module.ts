@@ -16,6 +16,8 @@ import {
         MatGridListModule,
         MatInputModule,
         MatSelectModule,
+        MatDialogModule,
+        MatSnackBarModule,
 } from '@angular/material';
 
 
@@ -37,6 +39,8 @@ import {
         MatGridListModule,
         MatInputModule,
         MatSelectModule,
+        MatDialogModule,
+        MatSnackBarModule,
     ],
     exports: [
         MatButtonModule,
@@ -55,6 +59,8 @@ import {
         MatGridListModule,
         MatInputModule,
         MatSelectModule,
+        MatDialogModule,
+        MatSnackBarModule,
     ],
 
 })
