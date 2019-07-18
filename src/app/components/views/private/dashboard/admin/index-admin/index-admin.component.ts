@@ -7,13 +7,56 @@ import {Chart} from 'chart.js';
   styleUrls: ['./index-admin.component.scss']
 })
 export class IndexAdminComponent implements OnInit {
-  constructor() { }
-  ChartLinea = [];
-  BarChart = [];
-  PieChart = [];
-  LineChart2 = [];
+  constructor() {  }
+
+   ChartLinea = [];
+   BarChart = [];
+   PieChart = [];
+   LineChart2 = [];
+
 
   ngOnInit() {
+    /*var ctx = document.getElementById('chartlinea');
+    var chartlinea = new Chart(ctx, {
+  type : 'line',
+  data: {
+    labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', ' Jun', 'Jul', ' Ago', 'Sep', 'Oct', 'Nov', ' Dic'],
+    datasets: [{
+      display: false,
+      data: [20, 30, 5, 19, 22, 15, 21, 9, 8, 24, 12, 10],
+      fill: false,
+      lineTension: 0.2,
+      borderColor: 'red',
+      borderWidth: 1,
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: 'Cantidad de servicios solicitados por mes'
+    },
+    display: true,
+    legend: {
+      position: 'top',
+      labels: {
+        boxWidth: 0,
+      }
+    },
+    tooltips: {
+      displayColors: false
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true,
+        },
+      }],
+    }
+   }
+});*/
+
+
+
     this.ChartLinea = new Chart('chartlinea', {
       type : 'line',
       data: {

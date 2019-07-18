@@ -1,13 +1,11 @@
 .container {
     margin-top:1rem;
 }
-.uno {
-    width: 50%;
+
+.servicio {
     display: inline-block;
-    padding: 10px;
-    margin-left: auto;
-    margin-right: auto;
 }
+
 .dos {
     width: 100%;
     display: inline-block;
@@ -15,3 +13,69 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    height: 100px;
+    width: 100px;
+    outline: black;
+    background-color: rgba(0, 0, 0, 0.3);
+    background-size: 100%, 100%;
+    //border-radius: 50%;
+    border: 1px solid black;
+}
+
+.boton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    cursor: pointer;
+}
+
+/**
+ * Move bootstrap carousel controll arrow outside the contents.
+ */
+ $carouselArrowWidth: 3em;
+ .carousel-control {
+   width: $carouselArrowWidth;
+   .icon-prev, .icon-next, .glyphicon-chevron-left, .glyphicon-chevron-right {
+     margin: 0.2em;
+   }
+   .icon-prev, .glyphicon-chevron-left {
+     left: 0;
+   }
+   .icon-next, .glyphicon-chevron-right {
+     right: 0;
+   }
+ }
+ .carousel {
+   padding-left: $carouselArrowWidth + 0.5em;
+   padding-right: $carouselArrowWidth + 0.5em;
+ }
+ 
+ /**
+  * carousel control style
+  */
+ .carousel-control {
+   opacity: 1;
+   color: #ccc;
+   text-shadow: none;
+   &.left, &.right {
+     background-image: none;
+   }
+ }
+ .carousel-control:hover,
+ .carousel-control:focus {
+   color: #999;
+ }
+ .carousel {
+   height: 250px;
+ }
+
+
+.titulo {
+    justify-content: center;
+  }
