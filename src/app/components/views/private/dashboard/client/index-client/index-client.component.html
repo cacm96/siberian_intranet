@@ -3,10 +3,31 @@
 <br>
 <h2>Tus servicios</h2>
 
+<!--Carrusel que muestra los servicios que el cliente tiene actualmente-->
 <div class="container">
-  <div id="carouselServices" class="carousel slide" data-ride="carousel">
+  <div id="carouselServices" class="carousel" data-ride="carousel">
 
-    <div class="carousel-inner">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-md-right lead">
+            <a class="btn btn-outline-secondary prev" href="#carouselServices" title="Anterior" data-slide="prev">
+              <i class="fa fa-lg fa-chevron-left"></i>
+            </a>
+            <a class="btn btn-outline-secondary next" href="#carouselServices" title="Siguiente" data-slide="next">
+              <i class="fa fa-lg fa-chevron-right"></i></a>
+         <!-- <a class="carousel-control-prev" href="#carouselServices" role="button" data-slide="prev">
+            <span class="fa fa-lg fa-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselServices" role="button" data-slide="next">
+            <span class="fa fa-lg fa-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Siguiente</span>
+          </a>-->
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-inner service">
 
       <div class="carousel-item active">
 
@@ -21,11 +42,11 @@
                     <mat-card-content>
                       Descripción: Microondas
                       <br>
-                      Dias Restantes: 15
+                      Etapa: Revisión
                     </mat-card-content>
                         
                     <mat-card-actions class="boton">
-                      <button mat-raised-button-accent>RECLAMAR</button>
+                      <button mat-raised-button>DETALLES</button>
                     </mat-card-actions>
                   </mat-card>
                 </div>
@@ -39,11 +60,11 @@
                     <mat-card-content>
                       Descripción: Microondas
                       <br>
-                      Dias Restantes: 15
+                      Etapa: En proceso
                     </mat-card-content>
                           
                     <mat-card-actions class="boton">
-                      <button mat-raised-button-accent>RECLAMAR</button>
+                      <button mat-raised-button>DETALLES</button>
                     </mat-card-actions>
                   </mat-card>
                 </div>
@@ -55,72 +76,152 @@
                     </mat-card-header>
                           
                     <mat-card-content>
-                      Descripción: Microondas
+                      Descripción: Lavadora
                       <br>
-                      Dias Restantes: 15
+                      Etapa: En proceso
                     </mat-card-content>
                             
                     <mat-card-actions class="boton">
-                      <button mat-raised-button-accent>RECLAMAR</button>
+                      <button mat-raised-button>DETALLES</button>
                     </mat-card-actions>
                   </mat-card>
                 </div>
+
+                <div class="col-md-3">
+                    <mat-card class="servicio">
+                      <mat-card-header class="titulo">
+                        <mat-card-title>Servicio</mat-card-title>
+                      </mat-card-header>
+                            
+                      <mat-card-content>
+                        Descripción: Lavadora
+                        <br>
+                        Etapa: En proceso
+                      </mat-card-content>
+                              
+                      <mat-card-actions class="boton">
+                        <button mat-raised-button>DETALLES</button>
+                      </mat-card-actions>
+                    </mat-card>
+                  </div>
+
               </div>
         </div>       
         
       </div>
 
       <div class="carousel-item">
-        
-        <div class="col-md-3">
-          <mat-card>
-            <mat-card-header class="titulo">
-              <mat-card-title>Revision</mat-card-title>
-            </mat-card-header>
-            
-            <mat-card-content>
-              Descripción: Pared
-              <br>
-              Etapa: En proceso
-            </mat-card-content>
-            
-            <mat-card-actions class="boton">
-              <button mat-raised-button-accent>DETALLES</button>
-            </mat-card-actions>
-          </mat-card>
+
+        <div class="container">
+          <div class="row">
+
+              <div class="col-md-3">
+                  <mat-card>
+                    <mat-card-header class="titulo">
+                      <mat-card-title>Servicio</mat-card-title>
+                    </mat-card-header>
+                    
+                    <mat-card-content>
+                      Descripción: Pared
+                      <br>
+                      Etapa: En proceso
+                    </mat-card-content>
+                    
+                    <mat-card-actions class="boton">
+                      <button mat-raised-button>DETALLES</button>
+                    </mat-card-actions>
+                  </mat-card>
+                </div>
+
+                <div class="col-md-3">
+                    <mat-card>
+                      <mat-card-header class="titulo">
+                        <mat-card-title>Revisión</mat-card-title>
+                      </mat-card-header>
+                      
+                      <mat-card-content>
+                        Descripción: Pared
+                        <br>
+                        Etapa: En proceso
+                      </mat-card-content>
+                      
+                      <mat-card-actions class="boton">
+                        <button mat-raised-button>DETALLES</button>
+                      </mat-card-actions>
+                    </mat-card>
+                  </div>
+
+
+                  <div class="col-md-3">
+                      <mat-card>
+                        <mat-card-header class="titulo">
+                          <mat-card-title>Servicio</mat-card-title>
+                        </mat-card-header>
+                        
+                        <mat-card-content>
+                          Descripción: Pared
+                          <br>
+                          Etapa: En proceso
+                        </mat-card-content>
+                        
+                        <mat-card-actions class="boton">
+                          <button mat-raised-button>DETALLES</button>
+                        </mat-card-actions>
+                      </mat-card>
+                    </div>
+    
+                    <div class="col-md-3">
+                        <mat-card>
+                          <mat-card-header class="titulo">
+                            <mat-card-title>Revisión</mat-card-title>
+                          </mat-card-header>
+                          
+                          <mat-card-content>
+                            Descripción: Pared
+                            <br>
+                            Etapa: En proceso
+                          </mat-card-content>
+                          
+                          <mat-card-actions class="boton">
+                            <button mat-raised-button>DETALLES</button>
+                          </mat-card-actions>
+                        </mat-card>
+                      </div>
+
+          </div>
         </div>
+        
       </div>
 
       <div class="carousel-item">
-        <div class="col-md-3">
-          <mat-card>
-            <mat-card-header class="titulo">
-              <mat-card-title>Revision</mat-card-title>
-            </mat-card-header>
-            
-            <mat-card-content>
-              Descripción: Pared
-              <br>
-              Etapa: En proceso
-            </mat-card-content>
-            
-            <mat-card-actions class="boton">
-              <button mat-raised-button-accent>DETALLES</button>
-            </mat-card-actions>
-          </mat-card>
+
+        <div class="container">
+          <div class="row">
+
+              <div class="col-md-3">
+                  <mat-card>
+                    <mat-card-header class="titulo">
+                      <mat-card-title>Revisión</mat-card-title>
+                    </mat-card-header>
+                    
+                    <mat-card-content>
+                      Descripción: Pared
+                      <br>
+                      Etapa: En proceso
+                    </mat-card-content>
+                    
+                    <mat-card-actions class="boton">
+                      <button mat-raised-button>DETALLES</button>
+                    </mat-card-actions>
+                  </mat-card>
+                </div>
+
+          </div>
         </div>
+        
       </div>
     </div>
-
-
-    <a class="carousel-control-prev" href="#carouselServices" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Anterior</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselServices" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Siguiente</span>
-    </a>
+    
   </div>
 </div>
 
@@ -128,81 +229,286 @@
 <hr>
 <h2>En Garantía</h2>
 <!--Segmento de Garantía-->
+
+<div class="container">
+    <div id="carouselWarranty" class="carousel" data-ride="carousel">
+  
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-md-right lead">
+              <a class="btn btn-outline-secondary prev" href="#carouselWarranty" title="Anterior" data-slide="prev">
+                <i class="fa fa-lg fa-chevron-left"></i>
+              </a>
+              <a class="btn btn-outline-secondary next" href="#carouselWarranty" title="Siguiente" data-slide="next">
+                <i class="fa fa-lg fa-chevron-right"></i></a>
+          </div>
+        </div>
+      </div>
+  
+      <div class="carousel-inner service">
+  
+        <div class="carousel-item active">
+  
+          <div class="container">
+              <div class="row">
+                  
+                  <div class="col-md-3">
+                      <mat-card class="servicio">
+                        <mat-card-header class="titulo">
+                          <mat-card-title>Servicio</mat-card-title>
+                        </mat-card-header>
+                              
+                        <mat-card-content>
+                          Descripción: Lavadora
+                          <br>
+                          Dias restantes: 15
+                        </mat-card-content>
+                                
+                        <mat-card-actions class="boton">
+                          <button mat-raised-button>RECLAMAR</button>
+                        </mat-card-actions>
+                      </mat-card>
+                    </div>
+
+                    <div class="col-md-3">
+                        <mat-card class="servicio">
+                          <mat-card-header class="titulo">
+                            <mat-card-title>Servicio</mat-card-title>
+                          </mat-card-header>
+                                
+                          <mat-card-content>
+                            Descripción: Lavadora
+                            <br>
+                            Dias restantes: 15
+                          </mat-card-content>
+                                  
+                          <mat-card-actions class="boton">
+                            <button mat-raised-button>RECLAMAR</button>
+                          </mat-card-actions>
+                        </mat-card>
+                      </div>
+        
+                  <div class="col-md-3">
+                    <mat-card class="servicio">
+                      <mat-card-header class="titulo">
+                        <mat-card-title>Servicio</mat-card-title>
+                      </mat-card-header>
+                            
+                      <mat-card-content>
+                        Descripción: Lavadora
+                        <br>
+                        Dias restantes: 15
+                      </mat-card-content>
+                              
+                      <mat-card-actions class="boton">
+                        <button mat-raised-button>RECLAMAR</button>
+                      </mat-card-actions>
+                    </mat-card>
+                  </div>
+  
+                  <div class="col-md-3">
+                      <mat-card class="servicio">
+                        <mat-card-header class="titulo">
+                          <mat-card-title>Servicio</mat-card-title>
+                        </mat-card-header>
+                              
+                        <mat-card-content>
+                          Descripción: Lavadora
+                          <br>
+                          Dias restantes: 15
+                        </mat-card-content>
+                                
+                        <mat-card-actions class="boton">
+                          <button mat-raised-button>RECLAMAR</button>
+                        </mat-card-actions>
+                      </mat-card>
+                    </div>
+  
+                </div>
+          </div>       
+          
+        </div>
+  
+        <div class="carousel-item">
+  
+          <div class="container">
+            <div class="row">
+  
+                <div class="col-md-3">
+                    <mat-card>
+                      <mat-card-header class="titulo">
+                        <mat-card-title>Servicio</mat-card-title>
+                      </mat-card-header>
+                      
+                      <mat-card-content>
+                        Descripción: Pared
+                        <br>
+                        Dias restantes: 5
+                      </mat-card-content>
+                      
+                      <mat-card-actions class="boton">
+                        <button mat-raised-button>RECLAMAR</button>
+                      </mat-card-actions>
+                    </mat-card>
+                  </div>
+  
+                  <div class="col-md-3">
+                      <mat-card>
+                        <mat-card-header class="titulo">
+                          <mat-card-title>Servicio</mat-card-title>
+                        </mat-card-header>
+                        
+                        <mat-card-content>
+                          Descripción: Pared
+                          <br>
+                          Dias restantes: 5
+                        </mat-card-content>
+                        
+                        <mat-card-actions class="boton">
+                          <button mat-raised-button>RECLAMAR</button>
+                        </mat-card-actions>
+                      </mat-card>
+                    </div>
+  
+            </div>
+          </div>
+          
+        </div>
+  
+           
+        </div>
+      
+    </div>
+  </div>
+  
+
+<hr>
+<h2>Promociones para ti</h2>
+<!--Promociones en slider-->
+<div class="container">
+  
+    <div id="carouselPromotion" class="carousel slide" data-ride="carousel">
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-md-right lead">
+            <a class="btn btn-outline-secondary prev" href="#carouselPromotion" title="Anterior" data-slide="prev">
+              <i class="fa fa-lg fa-chevron-left"></i>
+            </a>
+            <a class="btn btn-outline-secondary next" href="#carouselPromotion" title="Siguiente" data-slide="next">
+              <i class="fa fa-lg fa-chevron-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
+          <a href=""><img src="../../../../assets/img/promotion/promocion_1.jpg" alt="">
+          </a>
+        </div>
+        <div class="carousel-item">
+          <a href=""><img src="../../../../assets/img/promotion/promocion_2.jpg" alt="">
+          </a>
+        </div>
+        <div class="carousel-item">
+          <a href=""><img src="../../../../assets/img/promotion/promocion_3.jpg" alt="">
+          </a>
+        </div>
+      </div> 
+      
+    </div>
+</div>
+
+
+<!--Segmento de Catalogo-->
+<hr>
+<h2>Catálogo</h2>
 <div class="container">
   <div class="row">
     <div class="col-md-3">
       <mat-card>
-        <mat-card-header class="titulo">
-          <mat-card-title>Servicio</mat-card-title>
-        </mat-card-header>
-    
-        <mat-card-content>
-          Descripción: Microondas
+        <img src="../../../../assets/img/catalogue/lavamanos.png" alt="" class="card-img-top">
+        <mat-card-content  class="titulo">
           <br>
-          Dias Restantes: 15
+          <h4>Lavamanos</h4>
         </mat-card-content>
-    
-        <mat-card-actions class="boton">
-          <button mat-raised-button-accent>RECLAMAR</button>
-        </mat-card-actions>
       </mat-card>
     </div>
-    
-    <mat-card>
-      
-    </mat-card>
+    <div class="col-md-3">
+        <mat-card>
+            <img src="../../../../assets/img/catalogue/lavadora.png" alt="" class="card-img-top">
+            <mat-card-content  class="titulo">
+              <br>
+              <h4>Lavadora</h4>
+            </mat-card-content>
+          </mat-card>
+    </div>
+    <div class="col-md-3">
+        <mat-card>
+            <img src="../../../../assets/img/catalogue/microondas.png" alt="" class="card-img-top">
+            <mat-card-content  class="titulo">
+              <br>
+              <h4>Microondass</h4>
+            </mat-card-content>
+          </mat-card>
+    </div>
+    <div class="col-md-3">
+        <mat-card>
+            <img src="../../../../assets/img/catalogue/nevera.png" alt="" class="card-img-top">
+            <mat-card-content  class="titulo">
+              <br>
+              <h4>Nevera</h4>
+            </mat-card-content>
+          </mat-card>
+    </div>
   </div>
+
+</div>
+
+
+<!--Segmento de Categorias populares-->
+<hr>
+<h2>Categorías populares</h2>
+<div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <mat-card>
+          <img src="../../../../assets/img/category/carpinteria.png" alt="" class="card-img-top">
+          <mat-card-content class="titulo">
+            <br>
+            <h4>Carpintería</h4>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="col-md-3">
+        <mat-card>
+          <img src="../../../../assets/img/category/pintura.png" alt="" class="card-img-top">
+          <mat-card-content class="titulo">
+            <br>
+            <h4>Pintura</h4>
+                  
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="col-md-3">
+        <mat-card>
+          <img src="../../../../assets/img/category/plomeria.png" alt="" class="card-img-top">
+          <mat-card-content class="titulo">
+            <br>
+            <h4>Plomería</h4>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="col-md-3">
+        <mat-card>
+          <img src="../../../../assets/img/category/refrigeracion.png" alt="" class="card-img-top">
+          <mat-card-content class="titulo">
+            <br>
+            <h4>Refrigeración</h4>      
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
   
-
-</div>
-
-<hr>
-<h2>Promociones para ti</h2>
-<!--Promociones en slider
-<div class="container">
-  <div class="col-md-8 banner-sec">
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner" role="listbox">
-        <div class="carousel-item active">
-          <div class="carousel-caption d-none d-md-block">
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="carousel-caption d-none d-md-block"> 
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="carousel-caption d-none d-md-block"> 
-          </div>
-        </div>
-      </div>     
-    </div>
   </div>
-</div>
--->
-<!--Segmento de Promociones-->
-<div class="container">
-  <div class="row">
-    <div class="col-md-4" >
-      <mat-card><img src="../../../../assets/img/promotion/promocion_revision_1.jpg" alt="" class="dos"></mat-card>
-    </div>
-    <div class="col-md-4" >
-      <mat-card><img src="../../../../assets/img/promotion/promocion_servicio_1.jpg" alt="" class="dos"></mat-card>
-    </div>
-    <div class="col-md-4" >
-      <mat-card><img src="../../../../assets/img/promotion/promocion_servicio_2.jpg" alt="" class="dos"></mat-card>
-    </div>
-  </div>
-</div>
-
-<hr>
-<h2>Catálogo</h2>
-<!--Segmento de Catalogo-->
-<div class="container">
-
-</div>

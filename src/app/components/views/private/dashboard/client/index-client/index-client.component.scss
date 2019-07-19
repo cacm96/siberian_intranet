@@ -2,7 +2,7 @@
     margin-top:1rem;
 }
 
-.servicio {
+.servicio , .catalogo{
     display: inline-block;
 }
 
@@ -35,26 +35,6 @@ button {
     cursor: pointer;
 }
 
-/**
- * Move bootstrap carousel controll arrow outside the contents.
- */
- $carouselArrowWidth: 3em;
- .carousel-control {
-   width: $carouselArrowWidth;
-   .icon-prev, .icon-next, .glyphicon-chevron-left, .glyphicon-chevron-right {
-     margin: 0.2em;
-   }
-   .icon-prev, .glyphicon-chevron-left {
-     left: 0;
-   }
-   .icon-next, .glyphicon-chevron-right {
-     right: 0;
-   }
- }
- .carousel {
-   padding-left: $carouselArrowWidth + 0.5em;
-   padding-right: $carouselArrowWidth + 0.5em;
- }
  
  /**
   * carousel control style
@@ -63,19 +43,45 @@ button {
    opacity: 1;
    color: #ccc;
    text-shadow: none;
-   &.left, &.right {
+   /*&.left, &.right {
      background-image: none;
-   }
+   }*/
  }
  .carousel-control:hover,
  .carousel-control:focus {
    color: #999;
  }
- .carousel {
-   height: 250px;
+.service {
+  padding: 5px 10px 5px 10px;
  }
 
+.garantia{
+  padding: 5px 40px 5px 40px;
+}
 
 .titulo {
     justify-content: center;
+    text-align: center;
   }
+
+  button {
+    color: white;
+    background-color: #242451;
+}
+
+mat-card {
+  background-color: #d2d2d2;
+}
+
+mat-card-header {
+  background-color: #185a89;
+  color: white;
+  
+  
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
