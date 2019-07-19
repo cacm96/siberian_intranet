@@ -18,6 +18,9 @@ import {
         MatSelectModule,
         MatDialogModule,
         MatSnackBarModule,
+        MatStepperModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
 } from '@angular/material';
 
 
@@ -41,6 +44,9 @@ import {
         MatSelectModule,
         MatDialogModule,
         MatSnackBarModule,
+        MatStepperModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
     ],
     exports: [
         MatButtonModule,
@@ -61,6 +67,12 @@ import {
         MatSelectModule,
         MatDialogModule,
         MatSnackBarModule,
+        MatStepperModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+    ],
+    providers: [  
+        MatDatepickerModule,  
     ],
 
 })

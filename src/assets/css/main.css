@@ -164,9 +164,9 @@ table {
   width: 100%;
 }
 
-td, th {
+/*td, th {
   width: 25%;
-}
+}*/
 .mat-dialog-actions{
   display: block !important;
 }
