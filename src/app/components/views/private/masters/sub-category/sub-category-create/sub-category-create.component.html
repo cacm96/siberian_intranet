@@ -1,25 +1,50 @@
-<div class="main_catalogue">
-    <h2 class="text-center">Nuevo Subcategoría</h2>
-    <button mat-raised-button color="primary" [routerLink]="['/auth/masters/sub-category']">Volver</button>
-    <hr>
-  
-    <div class="example-container">
-    	  <mat-form-field>
-       		<mat-select placeholder="Categoría">
-       			<mat-option value="option">Línea Blanca</mat-option>
-            <mat-option value="option">Electrodomésticos</mat-option>
-      		</mat-select>
-  		  </mat-form-field>
-
-      	<mat-form-field>
-        	<input matInput placeholder="Nombre">
-      	</mat-form-field>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 offset-2">
+      <div class="row">
+        <div class="col-sm-12">
+          <h2 class="text-center">Nueva Subcategoría</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <button mat-raised-button color="primary" [routerLink]="['/auth/masters/sub-category']">Volver</button>
+        </div>
+      </div>
+      <hr>
       
-      	<mat-form-field>
-          	<textarea matInput placeholder="Descripción"></textarea>
-       	</mat-form-field>
-  
-    </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="example-container">
+            <mat-form-field>
+              <mat-select placeholder="Categoría">
+                <mat-option value="option">Línea Blanca</mat-option>
+                <mat-option value="option">Electrodomésticos</mat-option>
+                <mat-option value="option">Interiores</mat-option>
+                <mat-option value="option">Exteriores</mat-option>
+              </mat-select>
+            </mat-form-field>
 
-    <button mat-raised-button color="primary" [routerLink]="['/auth/masters/category/create']">Registrar</button>
+            <mat-form-field>
+              <input matInput placeholder="Nombre">
+            </mat-form-field>
+            
+            <mat-form-field>
+              <textarea matInput placeholder="Descripción"></textarea>
+            </mat-form-field> 
+            
+            <mat-form-field [hidden]="true">
+              <input matInput  placeholder="Estatus" value="A">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-sm-12">
+          <button mat-raised-button color="primary" [routerLink]="['/auth/masters/sub-category/create']">Registrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

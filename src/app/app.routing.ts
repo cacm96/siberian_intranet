@@ -33,6 +33,16 @@ const routes: Routes =
 				]
 			},
 
+			{path: 'profile', canActivate: [],
+				children:
+				[
+					{
+						path: '',
+		                loadChildren: './components/views/private/profile/profile.module#ProfileModule',
+					}
+				]
+			},
+
 			{path: 'masters', canActivate: [],
 				children:
 				[
