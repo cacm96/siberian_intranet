@@ -1,56 +1,82 @@
-<div class="main_catalogue">
-		<h2 class="text-center">Actividad</h2>
-		<button mat-raised-button color="primary" class="mr-3" [routerLink]="['/auth/masters/activity/create']">Nuevo Actividad</button>
+ <div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<h2 class="text-center">Actividades</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<button mat-raised-button color="primary" class="mr-3" [routerLink]="['/auth/masters/activity/create']">Nueva Actividad</button>
 		<button mat-raised-button color="primary" [routerLink]="['/auth/masters/']">Volver</button>
+			</div>
+		</div>
 		<hr>
 		
-		<div class="table-responsive">
-			<table class="table">
-				<thead class="thead-dark">
-					<tr>
-						<th scope="col">Ver</th>
-						<th scope="col">Código</th>
-						<th scope="col">Nombre</th>
-						<th scope="col">Descripción</th>
-						<th scope="col">Editar</th>
-						<th scope="col">Eliminar</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr >
-						<th scope="row">
-							<button mat-raised-button color="primary" [routerLink]="['/auth/masters/activity/show/1']">Ver</button>
-						</th>
-						<td>1</td>
-						<td>Cambiar tarjeta</td>
-						<td>Cambiar tarjeta  electrónica de la nevera </td>
-						<td><button mat-raised-button color="accent" [routerLink]="['/auth/masters/activity/edit/1']">Editar</button></td>
-						<td><button mat-raised-button color="warn" [routerLink]="['/auth/masters/activity']">Eliminar</button></td>
-					</tr>
-					
-					<tr >
-						  <th scope="row">
-							 <button mat-raised-button color="primary" [routerLink]="['/auth/masters/activity/show/1']">Ver</button>
-						</th>
-						<td>2</td>
-						<td>Pintar la pared</td>
-						<td>Pintar la pared completa </td>
-						<td><button mat-raised-button color="accent" [routerLink]="['/auth/masters/activity/edit/1']">Editar</button></td>
-						<td><button mat-raised-button color="warn" [routerLink]="['/auth/masters/activity']">Eliminar</button></td>
+		<div class="row">
+			<div class="col-sm-12">
+				<mat-form-field>
+					<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar">
+				</mat-form-field>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="mat-elevation-z8">
+					<table mat-table [dataSource]="dataSource" matSort>
+	
+						<ng-container matColumnDef="id">
+							<th mat-header-cell *matHeaderCellDef mat-sort-header> Ver </th>
+							<td mat-cell *matCellDef="let row">
+								<button mat-icon-button color="accent" [routerLink]="['/auth/masters/activity/show/', row.id]">
+									<mat-icon>remove_red_eye</mat-icon>
+								</button>
+							</td>
+						</ng-container>
+	
+						<ng-container matColumnDef="name">
+							<th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+							<td mat-cell *matCellDef="let row"> {{row.name}} </td>
+						</ng-container>
+	
+						<ng-container matColumnDef="description">
+							<th mat-header-cell *matHeaderCellDef mat-sort-header> Descripción </th>
+							<td mat-cell *matCellDef="let row"> {{row.description}}</td>
+						</ng-container>
+	
+						<ng-container matColumnDef="status">
+							<th mat-header-cell *matHeaderCellDef mat-sort-header> Estatus </th>
+							<td mat-cell *matCellDef="let row">
+								<span *ngIf="row.status=='A'" class="badge badge-success">Activo</span>
+								<span *ngIf="row.status=='E'" class="badge badge-danger">Eliminado</span>
+							</td>
+						</ng-container>
+	
+						<ng-container matColumnDef="edit">
+							<th mat-header-cell *matHeaderCellDef></th>
+							<td mat-cell *matCellDef="let row">
+								<button mat-icon-button color="accent" [routerLink]="['/auth/masters/activity/edit/', row.id]">
+									<mat-icon>edit</mat-icon>
+								</button>
+							</td>
+						</ng-container>
+	
+						<ng-container matColumnDef="delete">
+							<th mat-header-cell *matHeaderCellDef></th>
+							<td mat-cell *matCellDef="let row">
+								<button mat-icon-button color="warn" (click)="onDelete(row.id)">
+									<mat-icon>delete</mat-icon>
+								</button>
+							</td>
+						</ng-container>
+	
+						<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+						<tr mat-row *matRowDef="let row; columns: displayedColumns;">
 						</tr>
-					
-					 <tr >
-						<th scope="row">
-							<button mat-raised-button color="primary" [routerLink]="['/auth/masters/activity/show/1']">Ver</button>
-						</th>
-						<td>3</td>
-						<td>Lijar pared</td>
-						<td>Lijar la pared completa</td>
-						<td><button mat-raised-button color="accent" [routerLink]="['/auth/masters/activity/edit/1']">Editar</button></td>
-						<td><button mat-raised-button color="warn" [routerLink]="['/auth/masters/activity']">Eliminar</button></td>
-					</tr>
-					
-				</tbody>
-			</table>
+					</table>
+	
+					<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+				</div>
+			</div>
 		</div>
 	</div>

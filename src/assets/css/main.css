@@ -151,6 +151,8 @@ span.badge-danger{
 .toolbar a:hover,.toolbar a.active{
   color:  #283593 !important;
 }
+<<<<<<< HEAD
+=======
 table {
   width: 100%;
 }
@@ -197,3 +199,4 @@ td, th {
 /*.ec-stars-wrapper > a:hover ~ a {
   color: #888;
 }*/
+>>>>>>> 1792876da2479f7fbec35e81eb73797c46c72018
