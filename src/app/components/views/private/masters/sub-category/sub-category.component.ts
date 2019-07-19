@@ -11,5 +11,5 @@ export class SubCategoryComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  
 }

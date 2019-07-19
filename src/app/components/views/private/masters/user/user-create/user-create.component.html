@@ -1,32 +1,50 @@
-<div class="main_catalogue">
-	<h2 class="text-center">Nuevo Usuario</h2>
-	<button mat-raised-button color="primary" [routerLink]="['/auth/masters/user']">Volver</button>
-	<hr>
-
-	<div class="example-container">
-    	<mat-form-field>
-    	    <input matInput placeholder="Código">
-    	</mat-form-field>
-
-    	<mat-form-field>
-			<input matInput placeholder="Email">
-    	</mat-form-field>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-8 offset-2">
+			<div class="row">
+				<div class="col-sm-12">
+					<h2 class="text-center">Nuevo Usuario</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<button mat-raised-button color="primary" [routerLink]="['/auth/masters/user']">Volver</button>
+				</div>
+			</div>
+			<hr>
+			
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="example-container">
+						<mat-form-field>
+							<input matInput placeholder="Email">
+    					</mat-form-field>
     
-   		<mat-form-field>
-        	<input matInput placeholder="Contraseña">
-    	</mat-form-field>
+				   		<mat-form-field>
+				        	<input matInput placeholder="Contraseña">
+				    	</mat-form-field>
 
-		<mat-form-field>
-			<mat-select placeholder="Rol">
-				<mat-option value="option">Administrador</mat-option>
-				<mat-option value="option">Gerente</mat-option>
-				<mat-option value="option">Prestador</mat-option>
-				<mat-option value="option">Cliente</mat-option>
-			</mat-select>
-		</mat-form-field>
-
+						<mat-form-field>
+							<mat-select placeholder="Rol">
+								<mat-option value="option">Administrador</mat-option>
+								<mat-option value="option">Gerente</mat-option>
+								<mat-option value="option">Prestador</mat-option>
+								<mat-option value="option">Cliente</mat-option>
+							</mat-select>
+						</mat-form-field>	
+						
+						<mat-form-field [hidden]="true">
+							<input matInput  placeholder="Estatus" value="A">
+						</mat-form-field>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12">
+					<button mat-raised-button color="primary" [routerLink]="['/auth/masters/user/create']">Registrar</button>
+				</div>
+			</div>
+		</div>
 	</div>
-
-	<button mat-raised-button color="primary" [routerLink]="['/auth/masters/client/user']">Registrar</button>
-
 </div>

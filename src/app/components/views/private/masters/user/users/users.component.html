@@ -1,61 +1,88 @@
-<div class="main_catalogue">
-	<h2 class="text-center">Usuario</h2>
-	<button mat-raised-button color="primary" class="mr-3" [routerLink]="['/auth/masters/user/create']">Nuevo Usuario</button>
-	<button mat-raised-button color="primary" [routerLink]="['/auth/masters/']">Volver</button>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<h2 class="text-center">Usuario</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<button mat-raised-button color="primary" class="mr-3" [routerLink]="['/auth/masters/user/create']">Nuevo Usuario</button>
+			<button mat-raised-button color="primary" [routerLink]="['/auth/masters/']">Volver</button>
+		</div>
+	</div>
 	<hr>
 	
-	<div class="table-responsive">
-		<table class="table">
-			<thead class="thead-dark">
-				<tr>
-					<th scope="col">Ver</th>
-					<th scope="col">Código</th>
-					<th scope="col">Email</th>
-					<th scope="col">Contraseña</th>
-					<th scope="col">Estatus</th>
-					<th scope="col">Rol</th>
-					<th scope="col">Editar</th>
-					<th scope="col">Eliminar</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr >
-					<th scope="row">
-						<button mat-raised-button color="primary" [routerLink]="['/auth/masters/user/show/1']">Ver</button>
-					</th>
-					<td>1</td>
-					<td>andre@gmail.com</td>
-					<td></td>
-					<td>Activo</td>
-					<td>Gerente</td>
-					<td><button mat-raised-button color="accent" [routerLink]="['/auth/masters/user/edit/1']">Editar</button></td>
-					<td><button mat-raised-button color="warn" [routerLink]="['/auth/masters/user']">Eliminar</button></td>
-				</tr>
-				<tr >
-					<th scope="row">
-						<button mat-raised-button color="primary" [routerLink]="['/auth/masters/user/show/1']">Ver</button>
-					</th>
-					<td>2</td>
-					<td>jos@gmail.com</td>
-					<td></td>
-					<td>Activo</td>
-					<td>Gerente</td>
-					<td><button mat-raised-button color="accent" [routerLink]="['/auth/masters/user/edit/1']">Editar</button></td>
-					<td><button mat-raised-button color="warn" [routerLink]="['/auth/masters/user']">Eliminar</button></td>
-				</tr>
-				<tr >
-					<th scope="row">
-						<button mat-raised-button color="primary" [routerLink]="['/auth/masters/user/show/1']">Ver</button>
-					</th>
-					<td>3</td>
-					<td>Yasm@gmail.com</td>
-					<td></td>
-					<td>Activo</td>
-					<td>Gerente</td>
-					<td><button mat-raised-button color="accent" [routerLink]="['/auth/masters/user/edit/1']">Editar</button></td>
-					<td><button mat-raised-button color="warn" [routerLink]="['/auth/masters/user/delete/1']">Eliminar</button></td>
-				</tr>
-			</tbody>
-		</table>
+	<div class="row">
+		<div class="col-sm-12">
+			<mat-form-field>
+				<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar">
+			</mat-form-field>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="mat-elevation-z8">
+				<table mat-table [dataSource]="dataSource" matSort>
+
+					<ng-container matColumnDef="id">
+						<th mat-header-cell *matHeaderCellDef mat-sort-header> Ver </th>
+						<td mat-cell *matCellDef="let row">
+							<button mat-icon-button color="accent" [routerLink]="['/auth/masters/user/show/', row.id]">
+								<mat-icon>remove_red_eye</mat-icon>
+							</button>
+							<!--<a [routerLink]="['/auth/parameters/gender/show/1']">{{row.id}}</a>-->
+						</td>
+					</ng-container>
+
+					<ng-container matColumnDef="email">
+						<th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+						<td mat-cell *matCellDef="let row"> {{row.email}} </td>
+					</ng-container>
+
+					<ng-container matColumnDef="password">
+						<th mat-header-cell *matHeaderCellDef mat-sort-header> Contraseña </th>
+						<td mat-cell *matCellDef="let row"> {{row.password}} </td>
+					</ng-container>
+
+					<ng-container matColumnDef="role">
+						<th mat-header-cell *matHeaderCellDef mat-sort-header> Rol </th>
+						<td mat-cell *matCellDef="let row"> {{row.role}}</td>
+					</ng-container>
+
+					<ng-container matColumnDef="status">
+						<th mat-header-cell *matHeaderCellDef mat-sort-header> Estatus </th>
+						<td mat-cell *matCellDef="let row">
+							<span *ngIf="row.status=='A'" class="badge badge-success">Activo</span>
+							<span *ngIf="row.status=='E'" class="badge badge-danger">Eliminado</span>
+						</td>
+					</ng-container>
+
+					<ng-container matColumnDef="edit">
+						<th mat-header-cell *matHeaderCellDef></th>
+						<td mat-cell *matCellDef="let row">
+							<button mat-icon-button color="accent" [routerLink]="['/auth/masters/user/edit/', row.id]">
+								<mat-icon>edit</mat-icon>
+							</button>
+						</td>
+					</ng-container>
+
+					<ng-container matColumnDef="delete">
+						<th mat-header-cell *matHeaderCellDef></th>
+						<td mat-cell *matCellDef="let row">
+							<button mat-icon-button color="warn" (click)="onDelete(row.id)">
+								<mat-icon>delete</mat-icon>
+							</button>
+						</td>
+					</ng-container>
+
+					<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+					<tr mat-row *matRowDef="let row; columns: displayedColumns;">
+					</tr>
+				</table>
+
+				<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+			</div>
+		</div>
 	</div>
 </div>
