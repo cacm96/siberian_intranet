@@ -20,10 +20,10 @@ export class HomeComponent implements OnInit {
 		console.log(this.isToggle);
 		this.isToggle = !this.isToggle;
 		if(!this.isToggle){
-			this.contentMargin=75;
+			this.contentMargin=5;
 			this.isContent=true;
 		}else{
-			this.contentMargin=250;
+			this.contentMargin=20;
 			this.isContent=false;
 		}
 	}

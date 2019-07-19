@@ -46,6 +46,14 @@ export class CatalogueVarietyDetailsComponent implements OnInit {
 		this.dataSource.sort = this.sort;
   }
 
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
   onDelete(id){
 		this.dialogService.openConfirmDialog('¿Estás seguro de eliminar el Catálogo Detalle Variedad'+id+' ?').afterClosed().subscribe(res=>{
 			if (res==true) {

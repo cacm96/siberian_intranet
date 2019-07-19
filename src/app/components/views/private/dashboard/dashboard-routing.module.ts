@@ -6,6 +6,7 @@ import { IndexManagerComponent } from './manager/index-manager/index-manager.com
 import { IndexAdminComponent } from './admin/index-admin/index-admin.component';
 import { IndexLenderComponent } from './lender/index-lender/index-lender.component';
 import { IndexClientComponent } from './client/index-client/index-client.component';
+import { EquipComponent } from './service/equip/equip.component';
 
 
 
@@ -16,6 +17,7 @@ const routes: Routes = [
 	{path: 'lender', component: IndexLenderComponent, canActivate: []},
 	{path: 'manager', component: IndexManagerComponent, canActivate: []},
 	{path: 'admin', component: IndexAdminComponent, canActivate: []},
+	{path: 'equip', component: EquipComponent, canActivate: []},
 
 ];
 

@@ -46,6 +46,14 @@ export class CompaniesComponent implements OnInit {
 		this.dataSource.sort = this.sort;
   }
 
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
 	onDelete(id){
 		this.dialogService.openConfirmDialog('¿Estás seguro de eliminar la Empresa'+id+' ?').afterClosed().subscribe(res=>{
 			if (res==true) {
