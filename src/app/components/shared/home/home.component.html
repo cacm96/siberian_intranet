@@ -1,6 +1,6 @@
 <mat-sidenav-container class="mat_sidenav_container">
     <mat-sidenav #sidenav opened="true" mode="side" class="mat_sidenav" [class.open]="isToggle" [class.closed]="!isToggle">
-        <mat-toolbar color="primary" class="">
+        <mat-toolbar color="primary" class="sidenav_toolbar">
             <button mat-icon-button (click)="shoot()" aria-label="Example icon-button with a heart icon">
                 <mat-icon>menu</mat-icon>
               </button>
@@ -8,14 +8,12 @@
         <sib-sidenav></sib-sidenav>
     </mat-sidenav>
 
-    <mat-sidenav-content class="mat_sidenav_content" [ngStyle]="{'margin-left.px': contentMargin}" [class.content_open]="isContent" [class.content_closed]="!isContent">
-        <sib-toolbar></sib-toolbar>
-        <main class="main">
-            <router-outlet></router-outlet>
-        </main>
-        <mat-divider></mat-divider>
-        <mat-toolbar color="primary">
+    <mat-sidenav-content class="mat_sidenav_content" [ngStyle]="{'margin-left.%': contentMargin}">
+            <sib-toolbar></sib-toolbar>
+            <main class="main">
+                <router-outlet></router-outlet>
+            </main>
+            <mat-divider></mat-divider>
             <sib-footer></sib-footer>
-        </mat-toolbar>
     </mat-sidenav-content>
 </mat-sidenav-container>

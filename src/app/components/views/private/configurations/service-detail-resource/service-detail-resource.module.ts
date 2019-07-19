@@ -19,6 +19,7 @@ import { ServiceDetailResourceDeleteComponent } from './service-detail-resource-
 	ServiceDetailResourceDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     ServiceDetailResourceRoutingModule
   ]

@@ -19,8 +19,9 @@ import { GenderDeleteComponent } from './gender-delete/gender-delete.component';
 	GenderDeleteComponent
   ],
   imports: [
+  	CommonModule,
     MaterialModule,
-    GenderRoutingModule
-  ]
+    GenderRoutingModule,
+  ],
 })
 export class GenderModule { }

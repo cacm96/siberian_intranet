@@ -7,6 +7,11 @@ import { IndexManagerComponent } from './manager/index-manager/index-manager.com
 import { IndexAdminComponent } from './admin/index-admin/index-admin.component';
 import { IndexLenderComponent } from './lender/index-lender/index-lender.component';
 import { IndexClientComponent } from './client/index-client/index-client.component';
+import { EquipComponent } from './service/equip/equip.component';
+import { VarietyComponent } from './service/variety/variety.component';
+import { SheetComponent } from './service/sheet/sheet.component';
+import { StepperComponent } from './service/stepper/stepper.component';
+import { MessageComponent } from './service/message/message.component';
 
 @NgModule({
   declarations:
@@ -15,7 +20,12 @@ import { IndexClientComponent } from './client/index-client/index-client.compone
     IndexAdminComponent,
     IndexLenderComponent,
     IndexClientComponent,
-    DashboardComponent
+    DashboardComponent,
+    EquipComponent,
+    VarietyComponent,
+    SheetComponent,
+    StepperComponent,
+    MessageComponent
   ],
   imports: [
     CommonModule,

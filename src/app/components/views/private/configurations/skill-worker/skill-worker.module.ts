@@ -19,6 +19,7 @@ import { SkillWorkerDeleteComponent } from './skill-worker-delete/skill-worker-d
 	SkillWorkerDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     SkillWorkerRoutingModule
   ]

@@ -19,6 +19,7 @@ import { RoleDeleteComponent } from './role-delete/role-delete.component';
 	RoleDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     RoleRoutingModule
   ]

@@ -19,6 +19,7 @@ import { CompanyDeleteComponent } from './company-delete/company-delete.componen
 	CompanyDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     CompanyRoutingModule
   ]

@@ -19,6 +19,7 @@ import { ServiceDetailCatalogueVarietyDetailDeleteComponent } from './service-de
 	ServiceDetailCatalogueVarietyDetailDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     ServiceDetailCatalogueVarietyDetailRoutingModule
   ]

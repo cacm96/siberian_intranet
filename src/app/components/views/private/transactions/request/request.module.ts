@@ -19,6 +19,7 @@ import { RequestDeleteComponent } from './request-delete/request-delete.componen
 	RequestDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     RequestRoutingModule
   ]

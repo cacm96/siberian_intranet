@@ -1,57 +1,99 @@
-html,body{
-	padding:0;
-	margin:0;
+/* Dayana*/
+/* Adaptando colores
+Versión 4.0.0
+09/07/2019*/
+
+html,body,.mat_sidenav_content{
+  padding:0;
+  margin:0;
+  height: 100%; /*Esto hace que tenga scroll solo el contenido y no el sidenav*/
 }
+
+body{
+  color: #121212;
+}
+
+/*Color de letra general y fondo en todo el body cuando no esta logeado*/
+.body,body{
+  background: #f2f2f2f2;
+}
+
+.mat_sidenav{
+  width: 20%;
+}
+
 a{
   text-decoration: none !important;
 }
+
 .main{
-	min-height:100vh;
+  min-height:100vh;
   padding: 2rem;
 }
-table{
-  width: 100%;
-}
-.mat_sidenav_container{
-	flex: 1;
-	height:100%;
-	min-height:100%;
-	position:fixed;
-	width:100%;
-	min-witdh:100%;
-}
-.mat_sidenav{
-	width:250px;
+
+mat-divider {
+  display: none !important; ;
 }
 
+/* Centrando login*/
+.main_login{
+  min-height: 97vh;
+}
+
+/*Fondo global de la pagina cuando esta logeado*/
+.indigo{
+  background-color: #f2f2f2f2 !important; 
+}
+
+/*Centro el rol del usuario que esta arriba del sidebar*/
+.user-roal{
+  margin: auto;
+}
+
+.mat_sidenav_container{
+  flex: 1;
+  height:100%;/*Esto hace que tenga scroll solo el contenido y no el sidenav*/
+  min-height:100%;
+  width:100%;
+  min-width:100%;
+}
+
+.mat_sidenav{
+  width:20%;
+  background-color: #0b173b !important;
+  color: #ffffff !important;
+  transition: width, ease-in-out 200ms;
+}
+
+.mat_sidenav_content{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex-grow: 1;
+  overflow: hidden;
+  transition: width, ease-in-out 200ms;
+}
+
+.mat_sidenav a,.mat_sidenav mat-card-subtitle{
+  color: #ffffff !important;
+}
+
+/*Era para agregar una lentitud de transision al abrir y cerrar el sidenav*/
 .mat_sidenav.open{
-	width: 250px;
-/*	-webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;*/
+  width: 20%;
 }
 .mat_sidenav.closed{
-	width: 75px;
-/*	-webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;*/
+  width: 5%;
 }
 
 .content_open{
-	margin-left: :250px;
-/*	-webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;*/
+  margin-left: 20%;
+  transition: width, ease-in-out 200ms;
 }
 .content_closed{
-	margin-left: : 75px;
-/*	-webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;*/
+  margin-left: 5%;
+  transition: width, ease-in-out 200ms;
 }
 
 .fixed_toolbar {
@@ -60,6 +102,7 @@ table{
   left: 0;
   z-index: 2;
   width: 100%  !important;
+  background-color: #0b173b !important;
 }
 .example-container {
   display: flex;
@@ -70,10 +113,112 @@ table{
   width: 100%;
 }
 
-.link_toolbar{
-  color:#ffffff;
-  margin-right: 10px;
+.sidenav_toolbar{
+  color: #ffffff !important;
+  background-color: #0B173B !important;
 }
-.link_toolbar:hover{
-  color: #000000;
+
+
+/*Paleta para los badge*/
+span.badge{
+  color:#ffffff !important;
+}
+span.badge-primary{
+  background-color: #283593!important;
+}
+span.badge-success{
+  background-color: #94ce9b!important;
+}
+span.badge-warning{
+  background-color: #d0667a!important;
+}
+span.badge-danger{
+  background-color: #f44336!important;
+}
+
+/*Para eliminar el border al rededor del boton hamburguesa*/
+:focus {
+  outline: none !important;
+}
+
+/*Agrega el fondo del hover, focus y active en el sidenav y toolbar*/
+.mat-nav-list .mat-list-item-content:hover, .mat-nav-list .mat-list-item:focus,.mat-nav-list .mat-list-item.active {
+  background-color: rgb(24,24,51) !important;
+  color: #ffffff
+}
+
+.toolbar a{
+  color: #121212 !important;
+}
+
+.toolbar a:hover,.toolbar a.active{
+  color:  #283593 !important;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+/*td, th {
+  width: 25%;
+}*/
+.mat-dialog-actions{
+  display: block !important;
+}
+
+
+.ec-stars-wrapper {
+/* Espacio entre los inline-block (los hijos, los `a`) 
+http://ksesocss.blogspot.com/2012/03/display-inline-block-y-sus-empeno-en.html */
+font-size: 0;
+/* Podríamos quitarlo, 
+pero de esta manera (siempre que no le demos padding), 
+sólo aplicará la regla .ec-stars-wrapper:hover a cuando
+también se esté haciendo hover a alguna estrella */
+display: inline-block;
+}
+.ec-stars-wrapper a {
+  text-decoration: none;
+  display: inline-block;
+  /* Volver a dar tamaño al texto */
+  font-size: 32px;
+  font-size: 2rem;
+
+  color: rgb(39, 130, 228);
+}
+
+.main_dashboard .servicio , .catalogo{
+  display: inline-block;
+  width:100%;
+  height:200px;
+  padding: 1rem !important;
+}
+.main_dashboard .mat-card-content{
+  padding: 1rem 0;
+  margin:0;
+}
+.main_dashboard .titulo {
+  justify-content: center;
+  text-align: center;
+  padding: .5rem;
+}
+.main_dashboard .mat-card-header .mat-card-title{
+  margin:0;
+}
+.main_dashboard .mat-card-actions{
+  padding:0;
+}
+
+.main_dashboard .mat-card {
+  background-color: #d2d2d2;
+}
+
+.main_dashboard .mat-card-header {
+  background-color: #185a89;
+  color: white;
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Chart } from 'chart.js';
+import {Chart} from 'chart.js';
 
 @Component({
   selector: 'sib-index-admin',
@@ -7,19 +7,61 @@ import { Chart } from 'chart.js';
   styleUrls: ['./index-admin.component.scss']
 })
 export class IndexAdminComponent implements OnInit {
-  constructor() { }
-  LineChart = [];
-  BarChart = [];
-  PieChart = [];
-  LineChart2 = [];
+  constructor() {  }
+
+   ChartLinea = [];
+   BarChart = [];
+   PieChart = [];
+   LineChart2 = [];
+
 
   ngOnInit() {
-    this.LineChart = new Chart('lineChart', {
+    /*var ctx = document.getElementById('chartlinea');
+    var chartlinea = new Chart(ctx, {
+  type : 'line',
+  data: {
+    labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', ' Jun', 'Jul', ' Ago', 'Sep', 'Oct', 'Nov', ' Dic'],
+    datasets: [{
+      display: false,
+      data: [20, 30, 5, 19, 22, 15, 21, 9, 8, 24, 12, 10],
+      fill: false,
+      lineTension: 0.2,
+      borderColor: 'red',
+      borderWidth: 1,
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: 'Cantidad de servicios solicitados por mes'
+    },
+    display: true,
+    legend: {
+      position: 'top',
+      labels: {
+        boxWidth: 0,
+      }
+    },
+    tooltips: {
+      displayColors: false
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true,
+        },
+      }],
+    }
+   }
+});*/
+
+
+
+    this.ChartLinea = new Chart('chartlinea', {
       type : 'line',
       data: {
         labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', ' Jun', 'Jul', ' Ago', 'Sep', 'Oct', 'Nov', ' Dic'],
         datasets: [{
-          label: '',
           display: false,
           data: [20, 30, 5, 19, 22, 15, 21, 9, 8, 24, 12, 10],
           fill: false,
@@ -31,14 +73,12 @@ export class IndexAdminComponent implements OnInit {
       options: {
         title: {
           display: true,
-          text: 'Cantidad de servicios solicitados por mes',
-          fontColor: 'rgba(210, 210, 210, 1)'
+          text: 'Cantidad de servicios solicitados por mes'
         },
         display: true,
         legend: {
           position: 'top',
           labels: {
-            fontColor: 'rgba(210, 210, 210, 1)',
             boxWidth: 0,
           }
         },
@@ -47,24 +87,12 @@ export class IndexAdminComponent implements OnInit {
         },
         scales: {
           yAxes: [{
-            pointLabels: {
-              fontColor: 'rgba(210, 210, 210, 1)'
-            },
             ticks: {
               beginAtZero: true,
-              fontColor: 'rgba(210, 210, 210, 1)',
             },
-            gridLines: {
-              color: 'rgba(255, 255, 255, 0.2)'
-            }
           }],
-          xAxes: [{
-            ticks: {
-              fontColor: 'rgba(210, 210, 210, 1)'
-            }
-          }]
         }
-      }
+       }
     });
 
     this.BarChart = new Chart('barChart', {
@@ -98,13 +126,13 @@ export class IndexAdminComponent implements OnInit {
         title: {
           display: true,
           text: 'Cantidad de prestadores por servicio',
-          fontColor: 'rgba(210, 210, 210, 1)'
+       //   fontColor: 'rgba(210, 210, 210, 1)'
         },
         display: true,
         legend: {
           position: 'top',
           labels: {
-            fontColor: 'rgba(210, 210, 210, 1)',
+        //    fontColor: 'rgba(210, 210, 210, 1)',
             boxWidth: 0,
           }
         },
@@ -115,7 +143,7 @@ export class IndexAdminComponent implements OnInit {
           yAxes: [{
             ticks: {
               beginAtZero: true,
-              fontColor: 'rgba(210, 210, 210, 1)',
+           //   fontColor: 'rgba(210, 210, 210, 1)',
               showLabelBackdrop: false,
             },
             gridLines: {
@@ -124,7 +152,7 @@ export class IndexAdminComponent implements OnInit {
           }],
           xAxes: [{
             ticks: {
-              fontColor: 'rgba(210, 210, 210, 1)'
+            //  fontColor: 'rgba(210, 210, 210, 1)'
             }
           }]
            /* pointLabels: {
@@ -142,9 +170,9 @@ export class IndexAdminComponent implements OnInit {
           data: [15, 50, 25],
           fill: false,
           backgroundColor: [
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)'
+            'rgba(255, 206, 86, 0.5)',
+            'rgba(75, 192, 192, 0.5)',
+            'rgba(153, 102, 255, 0.5)'
           ],
           borderColor: [
             'rgba(255, 206, 86, 1)',
@@ -157,30 +185,19 @@ export class IndexAdminComponent implements OnInit {
       options: {
         legend: {
           position: 'top',
-          labels: {
+          /*labels: {
             fontColor: 'rgba(210, 210, 210, 1)'
-          }
+          }*/
         },
         title: {
           display: true,
           text: 'Servicios más solicitados',
-          fontColor: 'rgba(210, 210, 210, 1)'
+          // fontColor: 'rgba(210, 210, 210, 1)'
         },
         display: true,
         tooltips: {
           displayColors: false
         },
-        scales: {
-         /* yAxes: [{
-            gridLines: {
-              color: 'rgba(255, 255, 255, 0.2)'
-            },
-            ticks: {
-              beginAtZero: true,
-              fontColor: 'white',
-            }
-          }]
-        */ }
       }
     });
 
@@ -207,10 +224,10 @@ export class IndexAdminComponent implements OnInit {
         display: true,
         legend: {
           position: 'top',
-          labels: {
+         /* labels: {
             fontColor: 'rgba(210, 210, 210, 1)',
             boxWidth: 0,
-          }
+          }*/
         },
         tooltips: {
           displayColors: false
@@ -218,19 +235,19 @@ export class IndexAdminComponent implements OnInit {
         scales: {
           yAxes: [{
             pointLabels: {
-              fontColor: 'rgba(210, 210, 210, 1)'
+           //   fontColor: 'rgba(210, 210, 210, 1)'
             },
             ticks: {
               beginAtZero: true,
-              fontColor: 'rgba(210, 210, 210, 1)',
+           //   fontColor: 'rgba(210, 210, 210, 1)',
             },
             gridLines: {
-              color: 'rgba(255, 255, 255, 0.2)'
+             // color: 'rgba(255, 255, 255, 0.2)'
             }
           }],
           xAxes: [{
             ticks: {
-              fontColor: 'rgba(210, 210, 210, 1)'
+             // fontColor: 'rgba(210, 210, 210, 1)'
             }
           }]
         }

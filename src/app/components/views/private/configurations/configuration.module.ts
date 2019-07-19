@@ -8,10 +8,10 @@ import { ConfigurationComponent } from './configuration.component';
   declarations: [
     ConfigurationComponent,
   ],
-  imports:
-  [
-      MaterialModule,
-      ConfigurationRoutingModule
+  imports:[
+    CommonModule,
+    MaterialModule,
+    ConfigurationRoutingModule
   ],
 })
 export class ConfigurationModule { }

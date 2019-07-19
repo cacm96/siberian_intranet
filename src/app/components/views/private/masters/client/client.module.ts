@@ -19,6 +19,7 @@ import { ClientDeleteComponent } from './client-delete/client-delete.component';
 	ClientDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     ClientRoutingModule
   ]

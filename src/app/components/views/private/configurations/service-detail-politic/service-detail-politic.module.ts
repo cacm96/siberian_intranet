@@ -19,6 +19,7 @@ import { ServiceDetailPoliticDeleteComponent } from './service-detail-politic-de
 	ServiceDetailPoliticDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     ServiceDetailPoliticRoutingModule
   ]

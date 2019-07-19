@@ -1,10 +1,113 @@
-<p>
-  workers works!
-</p>
-<mat-nav-list>
-	<a mat-list-item [routerLink]="['/auth/masters/']">Regresar </a>
-	<a mat-list-item [routerLink]="['/auth/masters/worker/create']">Create </a>
-	<a mat-list-item [routerLink]="['/auth/masters/worker/edit/1']">Edit </a>
-	<a mat-list-item [routerLink]="['/auth/masters/worker/show/1']">Show </a>
-	<a mat-list-item [routerLink]="['/auth/masters/worker/delete/1']">Delete </a>
-</mat-nav-list>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<h2 class="text-center">Empleado</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<button mat-raised-button color="primary" class="mr-3" [routerLink]="['/auth/masters/worker/create']">Nuevo Empleado</button>
+			<button mat-raised-button color="primary" [routerLink]="['/auth/masters/']">Volver</button>
+		</div>
+	</div>
+	<hr>
+	
+	<div class="row">
+		<div class="col-sm-12">
+			<mat-form-field>
+				<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar">
+			</mat-form-field>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="mat-elevation-z8">
+				<table mat-table [dataSource]="dataSource" matSort>
+
+					<ng-container matColumnDef="id">
+						<th mat-header-cell *matHeaderCellDef mat-sort-header> Ver </th>
+						<td mat-cell *matCellDef="let row">
+							<button mat-icon-button color="accent" [routerLink]="['/auth/masters/worker/show/', row.id]">
+								<mat-icon>remove_red_eye</mat-icon>
+							</button>
+							<!--<a [routerLink]="['/auth/parameters/gender/show/1']">{{row.id}}</a>-->
+						</td>
+					</ng-container>
+
+					<ng-container matColumnDef="firstName">
+						<th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+						<td mat-cell *matCellDef="let row"> {{row.firstName}} </td>
+					</ng-container>
+
+					<ng-container matColumnDef="lastName">
+						<th mat-header-cell *matHeaderCellDef mat-sort-header> Apellido </th>
+						<td mat-cell *matCellDef="let row"> {{row.lastName}} </td>
+					</ng-container>
+
+					<ng-container matColumnDef="idUser">
+						<th mat-header-cell *matHeaderCellDef mat-sort-header> Usuario </th>
+						<td mat-cell *matCellDef="let row"> {{row.idUser}}</td>
+					</ng-container>
+
+					<ng-container matColumnDef="dniType">
+						<th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo de Dni </th>
+						<td mat-cell *matCellDef="let row"> {{row.dniType}}</td>
+					</ng-container>
+
+					<ng-container matColumnDef="dni">
+						<th mat-header-cell *matHeaderCellDef mat-sort-header> Dni </th>
+						<td mat-cell *matCellDef="let row"> {{row.dni}}</td>
+					</ng-container>
+
+					<ng-container matColumnDef="gender">
+						<th mat-header-cell *matHeaderCellDef mat-sort-header> Género </th>
+						<td mat-cell *matCellDef="let row"> {{row.gender}}</td>
+					</ng-container>
+
+					<ng-container matColumnDef="dateBirth">
+						<th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha de Nacimiento </th>
+						<td mat-cell *matCellDef="let row"> {{row.dateBirth}}</td>
+					</ng-container>
+
+					<ng-container matColumnDef="note">
+						<th mat-header-cell *matHeaderCellDef mat-sort-header> Nota </th>
+						<td mat-cell *matCellDef="let row"> {{row.note}}</td>
+					</ng-container>
+
+					<ng-container matColumnDef="status">
+						<th mat-header-cell *matHeaderCellDef mat-sort-header> Estatus </th>
+						<td mat-cell *matCellDef="let row">
+							<span *ngIf="row.status=='A'" class="badge badge-success">Activo</span>
+							<span *ngIf="row.status=='E'" class="badge badge-danger">Eliminado</span>
+						</td>
+					</ng-container>
+
+					<ng-container matColumnDef="edit">
+						<th mat-header-cell *matHeaderCellDef></th>
+						<td mat-cell *matCellDef="let row">
+							<button mat-icon-button color="accent" [routerLink]="['/auth/masters/worker/edit/', row.id]">
+								<mat-icon>edit</mat-icon>
+							</button>
+						</td>
+					</ng-container>
+
+					<ng-container matColumnDef="delete">
+						<th mat-header-cell *matHeaderCellDef></th>
+						<td mat-cell *matCellDef="let row">
+							<button mat-icon-button color="warn" (click)="onDelete(row.id)">
+								<mat-icon>delete</mat-icon>
+							</button>
+						</td>
+					</ng-container>
+
+					<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+					<tr mat-row *matRowDef="let row; columns: displayedColumns;">
+					</tr>
+				</table>
+
+				<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+			</div>
+		</div>
+	</div>
+</div>

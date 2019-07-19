@@ -19,6 +19,7 @@ import { PoliticDeleteComponent } from './politic-delete/politic-delete.componen
 	PoliticDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     PoliticRoutingModule
   ]

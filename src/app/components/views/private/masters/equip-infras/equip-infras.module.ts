@@ -19,6 +19,7 @@ import { EquipInfrasDeleteComponent } from './equip-infras-delete/equip-infras-d
 	EquipInfrasDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     EquipInfrasRoutingModule
   ]

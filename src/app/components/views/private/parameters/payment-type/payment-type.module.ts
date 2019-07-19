@@ -19,6 +19,7 @@ import { PaymentTypeDeleteComponent } from './payment-type-delete/payment-type-d
 	PaymentTypeDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     PaymentTypeRoutingModule
   ]

@@ -1,7 +1,15 @@
-<mat-toolbar color="primary" class="">
+<!--/*Junior*/
+/*Iconos en el toolbar
+10/07/2019*/
+/*Dayana*/
+/*Agregue icono de notificación
+11/07/2019-->
+
+<mat-toolbar class="toolbar fixed_toolba">
     <span>Siberian</span>
     <span class="example-spacer"></span>
-    <a [routerLink]="['dashboard']" class="link_toolbar">Ayuda</a>
-    <a [routerLink]="['dashboard']" class="link_toolbar">Perfil</a>
-    <a [routerLink]="['/']" class="link_toolbar">Cerrar Sesión</a>
-</mat-toolbar>
+    <a [routerLinkActive]="['active']" [routerLink]="['/auth']" ><mat-icon class="example-icon" aria-hidden="false" aria-label="Example notifications icon">notifications</mat-icon></a>
+    <a [routerLinkActive]="['active']" [routerLink]="['/auth/profile']" ><mat-icon class="example-icon" aria-hidden="false" aria-label="Example person icon">person</mat-icon></a>
+    <a [routerLinkActive]="['active']" [routerLink]="['/auth/home']" ><mat-icon class="example-icon" aria-hidden="false" aria-label="Example home icon">home</mat-icon></a>
+    <a [routerLinkActive]="['active']" [routerLink]="['/login']" ><mat-icon class="example-icon" aria-hidden="false" aria-label="Example exit_to_app icon">arrow_back</mat-icon></a>
+</mat-toolbar> 

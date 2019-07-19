@@ -19,6 +19,7 @@ import { UserDeleteComponent } from './user-delete/user-delete.component';
 	UserDeleteComponent
   ],
   imports: [
+    CommonModule,
     MaterialModule,
     UserRoutingModule
   ]
