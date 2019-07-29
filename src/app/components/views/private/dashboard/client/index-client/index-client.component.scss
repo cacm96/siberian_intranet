@@ -3,13 +3,7 @@
 }
 
 .carousel-control-prev-icon,.carousel-control-next-icon {
-  height: 100px;
-  width: 100px;
-  outline: black;
-  background-color: rgba(0, 0, 0, 0.3);
-  background-size: 100%, 100%;
-  //border-radius: 50%;
-  border: 1px solid black;
+  
 }
 
 .boton {
@@ -37,13 +31,6 @@ background-image: none;
 .carousel-control:hover,
 .carousel-control:focus {
   color: #999;
-}
-.service {
-  padding: 5px 10px 5px 10px;
-}
-
-.garantia{
-  padding: 5px 40px 5px 40px;
 }
 
 button {
