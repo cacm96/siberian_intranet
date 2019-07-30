@@ -62,7 +62,7 @@ export class ServiceDetailActivitysComponent implements OnInit {
 	}
 
 	onDelete(id){
-		this.dialogService.openConfirmDialog('¿Estas seguro de eliminar el Detalle de Servicio por Actividad '+id+' ?').afterClosed().subscribe(res=>{
+		this.dialogService.openConfirmDialog('¿Estas seguro de eliminar el Detalle de Servicio Actividad '+id+' ?').afterClosed().subscribe(res=>{
 			if (res==true) {
 				console.log(id);
 				this.snackBar.openSnackBar('Eliminado Correctamente','¿Deshacer?').onAction().subscribe(() => {

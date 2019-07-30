@@ -48,8 +48,8 @@ export class ServiceDetailsComponent implements OnInit {
 		private snackBar: SnackBarService
   ) { 
     this.serviceDetail = [
-      {id:"1",name:"Reparación de cocina",idComponent:"Hornilla",estimated_price: "20000bs",note:"Urgente",estimated_warranty_time:"7 Dias",idEquipinfras:"Cocina",idCatalogue:"Linea Blanca",status:"A"},
-      {id:"2",name:"Reparación de nevera",idComponent:"Motor",estimated_price:"35000bs",note:"Sin prisa",estimated_warranty_time:"25 Día",idEquipinfras:"Nevera",idCatalogue:"Linea Blanca",status:"E"},
+      {id:"1",name:"Reparación de Cocina",idComponent:"Hornilla",estimated_price: "20000bs",note:"Urgente",estimated_warranty_time:"7 Dias",idEquipinfras:"Cocina",idCatalogue:"Linea Blanca",status:"A"},
+      {id:"2",name:"Reparación de Nevera",idComponent:"Motor",estimated_price:"35000bs",note:"Sin prisa",estimated_warranty_time:"25 Día",idEquipinfras:"Nevera",idCatalogue:"Linea Blanca",status:"E"},
     ];
 
   this.dataSource = new MatTableDataSource(this.serviceDetail);
