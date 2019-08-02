@@ -29,6 +29,7 @@ a{
 .main{
   min-height:100vh;
   padding: 2rem;
+  padding-top: 4rem;
 }
 
 mat-divider {
@@ -87,14 +88,14 @@ mat-divider {
   width: 5%;
 }
 
-.content_open{
+/*.content_open{
   margin-left: 20%;
   transition: width, ease-in-out 200ms;
 }
 .content_closed{
   margin-left: 5%;
   transition: width, ease-in-out 200ms;
-}
+}*/
 
 .fixed_toolbar {
   position: fixed;
