@@ -7,6 +7,15 @@ import { ParameterComponent } from './parameter.component';
 const routes: Routes = [
 
 	{path: '', component: ParameterComponent, canActivate: []},
+	{path: 'category', canActivate: [],
+		children:
+		[
+			{
+				path: '',
+                loadChildren: './category/category.module#CategoryModule',
+			}
+		]
+	},
 	{path: 'dni-type', canActivate: [],
 		children:
 		[
@@ -76,6 +85,15 @@ const routes: Routes = [
 			{
 				path: '',
                 loadChildren: './service-type/service-type.module#ServiceTypeModule',
+			}
+		]
+	},
+	{path: 'sub-category', canActivate: [],
+		children:
+		[
+			{
+				path: '',
+                loadChildren: './sub-category/sub-category.module#SubCategoryModule',
 			}
 		]
 	},
