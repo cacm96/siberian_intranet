@@ -34,6 +34,15 @@ const routes: Routes = [
 			}
 		]
 	},
+	{path: 'notification-type', canActivate: [],
+		children:
+		[
+			{
+				path: '',
+                loadChildren: './notification-type/notification-type.module#NotificationTypeModule',
+			}
+		]
+	},
 	{path: 'payment-form', canActivate: [],
 		children:
 		[

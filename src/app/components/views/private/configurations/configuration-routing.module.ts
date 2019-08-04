@@ -52,6 +52,42 @@ const routes: Routes = [
 			}
 		]
 	},
+	{path: 'promotion', canActivate: [],
+		children:
+		[
+			{
+				path: '',
+                loadChildren: './promotion/promotion.module#PromotionModule',
+			}
+		]
+	},
+	{path: 'promotion-catalogue', canActivate: [],
+		children:
+		[
+			{
+				path: '',
+                loadChildren: './promotion-catalogue/promotion-catalogue.module#PromotionCatalogueModule',
+			}
+		]
+	},
+	{path: 'promotion-catalogue-variety-detail', canActivate: [],
+		children:
+		[
+			{
+				path: '',
+                loadChildren: './promotion-catalogue-variety-detail/promotion-catalogue-variety-detail.module#PromotionCatalogueVarietyDetailModule',
+			}
+		]
+	},
+	{path: 'promotion-target', canActivate: [],
+		children:
+		[
+			{
+				path: '',
+                loadChildren: './promotion-target/promotion-target.module#PromotionTargetModule',
+			}
+		]
+	},
 	{path: 'role-function', canActivate: [],
 		children:
 		[

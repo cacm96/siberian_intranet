@@ -12,25 +12,26 @@
                   <hr>
                 </div>
               </div>
-              <div class="row justify-content-between">
-                <div class="col-md-6">
-                  <a class="btn btn-outline-secondary prev" href="#carouselServices" title="Anterior" data-slide="prev">
-                    <mat-icon>arrow_back</mat-icon>
-                  </a>
-                </div>
-                <div class="col-md-6 text-md-right">
-                  <a class="btn btn-outline-secondary next" href="#carouselServices" title="Siguiente" data-slide="next">
-                    <mat-icon>arrow_forward</mat-icon>
-                  </a>
-                </div>
-              </div>
+              
             </div>
             <div class="row">
               <div class="col-sm-12">
                 <div class="carousel-inner service">
                   <div class="carousel-item active">
-                    <div class="container">
-                      <div class="row">
+                    <div class="container box">
+                      <div class="row justify-content-between arrow_box">
+                        <div class="col-md-6">
+                          <button mat-mini-fab class="waves_effect btn-floating" href="#carouselServices" title="Anterior" data-slide="prev">
+                            <mat-icon>keyboard_arrow_left</mat-icon>
+                          </button>
+                        </div>
+                        <div class="col-md-6 text-md-right">
+                          <button mat-mini-fab class="waves_effect btn-floating" href="#carouselServices" title="Siguiente" data-slide="next">
+                            <mat-icon>keyboard_arrow_right</mat-icon>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="row pad_arrow">
                         <div class="col-md-3">
                           <mat-card class="servicio">
                             <mat-card-header class="titulo">
@@ -95,7 +96,9 @@
                               En proceso
                             </mat-card-content>
                             <mat-card-actions class="boton">
-                              <button mat-raised-button>DETALLES</button>
+                              <div>
+                                <button mat-raised-button>DETALLES</button>
+                              </div>
                             </mat-card-actions>
                           </mat-card>
                         </div>
@@ -103,7 +106,7 @@
                     </div>       
                   </div>
 
-                  <div class="carousel-item">
+                  <!-- <div class="carousel-item">
                     <div class="container">
                       <div class="row">
                         <div class="col-md-3">
@@ -159,7 +162,7 @@
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>
