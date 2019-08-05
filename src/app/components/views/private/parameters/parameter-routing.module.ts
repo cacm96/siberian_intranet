@@ -7,6 +7,24 @@ import { ParameterComponent } from './parameter.component';
 const routes: Routes = [
 
 	{path: '', component: ParameterComponent, canActivate: []},
+	{path: 'bitacora-type', canActivate: [],
+		children:
+		[
+			{
+				path: '',
+                loadChildren: './bitacora-type/bitacora-type.module#BitacoraTypeModule',
+			}
+		]
+	},
+	{path: 'calendar-type', canActivate: [],
+		children:
+		[
+			{
+				path: '',
+                loadChildren: './calendar-type/calendar-type.module#CalendarTypeModule',
+			}
+		]
+	},
 	{path: 'category', canActivate: [],
 		children:
 		[
@@ -31,6 +49,15 @@ const routes: Routes = [
 			{
 				path: '',
                 loadChildren: './gender/gender.module#GenderModule',
+			}
+		]
+	},
+	{path: 'motive-incidence', canActivate: [],
+		children:
+		[
+			{
+				path: '',
+                loadChildren: './motive-incidence/motive-incidence.module#MotiveIncidenceModule',
 			}
 		]
 	},

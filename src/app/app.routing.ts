@@ -92,6 +92,16 @@ const routes: Routes =
 					}
 				]
 			},
+
+			{path: 'lender', canActivate: [],
+				children:
+				[
+					{
+						path: '',
+		                loadChildren: './components/views/private/lender/lender.module#LenderModule',
+					}
+				]
+			},
 		]
 	},
 
