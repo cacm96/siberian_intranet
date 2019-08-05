@@ -82,6 +82,16 @@ const routes: Routes =
 					}
 				]
 			},
+
+			{path: 'client', canActivate: [],
+				children:
+				[
+					{
+						path: '',
+		                loadChildren: './components/views/private/client/client.module#ClientModule',
+					}
+				]
+			},
 		]
 	},
 

@@ -15,15 +15,6 @@ const routes: Routes = [
 			}
 		]
 	},
-	{path: 'category', canActivate: [],
-		children:
-		[
-			{
-				path: '',
-                loadChildren: './category/category.module#CategoryModule',
-			}
-		]
-	},
 	{path: 'client', canActivate: [],
 		children:
 		[
@@ -39,6 +30,15 @@ const routes: Routes = [
 			{
 				path: '',
                 loadChildren: './company/company.module#CompanyModule',
+			}
+		]
+	},
+	{path: 'component', canActivate: [],
+		children:
+		[
+			{
+				path: '',
+                loadChildren: './component/component.module#ComponentModule',
 			}
 		]
 	},
@@ -102,15 +102,6 @@ const routes: Routes = [
 			{
 				path: '',
                 loadChildren: './skill/skill.module#SkillModule',
-			}
-		]
-	},
-	{path: 'sub-category', canActivate: [],
-		children:
-		[
-			{
-				path: '',
-                loadChildren: './sub-category/sub-category.module#SubCategoryModule',
 			}
 		]
 	},

@@ -29,7 +29,7 @@ a{
 .main{
   min-height:100vh;
   padding: 2rem;
-  padding-top: 4rem;
+  padding-top: 6rem;
 }
 
 mat-divider {
@@ -88,6 +88,14 @@ mat-divider {
   width: 5%;
 }
 
+.toolbar.open{
+    transition: width, ease-in-out 200ms;
+}
+.toolbar.closed{
+    padding-left: 6% !important;
+    transition: width, ease-in-out 200ms;
+}
+
 /*.content_open{
   margin-left: 20%;
   transition: width, ease-in-out 200ms;
@@ -97,6 +105,39 @@ mat-divider {
   transition: width, ease-in-out 200ms;
 }*/
 
+.side_nav_icon{
+  margin-right: 25px;
+    margin-left: 5px;
+}
+.side_nav_header .mat-card-avatar {
+  background-image: url("../img/profile/avatar_3.png");
+  background-size: cover;
+  margin-right: 5px;
+  margin-left: 5px;
+  height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+.side_nav_header.mat-card-header{
+  margin: 0 15px;
+  display: flex;
+  flex-direction: row;
+}
+.side_nav_header .mat-card-header-text {
+    margin: 0 16px;
+}
+.side_nav_header.mat-card-header .mat-card-title {
+    margin-bottom: 12px;
+    display: block;
+}
+.side_nav_header.mat-card-header .mat-card-subtitle {
+    margin-top: -8px;
+    margin-bottom: 16px;
+    display: block;
+}
+
 .fixed_toolbar {
   position: fixed;
   top: 0;
@@ -104,6 +145,10 @@ mat-divider {
   z-index: 2;
   width: 100%  !important;
   background-color: #0b173b !important;
+  border-bottom: solid 1px #d2d2d2;
+}
+.toolbar_footer{
+ border-top: solid 1px #d2d2d2; 
 }
 .example-container {
   display: flex;
@@ -136,6 +181,25 @@ span.badge-warning{
 span.badge-danger{
   background-color: #f44336!important;
 }
+span.badge-dark{
+  background-color: #121212!important;
+}
+
+/*.border-top-primary{
+  border-top: solid 6px #283593!important;
+}
+.border-top-success{
+  border-top: solid 6px #94ce9b!important;
+}
+.border-top-warning{
+  border-top: solid 6px #d0667a!important;
+}
+.border-top-danger{
+  border-top: solid 6px #f44336 !important;
+}
+.border-top-dark{
+  border-top: solid 6px #121212!important;
+}*/
 
 /*Para eliminar el border al rededor del boton hamburguesa*/
 :focus {
@@ -193,33 +257,141 @@ display: inline-block;
   color: rgb(39, 130, 228);
 }
 
-.main_dashboard .servicio , .catalogo{
+/*Estilos y efectos hover para los cards de dashboard*/
+.main_dashboard .carousel_promotions{
+  margin: 1rem 0;
+}
+.main_dashboard .mat-card{
   display: inline-block;
   width:100%;
-  height:200px;
-  padding: 1rem !important;
+  padding: 0 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12) !important;
+  transition: all .15s cubic-bezier(.33,.66,.66,1);
+  transition-property: all;
+  transition-duration: .15s;
+  transition-timing-function: cubic-bezier(.33,.66,.66,1);
+  transition-delay: initial;
+  margin: 1rem 0;
+  overflow: hidden !important;
+  background-color: #ffffff;
 }
+.main_dashboard .mat-card .mat-card-content {
+  border: solid 1px #d2d2d2;
+}
+.main_dashboard .mat-card:hover{
+  box-shadow: 0 7px 12px rgba(0,0,0,.45) !important;
+  transform: translate3d(0,-3px,0);
+}
+
+.main_dashboard .mat-card .mat-card-header{
+  background-color: #185a89;
+  color: white;
+}
+
+.main_dashboard .mat-card .mat-card-actions{
+  margin: 0 !important;
+  background: #f2f2f2;
+  padding: .5rem 0!important;
+  font-size: 9px;
+}
+.main_dashboard .mat-card .mat-card-actions .mat-icon{
+  position: relative;
+  top: 6px;
+}
+.main_dashboard .mat-card .mat-card-actions button{
+  color: white;
+  background-color: #242451;
+  transition: all .15s cubic-bezier(.33,.66,.66,1);
+  transition-property: all;
+  transition-duration: .15s;
+  transition-timing-function: cubic-bezier(.33,.66,.66,1);
+  transition-delay: initial;
+  font-size: 9px;
+}
+.main_dashboard .mat-card .mat-card-actions button:hover{
+  box-shadow: 0 7px 12px rgba(0,0,0,.45) !important;
+  transform: translate3d(0,-3px,0);
+}
+
 .main_dashboard .mat-card-content{
   padding: 1rem 0;
   margin:0;
+  text-align: center;
 }
 .main_dashboard .titulo {
   justify-content: center;
   text-align: center;
-  padding: .5rem;
 }
 .main_dashboard .mat-card-header .mat-card-title{
   margin:0;
 }
-.main_dashboard .mat-card-actions{
-  padding:0;
+
+.main_dashboard .btn-floating {
+    display: inline-block;
+    color: #fff;
+    position: relative;
+    z-index: 1;
+    width: 37px;
+    height: 37px;
+    line-height: 37px;
+    padding: 0;
+    border-radius: 50%;
+    transition: .3s;
+    background-color: #f2f2f2!important;
+}
+.main_dashboard .box{
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+}
+.main_dashboard .arrow_box{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  webkit-align-items: center; 
+  -webkit-box-align: center;
+  align-items: center;
 }
 
-.main_dashboard .mat-card {
-  background-color: #d2d2d2;
+.main_dashboard .waves_effect {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    vertical-align: middle;
+    z-index: 1;
+    will-change: opacity,transform;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+    -ms-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
 }
 
-.main_dashboard .mat-card-header {
-  background-color: #185a89;
-  color: white;
+.main_dashboard .waves_effect:hover{
+  box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+  opacity: .8!important;
+}
+.main_dashboard .waves_effect:focus:active{
+  box-shadow: none;
+}
+.main_dashboard .mat-icon{
+  color: #000000 !important;
+}
+.main_dashboard .pad_arrow{
+  padding: 0 1rem;
+}
+
+.main_dashboard .carousel-item img {
+  max-width: 100%;
+  max-height: 100%;
 }

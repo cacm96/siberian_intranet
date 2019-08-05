@@ -1,5 +1,18 @@
-<mat-tab-group>
-  <mat-tab label="Cliente"><sib-index-client></sib-index-client></mat-tab>
-  <mat-tab label="Prestador"><sib-index-lender></sib-index-lender></mat-tab>
-  <mat-tab label="Admin"><sib-index-admin></sib-index-admin></mat-tab>
-</mat-tab-group>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<mat-list-item role="listitem">
+			  <button mat-raised-button color="primary" [routerLink]="['/auth/dashboard/client']">Cliente</button>
+			</mat-list-item>
+			<br>
+			<mat-list-item role="listitem">
+			  <button mat-raised-button color="accent" [routerLink]="['/auth/dashboard/lender']">Prestador</button>
+			</mat-list-item>
+			<br>
+			<mat-list-item role="listitem">
+			  <button mat-raised-button color="warn" [routerLink]="['/auth/dashboard/admin']">Admin</button>
+			</mat-list-item>
+			<br>
+		</div>
+	</div>
+</div>
