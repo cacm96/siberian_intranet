@@ -88,11 +88,12 @@ mat-divider {
   width: 5%;
 }
 
-.name_company.open{
-    
+.toolbar.open{
+    transition: width, ease-in-out 200ms;
 }
-.name_company.closed{
-    padding-left: 8% !important;
+.toolbar.closed{
+    padding-left: 6% !important;
+    transition: width, ease-in-out 200ms;
 }
 
 /*.content_open{
