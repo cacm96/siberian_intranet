@@ -1,106 +1,244 @@
 <div class="main_dashboard">
 
-<div class="container">
   <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <div id="carouselServices" class="carousel" data-ride="carousel">
-          <div class="container">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="carouselRequest" class="carousel" data-ride="carousel">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-12">
+                  <h2>Mis Solicitudes</h2>
+                  <hr>
+                </div>
+              </div>
+              
+            </div>
             <div class="row">
               <div class="col-sm-12">
-                <h2>Mis servicios</h2>
-                <hr>
-              </div>
-            </div>
-            <div class="row justify-content-between">
-              <div class="col-md-6">
-                <a class="btn btn-outline-secondary prev" href="#carouselServices" title="Anterior" data-slide="prev">
-                  <mat-icon>arrow_back</mat-icon>
-                </a>
-              </div>
-              <div class="col-md-6 text-md-right">
-                <a class="btn btn-outline-secondary next" href="#carouselServices" title="Siguiente" data-slide="next">
-                  <mat-icon>arrow_forward</mat-icon>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="carousel-inner service">
-                <div class="carousel-item active">
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-md-3">
-                        <mat-card class="servicio">
-                          <mat-card-header class="titulo">
-                            <mat-card-title>Servicio</mat-card-title>
-                          </mat-card-header>
-                          <mat-card-content class="mat_card_content">
-                            19/07/2019
-                            <br>
-                            10:00 am
-                            <br>
-                            En proceso
-                          </mat-card-content>
-                          <mat-card-actions class="boton">
-                            <button mat-raised-button>SEGUIMIENTO</button>
-                          </mat-card-actions>
-                        </mat-card>
+                <div class="carousel-inner service">
+                  <div class="carousel-item active">
+                    <div class="container box">
+                      <div class="row justify-content-between arrow_box">
+                        <div class="col-md-6">
+                          <button mat-mini-fab class="waves_effect btn-floating" href="#carouselRequest" title="Anterior" data-slide="prev">
+                            <mat-icon>keyboard_arrow_left</mat-icon>
+                          </button>
+                        </div>
+                        <div class="col-md-6 text-md-right">
+                          <button mat-mini-fab class="waves_effect btn-floating" href="#carouselRequest" title="Siguiente" data-slide="next">
+                            <mat-icon>keyboard_arrow_right</mat-icon>
+                          </button>
+                        </div>
                       </div>
-                      <div class="col-md-3">
-                        <mat-card class="servicio">
-                          <mat-card-header class="titulo">
-                            <mat-card-title>Servicio</mat-card-title>
-                          </mat-card-header>
-                          <mat-card-content class="mat_card_content">
-                            19/07/2019
-                            <br>
-                            10:00 am
-                            <br>
-                            En proceso
-                          </mat-card-content>
-                          <mat-card-actions class="boton">
-                            <button mat-raised-button>SEGUIMIENTO</button>
-                          </mat-card-actions>
-                        </mat-card>
+                      <div class="row pad_arrow">
+                        <div class="col-md-3">
+                          <a [routerLink]="['/auth/lender/request']"><mat-card class="servicio">
+                            <mat-card-header class="titulo border-top-primary">
+                              <mat-card-title>Servicio</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content class="mat_card_content">
+                              Microondas
+                              <br>
+                              No calienta
+                              <br>
+                              <span class="badge badge-primary">En Revisión</span>
+                            </mat-card-content>
+                            <mat-card-actions>
+                              <div class="container">
+                                <div class="row justify-content-between">
+                                  <div class="col-sm-5">
+                                    <button mat-button>DETALLES</button>
+                                  </div>
+                                  <div class="col-sm-7">
+                                    <mat-icon>access_time</mat-icon><span>10/11/2019</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </mat-card-actions>
+                          </mat-card></a>
+                        </div>
+                        <div class="col-md-3">
+                          <a [routerLink]="['/auth/lender/request']"><mat-card class="servicio">
+                            <mat-card-header class="titulo border-top-dark">
+                              <mat-card-title>Servicio</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content class="mat_card_content">
+                              Nevera
+                              <br>
+                              No enfría
+                              <br>
+                              <span class="badge badge-dark">Cancelada</span>
+                            </mat-card-content>
+                            <mat-card-actions class="boton">
+                              <div class="container">
+                                <div class="row justify-content-between">
+                                  <div class="col-sm-5">
+                                    <button mat-button>DETALLES</button>
+                                  </div>
+                                  <div class="col-sm-7">
+                                    <mat-icon>access_time</mat-icon><span>10/11/2019</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </mat-card-actions>
+                          </mat-card></a>
+                        </div>
+                        <div class="col-md-3">
+                          <a [routerLink]="['/auth/lender/request']"><mat-card class="servicio">
+                            <mat-card-header class="titulo border-top-primary">
+                              <mat-card-title>Servicio</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content class="mat_card_content">
+                              Secadora
+                              <br>
+                              No enciende
+                              <br>
+                              <span class="badge badge-primary">En Revisión</span>
+                            </mat-card-content>
+                            <mat-card-actions class="boton">
+                              <div class="container">
+                                <div class="row justify-content-between">
+                                  <div class="col-sm-5">
+                                    <button mat-button>DETALLES</button>
+                                  </div>
+                                  <div class="col-sm-7">
+                                    <mat-icon>access_time</mat-icon><span>10/11/2019</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </mat-card-actions>
+                          </mat-card></a>
+                        </div>
+                        <div class="col-md-3">
+                          <a [routerLink]="['/auth/lender/request']"><mat-card class="servicio">
+                            <mat-card-header class="titulo border-top-primary">
+                              <mat-card-title>Servicio</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content class="mat_card_content">
+                              Cafetera
+                              <br>
+                              No cuela
+                              <br>
+                              <span class="badge badge-primary">En Revisión</span>
+                            </mat-card-content>
+                            <mat-card-actions class="boton">
+                              <div>
+                                <div class="container">
+                                  <div class="row justify-content-between">
+                                    <div class="col-sm-5">
+                                      <button mat-button>DETALLES</button>
+                                    </div>
+                                    <div class="col-sm-7">
+                                      <mat-icon>access_time</mat-icon><span>10/11/2019</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </mat-card-actions>
+                          </mat-card></a>
+                        </div>
                       </div>
-                      <div class="col-md-3">
-                        <mat-card class="servicio">
-                          <mat-card-header class="titulo">
-                            <mat-card-title>Servicio</mat-card-title>
-                          </mat-card-header>
-                          <mat-card-content class="mat_card_content">
-                            19/07/2019
-                            <br>
-                            10:00 am
-                            <br>
-                            En proceso
-                          </mat-card-content>
-                          <mat-card-actions class="boton">
-                            <button mat-raised-button>SEGUIMIENTO</button>
-                          </mat-card-actions>
-                        </mat-card>
+                    </div>       
+                  </div>
+
+                  <div class="carousel-item">
+                    <div class="container box">
+                      <div class="row justify-content-between arrow_box">
+                        <div class="col-md-6">
+                          <button mat-mini-fab class="waves_effect btn-floating" href="#carouselRequest" title="Anterior" data-slide="prev">
+                            <mat-icon>keyboard_arrow_left</mat-icon>
+                          </button>
+                        </div>
+                        <div class="col-md-6 text-md-right">
+                          <button mat-mini-fab class="waves_effect btn-floating" href="#carouselRequest" title="Siguiente" data-slide="next">
+                            <mat-icon>keyboard_arrow_right</mat-icon>
+                          </button>
+                        </div>
                       </div>
-                      <div class="col-md-3">
-                        <mat-card class="servicio">
-                          <mat-card-header class="titulo">
-                            <mat-card-title>Servicio</mat-card-title>
-                          </mat-card-header>
-                          <mat-card-content class="mat_card_content">
-                            19/07/2019
-                            <br>
-                            10:00 am
-                            <br>
-                            En proceso
-                          </mat-card-content>
-                          <mat-card-actions class="boton">
-                            <button mat-raised-button>SEGUIMIENTO</button>
-                          </mat-card-actions>
-                        </mat-card>
+                      <div class="row pad_arrow">
+                        <div class="col-md-3">
+                          <a [routerLink]="['/auth/lender/request']"><mat-card class="servicio">
+                            <mat-card-header class="titulo border-top-dark">
+                              <mat-card-title>Servicio</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content class="mat_card_content">
+                              Microondas
+                              <br>
+                              No calienta
+                              <br>
+                              <span class="badge badge-dark">Cancelada</span>
+                            </mat-card-content>
+                            <mat-card-actions class="boton">
+                              <div class="container">
+                                <div class="row justify-content-between">
+                                  <div class="col-sm-5">
+                                    <button mat-button>DETALLES</button>
+                                  </div>
+                                  <div class="col-sm-7">
+                                    <mat-icon>access_time</mat-icon><span>10/11/2019</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </mat-card-actions>
+                          </mat-card></a>
+                        </div>
+                        <div class="col-md-3">
+                          <a [routerLink]="['/auth/lender/request']"><mat-card class="servicio">
+                            <mat-card-header class="titulo border-top-primary">
+                              <mat-card-title>Servicio</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content class="mat_card_content">
+                              Nevera
+                              <br>
+                              No enfría
+                              <br>
+                              <span class="badge badge-primary">En Revisión</span>
+                            </mat-card-content>
+                            <mat-card-actions class="boton">
+                              <div class="container">
+                                <div class="row justify-content-between">
+                                  <div class="col-sm-5">
+                                    <button mat-button>DETALLES</button>
+                                  </div>
+                                  <div class="col-sm-7">
+                                    <mat-icon>access_time</mat-icon><span>10/11/2019</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </mat-card-actions>
+                          </mat-card></a>
+                        </div>
+                        <div class="col-md-3">
+                          <a [routerLink]="['/auth/lender/request']"><mat-card class="servicio">
+                            <mat-card-header class="titulo border-top-dark">
+                              <mat-card-title>Servicio</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content class="mat_card_content">
+                              Secadora
+                              <br>
+                              No enciende
+                              <br>
+                              <span class="badge badge-dark">Cancelada</span>
+                            </mat-card-content>
+                            <mat-card-actions class="boton">
+                              <div class="container">
+                                <div class="row justify-content-between">
+                                  <div class="col-sm-5">
+                                    <button mat-button>DETALLES</button>
+                                  </div>
+                                  <div class="col-sm-7">
+                                    <mat-icon>access_time</mat-icon><span>10/11/2019</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </mat-card-actions>
+                          </mat-card></a>
+                        </div>
                       </div>
-                    </div>
-                  </div>       
+                    </div>       
+                  </div>
+
                 </div>
               </div>
             </div>
@@ -108,108 +246,245 @@
         </div>
       </div>
     </div>
-  </div>
-  
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <div id="carouselServices" class="carousel" data-ride="carousel">
-          <div class="container">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="carouselServices" class="carousel" data-ride="carousel">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-12">
+                  <h2>Tus servicios</h2>
+                  <hr>
+                </div>
+              </div>
+              
+            </div>
             <div class="row">
               <div class="col-sm-12">
-                <h2>Solicitudes en Revisión</h2>
-                <hr>
-              </div>
-            </div>
-            <div class="row justify-content-between">
-              <div class="col-md-6">
-                <a class="btn btn-outline-secondary prev" href="#carouselServices" title="Anterior" data-slide="prev">
-                  <mat-icon>arrow_back</mat-icon>
-                </a>
-              </div>
-              <div class="col-md-6 text-md-right">
-                <a class="btn btn-outline-secondary next" href="#carouselServices" title="Siguiente" data-slide="next">
-                  <mat-icon>arrow_forward</mat-icon>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="carousel-inner service">
-                <div class="carousel-item active">
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-md-3">
-                        <mat-card class="servicio">
-                          <mat-card-header class="titulo">
-                            <mat-card-title>Servicio</mat-card-title>
-                          </mat-card-header>
-                          <mat-card-content class="mat_card_content">
-                            19/07/2019
-                            <br>
-                            10:00 am
-                            <br>
-                            En proceso
-                          </mat-card-content>
-                          <mat-card-actions class="boton">
-                            <button mat-raised-button>SEGUIMIENTO</button>
-                          </mat-card-actions>
-                        </mat-card>
+                <div class="carousel-inner service">
+                  <div class="carousel-item active">
+                    <div class="container box">
+                      <div class="row justify-content-between arrow_box">
+                        <div class="col-md-6">
+                          <button mat-mini-fab class="waves_effect btn-floating" href="#carouselServices" title="Anterior" data-slide="prev">
+                            <mat-icon>keyboard_arrow_left</mat-icon>
+                          </button>
+                        </div>
+                        <div class="col-md-6 text-md-right">
+                          <button mat-mini-fab class="waves_effect btn-floating" href="#carouselServices" title="Siguiente" data-slide="next">
+                            <mat-icon>keyboard_arrow_right</mat-icon>
+                          </button>
+                        </div>
                       </div>
-                      <div class="col-md-3">
-                        <mat-card class="servicio">
-                          <mat-card-header class="titulo">
-                            <mat-card-title>Servicio</mat-card-title>
-                          </mat-card-header>
-                          <mat-card-content class="mat_card_content">
-                            19/07/2019
-                            <br>
-                            10:00 am
-                            <br>
-                            En proceso
-                          </mat-card-content>
-                          <mat-card-actions class="boton">
-                            <button mat-raised-button>SEGUIMIENTO</button>
-                          </mat-card-actions>
-                        </mat-card>
+                      <div class="row pad_arrow">
+                        <div class="col-md-3">
+                          <a [routerLink]="['/auth/lender/service']"><mat-card class="servicio">
+                            <mat-card-header class="titulo border-top-dark">
+                              <mat-card-title>Servicio</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content class="mat_card_content">
+                              Microondas
+                              <br>
+                              No calienta
+                              <br>
+                              <span class="badge badge-danger">En Espera</span>
+                            </mat-card-content>
+                            <mat-card-actions>
+                              <div class="container">
+                                <div class="row justify-content-between">
+                                  <div class="col-sm-5">
+                                    <button mat-button>DETALLES</button>
+                                  </div>
+                                  <div class="col-sm-7">
+                                    <mat-icon>access_time</mat-icon><span>10/11/2019</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </mat-card-actions>
+                          </mat-card></a>
+                        </div>
+                        <div class="col-md-3">
+                          <a [routerLink]="['/auth/lender/service']"><mat-card class="servicio">
+                            <mat-card-header class="titulo border-top-danger">
+                              <mat-card-title>Servicio</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content class="mat_card_content">
+                              Nevera
+                              <br>
+                              No enfría
+                              <br>
+                              <span class="badge badge-danger">En Espera</span>
+                            </mat-card-content>
+                            <mat-card-actions class="boton">
+                              <div class="container">
+                                <div class="row justify-content-between">
+                                  <div class="col-sm-5">
+                                    <button mat-button>DETALLES</button>
+                                  </div>
+                                  <div class="col-sm-7">
+                                    <mat-icon>access_time</mat-icon><span>10/11/2019</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </mat-card-actions>
+                          </mat-card></a>
+                        </div>
+                        <div class="col-md-3">
+                          <a [routerLink]="['/auth/lender/service']"><mat-card class="servicio">
+                            <mat-card-header class="titulo border-top-primary">
+                              <mat-card-title>Servicio</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content class="mat_card_content">
+                              Secadora
+                              <br>
+                              No enciende
+                              <br>
+                              <span class="badge badge-primary">En Ejecución</span>
+                            </mat-card-content>
+                            <mat-card-actions class="boton">
+                              <div class="container">
+                                <div class="row justify-content-between">
+                                  <div class="col-sm-5">
+                                    <button mat-button>DETALLES</button>
+                                  </div>
+                                  <div class="col-sm-7">
+                                    <mat-icon>access_time</mat-icon><span>10/11/2019</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </mat-card-actions>
+                          </mat-card></a>
+                        </div>
+                        <div class="col-md-3">
+                          <a [routerLink]="['/auth/lender/service']"><mat-card class="servicio">
+                            <mat-card-header class="titulo border-top-primary">
+                              <mat-card-title>Servicio</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content class="mat_card_content">
+                              Cafetera
+                              <br>
+                              No cuela
+                              <br>
+                              <span class="badge badge-primary">En Ejecución</span>
+                            </mat-card-content>
+                            <mat-card-actions class="boton">
+                              <div>
+                                <div class="container">
+                                  <div class="row justify-content-between">
+                                    <div class="col-sm-5">
+                                      <button mat-button>DETALLES</button>
+                                    </div>
+                                    <div class="col-sm-7">
+                                      <mat-icon>access_time</mat-icon><span>10/11/2019</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </mat-card-actions>
+                          </mat-card></a>
+                        </div>
                       </div>
-                      <div class="col-md-3">
-                        <mat-card class="servicio">
-                          <mat-card-header class="titulo">
-                            <mat-card-title>Servicio</mat-card-title>
-                          </mat-card-header>
-                          <mat-card-content class="mat_card_content">
-                            19/07/2019
-                            <br>
-                            10:00 am
-                            <br>
-                            En proceso
-                          </mat-card-content>
-                          <mat-card-actions class="boton">
-                            <button mat-raised-button>SEGUIMIENTO</button>
-                          </mat-card-actions>
-                        </mat-card>
+                    </div>       
+                  </div>
+
+                  <div class="carousel-item">
+                    <div class="container box">
+                      <div class="row justify-content-between arrow_box">
+                        <div class="col-md-6">
+                          <button mat-mini-fab class="waves_effect btn-floating" href="#carouselServices" title="Anterior" data-slide="prev">
+                            <mat-icon>keyboard_arrow_left</mat-icon>
+                          </button>
+                        </div>
+                        <div class="col-md-6 text-md-right">
+                          <button mat-mini-fab class="waves_effect btn-floating" href="#carouselServices" title="Siguiente" data-slide="next">
+                            <mat-icon>keyboard_arrow_right</mat-icon>
+                          </button>
+                        </div>
                       </div>
-                      <div class="col-md-3">
-                        <mat-card class="servicio">
-                          <mat-card-header class="titulo">
-                            <mat-card-title>Servicio</mat-card-title>
-                          </mat-card-header>
-                          <mat-card-content class="mat_card_content">
-                            19/07/2019
-                            <br>
-                            10:00 am
-                            <br>
-                            En proceso
-                          </mat-card-content>
-                          <mat-card-actions class="boton">
-                            <button mat-raised-button>SEGUIMIENTO</button>
-                          </mat-card-actions>
-                        </mat-card>
+                      <div class="row pad_arrow">
+                        <div class="col-md-3">
+                          <a [routerLink]="['/auth/lender/service']"><mat-card class="servicio">
+                            <mat-card-header class="titulo border-top-dark">
+                              <mat-card-title>Servicio</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content class="mat_card_content">
+                              Microondas
+                              <br>
+                              No calienta
+                              <br>
+                              <span class="badge badge-dark">Cancelada</span>
+                            </mat-card-content>
+                            <mat-card-actions class="boton">
+                              <div class="container">
+                                <div class="row justify-content-between">
+                                  <div class="col-sm-5">
+                                    <button mat-button>DETALLES</button>
+                                  </div>
+                                  <div class="col-sm-7">
+                                    <mat-icon>access_time</mat-icon><span>10/11/2019</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </mat-card-actions>
+                          </mat-card></a>
+                        </div>
+                        <div class="col-md-3">
+                          <a [routerLink]="['/auth/lender/service']"><mat-card class="servicio">
+                            <mat-card-header class="titulo border-top-success">
+                              <mat-card-title>Servicio</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content class="mat_card_content">
+                              Nevera
+                              <br>
+                              No enfría
+                              <br>
+                              <span class="badge badge-success">Terminada</span>
+                            </mat-card-content>
+                            <mat-card-actions class="boton">
+                              <div class="container">
+                                <div class="row justify-content-between">
+                                  <div class="col-sm-5">
+                                    <button mat-button>DETALLES</button>
+                                  </div>
+                                  <div class="col-sm-7">
+                                    <mat-icon>access_time</mat-icon><span>10/11/2019</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </mat-card-actions>
+                          </mat-card></a>
+                        </div>
+                        <div class="col-md-3">
+                          <a [routerLink]="['/auth/lender/service']"><mat-card class="servicio">
+                            <mat-card-header class="titulo border-top-success">
+                              <mat-card-title>Servicio</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content class="mat_card_content">
+                              Secadora
+                              <br>
+                              No enciende
+                              <br>
+                              <span class="badge badge-success">Terminada</span>
+                            </mat-card-content>
+                            <mat-card-actions class="boton">
+                              <div class="container">
+                                <div class="row justify-content-between">
+                                  <div class="col-sm-5">
+                                    <button mat-button>DETALLES</button>
+                                  </div>
+                                  <div class="col-sm-7">
+                                    <mat-icon>access_time</mat-icon><span>10/11/2019</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </mat-card-actions>
+                          </mat-card></a>
+                        </div>
                       </div>
-                    </div>
-                  </div>       
+                    </div>       
+                  </div>
+
                 </div>
               </div>
             </div>
@@ -217,30 +492,29 @@
         </div>
       </div>
     </div>
-  </div>
-  
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-12">
-              <h2>Agenda</h2>
-              <hr>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-12">
+                <h2>Agenda</h2>
+                <hr>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-12">
-              <mat-card>
-                <img src="../../../../assets/img/calendar/calendar.png" alt="">
-              </mat-card>
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-12">
+                <mat-card>
+                  <img src="../../../../assets/img/calendar/calendar.png" alt="">
+                </mat-card>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </div>

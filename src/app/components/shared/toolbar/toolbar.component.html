@@ -5,8 +5,8 @@
 /*Agregue icono de notificación
 11/07/2019-->
 
-<mat-toolbar class="toolbar fixed_toolbar">
-    <span>Siberian</span>
+<mat-toolbar class="toolbar fixed_toolbar" [class.open]="isToggle" [class.closed]="!isToggle">
+    <span class="name_company">Siberian</span>
     <span class="example-spacer"></span>
     <a [routerLinkActive]="['active']" [routerLink]="['/auth']" ><mat-icon class="example-icon" aria-hidden="false" aria-label="Example notifications icon">notifications</mat-icon></a>
     <a [routerLinkActive]="['active']" [routerLink]="['/auth/profile']" ><mat-icon class="example-icon" aria-hidden="false" aria-label="Example person icon">person</mat-icon></a>
