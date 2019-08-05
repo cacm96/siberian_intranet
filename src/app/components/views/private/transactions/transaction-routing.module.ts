@@ -6,6 +6,15 @@ import { TransactionComponent } from './transaction.component';
 const routes: Routes = [
 
 	{path: '', component: TransactionComponent, canActivate: []},
+	{path: 'calendar-worker', canActivate: [],
+		children:
+		[
+			{
+				path: '',
+                loadChildren: './calendar-worker/calendar-worker.module#CalendarWorkerModule',
+			}
+		]
+	},
 	{path: 'calification', canActivate: [],
 		children:
 		[
@@ -30,6 +39,15 @@ const routes: Routes = [
 			{
 				path: '',
                 loadChildren: './chat-room-user/chat-room-user.module#ChatRoomUserModule',
+			}
+		]
+	},
+	{path: 'incidence', canActivate: [],
+		children:
+		[
+			{
+				path: '',
+                loadChildren: './incidence/incidence.module#IncidenceModule',
 			}
 		]
 	},

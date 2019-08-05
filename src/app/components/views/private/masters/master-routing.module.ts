@@ -15,6 +15,15 @@ const routes: Routes = [
 			}
 		]
 	},
+	{path: 'calendar', canActivate: [],
+		children:
+		[
+			{
+				path: '',
+                loadChildren: './calendar/calendar.module#CalendarModule',
+			}
+		]
+	},
 	{path: 'client', canActivate: [],
 		children:
 		[
@@ -51,12 +60,30 @@ const routes: Routes = [
 			}
 		]
 	},
+	{path: 'event', canActivate: [],
+		children:
+		[
+			{
+				path: '',
+                loadChildren: './event/event.module#EventModule',
+			}
+		]
+	},
 	{path: 'function', canActivate: [],
 		children:
 		[
 			{
 				path: '',
                 loadChildren: './function/function.module#FunctionModule',
+			}
+		]
+	},
+	{path: 'motive', canActivate: [],
+		children:
+		[
+			{
+				path: '',
+                loadChildren: './motive/motive.module#MotiveModule',
 			}
 		]
 	},
@@ -84,6 +111,15 @@ const routes: Routes = [
 			{
 				path: '',
                 loadChildren: './resource/resource.module#ResourceModule',
+			}
+		]
+	},
+	{path: 'result', canActivate: [],
+		children:
+		[
+			{
+				path: '',
+                loadChildren: './result/result.module#ResultModule',
 			}
 		]
 	},

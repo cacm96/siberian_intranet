@@ -9,7 +9,10 @@
     <span class="name_company">Siberian</span>
     <span class="example-spacer"></span>
     <a [routerLinkActive]="['active']" [routerLink]="['/auth/transactions/notification']" ><mat-icon class="example-icon" aria-hidden="false" aria-label="Example notifications icon">notifications</mat-icon></a>
-    <a [routerLinkActive]="['active']" [routerLink]="['/auth/profile']" ><mat-icon class="example-icon" aria-hidden="false" aria-label="Example person icon">person</mat-icon></a>
-    <a [routerLinkActive]="['active']" [routerLink]="['/auth/dashboard']" ><mat-icon class="example-icon" aria-hidden="false" aria-label="Example home icon">home</mat-icon></a>
-    <!-- <a [routerLinkActive]="['active']" [routerLink]="['/login']" ><mat-icon class="example-icon" aria-hidden="false" aria-label="Example exit_to_app icon">arrow_back</mat-icon></a> -->
+    <a *ngIf="rol=='client'" [routerLinkActive]="['active']" [routerLink]="['/auth/profile/client']" ><mat-icon class="example-icon" aria-hidden="false" aria-label="Example person icon">person</mat-icon></a>
+    <a *ngIf="rol=='lender'" [routerLinkActive]="['active']" [routerLink]="['/auth/profile/lender']" ><mat-icon class="example-icon" aria-hidden="false" aria-label="Example person icon">person</mat-icon></a>
+    <a *ngIf="rol=='admin'" [routerLinkActive]="['active']" [routerLink]="['/auth/profile/admin']" ><mat-icon class="example-icon" aria-hidden="false" aria-label="Example person icon">person</mat-icon></a>
+    <a *ngIf="rol=='client'" [routerLinkActive]="['active']" [routerLink]="['/auth/dashboard/client']" ><mat-icon class="example-icon" aria-hidden="false" aria-label="Example home icon">home</mat-icon></a>
+    <a *ngIf="rol=='lender'" [routerLinkActive]="['active']" [routerLink]="['/auth/dashboard/lender']" ><mat-icon class="example-icon" aria-hidden="false" aria-label="Example home icon">home</mat-icon></a>
+    <a *ngIf="rol=='admin'" [routerLinkActive]="['active']" [routerLink]="['/auth/dashboard/admin']" ><mat-icon class="example-icon" aria-hidden="false" aria-label="Example home icon">home</mat-icon></a>
 </mat-toolbar> 
