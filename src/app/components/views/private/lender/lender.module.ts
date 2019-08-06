@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../../../core/ui/material.module';
 import { LenderRoutingModule } from './lender-routing.module';
 import { LenderComponent } from './lender.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { RequestComponent } from './request/request.component';
 import { ServiceComponent } from './service/service.component';
 
@@ -10,6 +11,7 @@ import { ServiceComponent } from './service/service.component';
   declarations:
   [
     LenderComponent,
+  	DashboardComponent,
   	RequestComponent,
   	ServiceComponent,
   ],
