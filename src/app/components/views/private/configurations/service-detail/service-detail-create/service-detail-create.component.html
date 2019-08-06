@@ -17,11 +17,11 @@
 				<div class="col-sm-12">
 					<div class="example-container">
 						<mat-form-field>
-							<input matInput placeholder="Nombre">
+							<input matInput required placeholder="Nombre">
 						</mat-form-field>
 						
 						<mat-form-field>
-							<mat-select placeholder="Componente">
+							<mat-select required placeholder="Componente" >
 								<mat-option value="option">Hornilla</mat-option>
 								<mat-option value="option">Regulador</mat-option>
 								<mat-option value="option">Chispa de Encender</mat-option>
@@ -30,29 +30,15 @@
             
 						<mat-form-field>
 							<input matInput placeholder="Precio Estimado">
-						</mat-form-field>	
-						
-						<mat-form-field>
-							<input matInput placeholder="Nota">
-						</mat-form-field>	
+						</mat-form-field>		
 						
 						<mat-form-field>
 							<input matInput placeholder="Tiempo Estimado">
 						</mat-form-field>	
-						
+
 						<mat-form-field>
-							<mat-select placeholder="Equipo/Infraestructura">
-								<mat-option value="option">Cocina a Gas</mat-option>
-								<mat-option value="option">Cocina Eléctrica</mat-option>								
-							</mat-select>
+							<input matInput placeholder="Nota">
 						</mat-form-field>
-						
-						<mat-form-field>
-							<mat-select placeholder="Catalogo">
-								<mat-option value="option">Reparación Completa</mat-option>
-								<mat-option value="option">Cocina Parcial</mat-option>								
-							</mat-select>
-						</mat-form-field>	
 						
 						<mat-form-field [hidden]="true">
 							<input matInput  placeholder="Estatus" value="A">
