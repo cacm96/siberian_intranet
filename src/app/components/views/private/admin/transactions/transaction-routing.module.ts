@@ -78,12 +78,12 @@ const routes: Routes = [
 			}
 		]
 	},
-	{path: 'revition', canActivate: [],
+	{path: 'revision', canActivate: [],
 		children:
 		[
 			{
 				path: '',
-                loadChildren: './revition/revition.module#RevitionModule',
+                loadChildren: './revision/revision.module#RevisionModule',
 			}
 		]
 	},
