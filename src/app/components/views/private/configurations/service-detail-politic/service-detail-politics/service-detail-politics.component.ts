@@ -23,7 +23,6 @@ export class ServiceDetailPoliticsComponent implements OnInit {
     'id',
     'idServiceDetail',
     'idPolitic',
-    'action_plan',
     'edit',
     'delete'];
   dataSource: MatTableDataSource<ServiceDetailPoliticData>;
@@ -36,8 +35,8 @@ export class ServiceDetailPoliticsComponent implements OnInit {
 		private snackBar: SnackBarService
   ) { 
     this.serviceDetailPolitic = [
-      {id:"1",idServiceDetail:"Reparación de Cocina",idPolitic:"Política 1",action_plan: "1 Día de planificación, 3 Días de Trabajo",status:"A"},
-      {id:"2",idServiceDetail:"Reparación de Nevera",idPolitic:"Política 2",action_plan:"3 Día de planificación, 7 Días de Trabajo",status:"E"},
+      {id:"1",idServiceDetail:"Reparación de Cocina",idPolitic:"Política 1",status:"A"},
+      {id:"2",idServiceDetail:"Reparación de Nevera",idPolitic:"Política 2",status:"E"},
     ];
 
   this.dataSource = new MatTableDataSource(this.serviceDetailPolitic);

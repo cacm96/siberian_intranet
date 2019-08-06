@@ -26,9 +26,6 @@ export class ServiceDetailActivitysComponent implements OnInit {
     'id',
     'service_detail_id',
     'activity_id',
-    'created_at',
-    'estimated_time',
-    'difficulty_degree',
     'edit',
     'delete'];
   dataSource: MatTableDataSource<ServiceDetailActivityData>;
@@ -41,8 +38,8 @@ export class ServiceDetailActivitysComponent implements OnInit {
 		private snackBar: SnackBarService
   ) { 
     this.serviceDetailActivity = [
-      {id:"1",service_detail_id:"Reparación de Cocina",activity_id:"Limpieza de Hornilla",created_at: "04/07/2019",estimated_time:"2 Horas",difficulty_degree:"Bajo"},
-      {id:"2",service_detail_id:"Reparación de Nevera",activity_id:"Desmontar Motor",created_at:"01/07/2019",estimated_time:"1 Día",difficulty_degree:"Alto"},
+      {id:"1",service_detail_id:"Reparación de Cocina",activity_id:"Limpieza de Hornilla"},
+      {id:"2",service_detail_id:"Reparación de Nevera",activity_id:"Desmontar Motor"},
     ];
 
   this.dataSource = new MatTableDataSource(this.serviceDetailActivity);

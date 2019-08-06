@@ -16,25 +16,25 @@
         <div class="row">
           <div class="col-sm-12">
             <div class="example-container">
-                <mat-form-field>
-                    <mat-select placeholder="Recurso">
-                      <mat-option value="option">Jabon</mat-option>
-                      <mat-option value="option">Tornillo con Tuerca</mat-option>
-                      <mat-option value="option">Tornillo Tira Fondo</mat-option>
-                      <mat-option value="option">Brocha</mat-option>
-                    </mat-select>
-                  </mat-form-field>
               <mat-form-field>
-                <mat-select placeholder="Detalle de Servicio">
+                <mat-select required placeholder="Recurso">
+                  <mat-option value="option">Jabon</mat-option>
+                  <mat-option value="option">Tornillo con Tuerca</mat-option>
+                  <mat-option value="option">Tornillo Tira Fondo</mat-option>
+                  <mat-option value="option">Brocha</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select required placeholder="Detalle de Servicio">
                   <mat-option value="option">Reparación de Cocina</mat-option>
                   <mat-option value="option">Reparación de Nevera</mat-option>
                 </mat-select>
               </mat-form-field>
 
               <mat-form-field>
-                <input matInput placeholder="Cantidad">
+                <input matInput required placeholder="Cantidad">
               </mat-form-field>	
-              
+            
               <mat-form-field [hidden]="true">
                 <input matInput  placeholder="Estatus" value="A">
               </mat-form-field>
