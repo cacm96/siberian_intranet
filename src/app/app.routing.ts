@@ -22,66 +22,7 @@ const routes: Routes =
 	{path: 'auth', canActivate: [], component: HomeComponent,
 		children:
 		[
-			{path: '', redirectTo: 'dashboard', pathMatch: 'full', canActivate: []},
-			{path: 'dashboard', canActivate: [],
-				children:
-				[
-					{
-						path: '',
-		                loadChildren: './components/views/private/dashboard/dashboard.module#DashboardModule',
-					}
-				]
-			},
-
-			{path: 'profile', canActivate: [],
-				children:
-				[
-					{
-						path: '',
-		                loadChildren: './components/views/private/profile/profile.module#ProfileModule',
-					}
-				]
-			},
-
-			{path: 'masters', canActivate: [],
-				children:
-				[
-					{
-						path: '',
-		                loadChildren: './components/views/private/masters/master.module#MasterModule',
-					}
-				]
-			},
-
-			{path: 'parameters', canActivate: [],
-				children:
-				[
-					{
-						path: '',
-		                loadChildren: './components/views/private/parameters/parameter.module#ParameterModule',
-					}
-				]
-			},
-
-			{path: 'configurations', canActivate: [],
-				children:
-				[
-					{
-						path: '',
-		                loadChildren: './components/views/private/configurations/configuration.module#ConfigurationModule',
-					}
-				]
-			},
-
-			{path: 'transactions', canActivate: [],
-				children:
-				[
-					{
-						path: '',
-		                loadChildren: './components/views/private/transactions/transaction.module#TransactionModule',
-					}
-				]
-			},
+			{path: '', redirectTo: 'auth', pathMatch: 'full', canActivate: []},
 
 			{path: 'client', canActivate: [],
 				children:
@@ -99,6 +40,16 @@ const routes: Routes =
 					{
 						path: '',
 		                loadChildren: './components/views/private/lender/lender.module#LenderModule',
+					}
+				]
+			},
+
+			{path: 'admin', canActivate: [],
+				children:
+				[
+					{
+						path: '',
+		                loadChildren: './components/views/private/admin/admin.module#AdminModule',
 					}
 				]
 			},

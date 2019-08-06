@@ -27,13 +27,13 @@ export class LoginWeitComponent implements OnInit {
     	localStorage.setItem('resID', '1');
 		var actualRoute = window.location.origin;
 		if (this.rol=="client")	
-			window.location.replace(actualRoute+'/auth/dashboard/client');
+			window.location.replace(actualRoute+'/auth/client/dashboard');
 		else if (this.rol=="lender")
-			window.location.replace(actualRoute+'/auth/dashboard/lender');
+			window.location.replace(actualRoute+'/auth/lender/dashboard');
 		else if (this.rol=="admin")
-			window.location.replace(actualRoute+'/auth/dashboard/admin');
+			window.location.replace(actualRoute+'/auth/admin/dashboard');
 		else
-			window.location.replace(actualRoute+'/auth/dashboard');
+			window.location.replace(actualRoute+'/auth');
 
 	}
 

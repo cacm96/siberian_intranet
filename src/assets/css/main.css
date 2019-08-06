@@ -8,7 +8,9 @@ html,body,.mat_sidenav_content{
   margin:0;
   height: 100%; /*Esto hace que tenga scroll solo el contenido y no el sidenav*/
 }
-
+h2{
+  margin-bottom: 1rem;
+}
 body{
   color: #121212;
 }
