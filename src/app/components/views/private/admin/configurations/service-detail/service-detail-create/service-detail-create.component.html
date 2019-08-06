@@ -1,0 +1,57 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-8 offset-2">
+			<div class="row">
+				<div class="col-sm-12">
+					<h2 class="text-center">Nuevo Detalle de Servicio</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<button mat-raised-button color="primary" [routerLink]="['/auth/configurations/service-detail']">Volver</button>
+				</div>
+			</div>
+			<hr>
+			
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="example-container">
+						<mat-form-field>
+							<input matInput required placeholder="Nombre">
+						</mat-form-field>
+						
+						<mat-form-field>
+							<mat-select required placeholder="Componente" >
+								<mat-option value="option">Hornilla</mat-option>
+								<mat-option value="option">Regulador</mat-option>
+								<mat-option value="option">Chispa de Encender</mat-option>
+							</mat-select>
+						</mat-form-field>
+            
+						<mat-form-field>
+							<input matInput placeholder="Precio Estimado">
+						</mat-form-field>		
+						
+						<mat-form-field>
+							<input matInput placeholder="Tiempo Estimado">
+						</mat-form-field>	
+
+						<mat-form-field>
+							<input matInput placeholder="Nota">
+						</mat-form-field>
+						
+						<mat-form-field [hidden]="true">
+							<input matInput  placeholder="Estatus" value="A">
+						</mat-form-field>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12">
+					<button mat-raised-button color="primary" [routerLink]="['/auth/configurations/service-detail/create']">Registrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
