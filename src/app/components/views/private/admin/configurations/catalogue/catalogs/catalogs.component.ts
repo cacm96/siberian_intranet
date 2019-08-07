@@ -9,10 +9,11 @@ export interface CatalogueData {
   id: string;
   idServiceType: string;
   idSubcategory: string;
+  name: string;
   description: string;
   status: string;
   image: string;
-  name: string;
+  
 }
 
 @Component({
@@ -23,7 +24,7 @@ export interface CatalogueData {
 export class CatalogsComponent implements OnInit {
 
   public catalogue:any[];
-	displayedColumns: string[] = ['id', 'idServiceType', 'idSubcategory', 'description','status','image','name','edit','delete'];
+	displayedColumns: string[] = ['id', 'idServiceType', 'idSubcategory','name','description','status','image','edit','delete'];
 	dataSource: MatTableDataSource<CatalogueData>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
@@ -35,9 +36,9 @@ export class CatalogsComponent implements OnInit {
   ) 
   { 
     this.catalogue = [
-      {id:"1" ,idServiceType:"Mantenimiento",idSubcategory:"Nevera",description:"Mantenimiento de Neveras",status:"A",image:"url1",name:"Cátalogo 1"},
-      {id:"2" ,idServiceType:"Reparación",idSubcategory:"Pared",description:"Reparación de paredes",status:"A",image:"url2",name:"Cátalogo 2"},
-      {id:"3" ,idServiceType:"Reparación",idSubcategory:"Lavadora",description:"Mantenimiento de Lavadora",status:"E",image:"url3",name:"Cátalogo 3"},
+      {id:"1" ,idServiceType:"Mantenimiento",idSubcategory:"Nevera",name:"Cátalogo 1",description:"Mantenimiento de Neveras",status:"A",image:"url1"},
+      {id:"2" ,idServiceType:"Reparación",idSubcategory:"Pared",name:"Cátalogo 2",description:"Reparación de paredes",status:"A",image:"url2"},
+      {id:"3" ,idServiceType:"Reparación",idSubcategory:"Lavadora",name:"Cátalogo 3",description:"Mantenimiento de Lavadora",status:"E",image:"url3"},
     ];
 
   this.dataSource = new MatTableDataSource(this.catalogue);

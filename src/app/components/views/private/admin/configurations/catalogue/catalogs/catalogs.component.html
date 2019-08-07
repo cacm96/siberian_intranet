@@ -6,8 +6,8 @@
 	</div>
 	<div class="row">
 		<div class="col-sm-12">
-			<button mat-raised-button color="primary" class="mr-3" [routerLink]="['/auth/configurations/catalogue/create']">Nuevo Catálogo</button>
-	        <button mat-raised-button color="primary" [routerLink]="['/auth/configurations/']">Volver</button>
+			<button mat-raised-button color="primary" class="mr-3" [routerLink]="['/auth/admin/configurations/catalogue/create']">Nuevo Catálogo</button>
+	        <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/']">Volver</button>
 		</div>
 	</div>
 	<hr>
@@ -28,7 +28,7 @@
 					<ng-container matColumnDef="id">
 						<th mat-header-cell *matHeaderCellDef mat-sort-header> Ver </th>
 						<td mat-cell *matCellDef="let row">
-							<button mat-icon-button color="accent" [routerLink]="['/auth/configurations/catalogue/show/', row.id]">
+							<button mat-icon-button color="accent" [routerLink]="['/auth/admin/configurations/catalogue/show/', row.id]">
 								<mat-icon>remove_red_eye</mat-icon>
 							</button>
 						</td>
@@ -42,6 +42,11 @@
 					<ng-container matColumnDef="idSubcategory">
 						<th mat-header-cell *matHeaderCellDef mat-sort-header> Subcategoría </th>
 						<td mat-cell *matCellDef="let row"> {{row.idSubcategory}} </td>
+					</ng-container>
+					
+					<ng-container matColumnDef="name">
+						<th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre </th>
+						<td mat-cell *matCellDef="let row"> {{row.name}}</td>
 					</ng-container>
 					
 					<ng-container matColumnDef="description">
@@ -62,15 +67,12 @@
 						<td mat-cell *matCellDef="let row"> {{row.image}}</td>
 					</ng-container>
 
-					<ng-container matColumnDef="name">
-						<th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre </th>
-						<td mat-cell *matCellDef="let row"> {{row.name}}</td>
-					</ng-container>
+					
 
 					<ng-container matColumnDef="edit">
 						<th mat-header-cell *matHeaderCellDef></th>
 						<td mat-cell *matCellDef="let row">
-							<button mat-icon-button color="accent" [routerLink]="['/auth/configurations/catalogue/edit/', row.id]">
+							<button mat-icon-button color="accent" [routerLink]="['/auth/admin/configurations/catalogue/edit/', row.id]">
 								<mat-icon>edit</mat-icon>
 							</button>
 						</td>

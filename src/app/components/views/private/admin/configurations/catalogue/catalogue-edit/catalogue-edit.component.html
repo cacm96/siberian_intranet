@@ -9,7 +9,7 @@
         </div>
         <div class="row">
           <div class="col-sm-12">
-            <button mat-raised-button color="primary" [routerLink]="['/auth/configurations/catalogue']">Volver</button>
+            <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/catalogue']">Volver</button>
           </div>
         </div>
         <hr>
@@ -18,18 +18,22 @@
           <div class="col-sm-12">
             <div class="example-container">
 			<mat-form-field>
-					<mat-select placeholder="Tipo Servicio">
+					<mat-select placeholder="Tipo Servicio" required>
 						<mat-option value="option">Mantenimiento</mat-option>
 						<mat-option value="option">Reparación</mat-option>
 					</mat-select>
 			</mat-form-field>
 	
 			<mat-form-field>
-					<mat-select placeholder="Subcategoría">
+					<mat-select placeholder="Subcategoría" required>
 						<mat-option value="option">Nevera</mat-option>
 						<mat-option value="option">Lavadora</mat-option>
 						<mat-option value="option">Pared</mat-option>
 					</mat-select>
+      </mat-form-field>
+      
+      <mat-form-field>
+				<input matInput placeholder="Nombre">
 			</mat-form-field>
 	
 			<mat-form-field>
@@ -42,17 +46,15 @@
 			
 			<mat-label>Subir Imagen</mat-label>
 			<input id="fileInput" type="file">
-	
-			<mat-form-field>
-				<input matInput placeholder="Nombre">
-			</mat-form-field>
+      <br>
+			
             </div>
           </div>
         </div>
         
         <div class="row">
           <div class="col-sm-12">
-            <button mat-raised-button color="primary" [routerLink]="['/auth/configurations/catalogue/edit/1']">Guardar</button>
+            <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/catalogue/edit/1']">Guardar</button>
           </div>
         </div>
       </div>

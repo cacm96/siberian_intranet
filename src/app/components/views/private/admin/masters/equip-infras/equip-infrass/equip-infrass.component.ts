@@ -9,8 +9,9 @@ export interface EquipInfrasData {
   id: string;
   name: string;
   description: string;
-  status: string;
   image: string;
+  status: string;
+  
 }
 @Component({
   selector: 'sib-equip-infrass',
@@ -20,7 +21,7 @@ export interface EquipInfrasData {
 export class EquipInfrassComponent implements OnInit {
 
   public equipInfras:any[];
-	displayedColumns: string[] = ['id', 'name', 'description','status','image','edit','delete'];
+	displayedColumns: string[] = ['id', 'name', 'description' ,'image','status','edit','delete'];
 	dataSource: MatTableDataSource<EquipInfrasData>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
@@ -32,9 +33,9 @@ export class EquipInfrassComponent implements OnInit {
   ) 
   { 
     this.equipInfras = [
-      {id:"1",name:"Pared",description:"Pared de hogares y oficinas",status:"A",image:'url1'},
-      {id:"2",name:"Aire Acondicionado	",description:" Aires acondicionados en hogares y oficinas",status:"A",image:'url2'},
-      {id:"3",name:"Piso",description:"Piso en los hogares y oficinas	",status:"E",image:'url3'},
+      {id:"1",name:"Pared",description:"Pared de hogares y oficinas",image:'url1',status:"A"},
+      {id:"2",name:"Aire Acondicionado	",description:" Aires acondicionados en hogares y oficinas",image:'url2',status:"A"},
+      {id:"3",name:"Piso",description:"Piso en los hogares y oficinas	",image:'url3',status:"E",},
     ];
 
   this.dataSource = new MatTableDataSource(this.equipInfras);

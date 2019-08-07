@@ -10,6 +10,8 @@ export interface ActivityData {
   id: string;
   name: string;
   description: string;
+  estimatedTime: string;
+  difficultyDegree: string;
   status: string;
 }
 @Component({
@@ -19,7 +21,7 @@ export interface ActivityData {
 })
 export class ActivitysComponent implements OnInit {
   public activity:any[];
-	displayedColumns: string[] = ['id', 'name', 'description','status','edit','delete'];
+	displayedColumns: string[] = ['id', 'name', 'description','estimatedTime','difficultyDegree','status','edit','delete'];
 	dataSource: MatTableDataSource<ActivityData>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
@@ -30,9 +32,9 @@ export class ActivitysComponent implements OnInit {
   ) 
   {
     this.activity = [
-      {id:"1",name:"Cambiar tarjeta",description:"Cambiar tarjeta electrónica de la nevera",status:"A"},
-      {id:"2",name:"Pintar pared",description:"Pintar la pared completa",status:"A"},
-      {id:"3",name:"Lijar pared",description:"Lijar la pared completa",status:"E"},
+      {id:"1",name:"Cambiar tarjeta",description:"Cambiar tarjeta electrónica de la nevera",estimatedTime:"2 horas",difficultyDegree:"Bajo", status:"A"},
+      {id:"2",name:"Pintar pared",description:"Pintar la pared completa",estimatedTime:" 1 día",difficultyDegree:"Bajo",status:"A"},
+      {id:"3",name:"Lijar pared",description:"Lijar la pared completa",estimatedTime:"1 día",difficultyDegree:"Medio",status:"E"},
     ];
 
   this.dataSource = new MatTableDataSource(this.activity);
