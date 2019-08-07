@@ -9,8 +9,8 @@ export interface CatalogueVarietyDetailsData {
   id: string;
   idCatalogue: string;
   idVarietyDetail: string;
-  status: string;
   revisionPrice: string;
+  status: string;
 }
 
 @Component({
@@ -21,7 +21,7 @@ export interface CatalogueVarietyDetailsData {
 export class CatalogueVarietyDetailsComponent implements OnInit {
 
   public catalogueVarietyDetails:any[];
-	displayedColumns: string[] = ['id', 'idCatalogue', 'idVarietyDetail', 'status','revisionPrice','edit','delete'];
+	displayedColumns: string[] = ['id', 'idCatalogue', 'idVarietyDetail','revisionPrice', 'status' , 'edit','delete'];
 	dataSource: MatTableDataSource<CatalogueVarietyDetailsData>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
@@ -33,9 +33,9 @@ export class CatalogueVarietyDetailsComponent implements OnInit {
   ) 
   {
     this.catalogueVarietyDetails = [
-      {id:"1" ,idCatalogue:"Catálogo 1",idVarietyDetail:"Modelo 1",status:"A",revisionPrice:"100.000"},
-      {id:"2" ,idCatalogue:"Catálogo 2",idVarietyDetail:"Modelo 6",status:"A",revisionPrice:"150.000"},
-      {id:"3" ,idCatalogue:"Catálogo 3",idVarietyDetail:"Modelo 10",status:"E",revisionPrice:"200.000"},
+      {id:"1" ,idCatalogue:"Catálogo 1",idVarietyDetail:"Modelo 1",revisionPrice:"100.000",status:"A"},
+      {id:"2" ,idCatalogue:"Catálogo 2",idVarietyDetail:"Modelo 6",revisionPrice:"150.000",status:"A"},
+      {id:"3" ,idCatalogue:"Catálogo 3",idVarietyDetail:"Modelo 10",revisionPrice:"200.000",status:"E"},
     ];
 
   this.dataSource = new MatTableDataSource(this.catalogueVarietyDetails);
