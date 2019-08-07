@@ -6,8 +6,8 @@
 		</div>
 		<div class="row">
 			<div class="col-sm-12">
-				<button mat-raised-button color="primary" class="mr-3" [routerLink]="['/auth/configurations/catalogue-variety-detail/create']">Nuevo Catálogo Variedad Detalle</button>
-		<button mat-raised-button color="primary" [routerLink]="['/auth/configurations/']">Volver</button>
+				<button mat-raised-button color="primary" class="mr-3" [routerLink]="['/auth/admin/configurations/catalogue-variety-detail/create']">Nuevo Catálogo Variedad Detalle</button>
+		<button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/']">Volver</button>
 			</div>
 		</div>
 		<hr>
@@ -28,7 +28,7 @@
 						<ng-container matColumnDef="id">
 							<th mat-header-cell *matHeaderCellDef mat-sort-header> Ver </th>
 							<td mat-cell *matCellDef="let row">
-								<button mat-icon-button color="accent" [routerLink]="['/auth/configurations/catalogue-variety-detail/show/', row.id]">
+								<button mat-icon-button color="accent" [routerLink]="['/auth/admin/configurations/catalogue-variety-detail/show/', row.id]">
 									<mat-icon>remove_red_eye</mat-icon>
 								</button>
 							</td>
@@ -43,7 +43,13 @@
 							<th mat-header-cell *matHeaderCellDef mat-sort-header>Variedad Detalle  </th>
 							<td mat-cell *matCellDef="let row"> {{row.idVarietyDetail}} </td>
 						</ng-container>
+
 	
+						<ng-container matColumnDef="revisionPrice">
+							<th mat-header-cell *matHeaderCellDef mat-sort-header> Precio de Revisión </th>
+							<td mat-cell *matCellDef="let row"> {{row.revisionPrice}}</td>
+						</ng-container>
+
 						<ng-container matColumnDef="status">
 							<th mat-header-cell *matHeaderCellDef mat-sort-header> Estatus </th>
 							<td mat-cell *matCellDef="let row">
@@ -52,15 +58,10 @@
 							</td>
 						</ng-container>
 	
-						<ng-container matColumnDef="revisionPrice">
-							<th mat-header-cell *matHeaderCellDef mat-sort-header> Precio de Revisión </th>
-							<td mat-cell *matCellDef="let row"> {{row.revisionPrice}}</td>
-						</ng-container>
-	
 						<ng-container matColumnDef="edit">
 							<th mat-header-cell *matHeaderCellDef></th>
 							<td mat-cell *matCellDef="let row">
-								<button mat-icon-button color="accent" [routerLink]="['/auth/configurations/catalogue-variety-detail/edit/', row.id]">
+								<button mat-icon-button color="accent" [routerLink]="['/auth/admin/configurations/catalogue-variety-detail/edit/', row.id]">
 									<mat-icon>edit</mat-icon>
 								</button>
 							</td>
