@@ -5,7 +5,6 @@ import { ClientComponent } from './client.component';
 import { CatalogueComponent } from './catalogue/catalogue.component';
 import { ClaimComponent } from './claim/claim.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { RequestComponent } from './request/request.component';
 import { ServiceComponent } from './service/service.component';
 import { SuggestionComponent } from './suggestion/suggestion.component';
 
@@ -15,7 +14,6 @@ const routes: Routes = [
     {path: 'catalogue', component: CatalogueComponent, canActivate: []},
 	{path: 'claim', component: ClaimComponent, canActivate: []},
 	{path: 'dashboard', component: DashboardComponent, canActivate: []},
-	{path: 'request', component: RequestComponent, canActivate: []},
 	{path: 'service', component: ServiceComponent, canActivate: []},
 	{path: 'suggestion', component: SuggestionComponent, canActivate: []},
 	{path: 'profile', canActivate: [],
@@ -24,6 +22,15 @@ const routes: Routes = [
 			{
 				path: '',
                 loadChildren: '../client/profile/profile.module#ProfileModule',
+			}
+		]
+	},
+	{path: 'request', canActivate: [],
+		children:
+		[
+			{
+				path: '',
+                loadChildren: '../client/request/request.module#RequestModule',
 			}
 		]
 	},

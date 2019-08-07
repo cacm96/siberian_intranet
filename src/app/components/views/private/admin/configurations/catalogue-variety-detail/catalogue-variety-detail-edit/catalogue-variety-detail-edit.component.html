@@ -8,7 +8,7 @@
         </div>
         <div class="row">
           <div class="col-sm-12">
-            <button mat-raised-button color="primary" [routerLink]="['/auth/configurations/catalogue-variety-detail']">Volver</button>
+            <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/catalogue-variety-detail']">Volver</button>
           </div>
         </div>
         <hr>
@@ -17,7 +17,7 @@
           <div class="col-sm-12">
             <div class="example-container">
               <mat-form-field>
-                <mat-select placeholder="Catálogo">
+                <mat-select placeholder="Catálogo" required>
                   <mat-option value="option">Catálogo 1</mat-option>
                   <mat-option value="option">Catálogo 2</mat-option>
                   <mat-option value="option">Catálogo 3</mat-option>
@@ -25,20 +25,20 @@
               </mat-form-field>
         
                <mat-form-field>
-                  <mat-select placeholder=" Variedad Detalle">
+                  <mat-select placeholder=" Variedad Detalle" required>
                   <mat-option value="option">Modelo 1</mat-option>
                   <mat-option value="option">Modelo 6</mat-option>
                   <mat-option value="option">Modelo 10</mat-option>
                   </mat-select>
                 </mat-form-field>
-        
-               <mat-form-field [hidden]="true">
-              <input matInput  placeholder="Estatus" value="A">
-               </mat-form-field>
             
                <mat-form-field>
               <input matInput placeholder="Precio  Revisión">
                </mat-form-field>
+
+               <mat-form-field [hidden]="true">
+                <input matInput  placeholder="Estatus" value="A">
+                 </mat-form-field>
         
             </div>
           </div>
@@ -46,7 +46,7 @@
         
         <div class="row">
           <div class="col-sm-12">
-            <button mat-raised-button color="primary" [routerLink]="['/auth/configurations/catalogue-variety-detail/edit/1']">Guardar</button>
+            <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/catalogue-variety-detail/edit/1']">Guardar</button>
           </div>
         </div>
       </div>
