@@ -1,24 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
-import { DialogService } from '../../../../../../../core/services/dialog.service';
-import { SnackBarService } from '../../../../../../../core/services/snack-bar.service';
-
-
-export interface PromotionData {
-  id: string;
-  name: string;
-  description: string;
-  percentDiscount: string;
-  create_at: string;
-  update_at: string;
-  date_init: string;
-  date_end: string;
-  idSubcategory: string;
-  image: string;
-  status: string;
-}
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'sib-promotions',
@@ -45,33 +25,7 @@ export class PromotionsComponent implements OnInit {
       {id:"3" ,name:"Descuento decembrinas ",description:"Descuento en el mes de diciembre en servicio de pintura",percentDiscount:"15%",idSubcategory:"Pared",date_init: "31-12-2019",date_end: "31-12-2019",image:"url1",status:"A",},
     ];
 
-  this.dataSource = new MatTableDataSource(this.promotion);
+  ngOnInit() {
   }
 
-  ngOnInit()
-  {
-    this.dataSource.paginator = this.paginator;
-		this.dataSource.sort = this.sort;
-  }
-
-  applyFilter(filterValue: string) {
-		this.dataSource.filter = filterValue.trim().toLowerCase();
-
-		if (this.dataSource.paginator) {
-		  this.dataSource.paginator.firstPage();
-		}
-	}
-
-	onDelete(id){
-		this.dialogService.openConfirmDialog('¿Estás seguro de eliminar la promoción '+id+' ?').afterClosed().subscribe(res=>{
-			if (res==true) {
-				console.log(id);
-				this.snackBar.openSnackBar('Eliminada Correctamente','¿Deshacer?').onAction().subscribe(() => {
-				  console.log('Recuperado');
-				});
-			}else{
-				console.log(res);
-			}
-		});
-	}
 }
