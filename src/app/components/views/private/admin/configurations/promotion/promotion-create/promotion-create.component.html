@@ -1,3 +1,81 @@
-<p>
-  promotion-create works!
-</p>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-8 offset-2">
+			<div class="row">
+				<div class="col-sm-12">
+					<h2 class="text-center">Nueva Promoción</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/promotion']">Volver</button>
+				</div>
+			</div>
+			<hr>
+			
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="example-container">
+						
+					<mat-form-field>
+						<input matInput placeholder="Nombre">
+					</mat-form-field>
+			
+					<mat-form-field>
+						<textarea matInput placeholder="Descripción"></textarea>
+          </mat-form-field>	
+          
+          <mat-form-field>
+						<input matInput placeholder="Descuento">
+					</mat-form-field>
+      
+          <mat-form-field>
+            <input matInput [matDatepicker]="Fecha de creación">
+            <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+            <mat-datepicker #myDatepicker></mat-datepicker>
+          </mat-form-field>
+          
+          <mat-form-field>
+            <mat-select placeholder="Subcategoría" required>
+              <mat-option value="option">Cocina</mat-option>
+              <mat-option value="option">Nevera</mat-option>
+              <mat-option value="option">Pared</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [matDatepicker]="Fecha de Inicio">
+          <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+          <mat-datepicker #myDatepicker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [matDatepicker]="Fecha de Finalización">
+          <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+          <mat-datepicker #myDatepicker></mat-datepicker>
+        </mat-form-field>
+
+				<mat-label>Subir Imagen</mat-label>
+          <input id="fileInput" type="file">
+          
+
+					<mat-form-field [hidden]="true">
+						<input matInput  placeholder="Estatus" value="A">
+					</mat-form-field>
+					
+				
+		
+					<br>
+					
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12">
+					<button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/promotion/create']">Registrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
