@@ -13,9 +13,13 @@
 									<h6>Cliente</h6>
 								</h2>
 								<div class="row justify-content-center">
-									<button mat-raised-button color="accent" [routerLink]="['/auth/profile']">
+									<button mat-raised-button color="accent" [routerLink]="['/auth/client/profile/show/1']">
 										<mat-icon>photo_library</mat-icon>
 										Cambiar Foto de Perfil
+									</button>
+									<button style="margin-left: 1rem;"mat-raised-button color="accent" [routerLink]="['/auth/client/profile/edit/1']">
+										<mat-icon>edit</mat-icon>
+										Editar Perfil
 									</button>
 								</div>
 								<br>
