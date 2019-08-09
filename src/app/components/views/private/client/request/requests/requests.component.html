@@ -1,3 +1,32 @@
-<p>
-  requests works!
-</p>
+<div class="main_dashboard">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<a [routerLink]="['/auth/client/request/detail/1']"><mat-card class="servicio">
+					<mat-card-header class="titulo border-top-danger">
+						<mat-card-title>Servicio</mat-card-title>
+					</mat-card-header>
+					<mat-card-content class="mat_card_content">
+						Lavadora
+						<br>
+						Se daño el motor
+						<br>
+						<span class="badge badge-danger">Solicitada</span>
+					</mat-card-content>
+					<mat-card-actions>
+						<div class="container">
+							<div class="row justify-content-between">
+								<div class="col-sm-5">
+									<button mat-button>DETALLES</button>
+								</div>
+								<div class="col-sm-7">
+									<mat-icon>access_time</mat-icon><span>10/11/2019</span>
+								</div>
+							</div>
+						</div>
+					</mat-card-actions>
+				</mat-card></a>
+			</div>
+		</div>
+	</div>
+</div>
