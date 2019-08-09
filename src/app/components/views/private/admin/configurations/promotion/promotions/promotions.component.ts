@@ -28,15 +28,15 @@ export interface PromotionData {
 export class PromotionsComponent implements OnInit {
 
   public promotion:any[];
-	displayedColumns: string[] = ['id', 'name', 'description','percentDiscount','idSubcategory','date_init','date_end','image','status','edit','delete'];
-	dataSource: MatTableDataSource<PromotionData>;
+  displayedColumns: string[] = ['id', 'name', 'description','percentDiscount','idSubcategory','date_init','date_end','image','status','edit','delete'];
+  dataSource: MatTableDataSource<PromotionData>;
 
-	@ViewChild(MatPaginator) paginator: MatPaginator;
-	@ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
   constructor
   (
     private dialogService: DialogService,
-		private snackBar: SnackBarService
+    private snackBar: SnackBarService
   ) 
   { 
     this.promotion = [
@@ -56,23 +56,23 @@ export class PromotionsComponent implements OnInit {
   }
 
   applyFilter(filterValue: string) {
-		this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.dataSource.filter = filterValue.trim().toLowerCase();
 
-		if (this.dataSource.paginator) {
-		  this.dataSource.paginator.firstPage();
-		}
-	}
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
 
-	onDelete(id){
-		this.dialogService.openConfirmDialog('¿Estás seguro de eliminar la promoción '+id+' ?').afterClosed().subscribe(res=>{
-			if (res==true) {
-				console.log(id);
-				this.snackBar.openSnackBar('Eliminada Correctamente','¿Deshacer?').onAction().subscribe(() => {
-				  console.log('Recuperado');
-				});
-			}else{
-				console.log(res);
-			}
-		});
-	}
+  onDelete(id){
+    this.dialogService.openConfirmDialog('¿Estás seguro de eliminar la promoción '+id+' ?').afterClosed().subscribe(res=>{
+      if (res==true) {
+        console.log(id);
+        this.snackBar.openSnackBar('Eliminada Correctamente','¿Deshacer?').onAction().subscribe(() => {
+          console.log('Recuperado');
+        });
+      }else{
+        console.log(res);
+      }
+    });
+  }
 }

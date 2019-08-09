@@ -17,12 +17,13 @@ const routes: Routes =
 	{path: '', redirectTo: 'login', pathMatch: 'full', canActivate: []},
 	{path: 'login', component: LoginComponent, canActivate: []},
 	{path: 'loginWeit', component: LoginWeitComponent, canActivate: []},
-	{path: 'logout', component: LogoutComponent},
+	
 
 	{path: 'auth', canActivate: [], component: HomeComponent,
 		children:
 		[
 			{path: '', redirectTo: 'auth', pathMatch: 'full', canActivate: []},
+			{path: 'logout', component: LogoutComponent},
 
 			{path: 'client', canActivate: [],
 				children:

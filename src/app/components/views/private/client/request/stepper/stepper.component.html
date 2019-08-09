@@ -7,113 +7,26 @@
 		</div>
 		<div class="row">
 			<div class="col-sm-12">
-				<button mat-raised-button color="primary" [routerLink]="['/auth/dashboard/sheet/']">Volver</button>
+				<button mat-raised-button color="primary" [routerLink]="['/auth/client/request/sheet/']">Volver</button>
 			</div>
 		</div>
 		<hr>
 		<div class="row">
 			<div class="col-sm-12">
 				<mat-horizontal-stepper linear #stepper>
-					<mat-step completed="true">
-						<ng-template matStepLabel>Fecha y Pestador</ng-template>
-						<div class="row">
-							<div class="offset-sm-4 col-sm-4">
-								<mat-form-field class="example-full-width">
-									<input matInput [matDatepicker]="picker" placeholder="Elija una fecha">
-									<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-									<mat-datepicker touchUi #picker></mat-datepicker>
-								</mat-form-field>
-							</div>
-						</div>
-						<h2 class="text-center mb-3">Prestadores disponibles</h2>
-						<div class="row">
-							<div class="col-md-3">
-								<a [routerLink]="['/auth/dashboard/variety']"><mat-card>
-									<img src="../../../../assets/img/profile/avatar.png" alt="" class="card-img-top">
-									<mat-card-content  class="titulo">
-										<br>
-										<h6 class="text-center">Andres</h6>
-										<div class="ec-stars-wrapper">
-											<a [routerLink]="['/auth/profile']" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-											<a [routerLink]="['/auth/profile']" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-											<a [routerLink]="['/auth/profile']" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-											<a [routerLink]="['/auth/profile']" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-											<a [routerLink]="['/auth/profile']" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-										</div>
-									</mat-card-content>
-								</mat-card></a>
-							</div>
-							<div class="col-md-3">
-								<a [routerLink]="['/auth/dashboard/variety']"><mat-card>
-									<img src="../../../../assets/img/profile/avatar_1.png" alt="" class="card-img-top">
-									<mat-card-content  class="titulo">
-										<br>
-										<h6 class="text-center">Jose</h6>
-										<div class="ec-stars-wrapper">
-											<a [routerLink]="['/auth/profile']" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-											<a [routerLink]="['/auth/profile']" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-											<a [routerLink]="['/auth/profile']" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-											<a [routerLink]="['/auth/profile']" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-											<a [routerLink]="['/auth/profile']" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-										</div>
-									</mat-card-content>
-								</mat-card></a>
-							</div>
-							<div class="col-md-3">
-								<a [routerLink]="['/auth/dashboard/variety']"><mat-card>
-									<img src="../../../../assets/img/profile/avatar_2.png" alt="" class="card-img-top">
-									<mat-card-content  class="titulo">
-										<br>
-										<h6 class="text-center">Pedro</h6>
-										<div class="ec-stars-wrapper">
-											<a [routerLink]="['/auth/profile']" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-											<a [routerLink]="['/auth/profile']" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-											<a [routerLink]="['/auth/profile']" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-											<a [routerLink]="['/auth/profile']" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-											<a [routerLink]="['/auth/profile']" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-										</div>
-									</mat-card-content>
-								</mat-card></a>
-							</div>
-							<div class="col-md-3">
-								<a [routerLink]="['/auth/dashboard/variety']"><mat-card>
-									<img src="../../../../assets/img/profile/avatar_3.png" alt="" class="card-img-top">
-									<mat-card-content  class="titulo">
-										<br>
-										<h6 class="text-center">Alberto</h6>
-										<div class="ec-stars-wrapper">
-											<a [routerLink]="['/auth/profile']" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-											<a [routerLink]="['/auth/profile']" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-											<a [routerLink]="['/auth/profile']" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-											<a [routerLink]="['/auth/profile']" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-											<a [routerLink]="['/auth/profile']" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-										</div>
-									</mat-card-content>
-								</mat-card></a>
-							</div>
-						</div>
-						<div class="mt-3">
-							<button mat-button matStepperNext>Siguiente</button>
-						</div>
-					</mat-step>
+					
 					<mat-step completed="true">
 						<ng-template matStepLabel>Descripción</ng-template>
 						<div class="row">
 							<div class="col-sm-6 offset-sm-3">
 								<h4 class="text-center mt-3 mb-3">Anderson Diaz</h4>
 								<mat-form-field>
-									<mat-label>Direcciones</mat-label>
-									<mat-select>
-										<mat-option>
-											Dirección 1
-										</mat-option>
-										<mat-option>
-											Dirección 2
-										</mat-option>
-										<mat-option>
-											Dirección 3
-										</mat-option>
-									</mat-select>
+										<mat-select placeholder="Direcciones" required>
+											<mat-option value="option">Dirección 1</mat-option>
+											<mat-option value="option">Dirección 2</mat-option>
+											<mat-option value="option">Dirección 3</mat-option>
+											<mat-option value="option">Dirección 4</mat-option>
+										</mat-select>
 								</mat-form-field>
 								<mat-form-field>
 									<input matInput placeholder="Nueva Dirección">
@@ -129,48 +42,189 @@
 						</div>
 					</mat-step>
 					<mat-step completed="true">
-						<ng-template matStepLabel>Ficha de Confirmación</ng-template>
+						<ng-template matStepLabel>Fecha y Pestador</ng-template>
 						<div class="row">
+							<div class="offset-sm-4 col-sm-4">
+								<mat-form-field class="example-full-width">
+									<input matInput [matDatepicker]="picker" placeholder="Elija una fecha">
+									<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+									<mat-datepicker touchUi #picker></mat-datepicker>
+								</mat-form-field>
+							</div>
+						</div>
+						<h2 class="text-center mb-3">Prestadores disponibles</h2>
+						<div class="row">
+							<div class="col-md-3">
+								<a [routerLink]="['/auth/lender/profile/show/1']">
+									<mat-card>
+										<mat-card-header class="titulo">
+			                              <mat-card-title>Anderson Diaz</mat-card-title>
+			                            </mat-card-header>
+										<mat-card-content  class="titulo">
+											<img src="../../../../assets/img/profile/avatar.png" alt="" class="card-img">
+										</mat-card-content>
+										<mat-card-actions class="titulo">
+			                              <div>
+			                                <div class="container">
+			                                  <div class="row">
+			                                  	<div class="col-sm-12">
+			                                  		<div class="ec-stars-wrapper">
+			                                  			<a [routerLink]="['/auth/profile']" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+			                                  			<a [routerLink]="['/auth/profile']" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+			                                  			<a [routerLink]="['/auth/profile']" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
+			                                  			<a [routerLink]="['/auth/profile']" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
+			                                  			<a [routerLink]="['/auth/profile']" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+			                                  		</div>
+			                                  	</div>
+			                                  </div>
+			                                </div>
+			                              </div>
+			                            </mat-card-actions>
+									</mat-card>
+								</a>
+							</div>
+							<div class="col-md-3">
+								<a [routerLink]="['/auth/lender/profile/show/1']">
+									<mat-card>
+										<mat-card-header class="titulo">
+			                              <mat-card-title>Anderson Diaz</mat-card-title>
+			                            </mat-card-header>
+										<mat-card-content  class="titulo">
+											<img src="../../../../assets/img/profile/avatar.png" alt="" class="card-img">
+										</mat-card-content>
+										<mat-card-actions class="titulo">
+			                              <div>
+			                                <div class="container">
+			                                  <div class="row">
+			                                  	<div class="col-sm-12">
+			                                  		<div class="ec-stars-wrapper">
+			                                  			<a [routerLink]="['/auth/profile']" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+			                                  			<a [routerLink]="['/auth/profile']" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+			                                  			<a [routerLink]="['/auth/profile']" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
+			                                  			<a [routerLink]="['/auth/profile']" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
+			                                  			<a [routerLink]="['/auth/profile']" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+			                                  		</div>
+			                                  	</div>
+			                                  </div>
+			                                </div>
+			                              </div>
+			                            </mat-card-actions>
+									</mat-card>
+								</a>
+							</div>
+							<div class="col-md-3">
+								<a [routerLink]="['/auth/lender/profile/show/1']">
+									<mat-card>
+										<mat-card-header class="titulo">
+			                              <mat-card-title>Anderson Diaz</mat-card-title>
+			                            </mat-card-header>
+										<mat-card-content  class="titulo">
+											<img src="../../../../assets/img/profile/avatar.png" alt="" class="card-img">
+										</mat-card-content>
+										<mat-card-actions class="titulo">
+			                              <div>
+			                                <div class="container">
+			                                  <div class="row">
+			                                  	<div class="col-sm-12">
+			                                  		<div class="ec-stars-wrapper">
+			                                  			<a [routerLink]="['/auth/profile']" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+			                                  			<a [routerLink]="['/auth/profile']" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+			                                  			<a [routerLink]="['/auth/profile']" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
+			                                  			<a [routerLink]="['/auth/profile']" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
+			                                  			<a [routerLink]="['/auth/profile']" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+			                                  		</div>
+			                                  	</div>
+			                                  </div>
+			                                </div>
+			                              </div>
+			                            </mat-card-actions>
+									</mat-card>
+								</a>
+							</div>
+							<div class="col-md-3">
+								<a [routerLink]="['/auth/lender/profile/show/1']">
+									<mat-card>
+										<mat-card-header class="titulo">
+			                              <mat-card-title>Anderson Diaz</mat-card-title>
+			                            </mat-card-header>
+										<mat-card-content  class="titulo">
+											<img src="../../../../assets/img/profile/avatar.png" alt="" class="card-img">
+										</mat-card-content>
+										<mat-card-actions class="titulo">
+			                              <div>
+			                                <div class="container">
+			                                  <div class="row">
+			                                  	<div class="col-sm-12">
+			                                  		<div class="ec-stars-wrapper">
+			                                  			<a [routerLink]="['/auth/profile']" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+			                                  			<a [routerLink]="['/auth/profile']" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+			                                  			<a [routerLink]="['/auth/profile']" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
+			                                  			<a [routerLink]="['/auth/profile']" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
+			                                  			<a [routerLink]="['/auth/profile']" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+			                                  		</div>
+			                                  	</div>
+			                                  </div>
+			                                </div>
+			                              </div>
+			                            </mat-card-actions>
+									</mat-card>
+								</a>
+							</div>
+						</div>
+						<div class="mt-3">
+							<button mat-button matStepperNext>Siguiente</button>
+						</div>
+					</mat-step>
+					<mat-step completed="true">
+						<ng-template matStepLabel>Ficha de Confirmación</ng-template>
+						<div class="row stepper_ficha">
 							<div class="col-sm-6 offset-sm-3">
 								<div class="row">
 						          <div class="col-sm-12">
 						          	<mat-card class="servicio">
-					                  <mat-card-header class="titulo">
-					                    <mat-card-title>Servicio de Reparacion de Lavadora</mat-card-title>
-					                  </mat-card-header>
-					  
-					                  <mat-card-content class="mat_card_content">
-					                    <div class="row">
-					                    	<div class="col-sm-4">
-					                    		<img src="../../../../assets/img/catalogue/lavadora.png" alt="" class="card-img-top">
-					                    	</div>
-					                    	<div class="col-sm-8">
-					                    		<b>Nombre Cliente: </b> Anderson Diaz
-					                    		<br>
-					                    		<b>Dirección: </b> Calle San Rafael
-					                    		<br>
-					                    		<b>Equipo: </b> Lavadora
-					                    		<br>
-					                    		<b>Marca:</b> LG
-					                    		<br>
-					                    		<b>Modelo:</b> LG-0001
-					                    		<br>
-					                    		<b>Descripción del Problema: </b> Creo que se daño el motor porque no quiere prender
-					                    		<br>
-					                    		<b>Prestador Asignado: </b> Jose
-					                    		<br>
-					                    		<b>Fecha: </b> 10/10/2019
-					                    	</div>
-					                    </div>
-					                  </mat-card-content>
-					                </mat-card>
+										<mat-card-header class="titulo">
+											<mat-card-title>Lavadora</mat-card-title>
+										</mat-card-header>
+										<mat-card-content class="mat_card_content">
+											<div class="row">
+												<div class="col-sm-6">
+													<img src="../../../../assets/img/catalogue/lavadora.png" alt="" class="card-img-top">
+												</div>
+												<div class="col-sm-6">
+													<b>Nombre Cliente: </b> Anderson Diaz
+						                    		<br>
+						                    		<b>Dirección: </b> Calle San Rafael
+						                    		<br>
+						                    		<b>Equipo: </b> Lavadora
+						                    		<br>
+						                    		<b>Marca:</b> LG
+						                    		<br>
+						                    		<b>Modelo:</b> LG-0001
+						                    		<br>
+						                    		<b>Descripción del Problema: </b> Creo que se daño el motor porque no quiere prender
+						                    		<br>
+						                    		<b>Prestador Asignado: </b> Jose
+						                    		<br>
+						                    		<b>Fecha: </b> 10/10/2019
+												</div>
+											</div>
+										</mat-card-content>
+										<mat-card-actions class="titulo">
+											<div class="container">
+												<div class="row">
+													<div class="col-sm-12">
+														<button mat-raised-button color="primary" [routerLink]="['/auth/client/request/message']">Confirmar Solicitud</button>
+													</div>
+												</div>
+											</div>
+										</mat-card-actions>
+									</mat-card>
 						          </div>
 						        </div>
 							</div>
 						</div>
 						<div>
 							<button mat-button matStepperPrevious>Atras</button>
-							<button mat-raised-button color="primary" [routerLink]="['/auth/dashboard/message']">Confirmar Solicitud</button>
 						</div>
 					</mat-step>
 				</mat-horizontal-stepper>
