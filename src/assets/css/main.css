@@ -203,6 +203,22 @@ span.badge-dark{
   border-top: solid 6px #121212!important;
 }*/
 
+.mat-card-header-primary{
+  background-color: #283593!important;
+}
+.mat-card-header-success{
+  background-color: #94ce9b!important;
+}
+.mat-card-header-warning{
+  background-color: #d0667a!important;
+}
+.mat-card-header-danger{
+  background-color: #f44336 !important;
+}
+.mat-card-header-dark{
+  background-color: #121212!important;
+}
+
 /*Para eliminar el border al rededor del boton hamburguesa*/
 :focus {
   outline: none !important;

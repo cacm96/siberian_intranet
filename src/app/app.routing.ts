@@ -30,7 +30,7 @@ const routes: Routes =
 				[
 					{
 						path: '',
-		                loadChildren: './components/views/private/client/client.module#ClientModule',
+		                loadChildren: '../app/components/views/private/client/client.module#ClientModule',
 					}
 				]
 			},
@@ -40,7 +40,7 @@ const routes: Routes =
 				[
 					{
 						path: '',
-		                loadChildren: './components/views/private/lender/lender.module#LenderModule',
+		                loadChildren: '../app/components/views/private/lender/lender.module#LenderModule',
 					}
 				]
 			},
@@ -50,7 +50,7 @@ const routes: Routes =
 				[
 					{
 						path: '',
-		                loadChildren: './components/views/private/admin/admin.module#AdminModule',
+		                loadChildren: '../app/components/views/private/admin/admin.module#AdminModule',
 					}
 				]
 			},

@@ -45,12 +45,6 @@ display: inline-block;
     justify-content: center;
     text-align: center;
 }
-.card-img{
-  widht: 50px;
-  height: 150px;
-}
-
-
 
 .stepper_ficha .mat-card{
   padding: 0 !important;
@@ -91,4 +85,10 @@ display: inline-block;
 }
 .stepper_ficha .mat-card-header .mat-card-title{
   margin:0;
+}
+
+.card-img-top{
+  width: 250px;
+  height: 200px;
+  justify-content: center !important;
 }

@@ -5,8 +5,6 @@ import { RequestRoutingModule } from './request-routing.module';
 import { RequestComponent } from './request.component';
 import { RequestDetailComponent } from './request-detail/request-detail.component';
 import { RequestsComponent } from './requests/requests.component';
-import { EquipComponent } from './equip/equip.component';
-import { VarietyComponent } from './variety/variety.component';
 import { SheetComponent } from './sheet/sheet.component';
 import { StepperComponent } from './stepper/stepper.component';
 import { MessageComponent } from './message/message.component';
@@ -16,13 +14,11 @@ import { MessageComponent } from './message/message.component';
   declarations:
   [
   	RequestComponent,
+    RequestDetailComponent,
   	RequestsComponent,
-  	EquipComponent,
-    VarietyComponent,
     SheetComponent,
     StepperComponent,
     MessageComponent,
-    RequestDetailComponent
   ],
   imports: [
     CommonModule,

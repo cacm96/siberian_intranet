@@ -7,9 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VarietyComponent implements OnInit {
 
-  constructor() { }
 
   ngOnInit() {
   }
-
 }
