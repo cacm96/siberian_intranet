@@ -4,17 +4,17 @@
 			<div class="col-sm-12">
 				<div class="row">
 					<div class="col-sm-12">
-						<h2 class="text-center">Seleccione una Sub categoría</h2>
+						<h2 class="text-center">Seleccione un Tipo de Servicio</h2>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-sm-12">
-						<button mat-raised-button color="primary" [routerLink]="['/auth/client/dashboard/']">Volver</button>
+						<button mat-raised-button color="primary" [routerLink]="['/auth/client/catalog/subcategoria']">Volver</button>
 					</div>
 				</div>
 				<br>
 				<mat-tab-group>
-					<mat-tab label="Aires Acondicionados">
+					<mat-tab label="Mantenimiento">
 						<div class="container">
 							<div class="row">
 								<div class="col-md-4">
@@ -41,34 +41,6 @@
 								<div class="col-md-4">
 									<a [routerLink]="['/auth/client/catalog/variety']">
 										<mat-card class="servicio">
-											<mat-card-header class="titulo mat-card-header-warning">
-												<mat-card-title>Reparación</mat-card-title>
-											</mat-card-header>
-											<mat-card-content class="mat_card_content">
-												<div class="row">
-													<div class="col-sm-5">
-														<img src="../../../../../../../assets/img/catalogue/aire.png" alt="" class="card-img-top">
-													</div>
-													<div class="col-sm-7">
-														Aire Acondicionado
-														<br>
-														<span class="badge badge-primary">4 Modelos</span>
-													</div>
-												</div>
-											</mat-card-content>
-										</mat-card>
-									</a>
-								</div>
-							</div>
-						</div>
-					</mat-tab>
-
-					<mat-tab label="Electrodomésticos de Cocina">
-						<div class="container">
-							<div class="row">
-								<div class="col-md-4">
-									<a [routerLink]="['/auth/client/catalog/variety']">
-										<mat-card class="servicio">
 											<mat-card-header class="titulo mat-card-header-primary">
 												<mat-card-title>Mantenimiento</mat-card-title>
 											</mat-card-header>
@@ -87,33 +59,6 @@
 										</mat-card>
 									</a>
 								</div>
-								<div class="col-md-4">
-									<a [routerLink]="['/auth/client/catalog/variety']">
-										<mat-card class="servicio">
-											<mat-card-header class="titulo mat-card-header-warning">
-												<mat-card-title>Reparación</mat-card-title>
-											</mat-card-header>
-											<mat-card-content class="mat_card_content">
-												<div class="row">
-													<div class="col-sm-5">
-														<img src="../../../../../../../assets/img/catalogue/microondas.png" alt="" class="card-img-top">
-													</div>
-													<div class="col-sm-7">
-														Microonda
-														<br>
-														<span class="badge badge-primary">4 Modelos</span>
-													</div>
-												</div>
-											</mat-card-content>
-										</mat-card>
-									</a>
-								</div>
-							</div>
-						</div>
-					</mat-tab>
-					<mat-tab label="Lavadoras y Secadoras">
-						<div class="container">
-							<div class="row">
 								<div class="col-md-4">
 									<a [routerLink]="['/auth/client/catalog/variety']">
 										<mat-card class="servicio">
@@ -138,54 +83,6 @@
 								<div class="col-md-4">
 									<a [routerLink]="['/auth/client/catalog/variety']">
 										<mat-card class="servicio">
-											<mat-card-header class="titulo mat-card-header-warning">
-												<mat-card-title>Reparación</mat-card-title>
-											</mat-card-header>
-											<mat-card-content class="mat_card_content">
-												<div class="row">
-													<div class="col-sm-5">
-														<img src="../../../../../../../assets/img/catalogue/lavadora.png" alt="" class="card-img-top">
-													</div>
-													<div class="col-sm-7">
-														Lavadora
-														<br>
-														<span class="badge badge-primary">3 Modelos</span>
-													</div>
-												</div>
-											</mat-card-content>
-										</mat-card>
-									</a>
-								</div>
-							</div>
-						</div>
-					</mat-tab>
-					<mat-tab label="Neveras y Congeladores">
-						<div class="container">
-							<div class="row">
-								<div class="col-md-4">
-									<a [routerLink]="['/auth/client/catalog/variety']">
-										<mat-card class="servicio">
-											<mat-card-header class="titulo mat-card-header-primary">
-												<mat-card-title>Mantenimiento</mat-card-title>
-											</mat-card-header>
-											<mat-card-content class="mat_card_content">
-												<div class="row">
-													<div class="col-sm-5">
-														<img src="../../../../../../../assets/img/catalogue/microondas.png" alt="" class="card-img-top">
-													</div>
-													<div class="col-sm-7">
-														Nevera
-														<br>
-														<span class="badge badge-primary">4 Modelos</span>
-													</div>
-												</div>
-											</mat-card-content>
-										</mat-card>
-									</a>
-								</div>
-								<div class="col-md-4">
-									<a [routerLink]="['/auth/client/catalog/variety']">
-										<mat-card class="servicio">
 											<mat-card-header class="titulo mat-card-header-primary">
 												<mat-card-title>Mantenimiento</mat-card-title>
 											</mat-card-header>
@@ -198,6 +95,77 @@
 														Refrigerador
 														<br>
 														<span class="badge badge-primary">4 Modelos</span>
+													</div>
+												</div>
+											</mat-card-content>
+										</mat-card>
+									</a>
+								</div>
+								
+							</div>
+						</div>
+					</mat-tab>
+
+					<mat-tab label="Reparación">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-4">
+									<a [routerLink]="['/auth/client/catalog/variety']">
+										<mat-card class="servicio">
+											<mat-card-header class="titulo mat-card-header-warning">
+												<mat-card-title>Reparación</mat-card-title>
+											</mat-card-header>
+											<mat-card-content class="mat_card_content">
+												<div class="row">
+													<div class="col-sm-5">
+														<img src="../../../../../../../assets/img/catalogue/aire.png" alt="" class="card-img-top">
+													</div>
+													<div class="col-sm-7">
+														Aire Acondicionado
+														<br>
+														<span class="badge badge-warning">4 Modelos</span>
+													</div>
+												</div>
+											</mat-card-content>
+										</mat-card>
+									</a>
+								</div>
+								<div class="col-md-4">
+									<a [routerLink]="['/auth/client/catalog/variety']">
+										<mat-card class="servicio">
+											<mat-card-header class="titulo mat-card-header-warning">
+												<mat-card-title>Reparación</mat-card-title>
+											</mat-card-header>
+											<mat-card-content class="mat_card_content">
+												<div class="row">
+													<div class="col-sm-5">
+														<img src="../../../../../../../assets/img/catalogue/microondas.png" alt="" class="card-img-top">
+													</div>
+													<div class="col-sm-7">
+														Microonda
+														<br>
+														<span class="badge badge-warning">4 Modelos</span>
+													</div>
+												</div>
+											</mat-card-content>
+										</mat-card>
+									</a>
+								</div>
+								<div class="col-md-4">
+									<a [routerLink]="['/auth/client/catalog/variety']">
+										<mat-card class="servicio">
+											<mat-card-header class="titulo mat-card-header-warning">
+												<mat-card-title>Reparación</mat-card-title>
+											</mat-card-header>
+											<mat-card-content class="mat_card_content">
+												<div class="row">
+													<div class="col-sm-5">
+														<img src="../../../../../../../assets/img/catalogue/lavadora.png" alt="" class="card-img-top">
+													</div>
+													<div class="col-sm-7">
+														Lavadora
+														<br>
+														<span class="badge badge-warning">3 Modelos</span>
 													</div>
 												</div>
 											</mat-card-content>
@@ -218,7 +186,7 @@
 													<div class="col-sm-7">
 														Nevera
 														<br>
-														<span class="badge badge-primary">1 Modelos</span>
+														<span class="badge badge-warning">1 Modelos</span>
 													</div>
 												</div>
 											</mat-card-content>
@@ -239,7 +207,7 @@
 													<div class="col-sm-7">
 														Refrigerador
 														<br>
-														<span class="badge badge-primary">2 Modelos</span>
+														<span class="badge badge-warning">2 Modelos</span>
 													</div>
 												</div>
 											</mat-card-content>
@@ -249,6 +217,58 @@
 							</div>
 						</div>
 					</mat-tab>
+
+					<mat-tab label="Construcción">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-4">
+									<a [routerLink]="['/auth/client/catalog/variety']">
+										<mat-card class="servicio">
+											<mat-card-header class="titulo mat-card-header-dark">
+												<mat-card-title>Construcción</mat-card-title>
+											</mat-card-header>
+											<mat-card-content class="mat_card_content">
+												<div class="row">
+													<div class="col-sm-5">
+														<img src="../../../../../../../assets/img/catalogue/ceramicaPared.jpg" alt="" class="card-img-top">
+													</div>
+													<div class="col-sm-7">
+														Pared
+														<br>
+														<span class="badge badge-dark">2 Modelos</span>
+													</div>
+												</div>
+											</mat-card-content>
+										</mat-card>
+									</a>
+								</div>
+								<div class="col-md-4">
+									<a [routerLink]="['/auth/client/catalog/variety']">
+										<mat-card class="servicio">
+											<mat-card-header class="titulo mat-card-header-dark">
+												<mat-card-title>Construcción</mat-card-title>
+											</mat-card-header>
+											<mat-card-content class="mat_card_content">
+												<div class="row">
+													<div class="col-sm-5">
+														<img src="../../../../../../../assets/img/catalogue/ceramicaPiso.jpg" alt="" class="card-img-top">
+													</div>
+													<div class="col-sm-7">
+														Piso
+														<br>
+														<span class="badge badge-dark">3 Modelos</span>
+													</div>
+												</div>
+											</mat-card-content>
+										</mat-card>
+									</a>
+								</div>
+
+							</div>
+						</div>
+					</mat-tab>
+
+
 					<mat-tab label="Otros">
 						<div class="container">
 							<div class="row">
@@ -261,6 +281,7 @@
 							</div>
 						</div>
 					</mat-tab>
+
 				</mat-tab-group>
 			</div>
 		</div>

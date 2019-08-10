@@ -837,36 +837,104 @@
             </div>
             <div class="row">
               <div class="col-md-3">
-                <a [routerLink]="['/auth/client/catalog']"><mat-card>
-                  <mat-card-content  class="titulo">
-                    <img src="../../../../assets/img/catalogue/lavavajilla.png" alt="" class="card-img-top">
-                    <h4>Lavavajillas</h4>
-                  </mat-card-content>
-                </mat-card></a>
+                <a [routerLink]="['/auth/client/catalog/catalogs']">
+                  <mat-card class="servicio">
+                    <mat-card-header class="titulo mat-card-header-warning">
+                      <mat-card-title>Reparación</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content class="mat_card_content">
+                      <div class="row">
+                        <div class="offset-2 col-sm-8">
+                          <img src="../../../../assets/img/catalogue/lavadora.png" alt="" class="card-img-top">
+                        </div>
+                      </div>
+                    </mat-card-content>
+                    <mat-card-actions class="boton">
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <h6 class="text-center">Lavadora</h6>
+                          </div>
+                        </div>
+                      </div>
+                    </mat-card-actions>
+                  </mat-card>
+                </a>
               </div>
               <div class="col-md-3">
-                <a [routerLink]="['/auth/client/catalog']"><mat-card>
-                  <mat-card-content  class="titulo">
-                    <img src="../../../../assets/img/catalogue/lavadora.png" alt="" class="card-img-top">
-                    <h4>Lavadora</h4>
-                  </mat-card-content>
-                </mat-card></a>
+                <a [routerLink]="['/auth/client/catalog/catalogs']">
+                  <mat-card class="servicio">
+                    <mat-card-header class="titulo mat-card-header-warning">
+                      <mat-card-title>Reparación</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content class="mat_card_content">
+                      <div class="row">
+                        <div class="offset-2 col-sm-8">
+                          <img src="../../../../assets/img/catalogue/aire.png" alt="" class="card-img-top">
+                        </div>
+                      </div>
+                    </mat-card-content>
+                    <mat-card-actions class="boton">
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <h6 class="text-center">Aire Acondicionado</h6>
+                          </div>
+                        </div>
+                      </div>
+                    </mat-card-actions>
+                  </mat-card>
+                </a>
               </div>
               <div class="col-md-3">
-                <a [routerLink]="['/auth/client/catalog']"><mat-card>
-                  <mat-card-content  class="titulo">
-                    <img src="../../../../assets/img/catalogue/microondas.png" alt="" class="card-img-top">
-                    <h4>Microondas</h4>
-                  </mat-card-content>
-                </mat-card></a>
+                <a [routerLink]="['/auth/client/catalog/catalogs']">
+                  <mat-card class="servicio">
+                    <mat-card-header class="titulo mat-card-header-primary">
+                      <mat-card-title>Mantenimiento</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content class="mat_card_content">
+                      <div class="row">
+                        <div class="offset-2 col-sm-8">
+                          <img src="../../../../assets/img/catalogue/nevera.png" alt="" class="card-img-top">
+                        </div>
+                      </div>
+                    </mat-card-content>
+                    <mat-card-actions class="boton">
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <h6 class="text-center">Nevera</h6>
+                          </div>
+                        </div>
+                      </div>
+                    </mat-card-actions>
+                  </mat-card>
+                </a>
               </div>
               <div class="col-md-3">
-                <a [routerLink]="['/auth/client/catalog']"><mat-card>
-                  <mat-card-content  class="titulo">
-                    <img src="../../../../assets/img/catalogue/nevera.png" alt="" class="card-img-top">
-                    <h4>Nevera</h4>
-                  </mat-card-content>
-                </mat-card></a>
+                <a [routerLink]="['/auth/client/catalog/catalogs']">
+                  <mat-card class="servicio">
+                    <mat-card-header class="titulo mat-card-header-primary">
+                      <mat-card-title>Mantenimiento</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content class="mat_card_content">
+                      <div class="row">
+                        <div class="offset-2 col-sm-8">
+                          <img src="../../../../assets/img/catalogue/microondas.png" alt="" class="card-img-top">
+                        </div>
+                      </div>
+                    </mat-card-content>
+                    <mat-card-actions class="boton">
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <h6 class="text-center">Microondas</h6>
+                          </div>
+                        </div>
+                      </div>
+                    </mat-card-actions>
+                  </mat-card>
+                </a>
               </div>
             </div>
           </div>
@@ -874,48 +942,80 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="container subcategorias">
       <div class="row">
         <div class="col-sm-12">
           <div class="container">
             <div class="row">
               <div class="col-sm-12">
-                <h2>Categorías populares</h2>
+                <h2>Subcategorías Populares</h2>
                 <hr>
               </div>
             </div>
             <div class="row">
               <div class="col-md-3">
-                <a [routerLink]="['/auth/client/catalog']"><mat-card>
-                  <mat-card-content class="titulo">
-                    <img src="../../../../assets/img/category/carpinteria.png" alt="" class="card-img-top">
-                    <h4>Carpintería</h4>
-                  </mat-card-content>
-                </mat-card></a>
+                <a [routerLink]="['/auth/client/catalog/catalogs']">
+                  <mat-card class="servicio">
+                    <mat-card-header class="titulo mat-card-header-primary">
+                      <mat-card-title>Electrodoméstico</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content class="mat_card_content">
+                      <div class="row">
+                        <div class="offset-2 col-sm-8">
+                          <img src="../../../../assets/img/category/electrodomestico4.png" alt="" class="card-img-top">
+                        </div>
+                      </div>
+                    </mat-card-content>
+                  </mat-card>
+                </a>
               </div>
               <div class="col-md-3">
-                <a [routerLink]="['/auth/client/catalog']"><mat-card>
-                  <mat-card-content class="titulo">
-                    <img src="../../../../assets/img/category/pintura.png" alt="" class="card-img-top">
-                    <h4>Pintura</h4>
-                  </mat-card-content>
-                </mat-card></a>
+                <a [routerLink]="['/auth/client/catalog/catalogs']">
+                  <mat-card class="servicio">
+                    <mat-card-header class="titulo mat-card-header-primary">
+                      <mat-card-title>Electricidad</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content class="mat_card_content">
+                      <div class="row">
+                        <div class="offset-2 col-sm-8">
+                          <img src="../../../../../assets/img/category/electricidad1.png" alt="" class="card-img-top">
+                        </div>
+                      </div>
+                    </mat-card-content>
+                  </mat-card>
+                </a>
               </div>
               <div class="col-md-3">
-                <a [routerLink]="['/auth/client/catalog']"><mat-card>
-                  <mat-card-content class="titulo">
-                    <img src="../../../../assets/img/category/plomeria.png" alt="" class="card-img-top">
-                    <h4>Plomería</h4>
-                  </mat-card-content>
-                </mat-card></a>
+                <a [routerLink]="['/auth/client/catalog/catalogs']">
+                  <mat-card class="servicio">
+                    <mat-card-header class="titulo mat-card-header-primary">
+                      <mat-card-title>Refrigeración</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content class="mat_card_content">
+                      <div class="row">
+                        <div class="offset-2 col-sm-8">
+                          <img src="../../../../../assets/img/category/refrigeracion.png" alt="" class="card-img-top">
+                        </div>
+                      </div>
+                    </mat-card-content>
+                  </mat-card>
+                </a>
               </div>
               <div class="col-md-3">
-                <a [routerLink]="['/auth/client/catalog']"><mat-card>
-                  <mat-card-content class="titulo">
-                    <img src="../../../../assets/img/category/refrigeracion.png" alt="" class="card-img-top">
-                    <h4>Refrigeración</h4>      
-                  </mat-card-content>
-                </mat-card></a>
+                <a [routerLink]="['/auth/client/catalog/catalogs']">
+                  <mat-card class="servicio">
+                    <mat-card-header class="titulo mat-card-header-primary">
+                      <mat-card-title>Limpieza</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content class="mat_card_content">
+                      <div class="row">
+                        <div class="offset-2 col-sm-8">
+                          <img src="../../../../../assets/img/category/limpieza.png" alt="" class="card-img-top">
+                        </div>
+                      </div>
+                    </mat-card-content>
+                  </mat-card>
+                </a>
               </div>
             </div>
           </div>

@@ -8,6 +8,8 @@ import { VarietyComponent } from './variety/variety.component';
 import { VarietyDetailComponent } from './variety-detail/variety-detail.component';
 import { VarietyDetailsComponent } from './variety-details/variety-details.component';
 import { OthersComponent } from './others/others.component';
+import { SubcategoriaComponent } from './subcategoria/subcategoria.component';
+import { CategoriaComponent } from './categoria/categoria.component';
 
 
 @NgModule({
@@ -19,6 +21,8 @@ import { OthersComponent } from './others/others.component';
     VarietyDetailComponent,
     VarietyDetailsComponent,
     OthersComponent,
+    SubcategoriaComponent,
+    CategoriaComponent,
   ],
   imports: [
     CommonModule,
