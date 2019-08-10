@@ -17,19 +17,20 @@ const routes: Routes =
 	{path: '', redirectTo: 'login', pathMatch: 'full', canActivate: []},
 	{path: 'login', component: LoginComponent, canActivate: []},
 	{path: 'loginWeit', component: LoginWeitComponent, canActivate: []},
-	{path: 'logout', component: LogoutComponent},
+	
 
 	{path: 'auth', canActivate: [], component: HomeComponent,
 		children:
 		[
 			{path: '', redirectTo: 'auth', pathMatch: 'full', canActivate: []},
+			{path: 'logout', component: LogoutComponent},
 
 			{path: 'client', canActivate: [],
 				children:
 				[
 					{
 						path: '',
-		                loadChildren: './components/views/private/client/client.module#ClientModule',
+		                loadChildren: '../app/components/views/private/client/client.module#ClientModule',
 					}
 				]
 			},
@@ -39,7 +40,7 @@ const routes: Routes =
 				[
 					{
 						path: '',
-		                loadChildren: './components/views/private/lender/lender.module#LenderModule',
+		                loadChildren: '../app/components/views/private/lender/lender.module#LenderModule',
 					}
 				]
 			},
@@ -49,7 +50,7 @@ const routes: Routes =
 				[
 					{
 						path: '',
-		                loadChildren: './components/views/private/admin/admin.module#AdminModule',
+		                loadChildren: '../app/components/views/private/admin/admin.module#AdminModule',
 					}
 				]
 			},

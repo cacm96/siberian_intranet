@@ -203,6 +203,22 @@ span.badge-dark{
   border-top: solid 6px #121212!important;
 }*/
 
+.mat-card-header-primary{
+  background-color: #283593!important;
+}
+.mat-card-header-success{
+  background-color: #94ce9b!important;
+}
+.mat-card-header-warning{
+  background-color: #d0667a!important;
+}
+.mat-card-header-danger{
+  background-color: #f44336 !important;
+}
+.mat-card-header-dark{
+  background-color: #121212!important;
+}
+
 /*Para eliminar el border al rededor del boton hamburguesa*/
 :focus {
   outline: none !important;
@@ -239,25 +255,7 @@ table {
 }
 
 
-.ec-stars-wrapper {
-/* Espacio entre los inline-block (los hijos, los `a`) 
-http://ksesocss.blogspot.com/2012/03/display-inline-block-y-sus-empeno-en.html */
-font-size: 0;
-/* Podríamos quitarlo, 
-pero de esta manera (siempre que no le demos padding), 
-sólo aplicará la regla .ec-stars-wrapper:hover a cuando
-también se esté haciendo hover a alguna estrella */
-display: inline-block;
-}
-.ec-stars-wrapper a {
-  text-decoration: none;
-  display: inline-block;
-  /* Volver a dar tamaño al texto */
-  font-size: 32px;
-  font-size: 2rem;
 
-  color: rgb(39, 130, 228);
-}
 
 /*Estilos y efectos hover para los cards de dashboard*/
 .main_dashboard .carousel_promotions{

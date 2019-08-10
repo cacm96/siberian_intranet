@@ -21,6 +21,7 @@ import {
         MatStepperModule,
         MatDatepickerModule,
         MatNativeDateModule,
+        MatChipsModule,
 } from '@angular/material';
 
 
@@ -47,6 +48,7 @@ import {
         MatStepperModule,
         MatDatepickerModule,
         MatNativeDateModule,
+        MatChipsModule,
     ],
     exports: [
         MatButtonModule,
@@ -70,6 +72,7 @@ import {
         MatStepperModule,
         MatDatepickerModule,
         MatNativeDateModule,
+        MatChipsModule,
     ],
     providers: [  
         MatDatepickerModule,  

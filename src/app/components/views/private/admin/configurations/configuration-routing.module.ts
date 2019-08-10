@@ -12,7 +12,7 @@ const routes: Routes = [
 		[
 			{
 				path: '',
-                loadChildren: './catalogue/catalogue.module#CatalogueModule',
+                loadChildren: '../configurations/catalogue/catalogue.module#CatalogueModule',
 			}
 		]
 	},
