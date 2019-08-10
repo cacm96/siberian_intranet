@@ -210,7 +210,7 @@ span.badge-dark{
 
 /*Agrega el fondo del hover, focus y active en el sidenav y toolbar*/
 .mat-nav-list .mat-list-item-content:hover, .mat-nav-list .mat-list-item:focus,.mat-nav-list .mat-list-item.active {
-  background-color: rgb(24,24,51) !important;
+  background-color: rgb(20,90,137) !important;
   color: #ffffff
 }
 
@@ -219,7 +219,7 @@ span.badge-dark{
 }
 
 .toolbar a:hover,.toolbar a.active{
-  color:  #283593 !important;
+  color:  #185a89 !important;
 }
 
 table {
