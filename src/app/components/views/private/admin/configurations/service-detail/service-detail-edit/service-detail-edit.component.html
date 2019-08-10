@@ -8,7 +8,7 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-12">
-					<button mat-raised-button color="primary" [routerLink]="['/auth/configurations/service-detail']">Volver</button>
+					<button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/service-detail']">Volver</button>
 				</div>
 			</div>
 			<hr>
@@ -30,28 +30,14 @@
             
 						<mat-form-field>
 							<input matInput placeholder="Precio Estimado">
-						</mat-form-field>	
-						
+						</mat-form-field>
+
 						<mat-form-field>
-							<input matInput placeholder="Nota">
-						</mat-form-field>	
-						
-						<mat-form-field>
-							<input matInput placeholder="Tiempo Estimado">
-						</mat-form-field>	
-						
-						<mat-form-field>
-							<mat-select placeholder="Equipo/Infraestructura">
-								<mat-option value="option">Cocina a Gas</mat-option>
-								<mat-option value="option">Cocina Eléctrica</mat-option>								
-							</mat-select>
+							<input matInput placeholder="Tiempo Estimado de Garantía">
 						</mat-form-field>
 						
 						<mat-form-field>
-							<mat-select placeholder="Catalogo">
-								<mat-option value="option">Reparación Completa</mat-option>
-								<mat-option value="option">Cocina Parcial</mat-option>								
-							</mat-select>
+							<input matInput placeholder="Nota">
 						</mat-form-field>	
 						
 						<mat-form-field [hidden]="true">
@@ -63,7 +49,7 @@
 			
 			<div class="row">
 				<div class="col-sm-12">
-					<button mat-raised-button color="primary" [routerLink]="['/auth/configurations/service-detail/edit/1']">Guardar</button>
+					<button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/service-detail/edit/1']">Guardar</button>
 				</div>
 			</div>
 		</div>
