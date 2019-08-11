@@ -1,4 +1,4 @@
-<div class="main_catalogue">
+<div class="main_request_edit">
 	<h2 class="text-center">Editar Solicitud</h2>
 	<button mat-raised-button color="primary" [routerLink]="['/auth/admin/transactions/request']">Volver</button>
 	<hr>
@@ -21,6 +21,10 @@
         <mat-form-field>
 			<textarea matInput placeholder="Descripción"></textarea>
 		</mat-form-field>	
+
+		<mat-form-field>
+			<textarea matInput placeholder="Precio"></textarea>
+		</mat-form-field>
 		
 		<mat-form-field>
 			<mat-select placeholder="Subir Pago"></mat-select>

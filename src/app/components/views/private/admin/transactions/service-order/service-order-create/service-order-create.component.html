@@ -1,6 +1,50 @@
-<p>
-  service-order-create works!
-</p>
-<mat-nav-list>
-	<a mat-list-item [routerLink]="['/auth/transactions/service-order']">Regresar </a>
-</mat-nav-list>
+<div class="main_catalogue">
+<h2 class="text-center">Nueva Orden de Servicio</h2>
+	<button mat-raised-button color="primary" [routerLink]="['/auth/admin/transactions/service-order']">Volver</button>
+	<hr>
+
+	<div class="example-container">
+		<mat-form-field>
+				<mat-select placeholder="ID Revisón">
+					<mat-option value="option">Revisión 1</mat-option>
+					<mat-option value="option">Revisión 2</mat-option>
+				</mat-select>
+		</mat-form-field>
+	
+    <mat-form-field>
+      <textarea matInput placeholder="Código"></textarea>
+    </mat-form-field>	
+
+    <mat-form-field>
+      <textarea matInput placeholder="Monto"></textarea>
+    </mat-form-field>	
+
+      <mat-form-field>
+			  <textarea matInput placeholder="Descuento"></textarea>
+		  </mat-form-field>	
+    
+      <mat-form-field>
+			  <textarea matInput placeholder="Impuestos"></textarea>
+      </mat-form-field>	
+
+      <mat-form-field>
+			  <textarea matInput placeholder="Tiempo de Garantía"></textarea>
+      </mat-form-field>	
+      <mat-form-field>
+        <textarea matInput placeholder="Razón"></textarea>
+      </mat-form-field>	
+
+      <mat-form-field>
+			  <textarea matInput placeholder="ID Promoción"></textarea>
+		  </mat-form-field>	
+      
+		<mat-form-field>
+			<mat-select placeholder="Subir Pago"></mat-select>
+			<input id="fileInput" type="file">
+		</mat-form-field>
+
+	</div>
+
+	<button mat-raised-button color="primary" [routerLink]="['/auth/admin/transactions/service-order/create']">Registrar</button>
+
+</div>

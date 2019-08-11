@@ -1,44 +1,43 @@
-<div class="main_catalogue">
-	<h2 class="text-center">Nuevo Detalle de Orden de Servicio</h2>
-	<button mat-raised-button color="primary" [routerLink]="['/auth/admin/transactions/service-order-detail']">Volver</button>
-	<hr>
-
-	<div class="example-container">
-		<mat-form-field>
-				<mat-select placeholder="ID Orden de Servicio">
-					<mat-option value="option">Orden de servicio 1</mat-option>
-					<mat-option value="option">Orden de servicio 2</mat-option>
-				</mat-select>
-		</mat-form-field>
+<div class="main_service-order-detail">
+	<h2 class="text-center">Nuevo Detalle Orden de Servicio</h2>
+		<button mat-raised-button color="primary" [routerLink]="['/auth/admin/transactions/service-order-detail']">Volver</button>
+		<hr>
 	
-	<div class="example-container">
-		<mat-form-field>
-				<mat-select placeholder="ID Detalle de Servicio">
-					<mat-option value="option">Servicio 1</mat-option>
+		<div class="example-container">
+			<mat-form-field>
+					<mat-select placeholder="ID Orden de Servicio">
+						<mat-option value="option">Orden de Servcio 1</mat-option>
+						<mat-option value="option">Orden de Servicio 2</mat-option>
+					</mat-select>
+			</mat-form-field>
+
+			<mat-form-field>
+				<mat-select placeholder="ID Detalle Servicio">
+					<mat-option value="option">Servcio 1</mat-option>
 					<mat-option value="option">Servicio 2</mat-option>
 				</mat-select>
-		</mat-form-field>
+			</mat-form-field>
 
-		<mat-form-field>
-			    <mat-select placeholder="Duración">
-					<mat-option value="option">1 mes</mat-option>
-					<mat-option value="option">2 semanas</mat-option>
+			<mat-form-field>
+				<mat-select placeholder="Duración">
+					<mat-option value="option">Duración 1</mat-option>
+					<mat-option value="option">Duración 2</mat-option>
 				</mat-select>
-    </mat-form-field>
-    
-    <mat-form-field>
-      <mat-select placeholder="Número de trabajadores">
-      <mat-option value="option">1</mat-option>
-      <mat-option value="option">2</mat-option>
-    </mat-select>
-</mat-form-field>
+			</mat-form-field>
 
-        <mat-form-field>
-			<textarea matInput placeholder="Monto"></textarea>
+			<mat-form-field>
+				<mat-select placeholder="Número de Trabajadores">
+					<mat-option value="option"> 1</mat-option>
+					<mat-option value="option"> 2</mat-option>
+				</mat-select>
+			</mat-form-field>
+		
+		<mat-form-field>
+		  <textarea matInput placeholder="Monto"></textarea>
 		</mat-form-field>	
-
+	
+		</div>
+	
+		<button mat-raised-button color="primary" [routerLink]="['/auth/admin/transactions/service-order/create']">Registrar</button>
+	
 	</div>
-
-	<button mat-raised-button color="primary" [routerLink]="['/auth/admin/transactions/service-order-detail/create']">Registrar</button>
-
-</div>

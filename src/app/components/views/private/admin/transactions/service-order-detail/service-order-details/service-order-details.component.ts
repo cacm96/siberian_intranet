@@ -35,9 +35,9 @@ export class ServiceOrderDetailsComponent implements OnInit {
   ) 
   { 
     this.serviceOrderDetail = [
-      {id:"1",service_order_id:"123",service_detail_id:"456",amount:"10000",duration:"1 month",number_workers:"10",status:"A"},
-      {id:"2",service_order_id:"123",service_detail_id:"456",amount:"10000",duration:"1 month",number_workers:"10",status:"E"},
-      {id:"3",service_order_id:"123",service_detail_id:"456",amount:"10000",duration:"1 month",number_workers:"10",status:"A"},
+      {id:"1",service_order_id:"123",service_detail_id:"456",amount:"10000",duration:"1 mes",number_workers:"10",status:"A"},
+      {id:"2",service_order_id:"654",service_detail_id:"989",amount:"5546",duration:"20 días",number_workers:"5",status:"E"},
+      {id:"3",service_order_id:"876",service_detail_id:"244",amount:"9765",duration:"5 meses",number_workers:"20",status:"A"},
     ];
 
     this.dataSource = new MatTableDataSource(this.serviceOrderDetail);
@@ -62,7 +62,7 @@ export class ServiceOrderDetailsComponent implements OnInit {
 				this.snackBar.openSnackBar('Eliminado Correctamente','¿Deshacer?').onAction().subscribe(() => {
 				  console.log('Recuperado');
 				});
-			}else{
+			} else {
 				console.log(res);
 			}
 		});

@@ -1,3 +1,46 @@
-<p>
-  revision-edit works!
-</p>
+<div class="main_revision_edit">
+	<h2 class="text-center">Editar Solicitud</h2>
+	<button mat-raised-button color="primary" [routerLink]="['/auth/admin/transactions/request']">Volver</button>
+	<hr>
+
+	<div class="example-container">
+		<mat-form-field>
+				<mat-select placeholder="ID Usuario">
+					<mat-option value="option">Usuario 1</mat-option>
+					<mat-option value="option">Usuario 2</mat-option>
+				</mat-select>
+		</mat-form-field>
+	
+	<div class="example-container">
+		<mat-form-field>
+				<mat-select placeholder="Catálogo Detalle Variedad">
+					<mat-option value="option">Catalogo 1</mat-option>
+					<mat-option value="option">Catalogo 2</mat-option>
+				</mat-select>
+		</mat-form-field>
+
+		<mat-form-field>
+			    <mat-select placeholder="Ubicación">
+					<mat-option value="option">Dirección 1</mat-option>
+					<mat-option value="option">Dirección 2</mat-option>
+				</mat-select>
+		</mat-form-field>
+
+        <mat-form-field>
+			<textarea matInput placeholder="Descripción"></textarea>
+		</mat-form-field>	
+		
+		<mat-form-field>
+			<textarea matInput placeholder="Precio"></textarea>
+		</mat-form-field>	
+		
+		<mat-form-field>
+			<mat-select placeholder="Subir Pago"></mat-select>
+			<input id="fileInput" type="file">
+		</mat-form-field>
+
+	</div>
+
+	<button mat-raised-button color="primary" [routerLink]="['/auth/admin/transactions/request/edit/1']">Guardar</button>
+
+</div>

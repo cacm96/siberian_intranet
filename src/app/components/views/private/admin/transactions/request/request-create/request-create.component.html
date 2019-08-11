@@ -1,16 +1,8 @@
-<div class="main_catalogue">
+<div class="main_request_create">
 	<h2 class="text-center">Nueva Solicitud</h2>
 	<button mat-raised-button color="primary" [routerLink]="['/auth/admin/transactions/request']">Volver</button>
 	<hr>
 
-	<div class="example-container">
-		<mat-form-field>
-				<mat-select placeholder="ID Usuario">
-					<mat-option value="option">Usuario 1</mat-option>
-					<mat-option value="option">Usuario 2</mat-option>
-				</mat-select>
-		</mat-form-field>
-	
 	<div class="example-container">
 		<mat-form-field>
 				<mat-select placeholder="Catálogo Detalle Variedad">
@@ -20,15 +12,19 @@
 		</mat-form-field>
 
 		<mat-form-field>
-			    <mat-select placeholder="Ubicación">
+			    <mat-select placeholder="Locación">
 					<mat-option value="option">Dirección 1</mat-option>
-					<mat-option value="option">Dirección 2</mat-option>
+					<mat-option value="option">Dirección</mat-option>
 				</mat-select>
 		</mat-form-field>
 
         <mat-form-field>
 			<textarea matInput placeholder="Descripción"></textarea>
 		</mat-form-field>	
+
+		<mat-form-field>
+			<textarea matInput placeholder="Precio"></textarea>
+		</mat-form-field>
 		
 		<mat-form-field>
 			<mat-select placeholder="Subir Pago"></mat-select>
@@ -37,6 +33,6 @@
 
 	</div>
 
-	<button mat-raised-button color="primary" [routerLink]="['/auth/admin/transactions/request/create']">Registrar</button>
+	<button mat-raised-button color="primary" [routerLink]="['/auth/admin/transactions/request/create']">Registar</button>
 
 </div>

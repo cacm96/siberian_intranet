@@ -36,9 +36,9 @@ export class RevisionsComponent implements OnInit {
   ) 
   { 
     this.revision = [
-      {id:"1" ,request_id:"123",service_order_id:"456",note:"No prende",number_workers:"4",number_days:"7", status:"A"},
-      {id:"2" ,request_id:"123",service_order_id:"456",note:"No prende",number_workers:"4",number_days:"7",status:"A",},
-      {id:"3" ,request_id:"123",service_order_id:"456",note:"No prende",number_workers:"4",number_days:"7",status:"E"},
+      {id:"1" ,request_id:"123",service_order_id:"456",note:"No prende",number_workers:"   4  ",number_days:"7", status:"A"},
+      {id:"2" ,request_id:"978",service_order_id:"886",note:"Filtraje en el techo",number_workers:"   4  ",number_days:"7",status:"A",},
+      {id:"3" ,request_id:"234",service_order_id:"009",note:"No caliente",number_workers:"   4  ",number_days:"7",status:"E"},
     ];
 
   this.dataSource = new MatTableDataSource(this.revision);
