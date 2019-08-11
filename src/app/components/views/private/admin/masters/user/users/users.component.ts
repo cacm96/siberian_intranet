@@ -10,7 +10,15 @@ export interface UserData {
   email: string;
   password: string;
   role: string;
+  first_name: string;
+  last_name: string;
+  dni_type: string;
+  dni: string;
+  gender: string;
+  date_of_birth: string;
+  image_url: string;
   status: string;
+  note: string;
 }
 
 @Component({
@@ -22,7 +30,7 @@ export interface UserData {
 export class UsersComponent implements OnInit {
 
   	public user:any[];
-	displayedColumns: string[] = ['id', 'email','password', 'role','status','edit','delete'];
+	displayedColumns: string[] = ['id', 'email','password', 'role','first_name','last_name','dni_type','dni','gender','date_of_birth','image_url','status','note','edit','delete'];
 	dataSource: MatTableDataSource<UserData>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
@@ -36,9 +44,9 @@ export class UsersComponent implements OnInit {
 	)
 	{
 		this.user = [
-	      {id:"1",email:"andre@gmail.com",password:"12345",role:"Gerente",status:"A"},
-	      {id:"2",email:"rey@gmail.com",password:"123",role:"Prestador",status:"E"},
-	      {id:"3",email:"yasm@gmail.com",password:"12345",role:"Gerente",status:"A"},
+	      {id:"1",email:"mramos@gmail.com",password:"12345",role:"Cliente",first_name:"María",last_name:"Ramos",dni_type:"Cédula",dni:"24.535.109",gender:"Femenino",date_of_birth:"01/01/1994",image_url:"Imagen_1",status:"A",note:"Buen Cliente"},
+	      {id:"2",email:"g_jesus@gmail.com",password:"123",role:"Prestador",first_name:"Jesús",last_name:"Gómez",dni_type:"Pasaporte",dni:"22.435.101",gender:"Masculino",date_of_birth:"08/08/1990",image_url:"Imagen_2",status:"E",note:"Buen Prestador"},
+	      {id:"3",email:"anderson@gmail.com",password:"12345",role:"Administrador",first_name:"Anderson",last_name:"Rodriguez",dni_type:"RIF",dni:"4.237.100",gender:"Masculino",date_of_birth:"11/05/1956",image_url:"Imagen_3",status:"A",note:"Buen Administrador"},
 	    ];
 
 		this.dataSource = new MatTableDataSource(this.user);
