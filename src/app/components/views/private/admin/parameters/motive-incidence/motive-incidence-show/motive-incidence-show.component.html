@@ -1,3 +1,13 @@
-<p>
-  motive-incidence-show works!
-</p>
+<div class="container">
+  <h2 class="text-center">Motivo de Incidencia</h2>
+  <button mat-raised-button color="primary" [routerLink]="['/auth/admin/parameters/motive-incidence']">Volver</button>
+  <hr>
+  <mat-card>
+    <mat-list>
+      <mat-list-item> <b>ID: </b> 1</mat-list-item>
+        <mat-list-item> <b>Nombre:</b> Posponer</mat-list-item>
+        <mat-list-item> <b>Descripción:</b> Cambio de fecha indisposición</mat-list-item>
+        <mat-list-item> <b>Estatus:<span class="badge badge-primary"> Activo</span></b></mat-list-item>
+    </mat-list>
+  </mat-card>
+</div>
