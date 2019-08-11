@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper'
+import {MatDatepickerInputEvent} from '@angular/material/datepicker';
+
 @Component({
   selector: 'sib-stepper',
   templateUrl: './stepper.component.html',
@@ -10,7 +12,8 @@ import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper'
   }]
 })
 export class StepperComponent implements OnInit {
-
+  public isDate:boolean=false;
+  public fecha:Date;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
 
@@ -25,4 +28,10 @@ export class StepperComponent implements OnInit {
     });
   }
 
+  addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
+    this.isDate = true;
+    console.log(this.isDate);
+    this.fecha = event.value;
+    console.log(this.fecha);
+  }
 }

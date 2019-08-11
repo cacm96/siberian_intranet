@@ -34,6 +34,8 @@
 								<mat-form-field>
 									<textarea matInput placeholder="Descripción del Problema" style="width:100%;"></textarea>
 								</mat-form-field>
+								<mat-label>Subir Imagen</mat-label>
+								<input id="fileInput" type="file">
 							</div>
 						</div>
 						<div>
@@ -46,12 +48,13 @@
 						<div class="row">
 							<div class="offset-sm-4 col-sm-4">
 								<mat-form-field class="example-full-width">
-									<input matInput [matDatepicker]="picker" placeholder="Elija una fecha">
+									<input matInput [matDatepicker]="picker" placeholder="Elija una fecha" (dateChange)="addEvent('change', $event)">
 									<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
 									<mat-datepicker touchUi #picker></mat-datepicker>
 								</mat-form-field>
 							</div>
 						</div>
+						<div class="lender_available" [class.open]="isDate" [class.closed]="!isDate">
 						<h2 class="text-center mb-3">Prestadores disponibles</h2>
 						<div class="row">
 							<div class="col-md-3">
@@ -171,6 +174,7 @@
 								</a>
 							</div>
 						</div>
+						</div>
 						<div class="mt-3">
 							<button mat-button matStepperNext>Siguiente</button>
 						</div>
@@ -214,7 +218,7 @@
 												<div class="container">
 													<div class="row">
 														<div class="col-sm-12">
-															<button mat-raised-button color="primary" [routerLink]="['/auth/client/request/message']">Solicitar</button>
+															<button mat-raised-button color="primary" [routerLink]="['/auth/client/request/message']">Confirmar Solicitud</button>
 														</div>
 													</div>
 												</div>
