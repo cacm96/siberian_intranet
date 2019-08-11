@@ -1,3 +1,18 @@
-<p>
-  service-order-detail-show works!
-</p>
+
+<div class="main_catalogue">
+	<h2 class="text-center">Solicitud</h2>
+	<button mat-raised-button color="primary" [routerLink]="['/auth/transactions/request']">Volver</button>
+	<hr>
+	<mat-card>
+		<mat-list>
+			<mat-list-item> <b>Codigo: 001</b> </mat-list-item>
+		 	<mat-list-item> <b>Orden de Servicio: 2453</b> </mat-list-item>
+		 	<mat-list-item> <b>Detalle de Servicio:0897 </b></mat-list-item>
+		 	<mat-list-item> <b>Duración: 1 mes</b> </mat-list-item>
+      <mat-list-item> <b>Número de trabajadores: 8</b></mat-list-item>
+      <mat-list-item><b>Monto: 500$</b></mat-list-item>
+			<mat-list-item> <b>Estatus: </b> <span class="badge badge-danger">Pendiente</span> </mat-list-item>
+		</mat-list>
+	</mat-card>
+
+</div>

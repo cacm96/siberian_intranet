@@ -5,7 +5,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import { DialogService } from '../../../../../../../core/services/dialog.service';
 import { SnackBarService } from '../../../../../../../core/services/snack-bar.service';
 
-export interface RevisionData {
+export interface RevisionsData {
   id: string;
   request_id: string;
   service_order_id: string;
@@ -13,7 +13,6 @@ export interface RevisionData {
   number_workers: string;
   number_days: string;
   status: string;
-  image: string;
   
 }
 
@@ -22,11 +21,11 @@ export interface RevisionData {
   templateUrl: './revisions.component.html',
   styleUrls: ['./revisions.component.scss']
 })
-export class RevisionComponent implements OnInit {
+export class RevisionsComponent implements OnInit {
 
   public revision:any[];
-	displayedColumns: string[] = ['id', 'request_id', 'service_order_id','note','number_workers',"number_days",'status','image','edit','delete'];
-	dataSource: MatTableDataSource<RevisionData>;
+	displayedColumns: string[] = ['id', 'request_id', 'service_order_id','note','number_workers',"number_days",'status','edit','delete'];
+	dataSource: MatTableDataSource<RevisionsData>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
 	@ViewChild(MatSort) sort: MatSort;
@@ -37,9 +36,9 @@ export class RevisionComponent implements OnInit {
   ) 
   { 
     this.revision = [
-      {id:"1" ,request_id:"123",service_order_id:"456",note:"No prende",number_worker:"4",number_day:"7", status:"A",image:"url1"},
-      {id:"2" ,request_id:"123",service_order_id:"456",note:"No prende",number_worker:"4",number_day:"7",status:"A",image:"url2"},
-      {id:"3" ,request_id:"123",service_order_id:"456",note:"No prende",number_worker:"4",number_day:"7",status:"E",image:"url3"},
+      {id:"1" ,request_id:"123",service_order_id:"456",note:"No prende",number_workers:"4",number_days:"7", status:"A"},
+      {id:"2" ,request_id:"123",service_order_id:"456",note:"No prende",number_workers:"4",number_days:"7",status:"A",},
+      {id:"3" ,request_id:"123",service_order_id:"456",note:"No prende",number_workers:"4",number_days:"7",status:"E"},
     ];
 
   this.dataSource = new MatTableDataSource(this.revision);

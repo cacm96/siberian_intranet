@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import {MatTableDataSource} from '@angular/material/table';
 import { DialogService } from '../../../../../../../core/services/dialog.service';
 import { SnackBarService } from '../../../../../../../core/services/snack-bar.service';
 
@@ -11,7 +11,6 @@ export interface RequestsData {
   catalog_variety_detail_id: string;
   description: string;
   location_id: string;
-  image_url: string;
   price: string;
   status: string;
 }
@@ -22,8 +21,9 @@ export interface RequestsData {
   styleUrls: ['./requests.component.scss']
 })
 export class RequestsComponent implements OnInit {
+ 
   public requests:any[];
-  displayedColumns: string[] = ['id','user_id','catalog_variety_detail_id','description','location_id','image_url','price','status','edit','delete'];
+  displayedColumns: string[] = ['id','user_id','catalog_variety_detail_id','description','location_id','price','status','edit','delete'];
   dataSource: MatTableDataSource<RequestsData>;
   
   @ViewChild(MatPaginator) paginator: MatPaginator;
