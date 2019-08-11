@@ -9,9 +9,6 @@ export interface ServiceDetailActivityData {
   id: string;
   service_detail_id: string;
   activity_id: string;
-  created_at: string;
-  estimated_time: string;
-  difficulty_degree: string;
 }
 
 @Component({

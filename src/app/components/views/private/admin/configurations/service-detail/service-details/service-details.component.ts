@@ -10,11 +10,9 @@ export interface ServiceDetailData {
   name: string;
   idComponent: string;
   estimated_price: string;
-  note: string;
   estimated_warranty_time: string;
+  note: string;
   status: string;
-  idEquipinfras: string;
-  idCatalogue: string;
 }
 
 @Component({

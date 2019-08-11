@@ -9,7 +9,6 @@ export interface ServiceDetailPoliticData {
   id: string;
   idServiceDetail: string;
   idPolitic: string;
-  action_plan: string;
 }
 
 @Component({
