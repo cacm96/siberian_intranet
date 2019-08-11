@@ -289,6 +289,11 @@ table {
   color: white;
 }
 
+.mat-card-header .mat-card-title{
+  font-size: .8rem !important;
+  padding: .5rem 0 !important;
+}
+
 .main_dashboard .mat-card .mat-card-actions{
   margin: 0 !important;
   background: #f2f2f2;

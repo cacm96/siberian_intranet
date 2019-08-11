@@ -8,7 +8,7 @@
       </div>
       <div class="row">
         <div class="col-sm-12">
-          <button mat-raised-button color="primary" [routerLink]="['/auth/parameters/sub-category']">Volver</button>
+          <button mat-raised-button color="primary" [routerLink]="['/auth/admin/parameters/sub-category']">Volver</button>
         </div>
       </div>
       <hr>
@@ -17,7 +17,7 @@
         <div class="col-sm-12">
           <div class="example-container">
             <mat-form-field>
-              <mat-select placeholder="Categoría">
+              <mat-select placeholder="Categoría" required>
                 <mat-option value="option">Línea Blanca</mat-option>
                 <mat-option value="option">Electrodomésticos</mat-option>
                 <mat-option value="option">Interiores</mat-option>
@@ -26,7 +26,7 @@
             </mat-form-field>
 
             <mat-form-field>
-              <input matInput placeholder="Nombre">
+              <input matInput placeholder="Nombre" required>
             </mat-form-field>
             
             <mat-form-field>
@@ -42,7 +42,7 @@
       
       <div class="row">
         <div class="col-sm-12">
-          <button mat-raised-button color="primary" [routerLink]="['/auth/parameters/sub-category/create']">Registrar</button>
+          <button mat-raised-button color="primary" [routerLink]="['/auth/admin/parameters/sub-category/create']">Registrar</button>
         </div>
       </div>
     </div>
