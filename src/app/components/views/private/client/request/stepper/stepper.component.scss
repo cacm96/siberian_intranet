@@ -92,3 +92,10 @@ display: inline-block;
   height: 200px;
   justify-content: center !important;
 }
+
+.lender_available.closed{
+  display:none;
+}
+.lender_available.open{
+  display:block;
+}

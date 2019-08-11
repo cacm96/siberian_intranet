@@ -17,13 +17,18 @@
 					<div class="col-sm-12">
 						<div class="example-container">
 							<mat-form-field>
-								<mat-select placeholder="Tipo de Servicio" required>
-									<mat-option value="">Reparación</mat-option>
-									<mat-option value="">Mantenimiento</mat-option>
-									<mat-option value="">Construcción</mat-option>
-									<mat-option value="">Otros</mat-option>
-								</mat-select>
+							  <mat-label>Tipo de Servicio</mat-label>
+							  <mat-select [(value)]="selected">
+							    <mat-option value="R">Reparación</mat-option>
+								<mat-option value="M">Mantenimiento</mat-option>
+								<mat-option value="C">Construcción</mat-option>
+								<mat-option value="O">Otros</mat-option>
+							  </mat-select>
 							</mat-form-field>
+							<mat-form-field class="input_other" [class.open]="selected=='O'" [class.closed]="selected!='O'">
+								<input matInput placeholder="Otro Servicio">
+							</mat-form-field>
+
 							<mat-form-field>
 								<input matInput placeholder="Nombre del Equipo" required>
 							</mat-form-field>
