@@ -34,8 +34,8 @@ export class RoleUsersComponent implements OnInit {
   ) 
   {
   		this.RoleUser = [
-	      {id:"1",name:"Masculino",description:"Género Masculino",status:"A"},
-	      {id:"2",name:"Femenino",description:"Género Femenino",status:"E"},
+	      {id:"1",name:"Administrador",description:"usuario Administrador",status:"A"},
+	      {id:"2",name:"supervisor",description:"usuario supervisor",status:"E"},
 	    ];
 
 		this.dataSource = new MatTableDataSource(this.RoleUser);

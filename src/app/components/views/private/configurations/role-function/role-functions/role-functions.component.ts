@@ -34,8 +34,8 @@ export class RoleFunctionsComponent implements OnInit {
   ) 
   {
   		this.rolefunction = [
-	      {id:"1",name:"Masculino",description:"Género Masculino",status:"A"},
-	      {id:"2",name:"Femenino",description:"Género Femenino",status:"E"},
+	      {id:"1",name:"0251-2130987",description:"Jose",status:"A"},
+	       {id:"2",name:"0416-2130987",description:"Maria",status:"A"},
 	    ];
 
 		this.dataSource = new MatTableDataSource(this.rolefunction);

@@ -34,8 +34,8 @@ export class ParameterClientsComponent implements OnInit {
   ) 
   {
   		this.ParameterClient = [
-	      {id:"1",name:"Masculino",description:"Género Masculino",status:"A"},
-	      {id:"2",name:"Femenino",description:"Género Femenino",status:"E"},
+	      {id:"1",name:"Tiempo",description:"tiempo de entrega",status:"A"},
+	      {id:"2",name:"Atención",description:"buen trato ",status:"E"},
 	    ];
 
 		this.dataSource = new MatTableDataSource(this.ParameterClient);

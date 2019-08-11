@@ -33,8 +33,8 @@ export class LocationsComponent implements OnInit {
   ) 
   {
   		this.location = [
-	      {id:"1",name:"Masculino",description:"Género Masculino",status:"A"},
-	      {id:"2",name:"Femenino",description:"Género Femenino",status:"E"},
+	      {id:"1",name:"Barquisimeto",description:"Estado Lara",status:"A"},
+	      {id:"2",name:"Guanare",description:"Estado Portuguesa",status:"E"},
 	    ];
 
 		this.dataSource = new MatTableDataSource(this.location);

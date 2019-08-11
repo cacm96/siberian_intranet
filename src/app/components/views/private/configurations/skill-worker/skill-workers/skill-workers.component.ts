@@ -33,8 +33,8 @@ export class SkillWorkersComponent implements OnInit {
   ) 
   {
   		this.skillWorker = [
-	      {id:"1",name:"Masculino",description:"Género Masculino",status:"A"},
-	      {id:"2",name:"Femenino",description:"Género Femenino",status:"E"},
+	      {id:"1",name:"Electricista",description:"Pedro",status:"A"},
+	      {id:"2",name:"Informatico",description:"Carlos",status:"E"},
 	    ];
 
 		this.dataSource = new MatTableDataSource(this.skillWorker);
