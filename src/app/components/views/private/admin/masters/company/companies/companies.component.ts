@@ -7,12 +7,18 @@ import { SnackBarService } from '../../../../../../../core/services/snack-bar.se
 
 export interface CompanyData {
   id: string;
+  rif: string;
   name: string;
-  description: string;
-  vision: string;
   mision: string;
-  objetives: string;
-
+  vision: string;
+  aboutUs: string;
+  address: string;
+  phoneOne: string;
+  phoneTwo: string;
+  imageUrl: string;
+  facebook: string;
+  instagram: string;
+  twitter: string;
 }
 
 @Component({
@@ -23,7 +29,7 @@ export interface CompanyData {
 export class CompaniesComponent implements OnInit {
 
   public company:any[];
-	displayedColumns: string[] = ['id', 'name', 'description','vision','mision','objetives','edit','delete'];
+	displayedColumns: string[] = ['id','rif','name','mision','vision','aboutUs','address','phoneOne','phoneTwo','imageUrl','facebook','instagram','twitter','edit','delete'];
 	dataSource: MatTableDataSource<CompanyData>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
@@ -35,7 +41,7 @@ export class CompaniesComponent implements OnInit {
     )
      { 
       this.company = [
-        {id:"1",name:"Se hace de todo",description:"Reparación y mantenimiento a domicilio ",vision:"visión",mision:"misión",objetives:"objetivos"},
+        {id:"1",rif:"j-012285524",name:"Se hace de todo",mision:"misión",vision:"visión",aboutUs:"¿Quiénes somos?",address:"carrera 20 con calle 20",phoneOne:"0251 1112233",phoneTwo:"0251 4445566",imageUrl:"url",facebook:"se hace de todo",instagram:"@shtodo",twitter:"@shtodo"},
       ];
   
     this.dataSource = new MatTableDataSource(this.company);
