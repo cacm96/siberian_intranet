@@ -29,7 +29,7 @@ export interface CompanyData {
 export class CompaniesComponent implements OnInit {
 
   public company:any[];
-	displayedColumns: string[] = ['id','rif','name','mision','vision','aboutUs','address','phoneOne','phoneTwo','imageUrl','facebook','instagram','twitter','edit','delete'];
+	displayedColumns: string[] = ['id','rif','name','mision','vision','aboutUs','address','phoneOne','phoneTwo','edit','delete'];
 	dataSource: MatTableDataSource<CompanyData>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
@@ -41,7 +41,7 @@ export class CompaniesComponent implements OnInit {
     )
      { 
       this.company = [
-        {id:"1",rif:"j-012285524",name:"Se hace de todo",mision:"misión",vision:"visión",aboutUs:"¿Quiénes somos?",address:"carrera 20 con calle 20",phoneOne:"0251 1112233",phoneTwo:"0251 4445566",imageUrl:"url",facebook:"se hace de todo",instagram:"@shtodo",twitter:"@shtodo"},
+        {id:"1",rif:"j-012285524",name:"Se hace de todo",mision:"misión",vision:"visión",aboutUs:"¿Quiénes somos?",address:"carrera 20 con calle 20",phoneOne:"0251 1112233",phoneTwo:"0251 4445566"},
       ];
   
     this.dataSource = new MatTableDataSource(this.company);
