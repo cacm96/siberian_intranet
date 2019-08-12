@@ -29,11 +29,11 @@ export interface CompanyData {
 export class CompaniesComponent implements OnInit {
 
   public company:any[];
-	displayedColumns: string[] = ['id','rif','name','mision','vision','aboutUs','address','phoneOne','phoneTwo','edit','delete'];
-	dataSource: MatTableDataSource<CompanyData>;
+  displayedColumns: string[] = ['id','rif','name','mision','vision','aboutUs','address','phoneOne','phoneTwo','edit','delete'];
+  dataSource: MatTableDataSource<CompanyData>;
 
-	@ViewChild(MatPaginator) paginator: MatPaginator;
-	@ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     private dialogService: DialogService,
@@ -49,7 +49,7 @@ export class CompaniesComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
-		this.dataSource.sort = this.sort;
+    this.dataSource.sort = this.sort;
   }
 
   applyFilter(filterValue: string) {
@@ -60,17 +60,17 @@ export class CompaniesComponent implements OnInit {
     }
   }
 
-	onDelete(id){
-		this.dialogService.openConfirmDialog('¿Estás seguro de eliminar la Empresa'+id+' ?').afterClosed().subscribe(res=>{
-			if (res==true) {
-				console.log(id);
-				this.snackBar.openSnackBar('Eliminado Correctamente','¿Deshacer?').onAction().subscribe(() => {
-				  console.log('Recuperado');
-				});
-			}else{
-				console.log(res);
-			}
-		});
-	}
+  onDelete(id){
+    this.dialogService.openConfirmDialog('¿Estás seguro de eliminar la Empresa'+id+' ?').afterClosed().subscribe(res=>{
+      if (res==true) {
+        console.log(id);
+        this.snackBar.openSnackBar('Eliminado Correctamente','¿Deshacer?').onAction().subscribe(() => {
+          console.log('Recuperado');
+        });
+      }else{
+        console.log(res);
+      }
+    });
+  }
 }
 
