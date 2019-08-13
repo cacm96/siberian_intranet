@@ -23,6 +23,7 @@ import {
         MatNativeDateModule,
         MatChipsModule,
         MatCheckboxModule,
+        MatExpansionModule,
 } from '@angular/material';
 
 
@@ -51,6 +52,7 @@ import {
         MatNativeDateModule,
         MatChipsModule,
         MatCheckboxModule,
+        MatExpansionModule,
     ],
     exports: [
         MatButtonModule,
@@ -76,6 +78,7 @@ import {
         MatNativeDateModule,
         MatChipsModule,
         MatCheckboxModule,
+        MatExpansionModule,
     ],
     providers: [  
         MatDatepickerModule,  

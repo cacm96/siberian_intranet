@@ -28,11 +28,48 @@
 </div>
 
 <div *ngIf="rol=='admin'">
-	<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/dashboard']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Inicio</a>
+	<mat-accordion>
+		<mat-expansion-panel>
+			<mat-expansion-panel-header>
+				<mat-panel-title>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/users-roles']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Dashboard</a>
+				</mat-panel-title>
+			</mat-expansion-panel-header>
+			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/dashboard/request']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Solicitudes</a>
+			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/dashboard/revision']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Revisiones</a>
+			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/dashboard/service-order']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Ordenes de Servicios</a>
+		</mat-expansion-panel>
+		<mat-expansion-panel>
+			<mat-expansion-panel-header>
+				<mat-panel-title>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Configuraciones</a>
+				</mat-panel-title>
+			</mat-expansion-panel-header>
+			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/users-roles']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Usuarios y Roles</a>
+			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/company']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Empresa</a>
+			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/company']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Parámetros</a>
+			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/catalogue']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Catálogos</a>
+			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/equipo-infras']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Equipos e Infraestructura</a>
+			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/service']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Servicios</a>
+			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/company']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Promociones</a>
+		</mat-expansion-panel>
+		<mat-expansion-panel>
+			<mat-expansion-panel-header>
+				<mat-panel-title>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/users-roles']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Getiones</a>
+				</mat-panel-title>
+			</mat-expansion-panel-header>
+			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/dashboard/request']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Solicitudes</a>
+			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/dashboard/revision']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Revisiones</a>
+			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/dashboard/service-order']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Ordenes de Servicios</a>
+		</mat-expansion-panel>
+	</mat-accordion>
+
+	<!-- <a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/dashboard']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Inicio</a>
 	<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/masters']" ><mat-icon matListIcon class="side_nav_icon">settings</mat-icon>Maestros</a>
 	<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/parameters']" ><mat-icon matListIcon class="side_nav_icon">settings</mat-icon>Parámetros</a>
 	<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations']" ><mat-icon matListIcon class="side_nav_icon">settings</mat-icon>Configuraciones</a>
-	<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/transactions']" ><mat-icon matListIcon class="side_nav_icon">settings</mat-icon>Transacciones</a>
+	<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/transactions']" ><mat-icon matListIcon class="side_nav_icon">settings</mat-icon>Transacciones</a> -->
 	<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/logout']" ><mat-icon matListIcon class="side_nav_icon">arrow_back</mat-icon>Cerrar Sesión</a>
 </div>
 

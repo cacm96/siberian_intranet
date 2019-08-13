@@ -38,6 +38,24 @@ mat-divider {
   display: none !important; ;
 }
 
+.mat-accordion .mat-expansion-panel{
+  border-radius: 0 !important;
+  background-color: #0b173b !important;
+  color: #ffffff !important;
+}
+.mat-expansion-panel-header-description, .mat-expansion-indicator::after{
+  color: #ffffff !important; 
+}
+.mat-accordion .mat-expansion-panel-header{
+  padding: 0 24px 0 0 !important;
+}
+.mat-accordion .mat-expansion-panel-header:hover{
+  background-color: rgb(20,90,137) !important;
+  color: #ffffff !important;
+}
+.mat-expansion-panel-body{
+  padding: 0 !important;
+}
 /* Centrando login*/
 .main_login{
   min-height: 97vh;
