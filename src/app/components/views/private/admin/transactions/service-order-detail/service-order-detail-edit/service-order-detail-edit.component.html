@@ -1,43 +1,63 @@
-<div class="main_service-order-detail">
-	<h2 class="text-center">Editar Detalle Orden de Servicio</h2>
-		<button mat-raised-button color="primary" [routerLink]="['/auth/admin/transactions/service-order-detail']">Volver</button>
-		<hr>
-	
-		<div class="example-container">
-			<mat-form-field>
-					<mat-select placeholder="ID Orden de Servicio">
-						<mat-option value="option">Orden de Servcio 1</mat-option>
-						<mat-option value="option">Orden de Servicio 2</mat-option>
-					</mat-select>
-			</mat-form-field>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-8 offset-2">
+			<div class="row">
+				<div class="col-sm-12">
+					<h2 class="text-center">Editar Detalle de Orden de Servicio</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<button mat-raised-button color="primary" [routerLink]="['/auth/admin/transactions/service-order-detail']">Volver</button>
+				</div>
+			</div>
+			<hr>
+			
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="example-container">
+						<mat-form-field>
+							<mat-select placeholder="ID Orden de Servicio" required>
+								<mat-option value="option">90898</mat-option>
+								<mat-option value="option">0450</mat-option>
+							</mat-select>
+					</mat-form-field>
+			
+					<mat-form-field>
+							<mat-select placeholder="ID Detalle de Servicio" required>
+								<mat-option value="option">0986</mat-option>
+								<mat-option value="option">1234</mat-option>
+								<mat-option value="option">57567</mat-option>
+							</mat-select>
+					</mat-form-field>
 
-			<mat-form-field>
-				<mat-select placeholder="ID Detalle Servicio">
-					<mat-option value="option">Servcio 1</mat-option>
-					<mat-option value="option">Servicio 2</mat-option>
-				</mat-select>
-			</mat-form-field>
+					<mat-form-field>
+						<textarea matInput placeholder="Monto"></textarea>
+					</mat-form-field>
 
-			<mat-form-field>
-				<mat-select placeholder="Duración">
-					<mat-option value="option">Duración 1</mat-option>
-					<mat-option value="option">Duración 2</mat-option>
-				</mat-select>
-			</mat-form-field>
+					<mat-form-field>
+						<textarea matInput placeholder="Duración" required></textarea>
+					</mat-form-field>
 
-			<mat-form-field>
-				<mat-select placeholder="Número de Trabajadores">
-					<mat-option value="option"> 1</mat-option>
-					<mat-option value="option"> 2</mat-option>
-				</mat-select>
-			</mat-form-field>
+					<mat-form-field>
+						<input matInput placeholder="Número de trabajadores">
+					</mat-form-field>
+			
+					<mat-form-field [hidden]="true">
+						<input matInput  placeholder="Estatus" value="A">
+					</mat-form-field>			
 		
-		<mat-form-field>
-		  <textarea matInput placeholder="Monto"></textarea>
-		</mat-form-field>	
-	
+					<br>
+					
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12">
+					<button mat-raised-button color="primary" [routerLink]="['/auth/admin/transactions/service-order-detail/edit/1']">Guardar</button>
+				</div>
+			</div>
 		</div>
-	
-		<button mat-raised-button color="primary" [routerLink]="['/auth/admin/transactions/service-order/edit/1']">Guardar</button>
-	
 	</div>
+</div>
