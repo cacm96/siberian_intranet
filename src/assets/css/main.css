@@ -166,6 +166,8 @@ mat-divider {
   background-color: #0B173B !important;
 }
 
+/* Color botones*/
+
 
 /*Paleta para los badge*/
 span.badge{
@@ -181,7 +183,7 @@ span.badge-warning{
   background-color: #d0667a!important;
 }
 span.badge-danger{
-  background-color: #f44336!important;
+  background-color: #D13232!important;
 }
 span.badge-dark{
   background-color: #121212!important;

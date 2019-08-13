@@ -8,7 +8,7 @@
 
 $sib-theme-primary: mat-palette($mat-indigo, 800);
 $sib-theme-accent: mat-palette($mat-blue, A400, A200);
-$sib-theme-warn: mat-palette($mat-red);
+$sib-theme-warn: mat-palette($mat-red, A700);
 $sib-theme: mat-light-theme($sib-theme-primary, $sib-theme-accent, $sib-theme-warn);
 
 @include angular-material-theme($sib-theme);
