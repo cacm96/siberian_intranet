@@ -1,6 +1,16 @@
-<p>
-  phone-show works!
-</p>
-<mat-nav-list>
-	<a mat-list-item [routerLink]="['/auth/configurations/phone']">Regresar </a>
-</mat-nav-list>
+<div class="container">
+	<h2 class="text-center">Teléfono</h2>
+	<button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/phone']">Volver</button>
+	<hr>
+	<mat-card>
+		<mat-list>
+			<mat-list-item> <b>ID: </b> 1</mat-list-item>
+		    <mat-list-item> <b>ID Parametro:</b> Parametro 1</mat-list-item>
+		    <mat-list-item> <b>Parametro Valido:</b> parameter value 1</mat-list-item>
+		    <mat-list-item> <b>ID Cliente:</b> 01</mat-list-item>
+		    <mat-list-item> <b>Creado en:</b> 12/08/2019</mat-list-item>
+		    <mat-list-item> <b>Actualizado en:</b> 12/08/2019</mat-list-item>
+		    <mat-list-item> <b>Estatus:<span class="badge badge-primary"> Activo</span></b></mat-list-item>
+		</mat-list>
+	</mat-card>
+</div>
