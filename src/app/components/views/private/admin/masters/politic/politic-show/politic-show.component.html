@@ -1,6 +1,14 @@
-<p>
-  politic-show works!
-</p>
-<mat-nav-list>
-	<a mat-list-item [routerLink]="['/auth/masters/politic']">Regresar </a>
-</mat-nav-list>
+<div class="container">
+  <h2 class="text-center">Política</h2>
+  <button mat-raised-button color="primary" [routerLink]="['/auth/admin/masters/politic']">Volver</button>
+  <hr>
+  <mat-card>
+    <mat-list>
+      <mat-list-item> <b>Código: </b> 1</mat-list-item>
+      <mat-list-item> <b>Nombre:</b>Política 1</mat-list-item>
+      <mat-list-item> <b>Descripción:</b>El tiempo de duración del servicio</mat-list-item>
+      <mat-list-item> <b>Plan de Acción:</b>Plan de acción de la política 1</mat-list-item>
+      <mat-list-item> <b>Estatus:<span class="badge badge-primary">Activo</span></b></mat-list-item>
+    </mat-list>
+  </mat-card>
+</div>
