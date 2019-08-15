@@ -7,24 +7,83 @@ import { ConfigurationComponent } from './configuration.component';
 const routes: Routes = [
 
 	{path: '', component: ConfigurationComponent, canActivate: []},
-	{path: 'catalogue', canActivate: [],
+	{path: 'catalog', canActivate: [],
 		children:
 		[
 			{
 				path: '',
-                loadChildren: '../configurations/catalogue/catalogue.module#CatalogueModule',
+                loadChildren: '../configurations/catalog/catalog.module#CatalogModule',
 			}
 		]
 	},
-	{path: 'catalogue-variety-detail', canActivate: [],
+	{path: 'company', canActivate: [],
 		children:
 		[
 			{
 				path: '',
-                loadChildren: './catalogue-variety-detail/catalogue-variety-detail.module#CatalogueVarietyDetailModule',
+                loadChildren: '../configurations/company/company.module#CompanyModule',
 			}
 		]
 	},
+	{path: 'equip-infras/', canActivate: [],
+		children:
+		[
+			{
+				path: '',
+                loadChildren: '../configurations/equip-infras//equip-infras/.module#EquipInfrasModule',
+			}
+		]
+	},
+	{path: 'parameter', canActivate: [],
+		children:
+		[
+			{
+				path: '',
+                loadChildren: '../configurations/parameter/parameter.module#ParameterModule',
+			}
+		]
+	},
+	{path: 'promotion', canActivate: [],
+		children:
+		[
+			{
+				path: '',
+                loadChildren: '../configurations/promotion/promotion.module#PromotionModule',
+			}
+		]
+	},
+	{path: 'service', canActivate: [],
+		children:
+		[
+			{
+				path: '',
+                loadChildren: '../configurations/service/service.module#ServiceModule',
+			}
+		]
+	},
+	{path: 'skill', canActivate: [],
+		children:
+		[
+			{
+				path: '',
+                loadChildren: '../configurations/skill/skill.module#SkillModule',
+			}
+		]
+	},
+	{path: 'user-role', canActivate: [],
+		children:
+		[
+			{
+				path: '',
+                loadChildren: '../configurations/user-role/user-role.module#UserRoleModule',
+			}
+		]
+	},
+
+
+
+	
+	
 	{path: 'location', canActivate: [],
 		children:
 		[
@@ -115,15 +174,7 @@ const routes: Routes = [
 			}
 		]
 	},
-	{path: 'service-detail-catalogue-variety-detail', canActivate: [],
-		children:
-		[
-			{
-				path: '',
-                loadChildren: './service-detail-catalogue-variety-detail/service-detail-catalogue-variety-detail.module#ServiceDetailCatalogueVarietyDetailModule',
-			}
-		]
-	},
+	
 	{path: 'service-detail-politic', canActivate: [],
 		children:
 		[

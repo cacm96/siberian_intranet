@@ -24,15 +24,7 @@ const routes: Routes = [
 			}
 		]
 	},
-	{path: 'company', canActivate: [],
-		children:
-		[
-			{
-				path: '',
-                loadChildren: './company/company.module#CompanyModule',
-			}
-		]
-	},
+	
 	{path: 'component', canActivate: [],
 		children:
 		[

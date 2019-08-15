@@ -43,8 +43,18 @@ mat-divider {
   background-color: #0b173b !important;
   color: #ffffff !important;
 }
+.mat-expansion-panel-header-title{
+  font-size:16px !important;
+  color: #ffffff !important;
+}
+.mat-expansion-panel-spacing{
+  margin: 0 !important;
+}
 .mat-expansion-panel-header-description, .mat-expansion-indicator::after{
   color: #ffffff !important; 
+}
+.mat-expansion-indicator::after:focus{
+
 }
 .mat-accordion .mat-expansion-panel-header{
   padding: 0 24px 0 0 !important;
@@ -55,6 +65,9 @@ mat-divider {
 }
 .mat-expansion-panel-body{
   padding: 0 !important;
+}
+.mat-expansion-panel-header-description, .mat-expansion-panel-header-title{
+  margin:0 !important;
 }
 /* Centrando login*/
 .main_login{
@@ -248,6 +261,9 @@ span.badge-dark{
 .mat-nav-list .mat-list-item-content:hover, .mat-nav-list .mat-list-item:focus,.mat-nav-list .mat-list-item.active {
   background-color: rgb(20,90,137) !important;
   color: #ffffff
+}
+.mat-nav-list .mat-list-item.item_not_hover:focus{
+  background: none !important;
 }
 
 .toolbar a{
