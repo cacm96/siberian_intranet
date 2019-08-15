@@ -8,6 +8,10 @@ import { CompanyCreateComponent } from './company-create/company-create.componen
 import { CompanyEditComponent } from './company-edit/company-edit.component';
 import { CompanyShowComponent } from './company-show/company-show.component';
 import { CompanyDeleteComponent } from './company-delete/company-delete.component';
+import { CompaniesAllComponent } from './companies-all/companies-all.component';
+import { CompanyService } from 'src/app/core/services/company.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService } from 'src/app/core/services/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -16,12 +20,23 @@ import { CompanyDeleteComponent } from './company-delete/company-delete.componen
 	CompanyCreateComponent,
 	CompanyEditComponent,
 	CompanyShowComponent,
-	CompanyDeleteComponent
+	CompanyDeleteComponent,
+	CompaniesAllComponent,
   ],
   imports: [
     CommonModule,
     MaterialModule,
     CompanyRoutingModule
-  ]
+  ],
+  providers:
+  [
+    CompanyService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass : TokenInterceptorService,
+      multi: true
+    },
+    
+   ],
 })
 export class CompanyModule { }

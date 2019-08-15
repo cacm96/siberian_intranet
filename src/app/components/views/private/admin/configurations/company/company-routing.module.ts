@@ -7,17 +7,19 @@ import { CompanyCreateComponent } from './company-create/company-create.componen
 import { CompanyEditComponent } from './company-edit/company-edit.component';
 import { CompanyShowComponent } from './company-show/company-show.component';
 import { CompanyDeleteComponent } from './company-delete/company-delete.component';
+import { CompaniesAllComponent } from './companies-all/companies-all.component';
 
 const routes: Routes = [
 
 	{path: '', component: CompanyComponent, canActivate: [],
 		children:
 		[
-			{path: '', component: CompaniesComponent},
+			{path: '', component: CompaniesAllComponent},
 			{path: 'create', component: CompanyCreateComponent},
 			{path: 'edit/:id', component: CompanyEditComponent},
 			{path: 'show/:id', component: CompanyShowComponent},
-			{path: 'delete/:id', component: CompanyDeleteComponent}
+			{path: 'delete/:id', component: CompanyDeleteComponent},
+			{path: 'all', component: CompaniesComponent},
 		]
 	},
 

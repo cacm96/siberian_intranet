@@ -451,5 +451,9 @@ table {
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background: #f2f2f2; 
-    border-radius: 5px;
+    border-radius: 10px;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #d2d2d2; 
 }
