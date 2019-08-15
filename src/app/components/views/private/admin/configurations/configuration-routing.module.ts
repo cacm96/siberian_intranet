@@ -25,12 +25,12 @@ const routes: Routes = [
 			}
 		]
 	},
-	{path: 'equip-infras/', canActivate: [],
+	{path: 'equipinfras', canActivate: [],
 		children:
 		[
 			{
-				path: '',
-                loadChildren: './equip-infras/equip-infras/.module#EquipInfrasModule',
+				path:'',
+                loadChildren: './equipinfras/equipinfras.module#EquipinfrasModule',
 			}
 		]
 	},
@@ -39,7 +39,7 @@ const routes: Routes = [
 		[
 			{
 				path: '',
-                loadChildren: './parameter/parameter.module#ParameterModule',
+                loadChildren: '../configurations/parameter/parameter.module#ParameterModule',
 			}
 		]
 	},
@@ -48,7 +48,7 @@ const routes: Routes = [
 		[
 			{
 				path: '',
-                loadChildren: './promotion/promotion.module#PromotionModule',
+                loadChildren: './promotion-origin/promotion-origin.module#PromotionOriginModule',
 			}
 		]
 	},
@@ -66,7 +66,7 @@ const routes: Routes = [
 		[
 			{
 				path: '',
-                loadChildren: './skill/skill.module#SkillModule',
+                loadChildren: '../configurations/skill/skill.module#SkillModule',
 			}
 		]
 	},

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '../../../../../../core/ui/material.module';
+import { MaterialModule } from '../../../../../../../core/ui/material.module';
 import { RoleRoutingModule } from './role-routing.module';
 import { RoleComponent } from './role.component';
 import { RolesComponent } from './roles/roles.component';

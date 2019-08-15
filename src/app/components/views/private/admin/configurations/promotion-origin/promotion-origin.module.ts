@@ -4,9 +4,6 @@ import { MaterialModule } from '../../../../../../core/ui/material.module';
 import { PromotionOriginRoutingModule } from './promotion-origin-routing.module';
 import { PromotionOriginComponent } from './promotion-origin.component';
 import { PromotionsOriginsComponent } from './promotions-origins/promotions-origins.component';
-import { PromotionComponent } from './promotion/promotion.component';
-import { PromotionCatalogueComponent } from './promotion-catalogue/promotion-catalogue.component';
-import { PromotionTargetComponent } from './promotion-target/promotion-target.component';
 
 
 @NgModule({
@@ -14,9 +11,6 @@ import { PromotionTargetComponent } from './promotion-target/promotion-target.co
   [
   	PromotionOriginComponent,
   	PromotionsOriginsComponent,
-    PromotionComponent,
-  	PromotionCatalogueComponent,
-	PromotionTargetComponent,
 
   ],
   imports: [

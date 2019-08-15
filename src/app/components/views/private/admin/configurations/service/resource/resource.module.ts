@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '../../../../../../core/ui/material.module';
+import { MaterialModule } from '../../../../../../../core/ui/material.module';
 import { ResourceRoutingModule } from './resource-routing.module';
 import { ResourceComponent } from './resource.component';
 import { ResourcesComponent } from './resources/resources.component';

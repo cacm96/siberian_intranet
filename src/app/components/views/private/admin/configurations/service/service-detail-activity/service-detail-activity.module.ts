@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '../../../../../../core/ui/material.module';
+import { MaterialModule } from '../../../../../../../core/ui/material.module';
 import { ServiceDetailActivityRoutingModule } from './service-detail-activity-routing.module';
 import { ServiceDetailActivityComponent } from './service-detail-activity.component';
 import { ServiceDetailActivitysComponent } from './service-detail-activitys/service-detail-activitys.component';

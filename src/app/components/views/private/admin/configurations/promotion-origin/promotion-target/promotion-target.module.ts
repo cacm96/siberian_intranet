@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '../../../../../../core/ui/material.module';
+import { MaterialModule } from '../../../../../../../core/ui/material.module';
 import { PromotionTargetRoutingModule } from './promotion-target-routing.module';
 import { PromotionTargetComponent } from './promotion-target.component';
 import { PromotionTargetsComponent } from './promotion-targets/promotion-targets.component';

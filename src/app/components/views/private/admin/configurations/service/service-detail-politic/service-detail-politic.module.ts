@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '../../../../../../core/ui/material.module';
+import { MaterialModule } from '../../../../../../../core/ui/material.module';
 import { ServiceDetailPoliticRoutingModule } from './service-detail-politic-routing.module';
 import { ServiceDetailPoliticComponent } from './service-detail-politic.component';
 import { ServiceDetailPoliticsComponent } from './service-detail-politics/service-detail-politics.component';

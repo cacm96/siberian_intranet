@@ -16,7 +16,7 @@ const routes: Routes = [
 				[
 					{
 						path: '',
-		                loadChildren: './parameter/parameter.module#ParameterModule',
+		                loadChildren: '../parameter/parameter/parameter.module#ParameterModule',
 					}
 				]
 			},
@@ -37,9 +37,9 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule
-  ]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+
 })
 
 export class ParameterRoutingModule { }
