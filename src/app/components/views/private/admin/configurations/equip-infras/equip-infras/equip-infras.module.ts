@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '../../../../../../core/ui/material.module';
+import { MaterialModule } from '../../../../../../../core/ui/material.module';
 import { EquipInfrasRoutingModule } from './equip-infras-routing.module';
 import { EquipInfrasComponent } from './equip-infras.component';
 import { EquipInfrassComponent } from './equip-infrass/equip-infrass.component';

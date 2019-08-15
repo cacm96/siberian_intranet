@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '../../../../../../core/ui/material.module';
+import { MaterialModule } from '../../../../../../../core/ui/material.module';
 import { SubCategoryRoutingModule } from './sub-category-routing.module';
 import { SubCategoryComponent } from './sub-category.component';
 import { SubCategoriesComponent } from './sub-categories/sub-categories.component';

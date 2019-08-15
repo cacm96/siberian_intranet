@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '../../../../../../core/ui/material.module';
+import { MaterialModule } from '../../../../../../../core/ui/material.module';
 import { CatalogueVarietyDetailRoutingModule } from './catalogue-variety-detail-routing.module';
 import { CatalogueVarietyDetailComponent } from './catalogue-variety-detail.component';
 import { CatalogueVarietyDetailsComponent } from './catalogue-variety-details/catalogue-variety-details.component';

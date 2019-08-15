@@ -12,7 +12,7 @@ const routes: Routes = [
 		[
 			{
 				path: '',
-                loadChildren: '../configurations/catalog/catalog.module#CatalogModule',
+                loadChildren: './catalog/catalog.module#CatalogModule',
 			}
 		]
 	},
@@ -21,7 +21,7 @@ const routes: Routes = [
 		[
 			{
 				path: '',
-                loadChildren: '../configurations/company/company.module#CompanyModule',
+                loadChildren: './company/company.module#CompanyModule',
 			}
 		]
 	},
@@ -30,7 +30,7 @@ const routes: Routes = [
 		[
 			{
 				path: '',
-                loadChildren: '../configurations/equip-infras//equip-infras/.module#EquipInfrasModule',
+                loadChildren: './equip-infras/equip-infras/.module#EquipInfrasModule',
 			}
 		]
 	},
@@ -39,75 +39,7 @@ const routes: Routes = [
 		[
 			{
 				path: '',
-                loadChildren: '../configurations/parameter/parameter.module#ParameterModule',
-			}
-		]
-	},
-	{path: 'promotion', canActivate: [],
-		children:
-		[
-			{
-				path: '',
-                loadChildren: '../configurations/promotion/promotion.module#PromotionModule',
-			}
-		]
-	},
-	{path: 'service', canActivate: [],
-		children:
-		[
-			{
-				path: '',
-                loadChildren: '../configurations/service/service.module#ServiceModule',
-			}
-		]
-	},
-	{path: 'skill', canActivate: [],
-		children:
-		[
-			{
-				path: '',
-                loadChildren: '../configurations/skill/skill.module#SkillModule',
-			}
-		]
-	},
-	{path: 'user-role', canActivate: [],
-		children:
-		[
-			{
-				path: '',
-                loadChildren: '../configurations/user-role/user-role.module#UserRoleModule',
-			}
-		]
-	},
-
-
-
-	
-	
-	{path: 'location', canActivate: [],
-		children:
-		[
-			{
-				path: '',
-                loadChildren: './location/location.module#LocationModule',
-			}
-		]
-	},
-	{path: 'parameter-client', canActivate: [],
-		children:
-		[
-			{
-				path: '',
-                loadChildren: './parameter-client/parameter-client.module#ParameterClientModule',
-			}
-		]
-	},
-	{path: 'phone', canActivate: [],
-		children:
-		[
-			{
-				path: '',
-                loadChildren: './phone/phone.module#PhoneModule',
+                loadChildren: './parameter/parameter.module#ParameterModule',
 			}
 		]
 	},
@@ -120,94 +52,30 @@ const routes: Routes = [
 			}
 		]
 	},
-	{path: 'promotion-catalogue', canActivate: [],
+	{path: 'service', canActivate: [],
 		children:
 		[
 			{
 				path: '',
-                loadChildren: './promotion-catalogue/promotion-catalogue.module#PromotionCatalogueModule',
+                loadChildren: './service/service.module#ServiceModule',
 			}
 		]
 	},
-	{path: 'promotion-catalogue-variety-detail', canActivate: [],
+	{path: 'skill', canActivate: [],
 		children:
 		[
 			{
 				path: '',
-                loadChildren: './promotion-catalogue-variety-detail/promotion-catalogue-variety-detail.module#PromotionCatalogueVarietyDetailModule',
+                loadChildren: './skill/skill.module#SkillModule',
 			}
 		]
 	},
-	{path: 'promotion-target', canActivate: [],
+	{path: 'user-role', canActivate: [],
 		children:
 		[
 			{
 				path: '',
-                loadChildren: './promotion-target/promotion-target.module#PromotionTargetModule',
-			}
-		]
-	},
-	{path: 'role-function', canActivate: [],
-		children:
-		[
-			{
-				path: '',
-                loadChildren: './role-function/role-function.module#RoleFunctionModule',
-			}
-		]
-	},
-	{path: 'service-detail', canActivate: [],
-		children:
-		[
-			{
-				path: '',
-                loadChildren: './service-detail/service-detail.module#ServiceDetailModule',
-			}
-		]
-	},
-	{path: 'service-detail-activity', canActivate: [],
-		children:
-		[
-			{
-				path: '',
-                loadChildren: './service-detail-activity/service-detail-activity.module#ServiceDetailActivityModule',
-			}
-		]
-	},
-	
-	{path: 'service-detail-politic', canActivate: [],
-		children:
-		[
-			{
-				path: '',
-                loadChildren: './service-detail-politic/service-detail-politic.module#ServiceDetailPoliticModule',
-			}
-		]
-	},
-	{path: 'service-detail-resource', canActivate: [],
-		children:
-		[
-			{
-				path: '',
-                loadChildren: './service-detail-resource/service-detail-resource.module#ServiceDetailResourceModule',
-			}
-		]
-	},
-	{path: 'service-detail-skill', canActivate: [],
-		children:
-		[
-			{
-				path: '',
-                loadChildren: './service-detail-skill/service-detail-skill.module#ServiceDetailSkillModule',
-			}
-		]
-	},
-	{path: 'skill-worker', canActivate: [],
-		children:
-		[
-			{
-				path: '',
-                loadChildren: './skill-worker/skill-worker.module#SkillWorkerModule',
+                loadChildren: './user-role/user-role.module#UserRoleModule',
 			}
 		]
 	},

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '../../../../../../core/ui/material.module';
+import { MaterialModule } from '../../../../../../../core/ui/material.module';
 import { ServiceTypeRoutingModule } from './service-type-routing.module';
 import { ServiceTypeComponent } from './service-type.component';
 import { ServiceTypesComponent } from './service-types/service-types.component';

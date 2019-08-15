@@ -15,7 +15,7 @@ const routes: Routes = [
 				[
 					{
 						path: '',
-		                loadChildren: '../equip-infras/equip-infras.module#EquipInfrasModule',
+		                loadChildren: './equip-infras/equip-infras.module#EquipInfrasModule',
 					}
 				]
 			},
@@ -33,7 +33,7 @@ const routes: Routes = [
 				[
 					{
 						path: '',
-		                loadChildren: '../variety-detail/variety-detail.module#VarietyDetailModule',
+		                loadChildren: './variety-detail/variety-detail.module#VarietyDetailModule',
 					}
 				]
 			},
@@ -42,7 +42,7 @@ const routes: Routes = [
 				[
 					{
 						path: '',
-		                loadChildren: '../variety-equipinfras/variety-equipinfras.module#VarietyEquipinfrasModule',
+		                loadChildren: './variety-equipinfras/variety-equipinfras.module#VarietyEquipinfrasModule',
 					}
 				]
 			},

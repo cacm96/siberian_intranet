@@ -15,7 +15,7 @@ const routes: Routes = [
 				[
 					{
 						path: '',
-		                loadChildren: '../catalogue/catalogue.module#CatalogueModule',
+		                loadChildren: './catalogue/catalogue.module#CatalogueModule',
 					}
 				]
 			},
@@ -33,7 +33,7 @@ const routes: Routes = [
 				[
 					{
 						path: '',
-		                loadChildren: '../category/category.module#CategoryModule',
+		                loadChildren: './category/category.module#CategoryModule',
 					}
 				]
 			},
@@ -42,7 +42,7 @@ const routes: Routes = [
 				[
 					{
 						path: '',
-		                loadChildren: '../service-detail-catalogue-variety-detail/service-detail-catalogue-variety-detail.module#ServiceDetailCatalogueVarietyDetailModule',
+		                loadChildren: './service-detail-catalogue-variety-detail/service-detail-catalogue-variety-detail.module#ServiceDetailCatalogueVarietyDetailModule',
 					}
 				]
 			},
@@ -51,7 +51,7 @@ const routes: Routes = [
 				[
 					{
 						path: '',
-		                loadChildren: '../service-type/service-type.module#ServiceTypeModule',
+		                loadChildren: './service-type/service-type.module#ServiceTypeModule',
 					}
 				]
 			},
@@ -60,7 +60,7 @@ const routes: Routes = [
 				[
 					{
 						path: '',
-		                loadChildren: '../sub-category/sub-category.module#SubCategoryModule',
+		                loadChildren: './sub-category/sub-category.module#SubCategoryModule',
 					}
 				]
 			},
