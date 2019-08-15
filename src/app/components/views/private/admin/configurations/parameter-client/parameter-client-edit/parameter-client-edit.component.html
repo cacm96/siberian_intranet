@@ -21,19 +21,25 @@
 						</mat-form-field>
 
 						<mat-form-field>
-							<input matInput placeholder="ID Parametro">
-						</mat-form-field>
+							<mat-select placeholder="ID Parametro" required>
+								<mat-option value="option">parametro 1</mat-option>
+								<mat-option value="option">parametro 2</mat-option>
+							</mat-select>
+					    </mat-form-field>
 
 						<mat-form-field>
 							<input matInput placeholder="Parametro Valido">
 						</mat-form-field>
 
 						<mat-form-field>
-							<input matInput placeholder="ID Cliente">
-						</mat-form-field>
+							<mat-select placeholder="ID Cliente" required>
+								<mat-option value="option">01</mat-option>
+								<mat-option value="option">02</mat-option>
+							</mat-select>
+					    </mat-form-field>
 
 						<mat-form-field>
-							<input matInput placeholder="Creado en">
+							<input matInput placeholder="Actualizado en">
 						</mat-form-field>	
 						
 						<mat-form-field [hidden]="true">
