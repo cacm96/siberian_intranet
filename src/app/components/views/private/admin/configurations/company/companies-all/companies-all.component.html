@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="company">
 	<div class="row">
 		<div class="col-sm-12">
 			<h2 class="text-center">Configura los datos de tu empresa</h2>
@@ -8,7 +8,7 @@
 	</div>
 	<div class="row">
 		<div class="col-sm-12">  
-			<div *ngIf="company">
+			<div>
 				<mat-card>
 					<mat-list>
 						<mat-list-item> <b>Nombre: </b>{{company.name}}</mat-list-item>
@@ -28,4 +28,17 @@
 			</div>
 		</div>
 	</div>
+</div>
+
+<div *ngIf="!company && !failedConect">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 spinner">
+				<mat-spinner></mat-spinner>
+			</div>
+		</div>
+	</div>
+</div>
+<div *ngIf="failedConect">
+	<h6 class="text-center">{{failedConect}}</h6>
 </div>

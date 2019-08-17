@@ -17,15 +17,6 @@ const routes: Routes = [
 		]
 	},
 	
-	{path: 'component', canActivate: [],
-		children:
-		[
-			{
-				path: '',
-                loadChildren: './component/component.module#ComponentModule',
-			}
-		]
-	},
 	{path: 'event', canActivate: [],
 		children:
 		[

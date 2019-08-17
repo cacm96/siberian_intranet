@@ -11,12 +11,12 @@ import { CatalogueVarietyDetailDeleteComponent } from './catalogue-variety-detai
 
 @NgModule({
   declarations: [
-	CatalogueVarietyDetailComponent,
-	CatalogueVarietyDetailsComponent,
-	CatalogueVarietyDetailCreateComponent,
-	CatalogueVarietyDetailEditComponent,
-	CatalogueVarietyDetailShowComponent,
-	CatalogueVarietyDetailDeleteComponent
+  	CatalogueVarietyDetailComponent,
+  	CatalogueVarietyDetailsComponent,
+  	CatalogueVarietyDetailCreateComponent,
+  	CatalogueVarietyDetailEditComponent,
+  	CatalogueVarietyDetailShowComponent,
+  	CatalogueVarietyDetailDeleteComponent
   ],
   imports: [
     CommonModule,

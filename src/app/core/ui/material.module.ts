@@ -24,6 +24,7 @@ import {
         MatChipsModule,
         MatCheckboxModule,
         MatExpansionModule,
+        MatProgressSpinnerModule,
 } from '@angular/material';
 
 
@@ -53,6 +54,7 @@ import {
         MatChipsModule,
         MatCheckboxModule,
         MatExpansionModule,
+        MatProgressSpinnerModule,
     ],
     exports: [
         MatButtonModule,
@@ -79,6 +81,7 @@ import {
         MatChipsModule,
         MatCheckboxModule,
         MatExpansionModule,
+        MatProgressSpinnerModule,
     ],
     providers: [  
         MatDatepickerModule,  

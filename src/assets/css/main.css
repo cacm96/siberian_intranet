@@ -457,3 +457,8 @@ table {
 ::-webkit-scrollbar-thumb:hover {
     background: #d2d2d2; 
 }
+
+.spinner{
+  padding-left: 45%;
+  padding-top: 20%;
+}

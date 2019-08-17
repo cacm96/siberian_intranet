@@ -16,6 +16,8 @@ import { CompanyService } from '../../../../../../../core/services/admin/company
 export class CompaniesAllComponent implements OnInit {
 	
 	public company: any;
+	public failedConect:string;
+
 
 	constructor
 	(
@@ -45,6 +47,13 @@ export class CompaniesAllComponent implements OnInit {
 			error =>
 			{
 				console.log(<any>error);
+				if(error instanceof HttpErrorResponse)
+				{
+					if(error.status===0)
+					{
+						this.failedConect = Global.failed;
+					}
+				}
 			}
 		)
 	}

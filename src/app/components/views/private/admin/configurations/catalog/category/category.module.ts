@@ -11,12 +11,12 @@ import { CategoryDeleteComponent } from './category-delete/category-delete.compo
 
 @NgModule({
   declarations: [
-	CategoryComponent,
-	CategoriesComponent,
-	CategoryCreateComponent,
-	CategoryEditComponent,
-	CategoryShowComponent,
-	CategoryDeleteComponent
+  	CategoryComponent,
+  	CategoriesComponent,
+  	CategoryCreateComponent,
+  	CategoryEditComponent,
+  	CategoryShowComponent,
+  	CategoryDeleteComponent
   ],
   imports: [
     CommonModule,
