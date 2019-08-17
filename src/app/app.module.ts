@@ -8,7 +8,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './core/ui/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TokenInterceptorService } from './core/services/token-interceptor.service';
-import { AuthService } from './core/services/auth.service';
+
+import { AuthService } from './core/services/public/auth.service';
+
 import { SearchUserPipe } from './core/pipes/searchUser.pipe';
 import { SearchFunctionPipe } from './core/pipes/searchFunction.pipe';
 

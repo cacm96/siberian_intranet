@@ -9,7 +9,7 @@ import { CompanyEditComponent } from './company-edit/company-edit.component';
 import { CompanyShowComponent } from './company-show/company-show.component';
 import { CompanyDeleteComponent } from './company-delete/company-delete.component';
 import { CompaniesAllComponent } from './companies-all/companies-all.component';
-import { CompanyService } from 'src/app/core/services/company.service';
+import { CompanyService } from 'src/app/core/services/admin/company.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from 'src/app/core/services/token-interceptor.service';
 

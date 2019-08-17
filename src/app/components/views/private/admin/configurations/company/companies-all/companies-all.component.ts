@@ -5,7 +5,7 @@ import {Location} from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Global } from '../../../../../../../core/services/global';
 import { Company } from '../../../../../../../models/company';
-import { CompanyService } from '../../../../../../../core/services/company.service';
+import { CompanyService } from '../../../../../../../core/services/admin/company.service';
 
 
 @Component({
@@ -15,7 +15,7 @@ import { CompanyService } from '../../../../../../../core/services/company.servi
 })
 export class CompaniesAllComponent implements OnInit {
 	
-	public company: Company;
+	public company: any;
 
 	constructor
 	(
@@ -34,11 +34,12 @@ export class CompaniesAllComponent implements OnInit {
 
 	getCompany()
 	{
-		this._companyService.getCompany().subscribe
+		this._companyService.getAll().subscribe
 		(
 			response =>
 			{
-				this.company = response.company;
+				this.company = response;
+				this.company = this.company.company;
 				console.log(this.company);
 			},
 			error =>
