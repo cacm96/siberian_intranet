@@ -236,6 +236,9 @@ span.badge-dark{
   border-top: solid 6px #121212!important;
 }*/
 
+.mat-card-header-primary-two{
+  background-color: #0b173b !important;
+}
 .mat-card-header-primary{
   background-color: #283593!important;
 }
@@ -461,4 +464,18 @@ table {
 .spinner{
   padding-left: 45%;
   padding-top: 20%;
+}
+
+.main_admin .mat-card-header .mat-card-title{
+  font-size: .8rem;
+  padding: .5rem 0;
+}
+
+.main_admin .mat_card_content{
+  justify-content: center !important;
+  text-align: center;
+}
+.main_admin .mat_card_content{
+  padding: 1rem !important;
+  margin:0 !important;
 }

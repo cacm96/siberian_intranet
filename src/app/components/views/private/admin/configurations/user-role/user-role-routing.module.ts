@@ -25,7 +25,7 @@ const routes: Routes = [
 				[
 					{
 						path: '',
-		                loadChildren: './location/location/location.module#LocationModule',
+		                loadChildren: './location/location.module#LocationModule',
 					}
 				]
 			},

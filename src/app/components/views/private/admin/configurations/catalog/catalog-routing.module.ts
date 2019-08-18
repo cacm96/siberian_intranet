@@ -37,15 +37,7 @@ const routes: Routes = [
 					}
 				]
 			},
-			{path: 'service-detail-catalogue-variety-detail', canActivate: [],
-				children:
-				[
-					{
-						path: '',
-		                loadChildren: './service-detail-catalogue-variety-detail/service-detail-catalogue-variety-detail.module#ServiceDetailCatalogueVarietyDetailModule',
-					}
-				]
-			},
+			
 			{path: 'service-type', canActivate: [],
 				children:
 				[
