@@ -25,15 +25,6 @@ const routes: Routes = [
 			}
 		]
 	},
-	{path: 'category', canActivate: [],
-		children:
-		[
-			{
-				path: '',
-                loadChildren: './category/category.module#CategoryModule',
-			}
-		]
-	},
 	{path: 'motive-incidence', canActivate: [],
 		children:
 		[
@@ -49,24 +40,6 @@ const routes: Routes = [
 			{
 				path: '',
                 loadChildren: './notification-type/notification-type.module#NotificationTypeModule',
-			}
-		]
-	},
-	{path: 'service-type', canActivate: [],
-		children:
-		[
-			{
-				path: '',
-                loadChildren: './service-type/service-type.module#ServiceTypeModule',
-			}
-		]
-	},
-	{path: 'sub-category', canActivate: [],
-		children:
-		[
-			{
-				path: '',
-                loadChildren: './sub-category/sub-category.module#SubCategoryModule',
 			}
 		]
 	},

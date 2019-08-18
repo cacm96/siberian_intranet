@@ -2,12 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './admin.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
 
 	{path: '', component: AdminComponent, canActivate: []},
-	{path: 'dashboard', component: DashboardComponent, canActivate: []},
+	
+	{path: 'dashboard', canActivate: [],
+		children:
+		[
+			{
+				path: '',
+                loadChildren: './dashboard/dashboard.module#DashboardModule',
+			}
+		]
+	},
 	{path: 'masters', canActivate: [],
 		children:
 		[

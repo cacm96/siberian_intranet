@@ -1,5 +1,6 @@
 import { Component, OnInit,Input, Output, EventEmitter } from '@angular/core';
-import { AuthService } from '../../../core/services/auth.service';
+import { AuthService } from '../../../core/services/public/auth.service';
+import { DialogService } from '../../../core/services/dialog.service';
 
 @Component({
   selector: 'sib-toolbar',
@@ -11,7 +12,14 @@ export class ToolbarComponent implements OnInit {
 
 	@Output() trigger = new EventEmitter<void>();
 	@Input() isToggle:boolean;
-	constructor(private _authService: AuthService,) { }
+	
+	constructor(
+		private _authService: AuthService,
+    	private dialogService: DialogService,
+	)
+	{
+
+	}
 
 	ngOnInit() {
 		this.rol=this._authService.getRoleID();
@@ -19,6 +27,9 @@ export class ToolbarComponent implements OnInit {
 
 	shood(){
 		this.trigger.emit();
+	}
+	notification(){
+		this.dialogService.openConfirmDialog('¿Estás seguro de eliminar el Catálogo').afterClosed().subscribe();
 	}
 
 }

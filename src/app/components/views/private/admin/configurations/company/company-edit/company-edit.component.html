@@ -1,0 +1,72 @@
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="row">
+				<div class="col-sm-12">
+					<h2 class="text-center">Editar Empresa</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/company']">Volver</button>
+				</div>
+			</div>
+			<hr>
+			
+			<div class="row">
+				<div class="col-sm-6">
+					<mat-form-field>
+						<input matInput placeholder="Nombre" required>
+					</mat-form-field>
+
+					<mat-form-field>
+						<input matInput placeholder="Rif" required>
+					</mat-form-field>
+
+					<mat-form-field>
+						<textarea matInput placeholder="¿Quiénes somos?"></textarea>
+					</mat-form-field>
+
+					<mat-form-field>
+						<textarea matInput placeholder="Visión"></textarea>
+					</mat-form-field>
+
+					<mat-form-field>
+						<textarea matInput placeholder="Misión"></textarea>
+					</mat-form-field>
+
+					<mat-label >Subir Imagen</mat-label>
+					<input id="fileInput" type="file" required>
+				</div>
+				<div class="col-sm-6">
+					<mat-form-field>
+						<input matInput placeholder="Primer Teléfono" required>
+					</mat-form-field>
+
+					<mat-form-field>
+						<input matInput placeholder="Segundo Teléfono">
+					</mat-form-field>
+
+					<mat-form-field>
+						<textarea matInput placeholder="Dirección"></textarea>
+					</mat-form-field>
+
+					<mat-form-field>
+						<input matInput placeholder="Facebook">
+					</mat-form-field>
+
+					<mat-form-field>
+						<input matInput placeholder="Instagram">
+					</mat-form-field>
+
+					<mat-form-field>
+						<input matInput placeholder="Twitter">
+					</mat-form-field>	
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/company/edit/1']">Guardar</button>
+</div>

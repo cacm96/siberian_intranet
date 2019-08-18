@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../core/services/auth.service';
+import { AuthService } from '../../../core/services/public/auth.service';
 
 @Component({
   selector: 'sib-sidenav',
