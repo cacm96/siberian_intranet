@@ -55,7 +55,7 @@ export class CatalogueVarietyDetailsComponent implements OnInit {
   }
 
   onDelete(id){
-		this.dialogService.openConfirmDialog('¿Estás seguro de eliminar el Catálogo Detalle Variedad'+id+' ?').afterClosed().subscribe(res=>{
+		this.dialogService.openConfirmDialog('¿Estás seguro de eliminar el Catálogo Variedad Detalle '+id+' ?').afterClosed().subscribe(res=>{
 			if (res==true) {
 				console.log(id);
 				this.snackBar.openSnackBar('Eliminado Correctamente','¿Deshacer?').onAction().subscribe(() => {
