@@ -1,13 +1,13 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12">
-			<h2 class="text-center">Telefono</h2>
+			<h2 class="text-center">Teléfonos</h2>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-sm-12">
-			<button mat-raised-button color="primary" class="mr-3" [routerLink]="['/auth/admin/configurations/user-role/phone/create']">Nuevo Telefono</button>
-	        <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/']">Volver</button>
+			<button mat-raised-button color="primary" class="mr-3" [routerLink]="['/auth/admin/configurations/user-role/phone/create']">Nuevo Teléfono</button>
+	        <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/user-role/']">Volver</button>
 		</div>
 	</div>
 	<hr>
@@ -46,7 +46,7 @@
 					</ng-container>
 
 					<ng-container matColumnDef="phone_type">
-						<th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo Telefono </th>
+						<th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo Teléfono </th>
 						<td mat-cell *matCellDef="let row"> {{row.phone_type}}</td>
 					</ng-container>
 
