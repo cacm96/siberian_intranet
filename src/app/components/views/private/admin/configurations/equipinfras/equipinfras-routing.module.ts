@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { EquipinfrasComponent } from './equipinfras.component';
+import { EquipsinfrasComponent } from './equipsinfras/equipsinfras.component';
 
 const routes: Routes = [
 
 	{path: '', component: EquipinfrasComponent, canActivate: [],
 		children:
 		[
+			{path: '', component: EquipsinfrasComponent},
 			{path: 'equip-infras', canActivate: [],
 				children:
 				[
@@ -22,7 +24,7 @@ const routes: Routes = [
 				[
 					{
 						path: '',
-		                loadChildren: './variety/variety.module#CatalogueVarietyDetailModule',
+		                loadChildren: './variety/variety.module#VarietyModule',
 					}
 				]
 			},

@@ -15,7 +15,7 @@ const routes: Routes = [
 				[
 					{
 						path: '',
-		                loadChildren: '../service-detail-skill/service-detail-skill.module#ServiceDetailSkillModule',
+		                loadChildren: './service-detail-skill/service-detail-skill.module#ServiceDetailSkillModule',
 					}
 				]
 			},

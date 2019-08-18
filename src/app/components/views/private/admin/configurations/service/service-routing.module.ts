@@ -15,7 +15,16 @@ const routes: Routes = [
 				[
 					{
 						path: '',
-		                loadChildren: '../activity/activity.module#ActivityModule',
+		                loadChildren: './activity/activity.module#ActivityModule',
+					}
+				]
+			},
+			{path: 'component', canActivate: [],
+				children:
+				[
+					{
+						path: '',
+		                loadChildren: './component/component.module#ComponentModule',
 					}
 				]
 			},
