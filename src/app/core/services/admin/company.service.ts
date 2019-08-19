@@ -23,4 +23,13 @@ export class CompanyService extends HeaderService{
         });
     }
 
+    update(company:any): Observable < any > {
+        return this.http.put < any > (this.url, {
+            company
+        }, {
+            headers: this.header,
+        });
+    }
+
+
 }

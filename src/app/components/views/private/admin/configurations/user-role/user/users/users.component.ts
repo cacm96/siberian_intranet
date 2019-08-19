@@ -30,7 +30,7 @@ export interface UserData {
 export class UsersComponent implements OnInit {
 
   	public user:any[];
-	displayedColumns: string[] = ['id', 'email','password', 'role','first_name','last_name','dni_type','dni','gender','date_of_birth','image_url','status','note','edit','delete'];
+	displayedColumns: string[] = ['id', 'email', 'role','first_name','last_name','dni_type','dni','gender','date_of_birth','status','note','edit','delete'];
 	dataSource: MatTableDataSource<UserData>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;

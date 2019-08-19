@@ -23,7 +23,7 @@ export class LoginWeitComponent implements OnInit {
 	ngOnInit()
 	{
 		this.rol=this._authService.getRoleID();
-		localStorage.setItem('token','eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NjEyOTA0ODMsImV4cCI6MTU2Mzg4MjQ4M30.BEJRPUpb21OvaZTH0VCNmyhKBmzAQ5xAwFU35EA7Ghg');
+		localStorage.setItem('token','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNTY1NzQyNDc1LCJleHAiOjE1NjYzNDcyNzV9.tE7TKaoE7pWra44FiY9nVM7m6ODLoQxTSdoUYraUS4o');
     	localStorage.setItem('resID', '1');
 		var actualRoute = window.location.origin;
 		if (this.rol=="client")	
