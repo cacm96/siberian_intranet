@@ -17,19 +17,15 @@ export class CompanyService extends HeaderService{
 		super();
 	}
 
-	getAll(): Observable < Array < Company > > {
-        return this.http.get < Array < Company > > (this.url, {
-            headers: this.header
-        });
-    }
+    getAll(): Observable<any>{
+		return this.http.get(this.url, {headers: this.header});
+	}
 
-    update(company:any): Observable < any > {
-        return this.http.put < any > (this.url, {
-            company
-        }, {
-            headers: this.header,
-        });
-    }
+    update(company:any): Observable<any>{
+		let params = JSON.stringify(company);
+		return this.http.put(this.url, params, {headers: this.header});
+	}
+
 
 
 }

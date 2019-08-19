@@ -26,7 +26,7 @@ import { BlockComponent } from './components/shared/block/block.component';
 import { HomeComponent } from './components/shared/home/home.component';
 import { ConfirmDialogComponent } from './components/shared/confirm-dialog/confirm-dialog.component';
 import { SnackBarDeleteComponent } from './components/shared/snack-bar-delete/snack-bar-delete.component';
-
+import {MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -65,6 +65,7 @@ import { SnackBarDeleteComponent } from './components/shared/snack-bar-delete/sn
       useClass : TokenInterceptorService,
       multi: true
     },
+    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 4000}}
     
    ],
   bootstrap: [AppComponent],

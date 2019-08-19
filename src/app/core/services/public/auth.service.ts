@@ -1,29 +1,26 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HeaderService } from '../header.service';
+import { HttpClient, HttpParams  } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { User } from '../../../models/user';
-import { Global } from '../global';
-import { Router, ActivatedRoute, Params } from '@angular/router';
 
-@Injectable({
-	providedIn: 'root'
-})
-export class AuthService{
-	public url:string;
+@Injectable()
+export class AuthService extends HeaderService{
+	urlLogin: string = environment.api + 'user/login';
+	urlRegister: string = environment.api + 'user/register';
 
-	constructor
-	(
-		private _http: HttpClient,
-		private _router: Router,
-	)
-	{
-		this.url = Global.url;
+	constructor(
+		private http: HttpClient
+	){
+		super();
 	}
+
+
 
 	login(email:string, password:string): Observable<any>
 	{
-	    return this._http.post(this.url+'signin', { email: email, password: password });     
+	    return this.http.post(this.urlLogin, { email: email, password: password });     
 	}
 
 	getToken() {

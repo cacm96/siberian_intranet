@@ -6,6 +6,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Global } from '../../../../../../../core/services/global';
 import { Company } from '../../../../../../../models/company';
 import { CompanyService } from '../../../../../../../core/services/admin/company.service';
+import { SnackBarService } from '../../../../../../../core/services/snack-bar.service';
 
 @Component({
   selector: 'sib-company-edit',
@@ -17,13 +18,15 @@ export class CompanyEditComponent implements OnInit {
 	public company: any;
 	public updateCompany;
 	public failedConect:string;
+	public message:string;
 
 	constructor
 	(
 		private _companyService: CompanyService,
 		private _route: ActivatedRoute,
 		private _router: Router,
-		private _location: Location
+		private _location: Location,
+    	private snackBar: SnackBarService
 	)
 	{
 	}
@@ -60,6 +63,7 @@ export class CompanyEditComponent implements OnInit {
 	{
 		if(form.valid)
 		{
+			console.log(this.company);
 			this._companyService.update(this.company).subscribe
 			(
 				response =>
@@ -68,10 +72,9 @@ export class CompanyEditComponent implements OnInit {
 					if(response.company)
 					{
 						this.updateCompany = response.company;
-						this.getCompany();
-/*						this.message  = response.message;
-						this.isAlert = true;
-						this.onIsError();*/
+						
+						this.message  = "Editado Correctamente";
+						this.snackBar.openSnackBar(this.message,'');
 					}
 					else
 					{
