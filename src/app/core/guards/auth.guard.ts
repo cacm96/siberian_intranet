@@ -41,7 +41,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
 
   getUser(id)
   {
-    this._userService.getUser(id).subscribe
+    this._userService.getOne(id).subscribe
     (
       response =>
       {
@@ -61,7 +61,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     
     if(this.user)
     {
-      if(this.user.rolid=="admin")
+      if(this.user.lastName=="admin")
       {
         return true
       }

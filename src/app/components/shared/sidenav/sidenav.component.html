@@ -3,14 +3,14 @@
 	<mat-nav-list>
 		<mat-card-header class="side_nav_header">
 			<mat-card-title>Anderson</mat-card-title>
-			<mat-card-subtitle *ngIf="rol=='client'">Cliente</mat-card-subtitle>
-			<mat-card-subtitle *ngIf="rol=='lender'">Prestador</mat-card-subtitle>
-			<mat-card-subtitle *ngIf="rol=='admin'">Administrador</mat-card-subtitle>
+			<mat-card-subtitle *ngIf="role=='client'">Cliente</mat-card-subtitle>
+			<mat-card-subtitle *ngIf="role=='lender'">Prestador</mat-card-subtitle>
+			<mat-card-subtitle *ngIf="role=='admin'">Administrador</mat-card-subtitle>
 			<div mat-card-avatar class="side_nav_avatar"></div>
 		</mat-card-header>
 	</mat-nav-list>
 
-<div *ngIf="rol=='client'">
+<div *ngIf="role=='client'">
 	<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/dashboard']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Inicio</a>
 	<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/request']" ><mat-icon matListIcon class="side_nav_icon">assignment</mat-icon>Mis Solicitudes</a>
 	<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/service']" ><mat-icon matListIcon class="side_nav_icon">receipt</mat-icon>Mis Servicios</a>
@@ -20,14 +20,14 @@
 	<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/logout']" ><mat-icon matListIcon class="side_nav_icon">arrow_back</mat-icon>Cerrar Sesión</a>
 </div>
 
-<div *ngIf="rol=='lender'">
+<div *ngIf="role=='lender'">
 	<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/dashboard']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Inicio</a>
 	<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/request']" ><mat-icon matListIcon class="side_nav_icon">assignment</mat-icon>Mis Solicitudes</a>
 	<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/service']" ><mat-icon matListIcon class="side_nav_icon">receipt</mat-icon>Mis Servicios</a>
 	<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/logout']" ><mat-icon matListIcon class="side_nav_icon">arrow_back</mat-icon>Cerrar Sesión</a>
 </div>
 
-<div *ngIf="rol=='admin'">
+<div *ngIf="role=='admin'">
 	<mat-accordion>
 		<mat-expansion-panel>
 			<mat-expansion-panel-header>

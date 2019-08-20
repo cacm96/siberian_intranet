@@ -17,7 +17,7 @@ export class CompanyService extends HeaderService{
 		super();
 	}
 
-    getAll(): Observable<any>{
+    All(): Observable<any>{
 		return this.http.get(this.url, {headers: this.header});
 	}
 

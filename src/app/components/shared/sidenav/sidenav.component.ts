@@ -8,7 +8,7 @@ import { AuthService } from '../../../core/services/public/auth.service';
 })
 export class SidenavComponent implements OnInit {
 
-	public rol:string;
+	public role:string;
 
 	constructor
 	(
@@ -17,7 +17,7 @@ export class SidenavComponent implements OnInit {
 
 	ngOnInit()
 	{
-		this.rol=this._authService.getRoleID();
+		this.role=this._authService.getRole();
 	}
 
 }

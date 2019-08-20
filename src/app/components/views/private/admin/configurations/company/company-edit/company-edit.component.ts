@@ -38,7 +38,7 @@ export class CompanyEditComponent implements OnInit {
 
 	getCompany()
 	{
-		this._companyService.getAll().subscribe
+		this._companyService.All().subscribe
 		(
 			response =>
 			{

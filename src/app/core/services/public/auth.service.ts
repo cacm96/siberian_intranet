@@ -16,19 +16,17 @@ export class AuthService extends HeaderService{
 		super();
 	}
 
-
-
 	login(email:string, password:string): Observable<any>
 	{
 	    return this.http.post(this.urlLogin, { email: email, password: password });     
 	}
 
 	getToken() {
-		return localStorage.getItem('token');
+		return localStorage.getItem('accessToken');
 	}
 
-	getRoleID() {
-		return localStorage.getItem('roleID');
+	getRole() {
+		return localStorage.getItem('role');
 	}
 
 	getID() {
@@ -36,7 +34,7 @@ export class AuthService extends HeaderService{
 	}
 
 	logoutUserToken() {
-		return localStorage.removeItem('token');
+		return localStorage.removeItem('accessToken');
 	}
 	logoutUserID() {
 		return localStorage.removeItem('resID');
@@ -45,7 +43,7 @@ export class AuthService extends HeaderService{
 		return localStorage.clear();
 	}
 	loggedIn() {
-    	return !!localStorage.getItem('token')    
+    	return !!localStorage.getItem('accessToken')    
   	}
  
 }

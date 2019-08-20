@@ -1,77 +1,51 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HeaderService } from '../header.service';
+import { HttpClient, HttpParams  } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { environment } from 'src/environments/environment';
 import { User } from '../../../models/user';
-import { Global } from '../global';
+
 
 @Injectable()
-export class UserService{
-	public url:string;
-	private isUserLoggedIn;
-  	public usserLogged:User;
+export class UserService extends HeaderService{
 
-	constructor
-	(
-		private _http: HttpClient
-	)
-	{
-		this.url = Global.url;
-		this.isUserLoggedIn = false;
+	url: string = environment.api + 'user';
+
+
+	constructor(
+		private http: HttpClient
+	){
+		super();
 	}
 
-	setUserLoggedIn(user:User)
-	{
-		this.isUserLoggedIn = true;
-		this.usserLogged = user;
-		localStorage.setItem('currentUser', JSON.stringify(user));
-	}
-
-	getUserLoggedIn() {
-		return JSON.parse(localStorage.getItem('currentUser'));
-	}
-
-	saveUser(user: User): Observable<any>{
+	create(user: User): Observable<any>{
 		let params = JSON.stringify(user);
-		let headers = new HttpHeaders().set('Content-Type','application/json');
-
-		return this._http.post(this.url+'saveUser', params, {headers: headers});
+		return this.http.post(this.url, params, {headers: this.header});
 	}
 
-	getUsers(): Observable<any>{
-		let headers = new HttpHeaders().set('Content-Type', 'application/json');
-
-		return this._http.get(this.url+'users', {headers: headers});
+    getAll(): Observable<any>{
+		return this.http.get(this.url, {headers: this.header});
 	}
 
-	getUser(id): Observable<any>{
-		let headers = new HttpHeaders().set('Content-Type', 'application/json');
+	getOne(id:Number): Observable<any>{
+		return this.http.get(this.url+"/"+id, {headers: this.header});
+	}
 
-		return this._http.get(this.url+'user/'+id, {headers: headers});
+    update(user:any): Observable<any>{
+		let params = JSON.stringify(user);
+		return this.http.put(this.url+'/'+user.id, params, {headers: this.header});
 	}
 
 	getUsersExcept(id): Observable<any>{
-		let headers = new HttpHeaders().set('Content-Type', 'application/json');
-
-		return this._http.get(this.url+'users/'+id, {headers: headers});
+		return this.http.get(this.url+'user/except/'+id, {headers: this.header});
 	}
 
-	deleteUsers(id): Observable<any>{
-		let headers = new HttpHeaders().set('Content-Type', 'application/json');
-
-		return this._http.get(this.url+'deleteUsers/'+id, {headers: headers});
+	deleteAll(): Observable<any>{
+		return this.http.delete(this.url, {headers: this.header});
 	}
 
 	deleteUser(id): Observable<any>{
-		let headers = new HttpHeaders().set('Content-Type', 'application/json');
-
-		return this._http.delete(this.url+'user/'+id, {headers: headers});
-	}
-	
-	updateUser(user): Observable<any>{
-		let params = JSON.stringify(user);
-		let headers = new HttpHeaders().set('Content-Type', 'application/json');
-
-		return this._http.put(this.url+'user/'+user._id, params, {headers: headers});
+		return this.http.delete(this.url+'user/'+id, {headers: this.header});
 	}
 
 }

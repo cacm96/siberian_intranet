@@ -10,10 +10,13 @@ import { SnackBarService } from '../../../../../core/services/snack-bar.service'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  public email:string;
-  public password:string;
+  
+  public email:string="junior@gmail.com";
+  public password:string="12345678";
   public message:string;
   public rol:string="client";
+  public resID:string;
+
   constructor
   (
     private _authService: AuthService,
@@ -41,12 +44,18 @@ export class LoginComponent implements OnInit {
       (
         response =>
         {
-          this.message = response.message.text;
-          console.log(this.message);
+          if (response.status==true)
+          {
+            console.log(response);
+            this.resID = response.user.id;
+            this.loginRedirect(response);
+          }
+          else
+          {
+            this.message = response.message.text;
+            this.messageSnackBar(this.message);
+          }
 
-          //this.resID = res.user[0]._id;
-          this.messageSnackBar(this.message);
-          //this.loginRedirect(res);
         },
         error =>
         {
@@ -54,15 +63,15 @@ export class LoginComponent implements OnInit {
           {
             if(error.status===404)
             {
-              //this.messageError = error.error.message;
+              this.message = error.error.message;
               console.log(error);
-              //this.onIsError();
+              this.messageSnackBar(this.message);
             }
           }else
           {
-            //this.messageError = error.message;
+            this.message = error.error.message;
             console.log(error);
-            //this.onIsError();
+            this.messageSnackBar(this.message);
           }
         }
       );
@@ -74,6 +83,16 @@ export class LoginComponent implements OnInit {
 
   messageSnackBar(message){
     this.snackBar.openSnackBarSuccess(message);
+  }
+
+  loginRedirect(response)
+  {
+      localStorage.setItem('accessToken',response.accessToken);
+      localStorage.setItem('resID', response.user.id);
+      localStorage.setItem('role', "admin");
+      this._router.navigate(['/loginWeit']);
+      var actualRoute = window.location.origin;
+      window.location.replace(actualRoute+'/perfil/'+this.resID);
   }
 
 }
