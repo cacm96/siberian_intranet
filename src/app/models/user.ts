@@ -11,13 +11,13 @@ export class User{
 	dniType:string;
 	dni:string;
 	gender:string;
-	date_of_birth:string;
+	dateOfBirth:string;
 	img_url:string;
 	note:string;
 	status:string;
 	create_at:string;
 	update_at:string;
-	roles: Array < Role > = new Array < Role >();
-	locations: Array < Location > = new Array < Location >();
-	phones: Array < Phone > = new Array < Phone >();
+	//roles: Array < Role > = new Array < Role >();
+	//locations: Array < Location > = new Array < Location >();
+	//phones: Array < Phone > = new Array < Phone >();
 }

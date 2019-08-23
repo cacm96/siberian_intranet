@@ -10,9 +10,9 @@
     <span class="example-spacer"></span>
     <a (click)="notification()"><mat-icon class="example-icon" aria-hidden="false" aria-label="Example notifications icon" class="cursor-pointer">notifications</mat-icon></a>
     <a [routerLinkActive]="['active']" [routerLink]="['/auth/admin/configurations']"><mat-icon class="example-icon" aria-hidden="false" aria-label="Example notifications icon">settings</mat-icon></a>
-    <a *ngIf="role=='client'" [routerLinkActive]="['active']" [routerLink]="['/auth/client/profile/show/1']" ><mat-icon class="example-icon" aria-hidden="false" aria-label="Example person icon">person</mat-icon></a>
-    <a *ngIf="role=='lender'" [routerLinkActive]="['active']" [routerLink]="['/auth/lender/profile/show/1']" ><mat-icon class="example-icon" aria-hidden="false" aria-label="Example person icon">person</mat-icon></a>
-    <a *ngIf="role=='admin'" [routerLinkActive]="['active']" [routerLink]="['/auth/admin/profile/show/1']" ><mat-icon class="example-icon" aria-hidden="false" aria-label="Example person icon">person</mat-icon></a>
+    <a *ngIf="role=='client'" [routerLinkActive]="['active']" [routerLink]="['/auth/client/profile/show',userID]" ><mat-icon class="example-icon" aria-hidden="false" aria-label="Example person icon">person</mat-icon></a>
+    <a *ngIf="role=='lender'" [routerLinkActive]="['active']" [routerLink]="['/auth/lender/profile/show',userID]" ><mat-icon class="example-icon" aria-hidden="false" aria-label="Example person icon">person</mat-icon></a>
+    <a *ngIf="role=='admin'" [routerLinkActive]="['active']" [routerLink]="['/auth/admin/profile/show',userID]" ><mat-icon class="example-icon" aria-hidden="false" aria-label="Example person icon">person</mat-icon></a>
     <a *ngIf="role=='client'" [routerLinkActive]="['active']" [routerLink]="['/auth/client/dashboard']" ><mat-icon class="example-icon" aria-hidden="false" aria-label="Example home icon">home</mat-icon></a>
     <a *ngIf="role=='lender'" [routerLinkActive]="['active']" [routerLink]="['/auth/lender/dashboard']" ><mat-icon class="example-icon" aria-hidden="false" aria-label="Example home icon">home</mat-icon></a>
     <a *ngIf="role=='admin'" [routerLinkActive]="['active']" [routerLink]="['/auth/admin/dashboard']" ><mat-icon class="example-icon" aria-hidden="false" aria-label="Example home icon">home</mat-icon></a>

@@ -26,12 +26,6 @@
 							</mat-form-field>
 
 							<mat-form-field>
-								<mat-select name="role" [(ngModel)]="user.role.id" placeholder="Rol" required>
-									<mat-option *ngFor="let role of roles" [value]="role.id">{{role.name}}</mat-option>
-								</mat-select>
-							</mat-form-field>
-
-							<mat-form-field>
 								<input matInput name="firstName" [(ngModel)]="user.firstName" placeholder="Nombre" required>
 							</mat-form-field>
 
@@ -40,10 +34,8 @@
 							</mat-form-field>
 
 							<mat-form-field>
-								<mat-select name="dniType" [(ngModel)]="user.dniType" placeholder="Tipo DNI" required>
-									<mat-option value="v">Cédula</mat-option>
-									<mat-option value="p">Pasaporte</mat-option>
-									<mat-option value="r">RIF</mat-option>
+								<mat-select name="dniType" [(ngModel)]="user.dniType" placeholder="Tipo de Dni" required>
+									<mat-option *ngFor="let dniType of dniTypes" [value]="dniType.id">{{dniType.name}}</mat-option>
 								</mat-select>
 							</mat-form-field>
 
@@ -53,17 +45,17 @@
 
 							<mat-form-field>
 								<mat-select name="gender" [(ngModel)]="user.gender" placeholder="Género">
-									<mat-option value="f">Femenino</mat-option>
-									<mat-option value="m">Masculino</mat-option>
+									<mat-option value="Masculino">Masculino</mat-option>
+									<mat-option value="Femenino">Femenino</mat-option>
 								</mat-select>
 							</mat-form-field>
 
 							<mat-form-field>
-								<input type="date" name="date_of_birth" [(ngModel)]="user.date_of_birth" matInput placeholder="Fecha de Nacimiento">
+								<input type="date" name="dateOfBirth" [(ngModel)]="user.dateOfBirth" matInput placeholder="Fecha de Nacimiento">
 							</mat-form-field>
 
-							<mat-label>Subir Imagen</mat-label>
-							<input id="fileInput" type="file">
+							<!-- <mat-label>Subir Imagen</mat-label>
+							<input id="fileInput" type="file"> -->
 
 							<mat-form-field>
 								<input matInput name="note" [(ngModel)]="user.note" placeholder="Nota">

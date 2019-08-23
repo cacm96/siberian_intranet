@@ -9,6 +9,7 @@ import { DialogService } from '../../../core/services/dialog.service';
 })
 export class ToolbarComponent implements OnInit {
 	public role:string;
+	public userID:string;
 
 	@Output() trigger = new EventEmitter<void>();
 	@Input() isToggle:boolean;
@@ -23,6 +24,7 @@ export class ToolbarComponent implements OnInit {
 
 	ngOnInit() {
 		this.role=this._authService.getRole();
+		this.userID=this._authService.getID();
 	}
 
 	shood(){

@@ -12,12 +12,11 @@ import { User } from '../../../../../../../../models/user';
 import { UserService } from '../../../../../../../../core/services/admin/user.service';
 
 @Component({
-	selector: 'sib-users',
-	templateUrl: './users.component.html',
-	styleUrls: ['./users.component.scss']
+  selector: 'sib-user-alls',
+  templateUrl: './user-alls.component.html',
+  styleUrls: ['./user-alls.component.scss']
 })
-
-export class UsersComponent implements OnInit {
+export class UserAllsComponent implements OnInit {
 
 	public user:any;
 	public updateUser:any;
@@ -172,4 +171,5 @@ export class UsersComponent implements OnInit {
 			}
 		);
 	}
+
 }

@@ -12,12 +12,11 @@ import { User } from '../../../../../../../../models/user';
 import { UserService } from '../../../../../../../../core/services/admin/user.service';
 
 @Component({
-	selector: 'sib-users',
-	templateUrl: './users.component.html',
-	styleUrls: ['./users.component.scss']
+  selector: 'sib-user-actives',
+  templateUrl: './user-actives.component.html',
+  styleUrls: ['./user-actives.component.scss']
 })
-
-export class UsersComponent implements OnInit {
+export class UserActivesComponent implements OnInit {
 
 	public user:any;
 	public updateUser:any;
@@ -50,7 +49,7 @@ export class UsersComponent implements OnInit {
 
 	getUsers()
 	{
-		this._userService.getAll().subscribe
+		this._userService.getActives().subscribe
 		(
 			response =>
 			{
@@ -172,4 +171,5 @@ export class UsersComponent implements OnInit {
 			}
 		);
 	}
+
 }

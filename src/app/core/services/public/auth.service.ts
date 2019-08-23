@@ -21,6 +21,17 @@ export class AuthService extends HeaderService{
 	    return this.http.post(this.urlLogin, { email: email, password: password });     
 	}
 
+	register2(user:any): Observable<any>
+	{
+		let params = JSON.stringify(user);
+		return this.http.post(this.urlRegister, params);
+	}
+
+	register(email:string,password:string,firstName:string,lastName:string,dni:string,dniType:string): Observable<any>
+	{
+		return this.http.post(this.urlRegister, { email: email, password: password, firstName: firstName, lastName: lastName, dni: dni, dniType: dniType });
+	}
+
 	getToken() {
 		return localStorage.getItem('accessToken');
 	}

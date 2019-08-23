@@ -12,12 +12,11 @@ import { User } from '../../../../../../../../models/user';
 import { UserService } from '../../../../../../../../core/services/admin/user.service';
 
 @Component({
-	selector: 'sib-users',
-	templateUrl: './users.component.html',
-	styleUrls: ['./users.component.scss']
+  selector: 'sib-user-inactives',
+  templateUrl: './user-inactives.component.html',
+  styleUrls: ['./user-inactives.component.scss']
 })
-
-export class UsersComponent implements OnInit {
+export class UserInactivesComponent implements OnInit {
 
 	public user:any;
 	public updateUser:any;
@@ -50,7 +49,7 @@ export class UsersComponent implements OnInit {
 
 	getUsers()
 	{
-		this._userService.getAll().subscribe
+		this._userService.getInactives().subscribe
 		(
 			response =>
 			{
@@ -94,7 +93,7 @@ export class UsersComponent implements OnInit {
 			{
 				if (response==true)
 				{
-					this.getUser(id);
+					this.deleteUser(id);
 				}else
 				{
 					console.log(response);
@@ -103,15 +102,16 @@ export class UsersComponent implements OnInit {
 		);
 	}
 
-	getUser(id)
+	deleteUser(id)
 	{
-		this._userService.getOne(id).subscribe
+		this._userService.deleteUser(id).subscribe
 		(
 			response =>
 			{
-				this.user = response;
-				this.user = this.user.user;
-				this.update(this.user);
+				console.log(response);
+	            this.message = response.message.text;
+	            this.snackBar.openSnackBarSuccess(this.message);
+	            this.getUsers();
 			},
 			error =>
 			{
@@ -120,56 +120,4 @@ export class UsersComponent implements OnInit {
 		)
 	}
 
-	update(user)
-	{
-		this.user.status = 'inactive';
-		this._userService.update(this.user).subscribe
-		(
-			response =>
-			{
-				if(response.status==true)
-				{
-					this.updateUser = response.user;
-					this.getUsers();
-					this.snackBar.openSnackBar('Eliminado Correctamente','¿Deshacer?').onAction().subscribe
-					(
-						() =>
-						{
-							this.user.status = 'active';
-							this._userService.update(this.user).subscribe
-							(
-								response =>
-								{
-									if(response.status==true)
-									{
-										this.updateUser = response.user;
-										this.getUsers();
-										this.message = "Usuario Recuperado Correctamente";
-										this.snackBar.openSnackBar(this.message,'');
-									}
-									else
-									{
-										this.message  = response.message.text;
-										this.snackBar.openSnackBar(this.message,'');
-									}
-
-								}
-							);
-						}
-					);
-				}
-				else
-				{
-					this.message  = response.message.text;
-					this.snackBar.openSnackBar(this.message,'');
-				}
-			},
-			error =>
-			{
-				console.log(error);
-				this.message  = error.error.message;
-				this.snackBar.openSnackBar(this.message,'');
-			}
-		);
-	}
 }

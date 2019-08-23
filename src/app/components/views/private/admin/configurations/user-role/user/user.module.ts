@@ -13,6 +13,9 @@ import { UserService } from 'src/app/core/services/admin/user.service';
 import { RoleService } from 'src/app/core/services/admin/role.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from 'src/app/core/services/token-interceptor.service';
+import { UserInactivesComponent } from './user-inactives/user-inactives.component';
+import { UserActivesComponent } from './user-actives/user-actives.component';
+import { UserAllsComponent } from './user-alls/user-alls.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { TokenInterceptorService } from 'src/app/core/services/token-interceptor
 	UserCreateComponent,
 	UserEditComponent,
 	UserShowComponent,
-	UserDeleteComponent
+	UserDeleteComponent,
+	UserInactivesComponent,
+	UserActivesComponent,
+	UserAllsComponent
   ],
   imports: [
     CommonModule,

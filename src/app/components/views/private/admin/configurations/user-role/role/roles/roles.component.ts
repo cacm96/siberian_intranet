@@ -33,6 +33,15 @@ export class RolesComponent implements OnInit {
       {id:"1",name:"name 1",description:"description 1",status:"A"},
       {id:"2",name:"name 2",description:"description 2",status:"A"},
       {id:"3",name:"name 3",description:"description 3",status:"E"},
+      {id:"1",name:"name 1",description:"description 1",status:"A"},
+      {id:"2",name:"name 2",description:"description 2",status:"A"},
+      {id:"3",name:"name 3",description:"description 3",status:"E"},
+      {id:"1",name:"name 1",description:"description 1",status:"A"},
+      {id:"2",name:"name 2",description:"description 2",status:"A"},
+      {id:"3",name:"name 3",description:"description 3",status:"E"},
+      {id:"1",name:"name 1",description:"description 1",status:"A"},
+      {id:"2",name:"name 2",description:"description 2",status:"A"},
+      {id:"3",name:"name 3",description:"description 3",status:"E"},
     ];
 
   this.dataSource = new MatTableDataSource(this.role);

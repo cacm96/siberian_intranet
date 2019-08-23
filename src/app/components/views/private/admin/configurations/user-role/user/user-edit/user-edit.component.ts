@@ -19,7 +19,8 @@ export class UserEditComponent implements OnInit {
 
 	public user: any;
 	public roles:Role;
-	public updateUser;
+	public dniTypes:any[];
+	public updateUser:any;
 	public failedConect:string;
 	public message:string;
 
@@ -33,6 +34,11 @@ export class UserEditComponent implements OnInit {
     	private snackBar: SnackBarService
 	)
 	{
+		this.dniTypes= [
+	      {id:"v",name:"Venezolano"},
+	      {id:"e",name:"Extranjero"},
+	    ];
+
 	}
 
 	ngOnInit()
@@ -55,7 +61,7 @@ export class UserEditComponent implements OnInit {
 			response =>
 			{
 				this.roles = response.roles;
-				console.log(this.roles);
+				console.log(response);
 			},
 			error =>
 			{
@@ -79,6 +85,7 @@ export class UserEditComponent implements OnInit {
 			{
 				this.user = response;
 				this.user = this.user.user;
+				console.log(this.user);
 			},
 			error =>
 			{

@@ -11,10 +11,9 @@ import { SnackBarService } from '../../../../../core/services/snack-bar.service'
 })
 export class LoginComponent implements OnInit {
   
-  public email:string="junior@gmail.com";
+  public email:string="maria@gmail.com";
   public password:string="12345678";
   public message:string;
-  public rol:string="client";
   public resID:string;
 
   constructor
@@ -29,13 +28,6 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
   
-/*  login(form: NgForm)
-  {
-    this.rol = form.form.value.rol;
-    localStorage.setItem('roleID', this.rol);
-    this._router.navigate(['/loginWeit']);
-  }*/
-
   login(form: NgForm)
   {
     if(form.valid)

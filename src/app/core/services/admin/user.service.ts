@@ -27,8 +27,16 @@ export class UserService extends HeaderService{
 		return this.http.get(this.url, {headers: this.header});
 	}
 
+	getActives(): Observable<any>{
+		return this.http.get(this.url+'/status/active', {headers: this.header});
+	}
+
+	getInactives(): Observable<any>{
+		return this.http.get(this.url+'/status/inactive', {headers: this.header});
+	}
+
 	getOne(id:Number): Observable<any>{
-		return this.http.get(this.url+"/"+id, {headers: this.header});
+		return this.http.get(this.url+'/'+id, {headers: this.header});
 	}
 
     update(user:any): Observable<any>{
@@ -45,7 +53,7 @@ export class UserService extends HeaderService{
 	}
 
 	deleteUser(id): Observable<any>{
-		return this.http.delete(this.url+'user/'+id, {headers: this.header});
+		return this.http.delete(this.url+'/'+id, {headers: this.header});
 	}
 
 }

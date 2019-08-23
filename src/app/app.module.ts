@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TokenInterceptorService } from './core/services/token-interceptor.service';
 
 import { AuthService } from './core/services/public/auth.service';
+import { UserService } from './core/services/admin/user.service';
 
 import { SearchUserPipe } from './core/pipes/searchUser.pipe';
 import { SearchFunctionPipe } from './core/pipes/searchFunction.pipe';
@@ -17,6 +18,7 @@ import { SearchFunctionPipe } from './core/pipes/searchFunction.pipe';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/views/public/auth/login/login.component';
 import { LoginWeitComponent } from './components/views/public/auth/login-weit/login-weit.component';
+import { RegisterComponent } from './components/views/public/auth/register/register.component';
 import { LogoutComponent } from './components/views/public/auth/logout/logout.component';
 import { ToolbarComponent } from './components/shared/toolbar/toolbar.component';
 import { SidenavComponent } from './components/shared/sidenav/sidenav.component';
@@ -33,6 +35,7 @@ import {MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
     AppComponent,
     LoginComponent,
     LoginWeitComponent,
+    RegisterComponent,
     LogoutComponent,
     FooterComponent,
     ToolbarComponent,
@@ -60,6 +63,7 @@ import {MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
   [
     appRoutingProviders,
     AuthService,
+    UserService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass : TokenInterceptorService,
