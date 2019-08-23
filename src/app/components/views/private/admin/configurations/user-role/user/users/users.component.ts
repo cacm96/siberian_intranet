@@ -172,4 +172,58 @@ export class UsersComponent implements OnInit {
 			}
 		);
 	}
+
+	cargarUsersActives(){
+		this.getUsersActives();
+	}
+
+	cargarUsersInactives(){
+		this.getUsersInactives();
+	}
+
+	getUsersActives()
+	{
+		this._userService.getActives().subscribe
+		(
+			response =>
+			{
+				this.users = response.users;
+				this.table();
+			},
+			error =>
+			{
+				console.log(<any>error);
+				if(error instanceof HttpErrorResponse)
+				{
+					if(error.status===0)
+					{
+						this.failedConect = Global.failed;
+					}
+				}
+			}
+		);
+	}
+
+	getUsersInactives()
+	{
+		this._userService.getInactives().subscribe
+		(
+			response =>
+			{
+				this.users = response.users;
+				this.table();
+			},
+			error =>
+			{
+				console.log(<any>error);
+				if(error instanceof HttpErrorResponse)
+				{
+					if(error.status===0)
+					{
+						this.failedConect = Global.failed;
+					}
+				}
+			}
+		);
+	}
 }

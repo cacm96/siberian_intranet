@@ -24,7 +24,7 @@ export class UserInactivesComponent implements OnInit {
 	public message:string;
 	public failedConect:string;
 
-	displayedColumns: string[] = ['id', 'email','firstName','lastName','dniType','dni','gender','role','status','edit','delete'];
+	displayedColumns: string[] = ['id', 'email','firstName','lastName','dniType','dni','gender','role','status','edit','delete','back'];
 	dataSource: MatTableDataSource<User>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
@@ -67,7 +67,7 @@ export class UserInactivesComponent implements OnInit {
 					}
 				}
 			}
-			)
+		);
 	}
 
 	applyFilter(filterValue: string)
@@ -87,7 +87,7 @@ export class UserInactivesComponent implements OnInit {
 	}
 
 	onDelete(id){
-		this.dialogService.openConfirmDialog('¿Estás seguro de eliminar el Usuario?').afterClosed().subscribe
+		this.dialogService.openConfirmDialog('¿Estás seguro de eliminar este Usuario permanentemente?').afterClosed().subscribe
 		(
 			response =>
 			{
@@ -118,6 +118,93 @@ export class UserInactivesComponent implements OnInit {
 				console.log(<any>error);
 			}
 		)
+	}
+
+
+	onBack(id){
+		this.dialogService.openConfirmDialog('¿Estás seguro de recuperar este Usuario?').afterClosed().subscribe
+		(
+			response =>
+			{
+				if (response==true)
+				{
+					this.getUser(id);
+				}else
+				{
+					console.log(response);
+				}
+			}
+		);
+	}
+
+	getUser(id)
+	{
+		this._userService.getOne(id).subscribe
+		(
+			response =>
+			{
+				this.user = response;
+				this.user = this.user.user;
+				this.update(this.user);
+			},
+			error =>
+			{
+				console.log(<any>error);
+			}
+		)
+	}
+
+	update(user)
+	{
+		this.user.status = 'active';
+		this._userService.update(this.user).subscribe
+		(
+			response =>
+			{
+				if(response.status==true)
+				{
+					this.updateUser = response.user;
+					this.getUsers();
+					this.snackBar.openSnackBar('Eliminado Correctamente','¿Deshacer?').onAction().subscribe
+					(
+						() =>
+						{
+							this.user.status = 'inactive';
+							this._userService.update(this.user).subscribe
+							(
+								response =>
+								{
+									if(response.status==true)
+									{
+										this.updateUser = response.user;
+										this.getUsers();
+										this.message = "Usuario Inactivado Correctamente";
+										this.snackBar.openSnackBar(this.message,'');
+									}
+									else
+									{
+										this.message  = response.message.text;
+										this.snackBar.openSnackBar(this.message,'');
+									}
+
+								}
+							);
+						}
+					);
+				}
+				else
+				{
+					this.message  = response.message.text;
+					this.snackBar.openSnackBar(this.message,'');
+				}
+			},
+			error =>
+			{
+				console.log(error);
+				this.message  = error.error.message;
+				this.snackBar.openSnackBar(this.message,'');
+			}
+		);
 	}
 
 }
