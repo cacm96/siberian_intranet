@@ -32,9 +32,9 @@ export class UsersComponent implements OnInit {
 	@ViewChild(MatSort) sort: MatSort;
 	constructor
 	(
-		private _userService: UserService,
 		private dialogService: DialogService,
 		private snackBar: SnackBarService,
+		private _userService: UserService,
 		private _route: ActivatedRoute,
 		private _router: Router,
 		private _location: Location

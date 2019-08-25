@@ -20,6 +20,7 @@ import { DialogService } from '../../../../../../core/services/dialog.service';
 export class ProfileShowComponent implements OnInit {
 
 	public user: any;
+	public location:any;
 	public locationsUser:any;
 	public phonesUser:any;
 	public failedConect:string;
@@ -63,7 +64,6 @@ export class ProfileShowComponent implements OnInit {
 			{
 				this.user = response;
 				this.user = this.user.user;
-				console.log(this.user);
 			},
 			error =>
 			{
@@ -86,7 +86,6 @@ export class ProfileShowComponent implements OnInit {
 			response =>
 			{
 				this.locationsUser = response.locations;
-				console.log(this.locationsUser);
 			},
 			error =>
 			{
@@ -109,7 +108,6 @@ export class ProfileShowComponent implements OnInit {
 			response =>
 			{
 				this.phonesUser = response.phones;
-				console.log(this.phonesUser);
 			},
 			error =>
 			{
@@ -191,6 +189,39 @@ export class ProfileShowComponent implements OnInit {
 				console.log(<any>error);
 			}
 		)
+	}
+
+	onAddLocation()
+	{
+		this.dialogService.openAddLocationDialog().afterClosed().subscribe
+		(
+			response =>
+			{
+				this.location = response;
+				this.createLocation(this.location);
+			}
+		);
+
+	}
+
+	createLocation(location)
+	{
+		this._locationService.create(location).subscribe
+		(
+			response =>
+			{
+				if(response.status==true)
+				{
+					this.message  = response.message.text;
+					this.snackBar.openSnackBar(this.message,'');
+	            	this.getLocationsUser(this.userID);
+				}
+			},
+			error =>
+			{
+				console.log(error);
+			}
+		);
 	}
 
 }

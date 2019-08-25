@@ -1,6 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../../../../../../core/ui/material.module';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CategoryService } from 'src/app/core/services/admin/category.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService } from 'src/app/core/services/token-interceptor.service';
+
 import { CategoryRoutingModule } from './category-routing.module';
 import { CategoryComponent } from './category.component';
 import { CategoriesComponent } from './categories/categories.component';
@@ -22,6 +28,15 @@ import { CategoryDeleteComponent } from './category-delete/category-delete.compo
     CommonModule,
     MaterialModule,
     CategoryRoutingModule
-  ]
+  ],
+  providers:
+  [
+    CategoryService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass : TokenInterceptorService,
+      multi: true
+    },
+  ],
 })
 export class CategoryModule { }

@@ -35,6 +35,10 @@ export class UserService extends HeaderService{
 		return this.http.get(this.url+'/status/inactive', {headers: this.header});
 	}
 
+	getRoles(id): Observable<any>{
+		return this.http.get(this.url+'/roles/'+id, {headers: this.header});
+	}
+
 	getOne(id:Number): Observable<any>{
 		return this.http.get(this.url+'/'+id, {headers: this.header});
 	}
