@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TokenInterceptorService } from './core/services/token-interceptor.service';
 
 import { AuthService } from './core/services/public/auth.service';
+import { UserService } from './core/services/admin/user.service';
 
 import { SearchUserPipe } from './core/pipes/searchUser.pipe';
 import { SearchFunctionPipe } from './core/pipes/searchFunction.pipe';
@@ -17,6 +18,7 @@ import { SearchFunctionPipe } from './core/pipes/searchFunction.pipe';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/views/public/auth/login/login.component';
 import { LoginWeitComponent } from './components/views/public/auth/login-weit/login-weit.component';
+import { RegisterComponent } from './components/views/public/auth/register/register.component';
 import { LogoutComponent } from './components/views/public/auth/logout/logout.component';
 import { ToolbarComponent } from './components/shared/toolbar/toolbar.component';
 import { SidenavComponent } from './components/shared/sidenav/sidenav.component';
@@ -26,13 +28,15 @@ import { BlockComponent } from './components/shared/block/block.component';
 import { HomeComponent } from './components/shared/home/home.component';
 import { ConfirmDialogComponent } from './components/shared/confirm-dialog/confirm-dialog.component';
 import { SnackBarDeleteComponent } from './components/shared/snack-bar-delete/snack-bar-delete.component';
-
+import {MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { AddLocationDialogComponent } from './components/shared/add-location-dialog/add-location-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     LoginWeitComponent,
+    RegisterComponent,
     LogoutComponent,
     FooterComponent,
     ToolbarComponent,
@@ -44,6 +48,7 @@ import { SnackBarDeleteComponent } from './components/shared/snack-bar-delete/sn
     HomeComponent,
     ConfirmDialogComponent,
     SnackBarDeleteComponent,
+    AddLocationDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -60,14 +65,16 @@ import { SnackBarDeleteComponent } from './components/shared/snack-bar-delete/sn
   [
     appRoutingProviders,
     AuthService,
+    UserService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass : TokenInterceptorService,
       multi: true
     },
+    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 4000}}
     
    ],
   bootstrap: [AppComponent],
-  entryComponents:[ConfirmDialogComponent,SnackBarDeleteComponent]
+  entryComponents:[ConfirmDialogComponent,SnackBarDeleteComponent,AddLocationDialogComponent]
 })
 export class AppModule { }

@@ -11,12 +11,14 @@ import { LogoutComponent } from './components/views/public/auth/logout/logout.co
 import { ErrorComponent } from './components/shared/error/error.component';
 import { BlockComponent } from './components/shared/block/block.component';
 import { HomeComponent } from './components/shared/home/home.component';
+import { RegisterComponent } from './components/views/public/auth/register/register.component';
 
 const routes: Routes =
 [
 	{path: '', redirectTo: 'login', pathMatch: 'full', canActivate: []},
 	{path: 'login', component: LoginComponent, canActivate: []},
 	{path: 'loginWeit', component: LoginWeitComponent, canActivate: []},
+	{path: 'register', component: RegisterComponent},
 	
 
 	{path: 'auth', canActivate: [], component: HomeComponent,

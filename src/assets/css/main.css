@@ -286,9 +286,6 @@ table {
   width: 100%;
 }
 
-/*td, th {
-  width: 25%;
-}*/
 .mat-dialog-actions{
   display: block !important;
 }

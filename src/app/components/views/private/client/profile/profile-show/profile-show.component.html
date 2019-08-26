@@ -1,5 +1,5 @@
 <div class="main_profile">
-	<div class="container-fluid">
+	<div class="container-fluid" *ngIf="user">
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="pz bpi afo">
@@ -9,15 +9,15 @@
 							<div class="qa avz">
 								<img  class="bpj" src="../../../../../../assets/img/profile/avatar.png" alt="..."/>
 								<h2 class="qb">
-									<h3>Carlos Colmenarez</h3>
-									<h6>Cliente</h6>
+									<h3>{{ user.firstName }} {{ user.lastName }}</h3>
+									<h6>{{ user.role.name }}</h6>
 								</h2>
 								<div class="row justify-content-center">
-									<button mat-raised-button color="accent" [routerLink]="['/auth/client/profile/show/1']">
+									<button mat-raised-button color="accent" [routerLink]="['/auth/client/profile/show',user.id]">
 										<mat-icon>photo_library</mat-icon>
 										Cambiar Foto de Perfil
 									</button>
-									<button style="margin-left: 1rem;"mat-raised-button color="accent" [routerLink]="['/auth/client/profile/edit/1']">
+									<button style="margin-left: 1rem;"mat-raised-button color="accent" [routerLink]="['/auth/client/profile/edit',user.id]">
 										<mat-icon>edit</mat-icon>
 										Editar Perfil
 									</button>
@@ -27,25 +27,72 @@
 						</div>
 					</div>
 	
-					<div class="row box">
+					<div class="row">
 						<div class="col-sm-12">
-							<h3 class="title">Datos del Cliente</h3>
+							<h3 class="title text-center">Información General</h3>
+						</div>
+					</div>
+					
+					<div class="row box">
+						
+						<div class="col-sm-4">
 							<mat-list>
-								<mat-list-item> <b>ID: </b>1</mat-list-item>
-								<mat-list-item> <b>Nombre: </b>Anderson </mat-list-item>
-								<mat-list-item> <b>Apellido: </b>Diaz </mat-list-item>
-								<mat-list-item> <b>Tipo de Dni: </b>Cédula </mat-list-item>
-								<mat-list-item> <b>Dni: </b>123456789 </mat-list-item>
-								<mat-list-item> <b>Genero: </b>Masculino </mat-list-item>
-								<mat-list-item> <b>Tipo de Télefono: </b>Móvil </mat-list-item>
-								<mat-list-item> <b>Telefono: </b>04244565432 </mat-list-item>
-								<mat-list-item> <b>Fecha de Nacimiento: </b>31/01/1990 </mat-list-item>
-								<mat-list-item> <b>Pais: </b>Venezuela</mat-list-item>
-								<mat-list-item> <b>Estado: </b>Lara </mat-list-item>
-								<mat-list-item> <b>Ciudad: </b>Barquisimeto </mat-list-item>
-								<mat-list-item> <b>Código Postal: </b>3000 </mat-list-item>
-								<mat-list-item> <b>Direccion: </b>Calle San Rafael </mat-list-item>
+								<h3 mat-subheader>Datos</h3>
+								<mat-list-item><h4 mat-line><b>Email: </b> {{ user.email }}</h4></mat-list-item>
+								<mat-list-item><h4 mat-line><b>Nombre: </b> {{ user.firstName }}</h4></mat-list-item>
+								<mat-list-item><h4 mat-line><b>Apellido: </b> {{ user.lastName }}</h4></mat-list-item>
+								<mat-list-item><h4 mat-line><b>Dni: </b> {{ user.dniType | titlecase}}-{{ user.dni }}</h4></mat-list-item>
+								<mat-list-item><h4 mat-line><b>Género: </b> {{ user.gender | titlecase }}</h4></mat-list-item>
+								<mat-list-item><h4 mat-line><b>Fecha de Nacimiento: </b> {{ user.dateOfBirth }}</h4></mat-list-item>
+								<mat-list-item *ngIf="user.status=='active'"><h4 mat-line><b>Estatus:<span class="badge badge-success"> Activo</span></b></h4></mat-list-item>
+								<mat-list-item *ngIf="user.status=='inactive'"><h4 mat-line><b>Estatus:<span class="badge badge-success"> Inactivo</span></b></h4></mat-list-item>
+								<mat-list-item><h4 mat-line><b>Nota: </b> {{ user.note }}</h4></mat-list-item>
 							</mat-list>
+						</div>
+
+						<div class="col-sm-5">
+
+							<div *ngIf="locationsUser">
+								<mat-list>
+								  <h3 mat-subheader>Direcciones <a class="addLocation" (click)="onAddLocation()" ><mat-icon>add</mat-icon></a></h3>
+								  <mat-list-item *ngFor="let locationUser of locationsUser">
+								    <h4 mat-line>{{locationUser.address}}</h4>
+								    <p mat-line> {{locationUser.state}} </p>
+								    <p mat-line> {{locationUser.city}} </p>
+								    <p mat-line> {{locationUser.postalCode}} </p>
+								    <p mat-line> <a (click)="onDeleteLocation(locationUser.id)" >Eliminar</a></p>
+								  </mat-list-item>
+								</mat-list>
+							</div>
+
+							<div *ngIf="!locationsUser">
+								<mat-list>
+								  <h3 mat-subheader>Direcciones <a class="addLocation" (click)="onAddLocation()" ><mat-icon>add</mat-icon></a></h3>
+								  <mat-list-item><h4 mat-line>No tiene direcciones</h4></mat-list-item>
+								</mat-list>
+							</div>
+
+						</div>
+
+						<div class="col-sm-3">
+							<div *ngIf="phonesUser">
+								<mat-list>
+								  <h3 mat-subheader>Teléfonos <a class="addPhone" (click)="onAddPhone()" ><mat-icon>add</mat-icon></a></h3>
+								  <mat-list-item *ngFor="let phoneUser of phonesUser">
+								    <h4 mat-line>{{phoneUser.phoneType}}</h4>
+								    <p mat-line> {{phoneUser.number}} </p>
+								    <p mat-line> <a (click)="onDeletePhone(phoneUser.id)" >Eliminar</a></p>
+								  </mat-list-item>
+								</mat-list>
+							</div>
+
+							<div *ngIf="!phonesUser">
+								<mat-list>
+								  <h3 mat-subheader>Teléfonos <a class="addPhone" (click)="onAddPhone()" ><mat-icon>add</mat-icon></a></h3>
+								  <mat-list-item><h4 mat-line>No tiene teléfonos</h4></mat-list-item>
+								</mat-list>
+							</div>
+
 						</div>
 					</div>
 	
@@ -53,4 +100,19 @@
 			</div>
 		</div>
 	</div>
+
+	<div *ngIf="!user && !failedConect">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 spinner">
+					<mat-spinner></mat-spinner>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div *ngIf="failedConect">
+		<h6 class="text-center">{{failedConect}}</h6>
+	</div>
+
 </div>

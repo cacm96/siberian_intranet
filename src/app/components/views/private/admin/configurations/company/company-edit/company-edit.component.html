@@ -1,72 +1,81 @@
-
-<div class="container">
-	<div class="row">
-		<div class="col-sm-12">
-			<div class="row">
-				<div class="col-sm-12">
-					<h2 class="text-center">Editar Empresa</h2>
+<div class="container" *ngIf="company">
+	<form #updateForm="ngForm" (ngSubmit)="update(updateForm)">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="row">
+					<div class="col-sm-12">
+						<h2 class="text-center">Editar Empresa</h2>
+					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-12">
-					<button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/company']">Volver</button>
+				<div class="row">
+					<div class="col-sm-12">
+						<button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/company']">Volver</button>
+					</div>
 				</div>
-			</div>
-			<hr>
-			
-			<div class="row">
-				<div class="col-sm-6">
-					<mat-form-field>
-						<input matInput placeholder="Nombre" required>
-					</mat-form-field>
+				<hr>
 
-					<mat-form-field>
-						<input matInput placeholder="Rif" required>
-					</mat-form-field>
+				<div class="row">
+					<div class="col-sm-6">
+						<mat-form-field>
+							<input matInput name="name" [(ngModel)]="company.name" placeholder="Nombre" required>
+						</mat-form-field>
 
-					<mat-form-field>
-						<textarea matInput placeholder="¿Quiénes somos?"></textarea>
-					</mat-form-field>
+						<mat-form-field>
+							<input matInput name="rif" [(ngModel)]="company.rif" placeholder="RIF" required>
+						</mat-form-field>
 
-					<mat-form-field>
-						<textarea matInput placeholder="Visión"></textarea>
-					</mat-form-field>
+						<mat-form-field>
+							<textarea matInput name="aboutUs" [(ngModel)]="company.aboutUs" placeholder="¿Quiénes somos?"></textarea>
+						</mat-form-field>
 
-					<mat-form-field>
-						<textarea matInput placeholder="Misión"></textarea>
-					</mat-form-field>
+						<mat-form-field>
+							<textarea matInput name="vision" [(ngModel)]="company.vision" placeholder="Visión"></textarea>
+						</mat-form-field>
+						
+						<mat-form-field>
+							<input matInput name="phoneOne" [(ngModel)]="company.phoneOne" placeholder="Primer Teléfono" required>
+						</mat-form-field>
 
-					<mat-label >Subir Imagen</mat-label>
-					<input id="fileInput" type="file" required>
-				</div>
-				<div class="col-sm-6">
-					<mat-form-field>
-						<input matInput placeholder="Primer Teléfono" required>
-					</mat-form-field>
+						<mat-form-field>
+							<input matInput name="phoneTwo" [(ngModel)]="company.phoneTwo" placeholder="Segundo Teléfono">
+						</mat-form-field>
+					</div>
+					<div class="col-sm-6">
+						<mat-form-field>
+							<textarea matInput name="address" [(ngModel)]="company.address" placeholder="Dirección"></textarea>
+						</mat-form-field>
 
-					<mat-form-field>
-						<input matInput placeholder="Segundo Teléfono">
-					</mat-form-field>
+						<mat-form-field>
+							<input matInput name="facebook" [(ngModel)]="company.facebook" placeholder="Facebook">
+						</mat-form-field>
 
-					<mat-form-field>
-						<textarea matInput placeholder="Dirección"></textarea>
-					</mat-form-field>
+						<mat-form-field>
+							<input matInput name="instagram" [(ngModel)]="company.instagram" placeholder="Instagram">
+						</mat-form-field>
 
-					<mat-form-field>
-						<input matInput placeholder="Facebook">
-					</mat-form-field>
+						<mat-form-field>
+							<input matInput name="twitter" [(ngModel)]="company.twitter" placeholder="Twitter">
+						</mat-form-field>
 
-					<mat-form-field>
-						<input matInput placeholder="Instagram">
-					</mat-form-field>
-
-					<mat-form-field>
-						<input matInput placeholder="Twitter">
-					</mat-form-field>	
+						<input id="fileInput" type="file" required>	
+					</div>
 				</div>
 			</div>
 		</div>
+		<br>
+		<button mat-raised-button color="primary" type="submit">Guardar</button>
+	</form>
+</div>
+
+<div *ngIf="!company && !failedConect">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 spinner">
+				<mat-spinner></mat-spinner>
+			</div>
+		</div>
 	</div>
-	<br>
-	<button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/company/edit/1']">Guardar</button>
+</div>
+<div *ngIf="failedConect">
+	<h6 class="text-center">{{failedConect}}</h6>
 </div>

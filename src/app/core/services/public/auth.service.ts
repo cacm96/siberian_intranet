@@ -1,37 +1,43 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HeaderService } from '../header.service';
+import { HttpClient, HttpParams  } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { User } from '../../../models/user';
-import { Global } from '../global';
-import { Router, ActivatedRoute, Params } from '@angular/router';
 
-@Injectable({
-	providedIn: 'root'
-})
-export class AuthService{
-	public url:string;
+@Injectable()
+export class AuthService extends HeaderService{
+	urlLogin: string = environment.api + 'user/login';
+	urlRegister: string = environment.api + 'user/register';
 
-	constructor
-	(
-		private _http: HttpClient,
-		private _router: Router,
-	)
-	{
-		this.url = Global.url;
+	constructor(
+		private http: HttpClient
+	){
+		super();
 	}
 
 	login(email:string, password:string): Observable<any>
 	{
-	    return this._http.post(this.url+'signin', { email: email, password: password });     
+	    return this.http.post(this.urlLogin, { email: email, password: password });     
+	}
+
+	register2(user:any): Observable<any>
+	{
+		let params = JSON.stringify(user);
+		return this.http.post(this.urlRegister, params);
+	}
+
+	register(email:string,password:string,firstName:string,lastName:string,dni:string,dniType:string): Observable<any>
+	{
+		return this.http.post(this.urlRegister, { email: email, password: password, firstName: firstName, lastName: lastName, dni: dni, dniType: dniType });
 	}
 
 	getToken() {
-		return localStorage.getItem('token');
+		return localStorage.getItem('accessToken');
 	}
 
-	getRoleID() {
-		return localStorage.getItem('roleID');
+	getRole() {
+		return localStorage.getItem('role');
 	}
 
 	getID() {
@@ -39,7 +45,7 @@ export class AuthService{
 	}
 
 	logoutUserToken() {
-		return localStorage.removeItem('token');
+		return localStorage.removeItem('accessToken');
 	}
 	logoutUserID() {
 		return localStorage.removeItem('resID');
@@ -48,7 +54,7 @@ export class AuthService{
 		return localStorage.clear();
 	}
 	loggedIn() {
-    	return !!localStorage.getItem('token')    
+    	return !!localStorage.getItem('accessToken')    
   	}
  
 }

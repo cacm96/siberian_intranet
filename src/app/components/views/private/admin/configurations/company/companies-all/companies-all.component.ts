@@ -31,12 +31,12 @@ export class CompaniesAllComponent implements OnInit {
 
 	ngOnInit()
 	{
-		this.getCompany();
+		this.getCompanies();
 	}
 
-	getCompany()
+	getCompanies()
 	{
-		this._companyService.getAll().subscribe
+		this._companyService.All().subscribe
 		(
 			response =>
 			{

@@ -4,77 +4,226 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { DialogService } from '../../../../../../../../core/services/dialog.service';
 import { SnackBarService } from '../../../../../../../../core/services/snack-bar.service';
-
-export interface UserData {
-  id: string;
-  email: string;
-  password: string;
-  role: string;
-  first_name: string;
-  last_name: string;
-  dni_type: string;
-  dni: string;
-  gender: string;
-  date_of_birth: string;
-  image_url: string;
-  status: string;
-  note: string;
-}
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import {Location} from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Global } from '../../../../../../../../core/services/global';
+import { User } from '../../../../../../../../models/user';
+import { UserService } from '../../../../../../../../core/services/admin/user.service';
 
 @Component({
-  selector: 'sib-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+	selector: 'sib-users',
+	templateUrl: './users.component.html',
+	styleUrls: ['./users.component.scss']
 })
 
 export class UsersComponent implements OnInit {
 
-  	public user:any[];
-	displayedColumns: string[] = ['id', 'email','password', 'role','first_name','last_name','dni_type','dni','gender','date_of_birth','image_url','status','note','edit','delete'];
-	dataSource: MatTableDataSource<UserData>;
+	public user:any;
+	public updateUser:any;
+	public users: Array < User > = new Array < User > ();
+	public message:string;
+	public failedConect:string;
+
+	displayedColumns: string[] = ['id', 'email','firstName','lastName','dniType','dni','gender','role','status','edit','delete'];
+	dataSource: MatTableDataSource<User>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
 	@ViewChild(MatSort) sort: MatSort;
-
-
 	constructor
 	(
 		private dialogService: DialogService,
-		private snackBar: SnackBarService
+		private snackBar: SnackBarService,
+		private _userService: UserService,
+		private _route: ActivatedRoute,
+		private _router: Router,
+		private _location: Location
 	)
 	{
-		this.user = [
-	      {id:"1",email:"mramos@gmail.com",password:"12345",role:"Cliente",first_name:"María",last_name:"Ramos",dni_type:"Cédula",dni:"24.535.109",gender:"Femenino",date_of_birth:"01/01/1994",image_url:"Imagen_1",status:"A",note:"Buen Cliente"},
-	      {id:"2",email:"g_jesus@gmail.com",password:"123",role:"Prestador",first_name:"Jesús",last_name:"Gómez",dni_type:"Pasaporte",dni:"22.435.101",gender:"Masculino",date_of_birth:"08/08/1990",image_url:"Imagen_2",status:"E",note:"Buen Prestador"},
-	      {id:"3",email:"anderson@gmail.com",password:"12345",role:"Administrador",first_name:"Anderson",last_name:"Rodriguez",dni_type:"RIF",dni:"4.237.100",gender:"Masculino",date_of_birth:"11/05/1956",image_url:"Imagen_3",status:"A",note:"Buen Administrador"},
-	    ];
-
-		this.dataSource = new MatTableDataSource(this.user);
+		
 	}
 
-	ngOnInit() {
+	ngOnInit()
+	{
+		this.getUsers();
+	}
+
+	getUsers()
+	{
+		this._userService.getAll().subscribe
+		(
+			response =>
+			{
+				this.users = response.users;
+				this.table();
+			},
+			error =>
+			{
+				console.log(<any>error);
+				if(error instanceof HttpErrorResponse)
+				{
+					if(error.status===0)
+					{
+						this.failedConect = Global.failed;
+					}
+				}
+			}
+			)
+	}
+
+	applyFilter(filterValue: string)
+	{
+		this.dataSource.filter = filterValue.trim().toLowerCase();
+
+		if (this.dataSource.paginator) {
+			this.dataSource.paginator.firstPage();
+		}
+	}
+
+	table()
+	{
+		this.dataSource = new MatTableDataSource(this.users);
 		this.dataSource.paginator = this.paginator;
 		this.dataSource.sort = this.sort;
 	}
 
-	applyFilter(filterValue: string) {
-		this.dataSource.filter = filterValue.trim().toLowerCase();
-
-		if (this.dataSource.paginator) {
-		  this.dataSource.paginator.firstPage();
-		}
+	onDelete(id){
+		this.dialogService.openConfirmDialog('¿Estás seguro de eliminar el Usuario?').afterClosed().subscribe
+		(
+			response =>
+			{
+				if (response==true)
+				{
+					this.getUser(id);
+				}else
+				{
+					console.log(response);
+				}
+			}
+		);
 	}
 
-	onDelete(id){
-		this.dialogService.openConfirmDialog('¿Estás seguro de eliminar el Usuario '+id+' ?').afterClosed().subscribe(res=>{
-			if (res==true) {
-				console.log(id);
-				this.snackBar.openSnackBar('Eliminado Correctamente','¿Deshacer?').onAction().subscribe(() => {
-				  console.log('Recuperado');
-				});
-			}else{
-				console.log(res);
+	getUser(id)
+	{
+		this._userService.getOne(id).subscribe
+		(
+			response =>
+			{
+				this.user = response;
+				this.user = this.user.user;
+				this.update(this.user);
+			},
+			error =>
+			{
+				console.log(<any>error);
 			}
-		});
+		)
+	}
+
+	update(user)
+	{
+		this.user.status = 'inactive';
+		this._userService.update(this.user).subscribe
+		(
+			response =>
+			{
+				if(response.status==true)
+				{
+					this.updateUser = response.user;
+					this.getUsers();
+					this.snackBar.openSnackBar('Eliminado Correctamente','¿Deshacer?').onAction().subscribe
+					(
+						() =>
+						{
+							this.user.status = 'active';
+							this._userService.update(this.user).subscribe
+							(
+								response =>
+								{
+									if(response.status==true)
+									{
+										this.updateUser = response.user;
+										this.getUsers();
+										this.message = "Usuario Recuperado Correctamente";
+										this.snackBar.openSnackBar(this.message,'');
+									}
+									else
+									{
+										this.message  = response.message.text;
+										this.snackBar.openSnackBar(this.message,'');
+									}
+
+								}
+							);
+						}
+					);
+				}
+				else
+				{
+					this.message  = response.message.text;
+					this.snackBar.openSnackBar(this.message,'');
+				}
+			},
+			error =>
+			{
+				console.log(error);
+				this.message  = error.error.message;
+				this.snackBar.openSnackBar(this.message,'');
+			}
+		);
+	}
+
+	cargarUsersActives(){
+		this.getUsersActives();
+	}
+
+	cargarUsersInactives(){
+		this.getUsersInactives();
+	}
+
+	getUsersActives()
+	{
+		this._userService.getActives().subscribe
+		(
+			response =>
+			{
+				this.users = response.users;
+				this.table();
+			},
+			error =>
+			{
+				console.log(<any>error);
+				if(error instanceof HttpErrorResponse)
+				{
+					if(error.status===0)
+					{
+						this.failedConect = Global.failed;
+					}
+				}
+			}
+		);
+	}
+
+	getUsersInactives()
+	{
+		this._userService.getInactives().subscribe
+		(
+			response =>
+			{
+				this.users = response.users;
+				this.table();
+			},
+			error =>
+			{
+				console.log(<any>error);
+				if(error instanceof HttpErrorResponse)
+				{
+					if(error.status===0)
+					{
+						this.failedConect = Global.failed;
+					}
+				}
+			}
+		);
 	}
 }

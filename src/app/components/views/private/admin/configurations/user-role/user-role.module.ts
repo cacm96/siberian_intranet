@@ -5,7 +5,6 @@ import { UserRoleRoutingModule } from './user-role-routing.module';
 import { UserRoleComponent } from './user-role.component';
 import { UserRolesComponent } from './user-roles/user-roles.component';
 
-
 @NgModule({
   declarations:
   [

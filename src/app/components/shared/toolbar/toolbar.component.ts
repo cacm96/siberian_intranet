@@ -8,7 +8,8 @@ import { DialogService } from '../../../core/services/dialog.service';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit {
-	public rol:string;
+	public role:string;
+	public userID:string;
 
 	@Output() trigger = new EventEmitter<void>();
 	@Input() isToggle:boolean;
@@ -22,7 +23,8 @@ export class ToolbarComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.rol=this._authService.getRoleID();
+		this.role=this._authService.getRole();
+		this.userID=this._authService.getID();
 	}
 
 	shood(){

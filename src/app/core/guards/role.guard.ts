@@ -27,7 +27,7 @@ export class RoleGuard implements CanActivate{
 
   getUser(id)
   {
-    this._userService.getUser(id).subscribe
+    this._userService.getOne(id).subscribe
     (
       response =>
       {
@@ -46,7 +46,7 @@ export class RoleGuard implements CanActivate{
     console.log(this.user);
     if(this.user)
     {
-        if(this.user.rolid=="admin" || this.user.rolid=="member")
+        if(this.user.lastName=="admin" || this.user.lastName=="member")
         {
           console.log("entro true en canactivate")
           return true

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../../../../../../core/ui/material.module';
 import { CompanyRoutingModule } from './company-routing.module';
 import { CompanyComponent } from './company.component';
@@ -26,6 +27,7 @@ import { TokenInterceptorService } from 'src/app/core/services/token-interceptor
   imports: [
     CommonModule,
     MaterialModule,
+    FormsModule,
     CompanyRoutingModule
   ],
   providers:
