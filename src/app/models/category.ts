@@ -1,9 +1,9 @@
-export class Category{
-	constructor(
-		public id: string,
-		public name: string,
-		public description: string,
-		public status:string
-	){}
-}
+import { Subcategory } from "./subcategory";
 
+export class Category{
+	id:string;
+  	name: string;
+  	description:string;
+  	status:string;
+  	subcategories: Array < Subcategory > = new Array < Subcategory >();
+}

@@ -27,6 +27,7 @@ import { CategoryDeleteComponent } from './category-delete/category-delete.compo
   imports: [
     CommonModule,
     MaterialModule,
+    FormsModule,
     CategoryRoutingModule
   ],
   providers:
