@@ -220,6 +220,10 @@ span.badge-dark{
   background-color: #121212!important;
 }
 
+
+.mat-snack-bar-container.mat-snack-bar-success{
+  background-color: #94ce9b!important;
+}
 /*.border-top-primary{
   border-top: solid 6px #283593!important;
 }

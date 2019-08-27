@@ -20,13 +20,14 @@ import { CategoryService } from '../../../../../../../../core/services/admin/cat
 })
 export class CategoriesComponent implements OnInit {
 
-  public category:any; 
+  public category:any;
   public updateCategory:any;
   public categories: Array < Category > = new Array < Category > ();
   public message:string;
   public failedConect:string;
+  public total:Number=0;
 
-	displayedColumns: string[] = ['id', 'name', 'description','status','edit','delete'];
+	displayedColumns: string[] = ['id', 'name', 'description','subcategories','status','edit','delete'];
   dataSource: MatTableDataSource<Category>;
   
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -56,9 +57,21 @@ export class CategoriesComponent implements OnInit {
     (
       response =>
       {
-        this.categories = response.categories;
-        console.log(this.categories);
-        this.table();
+        if (response.status==true)
+        {
+          this.categories = response.categories;
+          this.total = this.categories.length;
+          console.log(this.categories);
+          this.table();
+        }
+        else
+        {
+          this.categories = [];
+          this.message = response.message.text;
+          console.log(this.message);
+          this.table();
+        }
+
       },
       error =>
       {
@@ -108,7 +121,7 @@ export class CategoriesComponent implements OnInit {
 
   getCategory(id)
   {
-    this._categoryService.One(id).subscribe
+    this._categoryService.getOne(id).subscribe
     (
       response =>
       {
@@ -124,41 +137,15 @@ export class CategoriesComponent implements OnInit {
 
   update(category)
   {
-    this.category.status = 'inactive';
-    this._categoryService.update(this.category).subscribe
+    category.status = 'deleted';
+    this._categoryService.update(category).subscribe
     (
       response =>
       {
         if(response.status==true)
         {
-          this.updateCategory = response.category;
           this.getCategories();
-          this.snackBar.openSnackBar('Eliminado Correctamente','¿Deshacer?').onAction().subscribe
-          (
-            () =>
-            {
-              this.category.status = 'active';
-              this._categoryService.update(this.category).subscribe
-              (
-                response =>
-                {
-                  if(response.status==true)
-                  {
-                    this.updateCategory = response.category;
-                    this.getCategories();
-                    this.message = "Usuario Recuperado Correctamente";
-                    this.snackBar.openSnackBar(this.message,'');
-                  }
-                  else
-                  {
-                    this.message  = response.message.text;
-                    this.snackBar.openSnackBar(this.message,'');
-                  }
-
-                }
-              );
-            }
-          );
+          this.snackBar.openSnackBar('Eliminado Correctamente','');
         }
         else
         {
