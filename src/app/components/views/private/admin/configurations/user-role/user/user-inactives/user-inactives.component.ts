@@ -24,7 +24,7 @@ export class UserInactivesComponent implements OnInit {
 	public message:string;
 	public failedConect:string;
 
-	displayedColumns: string[] = ['id', 'email','firstName','lastName','dniType','dni','gender','role','status','edit','delete','back'];
+	displayedColumns: string[] = ['id', 'email','firstName','lastName','dni','gender','role','status','edit','delete','back'];
 	dataSource: MatTableDataSource<User>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
@@ -53,8 +53,18 @@ export class UserInactivesComponent implements OnInit {
 		(
 			response =>
 			{
-				this.users = response.users;
-				this.table();
+				if (response.status==true)
+		        {
+		        	this.users = response.users;
+					this.table();
+		        }
+		        else
+		        {
+		          this.users = [];
+		          this.message = response.message.text;
+		          console.log(this.message);
+		          this.table();
+		        }
 			},
 			error =>
 			{

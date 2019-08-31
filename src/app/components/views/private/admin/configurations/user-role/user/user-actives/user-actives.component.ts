@@ -24,7 +24,7 @@ export class UserActivesComponent implements OnInit {
 	public message:string;
 	public failedConect:string;
 
-	displayedColumns: string[] = ['id', 'email','firstName','lastName','dniType','dni','gender','role','status','edit','delete'];
+	displayedColumns: string[] = ['id', 'email','firstName','lastName','dni','gender','role','status','edit','delete'];
 	dataSource: MatTableDataSource<User>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
@@ -47,14 +47,31 @@ export class UserActivesComponent implements OnInit {
 		this.getUsers();
 	}
 
+	ngOnDestroy()
+	{
+		console.log("se disparon");
+	}
+
 	getUsers()
 	{
 		this._userService.getActives().subscribe
 		(
 			response =>
 			{
-				this.users = response.users;
-				this.table();
+				if (response.status==true)
+		        {
+		        	this.users = response.users;
+					this.table();
+		        }
+		        else
+		        {
+		          this.users = [];
+		          this.message = response.message.text;
+		          console.log(this.message);
+		          this.table();
+		        }
+
+				
 			},
 			error =>
 			{
@@ -129,7 +146,6 @@ export class UserActivesComponent implements OnInit {
 				if(response.status==true)
 				{
 					this.updateUser = response.user;
-					this.getUsers();
 					this.snackBar.openSnackBar('Eliminado Correctamente','¿Deshacer?').onAction().subscribe
 					(
 						() =>
@@ -156,6 +172,7 @@ export class UserActivesComponent implements OnInit {
 							);
 						}
 					);
+					this.getUsers();
 				}
 				else
 				{

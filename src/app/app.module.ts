@@ -30,6 +30,9 @@ import { ConfirmDialogComponent } from './components/shared/confirm-dialog/confi
 import { SnackBarDeleteComponent } from './components/shared/snack-bar-delete/snack-bar-delete.component';
 import {MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { AddLocationDialogComponent } from './components/shared/add-location-dialog/add-location-dialog.component';
+import { EditLocationDialogComponent } from './components/shared/edit-location-dialog/edit-location-dialog.component';
+import { AddPhoneDialogComponent } from './components/shared/add-phone-dialog/add-phone-dialog.component';
+import { EditPhoneDialogComponent } from './components/shared/edit-phone-dialog/edit-phone-dialog.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +52,9 @@ import { AddLocationDialogComponent } from './components/shared/add-location-dia
     ConfirmDialogComponent,
     SnackBarDeleteComponent,
     AddLocationDialogComponent,
+    EditLocationDialogComponent,
+    EditPhoneDialogComponent,
+    AddPhoneDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -75,6 +81,13 @@ import { AddLocationDialogComponent } from './components/shared/add-location-dia
     
    ],
   bootstrap: [AppComponent],
-  entryComponents:[ConfirmDialogComponent,SnackBarDeleteComponent,AddLocationDialogComponent]
+  entryComponents:[
+    ConfirmDialogComponent,
+    SnackBarDeleteComponent,
+    AddLocationDialogComponent,
+    EditLocationDialogComponent,
+    AddPhoneDialogComponent,
+    EditPhoneDialogComponent
+  ]
 })
 export class AppModule { }

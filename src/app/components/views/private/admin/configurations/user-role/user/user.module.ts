@@ -11,6 +11,8 @@ import { UserShowComponent } from './user-show/user-show.component';
 import { UserDeleteComponent } from './user-delete/user-delete.component';
 import { UserService } from 'src/app/core/services/admin/user.service';
 import { RoleService } from 'src/app/core/services/admin/role.service';
+import { LocationService } from 'src/app/core/services/admin/location.service';
+import { PhoneService } from 'src/app/core/services/admin/phone.service'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from 'src/app/core/services/token-interceptor.service';
 import { UserInactivesComponent } from './user-inactives/user-inactives.component';
@@ -39,6 +41,8 @@ import { UserAllsComponent } from './user-alls/user-alls.component';
   [
     UserService,
     RoleService,
+    LocationService,
+    PhoneService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass : TokenInterceptorService,

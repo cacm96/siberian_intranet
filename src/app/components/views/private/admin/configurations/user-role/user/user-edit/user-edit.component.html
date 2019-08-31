@@ -21,9 +21,9 @@
 								<input matInput name="email" [(ngModel)]="user.email" placeholder="Email" required>
 							</mat-form-field>
 
-							<mat-form-field>
+							<!-- <mat-form-field>
 								<input matInput name="password" [(ngModel)]="user.password" placeholder="Contraseña">
-							</mat-form-field>
+							</mat-form-field> -->
 
 							<mat-form-field>
 								<input matInput name="firstName" [(ngModel)]="user.firstName" placeholder="Nombre" required>
@@ -50,8 +50,10 @@
 								</mat-select>
 							</mat-form-field>
 
-							<mat-form-field>
-								<input type="date" name="dateOfBirth" [(ngModel)]="user.dateOfBirth" matInput placeholder="Fecha de Nacimiento">
+							<mat-form-field class="example-full-width">
+								<input matInput [matDatepicker]="picker" name="dateOfBirth" [(ngModel)]="user.dateOfBirth" placeholder="Fecha de Nacimiento" (dateChange)="addEvent('change', $event)">
+								<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+								<mat-datepicker touchUi #picker></mat-datepicker>
 							</mat-form-field>
 
 							<!-- <mat-label>Subir Imagen</mat-label>
@@ -60,6 +62,65 @@
 							<mat-form-field>
 								<input matInput name="note" [(ngModel)]="user.note" placeholder="Nota">
 							</mat-form-field>
+
+							<mat-form-field>
+			                  <mat-select name="role" [(ngModel)]="user.role.id" placeholder="Seleccione un Rol" required>
+			                    <mat-option *ngFor="let role of roles" [value]="role.id">{{ role.name }}</mat-option>
+			                  </mat-select>
+			                </mat-form-field>
+
+							<!--
+							<div *ngIf="locationsCant>0">
+
+								<div *ngFor="let location of user.locations">
+
+									<div *ngIf="location.isLivingPlace==true">
+
+										<mat-form-field>
+											<input matInput name="address" [(ngModel)]="location.address" placeholder="Dirección">
+										</mat-form-field>
+
+										<mat-form-field>
+											<input matInput name="state" [(ngModel)]="location.state" placeholder="Estado">
+										</mat-form-field>
+
+										<mat-form-field>
+											<input matInput name="city" [(ngModel)]="location.city" placeholder="Ciudad">
+										</mat-form-field>
+
+										<mat-form-field>
+											<input matInput name="postalCode" [(ngModel)]="location.postalCode" placeholder="Código Postal">
+										</mat-form-field>
+
+									</div>
+
+								</div>
+
+							</div>
+
+							<div *ngIf="locationsCant<=0">
+
+								<mat-form-field>
+									<input matInput name="address" [(ngModel)]="address" placeholder="Dirección" required>
+								</mat-form-field>
+
+								<mat-form-field>
+									<input matInput name="state" [(ngModel)]="state" placeholder="Estado" required>
+								</mat-form-field>
+
+								<mat-form-field>
+									<input matInput name="city" [(ngModel)]="city" placeholder="Ciudad" required>
+								</mat-form-field>
+
+								<mat-form-field>
+									<input matInput name="postalCode" [(ngModel)]="postalCode" placeholder="Código Postal" required>
+								</mat-form-field>
+
+								<input type="hidden" name="isLivingPlace" value="true">
+								<input type="hidden" name="UserId" value="{{ user.id }}">
+
+							</div>-->
+
 						</div>
 					</div>
 				</div>

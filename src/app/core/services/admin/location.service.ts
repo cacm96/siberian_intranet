@@ -37,7 +37,7 @@ export class LocationService extends HeaderService{
 
     update(location:any): Observable<any>{
 		let params = JSON.stringify(location);
-		return this.http.put(this.url, params, {headers: this.header});
+		return this.http.put(this.url+"/"+location.id, params, {headers: this.header});
 	}
 
 	deleteAll(): Observable<any>{
