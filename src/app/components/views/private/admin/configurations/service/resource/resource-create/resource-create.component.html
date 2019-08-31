@@ -1,54 +1,58 @@
 
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-8 offset-2">
-        <div class="row">
-          <div class="col-sm-12">
-            <h2 class="text-center">Nuevo Recurso</h2>
-          </div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 offset-2">
+      <div class="row">
+        <div class="col-sm-12">
+          <h2 class="text-center">Nuevo Recurso</h2>
         </div>
-        <div class="row">
-          <div class="col-sm-12">
-            <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/service/resource']">Volver</button>
-          </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/service/resource']">Volver</button>
         </div>
-        <hr>
-        
+      </div>
+      <hr>
+
+      <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
         <div class="row">
           <div class="col-sm-12">
             <div class="example-container">
+
               <mat-form-field>
-                <input matInput placeholder="Tipo id">
-              </mat-form-field>
-              
-              <mat-form-field>
-                <textarea matInput placeholder="Categoría id"></textarea>
-              </mat-form-field>
-              
-              <mat-form-field>
-                <textarea matInput placeholder="Nombre"></textarea>
-              </mat-form-field>
-              
-              <mat-form-field>
-                <textarea matInput placeholder="Descripción"></textarea>
+                <input matInput id="inputName" name="name" placeholder="Nombre" [(ngModel)]="name" required>
               </mat-form-field>
 
               <mat-form-field>
-                <textarea matInput placeholder="Precio"></textarea>
+                <textarea matInput name="description" placeholder="Descripción" [(ngModel)]="description" required></textarea>
               </mat-form-field>
 
-              <mat-form-field [hidden]="true">
-                <input matInput  placeholder="Estatus" value="A">
+              <mat-form-field>
+                <mat-select name="resourceType" [(ngModel)]="resourceTypeSelected" placeholder="Seleccione un Tipo de Dni" required>
+                  <mat-option *ngFor="let resourceType of resourceTypes" [value]="resourceType.id">{{ resourceType.name }}</mat-option>
+                </mat-select>
               </mat-form-field>
+
+              <mat-form-field>
+                <textarea matInput name="price" placeholder="Precio" [(ngModel)]="price" required></textarea>
+              </mat-form-field>
+
+              <mat-form-field>
+                <textarea matInput name="measureUnit" placeholder="Medida" [(ngModel)]="measureUnit" required></textarea>
+              </mat-form-field>
+
             </div>
           </div>
         </div>
-        
+
         <div class="row">
           <div class="col-sm-12">
-            <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/service/resource/create']">Registrar</button>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.form.valid">Registar</button>
           </div>
         </div>
-      </div>
+
+      </form>
+
     </div>
   </div>
+</div>
