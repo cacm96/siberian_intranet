@@ -1,4 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import {NgForm} from '@angular/forms';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Global } from '../../../../../../../../core/services/global';
+import { Category } from '../../../../../../../../models/category';
+import { CategoryService } from '../../../../../../../../core/services/admin/category.service';
+import { Subcategory } from '../../../../../../../../models/subcategory';
+import { SubcategoryService } from '../../../../../../../../core/services/admin/subcategory.service';
+import { SnackBarService } from '../../../../../../../../core/services/snack-bar.service';
+
 
 @Component({
   selector: 'sib-sub-category-edit',
@@ -7,9 +17,112 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubCategoryEditComponent implements OnInit {
 
-  constructor() { }
+	public subcategory: any;
+	public categories:any;
+	public updateSubcategory:any;
+	public failedConect:string;
+	public message:string;
 
-  ngOnInit() {
-  }
+	constructor
+	(
+		private _subcategoryService: SubcategoryService,
+		private _categoryService: CategoryService,
+		private _route: ActivatedRoute,
+		private _router: Router,
+    	private snackBar: SnackBarService
+	)
+	{
+	}
+
+	ngOnInit()
+	{
+		this._route.params.subscribe
+		(
+			params =>
+			{
+				let id = params.id;
+				this.getSubcategory(id);
+			}
+		);
+		this.getCategories();
+	}
+
+	getCategories()
+	{
+		this._categoryService.All().subscribe
+		(
+			response =>
+			{
+				this.categories = response.categories;
+				console.log(this.categories);
+			},
+			error =>
+			{
+				console.log(<any>error);
+				if(error instanceof HttpErrorResponse)
+				{
+					if(error.status===0)
+					{
+						this.failedConect = Global.failed;
+					}
+				}
+			}
+		)
+	}
+
+	getSubcategory(id)
+	{
+		this._subcategoryService.getOne(id).subscribe
+		(
+			response =>
+			{
+				this.subcategory = response.subcategory;
+				console.log(this.subcategory);
+			},
+			error =>
+			{
+				console.log(<any>error);
+				if(error instanceof HttpErrorResponse)
+				{
+					if(error.status===0)
+					{
+						this.failedConect = Global.failed;
+					}
+				}
+			}
+		)
+	}
+
+	update(form: NgForm)
+	{
+		if(form.valid)
+		{
+			this._subcategoryService.update(this.subcategory).subscribe
+			(
+				response =>
+				{
+					if(response.status==true)
+					{
+						this.message  = response.message.text;
+						this.snackBar.openSnackBar(this.message,'');
+					}
+					else
+					{
+						this.message  = response.message.text;
+						this.snackBar.openSnackBar(this.message,'');
+					}
+				},
+				error =>
+				{
+					console.log(error);
+					this.message  = error.error.message;
+					this.snackBar.openSnackBar(this.message,'');
+				}
+			);
+		}else
+		{
+		}
+		
+	}
 
 }

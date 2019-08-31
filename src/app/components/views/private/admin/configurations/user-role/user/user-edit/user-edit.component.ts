@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import {Location} from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Global } from '../../../../../../../../core/services/global';
 import { User } from '../../../../../../../../models/user';
 import { UserService } from '../../../../../../../../core/services/admin/user.service';
 import { Role } from '../../../../../../../../models/role';
 import { RoleService } from '../../../../../../../../core/services/admin/role.service';
+import { Location } from '../../../../../../../../models/location';
+import { LocationService } from '../../../../../../../../core/services/admin/location.service';
 import { SnackBarService } from '../../../../../../../../core/services/snack-bar.service';
 
 @Component({
@@ -18,6 +19,8 @@ import { SnackBarService } from '../../../../../../../../core/services/snack-bar
 export class UserEditComponent implements OnInit {
 
 	public user: any;
+	public locations:Location;
+	public locationsCant:Number;
 	public roles:Role;
 	public dniTypes:any[];
 	public updateUser:any;
@@ -28,9 +31,9 @@ export class UserEditComponent implements OnInit {
 	(
 		private _userService: UserService,
 		private _roleService: RoleService,
+		private _locationService: LocationService,
 		private _route: ActivatedRoute,
 		private _router: Router,
-		private _location: Location,
     	private snackBar: SnackBarService
 	)
 	{
@@ -61,7 +64,6 @@ export class UserEditComponent implements OnInit {
 			response =>
 			{
 				this.roles = response.roles;
-				console.log(response);
 			},
 			error =>
 			{
@@ -85,6 +87,7 @@ export class UserEditComponent implements OnInit {
 			{
 				this.user = response;
 				this.user = this.user.user;
+				this.locationsCant = this.user.locations.length;
 				console.log(this.user);
 			},
 			error =>
@@ -105,7 +108,29 @@ export class UserEditComponent implements OnInit {
 	{
 		if(form.valid)
 		{
-			console.log(this.user);
+			/*console.log(this.locationsCant);
+			if ( this.locationsCant<=0)
+			{
+				console.log("primera vez");
+				this.locations = new Location();
+				console.log(this.locations);
+				this.locations.address = form.value.address;
+				this.locations.state = form.value.state;
+				this.locations.city = form.value.city;
+				this.locations.postalCode = form.value.postalCode;
+				this.locations.isLivingPlace = true;
+				this.locations.UserId = this.user.id;
+				this.user.locations.push(this.locations);
+			}
+	    	else
+	    	{
+	    		console.log("ya tiene direcciones");
+	    	}*/
+
+	    	this.user.role.id = form.value.role;
+
+	    	console.log(this.user);
+			
 			this._userService.update(this.user).subscribe
 			(
 				response =>
@@ -113,6 +138,40 @@ export class UserEditComponent implements OnInit {
 					if(response.status==true)
 					{
 						this.updateUser = response.user;
+						this.getUser(this.user.id);
+						console.log(this.updateUser);
+						this.message  = response.message.text;
+						this.snackBar.openSnackBar(this.message,'');
+					}
+					else
+					{
+						this.message  = response.message.text;
+						this.snackBar.openSnackBar(this.message,'');
+					}
+				},
+				error =>
+				{
+					console.log(error);
+					this.message  = error.error.message;
+					this.snackBar.openSnackBar(this.message,'');
+				}
+			);
+		}else
+		{
+		}
+		
+	}
+
+	updateRole(form: NgForm)
+	{
+		if(form.valid)
+		{
+			this._roleService.update(this.user.role).subscribe
+			(
+				response =>
+				{
+					if(response.status==true)
+					{
 						this.message  = response.message.text;
 						this.snackBar.openSnackBar(this.message,'');
 					}

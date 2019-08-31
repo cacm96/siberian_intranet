@@ -46,6 +46,7 @@ export class UsersComponent implements OnInit {
 	ngOnInit()
 	{
 		this.getUsers();
+		console.log("se disparon");
 	}
 
 	getUsers()
@@ -130,7 +131,6 @@ export class UsersComponent implements OnInit {
 				if(response.status==true)
 				{
 					this.updateUser = response.user;
-					this.getUsers();
 					this.snackBar.openSnackBar('Eliminado Correctamente','¿Deshacer?').onAction().subscribe
 					(
 						() =>
@@ -157,6 +157,9 @@ export class UsersComponent implements OnInit {
 							);
 						}
 					);
+					this.getUsers();
+					this.getUsersActives();
+					this.getUsersInactives();
 				}
 				else
 				{

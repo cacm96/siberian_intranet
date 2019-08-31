@@ -27,13 +27,13 @@ export class RoleService extends HeaderService{
 		return this.http.get(this.url, {headers: this.header});
 	}
 
-	One(id:Number): Observable<any>{
+	getOne(id:Number): Observable<any>{
 		return this.http.get(this.url+"/"+id, {headers: this.header});
 	}
 
     update(role:any): Observable<any>{
 		let params = JSON.stringify(role);
-		return this.http.put(this.url, params, {headers: this.header});
+		return this.http.put(this.url+"/"+role.id, params, {headers: this.header});
 	}
 
 	deleteAll(): Observable<any>{
@@ -41,7 +41,7 @@ export class RoleService extends HeaderService{
 	}
 
 	deleteOne(id): Observable<any>{
-		return this.http.delete(this.url+'role/'+id, {headers: this.header});
+		return this.http.delete(this.url+"/"+id, {headers: this.header});
 	}
 
 }

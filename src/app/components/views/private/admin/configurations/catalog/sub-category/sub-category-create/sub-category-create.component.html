@@ -21,6 +21,12 @@
               <div class="example-container">
 
                 <mat-form-field>
+                  <mat-select name="CategoryId" [(ngModel)]="CategoryId" placeholder="Seleccione una Categoría" required>
+                    <mat-option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                
+                <mat-form-field>
                   <input matInput id="inputName" name="name" placeholder="Nombre" [(ngModel)]="name" required>
                 </mat-form-field>
 
@@ -28,11 +34,6 @@
                   <textarea matInput name="description" placeholder="Descripción" [(ngModel)]="description" required></textarea>
                 </mat-form-field> 
 
-                <mat-form-field>
-                  <mat-select name="CategoryId" [(ngModel)]="CategoryId" placeholder="Seleccione una Categoría" required>
-                    <mat-option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</mat-option>
-                  </mat-select>
-                </mat-form-field>
 
               </div>
             </div>

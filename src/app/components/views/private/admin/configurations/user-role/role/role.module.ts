@@ -1,6 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../../../../../../core/ui/material.module';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RoleService } from 'src/app/core/services/admin/role.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService } from 'src/app/core/services/token-interceptor.service';
+
+
 import { RoleRoutingModule } from './role-routing.module';
 import { RoleComponent } from './role.component';
 import { RolesComponent } from './roles/roles.component';
@@ -21,7 +28,17 @@ import { RoleDeleteComponent } from './role-delete/role-delete.component';
   imports: [
     CommonModule,
     MaterialModule,
-    RoleRoutingModule
-  ]
+    RoleRoutingModule,
+    FormsModule
+  ],
+  providers:
+  [
+    RoleService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass : TokenInterceptorService,
+      multi: true
+    },
+  ],
 })
 export class RoleModule { }

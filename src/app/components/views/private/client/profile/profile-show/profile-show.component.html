@@ -60,7 +60,8 @@
 								    <p mat-line> {{locationUser.state}} </p>
 								    <p mat-line> {{locationUser.city}} </p>
 								    <p mat-line> {{locationUser.postalCode}} </p>
-								    <p mat-line> <a (click)="onDeleteLocation(locationUser.id)" >Eliminar</a></p>
+								    <p mat-line> <a class="mr-3 deleteColor" (click)="onDeleteLocation(locationUser.id)" >Eliminar</a> <a class="mr-3 editColor" (click)="onEditLocation(locationUser)" >Editar</a></p>
+								    <p mat-line> <mat-checkbox class="example-margin" [(ngModel)]="locationUser.isLivingPlace">Dirección Actual</mat-checkbox></p>
 								  </mat-list-item>
 								</mat-list>
 							</div>
@@ -81,7 +82,7 @@
 								  <mat-list-item *ngFor="let phoneUser of phonesUser">
 								    <h4 mat-line>{{phoneUser.phoneType}}</h4>
 								    <p mat-line> {{phoneUser.number}} </p>
-								    <p mat-line> <a (click)="onDeletePhone(phoneUser.id)" >Eliminar</a></p>
+								    <p mat-line> <a class="mr-3 deleteColor" (click)="onDeletePhone(phoneUser.id)" >Eliminar</a> <a class="mr-3 editColor" (click)="onEditPhone(phoneUser)" >Editar</a></p>
 								  </mat-list-item>
 								</mat-list>
 							</div>
