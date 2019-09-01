@@ -17,6 +17,8 @@ export class ResourceEditComponent implements OnInit {
 
 	public resource:Resource;
 	public resourceTypes:any[];
+	public measureUnits:any[];
+
 	public message:string;
   	public failedConect:string;
 
@@ -30,7 +32,17 @@ export class ResourceEditComponent implements OnInit {
     )
     {
     	this.resourceTypes= [
-			{id:"Material",name:"Materiales"},
+			{id:"Herramienta",name:"Herramienta"},
+			{id:"Equipo",name:"Equipo"},
+			{id:"Material",name:"Material"},
+			{id:"Humano",name:"Humano"},
+		];
+
+		this.measureUnits= [
+			{id:"Unidades",name:"Unidades"},
+			{id:"Kilogramos",name:"Kilogramos"},
+			{id:"Litros",name:"Litros"},
+			{id:"Metros",name:"Metros"},
 		];
     }
 

@@ -34,11 +34,13 @@
                 </mat-form-field>
 
                 <mat-form-field>
-                  <textarea matInput name="price" placeholder="Precio" [(ngModel)]="resource.price" required></textarea>
+                  <mat-select name="measureUnit" [(ngModel)]="resource.measureUnit" placeholder="Seleccione un Tipo de Recurso" required>
+                    <mat-option *ngFor="let measureUnit of measureUnits" [value]="measureUnit.id">{{ measureUnit.name }}</mat-option>
+                  </mat-select>
                 </mat-form-field>
 
                 <mat-form-field>
-                  <textarea matInput name="measureUnit" placeholder="Medida" [(ngModel)]="resource.measureUnit" required></textarea>
+                  <textarea matInput name="price" placeholder="Precio" [(ngModel)]="resource.price" required></textarea>
                 </mat-form-field>
 
               </div>

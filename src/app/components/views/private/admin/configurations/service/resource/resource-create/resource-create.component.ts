@@ -17,6 +17,8 @@ export class ResourceCreateComponent implements OnInit {
 
 	public resource:Resource;
 	public resourceTypes:any[];
+	public measureUnits:any[];
+	public measureUnitSelected:string="";
 	public resourceTypeSelected:string="";
 
 	public message:string;
@@ -30,7 +32,17 @@ export class ResourceCreateComponent implements OnInit {
 		)
 	{
 		this.resourceTypes= [
-			{id:"Material",name:"Materiales"},
+			{id:"Herramienta",name:"Herramienta"},
+			{id:"Equipo",name:"Equipo"},
+			{id:"Material",name:"Material"},
+			{id:"Humano",name:"Humano"},
+		];
+
+		this.measureUnits= [
+			{id:"Unidades",name:"Unidades"},
+			{id:"Kilogramos",name:"Kilogramos"},
+			{id:"Litros",name:"Litros"},
+			{id:"Metros",name:"Metros"},
 		];
 
 		this.resource = new Resource();

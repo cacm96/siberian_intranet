@@ -49,7 +49,7 @@ export class UserAllsComponent implements OnInit {
 
 	getUsers()
 	{
-		this._userService.getAll().subscribe
+		this._userService.All().subscribe
 		(
 			response =>
 			{

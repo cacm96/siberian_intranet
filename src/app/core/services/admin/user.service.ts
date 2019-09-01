@@ -23,7 +23,7 @@ export class UserService extends HeaderService{
 		return this.http.post(this.url, params, {headers: this.header});
 	}
 
-    getAll(): Observable<any>{
+    All(): Observable<any>{
 		return this.http.get(this.url, {headers: this.header});
 	}
 
@@ -48,16 +48,21 @@ export class UserService extends HeaderService{
 		return this.http.put(this.url+'/'+user.id, params, {headers: this.header});
 	}
 
-	getUsersExcept(id): Observable<any>{
-		return this.http.get(this.url+'user/except/'+id, {headers: this.header});
-	}
-
-	deleteAll(): Observable<any>{
-		return this.http.delete(this.url, {headers: this.header});
-	}
-
-	deleteUser(id): Observable<any>{
+	delete(id): Observable<any>{
 		return this.http.delete(this.url+'/'+id, {headers: this.header});
 	}
+
+	active(id): Observable<any>{
+		return this.http.put(this.url+'/'+id+'/activate', {headers: this.header});
+	}
+
+	inactive(id): Observable<any>{
+		return this.http.put(this.url+'/'+id+'/inactivate', {headers: this.header});
+	}
+
+	changeRole(uid,rid): Observable<any>{
+		return this.http.put(this.url+'/'+uid+'/role/'+rid, {headers: this.header});
+	}
+
 
 }
