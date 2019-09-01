@@ -28,17 +28,19 @@
               </mat-form-field>
 
               <mat-form-field>
-                <mat-select name="resourceType" [(ngModel)]="resourceTypeSelected" placeholder="Seleccione un Tipo de Dni" required>
+                <mat-select name="resourceType" [(ngModel)]="resourceTypeSelected" placeholder="Seleccione un Tipo de Recurso" required>
                   <mat-option *ngFor="let resourceType of resourceTypes" [value]="resourceType.id">{{ resourceType.name }}</mat-option>
                 </mat-select>
               </mat-form-field>
 
               <mat-form-field>
-                <textarea matInput name="price" placeholder="Precio" [(ngModel)]="price" required></textarea>
+                <mat-select name="measureUnit" [(ngModel)]="measureUnitSelected" placeholder="Seleccione una Medición" required>
+                  <mat-option *ngFor="let measureUnit of measureUnits" [value]="measureUnit.id">{{ measureUnit.name }}</mat-option>
+                </mat-select>
               </mat-form-field>
 
               <mat-form-field>
-                <textarea matInput name="measureUnit" placeholder="Medida" [(ngModel)]="measureUnit" required></textarea>
+                <textarea matInput name="price" placeholder="Precio" [(ngModel)]="price" required></textarea>
               </mat-form-field>
 
             </div>

@@ -127,8 +127,6 @@ export class UserEditComponent implements OnInit {
 	    		console.log("ya tiene direcciones");
 	    	}*/
 
-	    	this.user.role.id = form.value.role;
-
 	    	console.log(this.user);
 			
 			this._userService.update(this.user).subscribe
@@ -138,6 +136,12 @@ export class UserEditComponent implements OnInit {
 					if(response.status==true)
 					{
 						this.updateUser = response.user;
+						
+						if(this.user.role.id != form.value.role)
+				    	{
+				    		this.chanRoleUser(this.user.id,form.value.role);
+				    	}
+						
 						this.getUser(this.user.id);
 						console.log(this.updateUser);
 						this.message  = response.message.text;
@@ -162,36 +166,21 @@ export class UserEditComponent implements OnInit {
 		
 	}
 
-	updateRole(form: NgForm)
+	chanRoleUser(uid,rid)
 	{
-		if(form.valid)
-		{
-			this._roleService.update(this.user.role).subscribe
-			(
-				response =>
-				{
-					if(response.status==true)
-					{
-						this.message  = response.message.text;
-						this.snackBar.openSnackBar(this.message,'');
-					}
-					else
-					{
-						this.message  = response.message.text;
-						this.snackBar.openSnackBar(this.message,'');
-					}
-				},
-				error =>
-				{
-					console.log(error);
-					this.message  = error.error.message;
-					this.snackBar.openSnackBar(this.message,'');
-				}
-			);
-		}else
-		{
-		}
-		
+		this._userService.changeRole(uid,rid).subscribe
+		(
+			response =>
+			{
+				console.log(response);
+		        this.message = response.message.text;
+		        this.snackBar.openSnackBarSuccess(this.message);
+			},
+			error =>
+			{
+				console.log(<any>error);
+			}
+		);
 	}
 
 }

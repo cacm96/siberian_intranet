@@ -20,7 +20,7 @@ import { ResourceService } from '../../../../../../../../core/services/admin/res
 })
 export class ResourcesComponent implements OnInit {
   
-  public resources:any;
+  public resources:Array < Resource > = new Array < Resource > ();
   public message:string;
   public failedConect:string;
 

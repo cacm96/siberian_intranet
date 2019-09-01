@@ -12,7 +12,16 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="mat-elevation-z8">
-					<table mat-table [dataSource]="dataSource" matSort>
+					
+					<div *ngIf="users.length<=0 && !failedConect">
+						<div class="row">
+							<div class="col-sm-12 spinner">
+								<mat-spinner></mat-spinner>
+							</div>
+						</div>
+					</div>
+
+					<table *ngIf="users.length>0" mat-table [dataSource]="dataSource" matSort>
 		
 						<ng-container matColumnDef="id">
 							<th mat-header-cell *matHeaderCellDef mat-sort-header> Ver </th>
@@ -99,21 +108,6 @@
 		</div>
 
 	</div>
-
-	<div *ngIf="!users && !failedConect">
-		<div class="row">
-			<div class="col-sm-12 spinner">
-				<mat-spinner></mat-spinner>
-			</div>
-		</div>
-	</div>
-
-	<div *ngIf="failedConect">
-		<h6 class="text-center">{{failedConect}}</h6>
-	</div>
 	
 	<br>
-</div>
-
-<div *ngIf="!users">
 </div>
