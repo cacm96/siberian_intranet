@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="text-center">Categoría</h2>
+  <h2 *ngIf="category" class="text-center">{{ category.name }}</h2>
   <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/catalog/category']">Volver</button>
   <hr>
   <div *ngIf="category">
@@ -7,29 +7,37 @@
       <div class="row">
         <div class="col-sm-6">
           <mat-list>
-            <h3 mat-subheader>Datos</h3>
+            <h3 mat-subheader>Categoría</h3>
             <mat-list-item><h4 mat-line><b>Nombre: </b> {{ category.name }}</h4></mat-list-item>
             <mat-list-item><h4 mat-line><b>Descripción: </b> {{ category.description }}</h4></mat-list-item>
             <mat-list-item *ngIf="category.status=='active'"><h4 mat-line><b>Estatus:<span class="badge badge-success"> Activo</span></b></h4></mat-list-item>
           </mat-list>
         </div>
-        
-        <div class="col-sm-6">
-
-          <div *ngIf="subcategories">
-            <mat-list>
-              <h3 mat-subheader>Subcategorías</h3>
-              <mat-list-item *ngIf="subcategories.length<=0"><h4 mat-line>No tiene Subcategorías</h4></mat-list-item>
-              <mat-list-item *ngFor="let subcategory of subcategories">
-                <h4 mat-line>{{subcategory.name}}</h4>
-              </mat-list-item>
-            </mat-list>
-          </div>
-
-        </div>
       </div>
 
     </mat-card>
+
+    <br>
+
+    <mat-card>
+    <div *ngIf="category.subcategories.length>0">
+      <mat-list>
+        <h3 mat-subheader>Subcategorías</h3>
+        <mat-list-item *ngFor="let subcategories of category.subcategories">
+          <h4 mat-line>{{subcategories.name}}</h4>
+        </mat-list-item>
+      </mat-list>
+    </div>
+
+    <div *ngIf="category.subcategories.length<=0">
+      <mat-list>
+        <h3 mat-subheader>Subcategorías</h3>
+        <mat-list-item><h4 mat-line>No tiene direcciones</h4></mat-list-item>
+      </mat-list>
+    </div>
+  </mat-card>
+
+
   </div>
 
   <div *ngIf="!category && !failedConect">

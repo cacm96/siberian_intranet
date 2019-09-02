@@ -20,7 +20,7 @@ export class PhoneService extends HeaderService{
 
 	create(phone: Phone): Observable<any>{
 		let params = JSON.stringify(phone);
-		return this.http.post(this.url, params, {headers: this.header});
+		return this.http.post(this.url+"/"+phone.UserId, params, {headers: this.header});
 	}
 
     All(): Observable<any>{
@@ -37,7 +37,7 @@ export class PhoneService extends HeaderService{
 
     update(phone:any): Observable<any>{
 		let params = JSON.stringify(phone);
-		return this.http.put(this.url, params, {headers: this.header});
+		return this.http.put(this.url+"/"+phone.id, params, {headers: this.header});
 	}
 
 	deleteAll(): Observable<any>{

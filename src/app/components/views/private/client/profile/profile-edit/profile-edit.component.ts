@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import {Location} from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Global } from '../../../../../../core/services/global'
 import { User } from '../../../../../../models/user';
 import { UserService } from '../../../../../../core/services/admin/user.service';
+import { Location } from '../../../../../../models/location';
+import { LocationService } from '../../../../../../core/services/admin/location.service';
 import { SnackBarService } from '../../../../../../core/services/snack-bar.service';
 
 @Component({
@@ -24,9 +25,9 @@ export class ProfileEditComponent implements OnInit {
 	constructor
 	(
 		private _userService: UserService,
+		private _locationService: LocationService,
 		private _route: ActivatedRoute,
 		private _router: Router,
-		private _location: Location,
     	private snackBar: SnackBarService
 	)
 	{
@@ -35,7 +36,6 @@ export class ProfileEditComponent implements OnInit {
 	      {id:"e",name:"Extranjero"},
 	      {id:"j",name:"Jurídico"},
 	    ];
-
 	}
 
 	ngOnInit()

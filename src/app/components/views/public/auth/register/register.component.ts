@@ -121,10 +121,8 @@ export class RegisterComponent implements OnInit {
   {
     localStorage.setItem('accessToken',response.accessToken);
     localStorage.setItem('resID', response.user.id);
-    localStorage.setItem('role', "admin");
+    localStorage.setItem('role', response.user.role.name);
     this._router.navigate(['/loginWeit']);
-    var actualRoute = window.location.origin;
-    window.location.replace(actualRoute+'/perfil/'+this.resID);
   }
 
 }

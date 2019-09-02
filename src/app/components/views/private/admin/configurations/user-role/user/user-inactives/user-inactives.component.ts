@@ -24,7 +24,7 @@ export class UserInactivesComponent implements OnInit {
 	public message:string;
 	public failedConect:string;
 
-	displayedColumns: string[] = ['id', 'email','firstName','lastName','dniType','dni','gender','role','status','edit','delete','back'];
+	displayedColumns: string[] = ['id', 'email','firstName','lastName','dni','gender','role','status','edit','delete','back'];
 	dataSource: MatTableDataSource<User>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
@@ -53,8 +53,18 @@ export class UserInactivesComponent implements OnInit {
 		(
 			response =>
 			{
-				this.users = response.users;
-				this.table();
+				if (response.status==true)
+		        {
+		        	this.users = response.users;
+					this.table();
+		        }
+		        else
+		        {
+		          this.users = [];
+		          this.message = response.message.text;
+		          console.log(this.message);
+		          this.table();
+		        }
 			},
 			error =>
 			{
@@ -104,7 +114,7 @@ export class UserInactivesComponent implements OnInit {
 
 	deleteUser(id)
 	{
-		this._userService.deleteUser(id).subscribe
+		this._userService.delete(id).subscribe
 		(
 			response =>
 			{
@@ -122,13 +132,13 @@ export class UserInactivesComponent implements OnInit {
 
 
 	onBack(id){
-		this.dialogService.openConfirmDialog('¿Estás seguro de recuperar este Usuario?').afterClosed().subscribe
+		this.dialogService.openConfirmDialog('¿Estás seguro de activar este usuario?').afterClosed().subscribe
 		(
 			response =>
 			{
 				if (response==true)
 				{
-					this.getUser(id);
+					this.active(id);
 				}else
 				{
 					console.log(response);
@@ -137,72 +147,20 @@ export class UserInactivesComponent implements OnInit {
 		);
 	}
 
-	getUser(id)
+	active(id)
 	{
-		this._userService.getOne(id).subscribe
+		this._userService.active(id).subscribe
 		(
 			response =>
 			{
-				this.user = response;
-				this.user = this.user.user;
-				this.update(this.user);
+				console.log(response);
+		        this.message = response.message.text;
+		        this.snackBar.openSnackBarSuccess(this.message);
+				this.getUsers();
 			},
 			error =>
 			{
 				console.log(<any>error);
-			}
-		)
-	}
-
-	update(user)
-	{
-		this.user.status = 'active';
-		this._userService.update(this.user).subscribe
-		(
-			response =>
-			{
-				if(response.status==true)
-				{
-					this.updateUser = response.user;
-					this.getUsers();
-					this.snackBar.openSnackBar('Eliminado Correctamente','¿Deshacer?').onAction().subscribe
-					(
-						() =>
-						{
-							this.user.status = 'inactive';
-							this._userService.update(this.user).subscribe
-							(
-								response =>
-								{
-									if(response.status==true)
-									{
-										this.updateUser = response.user;
-										this.getUsers();
-										this.message = "Usuario Inactivado Correctamente";
-										this.snackBar.openSnackBar(this.message,'');
-									}
-									else
-									{
-										this.message  = response.message.text;
-										this.snackBar.openSnackBar(this.message,'');
-									}
-
-								}
-							);
-						}
-					);
-				}
-				else
-				{
-					this.message  = response.message.text;
-					this.snackBar.openSnackBar(this.message,'');
-				}
-			},
-			error =>
-			{
-				console.log(error);
-				this.message  = error.error.message;
-				this.snackBar.openSnackBar(this.message,'');
 			}
 		);
 	}

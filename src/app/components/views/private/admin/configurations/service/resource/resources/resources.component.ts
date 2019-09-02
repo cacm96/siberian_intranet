@@ -5,66 +5,133 @@ import { MatTableDataSource } from '@angular/material/table';
 import { DialogService } from '../../../../../../../../core/services/dialog.service';
 import { SnackBarService } from '../../../../../../../../core/services/snack-bar.service';
 
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import {Location} from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Global } from '../../../../../../../../core/services/global';
+import { Resource } from '../../../../../../../../models/resource';
+import { ResourceService } from '../../../../../../../../core/services/admin/resource.service';
 
-export interface ResourceData {
-  id: string;
-  type_id: string;
-  category_id: string;
-  name: string;
-  description: string;
-  price: number;
-  status: string;
-}
+
 @Component({
   selector: 'sib-resources',
   templateUrl: './resources.component.html',
   styleUrls: ['./resources.component.scss']
 })
 export class ResourcesComponent implements OnInit {
-  public resource:any[];
-	displayedColumns: string[] = ['id', 'type_id', 'category_id','name', 'description','price','status','edit','delete'];
-	dataSource: MatTableDataSource<ResourceData>;
+  
+  public resources:Array < Resource > = new Array < Resource > ();
+  public message:string;
+  public failedConect:string;
 
-	@ViewChild(MatPaginator) paginator: MatPaginator;
-	@ViewChild(MatSort) sort: MatSort;
-  constructor(
+  displayedColumns: string[] = ['id', 'name', 'description','resourceType','measureUnit','price','status','edit','delete'];
+  dataSource: MatTableDataSource<Resource>;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+  constructor
+  (
     private dialogService: DialogService,
-		private snackBar: SnackBarService
-  ) 
+    private snackBar: SnackBarService,
+    private _resourceService: ResourceService,
+    private _route: ActivatedRoute,
+    private _router: Router,
+    private _location: Location
+  )
   {
-    this.resource = [
-      {id:"1",type_id: "type 1", category_id: "category 1", name:"name 1",description:"Description 1",price:"price 1", status:"A"},
-      {id:"2",type_id: "type 2", category_id: "category 2", name:"name 2",description:"Description 2",price:"price 2", status:"A"},
-      {id:"3",type_id: "type 3", category_id: "category 3", name:"name 3",description:"Description 3",price:"price 3", status:"A"}
-    ];
 
-  this.dataSource = new MatTableDataSource(this.resource);
-   }
-
-  ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-		this.dataSource.sort = this.sort;
   }
 
-  applyFilter(filterValue: string) {
-		this.dataSource.filter = filterValue.trim().toLowerCase();
+  ngOnInit()
+  {
+    this.getResources();
+  }
 
-		if (this.dataSource.paginator) {
-		  this.dataSource.paginator.firstPage();
-		}
-	}
+  getResources()
+  {
+    this._resourceService.All().subscribe
+    (
+      response =>
+      {
+        if (response.status==true)
+        {
+          this.resources = response.resources;
+          console.log(this.resources);
+          this.table();
+        }
+        else
+        {
+          this.resources = [];
+          this.message = response.message.text;
+          console.log(this.message);
+          this.table();
+        }
 
-	onDelete(id){
-		this.dialogService.openConfirmDialog('¿Estás seguro de eliminar el recurso'+id+' ?').afterClosed().subscribe(res=>{
-			if (res==true) {
-				console.log(id);
-				this.snackBar.openSnackBar('Eliminado Correctamente','¿Deshacer?').onAction().subscribe(() => {
-				  console.log('Recuperado');
-				});
-			}else{
-				console.log(res);
-			}
-		});
-	}
+      },
+      error =>
+      {
+        console.log(<any>error);
+        if(error instanceof HttpErrorResponse)
+        {
+          if(error.status===0)
+          {
+            this.failedConect = Global.failed;
+          }
+        }
+      }
+      )
+  }
+
+  applyFilter(filterValue: string)
+  {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  table()
+  {
+    this.dataSource = new MatTableDataSource(this.resources);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  onDelete(id)
+  {
+    this.dialogService.openConfirmDialog('¿Estás seguro de eliminar este recurso?').afterClosed().subscribe
+    (
+      response =>
+      {
+        if (response==true)
+        {
+          this.deleteRole(id);
+        }else
+        {
+          console.log(response);
+        }
+      }
+      );
+  }
+
+  deleteRole(id)
+  {
+    this._resourceService.deleteOne(id).subscribe
+    (
+      response =>
+      {
+        console.log(response);
+        this.message = response.message.text;
+        this.snackBar.openSnackBarSuccess(this.message);
+        this.getResources();
+      },
+      error =>
+      {
+        console.log(<any>error);
+      }
+      )
+  }
 }
 

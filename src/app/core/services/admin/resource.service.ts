@@ -3,13 +3,13 @@ import { HeaderService } from '../header.service';
 import { HttpClient, HttpParams  } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { environment } from 'src/environments/environment';
-import { Role } from '../../../models/role';
+import { Resource } from '../../../models/resource';
 
 
 @Injectable()
-export class RoleService extends HeaderService{
+export class ResourceService extends HeaderService{
 
-	url: string = environment.api + 'role';
+	url: string = environment.api + 'resource';
 
 
 	constructor(
@@ -18,8 +18,8 @@ export class RoleService extends HeaderService{
 		super();
 	}
 
-	create(role: Role): Observable<any>{
-		let params = JSON.stringify(role);
+	create(resource: Resource): Observable<any>{
+		let params = JSON.stringify(resource);
 		return this.http.post(this.url, params, {headers: this.header});
 	}
 
@@ -31,17 +31,13 @@ export class RoleService extends HeaderService{
 		return this.http.get(this.url+"/"+id, {headers: this.header});
 	}
 
-    update(role:any): Observable<any>{
-		let params = JSON.stringify(role);
-		return this.http.put(this.url+"/"+role.id, params, {headers: this.header});
-	}
-
-	deleteAll(): Observable<any>{
-		return this.http.delete(this.url, {headers: this.header});
+    update(resource:any): Observable<any>{
+		let params = JSON.stringify(resource);
+		return this.http.put(this.url+'/'+resource.id, params, {headers: this.header});
 	}
 
 	deleteOne(id): Observable<any>{
-		return this.http.delete(this.url+"/"+id, {headers: this.header});
+		return this.http.delete(this.url+'/'+id, {headers: this.header});
 	}
 
 }

@@ -17,7 +17,7 @@ export class User{
 	status:string;
 	create_at:string;
 	update_at:string;
-	//roles: Array < Role > = new Array < Role >();
-	//locations: Array < Location > = new Array < Location >();
+	role: Array < Role > = new Array < Role >();
+	locations: Array < Location > = new Array < Location >();
 	//phones: Array < Phone > = new Array < Phone >();
 }

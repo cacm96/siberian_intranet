@@ -5,7 +5,7 @@ export class Location{
   city:string;
   postalCode: string;
   UserId:string;
-  is_living_place:string;
+  isLivingPlace:boolean;
   status:string;
   create_at:string;
   update_at:string;
