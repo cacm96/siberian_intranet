@@ -70,8 +70,8 @@ export class CategoriaComponent implements OnInit {
     this._location.back(); 
   }
 
-  SetIdCategory(id)
+  SetNameCategory(name)
   {
-    localStorage.setItem('IdCategory',id);
+    localStorage.setItem('categoryName',name);
   }
 }

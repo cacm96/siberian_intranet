@@ -69,9 +69,9 @@ export class SubcategoriaComponent implements OnInit {
 		this._location.back(); 
 	}
 
-	SetIdSubcategory(id)
+	SetNameSubcategory(name)
 	{
-		localStorage.setItem('IdSubcategory',id);
+		localStorage.setItem('subcategoryName',name);
 	}
 
 }
