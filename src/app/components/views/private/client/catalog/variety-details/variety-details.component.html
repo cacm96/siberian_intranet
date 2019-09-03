@@ -9,54 +9,47 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-12">
-						<button mat-raised-button color="primary" [routerLink]="['/auth/client/catalog/variety']">Volver</button>
+						<button mat-raised-button color="primary"  (click)="goBack()">Volver</button>
 					</div>
 				</div>
 				<hr>
+				<div *ngIf="varietyDetails">
 
-				<div class="row">
-					<div class="col-md-4">
-						<a [routerLink]="['/auth/client/request/sheet']">
-							<mat-card class="servicio">
-								<mat-card-header class="titulo mat-card-header-primary">
-									<mat-card-title>Aire Acondicionado</mat-card-title>
-								</mat-card-header>
-								<mat-card-content class="mat_card_content">
-									<div class="row">
-										<div class="col-sm-5">
-											<img src="../../../../../../../assets/img/catalogue/aire.png" alt="" class="card-img-top">
-										</div>
-										<div class="col-sm-7">
-											<b>Modelo: </b>Split-2G
-											<br>
-											<b>Descripción: </b> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
-										</div>
-									</div>
-								</mat-card-content>
-							</mat-card>
-						</a>
+					<div *ngIf="varietyDetails.length>0">
+
+						<div class="row">
+							<div class="col-md-4" *ngFor="let varietyDetail of varietyDetails">
+								<a [routerLink]="['/auth/client/catalog/confirm']" (click)="SetIdVarietyDetail(varietyDetail.name,varietyDetail.description)">
+									<mat-card class="servicio">
+										<mat-card-header class="titulo mat-card-header-primary">
+											<mat-card-title>{{ variety.name }}</mat-card-title>
+										</mat-card-header>
+										<mat-card-content class="mat_card_content">
+											<div class="row">
+												<div class="col-sm-5">
+													<img src="../../../../../../../assets/img/catalogue/aire.png" alt="" class="card-img-top">
+												</div>
+												<div class="col-sm-7">
+													<b>Modelo: </b>{{ varietyDetail.name }}
+													<br>
+													<b>Descripción: </b> {{ varietyDetail.description }}
+												</div>
+											</div>
+										</mat-card-content>
+									</mat-card>
+								</a>
+							</div>
+						</div>
 					</div>
-					<div class="col-md-4">
-						<a [routerLink]="['/auth/client/request/sheet']">
-							<mat-card class="servicio">
-								<mat-card-header class="titulo mat-card-header-primary">
-									<mat-card-title>Aire Acondicionado</mat-card-title>
-								</mat-card-header>
-								<mat-card-content class="mat_card_content">
-									<div class="row">
-										<div class="col-sm-5">
-											<img src="../../../../../../../assets/img/catalogue/aire.png" alt="" class="card-img-top">
-										</div>
-										<div class="col-sm-7">
-											<b>Modelo: </b>Split-5G
-											<br>
-											<b>Descripción: </b> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
-										</div>
-									</div>
-								</mat-card-content>
-							</mat-card>
-						</a>
+
+					<div *ngIf="varietyDetails.length<=0">
+						<div class="row">
+							<div class="col-md-12">
+								<h3 class="text-center">No hay Modelos</h3>
+							</div>
+						</div>
 					</div>
+
 				</div>
 			</div>
 		</div>
