@@ -11,8 +11,8 @@ import { SnackBarService } from '../../../../../core/services/snack-bar.service'
 })
 export class LoginComponent implements OnInit {
   
-  public email:string="anderson@siberian.com";
-  public password:string="anderson";
+  public email:string="cliente@siberian.com";
+  public password:string="12345678";
   public message:string;
   public resID:string;
 
@@ -81,7 +81,7 @@ export class LoginComponent implements OnInit {
   {
       localStorage.setItem('accessToken',response.accessToken);
       localStorage.setItem('resID', response.user.id);
-      localStorage.setItem('role', response.user.role.name);
+      localStorage.setItem('role', response.user.role.id);
       this._router.navigate(['/loginWeit']);
       var actualRoute = window.location.origin;
       window.location.replace(actualRoute+'/perfil/'+this.resID);
