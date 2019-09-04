@@ -59,7 +59,6 @@ this._route.params.subscribe
 			response =>
 			{
 				this.subcategories = response.subcategories;
-				console.log(this.subcategories);
 			},
 			error =>
 			{
@@ -83,6 +82,7 @@ this._route.params.subscribe
 			response =>
 			{
 				this.equipinfras = response.equipinfras;
+				console.log(this.equipinfras);
 			},
 			error =>
 			{
@@ -100,6 +100,7 @@ this._route.params.subscribe
 
 	update(form: NgForm)
 	{
+		console.log(form.value);
 		if(form.valid)
 		{
 			this._equipinfrasService.update(this.equipinfras).subscribe
@@ -110,6 +111,7 @@ this._route.params.subscribe
 					{
 						this.message  = response.message.text;
 						this.snackBar.openSnackBar(this.message,'');
+						this.getEquipinfras(this.equipinfras.id);
 					}
 					else
 					{

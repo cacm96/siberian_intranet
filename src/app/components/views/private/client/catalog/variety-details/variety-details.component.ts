@@ -19,6 +19,7 @@ export class VarietyDetailsComponent implements OnInit {
 	public varietyDetails:any;
 	public IdEquipinfras:string;
 	public IdVariety:Number;
+	public categoryName:string;
 	public message:string;
 	public failedConect:string;
 
@@ -41,6 +42,7 @@ export class VarietyDetailsComponent implements OnInit {
 			{
 				let id = params.id;
 				this.IdEquipinfras= localStorage.getItem('IdEquipinfras');
+				this.categoryName= localStorage.getItem('categoryName');;
 				this.IdVariety = parseInt(id);
 				this.getEquipinfras(this.IdEquipinfras);
 			}

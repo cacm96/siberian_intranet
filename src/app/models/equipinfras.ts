@@ -1,4 +1,4 @@
-//import { Subcategory } from "./subcategory";
+import { Subcategory } from "./subcategory";
 import { Variety } from "./variety";
 
 export class Equipinfras{
@@ -9,7 +9,7 @@ export class Equipinfras{
 	status:string;
 	type: string;
 	SubcategoryId:string;
-	//subcategory: Array < Subcategory > = new Array < Subcategory >();
+	subcategory: Array < Subcategory > = new Array < Subcategory >();
 	varieties: Array < Variety > = new Array < Variety >();
 
 }

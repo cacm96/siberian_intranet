@@ -9,6 +9,12 @@ import { SheetComponent } from './sheet/sheet.component';
 import { StepperComponent } from './stepper/stepper.component';
 import { MessageComponent } from './message/message.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserService } from '../../../../../core/services/admin/user.service'
+import { LocationService } from '../../../../../core/services/admin/location.service'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService } from 'src/app/core/services/token-interceptor.service';
+
 
 @NgModule({
   declarations:
@@ -23,8 +29,20 @@ import { MessageComponent } from './message/message.component';
   imports: [
     CommonModule,
     RequestRoutingModule,
-    MaterialModule
-  ]
+    MaterialModule,
+    FormsModule
+  ],
+  providers:
+  [
+    UserService,
+    LocationService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass : TokenInterceptorService,
+      multi: true
+    },
+    
+   ],
 })
 
 export class RequestModule { }
