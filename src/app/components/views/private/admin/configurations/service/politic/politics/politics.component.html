@@ -7,11 +7,14 @@
 	</div>
 	<div class="row">
 	  <div class="col-sm-12">
-		<button mat-raised-button color="primary" class="mr-3" [routerLink]="['/auth/admin/configurations/service/politic/create']">Nuevo Parámetro</button>
+		<button mat-raised-button color="primary" class="mr-3" [routerLink]="['/auth/admin/configurations/service/politic/create']">Nueva Política</button>
 	<button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/service/']">Volver</button>
 	  </div>
 	</div>
 	<hr>
+	
+	<div *ngIf="policies">
+
 	
 	<div class="row">
 	  <div class="col-sm-12">
@@ -24,7 +27,17 @@
 	<div class="row">
 	  <div class="col-sm-12">
 		<div class="mat-elevation-z8">
-		  <table mat-table [dataSource]="dataSource" matSort>
+
+
+		  <div *ngIf="policies.length<=0 && !failedConect">
+						<div class="row">
+							<div class="col-sm-12 spinner">
+								<mat-spinner></mat-spinner>
+							</div>
+						</div>
+					</div>
+
+			 <table *ngIf="policies.length>0" mat-table [dataSource]="dataSource" matSort>
   
 			<ng-container matColumnDef="id">
 			  <th mat-header-cell *matHeaderCellDef mat-sort-header> Ver </th>
@@ -51,10 +64,13 @@
 				<td mat-cell *matCellDef="let row"> {{row.actionPlan}} </td>
 			  </ng-container>
 			
-			<ng-container matColumnDef="status">
-				<th mat-header-cell *matHeaderCellDef mat-sort-header>Estatus</th>
-				<td mat-cell *matCellDef="let row"> {{row.status}} </td>
-			  </ng-container>
+			  <ng-container matColumnDef="status">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header> Estatus </th>
+					<td mat-cell *matCellDef="let row">
+						<span *ngIf="row.status=='active'" class="badge badge-success">{{row.status | titlecase}}</span>
+						<span *ngIf="row.status=='deleted'" class="badge badge-danger">{{row.status | titlecase}}</span>
+					</td>
+			   </ng-container> 
 			  
 			<ng-container matColumnDef="edit">
 			  <th mat-header-cell *matHeaderCellDef></th>
@@ -83,4 +99,5 @@
 		</div>
 	  </div>
 	</div>
+   </div>
   </div>

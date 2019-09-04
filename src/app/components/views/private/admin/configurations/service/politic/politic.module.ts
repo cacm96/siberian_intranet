@@ -1,6 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../../../../../../core/ui/material.module';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PolicyService } from 'src/app/core/services/admin/policy.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService } from 'src/app/core/services/token-interceptor.service';
+
 import { PoliticRoutingModule } from './politic-routing.module';
 import { PoliticComponent } from './politic.component';
 import { PoliticsComponent } from './politics/politics.component';
@@ -21,7 +27,17 @@ import { PoliticDeleteComponent } from './politic-delete/politic-delete.componen
   imports: [
     CommonModule,
     MaterialModule,
+    FormsModule,
     PoliticRoutingModule
-  ]
+  ],
+  providers:
+  [
+    PolicyService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass : TokenInterceptorService,
+      multi: true
+    },
+  ],
 })
 export class PoliticModule { }

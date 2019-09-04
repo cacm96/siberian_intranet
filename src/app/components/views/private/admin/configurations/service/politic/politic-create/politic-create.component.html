@@ -13,25 +13,23 @@
         </div>
         <hr>
         
+
+       <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
         <div class="row">
           <div class="col-sm-12">
             <div class="example-container">
-              <mat-form-field>
-                <input matInput placeholder="Nombre" required>
-              </mat-form-field>
-      
-              <mat-form-field>
-                <textarea matInput placeholder="Descripción"></textarea>
-              </mat-form-field>	
               
               <mat-form-field>
-                  <textarea matInput placeholder="Plan de Acción" required></textarea>
-                </mat-form-field>	
-          
-              <mat-form-field [hidden]="true">
-                <input matInput  placeholder="Estatus" value="A" >
+                <input matInput id="inputName" name="name" placeholder="Nombre" [(ngModel)]="name" required>
               </mat-form-field>
-  
+
+              <mat-form-field>
+                <textarea matInput name="description" placeholder="Descripción" [(ngModel)]="description"></textarea>
+              </mat-form-field>	
+
+              <mat-form-field>
+                <textarea matInput name="actionPlan" placeholder="Plan de Acción" [(ngModel)]="actionPlan"></textarea>
+              </mat-form-field>	
             </div>
           </div>
         </div>
@@ -41,6 +39,7 @@
             <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/service/politic/create']">Registrar</button>
           </div>
         </div>
+        </form>
       </div>
     </div>
   </div>

@@ -14,39 +14,40 @@
         </div>
         <hr>
         
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="example-container">
-              <mat-form-field>
-                <input matInput placeholder="Nombre" required>
-              </mat-form-field>
-              
-              <mat-form-field>
-                <textarea matInput placeholder="Descripción"></textarea>
-              </mat-form-field>	
-                  
-              <mat-form-field>
-                <input matInput placeholder="Tiempo Estimado" >
-              </mat-form-field>
+        <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="example-container">
+                
+                <mat-form-field>
+                  <input matInput id="inputName" name="name" placeholder="Nombre" [(ngModel)]="name" required>
+                </mat-form-field>
+  
+                <mat-form-field>
+                  <textarea matInput name="description" placeholder="Descripción" [(ngModel)]="description"></textarea>
+                </mat-form-field>	
+  
+                <mat-form-field>
+                  <textarea matInput name="estimatedTime" placeholder="Tiempo Estimado" [(ngModel)]="estimatedTime"></textarea>
+                </mat-form-field>	
+          
+                <mat-form-field>
+                  <mat-select name="difficultyDegree" [(ngModel)]="difficultyDegreeSelected" placeholder="Seleccione un Grado de doficultad" required>
+                    <mat-option *ngFor="let difficultyDegree of difficultyDegrees" [value]="difficultyDegree.id">{{ difficultyDegree.name }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                
 
-              <mat-form-field>
-                <input matInput placeholder=" Grado de Dificultad" >
-              </mat-form-field>
-
-              
-              <mat-form-field [hidden]="true">
-                <input matInput  placeholder="Estatus" value="A">
-              </mat-form-field>
+              </div>
             </div>
-
           </div>
-        </div>
         
         <div class="row">
           <div class="col-sm-12">
             <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/service/activity/create']">Registrar</button>
           </div>
         </div>
+        </form>
       </div>
     </div>
   </div>

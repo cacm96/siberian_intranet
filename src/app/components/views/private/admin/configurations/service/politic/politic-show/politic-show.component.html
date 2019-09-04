@@ -1,14 +1,59 @@
+
 <div class="container">
-  <h2 class="text-center">Política</h2>
+  <h2 *ngIf="policy" class="text-center">{{ policy.name }}</h2>
   <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/service/politic']">Volver</button>
   <hr>
-  <mat-card>
-    <mat-list>
-      <mat-list-item> <b>Código: </b> 1</mat-list-item>
-      <mat-list-item> <b>Nombre:</b>Política 1</mat-list-item>
-      <mat-list-item> <b>Descripción:</b>El tiempo de duración del servicio</mat-list-item>
-      <mat-list-item> <b>Plan de Acción:</b>Plan de acción de la política 1</mat-list-item>
-      <mat-list-item> <b>Estatus:<span class="badge badge-primary">Activo</span></b></mat-list-item>
-    </mat-list>
+  <div *ngIf="policy">
+    <mat-card>
+      <div class="row">
+        <div class="col-sm-6">
+          <mat-list>
+            <h3 mat-subheader>Políticas</h3>
+            <mat-list-item><h4 mat-line><b>Nombre: </b> {{ policy.name }}</h4></mat-list-item>
+            <mat-list-item><h4 mat-line><b>Descripción: </b> {{ policy.description }}</h4></mat-list-item>
+            <mat-list-item><h4 mat-line><b>Plan de Acción: </b> {{ policy.actionPlan }}</h4></mat-list-item>
+            <mat-list-item *ngIf="policy.status=='active'"><h4 mat-line><b>Estatus:<span class="badge badge-success"> Activo</span></b></h4></mat-list-item>
+            <mat-list-item *ngIf="policy.status=='deleted'"><h4 mat-line><b>Estatus:<span class="badge badge-danger"> Borrado</span></b></h4></mat-list-item>
+          </mat-list>
+        </div>
+      </div>
+
+    </mat-card>
+
+    <br>
+
+    <mat-card>
+    <div *ngIf="policy.serviceDetails.length>0">
+      <mat-list>
+        <h3 mat-subheader>Servicio Detalle</h3>
+        <mat-list-item *ngFor="let serviceDetails of policy.serviceDetails">
+          <h4 mat-line>{{serviceDetails.name}}</h4>
+        </mat-list-item>
+      </mat-list>
+    </div>
+
+    <div *ngIf="policy.serviceDetails.length<=0">
+      <mat-list>
+        <h3 mat-subheader>Servicio Detalle</h3>
+        <mat-list-item><h4 mat-line>No tiene Servicio Detalle</h4></mat-list-item>
+      </mat-list>
+    </div>
   </mat-card>
+
+
+
+  </div>
+
+  <div *ngIf="!policy && !failedConect">
+    <div class="row">
+      <div class="col-sm-12 spinner">
+        <mat-spinner></mat-spinner>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="failedConect">
+    <h6 class="text-center">{{failedConect}}</h6>
+  </div>
+  
 </div>
