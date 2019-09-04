@@ -7,16 +7,18 @@ import { CatalogueService } from '../../../../../../core/services/client/catalog
 
 
 @Component({
-  selector: 'sib-variety',
-  templateUrl: './variety.component.html',
-  styleUrls: ['./variety.component.scss']
+	selector: 'sib-equipsinfras',
+	templateUrl: './equipsinfras.component.html',
+	styleUrls: ['./equipsinfras.component.scss']
 })
-export class VarietyComponent implements OnInit {
+export class EquipsinfrasComponent implements OnInit {
 
-	public varietys:any;
+	public equipsinfras:any;
 	public equipinfras:any;
+	public varietys:any;
 	public subcategory:any;
 	public category:any;
+	public IdEquipinfras:string;
 	public message:string;
 	public failedConect:string;
 
@@ -38,13 +40,49 @@ export class VarietyComponent implements OnInit {
 			params =>
 			{
 				let id = params.id;
-				this.getEquipinfras(id);
+				this.getSubcategory(id);
+				this.IdEquipinfras= localStorage.getItem('IdEquipinfras');
+				//this.getEquipinfras(this.IdEquipinfras);
 			}
 		);
 	}
 
 
-	getEquipinfras(id)
+	getSubcategory(id)
+	{
+		this._catalogueService.getSubcategory(id).subscribe
+		(
+			response =>
+			{
+				if (response.status==true)
+				{
+					this.equipsinfras = response.subcategory.equipinfras;
+					this.subcategory = response.subcategory;
+					this.category = response.subcategory.category;
+					console.log(this.equipsinfras);
+				}
+				else
+				{
+					this.message = response.message.text;
+					console.log(this.message);
+				}
+
+			},
+			error =>
+			{
+				console.log(<any>error);
+				if(error instanceof HttpErrorResponse)
+				{
+					if(error.status===0)
+					{
+						this.failedConect = Global.failed;
+					}
+				}
+			}
+			)
+	}
+
+	/*getEquipinfras(id)
 	{
 		this._catalogueService.getEquipinfras(id).subscribe
 		(
@@ -52,10 +90,8 @@ export class VarietyComponent implements OnInit {
 			{
 				if (response.status==true)
 				{
-					this.varietys = response.equipinfras.variety;
 					this.equipinfras = response.equipinfras;
-					this.subcategory = response.equipinfras.subcategory;
-					this.getSubcategory(this.subcategory.id)
+					this.varietys = response.equipinfras.variety;
 					console.log(response);
 				}
 				else
@@ -77,46 +113,15 @@ export class VarietyComponent implements OnInit {
 				}
 			}
 			)
-	}
-
-	getSubcategory(id)
-	{
-		this._catalogueService.getSubcategory(id).subscribe
-		(
-			response =>
-			{
-				if (response.status==true)
-				{
-					this.category = response.subcategory.category;
-				}
-				else
-				{
-					this.message = response.message.text;
-					console.log(this.message);
-				}
-
-			},
-			error =>
-			{
-				console.log(<any>error);
-				if(error instanceof HttpErrorResponse)
-				{
-					if(error.status===0)
-					{
-						this.failedConect = Global.failed;
-					}
-				}
-			}
-			)
-	}
+	}*/
 
 	goBack()
 	{ 
 		this._location.back(); 
     }
 
-    SetIdVariety(id){
-    	localStorage.setItem('IdVariety',id);
+    SetIdEquipinfras(id){
+    	localStorage.setItem('IdEquipinfras',id);
     }
 
 }

@@ -19,7 +19,7 @@ import { RoleService } from '../../../../../../../../core/services/admin/role.se
 })
 export class RolesComponent implements OnInit {
 
-  public roles:any;
+  public roles:Array < Role > = new Array < Role > ();
   public role:any;
   public message:string;
   public failedConect:string;

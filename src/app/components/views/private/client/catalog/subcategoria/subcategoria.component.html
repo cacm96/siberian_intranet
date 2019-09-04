@@ -9,138 +9,31 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-12">
-						<button mat-raised-button color="primary" [routerLink]="['/auth/client/catalog']">Volver</button>
+						<button mat-raised-button color="primary" (click)="goBack()">Volver</button>
 					</div>
 				</div>
 				<hr>
-				<div class="row">
-					<div class="col-md-4">
-						<a [routerLink]="['/auth/client/catalog/catalogs']">
-							<mat-card class="servicio">
-								<mat-card-header class="titulo mat-card-header-primary">
-									<mat-card-title>Albañilería</mat-card-title>
-								</mat-card-header>
-								<mat-card-content class="mat_card_content">
-									<div class="row">
-										<div class="offset-2 col-sm-8">
-											<img src="../../../../../../../assets/img/category/albanileria.png" alt="" class="card-img-top">
+				<div *ngIf="subcategories">
+					<div class="row">
+						<div class="col-md-3" *ngFor="let subcategory of subcategories">
+							<a [routerLink]="['/auth/client/catalog/category',category.id,'subcategory',subcategory.id]" (click)="SetNameSubcategory(subcategory.name)">
+								<mat-card class="servicio">
+									<mat-card-header class="titulo mat-card-header-primary">
+										<mat-card-title>{{ category.name }}</mat-card-title>
+									</mat-card-header>
+									<mat-card-content class="mat_card_content">
+										<div class="row">
+											<div class="offset-2 col-sm-8">
+												<img src="../../../../../../../assets/img/category/albanileria.png" alt="" class="card-img-top">
+												<br>
+												<br>
+												<p class="text-center"><b>{{ subcategory.name }}</b></p>
+											</div>
 										</div>
-									</div>
-								</mat-card-content>
-							</mat-card>
-						</a>
-					</div>
-					<div class="col-md-4">
-						<a [routerLink]="['/auth/client/catalog/catalogs']">
-							<mat-card class="servicio">
-								<mat-card-header class="titulo mat-card-header-primary">
-									<mat-card-title>Carpintería</mat-card-title>
-								</mat-card-header>
-								<mat-card-content class="mat_card_content">
-									<div class="row">
-										<div class="offset-2 col-sm-8">
-											<img src="../../../../../../../assets/img/category/carpinteria.png" alt="" class="card-img-top">
-										</div>
-									</div>
-								</mat-card-content>
-							</mat-card>
-						</a>
-					</div>
-					<div class="col-md-4">
-						<a [routerLink]="['/auth/client/catalog/catalogs']">
-							<mat-card class="servicio">
-								<mat-card-header class="titulo mat-card-header-primary">
-									<mat-card-title>Electricidad</mat-card-title>
-								</mat-card-header>
-								<mat-card-content class="mat_card_content">
-									<div class="row">
-										<div class="offset-2 col-sm-8">
-											<img src="../../../../../../../assets/img/category/electricidad1.png" alt="" class="card-img-top">
-										</div>
-									</div>
-								</mat-card-content>
-							</mat-card>
-						</a>
-					</div>
-					<div class="col-md-4">
-						<a [routerLink]="['/auth/client/catalog/catalogs']">
-							<mat-card class="servicio">
-								<mat-card-header class="titulo mat-card-header-primary">
-									<mat-card-title>Electrodoméstico</mat-card-title>
-								</mat-card-header>
-								<mat-card-content class="mat_card_content">
-									<div class="row">
-										<div class="offset-2 col-sm-8">
-											<img src="../../../../../../../assets/img/category/electrodomestico4.png" alt="" class="card-img-top">
-										</div>
-									</div>
-								</mat-card-content>
-							</mat-card>
-						</a>
-					</div>
-					<div class="col-md-4">
-						<a [routerLink]="['/auth/client/catalog/catalogs']">
-							<mat-card class="servicio">
-								<mat-card-header class="titulo mat-card-header-primary">
-									<mat-card-title>Limpieza</mat-card-title>
-								</mat-card-header>
-								<mat-card-content class="mat_card_content">
-									<div class="row">
-										<div class="offset-2 col-sm-8">
-											<img src="../../../../../../../assets/img/category/limpieza.png" alt="" class="card-img-top">
-										</div>
-									</div>
-								</mat-card-content>
-							</mat-card>
-						</a>
-					</div>
-					<div class="col-md-4">
-						<a [routerLink]="['/auth/client/catalog/catalogs']">
-							<mat-card class="servicio">
-								<mat-card-header class="titulo mat-card-header-primary">
-									<mat-card-title>Pintura</mat-card-title>
-								</mat-card-header>
-								<mat-card-content class="mat_card_content">
-									<div class="row">
-										<div class="offset-2 col-sm-8">
-											<img src="../../../../../../../assets/img/category/pintura.png" alt="" class="card-img-top">
-										</div>
-									</div>
-								</mat-card-content>
-							</mat-card>
-						</a>
-					</div>
-					<div class="col-md-4">
-						<a [routerLink]="['/auth/client/catalog/catalogs']">
-							<mat-card class="servicio">
-								<mat-card-header class="titulo mat-card-header-primary">
-									<mat-card-title>Plomería</mat-card-title>
-								</mat-card-header>
-								<mat-card-content class="mat_card_content">
-									<div class="row">
-										<div class="offset-2 col-sm-8">
-											<img src="../../../../../../../assets/img/category/plomeria.png" alt="" class="card-img-top">
-										</div>
-									</div>
-								</mat-card-content>
-							</mat-card>
-						</a>
-					</div>
-					<div class="col-md-4">
-						<a [routerLink]="['/auth/client/catalog/catalogs']">
-							<mat-card class="servicio">
-								<mat-card-header class="titulo mat-card-header-primary">
-									<mat-card-title>Refrigeración</mat-card-title>
-								</mat-card-header>
-								<mat-card-content class="mat_card_content">
-									<div class="row">
-										<div class="offset-2 col-sm-8">
-											<img src="../../../../../../../assets/img/category/refrigeracion.png" alt="" class="card-img-top">
-										</div>
-									</div>
-								</mat-card-content>
-							</mat-card>
-						</a>
+									</mat-card-content>
+								</mat-card>
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>

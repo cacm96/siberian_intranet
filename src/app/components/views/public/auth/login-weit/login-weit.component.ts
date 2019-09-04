@@ -21,11 +21,11 @@ export class LoginWeitComponent implements OnInit {
 	{
 		this.role=this._authService.getRole();
 		var actualRoute = window.location.origin;
-		if (this.role=="client")	
+		if (this.role=="3")	
 			window.location.replace(actualRoute+'/auth/client/dashboard');
-		else if (this.role=="lender")
+		else if (this.role=="2")
 			window.location.replace(actualRoute+'/auth/lender/dashboard');
-		else if (this.role=="admin")
+		else if (this.role=="1")
 			window.location.replace(actualRoute+'/auth/admin/dashboard');
 		else
 			window.location.replace(actualRoute+'/auth');
