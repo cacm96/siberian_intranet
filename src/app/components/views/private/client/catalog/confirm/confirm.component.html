@@ -17,7 +17,7 @@
 					<div class="col-sm-12">
 						<mat-card class="servicio">
 							<mat-card-header class="titulo">
-								<mat-card-title>{{ equipinfras.name }} </mat-card-title>
+								<mat-card-title>{{ equipinfrasName }} </mat-card-title>
 							</mat-card-header>
 							<mat-card-content class="mat_card_content">
 								<div class="row">
@@ -25,15 +25,15 @@
 										<img src="../../../../assets/img/catalogue/aire.png" alt="" class="card-img-top">
 									</div>
 									<div class="col-sm-6">
-										<b>Marca: </b> {{ variety.name }}
+										<b>Marca: </b> {{ varietyName }}
 										<br>
-										<b>Modelo: </b>{{ NameVarietyDetail }}
+										<b>Modelo: </b>{{ varietyDetailName }}
 										<br>
-										<b>Descripción: </b> {{ DescriptionVarietyDetail }}
+										<b>Descripción: </b> {{ varietyDetailDescription }}
 										<br>
-										<b>Categoría: </b> {{ category.name }}
+										<b>Categoría: </b> {{ categoryName }}
 										<br>
-										<b>Sub Categoría: </b>{{ subcategory.name }}
+										<b>Sub Categoría: </b>{{ subcategoryName }}
 									</div>
 								</div>
 							</mat-card-content>
@@ -41,7 +41,7 @@
 								<div class="container">
 									<div class="row">
 										<div class="col-sm-12">
-											<button mat-raised-button color="primary" [routerLink]="['/auth/client/request/stepper']">Solicitar</button>
+											<button mat-raised-button color="primary" [routerLink]="['/auth/client/request/stepper',{data: requestParams}]">Solicitar</button>
 										</div>
 									</div>
 								</div>

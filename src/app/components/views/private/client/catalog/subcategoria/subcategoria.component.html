@@ -16,7 +16,7 @@
 				<div *ngIf="subcategories">
 					<div class="row">
 						<div class="col-md-3" *ngFor="let subcategory of subcategories">
-							<a [routerLink]="['/auth/client/catalog/category',category.id,'subcategory',subcategory.id]" (click)="SetIdSubcategory(subcategory.id)">
+							<a [routerLink]="['/auth/client/catalog/category',category.id,'subcategory',subcategory.id]" (click)="SetNameSubcategory(subcategory.name)">
 								<mat-card class="servicio">
 									<mat-card-header class="titulo mat-card-header-primary">
 										<mat-card-title>{{ category.name }}</mat-card-title>

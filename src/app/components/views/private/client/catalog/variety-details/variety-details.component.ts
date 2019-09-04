@@ -43,7 +43,6 @@ export class VarietyDetailsComponent implements OnInit {
 				this.IdEquipinfras= localStorage.getItem('IdEquipinfras');
 				this.IdVariety = parseInt(id);
 				this.getEquipinfras(this.IdEquipinfras);
-				console.log(id);
 			}
 		);
 	}
@@ -58,6 +57,7 @@ export class VarietyDetailsComponent implements OnInit {
 				if (response.status==true)
 				{
 					this.equipinfras = response.equipinfras;
+					console.log(this.equipinfras);
 					this.varietys = response.equipinfras.variety;
 					for (var i=0; i<this.varietys.length; i++)
 					{

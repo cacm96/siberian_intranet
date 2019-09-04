@@ -19,7 +19,7 @@
 
 						<div class="row">
 							<div class="col-md-4" *ngFor="let varietyDetail of varietyDetails">
-								<a [routerLink]="['/auth/client/catalog/confirm']" (click)="SetIdVarietyDetail(varietyDetail.name,varietyDetail.description)">
+								<a [routerLink]="['/auth/client/catalog/confirm',{equipinfrasName:equipinfras.name, subcategoryName:equipinfras.subcategory.name, varietyName:variety.name,varietyDetailName:varietyDetail.name,varietyDetailDescription:varietyDetail.description}]">
 									<mat-card class="servicio">
 										<mat-card-header class="titulo mat-card-header-primary">
 											<mat-card-title>{{ variety.name }}</mat-card-title>
