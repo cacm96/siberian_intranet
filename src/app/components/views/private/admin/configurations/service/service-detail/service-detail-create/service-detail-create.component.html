@@ -13,45 +13,44 @@
 			</div>
 			<hr>
 			
-			<div class="row">
-				<div class="col-sm-12">
+			<form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+				<div class="row">
+				  <div class="col-sm-12">
 					<div class="example-container">
-						<mat-form-field>
-							<input matInput required placeholder="Nombre">
-						</mat-form-field>
-						
-						<mat-form-field>
-							<mat-select required placeholder="Componente" >
-								<mat-option value="option">Hornilla</mat-option>
-								<mat-option value="option">Regulador</mat-option>
-								<mat-option value="option">Chispa de Encender</mat-option>
-							</mat-select>
-						</mat-form-field>
-            
-						<mat-form-field>
-							<input matInput placeholder="Precio Estimado">
-						</mat-form-field>		
-						
-						<mat-form-field>
-							<input matInput placeholder="Tiempo Estimado de Garantía">
-						</mat-form-field>	
+		
+					  <mat-form-field>
+						<input matInput id="inputName" name="name" placeholder="Nombre" [(ngModel)]="name" required>
+					  </mat-form-field>
 
-						<mat-form-field>
-							<input matInput placeholder="Nota">
-						</mat-form-field>
-						
-						<mat-form-field [hidden]="true">
-							<input matInput  placeholder="Estatus" value="A">
-						</mat-form-field>
+		
+					  <mat-form-field>
+						<textarea matInput name="note" placeholder="Nota" [(ngModel)]="note" ></textarea>
+					  </mat-form-field>
+					  
+	                  <mat-form-field>
+						<mat-select name="ComponentId" [(ngModel)]="ComponentId" placeholder="Seleccione un Componente" required>
+						  <mat-option *ngFor="let componentt of components" [value]="componentt.id">{{ componentt.name }}</mat-option>
+						</mat-select>
+					  </mat-form-field>
+
+					  <mat-form-field>
+						<textarea matInput name="estimatedPrice" placeholder="Precio Estimado" [(ngModel)]="estimatedPrice"></textarea>
+					  </mat-form-field>
+	  
+					  <mat-form-field>
+						<textarea matInput name="estimatedWarrantyTime" placeholder="Tiempo Estimado de Garantia" [(ngModel)]="estimatedWarrantyTime"></textarea>
+					  </mat-form-field>
+					  
 					</div>
 				</div>
-			</div>
-			
+			  </div>
+					  
 			<div class="row">
 				<div class="col-sm-12">
 					<button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/service/service-detail/create']">Registrar</button>
 				</div>
 			</div>
+		</form>
 		</div>
 	</div>
 </div>

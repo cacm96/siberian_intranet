@@ -5,15 +5,13 @@ import { MatTableDataSource } from '@angular/material/table';
 import { DialogService } from '../../../../../../../../core/services/dialog.service';
 import { SnackBarService } from '../../../../../../../../core/services/snack-bar.service';
 
-export interface ServiceDetailData {
-  id: string;
-  name: string;
-  idComponent: string;
-  estimated_price: string;
-  estimated_warranty_time: string;
-  note: string;
-  status: string;
-}
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import {Location} from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Global } from '../../../../../../../../core/services/global';
+import { ServiceDetail } from '../../../../../../../../models/serviceDetail';
+import { ServiceDetailService } from '../../../../../../../../core/services/admin/serviceDetail.service';
+
 
 @Component({
   selector: 'sib-service-details',
@@ -23,40 +21,70 @@ export interface ServiceDetailData {
 
 export class ServiceDetailsComponent implements OnInit {
 
-  public serviceDetail:any[];
-  displayedColumns: string[] = [ 
-    'id',
-    'name',
-    'idComponent',
-    'estimated_price',
-    'estimated_warranty_time',
-    'note',
-    'status',
-    'edit',
-    'delete'];
-  dataSource: MatTableDataSource<ServiceDetailData>;
-  
+
+  public serviceDetails:Array < ServiceDetail > = new Array < ServiceDetail > ();
+  public message:string;
+  public failedConect:string;
+
+  displayedColumns: string[] = ['id','name','estimatedPrice','estimatedWarrantyTime','note','status','edit','delete'];
+  dataSource: MatTableDataSource <ServiceDetail>;
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
-	@ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatSort) sort: MatSort;
+
+
 
   constructor(
     private dialogService: DialogService,
-		private snackBar: SnackBarService
+    private snackBar: SnackBarService,
+    private _serviceDetailService: ServiceDetailService,
+    private _route: ActivatedRoute,
+    private _router: Router,
+    private _location: Location
   ) { 
-    this.serviceDetail = [
-      {id:"1",name:"Reparación de Cocina",idComponent:"Hornilla",estimated_price: "20000bs",estimated_warranty_time:"7 Dias",note:"Urgente",status:"A"},
-      {id:"2",name:"Reparación de Nevera",idComponent:"Motor",estimated_price:"35000bs",estimated_warranty_time:"25 Día",idEquipinfras:"Nevera",idCatalogue:"Linea Blanca",note:"Sin prisa",status:"E"},
-    ];
-
-  this.dataSource = new MatTableDataSource(this.serviceDetail);
+    
   }
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-		this.dataSource.sort = this.sort;
+    this.getServiceDetails();
   }
 
-  applyFilter(filterValue: string) {
+  getServiceDetails()
+  {
+    this._serviceDetailService.All().subscribe
+    (
+      response =>
+      {
+        if (response.status==true)
+        {
+          this.serviceDetails = response.serviceDetails;
+          console.log(this.serviceDetails);
+          this.table();
+        }
+        else
+        {
+          this.serviceDetails = [];
+          this.message = response.message.text;
+          console.log(this.message);
+          this.table();
+        }
+
+      },
+      error =>
+      {
+        console.log(<any>error);
+        if(error instanceof HttpErrorResponse)
+        {
+          if(error.status===0)
+          {
+            this.failedConect = Global.failed;
+          }
+        }
+      }
+      )
+  }
+
+	applyFilter(filterValue: string) {
 		this.dataSource.filter = filterValue.trim().toLowerCase();
 
 		if (this.dataSource.paginator) {
@@ -64,17 +92,46 @@ export class ServiceDetailsComponent implements OnInit {
 		}
 	}
 
-	onDelete(id){
-		this.dialogService.openConfirmDialog('¿Estas seguro de eliminar el Detalle de Servicio '+id+' ?').afterClosed().subscribe(res=>{
-			if (res==true) {
-				console.log(id);
-				this.snackBar.openSnackBar('Eliminado Correctamente','¿Deshacer?').onAction().subscribe(() => {
-				  console.log('Recuperado');
-				});
-			}else{
-				console.log(res);
-			}
-		});
-	}
+	table()
+  {
+    this.dataSource = new MatTableDataSource(this.serviceDetails);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+	onDelete(id)
+  {
+    this.dialogService.openConfirmDialog('¿Estás seguro de eliminar este Servicio Detalle?').afterClosed().subscribe
+    (
+      response =>
+      {
+        if (response==true)
+        {
+          this.deleteServiceDetail(id);
+        }else
+        {
+          console.log(response);
+        }
+      }
+      );
+  }
+
+  deleteServiceDetail(id)
+  {
+    this._serviceDetailService.deleteOne(id).subscribe
+    (
+      response =>
+      {
+        console.log(response);
+        this.message = response.message.text;
+        this.snackBar.openSnackBarSuccess(this.message);
+        this.getServiceDetails();
+      },
+      error =>
+      {
+        console.log(<any>error);
+      }
+      )
+  }
 
 }

@@ -1,13 +1,58 @@
+
 <div class="container">
-  <h2 class="text-center">Variedad</h2>
+  <h2 *ngIf="variety" class="text-center">{{ variety.name }}</h2>
   <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/equipinfras/variety']">Volver</button>
   <hr>
-  <mat-card>
-    <mat-list>
-      <mat-list-item> <b>ID: </b> 1</mat-list-item>
-      <mat-list-item> <b>Nombre:</b> Easy</mat-list-item>
-      <mat-list-item> <b>Descripción:</b> LAVADORA 11 KG</mat-list-item>
-      <mat-list-item> <b>Estatus:<span class="badge badge-primary"> Activo</span></b></mat-list-item>
-    </mat-list>
+  <div *ngIf="variety">
+    <mat-card>
+      <div class="row">
+        <div class="col-sm-6">
+          <mat-list>
+            <h3 mat-subheader>Variedad</h3>
+            <mat-list-item><h4 mat-line><b>Nombre: </b> {{ variety.name }}</h4></mat-list-item>
+            <mat-list-item><h4 mat-line><b>Descripción: </b> {{ variety.description }}</h4></mat-list-item>
+            <mat-list-item *ngIf="variety.status=='active'"><h4 mat-line><b>Estatus:<span class="badge badge-success"> Activo</span></b></h4></mat-list-item>
+            <mat-list-item *ngIf="variety.status=='deleted'"><h4 mat-line><b>Estatus:<span class="badge badge-danger"> Borrado</span></b></h4></mat-list-item>
+          </mat-list>
+        </div>
+      </div>
+
+    </mat-card>
+
+    <br>
+
+    <mat-card>
+    <div *ngIf="variety.equipinfras.length>0">
+      <mat-list>
+        <h3 mat-subheader>Equipo/Infraestructura</h3>
+        <mat-list-item *ngFor="let equipinfras of variety.equipinfras">
+          <h4 mat-line>{{equipinfras.name}}</h4>
+        </mat-list-item>
+      </mat-list>
+    </div>
+
+    <div *ngIf="variety.equipinfras.length<=0">
+      <mat-list>
+        <h3 mat-subheader>Equipo/Infraestructura</h3>
+        <mat-list-item><h4 mat-line>No tiene variedad</h4></mat-list-item>
+      </mat-list>
+    </div>
   </mat-card>
+
+
+
+  </div>
+
+  <div *ngIf="!variety && !failedConect">
+    <div class="row">
+      <div class="col-sm-12 spinner">
+        <mat-spinner></mat-spinner>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="failedConect">
+    <h6 class="text-center">{{failedConect}}</h6>
+  </div>
+  
 </div>

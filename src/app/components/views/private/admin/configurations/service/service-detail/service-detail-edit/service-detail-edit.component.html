@@ -13,44 +13,64 @@
 			</div>
 			<hr>
 			
-			<div class="row">
-				<div class="col-sm-12">
-					<div class="example-container">
-						<mat-form-field>
-							<input matInput required placeholder="Nombre">
-						</mat-form-field>
-						
-						<mat-form-field>
-							<mat-select placeholder="Componente" required>
-								<mat-option value="option">Hornilla</mat-option>
-								<mat-option value="option">Regulador</mat-option>
-								<mat-option value="option">Chispa de Encender</mat-option>
-							</mat-select>
-						</mat-form-field>
-            
-						<mat-form-field>
-							<input matInput placeholder="Precio Estimado">
-						</mat-form-field>
+			<div *ngIf="serviceDetail">
 
-						<mat-form-field>
-							<input matInput placeholder="Tiempo Estimado de Garantía">
-						</mat-form-field>
+				<form #updateForm="ngForm" (ngSubmit)="update(updateForm)">
+		
+				  <div class="row">
+					<div class="col-sm-12">
+					  <div class="example-container">
 						
 						<mat-form-field>
-							<input matInput placeholder="Nota">
-						</mat-form-field>	
-						
-						<mat-form-field [hidden]="true">
-							<input matInput  placeholder="Estatus" value="A">
+						  <input matInput id="inputName" name="name" placeholder="Nombre" [(ngModel)]="serviceDetail.name" required>
 						</mat-form-field>
+	  
+						<mat-form-field>
+						  <textarea matInput name="note" placeholder="Nota" [(ngModel)]="serviceDetail.note" required></textarea>
+						</mat-form-field> 
+					   
+					     <mat-form-field>
+							<mat-select name="component" [(ngModel)]="serviceDetail.component.id" placeholder="Seleccione un Componente" required>
+							  <mat-option *ngFor="let component of components" [value]="component.id">{{ component.name }}</mat-option>
+							</mat-select>
+						  </mat-form-field>
+		
+						<mat-form-field>
+							<input matInput  name="estimatedPrice" placeholder="Precio Estimado" [(ngModel)]="serviceDetail.estimatedPrice" required>
+						  </mat-form-field>
+
+						  <mat-form-field>
+							<input matInput  name="estimatedWarrantyTime" placeholder="Tiempo Estimado de Garantía" [(ngModel)]="serviceDetail.estimatedWarrantyTime" required>
+						  </mat-form-field>
+		
+	  
+						
+		
+						
+					  </div>
 					</div>
-				</div>
-			</div>
-			
-			<div class="row">
+				  </div>
+	  
+			  
+			  <div class="row">
 				<div class="col-sm-12">
-					<button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/service/service-detail/edit/1']">Guardar</button>
+				  <button mat-raised-button color="primary" type="submit">Guardar</button>
 				</div>
+			  </div>
+			</form>
+	  
+			</div>
+	  
+			<div *ngIf="!serviceDetail && !failedConect">
+			  <div class="row">
+				<div class="col-sm-12 spinner">
+				  <mat-spinner></mat-spinner>
+				</div>
+			  </div>
+			</div>
+	  
+			<div *ngIf="failedConect">
+			  <h6 class="text-center">{{failedConect}}</h6>
 			</div>
 		</div>
 	</div>

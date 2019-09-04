@@ -1,15 +1,59 @@
-
-  <div class="container">
-    <h2 class="text-center">Equipo/Infraestructura</h2>
+<div class="container">
+    <h2 *ngIf="equipinfras" class="text-center">{{ equipinfras.name }}</h2>
     <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/equipinfras/equip-infras']">Volver</button>
     <hr>
-    <mat-card>
-      <mat-list>
-        <mat-list-item> <b>Código: </b> 1</mat-list-item>
-        <mat-list-item> <b>Nombre:</b> Pared</mat-list-item>
-        <mat-list-item> <b>Descripción:</b>	Pared de hogares y oficinas</mat-list-item>
-        <mat-list-item> <b>Imagen: </b> url1</mat-list-item>
-        <mat-list-item> <b>Estatus:<span class="badge badge-primary"> Activo</span></b></mat-list-item>
-      </mat-list>
+    <div *ngIf="equipinfras">
+      <mat-card>
+        <div class="row">
+          <div class="col-sm-6">
+            <mat-list>
+              <h3 mat-subheader>Equipo/Infraestructura</h3>
+              <mat-list-item><h4 mat-line><b>Nombre: </b> {{ equipinfras.name }}</h4></mat-list-item>
+              <mat-list-item><h4 mat-line><b>Imagen: </b> {{ equipinfras.image_url }}</h4></mat-list-item>
+              <mat-list-item><h4 mat-line><b>Descripción: </b> {{ equipinfras.description }}</h4></mat-list-item>
+              <mat-list-item><h4 mat-line><b>Subcagoría: </b> {{ equipinfras.subcategory.name }}</h4></mat-list-item>
+              <mat-list-item *ngIf="equipinfras.status=='active'"><h4 mat-line><b>Estatus:<span class="badge badge-success"> Activo</span></b></h4></mat-list-item>
+              <mat-list-item *ngIf="equipinfras.status=='deleted'"><h4 mat-line><b>Estatus:<span class="badge badge-danger"> Borrado</span></b></h4></mat-list-item>
+            </mat-list>
+          </div>
+        </div>
+  
+      </mat-card>
+  
+      <br>
+  
+      <mat-card>
+      <div *ngIf="equipinfras.variety.length>0">
+        <mat-list>
+          <h3 mat-subheader>Variedad</h3>
+          <mat-list-item *ngFor="let variety of equipinfras.variety">
+            <h4 mat-line>{{variety.name}}</h4>
+          </mat-list-item>
+        </mat-list>
+      </div>
+  
+      <div *ngIf="equipinfras.variety.length<=0">
+        <mat-list>
+          <h3 mat-subheader>Variedad</h3>
+          <mat-list-item><h4 mat-line>No tiene variedad</h4></mat-list-item>
+        </mat-list>
+      </div>
     </mat-card>
+  
+
+  
+    </div>
+  
+    <div *ngIf="!equipinfras && !failedConect">
+      <div class="row">
+        <div class="col-sm-12 spinner">
+          <mat-spinner></mat-spinner>
+        </div>
+      </div>
+    </div>
+  
+    <div *ngIf="failedConect">
+      <h6 class="text-center">{{failedConect}}</h6>
+    </div>
+    
   </div>
