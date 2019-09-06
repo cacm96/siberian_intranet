@@ -54,7 +54,6 @@ export class SubCategoryEditComponent implements OnInit {
 			response =>
 			{
 				this.categories = response.categories;
-				console.log(this.categories);
 			},
 			error =>
 			{
@@ -95,6 +94,7 @@ export class SubCategoryEditComponent implements OnInit {
 
 	update(form: NgForm)
 	{
+		this.subcategory.CategoryId = form.value.CategoryId;
 		if(form.valid)
 		{
 			this._subcategoryService.update(this.subcategory).subscribe
@@ -105,6 +105,7 @@ export class SubCategoryEditComponent implements OnInit {
 					{
 						this.message  = response.message.text;
 						this.snackBar.openSnackBar(this.message,'');
+						this.getSubcategory(this.subcategory.id);
 					}
 					else
 					{
