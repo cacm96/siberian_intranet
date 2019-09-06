@@ -48,7 +48,7 @@ export class ConfirmComponent implements OnInit {
     (
       params =>
       {
-        this.requestParams = params;
+        this.requestParams = JSON.stringify(params);
         console.log(this.requestParams);
         this.categoryName= localStorage.getItem('categoryName');;
         this.subcategoryName= params.subcategoryName;

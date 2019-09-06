@@ -99,3 +99,17 @@ display: inline-block;
 .lender_available.open{
   display:block;
 }
+
+
+
+a{
+  cursor:pointer;
+}
+
+.addLocation,.addPhone{
+  color: #283593 !important;
+}
+
+.addLocation:hover,.addPhone:hover{
+  color: blue !important;
+}
