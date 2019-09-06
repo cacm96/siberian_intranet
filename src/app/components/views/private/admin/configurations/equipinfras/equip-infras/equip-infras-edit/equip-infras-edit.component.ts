@@ -20,7 +20,6 @@ export class EquipInfrasEditComponent implements OnInit {
   public equipinfras:Equipinfras;
   public subcategories:any;
   public types:any[];
-  //public updateEquipinfras:any;
   public failedConect:string;
   public message:string;
 
@@ -99,8 +98,7 @@ this._route.params.subscribe
 	}
 
 	update(form: NgForm)
-	{
-		console.log(form.value);
+	{    this.equipinfras.SubcategoryId = form.value.SubcategoryId;
 		if(form.valid)
 		{
 			this._equipinfrasService.update(this.equipinfras).subscribe
@@ -131,4 +129,5 @@ this._route.params.subscribe
 		}
 		
 	}
+
 }

@@ -18,7 +18,6 @@ import { SnackBarService } from '../../../../../../../../core/services/snack-bar
 export class ServiceDetailEditComponent implements OnInit {
   public serviceDetail:ServiceDetail;
   public components:any;
-  //public updateEquipinfras:any;
   public failedConect:string;
   public message:string;
 
@@ -94,7 +93,7 @@ export class ServiceDetailEditComponent implements OnInit {
 	}
 
 	update(form: NgForm)
-	{
+	{  this.serviceDetail.ComponentId = form.value.ComponentId;
 		if(form.valid)
 		{
 			this._serviceDetailService.update(this.serviceDetail).subscribe
@@ -110,6 +109,7 @@ export class ServiceDetailEditComponent implements OnInit {
 					{
 						this.message  = response.message.text;
 						this.snackBar.openSnackBar(this.message,'');
+						this.getServiceDetails(this.serviceDetail.id);
 					}
 				},
 				error =>
