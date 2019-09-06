@@ -26,7 +26,7 @@ export class ServiceDetailsComponent implements OnInit {
   public message:string;
   public failedConect:string;
 
-  displayedColumns: string[] = ['id','name','estimatedPrice','estimatedWarrantyTime','note','status','edit','delete'];
+  displayedColumns: string[] = ['id','name','note','estimatedPrice','estimatedWarrantyTime','status','edit','delete'];
   dataSource: MatTableDataSource <ServiceDetail>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

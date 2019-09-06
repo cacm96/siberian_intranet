@@ -35,7 +35,7 @@
               
 
                   <mat-form-field>
-                    <mat-select name="SubcategoryId" [(ngModel)]="equipinfras.SubcategoryId" placeholder="Seleccione una Subategoría" required>
+                    <mat-select name="SubcategoryId" [(ngModel)]="equipinfras.subcategory.id" placeholder="Seleccione una Subategoría" required>
                       <mat-option *ngFor="let subcategory of subcategories" [value]="subcategory.id">{{ subcategory.name }}</mat-option>
                     </mat-select>
                   </mat-form-field>

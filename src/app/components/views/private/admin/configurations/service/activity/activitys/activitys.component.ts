@@ -24,7 +24,7 @@ export class ActivitysComponent implements OnInit {
   public message:string;
   public failedConect:string;
 
-  displayedColumns: string[] = ['id','name','description','estimatedTime','difficultyDegree','status','edit','delete'];
+  displayedColumns: string[] = ['id', 'name', 'description', 'estimatedTime', 'difficultyDegree','status','edit','delete'];
   dataSource: MatTableDataSource <Activity>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

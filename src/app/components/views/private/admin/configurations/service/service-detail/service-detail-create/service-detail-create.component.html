@@ -17,7 +17,13 @@
 				<div class="row">
 				  <div class="col-sm-12">
 					<div class="example-container">
-		
+					  
+					<mat-form-field>
+                         <mat-select name="ComponentId" [(ngModel)]="ComponentId" placeholder="Seleccione un Componente" required>
+							  <mat-option *ngFor="let componentt of components" [value]="componentt.id">{{ componentt.name }}</mat-option>
+						 </mat-select>
+					</mat-form-field>
+
 					  <mat-form-field>
 						<input matInput id="inputName" name="name" placeholder="Nombre" [(ngModel)]="name" required>
 					  </mat-form-field>
@@ -26,19 +32,13 @@
 					  <mat-form-field>
 						<textarea matInput name="note" placeholder="Nota" [(ngModel)]="note" ></textarea>
 					  </mat-form-field>
-					  
-	                  <mat-form-field>
-						<mat-select name="ComponentId" [(ngModel)]="ComponentId" placeholder="Seleccione un Componente" required>
-						  <mat-option *ngFor="let componentt of components" [value]="componentt.id">{{ componentt.name }}</mat-option>
-						</mat-select>
-					  </mat-form-field>
 
 					  <mat-form-field>
-						<textarea matInput name="estimatedPrice" placeholder="Precio Estimado" [(ngModel)]="estimatedPrice"></textarea>
+						<input matInput name="estimatedPrice" placeholder="Precio Estimado" [(ngModel)]="estimatedPrice">
 					  </mat-form-field>
 	  
 					  <mat-form-field>
-						<textarea matInput name="estimatedWarrantyTime" placeholder="Tiempo Estimado de Garantia" [(ngModel)]="estimatedWarrantyTime"></textarea>
+						<input matInput name="estimatedWarrantyTime" placeholder="Tiempo Estimado de Garantia" [(ngModel)]="estimatedWarrantyTime">
 					  </mat-form-field>
 					  
 					</div>
