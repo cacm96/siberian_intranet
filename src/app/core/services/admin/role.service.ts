@@ -10,6 +10,7 @@ import { Role } from '../../../models/role';
 export class RoleService extends HeaderService{
 
 	url: string = environment.api + 'role';
+	url2: string = environment.api + 'user';
 
 
 	constructor(
@@ -42,6 +43,10 @@ export class RoleService extends HeaderService{
 
 	deleteOne(id): Observable<any>{
 		return this.http.delete(this.url+"/"+id, {headers: this.header});
+	}
+
+	changeRole(uid,rid): Observable<any>{
+		return this.http.put(this.url2+'/'+uid+'/role/'+rid, {headers: this.header});
 	}
 
 }

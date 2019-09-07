@@ -99,6 +99,93 @@ export class UserActivesComponent implements OnInit {
 	}
 
 	onDesactive(id){
+		this.dialogService.openConfirmDialog('¿Estás seguro de eliminar el Usuario?').afterClosed().subscribe
+		(
+			response =>
+			{
+				if (response==true)
+				{
+					this.getUser(id);
+				}else
+				{
+					console.log(response);
+				}
+			}
+		);
+	}
+
+	getUser(id)
+	{
+		this._userService.getOne(id).subscribe
+		(
+			response =>
+			{
+				this.user = response;
+				this.user = this.user.user;
+				this.update(this.user);
+			},
+			error =>
+			{
+				console.log(<any>error);
+			}
+		)
+	}
+
+	update(user)
+	{
+		this.user.status = 'inactive';
+		this._userService.update(this.user).subscribe
+		(
+			response =>
+			{
+				if(response.status==true)
+				{
+					this.updateUser = response.user;
+					this.snackBar.openSnackBar('Eliminado Correctamente','¿Deshacer?').onAction().subscribe
+					(
+						() =>
+						{
+							this.user.status = 'active';
+							this._userService.update(this.user).subscribe
+							(
+								response =>
+								{
+									if(response.status==true)
+									{
+										this.updateUser = response.user;
+										this.getUsers();
+										this.message = "Usuario Recuperado Correctamente";
+										this.snackBar.openSnackBar(this.message,'');
+									}
+									else
+									{
+										this.message  = response.message.text;
+										this.snackBar.openSnackBar(this.message,'');
+									}
+
+								}
+							);
+						}
+					);
+					this.getUsers();
+				}
+				else
+				{
+					this.message  = response.message.text;
+					this.snackBar.openSnackBar(this.message,'');
+				}
+			},
+			error =>
+			{
+				console.log(error);
+				this.message  = error.error.message;
+				this.snackBar.openSnackBar(this.message,'');
+			}
+		);
+	}
+
+
+/*	onDesactive(id){
 		this.dialogService.openConfirmDialog('¿Estás seguro de desactivar este usuario?').afterClosed().subscribe
 		(
 			response =>
@@ -153,6 +240,6 @@ export class UserActivesComponent implements OnInit {
 				console.log(<any>error);
 			}
 		);
-	}
+	}*/
 
 }
