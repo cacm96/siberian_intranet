@@ -14,6 +14,7 @@ export class User{
 	dateOfBirth:string;
 	img_url:string;
 	note:string;
+	roleId:string;
 	status:string;
 	create_at:string;
 	update_at:string;

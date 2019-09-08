@@ -101,6 +101,7 @@ export class UserCreateComponent implements OnInit {
 					if (response.status==true)
 					{
 						console.log(response);
+						form.reset();
 						this.message = response.message.text;
 						this.messageSnackBar(this.message);
 					}

@@ -98,7 +98,7 @@ export class UserActivesComponent implements OnInit {
 		this.dataSource.sort = this.sort;
 	}
 
-	onDesactive(id){
+/*	onDesactive(id){
 		this.dialogService.openConfirmDialog('¿Estás seguro de eliminar el Usuario?').afterClosed().subscribe
 		(
 			response =>
@@ -182,10 +182,10 @@ export class UserActivesComponent implements OnInit {
 				this.snackBar.openSnackBar(this.message,'');
 			}
 		);
-	}
+	}*/
 
 
-/*	onDesactive(id){
+	onDesactive(id){
 		this.dialogService.openConfirmDialog('¿Estás seguro de desactivar este usuario?').afterClosed().subscribe
 		(
 			response =>
@@ -208,6 +208,7 @@ export class UserActivesComponent implements OnInit {
 			response =>
 			{
 				console.log(response);
+				this.getUsers();
 				this.message = response.message.text;
 				this.snackBar.openSnackBar(this.message,'¿Deshacer?').onAction().subscribe
 				(
@@ -240,6 +241,6 @@ export class UserActivesComponent implements OnInit {
 				console.log(<any>error);
 			}
 		);
-	}*/
+	}
 
 }

@@ -16,8 +16,8 @@
 		<div class="col-sm-12">
 			<mat-tab-group>
 			  <!-- <mat-tab label="Todos"> <sib-user-alls></sib-user-alls> </mat-tab> -->
-			  <mat-tab label="Activos"> <sib-user-actives (active)="cargarUsersActives()"></sib-user-actives> </mat-tab>
-			  <mat-tab label="Inactivos"> <sib-user-inactives (active)="cargarUsersInactives()"></sib-user-inactives> </mat-tab>
+			  <mat-tab label="Activos"> <sib-user-actives (click)="getUsers()"></sib-user-actives> </mat-tab>
+			  <mat-tab label="Inactivos"> <sib-user-inactives (click)="getUsers()"></sib-user-inactives> </mat-tab>
 			</mat-tab-group>
 		</div>
 	</div>
