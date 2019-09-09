@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -24,6 +24,11 @@ export class UsersComponent implements OnInit {
 	public users: Array < User > = new Array < User > ();
 	public message:string;
 	public failedConect:string;
+	
+	@Input()
+	inactiveOutputRecived:number;
+	@Input()
+	recoverOutputRecived:number;
 
 	displayedColumns: string[] = ['id', 'email','firstName','lastName','dniType','dni','gender','role','status','edit','delete'];
 	dataSource: MatTableDataSource<User>;
@@ -46,7 +51,6 @@ export class UsersComponent implements OnInit {
 	ngOnInit()
 	{
 		this.getUsers();
-		console.log("se disparon");
 	}
 
 	getUsers()
@@ -96,9 +100,6 @@ export class UsersComponent implements OnInit {
 				if (response==true)
 				{
 					this.getUser(id);
-				}else
-				{
-					console.log(response);
 				}
 			}
 		);
@@ -228,5 +229,13 @@ export class UsersComponent implements OnInit {
 				}
 			}
 		);
+	}
+
+	changeInactive(e){
+		this.inactiveOutputRecived = e;
+	}
+
+	changeRecover(e){
+		this.recoverOutputRecived = e;
 	}
 }

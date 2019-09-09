@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -11,25 +11,25 @@ import { Global } from '../../../../../../../../core/services/global';
 import { User } from '../../../../../../../../models/user';
 import { UserService } from '../../../../../../../../core/services/admin/user.service';
 
-@Component({
-  selector: 'sib-user-inactives',
-  templateUrl: './user-inactives.component.html',
-  styleUrls: ['./user-inactives.component.scss']
-})
-export class UserInactivesComponent implements OnInit, OnChanges {
 
-	public user:any;
-	public updateUser:any;
+@Component({
+  selector: 'sib-user-client',
+  templateUrl: './user-client.component.html',
+  styleUrls: ['./user-client.component.scss']
+})
+export class UserClientComponent implements OnInit {
+
 	public users: Array < User > = new Array < User > ();
+	public idRole:Number=3;
 	public message:string;
 	public failedConect:string;
-	public isChange:number=0;
+	public isChangeC:number=0;
 
+	@Input() recoverOutputRecived:number;
 	@Input() inactiveOutputRecived:number;
-	@Output()
-	recoverOutput = new EventEmitter<number>();
+	@Output() inactiveOutput = new EventEmitter<number>();
 
-	displayedColumns: string[] = ['id', 'email','firstName','lastName','dni','gender','role','status','edit','delete','back'];
+	displayedColumns: string[] = ['id', 'email','firstName','lastName','dni','gender','role','status','edit','delete'];
 	dataSource: MatTableDataSource<User>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
@@ -49,30 +49,38 @@ export class UserInactivesComponent implements OnInit, OnChanges {
 
 	ngOnInit()
 	{
-		this.getUsers();
+		this.getUsers(this.idRole);
 	}
 
 	ngOnChanges(){
-		this.getUsers();
+		this.getUsers(this.idRole);
 	}
 
-	getUsers()
+	getUsers(id)
 	{
-		this._userService.getInactives().subscribe
+		this._userService.getRoles(id).subscribe
 		(
 			response =>
 			{
+				console.log(response);
 				if (response.status==true)
 		        {
 		        	this.users = response.users;
+		        	this.users = this.users.filter(users => {return users.status == 'active'});
 					this.table();
 		        }
 		        else
 		        {
 		          this.users = [];
 		          this.message = response.message.text;
-		          console.log(this.message);
 		          this.table();
+		        }
+
+		        if (this.users.length<=0)
+		        {
+		        	this.users = [];
+		          	this.message = "No hay usuarios de tipo cliente";
+		          	this.table();
 		        }
 			},
 			error =>
@@ -105,51 +113,40 @@ export class UserInactivesComponent implements OnInit, OnChanges {
 		this.dataSource.sort = this.sort;
 	}
 
-	onDelete(id){
-		this.dialogService.openConfirmDialog('¿Estás seguro de eliminar este Usuario permanentemente?').afterClosed().subscribe
+	onDesactive(id){
+		this.dialogService.openConfirmDialog('¿Estás seguro de desactivar este usuario?').afterClosed().subscribe
 		(
 			response =>
 			{
 				if (response==true)
 				{
-					this.deleteUser(id);
-				}else
-				{
-					console.log(response);
+					this.inactiveUser(id);
 				}
 			}
 		);
 	}
 
-	deleteUser(id)
+	inactiveUser(id)
 	{
-		this._userService.delete(id).subscribe
+		this._userService.inactive(id).subscribe
 		(
 			response =>
 			{
-	            this.message = response.message.text;
-	            this.snackBar.openSnackBarSuccess(this.message);
-	            this.getUsers();
+				this.isChangeC = this.isChangeC+1;
+				this.inactiveOutput.emit(this.isChangeC);
+				this.message = response.message.text;
+				this.snackBar.openSnackBar(this.message,'¿Deshacer?').onAction().subscribe
+				(
+					() =>
+					{
+						this.active(id);
+					}
+				);
+				this.getUsers(this.idRole);
 			},
 			error =>
 			{
 				console.log(<any>error);
-			}
-		)
-	}
-
-	onBack(id){
-		this.dialogService.openConfirmDialog('¿Estás seguro de activar este usuario?').afterClosed().subscribe
-		(
-			response =>
-			{
-				if (response==true)
-				{
-					this.active(id);
-				}else
-				{
-					console.log(response);
-				}
 			}
 		);
 	}
@@ -160,11 +157,11 @@ export class UserInactivesComponent implements OnInit, OnChanges {
 		(
 			response =>
 			{
-				this.isChange = this.isChange-1;
-				this.recoverOutput.emit(this.isChange);
+				this.isChangeC = this.isChangeC-1;
+				this.inactiveOutput.emit(this.isChangeC);
 		        this.message = response.message.text;
 		        this.snackBar.openSnackBarSuccess(this.message);
-				this.getUsers();
+				this.getUsers(this.idRole);
 			},
 			error =>
 			{
@@ -172,5 +169,4 @@ export class UserInactivesComponent implements OnInit, OnChanges {
 			}
 		);
 	}
-
 }

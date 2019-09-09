@@ -1,10 +1,24 @@
 <div class="main_dashboard main_admin">
 	<div class="container">
+
+		<div class="row">
+			<div class="col-sm-12">
+				<h2 class="text-center">Catálogos</h2>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-12">
+				<button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations']">Volver</button>
+			</div>
+		</div>
+		<hr>
+
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="row">
 					<div class="col-md-3">
-						<a [routerLink]="['/auth/admin/configurations/catalog/category']">
+						<a [routerLink]="['category']">
 							<mat-card class="servicio">
 								<mat-card-header class="titulo mat-card-header-primary">
 									<mat-card-title>Categorías</mat-card-title>
@@ -21,7 +35,7 @@
 						</a>
 					</div>
 					<div class="col-md-3">
-						<a [routerLink]="['/auth/admin/configurations/catalog/sub-category']">
+						<a [routerLink]="['sub-category']">
 							<mat-card class="servicio">
 								<mat-card-header class="titulo mat-card-header-primary">
 									<mat-card-title>Subcategorías</mat-card-title>

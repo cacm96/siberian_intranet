@@ -9,6 +9,7 @@ import { Role } from '../../../../../../../../models/role';
 import { RoleService } from '../../../../../../../../core/services/admin/role.service';
 import { Location } from '../../../../../../../../models/location';
 import { LocationService } from '../../../../../../../../core/services/admin/location.service';
+import { ChangeRoleService } from '../../../../../../../../core/services/admin/change-role.service';
 import { SnackBarService } from '../../../../../../../../core/services/snack-bar.service';
 
 @Component({
@@ -34,7 +35,8 @@ export class UserEditComponent implements OnInit {
 		private _locationService: LocationService,
 		private _route: ActivatedRoute,
 		private _router: Router,
-    	private snackBar: SnackBarService
+    	private snackBar: SnackBarService,
+    	private _changeRoleService: ChangeRoleService
 	)
 	{
 		this.dniTypes= [
@@ -87,6 +89,7 @@ export class UserEditComponent implements OnInit {
 			{
 				this.user = response;
 				this.user = this.user.user;
+				console.log(this.user);
 			},
 			error =>
 			{
@@ -106,6 +109,8 @@ export class UserEditComponent implements OnInit {
 	{
 		if(form.valid)
 		{
+			console.log(this.user.roleId);
+
 			this._userService.update(this.user).subscribe
 			(
 				response =>
@@ -113,8 +118,7 @@ export class UserEditComponent implements OnInit {
 					if(response.status==true)
 					{
 						this.updateUser = response.user;
-						this.changeRoleUser(this.user.id,form.value.role);
-						this.getUser(this.user.id);
+						this.changeRoleUser(this.user.id,form.value.roleId);
 						console.log(this.updateUser);
 						this.message  = response.message.text;
 						this.snackBar.openSnackBar(this.message,'');
@@ -144,8 +148,16 @@ export class UserEditComponent implements OnInit {
 		(
 			response =>
 			{
-		        this.message = response.message.text;
-		        this.snackBar.openSnackBarSuccess(this.message);
+				if(response.status==true)
+				{
+					this.getUser(this.user.id);
+				}
+				else
+				{
+					this.message = response.message.text;
+			        this.snackBar.openSnackBarSuccess(this.message);
+
+				}
 			},
 			error =>
 			{

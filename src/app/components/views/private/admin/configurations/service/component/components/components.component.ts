@@ -25,7 +25,7 @@ export class ComponentsComponent implements OnInit {
   public message:string;
   public failedConect:string;
 
-  displayedColumns: string[] = ['id','name','description','status','serviceDetails','edit','delete'];
+  displayedColumns: string[] = ['id','name','description','serviceDetails','status','edit','delete'];
   dataSource: MatTableDataSource <Componentt>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

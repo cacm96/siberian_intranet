@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, EventEmitter, Input, Output} from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -23,6 +23,11 @@ export class UserActivesComponent implements OnInit {
 	public users: Array < User > = new Array < User > ();
 	public message:string;
 	public failedConect:string;
+	public isChange:number=0;
+
+	@Input() recoverOutputRecived:number;
+	@Input() inactiveOutputRecived:number;
+	@Output() inactiveOutput = new EventEmitter<number>();
 
 	displayedColumns: string[] = ['id', 'email','firstName','lastName','dni','gender','role','status','edit','delete'];
 	dataSource: MatTableDataSource<User>;
@@ -44,6 +49,12 @@ export class UserActivesComponent implements OnInit {
 
 	ngOnInit()
 	{
+		this.getUsers();
+	}
+
+	ngOnChanges(){
+		console.log(this.recoverOutputRecived);
+		console.log(this.inactiveOutputRecived);
 		this.getUsers();
 	}
 
@@ -99,93 +110,6 @@ export class UserActivesComponent implements OnInit {
 	}
 
 	onDesactive(id){
-		this.dialogService.openConfirmDialog('¿Estás seguro de eliminar el Usuario?').afterClosed().subscribe
-		(
-			response =>
-			{
-				if (response==true)
-				{
-					this.getUser(id);
-				}else
-				{
-					console.log(response);
-				}
-			}
-		);
-	}
-
-	getUser(id)
-	{
-		this._userService.getOne(id).subscribe
-		(
-			response =>
-			{
-				this.user = response;
-				this.user = this.user.user;
-				this.update(this.user);
-			},
-			error =>
-			{
-				console.log(<any>error);
-			}
-		)
-	}
-
-	update(user)
-	{
-		this.user.status = 'inactive';
-		this._userService.update(this.user).subscribe
-		(
-			response =>
-			{
-				if(response.status==true)
-				{
-					this.updateUser = response.user;
-					this.snackBar.openSnackBar('Eliminado Correctamente','¿Deshacer?').onAction().subscribe
-					(
-						() =>
-						{
-							this.user.status = 'active';
-							this._userService.update(this.user).subscribe
-							(
-								response =>
-								{
-									if(response.status==true)
-									{
-										this.updateUser = response.user;
-										this.getUsers();
-										this.message = "Usuario Recuperado Correctamente";
-										this.snackBar.openSnackBar(this.message,'');
-									}
-									else
-									{
-										this.message  = response.message.text;
-										this.snackBar.openSnackBar(this.message,'');
-									}
-
-								}
-							);
-						}
-					);
-					this.getUsers();
-				}
-				else
-				{
-					this.message  = response.message.text;
-					this.snackBar.openSnackBar(this.message,'');
-				}
-			},
-			error =>
-			{
-				console.log(error);
-				this.message  = error.error.message;
-				this.snackBar.openSnackBar(this.message,'');
-			}
-		);
-	}
-
-
-/*	onDesactive(id){
 		this.dialogService.openConfirmDialog('¿Estás seguro de desactivar este usuario?').afterClosed().subscribe
 		(
 			response =>
@@ -193,9 +117,6 @@ export class UserActivesComponent implements OnInit {
 				if (response==true)
 				{
 					this.inactiveUser(id);
-				}else
-				{
-					console.log(response);
 				}
 			}
 		);
@@ -207,7 +128,9 @@ export class UserActivesComponent implements OnInit {
 		(
 			response =>
 			{
-				console.log(response);
+				this.getUsers();
+				this.isChange = this.isChange+1;
+				this.inactiveOutput.emit(this.isChange);
 				this.message = response.message.text;
 				this.snackBar.openSnackBar(this.message,'¿Deshacer?').onAction().subscribe
 				(
@@ -230,16 +153,17 @@ export class UserActivesComponent implements OnInit {
 		(
 			response =>
 			{
-				console.log(response);
+				this.getUsers();
+				this.isChange = this.isChange-1;
+				this.inactiveOutput.emit(this.isChange);
 		        this.message = response.message.text;
 		        this.snackBar.openSnackBarSuccess(this.message);
-				this.getUsers();
 			},
 			error =>
 			{
 				console.log(<any>error);
 			}
 		);
-	}*/
+	}
 
 }

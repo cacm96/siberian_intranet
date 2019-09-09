@@ -44,12 +44,14 @@
               <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.form.valid">Registar</button>
             </div>
           </div>
+          
         </form>
       </div>
 
       <div *ngIf="total<=0">
         <h2 class="text-center">{{ message }}</h2>
       </div>
+      
     </div>
   </div>
 </div>

@@ -53,15 +53,15 @@ export class UserService extends HeaderService{
 	}
 
 	active(id): Observable<any>{
-		return this.http.put(this.url+'/'+id+'/activate', {headers: this.header});
+		return this.http.put(this.url+'/'+id+'/activate', {}, {headers: this.header});
 	}
 
 	inactive(id): Observable<any>{
-		return this.http.put(this.url+'/'+id+'/inactivate', {headers: this.header});
+		return this.http.put(this.url+'/'+id+'/inactivate', {}, {headers: this.header});
 	}
 
 	changeRole(uid,rid): Observable<any>{
-		return this.http.put(this.url+'/'+uid+'/role/'+rid, {headers: this.header});
+		return this.http.put(this.url+'/'+uid+'/role/'+rid, {}, {headers: this.header});
 	}
 
 
