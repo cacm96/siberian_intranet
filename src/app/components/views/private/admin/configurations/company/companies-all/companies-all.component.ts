@@ -58,4 +58,9 @@ export class CompaniesAllComponent implements OnInit {
 		)
 	}
 
+	goBack()
+	{ 
+		this._location.back(); 
+	}
+
 }

@@ -10,6 +10,7 @@ import { Equipinfras } from '../../../models/equipinfras';
 export class EquipinfrasService extends HeaderService{
 
 	url: string = environment.api + 'equipinfras';
+	url2: string = environment.api + 'equipinfras/variety';
 
 
 	constructor(
@@ -21,6 +22,10 @@ export class EquipinfrasService extends HeaderService{
 	create(equipinfras: Equipinfras): Observable<any>{
 		let params = JSON.stringify(equipinfras);
 		return this.http.post(this.url, params, {headers: this.header});
+	}
+
+	addVariety(VarietyId:any,EquipinfraId:any): Observable<any>{
+		return this.http.post(this.url2, { VarietyId: VarietyId, EquipinfraId: EquipinfraId} ,{headers: this.header});
 	}
 
     All(): Observable<any>{
@@ -38,6 +43,10 @@ export class EquipinfrasService extends HeaderService{
 
 	deleteOne(id): Observable<any>{
 		return this.http.delete(this.url+'/'+id, {headers: this.header});
+	}
+
+	deleteVariety(EquipinfraId:any, VarietyId:any): Observable<any>{
+		return this.http.delete(this.url+"/"+EquipinfraId+"/variety/"+VarietyId, {headers: this.header});
 	}
 
 }

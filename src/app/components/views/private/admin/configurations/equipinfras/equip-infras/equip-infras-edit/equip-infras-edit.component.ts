@@ -12,52 +12,53 @@ import { SnackBarService } from '../../../../../../../../core/services/snack-bar
 
 
 @Component({
-  selector: 'sib-equip-infras-edit',
-  templateUrl: './equip-infras-edit.component.html',
-  styleUrls: ['./equip-infras-edit.component.scss']
+	selector: 'sib-equip-infras-edit',
+	templateUrl: './equip-infras-edit.component.html',
+	styleUrls: ['./equip-infras-edit.component.scss']
 })
 export class EquipInfrasEditComponent implements OnInit {
-  public equipinfras:Equipinfras;
-  public subcategories:any;
-  public types:any[];
-  public failedConect:string;
-  public message:string;
+	public equipinfras:Equipinfras;
+	public subcategories:any;
+	public types:any[];
+	public failedConect:string;
+	public message:string;
 
-  constructor(
-    private _equipinfrasService: EquipinfrasService,
-    private _subcategoryService: SubcategoryService,
-	private _route: ActivatedRoute,
-	private _router: Router,
-	private _location: Location,
-    private snackBar: SnackBarService
-  ) 
-   {
-    this.types= [
-			{id:"E",name:"Equipo"},
-			{id:"I",name:"Infraestructura"},
-    ];
-   }
+	constructor(
+		private _equipinfrasService: EquipinfrasService,
+		private _subcategoryService: SubcategoryService,
+		private _route: ActivatedRoute,
+		private _router: Router,
+		private _location: Location,
+		private snackBar: SnackBarService
+		) 
+	{
+		this.types= [
+		{id:"E",name:"Equipo"},
+		{id:"I",name:"Infraestructura"},
+		];
+	}
 
-  ngOnInit() {
-this._route.params.subscribe
+	ngOnInit() {
+		this._route.params.subscribe
 		(
 			params =>
 			{
 				let id = params.id;
 				this.getEquipinfras(id);
 			}
-    );
-    this.getSubcategories();
+			);
+		this.getSubcategories();
 
-  }
+	}
 
-  getSubcategories()
+	getSubcategories()
 	{
 		this._subcategoryService.All().subscribe
 		(
 			response =>
 			{
 				this.subcategories = response.subcategories;
+				console.log(this.subcategories);
 			},
 			error =>
 			{
@@ -70,11 +71,11 @@ this._route.params.subscribe
 					}
 				}
 			}
-		)
+			)
 	}
 
 
-  getEquipinfras(id)
+	getEquipinfras(id)
 	{
 		this._equipinfrasService.getOne(id).subscribe
 		(
@@ -94,11 +95,12 @@ this._route.params.subscribe
 					}
 				}
 			}
-		)
+			)
 	}
 
 	update(form: NgForm)
-	{    this.equipinfras.SubcategoryId = form.value.SubcategoryId;
+	{
+		this.equipinfras.SubcategoryId = form.value.SubcategoryId;
 		if(form.valid)
 		{
 			this._equipinfrasService.update(this.equipinfras).subscribe
@@ -123,7 +125,7 @@ this._route.params.subscribe
 					this.message  = error.error.message;
 					this.snackBar.openSnackBar(this.message,'');
 				}
-			);
+				);
 		}else
 		{
 		}

@@ -90,7 +90,7 @@ export class UserCreateComponent implements OnInit {
 			this.user.lastName = form.form.value.lastName;
 			this.user.dniType = form.form.value.dniType;
 			this.user.dni = form.form.value.dni;
-			this.user.roleId = form.form.value.roleId;
+			this.user.RoleId = form.form.value.RoleId;
 
 			console.log(this.user);
 

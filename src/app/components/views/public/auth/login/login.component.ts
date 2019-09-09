@@ -11,7 +11,7 @@ import { SnackBarService } from '../../../../../core/services/snack-bar.service'
 })
 export class LoginComponent implements OnInit {
   
-  public email:string="cliente@siberian.com";
+  public email:string="gilberto@gmail.com";
   public password:string="12345678";
   public message:string;
   public resID:string;

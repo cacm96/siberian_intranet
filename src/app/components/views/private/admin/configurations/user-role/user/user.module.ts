@@ -19,6 +19,8 @@ import { TokenInterceptorService } from 'src/app/core/services/token-interceptor
 import { UserInactivesComponent } from './user-inactives/user-inactives.component';
 import { UserActivesComponent } from './user-actives/user-actives.component';
 import { UserAllsComponent } from './user-alls/user-alls.component';
+import { UserClientComponent } from './user-client/user-client.component';
+import { UserLenderComponent } from './user-lender/user-lender.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { UserAllsComponent } from './user-alls/user-alls.component';
 	UserDeleteComponent,
 	UserInactivesComponent,
 	UserActivesComponent,
-	UserAllsComponent
+	UserAllsComponent,
+	UserClientComponent,
+	UserLenderComponent
   ],
   imports: [
     CommonModule,

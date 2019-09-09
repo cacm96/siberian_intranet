@@ -2,9 +2,22 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12">
+				<h2 class="text-center">Servicios</h2>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-12">
+				<button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations']">Volver</button>
+			</div>
+		</div>
+		<hr>
+
+		<div class="row">
+			<div class="col-sm-12">
 				<div class="row">
 					<div class="col-md-3">
-						<a [routerLink]="['/auth/admin/configurations/service/service-detail']">
+						<a [routerLink]="['service-detail']">
 							<mat-card class="servicio">
 								<mat-card-header class="titulo mat-card-header-primary">
 									<mat-card-title>Servicio Detalle</mat-card-title>
@@ -21,7 +34,7 @@
 						</a>
 					</div>
 					<div class="col-md-3">
-						<a [routerLink]="['/auth/admin/configurations/service/component']">
+						<a [routerLink]="['component']">
 							<mat-card class="servicio">
 								<mat-card-header class="titulo mat-card-header-primary">
 									<mat-card-title>Componentes</mat-card-title>
@@ -38,7 +51,7 @@
 						</a>
 					</div>
 					<div class="col-md-3">
-						<a [routerLink]="['/auth/admin/configurations/service/activity']">
+						<a [routerLink]="['activity']">
 							<mat-card class="servicio">
 								<mat-card-header class="titulo mat-card-header-primary">
 									<mat-card-title>Actividades</mat-card-title>
@@ -55,7 +68,7 @@
 						</a>
 					</div>
 					<div class="col-md-3">
-						<a [routerLink]="['/auth/admin/configurations/service/service-detail-activity']">
+						<a [routerLink]="['service-detail-activity']">
 							<mat-card class="servicio">
 								<mat-card-header class="titulo mat-card-header-primary">
 									<mat-card-title>Actividades por Servicios</mat-card-title>
@@ -72,7 +85,7 @@
 						</a>
 					</div>
 					<div class="col-md-3">
-						<a [routerLink]="['/auth/admin/configurations/service/politic']">
+						<a [routerLink]="['politic']">
 							<mat-card class="servicio">
 								<mat-card-header class="titulo mat-card-header-primary">
 									<mat-card-title>Políticas</mat-card-title>
@@ -89,7 +102,7 @@
 						</a>
 					</div>
 					<div class="col-md-3">
-						<a [routerLink]="['/auth/admin/configurations/service/service-detail-politic']">
+						<a [routerLink]="['service-detail-politic']">
 							<mat-card class="servicio">
 								<mat-card-header class="titulo mat-card-header-primary">
 									<mat-card-title>Políticas por Servicios</mat-card-title>
@@ -106,7 +119,7 @@
 						</a>
 					</div>
 					<div class="col-md-3">
-						<a [routerLink]="['/auth/admin/configurations/service/resource']">
+						<a [routerLink]="['resource']">
 							<mat-card class="servicio">
 								<mat-card-header class="titulo mat-card-header-primary">
 									<mat-card-title>Recursos</mat-card-title>
@@ -123,7 +136,7 @@
 						</a>
 					</div>
 					<div class="col-md-3">
-						<a [routerLink]="['/auth/admin/configurations/service/service-detail-resource']">
+						<a [routerLink]="['service-detail-resource']">
 							<mat-card class="servicio">
 								<mat-card-header class="titulo mat-card-header-primary">
 									<mat-card-title>Recursos por Servicios</mat-card-title>
@@ -140,7 +153,7 @@
 						</a>
 					</div>
 					<div class="col-md-3">
-						<a [routerLink]="['/auth/admin/configurations/service/service-detail-catalogue-variety-detail']">
+						<a [routerLink]="['service-detail-catalogue-variety-detail']">
 							<mat-card class="servicio">
 								<mat-card-header class="titulo mat-card-header-primary">
 									<mat-card-title>Catálogo por Servicios Variedad Detalle</mat-card-title>
