@@ -13,7 +13,7 @@ import { UserService } from '../../../../../../core/services/admin/user.service'
 import { LocationService } from '../../../../../../core/services/admin/location.service';
 import { SnackBarService } from '../../../../../../core/services/snack-bar.service';
 import { DialogService } from '../../../../../../core/services/dialog.service';
-
+import * as $ from 'jquery';
 @Component({
   selector: 'sib-stepper',
   templateUrl: './stepper.component.html',
@@ -69,6 +69,7 @@ export class StepperComponent implements OnInit {
       params =>
       {
         this.requestParams = JSON.parse(params.data);
+        console.log(this.requestParams);
         this.userID= localStorage.getItem('resID');;
         this.getUser(this.userID);
         this.getLocationsUser(this.userID)
@@ -84,7 +85,6 @@ export class StepperComponent implements OnInit {
       response =>
       {
         this.user = response.user;
-        console.log(this.user);
       },
       error =>
       {
@@ -109,7 +109,6 @@ export class StepperComponent implements OnInit {
         if (response.status == true)
         {
           this.locationsUser = response.locations;
-          console.log(this.locationsUser);
         }
         else
         {
@@ -171,6 +170,26 @@ export class StepperComponent implements OnInit {
     console.log(this.isDate);
     this.fecha = event.value;
     console.log(this.fecha);
+  }
+
+  onConfirm(){
+    this.dialogService.openConfirmDialog('Recuerde que primero se debe realizar una revision antes de abordar el servicio, ¿Desea continuar con su solicitud?').afterClosed().subscribe(res=>{
+      if (res==true)
+      {
+        console.log(res);
+      }
+      else
+      {
+        console.log(res);
+      }
+    });
+  }
+
+  selectedLender(){
+    console.log("Elegido");
+    $(document).ready(() => {
+      $('#selectedLender-1').css({'background-color': 'yellow', 'font-size': '200%'});
+    });
   }
 
   goBack()

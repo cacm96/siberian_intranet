@@ -57,7 +57,7 @@
 							<h2 class="text-center mb-3">Prestadores disponibles</h2>
 							<div class="row">
 								<div class="col-md-3">
-									<a [routerLink]="['/auth/lender/profile/show/1']" target="_blank">
+									<a id="selectedLender-1" (click)="selectedLender()">
 										<mat-card>
 											<mat-card-header class="titulo">
 												<mat-card-title>Anderson Diaz</mat-card-title>
@@ -206,6 +206,7 @@
 														<b>Categoría: </b> Electrodomésticos
 														<br>
 														<b>Sub Categoría: </b>Aires Acondicionados
+														<br>
 														<b>Descripción del Problema: </b> Necesito darle mantenimiento
 														<br>
 														<b>Prestador Asignado: </b> Anderson diaz
@@ -218,7 +219,7 @@
 												<div class="container">
 													<div class="row">
 														<div class="col-sm-12">
-															<button mat-raised-button color="primary" [routerLink]="['/auth/client/request/message']">Confirmar Solicitud</button>
+															<button mat-raised-button color="primary" (click)="onConfirm()">Confirmar Solicitud</button>
 														</div>
 													</div>
 												</div>

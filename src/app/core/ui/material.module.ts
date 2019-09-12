@@ -26,6 +26,7 @@ import {
         MatExpansionModule,
         MatProgressSpinnerModule,
         MatProgressBarModule,
+        MatTooltipModule,
 } from '@angular/material';
 
 
@@ -57,6 +58,7 @@ import {
         MatExpansionModule,
         MatProgressSpinnerModule,
         MatProgressBarModule,
+        MatTooltipModule,
     ],
     exports: [
         MatButtonModule,
@@ -85,6 +87,7 @@ import {
         MatExpansionModule,
         MatProgressSpinnerModule,
         MatProgressBarModule,
+        MatTooltipModule,
     ],
     providers: [  
         MatDatepickerModule,  
