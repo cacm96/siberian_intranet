@@ -20,6 +20,7 @@ import { EquipInfrasShowComponent } from './equip-infras-show/equip-infras-show.
 import { EquipInfrasDeleteComponent } from './equip-infras-delete/equip-infras-delete.component';
 import { AddVarietyComponent } from './add-variety/add-variety.component';
 import { AddVarietyDetailsComponent } from './add-variety-details/add-variety-details.component';
+import { ShowVarietyDetailComponent } from './show-variety-detail/show-variety-detail.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AddVarietyDetailsComponent } from './add-variety-details/add-variety-de
 	EquipInfrasShowComponent,
 	EquipInfrasDeleteComponent,
 	AddVarietyComponent,
-	AddVarietyDetailsComponent
+	AddVarietyDetailsComponent,
+	ShowVarietyDetailComponent
   ],
   imports: [
     CommonModule,

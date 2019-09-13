@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="equipinfras">
   <div class="row">
     <div class="col-sm-8 offset-2">
       <div class="row">
@@ -35,6 +35,35 @@
           </div>
         </div>
       </form>
+
+      <hr>
+
+      <div *ngIf="equipinfras.varietyDetails.length>0">
+        <div class="row">
+          <div class="col-sm-12">
+            <mat-list>
+              <mat-list-item *ngFor="let varietyDetail of equipinfras.varietyDetails">
+                <h4 mat-line>{{varietyDetail.name}}</h4>
+                <button mat-icon-button color="warn" matTooltip="Borrar Variedad" matTooltipPosition="left" (click)="onDelete(varietyDetail.id)"><mat-icon>delete</mat-icon></button>
+              </mat-list-item>
+            </mat-list>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="equipinfras.varietyDetails.length<=0">
+        <div class="row">
+          <div class="col-sm-12">
+            <mat-list>
+              <mat-list-item>
+                <h4 mat-line>No tiene modelos</h4>
+              </mat-list-item>
+            </mat-list>
+          </div>
+        </div>
+      </div>
+
+
     </div>
   </div>
 </div>

@@ -10,40 +10,48 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Global } from '../../../../../../../../core/services/global';
 
 import { Equipinfras } from '../../../../../../../../models/equipinfras';
-import { Variety } from '../../../../../../../../models/variety';
 import { EquipinfrasService } from '../../../../../../../../core/services/admin/equipinfras.service';
+import { Variety } from '../../../../../../../../models/variety';
+import { VarietyService } from '../../../../../../../../core/services/admin/variety.service';
+import { VarietyDetail } from '../../../../../../../../models/varietyDetail';
+import { VarietyDetailService } from '../../../../../../../../core/services/admin/varietyDetail.service';
+
 import { SnackBarService } from '../../../../../../../../core/services/snack-bar.service';
 import { DialogService } from '../../../../../../../../core/services/dialog.service';
 
-
 @Component({
-	selector: 'sib-equip-infras-show',
-	templateUrl: './equip-infras-show.component.html',
-	styleUrls: ['./equip-infras-show.component.scss']
+  selector: 'sib-show-variety-detail',
+  templateUrl: './show-variety-detail.component.html',
+  styleUrls: ['./show-variety-detail.component.scss']
 })
-export class EquipInfrasShowComponent implements OnInit {
+export class ShowVarietyDetailComponent implements OnInit {
 
-	public equipinfras:Equipinfras;
-	public varieties:Array < Variety > = new Array < Variety > ();
+	public varietysDetail:Array < VarietyDetail > = new Array < VarietyDetail > ();
+	public variety:Variety;
+	public equipsinfras:any;
+	public equipinfras:any;
+	public VarietyId:any;
+	public EquipinfraId:any;
 	public message:string;
 	public failedConect:string;
 
-	displayedColumns: string[] = ['id','name','description','varietyDetail','status','addvarietyDetail','delete'];
-	dataSource: MatTableDataSource<Variety>;
+
+	displayedColumns: string[] = ['id','name','description','serviceDetail','status','delete'];
+	dataSource: MatTableDataSource<VarietyDetail>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
 	@ViewChild(MatSort) sort: MatSort;
 
 
-	constructor(
-
-		private _equipinfrasService: EquipinfrasService,
+	constructor
+	(
+		private _varietyDetailService: VarietyDetailService,
+		private _varietyService: VarietyService,
 		private _route: ActivatedRoute,
 		private _router: Router,
 		private _location: Location,
 		private snackBar: SnackBarService,
     	private dialogService: DialogService,
-
 		)
 
 	{ }
@@ -55,28 +63,45 @@ export class EquipInfrasShowComponent implements OnInit {
 			params =>
 			{
 				let id = params.id;
-				this.getEquipinfras(id);
+				this.VarietyId = id;
+				this.EquipinfraId= params.EquipinfraId;
+				this.getVariety(id);
 			}
-			);
+		);
+
 	}
 
-	getEquipinfras(id)
+	getVariety(id)
 	{
-		this._equipinfrasService.getOne(id).subscribe
+		this._varietyService.getOne(id).subscribe
 		(
 			response =>
 			{
-				if (response.status==true)
+		        this.variety = response.variety;
+		        console.log(this.variety);
+		        this.equipsinfras = this.variety.equipinfras;
+				
+				for (var i=0; i<this.equipsinfras.length; i++)
 				{
-					this.equipinfras = response.equipinfras;
-					this.varieties = response.equipinfras.variety;
+					if( this.equipsinfras[i].id == this.EquipinfraId)
+					{
+						this.equipinfras = this.equipsinfras[i];
+					}
+				}
+
+				if (this.equipinfras.varietyDetails.length>0)
+				{
+					this.varietysDetail = this.equipinfras.varietyDetails;
+					console.log(this.varietysDetail);
 					this.table();
 				}
 				else
 				{
-					this.varieties = [];
+					this.varietysDetail = [];
 					this.table();
 				}
+
+		        
 			},
 			error =>
 			{
@@ -89,7 +114,7 @@ export class EquipInfrasShowComponent implements OnInit {
 					}
 				}
 			}
-			)
+		)
 	}
 
 	applyFilter(filterValue: string)
@@ -103,20 +128,20 @@ export class EquipInfrasShowComponent implements OnInit {
 
 	table()
 	{
-		this.dataSource = new MatTableDataSource(this.varieties);
+		this.dataSource = new MatTableDataSource(this.varietysDetail);
 		this.dataSource.paginator = this.paginator;
 		this.dataSource.sort = this.sort;
 	}
 
 	onDelete(id)
 	{
-		this.dialogService.openConfirmDialog('¿Estás seguro de eliminar esta variedad?').afterClosed().subscribe
+		this.dialogService.openConfirmDialog('¿Estás seguro de eliminar este modelo?').afterClosed().subscribe
 		(
 			response =>
 			{
 				if (response==true)
 				{
-					this.deleteVariety(id);
+					this.deleteVarietyDetail(id);
 				}else
 				{
 					console.log(response);
@@ -125,15 +150,15 @@ export class EquipInfrasShowComponent implements OnInit {
 			);
 	}
 
-	deleteVariety(id)
+	deleteVarietyDetail(id)
 	{
-		this._equipinfrasService.deleteVariety(this.equipinfras.id,id).subscribe
+		this._varietyDetailService.deleteOne(id).subscribe
 		(
 			response =>
 			{
 	            this.message = response.message.text;
 	            this.snackBar.openSnackBarSuccess(this.message);
-	            this.getEquipinfras(this.equipinfras.id);
+	            this.getVariety(this.VarietyId);
 			},
 			error =>
 			{
@@ -142,4 +167,8 @@ export class EquipInfrasShowComponent implements OnInit {
 		)
 	}
 
+	goBack()
+	{ 
+		this._location.back(); 
+	}
 }
