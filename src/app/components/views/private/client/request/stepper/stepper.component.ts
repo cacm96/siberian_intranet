@@ -14,6 +14,7 @@ import { LocationService } from '../../../../../../core/services/admin/location.
 import { SnackBarService } from '../../../../../../core/services/snack-bar.service';
 import { DialogService } from '../../../../../../core/services/dialog.service';
 import * as $ from 'jquery';
+
 @Component({
   selector: 'sib-stepper',
   templateUrl: './stepper.component.html',
@@ -35,6 +36,8 @@ export class StepperComponent implements OnInit {
   public locationsUser:any;
   public address:string;
   public description:string;
+  public dateRevision:any;
+  public lenderId:string;
   public failedConect:string;
   public message:string;
   public userID:string;
