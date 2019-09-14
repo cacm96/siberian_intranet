@@ -5,14 +5,15 @@ import { MatTableDataSource } from '@angular/material/table';
 import { DialogService } from '../../../../../../../../core/services/dialog.service';
 import { SnackBarService } from '../../../../../../../../core/services/snack-bar.service';
 
-export interface EquipInfrasData {
-  id: string;
-  name: string;
-  description: string;
-  image: string;
-  status: string;
-  
-}
+
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import {Location} from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Global } from '../../../../../../../../core/services/global';
+import { Equipinfras } from '../../../../../../../../models/equipinfras';
+import { EquipinfrasService } from '../../../../../../../../core/services/admin/equipinfras.service';
+
+
 @Component({
   selector: 'sib-equip-infrass',
   templateUrl: './equip-infrass.component.html',
@@ -20,53 +21,119 @@ export interface EquipInfrasData {
 })
 export class EquipInfrassComponent implements OnInit {
 
-  public equipInfras:any[];
-	displayedColumns: string[] = ['id', 'name', 'description' ,'image','status','edit','delete'];
-	dataSource: MatTableDataSource<EquipInfrasData>;
+  public equipinfrass:Array < Equipinfras > = new Array < Equipinfras > ();
+  //public equipinfras:any;
+  public message:string;
+  public failedConect:string;
+
+	displayedColumns: string[] = ['id','name','description','subcategory','variety','status','addvariety','edit','delete'];
+	dataSource: MatTableDataSource<Equipinfras>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
 	@ViewChild(MatSort) sort: MatSort;
 
   constructor(
     private dialogService: DialogService,
-		private snackBar: SnackBarService
+    private snackBar: SnackBarService,
+    private _equipinfrasService: EquipinfrasService,
+    private _route: ActivatedRoute,
+    private _router: Router,
+    private _location: Location
   ) 
   { 
-    this.equipInfras = [
-      {id:"1",name:"Pared",description:"Pared de hogares y oficinas",image:'url1',status:"A"},
-      {id:"2",name:"Aire Acondicionado	",description:" Aires acondicionados en hogares y oficinas",image:'url2',status:"A"},
-      {id:"3",name:"Piso",description:"Piso en los hogares y oficinas	",image:'url3',status:"E",},
-    ];
-
-  this.dataSource = new MatTableDataSource(this.equipInfras);
-
+    
   }
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-		this.dataSource.sort = this.sort;
+    this.getEquipinfrass();
   }
 
-  applyFilter(filterValue: string) {
-		this.dataSource.filter = filterValue.trim().toLowerCase();
 
-		if (this.dataSource.paginator) {
-		  this.dataSource.paginator.firstPage();
-		}
-	}
+  getEquipinfrass()
+  {
+    this._equipinfrasService.All().subscribe
+    (
+      response =>
+      {
+        if (response.status==true)
+        {
+          this.equipinfrass = response.equipinfras;
+          console.log(this.equipinfrass);
+          this.table();
+        }
+        else
+        {
+          this.equipinfrass = [];
+          this.message = response.message.text;
+          console.log(this.message);
+          this.table();
+        }
 
-	onDelete(id){
-		this.dialogService.openConfirmDialog('¿Estás seguro de eliminar el Equipo o la Infraestructura'+id+' ?').afterClosed().subscribe(res=>{
-			if (res==true) {
-				console.log(id);
-				this.snackBar.openSnackBar('Eliminado Correctamente','¿Deshacer?').onAction().subscribe(() => {
-				  console.log('Recuperado');
-				});
-			}else{
-				console.log(res);
-			}
-		});
-	}
+      },
+      error =>
+      {
+        console.log(<any>error);
+        if(error instanceof HttpErrorResponse)
+        {
+          if(error.status===0)
+          {
+            this.failedConect = Global.failed;
+          }
+        }
+      }
+      )
+  }
+
+  applyFilter(filterValue: string)
+  {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  table()
+  {
+    this.dataSource = new MatTableDataSource(this.equipinfrass);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+	onDelete(id)
+  {
+    this.dialogService.openConfirmDialog('¿Estás seguro de eliminar este Equipo o Infraestructura?').afterClosed().subscribe
+    (
+      response =>
+      {
+        if (response==true)
+        {
+          this.deleteEquipinfras(id);
+        }else
+        {
+          console.log(response);
+        }
+      }
+      );
+  }
+
+  deleteEquipinfras(id)
+  {
+    this._equipinfrasService.deleteOne(id).subscribe
+    (
+      response =>
+      {
+        console.log(response);
+        this.message = response.message.text;
+        this.snackBar.openSnackBarSuccess(this.message);
+        this.getEquipinfrass();
+      },
+      error =>
+      {
+        console.log(<any>error);
+      }
+      )
+  }
 
 }
 

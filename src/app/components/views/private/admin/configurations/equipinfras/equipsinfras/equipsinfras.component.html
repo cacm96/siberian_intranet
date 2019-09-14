@@ -2,9 +2,22 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12">
+				<h2 class="text-center">Equipo - Infraestrutura y Variedades</h2>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-12">
+				<button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations']">Volver</button>
+			</div>
+		</div>
+		<hr>
+
+		<div class="row">
+			<div class="col-sm-12">
 				<div class="row">
 					<div class="col-md-3">
-						<a [routerLink]="['/auth/admin/configurations/equipinfras/equip-infras']">
+						<a [routerLink]="['equip-infras']">
 							<mat-card class="servicio">
 								<mat-card-header class="titulo mat-card-header-primary">
 									<mat-card-title>Equipos e Infraestructuras</mat-card-title>
@@ -21,44 +34,10 @@
 						</a>
 					</div>
 					<div class="col-md-3">
-						<a [routerLink]="['/auth/admin/configurations/equipinfras/variety']">
+						<a [routerLink]="['variety']">
 							<mat-card class="servicio">
 								<mat-card-header class="titulo mat-card-header-primary">
 									<mat-card-title>Variedad</mat-card-title>
-								</mat-card-header>
-								<mat-card-content class="mat_card_content">
-									<div class="row">
-										<div class="col-sm-12">
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-											tempor incididunt ut labore et dolore magna aliqua.
-										</div>
-									</div>
-								</mat-card-content>
-							</mat-card>
-						</a>
-					</div>
-					<div class="col-md-3">
-						<a [routerLink]="['/auth/admin/configurations/equipinfras/variety-equipinfras']">
-							<mat-card class="servicio">
-								<mat-card-header class="titulo mat-card-header-primary">
-									<mat-card-title>Variedad por Equipos e Infraestructuras</mat-card-title>
-								</mat-card-header>
-								<mat-card-content class="mat_card_content">
-									<div class="row">
-										<div class="col-sm-12">
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-											tempor incididunt ut labore et dolore magna aliqua.
-										</div>
-									</div>
-								</mat-card-content>
-							</mat-card>
-						</a>
-					</div>
-					<div class="col-md-3">
-						<a [routerLink]="['/auth/admin/configurations/equipinfras/variety-detail']">
-							<mat-card class="servicio">
-								<mat-card-header class="titulo mat-card-header-primary">
-									<mat-card-title>Variedad Detalle</mat-card-title>
 								</mat-card-header>
 								<mat-card-content class="mat_card_content">
 									<div class="row">

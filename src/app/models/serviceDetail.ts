@@ -1,17 +1,17 @@
-import { Component } from './component';
-// import { Activities } from "./activities";
-// import { Resources } from "./resources";
-// import { Policies } from "./policies";
+import { Activity } from "./activity";
+import { Resource } from "./resource";
+import { Policy } from "./policy";
 
-export class ServiceDetail {
-    id: string;
+export class ServiceDetail{
+	id:string;
     name: string;
-    estimatedPrice: number;
+    estimatedPrice: string;
     estimatedWarrantyTime: string;
     note: string;
-    status: string;
-    Component: Array < Component > = new Array < Component >();
-    // activities: Array < Activities > = new Array < Activities >();
-    // resources: Array < Resources > = new Array < Resources >();
-    // policies: Array < Policies > = new Array < Policies >();
+    status:string;
+    ComponentId:string;
+    activities: Array < Activity > = new Array < Activity >();
+    resources: Array < Resource > = new Array < Resource >();
+    policies: Array < Policy > = new Array < Policy >();
+
 }

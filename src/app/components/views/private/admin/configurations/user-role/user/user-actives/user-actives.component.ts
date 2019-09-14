@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, EventEmitter, Input, Output} from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -23,6 +23,11 @@ export class UserActivesComponent implements OnInit {
 	public users: Array < User > = new Array < User > ();
 	public message:string;
 	public failedConect:string;
+	public isChange:number=0;
+
+	@Input() recoverOutputRecived:number;
+	@Input() inactiveOutputRecived:number;
+	@Output() inactiveOutput = new EventEmitter<number>();
 
 	displayedColumns: string[] = ['id', 'email','firstName','lastName','dni','gender','role','status','edit','delete'];
 	dataSource: MatTableDataSource<User>;
@@ -44,6 +49,12 @@ export class UserActivesComponent implements OnInit {
 
 	ngOnInit()
 	{
+		this.getUsers();
+	}
+
+	ngOnChanges(){
+		console.log(this.recoverOutputRecived);
+		console.log(this.inactiveOutputRecived);
 		this.getUsers();
 	}
 
@@ -106,9 +117,6 @@ export class UserActivesComponent implements OnInit {
 				if (response==true)
 				{
 					this.inactiveUser(id);
-				}else
-				{
-					console.log(response);
 				}
 			}
 		);
@@ -120,7 +128,9 @@ export class UserActivesComponent implements OnInit {
 		(
 			response =>
 			{
-				console.log(response);
+				this.getUsers();
+				this.isChange = this.isChange+1;
+				this.inactiveOutput.emit(this.isChange);
 				this.message = response.message.text;
 				this.snackBar.openSnackBar(this.message,'¿Deshacer?').onAction().subscribe
 				(
@@ -143,10 +153,11 @@ export class UserActivesComponent implements OnInit {
 		(
 			response =>
 			{
-				console.log(response);
+				this.getUsers();
+				this.isChange = this.isChange-1;
+				this.inactiveOutput.emit(this.isChange);
 		        this.message = response.message.text;
 		        this.snackBar.openSnackBarSuccess(this.message);
-				this.getUsers();
 			},
 			error =>
 			{

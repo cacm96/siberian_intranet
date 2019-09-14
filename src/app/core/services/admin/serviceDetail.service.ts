@@ -7,7 +7,7 @@ import { ServiceDetail } from '../../../models/serviceDetail';
 
 
 @Injectable()
-export class ServiceDetailService extends HeaderService {
+export class ServiceDetailService extends HeaderService{
 
 	url: string = environment.api + 'serviceDetail';
 
@@ -18,7 +18,7 @@ export class ServiceDetailService extends HeaderService {
 		super();
 	}
 
-	create(serviceDetail: ServiceDetail): Observable<any> {
+	create(serviceDetail: ServiceDetail): Observable<any>{
 		let params = JSON.stringify(serviceDetail);
 		return this.http.post(this.url, params, {headers: this.header});
 	}

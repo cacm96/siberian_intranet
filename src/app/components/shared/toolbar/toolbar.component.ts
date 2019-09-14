@@ -31,7 +31,7 @@ export class ToolbarComponent implements OnInit {
 		this.trigger.emit();
 	}
 	notification(){
-		this.dialogService.openConfirmDialog('¿Estás seguro de eliminar el Catálogo').afterClosed().subscribe();
+		this.dialogService.openNotifyDialog();
 	}
 
 }

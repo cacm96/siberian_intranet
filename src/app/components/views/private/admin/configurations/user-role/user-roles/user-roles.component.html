@@ -2,9 +2,21 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12">
+				<h2 class="text-center">Usuarios, Roles y Funciones</h2>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-12">
+				<button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations']">Volver</button>
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-sm-12">
 				<div class="row">
 					<div class="col-md-3">
-						<a [routerLink]="['/auth/admin/configurations/user-role/user']">
+						<a [routerLink]="['user']">
 							<mat-card class="servicio">
 								<mat-card-header class="titulo mat-card-header-primary">
 									<mat-card-title>Usuarios</mat-card-title>
@@ -21,7 +33,7 @@
 						</a>
 					</div>
 					<div class="col-md-3">
-						<a [routerLink]="['/auth/admin/configurations/user-role/role']">
+						<a [routerLink]="['role']">
 							<mat-card class="servicio">
 								<mat-card-header class="titulo mat-card-header-primary">
 									<mat-card-title>Roles</mat-card-title>
@@ -38,7 +50,7 @@
 						</a>
 					</div>
 					<div class="col-md-3">
-						<a [routerLink]="['/auth/admin/configurations/user-role/function']">
+						<a [routerLink]="['function']">
 							<mat-card class="servicio">
 								<mat-card-header class="titulo mat-card-header-primary">
 									<mat-card-title>Funciones</mat-card-title>
@@ -55,7 +67,7 @@
 						</a>
 					</div>
 					<div class="col-md-3">
-						<a [routerLink]="['/auth/admin/configurations/user-role/role-function']">
+						<a [routerLink]="['role-function']">
 							<mat-card class="servicio">
 								<mat-card-header class="titulo mat-card-header-primary">
 									<mat-card-title>Asignar Funciones</mat-card-title>
@@ -72,7 +84,7 @@
 						</a>
 					</div>
 					<!-- <div class="col-md-3">
-						<a [routerLink]="['/auth/admin/configurations/user-role/phone']">
+						<a [routerLink]="['phone']">
 							<mat-card class="servicio">
 								<mat-card-header class="titulo mat-card-header-primary">
 									<mat-card-title>Teléfonos</mat-card-title>
@@ -89,7 +101,7 @@
 						</a>
 					</div>
 					<div class="col-md-3">
-						<a [routerLink]="['/auth/admin/configurations/user-role/location']">
+						<a [routerLink]="['location']">
 							<mat-card class="servicio">
 								<mat-card-header class="titulo mat-card-header-primary">
 									<mat-card-title>Direcciones</mat-card-title>

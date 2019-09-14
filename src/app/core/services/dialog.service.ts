@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ConfirmDialogComponent } from '../../components/shared/confirm-dialog/confirm-dialog.component';
 import { AddLocationDialogComponent } from '../../components/shared/add-location-dialog/add-location-dialog.component';
+import { NotifyDialogComponent } from '../../components/shared/notify-dialog/notify-dialog.component';
 import { EditLocationDialogComponent } from '../../components/shared/edit-location-dialog/edit-location-dialog.component';
 import { AddPhoneDialogComponent } from '../../components/shared/add-phone-dialog/add-phone-dialog.component';
 import { EditPhoneDialogComponent } from '../../components/shared/edit-phone-dialog/edit-phone-dialog.component';
@@ -20,6 +21,10 @@ export class DialogService {
   			message:msg
   		}
   	});
+  }
+
+  openNotifyDialog(){
+    return this.dialog.open(NotifyDialogComponent);
   }
 
   openAddLocationDialog(){

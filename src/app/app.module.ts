@@ -33,6 +33,7 @@ import { AddLocationDialogComponent } from './components/shared/add-location-dia
 import { EditLocationDialogComponent } from './components/shared/edit-location-dialog/edit-location-dialog.component';
 import { AddPhoneDialogComponent } from './components/shared/add-phone-dialog/add-phone-dialog.component';
 import { EditPhoneDialogComponent } from './components/shared/edit-phone-dialog/edit-phone-dialog.component';
+import { NotifyDialogComponent } from './components/shared/notify-dialog/notify-dialog.component';
 
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
@@ -58,6 +59,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     EditLocationDialogComponent,
     EditPhoneDialogComponent,
     AddPhoneDialogComponent,
+    NotifyDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -90,6 +92,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
   bootstrap: [AppComponent],
   entryComponents:[
     ConfirmDialogComponent,
+    NotifyDialogComponent,
     SnackBarDeleteComponent,
     AddLocationDialogComponent,
     EditLocationDialogComponent,

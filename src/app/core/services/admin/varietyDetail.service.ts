@@ -7,37 +7,38 @@ import { VarietyDetail } from '../../../models/varietyDetail';
 
 
 @Injectable()
-export class VarietyDetailService extends HeaderService {
+export class VarietyDetailService extends HeaderService{
 
-    url: string = environment.api + 'varietyDetail';
+	url: string = environment.api + 'varietyDetail';
 
 
-    constructor(
-        private http: HttpClient
-    ) {
-        super();
-    }
+	constructor(
+		private http: HttpClient
+	){
+		super();
+	}
 
-    create(varietyDetail: VarietyDetail): Observable<any> {
-        let params = JSON.stringify(varietyDetail);
-        return this.http.post(this.url, params, {headers: this.header});
-    }
+	create(varietyDetail: VarietyDetail): Observable<any>{
+		let params = JSON.stringify(varietyDetail);
+		return this.http.post(this.url, params, {headers: this.header});
+	}
 
-    All(): Observable<any> {
-        return this.http.get(this.url, {headers: this.header});
-    }
+    update(varietyDetail:any): Observable<any>{
+		let params = JSON.stringify(varietyDetail);
+		return this.http.put(this.url+'/'+varietyDetail.id, params, {headers: this.header});
+	}
 
-    getOne(id:Number): Observable<any> {
-        return this.http.get(this.url+"/"+id, {headers: this.header});
-    }
+	updateService(varietyDetail:any): Observable<any>{
+		let params = JSON.stringify(varietyDetail);
+		return this.http.put(this.url+'/'+varietyDetail.id+'/service', params, {headers: this.header});
+	}
 
-    update(varietyDetail:any): Observable<any> {
-        let params = JSON.stringify(varietyDetail);
-        return this.http.put(this.url+'/'+varietyDetail.id, params, {headers: this.header});
-    }
+	deleteOne(id): Observable<any>{
+		return this.http.delete(this.url+'/'+id, {headers: this.header});
+	}
 
-    deleteOne(id): Observable<any> {
-        return this.http.delete(this.url+'/'+id, {headers: this.header});
-    }
+	getAllService(id:Number): Observable<any>{
+		return this.http.get(this.url+"/"+id+"/service", {headers: this.header});
+	}
 
 }

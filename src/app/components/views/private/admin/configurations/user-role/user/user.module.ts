@@ -13,11 +13,14 @@ import { UserService } from 'src/app/core/services/admin/user.service';
 import { RoleService } from 'src/app/core/services/admin/role.service';
 import { LocationService } from 'src/app/core/services/admin/location.service';
 import { PhoneService } from 'src/app/core/services/admin/phone.service'
+import { ChangeRoleService } from 'src/app/core/services/admin/change-role.service'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from 'src/app/core/services/token-interceptor.service';
 import { UserInactivesComponent } from './user-inactives/user-inactives.component';
 import { UserActivesComponent } from './user-actives/user-actives.component';
 import { UserAllsComponent } from './user-alls/user-alls.component';
+import { UserClientComponent } from './user-client/user-client.component';
+import { UserLenderComponent } from './user-lender/user-lender.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,9 @@ import { UserAllsComponent } from './user-alls/user-alls.component';
 	UserDeleteComponent,
 	UserInactivesComponent,
 	UserActivesComponent,
-	UserAllsComponent
+	UserAllsComponent,
+	UserClientComponent,
+	UserLenderComponent
   ],
   imports: [
     CommonModule,
@@ -43,6 +48,7 @@ import { UserAllsComponent } from './user-alls/user-alls.component';
     RoleService,
     LocationService,
     PhoneService,
+    ChangeRoleService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass : TokenInterceptorService,

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -16,13 +16,18 @@ import { UserService } from '../../../../../../../../core/services/admin/user.se
   templateUrl: './user-inactives.component.html',
   styleUrls: ['./user-inactives.component.scss']
 })
-export class UserInactivesComponent implements OnInit {
+export class UserInactivesComponent implements OnInit, OnChanges {
 
 	public user:any;
 	public updateUser:any;
 	public users: Array < User > = new Array < User > ();
 	public message:string;
 	public failedConect:string;
+	public isChange:number=0;
+
+	@Input() inactiveOutputRecived:number;
+	@Output()
+	recoverOutput = new EventEmitter<number>();
 
 	displayedColumns: string[] = ['id', 'email','firstName','lastName','dni','gender','role','status','edit','delete','back'];
 	dataSource: MatTableDataSource<User>;
@@ -44,6 +49,10 @@ export class UserInactivesComponent implements OnInit {
 
 	ngOnInit()
 	{
+		this.getUsers();
+	}
+
+	ngOnChanges(){
 		this.getUsers();
 	}
 
@@ -118,7 +127,6 @@ export class UserInactivesComponent implements OnInit {
 		(
 			response =>
 			{
-				console.log(response);
 	            this.message = response.message.text;
 	            this.snackBar.openSnackBarSuccess(this.message);
 	            this.getUsers();
@@ -129,7 +137,6 @@ export class UserInactivesComponent implements OnInit {
 			}
 		)
 	}
-
 
 	onBack(id){
 		this.dialogService.openConfirmDialog('¿Estás seguro de activar este usuario?').afterClosed().subscribe
@@ -153,7 +160,8 @@ export class UserInactivesComponent implements OnInit {
 		(
 			response =>
 			{
-				console.log(response);
+				this.isChange = this.isChange-1;
+				this.recoverOutput.emit(this.isChange);
 		        this.message = response.message.text;
 		        this.snackBar.openSnackBarSuccess(this.message);
 				this.getUsers();
