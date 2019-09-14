@@ -1,6 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../../../../core/ui/material.module';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ServiceDetailService } from 'src/app/core/services/admin/serviceDetail.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService } from 'src/app/core/services/token-interceptor.service';
+
 import { RequestRoutingModule } from './request-routing.module';
 import { RequestComponent } from './request.component';
 import { RequestDetailComponent } from './request-detail/request-detail.component';
@@ -23,7 +29,17 @@ import { MessageComponent } from './message/message.component';
   imports: [
     CommonModule,
     RequestRoutingModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
+  ],
+  providers:
+  [
+    ServiceDetailService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass : TokenInterceptorService,
+      multi: true
+    },
   ]
 })
 

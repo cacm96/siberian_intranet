@@ -1,3 +1,126 @@
-<p>
-  request-detail works!
-</p>
+<div class="main_request-detail">
+    <div class="container">
+        <h4 class="titulo">Orden de servicio Nro</h4>
+        <div class="container">
+  
+          <section>
+            <br>
+            <div class="container">
+              <div >             
+                <label for="cliente">Cliente</label>
+                <input type="text" id="cliente" name="cliente" value="{{ revision.user.name }}">            
+              </div>
+                   
+              <div class=" derecho">            
+                <label for="equipo">Equipo</label>
+                <input type="text" id="equipo" name="equipo">            
+              </div>
+            </div>
+            
+  
+            <br>
+            <div class="container">
+              <div >
+                <label for="fecha">Fecha</label>
+                <input type="date" id="fecha" name="fecha">
+              </div>
+                      
+              <div class="derecho">
+                <label for="marca">Marca</label>
+                <input type="text" id="marca" name="marca">
+              </div>
+            </div>
+  
+            <br>
+            <div class="container">
+              <div>
+                <label for="direccion">Dirección</label>
+                <input type="text" id="direccion" name="direccion" value="{{ revision.location.address }}">
+              </div>
+            
+              <div class="derecho">
+                <label for="modelo">Modelo</label>
+                <input type="text" id="modelo" name="modelo">
+              </div>
+            </div>      
+  
+        </section>
+      </div>
+  
+        
+      <br>
+      <div class="container move">
+        <label for="diagnostico">Diagnóstico</label>
+        <br>
+        <textarea name="diagnostico" id="diagnostico" cols="100" rows="2"></textarea>
+      </div>
+  
+      <br>
+      <div class="container move">
+        <label for="tipoServicio" id="tiposervicio">Tipo de servicios</label>
+        <input type="text" id="tipoServicio" name="tipoServicio">
+      </div>
+  
+  
+      <br>
+      <div class="container extra">
+        <div class="row">
+          <!--<div class="col-md-4" *ngFor="let com of serviceDetail">
+            
+                {{ com.Component }}
+
+            <label for="componenteAsociado">Componente asociado</label>
+            <input type="text" id="componenteAsociado" name="componenteAsociado" value="serviceDetail.Component.name">
+          </div>-->
+          <div class="col-md-4" >
+          <label for="componenteAsociado">Componente asociado</label>
+          <input type="text" id="componenteAsociado" name="componenteAsociado">
+        </div>
+        
+          <div class="col-md-4">
+            <label for="serviciosRequeridos">Servicios requeridos</label>              
+            <input type="text" id="serviciosRequeridos" name="serviciosRequeridos">
+          </div>
+        
+          <div class="col-md-4">       
+            <label for="personal">Personal adicional</label>              
+            <input type="text" id="personal" name="personal">      
+          </div>
+        </div>
+      </div>
+  
+      <br>
+  
+      <br>
+      <div class="container">
+        <div class="row extra">
+          <div class="col-md-7">
+            <label for="fotos">Fotos de revisión</label>
+            <div class="container">
+                <a href="">
+                  <img src="" alt="">
+                </a>
+                <a href="">
+                  <img src="" alt="">
+                </a>
+                <a href="">
+                  <img src="" alt="">
+                </a>
+            </div>  
+          </div>
+        
+          <div class="col-md-5">
+            <label for="costo">Costo/Presupuesto</label>
+            <input type="text" id="costo" name="costo" value="{{ revision.price }}">
+            <br>
+            <div class="boton">
+              <button mat-button>Rechazar</button>
+              <button mat-button>Solicitar</button>
+            </div>
+            
+          </div>
+        </div>      
+      </div>
+  
+    </div>
+  </div>
