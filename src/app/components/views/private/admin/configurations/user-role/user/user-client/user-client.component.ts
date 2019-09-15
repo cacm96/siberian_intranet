@@ -62,7 +62,6 @@ export class UserClientComponent implements OnInit {
 		(
 			response =>
 			{
-				console.log(response);
 				if (response.status==true)
 		        {
 		        	this.users = response.users;

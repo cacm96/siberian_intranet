@@ -12,6 +12,7 @@
               <mat-list-item><h4 mat-line><b>Precio Estimado: </b> {{ serviceDetail.estimatedPrice }}</h4></mat-list-item>
               <mat-list-item><h4 mat-line><b>Tiempo Estimado de Garantía: </b> {{ serviceDetail.estimatedWarrantyTime }}</h4></mat-list-item>
               <mat-list-item><h4 mat-line><b>Nota: </b> {{ serviceDetail.note }}</h4></mat-list-item>
+              <mat-list-item><h4 mat-line><b>Tipo de Servicio: </b> {{ serviceDetail.serviceType }}</h4></mat-list-item>
               <mat-list-item><h4 mat-line><b>Componente: </b> {{ serviceDetail.component.name}}</h4></mat-list-item>
               <mat-list-item *ngIf="serviceDetail.status=='active'"><h4 mat-line><b>Estatus:<span class="badge badge-success"> Activo</span></b></h4></mat-list-item>
               <mat-list-item *ngIf="serviceDetail.status=='deleted'"><h4 mat-line><b>Estatus:<span class="badge badge-danger"> Borrado</span></b></h4></mat-list-item>

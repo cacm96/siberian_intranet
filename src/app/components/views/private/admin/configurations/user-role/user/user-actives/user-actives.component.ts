@@ -53,8 +53,6 @@ export class UserActivesComponent implements OnInit {
 	}
 
 	ngOnChanges(){
-		console.log(this.recoverOutputRecived);
-		console.log(this.inactiveOutputRecived);
 		this.getUsers();
 	}
 

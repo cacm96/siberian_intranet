@@ -1,6 +1,6 @@
 <div class="container">
   <h2 *ngIf="resource" class="text-center">{{ resource.name }}</h2>
-  <button mat-raised-button color="primary" [(click)="goBack()">Volver</button>
+  <button mat-raised-button color="primary" (click)="goBack()">Volver</button>
   <hr>
   <div *ngIf="resource">
     <mat-card>

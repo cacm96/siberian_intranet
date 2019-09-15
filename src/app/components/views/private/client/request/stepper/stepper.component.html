@@ -23,7 +23,7 @@
 
 								<mat-form-field>
 									<mat-select name="address" [(ngModel)]="address" placeholder="Seleccione una Dirección" required>
-										<mat-option *ngFor="let locationUser of locationsUser" [value]="locationUser.id">{{ locationUser.address }}</mat-option>
+										<mat-option *ngFor="let locationUser of locationsUser" [value]="locationUser.id" >{{ locationUser.address }}</mat-option>
 									</mat-select>
 								</mat-form-field>
 
@@ -47,7 +47,7 @@
 						<div class="row">
 							<div class="offset-sm-4 col-sm-4">
 								<mat-form-field class="example-full-width">
-									<input matInput [matDatepicker]="picker" placeholder="Elija una fecha" (dateChange)="addEvent('change', $event)">
+									<input name="dateRevision" [(ngModel)]="dateRevision" matInput [matDatepicker]="picker" placeholder="Elija una fecha" (dateChange)="addEvent('change', $event)">
 									<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
 									<mat-datepicker touchUi #picker></mat-datepicker>
 								</mat-form-field>
@@ -187,7 +187,7 @@
 									<div class="col-sm-12">
 										<mat-card class="servicio">
 											<mat-card-header class="titulo">
-												<mat-card-title>Aire Acondicionado</mat-card-title>
+												<mat-card-title>{{ requestParams.equipinfrasName }}</mat-card-title>
 											</mat-card-header>
 											<mat-card-content class="mat_card_content">
 												<div class="row">
@@ -195,23 +195,23 @@
 														<img src="../../../../assets/img/catalogue/aire.png" alt="" class="card-img-top">
 													</div>
 													<div class="col-sm-6">
-														<b>Marca: </b> LG
+														<b>Marca: </b> {{requestParams.varietyName}}
 														<br>
-														<b>Modelo: </b>Split-2G
+														<b>Modelo: </b>{{ requestParams.equipinfrasName }}
 														<br>
-														<b>Descripción: </b> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
+														<b>Descripción: </b> {{ requestParams.varietyDetailDescription }}
 														<br>
-														<b>Tipo de Servicio: </b> Mantenimiento
+														<b>Categoría: </b> {{ requestParams.categoryName }}
 														<br>
-														<b>Categoría: </b> Electrodomésticos
+														<b>Sub Categoría: </b>{{ requestParams.subcategoryName }}
 														<br>
-														<b>Sub Categoría: </b>Aires Acondicionados
+														<b>Descripción del Problema: </b> {{ description }}
 														<br>
-														<b>Descripción del Problema: </b> Necesito darle mantenimiento
+														<b>Prestador Asignado: </b> {{ lenderId }}
 														<br>
-														<b>Prestador Asignado: </b> Anderson diaz
+														<b>Fecha: </b> {{ dateRevision }}
 														<br>
-														<b>Fecha: </b> 10/10/2019
+														<b>Dirección: </b> {{ address }}
 													</div>
 												</div>
 											</mat-card-content>
