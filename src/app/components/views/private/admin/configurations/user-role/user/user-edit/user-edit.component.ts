@@ -36,7 +36,8 @@ export class UserEditComponent implements OnInit {
 		private _route: ActivatedRoute,
 		private _router: Router,
     	private snackBar: SnackBarService,
-    	private _changeRoleService: ChangeRoleService
+		private _changeRoleService: ChangeRoleService,
+		private _location: Location,
 	)
 	{
 		this.dniTypes= [
@@ -165,5 +166,8 @@ export class UserEditComponent implements OnInit {
 			}
 		);
 	}
+	goBack(){
+		this._location.back();
+	  }
 
 }

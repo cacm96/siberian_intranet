@@ -59,4 +59,7 @@ export class ComponentShowComponent implements OnInit {
 			}
 		)
 	}
+	goBack(){
+		this._location.back();
+	  }
 }

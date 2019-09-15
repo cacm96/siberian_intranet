@@ -169,4 +169,7 @@ export class UserClientComponent implements OnInit {
 			}
 		);
 	}
+	goBack(){
+		this._location.back();
+	  }
 }

@@ -7,6 +7,7 @@ import { Global } from '../../../../../../../../core/services/global'
 import { Role } from '../../../../../../../../models/role';
 import { RoleService } from '../../../../../../../../core/services/admin/role.service';
 import { SnackBarService } from '../../../../../../../../core/services/snack-bar.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'sib-role-create',
@@ -23,7 +24,8 @@ export class RoleCreateComponent implements OnInit {
 		private _roleService: RoleService,
 		private _router: Router,
 		private _location: Location,
-		private snackBar: SnackBarService
+		private snackBar: SnackBarService,
+		private _location: Location,
 		)
 	{
 		this.role = new Role();
@@ -88,5 +90,9 @@ export class RoleCreateComponent implements OnInit {
 	{
 		this.snackBar.openSnackBarSuccess(message);
 	}
+
+	goBack(){
+		this._location.back();
+	  }
 
 }

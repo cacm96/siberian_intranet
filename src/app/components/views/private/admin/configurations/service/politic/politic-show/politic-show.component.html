@@ -1,7 +1,7 @@
 
 <div class="container">
   <h2 *ngIf="policy" class="text-center">{{ policy.name }}</h2>
-  <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/service/politic']">Volver</button>
+  <button mat-raised-button color="primary" (click)="goBack()">Volver</button>
   <hr>
   <div *ngIf="policy">
     <mat-card>

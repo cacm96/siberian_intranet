@@ -171,5 +171,8 @@ export class UserAllsComponent implements OnInit {
 			}
 		);
 	}
+	goBack(){
+		this._location.back();
+	  }
 
 }

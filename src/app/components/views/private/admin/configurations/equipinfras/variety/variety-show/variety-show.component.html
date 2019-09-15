@@ -1,7 +1,7 @@
 
 <div class="container">
   <h2 *ngIf="variety" class="text-center">{{ variety.name }}</h2>
-  <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/equipinfras/variety']">Volver</button>
+  <button mat-raised-button color="primary" (click)="goBack()">Volver</button>
   <hr>
   <div *ngIf="variety">
     <mat-card>

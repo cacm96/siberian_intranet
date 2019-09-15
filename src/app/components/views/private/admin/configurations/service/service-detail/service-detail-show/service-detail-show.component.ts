@@ -60,4 +60,7 @@ export class ServiceDetailShowComponent implements OnInit {
 			}
 		)
 	}
+	goBack(){
+		this._location.back();
+	  }
 }

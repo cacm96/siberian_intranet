@@ -8,6 +8,7 @@ import { Variety } from '../../../../../../../../models/variety';
 import { VarietyService } from '../../../../../../../../core/services/admin/variety.service';
 import { SnackBarService } from '../../../../../../../../core/services/snack-bar.service';
 
+
 @Component({
   selector: 'sib-variety-edit',
   templateUrl: './variety-edit.component.html',
@@ -96,4 +97,7 @@ export class VarietyEditComponent implements OnInit {
 		}
 		
 	}
+	goBack(){
+		this._location.back();
+	  }
 }
