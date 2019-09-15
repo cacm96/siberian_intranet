@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import {Location} from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Global } from '../../../../../../../../core/services/global'
 import { Role } from '../../../../../../../../models/role';
@@ -25,7 +24,6 @@ export class RoleCreateComponent implements OnInit {
 		private _router: Router,
 		private _location: Location,
 		private snackBar: SnackBarService,
-		private _location: Location,
 		)
 	{
 		this.role = new Role();
