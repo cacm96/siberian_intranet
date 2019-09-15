@@ -7,7 +7,6 @@ import { Policy } from '../../../../../../../../models/policy';
 import { PolicyService } from '../../../../../../../../core/services/admin/policy.service';
 import { SnackBarService } from '../../../../../../../../core/services/snack-bar.service';
 
-
 @Component({
   selector: 'sib-politic-show',
   templateUrl: './politic-show.component.html',
@@ -60,5 +59,8 @@ export class PoliticShowComponent implements OnInit {
 			}
 		)
 	}
+	goBack(){
+		this._location.back();
+	  }
 
 }

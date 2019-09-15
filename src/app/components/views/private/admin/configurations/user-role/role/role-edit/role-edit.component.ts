@@ -25,7 +25,7 @@ export class RoleEditComponent implements OnInit {
 		private _route: ActivatedRoute,
 		private _router: Router,
 		private _location: Location,
-    	private snackBar: SnackBarService
+		private snackBar: SnackBarService,
     )
     {
 
@@ -96,5 +96,10 @@ export class RoleEditComponent implements OnInit {
 		}
 		
 	}
+
+	goBack(){
+		this._location.back();
+	  }
+	
 
 }

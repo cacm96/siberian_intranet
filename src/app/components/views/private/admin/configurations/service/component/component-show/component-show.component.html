@@ -1,6 +1,6 @@
 <div class="container">
   <h2 *ngIf="component" class="text-center">{{ component.name }}</h2>
-  <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/service/component']">Volver</button>
+  <button mat-raised-button color="primary" (click)="goBack()">Volver</button>
   <hr>
   <div *ngIf="component">
     <mat-card>

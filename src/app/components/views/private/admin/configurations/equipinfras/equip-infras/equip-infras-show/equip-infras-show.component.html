@@ -1,6 +1,6 @@
 <div class="container">
   <h2 *ngIf="equipinfras" class="text-center">{{ equipinfras.name }}</h2>
-  <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/equipinfras/equip-infras']">Volver</button>
+  <button mat-raised-button color="primary" (click)="goBack()">Volver</button>
   <hr>
   <div *ngIf="equipinfras">
     <mat-card>
@@ -17,7 +17,6 @@
           </mat-list>
         </div>
       </div>
-
     </mat-card>
 
     <br>

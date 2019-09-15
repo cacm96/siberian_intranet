@@ -5,11 +5,11 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Global } from '../../../../../../../../core/services/global';
 import { User } from '../../../../../../../../models/user';
 import { UserService } from '../../../../../../../../core/services/admin/user.service';
-import { Location } from '../../../../../../../../models/location';
 import { LocationService } from '../../../../../../../../core/services/admin/location.service';
 import { Phone } from '../../../../../../../../models/phone';
 import { PhoneService } from '../../../../../../../../core/services/admin/phone.service';
 import { SnackBarService } from '../../../../../../../../core/services/snack-bar.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'sib-user-show',
@@ -31,7 +31,8 @@ export class UserShowComponent implements OnInit {
 		public _phoneService: PhoneService,
 		private _route: ActivatedRoute,
 		private _router: Router,
-    	private snackBar: SnackBarService
+		private snackBar: SnackBarService,
+		private _location: Location,
 	)
 	{
 	}
@@ -118,5 +119,9 @@ export class UserShowComponent implements OnInit {
 			}
 		)
 	}
+
+	goBack(){
+		this._location.back();
+	  }
 
 }

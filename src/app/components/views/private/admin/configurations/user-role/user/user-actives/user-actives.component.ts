@@ -166,4 +166,8 @@ export class UserActivesComponent implements OnInit {
 		);
 	}
 
+	goBack(){
+		this._location.back();
+	  }
+
 }

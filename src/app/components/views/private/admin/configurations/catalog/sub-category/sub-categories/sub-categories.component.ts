@@ -157,4 +157,8 @@ export class SubCategoriesComponent implements OnInit {
       }
     );
   }
+
+  goBack(){
+    this._location.back();
+  }
 }

@@ -131,4 +131,7 @@ export class ServiceDetailEditComponent implements OnInit {
 		}
 		
 	}
+	goBack(){
+		this._location.back();
+	  }
 }

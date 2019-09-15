@@ -100,5 +100,8 @@ export class ActivityEditComponent implements OnInit {
 		}
 		
 	}
+	goBack(){
+		this._location.back();
+	  }
 
 }

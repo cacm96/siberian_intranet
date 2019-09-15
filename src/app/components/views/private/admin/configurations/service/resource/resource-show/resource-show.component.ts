@@ -64,4 +64,8 @@ export class ResourceShowComponent implements OnInit {
 		)
 	}
 
+	goBack(){
+		this._location.back();
+	  }
+
 }

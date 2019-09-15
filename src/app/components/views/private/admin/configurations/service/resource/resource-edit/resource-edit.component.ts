@@ -111,4 +111,8 @@ export class ResourceEditComponent implements OnInit {
 		}
 		
 	}
+
+	goBack(){
+		this._location.back();
+	  }
 }

@@ -91,4 +91,7 @@ export class PoliticCreateComponent implements OnInit {
 	{
 		this.snackBar.openSnackBarSuccess(message);
 	}
+	goBack(){
+		this._location.back();
+	  }
 }
