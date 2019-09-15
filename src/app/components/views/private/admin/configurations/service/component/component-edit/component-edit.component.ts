@@ -96,4 +96,8 @@ export class ComponentEditComponent implements OnInit {
 		
 	}
 
+	goBack(){
+		this._location.back();
+	  }
+
 }

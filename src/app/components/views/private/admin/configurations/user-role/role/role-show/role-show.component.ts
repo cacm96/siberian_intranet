@@ -7,6 +7,7 @@ import { Global } from '../../../../../../../../core/services/global';
 import { Role } from '../../../../../../../../models/role';
 import { RoleService } from '../../../../../../../../core/services/admin/role.service';
 import { SnackBarService } from '../../../../../../../../core/services/snack-bar.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'sib-role-show',
@@ -25,7 +26,8 @@ export class RoleShowComponent implements OnInit {
 		private _route: ActivatedRoute,
 		private _router: Router,
 		private _location: Location,
-    	private snackBar: SnackBarService
+		private snackBar: SnackBarService,
+		private _location: Location,
     )
     {
 
@@ -64,5 +66,9 @@ export class RoleShowComponent implements OnInit {
 			}
 		)
 	}
+
+	goBack(){
+		this._location.back();
+	  }
 
 }

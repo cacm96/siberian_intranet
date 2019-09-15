@@ -138,6 +138,9 @@ export class ServiceDetailCreateComponent implements OnInit {
 	{
 		this.snackBar.openSnackBarSuccess(message);
 	}
+	goBack(){
+		this._location.back();
+	  }
 
 
 }

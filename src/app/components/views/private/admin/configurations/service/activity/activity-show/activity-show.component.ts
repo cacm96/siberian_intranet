@@ -61,5 +61,8 @@ export class ActivityShowComponent implements OnInit {
 			}
 		)
 	}
+	goBack(){
+		this._location.back();
+	  }
 
 }

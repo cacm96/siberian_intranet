@@ -23,7 +23,7 @@ export class CategoryCreateComponent implements OnInit {
 		private _categoryService: CategoryService,
 		private _router: Router,
 		private _location: Location,
-		private snackBar: SnackBarService
+		private snackBar: SnackBarService,
 		)
 	{
 		this.category = new Category();
@@ -92,4 +92,7 @@ export class CategoryCreateComponent implements OnInit {
 	}
 
 
+	goBack(){
+		this._location.back();
+	  }
 }

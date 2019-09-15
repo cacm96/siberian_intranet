@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common'; 
 
 @Component({
   selector: 'sib-role-function-create',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RoleFunctionCreateComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _location: Location,
+  ) { }
 
   ngOnInit() {
+  }
+  goBack(){
+    this._location.back();
   }
 
 }

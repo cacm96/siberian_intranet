@@ -65,5 +65,8 @@ export class EquipInfrasShowComponent implements OnInit {
 			}
 		)
 	}
+	goBack(){
+		this._location.back();
+	  }
 
 }

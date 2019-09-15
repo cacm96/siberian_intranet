@@ -172,5 +172,8 @@ export class UserInactivesComponent implements OnInit, OnChanges {
 			}
 		);
 	}
+	goBack(){
+		this._location.back();
+	  }
 
 }
