@@ -36,7 +36,7 @@ export class ShowVarietyDetailComponent implements OnInit {
 	public failedConect:string;
 
 
-	displayedColumns: string[] = ['id','name','description','serviceDetail','status','delete'];
+	displayedColumns: string[] = ['id','name','description','serviceDetail','status','addServiceDetail','edit','delete'];
 	dataSource: MatTableDataSource<VarietyDetail>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;

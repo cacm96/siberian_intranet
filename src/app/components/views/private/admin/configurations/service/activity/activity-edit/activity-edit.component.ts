@@ -80,6 +80,7 @@ export class ActivityEditComponent implements OnInit {
 					{
 						this.message  = response.message.text;
 						this.snackBar.openSnackBar(this.message,'');
+						console.log(response);
 					}
 					else
 					{

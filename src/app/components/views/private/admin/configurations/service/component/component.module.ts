@@ -22,7 +22,7 @@ import { ComponentDeleteComponent } from './component-delete/component-delete.co
 	ComponentCreateComponent,
 	ComponentEditComponent,
 	ComponentShowComponent,
-	ComponentDeleteComponent
+	ComponentDeleteComponent,
   ],
   imports: [
     CommonModule,

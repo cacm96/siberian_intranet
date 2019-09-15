@@ -12,39 +12,47 @@ import { SnackBarService } from '../../../../../../../../core/services/snack-bar
 
 
 @Component({
-  selector: 'sib-service-detail-create',
-  templateUrl: './service-detail-create.component.html',
-  styleUrls: ['./service-detail-create.component.scss']
+	selector: 'sib-service-detail-create',
+	templateUrl: './service-detail-create.component.html',
+	styleUrls: ['./service-detail-create.component.scss']
 })
 export class ServiceDetailCreateComponent implements OnInit {
 
-  public serviceDetail:ServiceDetail;
-  public components:Componentt;
-  public ComponentId:string;
-  public total:Number;
-  public failedConect:string;
+	public serviceDetail:ServiceDetail;
+	public components:Componentt;
+	public ComponentId:string;
+	public types:any[];
+	public typeSelected:string="";
+	public total:Number;
+	public failedConect:string;
 
-  public message:string;
+	public message:string;
 
-  constructor
-  (
-  private _serviceDetailService: ServiceDetailService,
-  private _componentService: ComponentService,
-	private _router: Router,
-	private _location: Location,
-	private snackBar: SnackBarService
-  ) 
-  {
-    this.serviceDetail = new ServiceDetail();
+	constructor
+	(
+		private _serviceDetailService: ServiceDetailService,
+		private _componentService: ComponentService,
+		private _router: Router,
+		private _location: Location,
+		private snackBar: SnackBarService
+		) 
+	{
+		this.serviceDetail = new ServiceDetail();
 		console.log(this.serviceDetail);
-   }
+		this.types= [
+		{id:"Reparación",name:"Reparación"},
+		{id:"Mantenimiento",name:"Mantenimiento"},
+		{id:"Construcción",name:"Construcción"},
+		{id:"Otros",name:"Otros"},
+		];
+	}
 
-  ngOnInit() {
-    this.getComponents();
+	ngOnInit() {
+		this.getComponents();
 
-  }
+	}
 
-  getComponents()
+	getComponents()
 	{
 		this._componentService.All().subscribe
 		(
@@ -76,17 +84,18 @@ export class ServiceDetailCreateComponent implements OnInit {
 				}
 			}
 			)
-  }
-  
-  register(form: NgForm)
+	}
+
+	register(form: NgForm)
 	{
 		if(form.valid)
 		{
-      this.serviceDetail.name = form.value.name;
-      this.serviceDetail.note = form.value.note;
-      this.serviceDetail.ComponentId= form.value.ComponentId;
-      this.serviceDetail.estimatedPrice = form.value.estimatedPrice;
+			this.serviceDetail.name = form.value.name;
+			this.serviceDetail.note = form.value.note;
+			this.serviceDetail.ComponentId= form.value.ComponentId;
+			this.serviceDetail.estimatedPrice = form.value.estimatedPrice;
 			this.serviceDetail.estimatedWarrantyTime = form.value.estimatedWarrantyTime;
+			this.serviceDetail.serviceType = form.value.type;
 			
 
 			console.log(this.serviceDetail);

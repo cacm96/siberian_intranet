@@ -69,7 +69,7 @@ export class EquipInfrasShowComponent implements OnInit {
 				if (response.status==true)
 				{
 					this.equipinfras = response.equipinfras;
-					this.varieties = response.equipinfras.variety;
+					this.varieties = response.equipinfras.varieties;
 					this.table();
 				}
 				else
