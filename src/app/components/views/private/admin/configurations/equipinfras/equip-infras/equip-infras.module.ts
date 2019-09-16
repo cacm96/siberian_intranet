@@ -10,6 +10,7 @@ import { EquipinfrasService } from 'src/app/core/services/admin/equipinfras.serv
 import { SubcategoryService } from 'src/app/core/services/admin/subcategory.service';
 import { VarietyService } from 'src/app/core/services/admin/variety.service';
 import { VarietyDetailService } from 'src/app/core/services/admin/varietyDetail.service';
+import { ServiceDetailService } from 'src/app/core/services/admin/serviceDetail.service';
 
 import { EquipInfrasRoutingModule } from './equip-infras-routing.module';
 import { EquipInfrasComponent } from './equip-infras.component';
@@ -20,6 +21,9 @@ import { EquipInfrasShowComponent } from './equip-infras-show/equip-infras-show.
 import { EquipInfrasDeleteComponent } from './equip-infras-delete/equip-infras-delete.component';
 import { AddVarietyComponent } from './add-variety/add-variety.component';
 import { AddVarietyDetailsComponent } from './add-variety-details/add-variety-details.component';
+import { ShowVarietyDetailComponent } from './show-variety-detail/show-variety-detail.component';
+import { AddServiceDetailComponent } from './add-service-detail/add-service-detail.component';
+import { EditVarietyDetailComponent } from './edit-variety-detail/edit-variety-detail.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,10 @@ import { AddVarietyDetailsComponent } from './add-variety-details/add-variety-de
 	EquipInfrasShowComponent,
 	EquipInfrasDeleteComponent,
 	AddVarietyComponent,
-	AddVarietyDetailsComponent
+	AddVarietyDetailsComponent,
+	ShowVarietyDetailComponent,
+	AddServiceDetailComponent,
+	EditVarietyDetailComponent
   ],
   imports: [
     CommonModule,
@@ -44,6 +51,7 @@ import { AddVarietyDetailsComponent } from './add-variety-details/add-variety-de
     SubcategoryService,
     VarietyService,
     VarietyDetailService,
+    ServiceDetailService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass : TokenInterceptorService,

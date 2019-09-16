@@ -10,6 +10,7 @@
             <h3 mat-subheader>Subcategoría</h3>
             <mat-list-item><h4 mat-line><b>Nombre: </b> {{ subcategory.name }}</h4></mat-list-item>
             <mat-list-item><h4 mat-line><b>Descripción: </b> {{ subcategory.description }}</h4></mat-list-item>
+            <mat-list-item><h4 mat-line><b>Categoría: </b> {{ subcategory.category.name }}</h4></mat-list-item>
             <mat-list-item *ngIf="subcategory.status=='active'"><h4 mat-line><b>Estatus:<span class="badge badge-success"> Activo</span></b></h4></mat-list-item>
           </mat-list>
         </div>

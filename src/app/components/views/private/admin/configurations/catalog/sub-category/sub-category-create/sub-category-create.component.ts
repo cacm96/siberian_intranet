@@ -33,7 +33,7 @@ export class SubCategoryCreateComponent implements OnInit {
 		private _router: Router,
 		private _location: Location,
 		private snackBar: SnackBarService
-	)
+		)
 	{
 		this.subcategory = new Subcategory();
 	}
@@ -132,6 +132,10 @@ export class SubCategoryCreateComponent implements OnInit {
 	messageSnackBar(message)
 	{
 		this.snackBar.openSnackBarSuccess(message);
+	}
+
+	goBack(){
+		this._location.back();
 	}
 
 }

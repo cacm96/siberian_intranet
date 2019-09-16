@@ -66,6 +66,10 @@
 							<td mat-cell *matCellDef="let row"> {{row.estimatedWarrantyTime}} </td>
 						</ng-container>
 
+						<ng-container matColumnDef="serviceType">
+							<th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo de Servicio </th>
+							<td mat-cell *matCellDef="let row"> {{row.serviceType}} </td>
+						</ng-container>
 						
 
 						<ng-container matColumnDef="status">

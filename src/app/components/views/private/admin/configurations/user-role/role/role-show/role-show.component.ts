@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import {Location} from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Global } from '../../../../../../../../core/services/global';
 import { Role } from '../../../../../../../../models/role';
 import { RoleService } from '../../../../../../../../core/services/admin/role.service';
 import { SnackBarService } from '../../../../../../../../core/services/snack-bar.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'sib-role-show',
@@ -24,8 +24,8 @@ export class RoleShowComponent implements OnInit {
 		private _roleService: RoleService,
 		private _route: ActivatedRoute,
 		private _router: Router,
+		private snackBar: SnackBarService,
 		private _location: Location,
-    	private snackBar: SnackBarService
     )
     {
 
@@ -64,5 +64,9 @@ export class RoleShowComponent implements OnInit {
 			}
 		)
 	}
+
+	goBack(){
+		this._location.back();
+	  }
 
 }

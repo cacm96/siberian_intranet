@@ -1,4 +1,4 @@
-<div class="container">
+s<div class="container">
 	<div class="row">
 		<div class="col-sm-8 offset-2">
 			<div class="row">
@@ -8,7 +8,7 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-12">
-					<button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/service/service-detail']">Volver</button>
+					<button mat-raised-button color="primary" (click)="goBack()">Volver</button>
 				</div>
 			</div>
 			<hr>
@@ -26,6 +26,12 @@
 							  <mat-option *ngFor="let component of components" [value]="component.id">{{ component.name }}</mat-option>
 							</mat-select>
 						</mat-form-field>
+
+						<mat-form-field>
+		                  <mat-select name="type" [(ngModel)]="serviceDetail.serviceType" placeholder="Seleccione un Tipo" required>
+		                    <mat-option *ngFor="let type of types" [value]="type.id">{{ type.name }}</mat-option>
+		                  </mat-select>
+		                </mat-form-field>
 
 						<mat-form-field>
 						  <input matInput id="inputName" name="name" placeholder="Nombre" [(ngModel)]="serviceDetail.name" required>

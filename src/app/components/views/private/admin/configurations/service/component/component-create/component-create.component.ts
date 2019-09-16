@@ -91,5 +91,8 @@ export class ComponentCreateComponent implements OnInit {
 		this.snackBar.openSnackBarSuccess(message);
 	}
 
+	goBack(){
+		this._location.back();
+	  }
 }
 

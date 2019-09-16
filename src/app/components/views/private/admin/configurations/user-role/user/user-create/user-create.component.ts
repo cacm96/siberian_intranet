@@ -41,7 +41,8 @@ export class UserCreateComponent implements OnInit {
 		private _router: Router,
 		private _userService: UserService,
 		private _roleService: RoleService,
-		private snackBar: SnackBarService
+		private snackBar: SnackBarService,
+		private _location: Location,
 		)
 	{
 		this.dniTypes= [
@@ -140,5 +141,8 @@ export class UserCreateComponent implements OnInit {
 	messageSnackBar(message){
 		this.snackBar.openSnackBarSuccess(message);
 	}
+	goBack(){
+		this._location.back();
+	  }
 
 }

@@ -20,6 +20,7 @@ export class AddVarietyComponent implements OnInit {
 	public equipinfras:Equipinfras;
 	public VarietyId:string;
 	public EquipinfraId:string;
+	public total:Number;
 	public message:string;
 	public failedConect:string;
 
@@ -58,11 +59,11 @@ export class AddVarietyComponent implements OnInit {
 				if (response.status==true)
 				{
 					this.varieties = response.varieties;
-					console.log(this.varieties);
 					this.VarietyId="";
 				}
 				else
 				{
+					this.total = 0;
 					this.message = response.message.text;
 					console.log(this.message);
 				}

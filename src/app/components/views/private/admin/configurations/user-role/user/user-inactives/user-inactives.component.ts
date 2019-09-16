@@ -71,7 +71,6 @@ export class UserInactivesComponent implements OnInit, OnChanges {
 		        {
 		          this.users = [];
 		          this.message = response.message.text;
-		          console.log(this.message);
 		          this.table();
 		        }
 			},
@@ -172,5 +171,8 @@ export class UserInactivesComponent implements OnInit, OnChanges {
 			}
 		);
 	}
+	goBack(){
+		this._location.back();
+	  }
 
 }

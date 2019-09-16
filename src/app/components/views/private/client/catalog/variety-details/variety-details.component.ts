@@ -60,12 +60,12 @@ export class VarietyDetailsComponent implements OnInit {
 				{
 					this.equipinfras = response.equipinfras;
 					console.log(this.equipinfras);
-					this.varietys = response.equipinfras.variety;
+					this.varietys = response.equipinfras.varieties;
 					for (var i=0; i<this.varietys.length; i++)
 					{
 						if( this.varietys[i].id == this.IdVariety)
 						{
-							this.variety = response.equipinfras.variety[i];
+							this.variety = response.equipinfras.varieties[i];
 						}
 					}
 					this.varietyDetails = this.variety.varietyDetails;
@@ -97,9 +97,8 @@ export class VarietyDetailsComponent implements OnInit {
 		this._location.back(); 
     }
 
-    SetIdVarietyDetail(name,description){
-    	localStorage.setItem('NameVarietyDetail',name);
-    	localStorage.setItem('DescriptionVarietyDetail',description);
+    SetIdVarietyDetail(id){
+    	localStorage.setItem('IdVarietyDetail',id);
     }
 
 }
