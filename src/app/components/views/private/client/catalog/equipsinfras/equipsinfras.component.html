@@ -31,7 +31,7 @@
 												<br>
 												<b>Descripción: </b> {{ equipinfras.description }}
 												<br>
-												<!-- <b>Marcas: </b><span class="badge badge-primary">{{ varietys.length }}</span> -->
+												<b>Marcas: </b><span class="badge badge-primary">{{ equipinfras.varieties.length }}</span>
 											</div>
 										</div>
 									</mat-card-content>
@@ -41,7 +41,7 @@
 					</div>
 				</div>
 
-				<div *ngIf="equipsinfras.length<=0">
+				<div *ngIf="total<=0">
 					<div class="row">
 						<div class="col-md-12">
 							<h3 class="text-center">No hay equipos-infraestructuras registradas para esta subcategoría</h3>
