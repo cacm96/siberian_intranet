@@ -2,7 +2,6 @@
 /* Adaptando colores
 Versión 4.0.0
 09/07/2019*/
-@import "../node_modules/angular-calendar/css/angular-calendar.css";
 
 html,body,.mat_sidenav_content{
   padding:0;
@@ -496,6 +495,10 @@ table {
 .main_request-detail section div div{
   display:inline-block;
 }
+.main_request-detail section div p{
+  display:inline-block;
+  width: 300px;
+}
 
 .main_request-detail .derecho {
   float: right;
@@ -503,16 +506,6 @@ table {
 
 .main_request-detail section div div label {
   width: 100px;
-}
-
-.main_request-detail section div div input {
-  width: 200px;
-}
-
-.main_request-detail textarea {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .main_request-detail #tiposervicio {
@@ -524,9 +517,9 @@ table {
   text-align: center;
 }
 
-.main_request-detail .extra input {
+.main_request-detail .extra p {
   display: block;
-  margin : 0 auto;
+  text-align: center;
 }
 
 .main_request-detail .extra .boton {

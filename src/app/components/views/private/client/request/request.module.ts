@@ -2,10 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../../../../core/ui/material.module';
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RevisionService } from 'src/app/core/services/admin/revision.service';
 import { ServiceDetailService } from 'src/app/core/services/admin/serviceDetail.service';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TokenInterceptorService } from 'src/app/core/services/token-interceptor.service';
+import { EquipinfrasService } from 'src/app/core/services/admin/equipinfras.service';
 
 import { RequestRoutingModule } from './request-routing.module';
 import { RequestComponent } from './request.component';
@@ -40,7 +39,9 @@ import { TokenInterceptorService } from 'src/app/core/services/token-interceptor
   ],
   providers:
   [
+    RevisionService,
     ServiceDetailService,
+    EquipinfrasService,
     UserService,
     LocationService,
     {

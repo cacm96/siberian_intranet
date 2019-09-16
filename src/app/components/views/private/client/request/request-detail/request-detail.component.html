@@ -1,19 +1,21 @@
 <div class="main_request-detail">
-    <div class="container">
-        <h4 class="titulo">Orden de servicio Nro</h4>
+  
+    <div class="container" *ngIf="revision">
+        <h4 class="titulo">Orden de servicio Nro {{revision.id}} </h4>
         <div class="container">
+
   
           <section>
             <br>
             <div class="container">
               <div >             
-                <label for="cliente">Cliente</label>
-                <input type="text" id="cliente" name="cliente" value="{{ revision.user.name }}">            
+                <label for="cliente">Cliente:</label>
+                <p>{{revision?.user.firstName}} {{revision?.user.lastName}}</p>            
               </div>
                    
               <div class=" derecho">            
-                <label for="equipo">Equipo</label>
-                <input type="text" id="equipo" name="equipo">            
+                <label for="equipo">Equipo:</label>
+                <p>{{ equipinfras.name }}</p>            
               </div>
             </div>
             
@@ -21,26 +23,26 @@
             <br>
             <div class="container">
               <div >
-                <label for="fecha">Fecha</label>
-                <input type="date" id="fecha" name="fecha">
+                <label for="fecha">Fecha:</label>
+                <p></p>
               </div>
                       
               <div class="derecho">
-                <label for="marca">Marca</label>
-                <input type="text" id="marca" name="marca">
+                <label for="marca">Marca:</label>
+                <p>{{ equipinfras.varieties[0].name }}</p>
               </div>
             </div>
   
             <br>
             <div class="container">
               <div>
-                <label for="direccion">Dirección</label>
-                <input type="text" id="direccion" name="direccion" value="{{ revision.location.address }}">
+                <label for="direccion">Dirección:</label>
+                <p>{{revision.location.address}}</p>
               </div>
             
               <div class="derecho">
-                <label for="modelo">Modelo</label>
-                <input type="text" id="modelo" name="modelo">
+                <label for="modelo">Modelo:</label>
+                <p>{{ equipinfras.varieties[0].varietyDetails[0].name }}</p>
               </div>
             </div>      
   
@@ -50,41 +52,39 @@
         
       <br>
       <div class="container move">
-        <label for="diagnostico">Diagnóstico</label>
+        <label for="diagnostico">Diagnóstico:</label>
         <br>
-        <textarea name="diagnostico" id="diagnostico" cols="100" rows="2"></textarea>
+        <p></p>
       </div>
   
       <br>
       <div class="container move">
-        <label for="tipoServicio" id="tiposervicio">Tipo de servicios</label>
-        <input type="text" id="tipoServicio" name="tipoServicio">
+        <label for="tipoServicio" id="tiposervicio">Tipo de servicios:</label>
+        <p></p>
       </div>
   
   
       <br>
       <div class="container extra">
         <div class="row">
-          <!--<div class="col-md-4" *ngFor="let com of serviceDetail">
-            
-                {{ com.Component }}
-
-            <label for="componenteAsociado">Componente asociado</label>
-            <input type="text" id="componenteAsociado" name="componenteAsociado" value="serviceDetail.Component.name">
-          </div>-->
-          <div class="col-md-4" >
+          <div class="col-md-4">
           <label for="componenteAsociado">Componente asociado</label>
-          <input type="text" id="componenteAsociado" name="componenteAsociado">
+            <!-- <div *ngFor="let varietyDetail of revision.varietyDetail">
+                    <p>
+                       {{ varietyDetail.name }}
+                    </p>
+          </div>
+          <input type="text" id="componenteAsociado" name="componenteAsociado">-->
         </div>
         
           <div class="col-md-4">
-            <label for="serviciosRequeridos">Servicios requeridos</label>              
-            <input type="text" id="serviciosRequeridos" name="serviciosRequeridos">
+            <label for="serviciosRequeridos">Servicios requeridos</label>    
+            <p></p>          
           </div>
         
           <div class="col-md-4">       
             <label for="personal">Personal adicional</label>              
-            <input type="text" id="personal" name="personal">      
+            <p></p>      
           </div>
         </div>
       </div>
@@ -111,7 +111,7 @@
         
           <div class="col-md-5">
             <label for="costo">Costo/Presupuesto</label>
-            <input type="text" id="costo" name="costo" value="{{ revision.price }}">
+            <p >{{ revision.price }}</p>
             <br>
             <div class="boton">
               <button mat-button>Rechazar</button>
