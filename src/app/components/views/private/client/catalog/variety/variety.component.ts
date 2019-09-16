@@ -52,7 +52,7 @@ export class VarietyComponent implements OnInit {
 			{
 				if (response.status==true)
 				{
-					this.varietys = response.equipinfras.variety;
+					this.varietys = response.equipinfras.varieties;
 					this.equipinfras = response.equipinfras;
 					this.subcategory = response.equipinfras.subcategory;
 					this.getSubcategory(this.subcategory.id)

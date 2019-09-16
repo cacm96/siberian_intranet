@@ -14,6 +14,7 @@ export class SubcategoriaComponent implements OnInit {
 
 	public subcategories:any;
 	public category:any;
+	public total:number;
 	public message:string;
 	public failedConect:string;
 
@@ -46,7 +47,14 @@ export class SubcategoriaComponent implements OnInit {
 		(
 			response =>
 			{
-				this.subcategories = response.category.subcategories;
+				if(response.category.subcategories.length>0)
+				{
+					this.subcategories = response.category.subcategories;
+				}
+				else
+				{
+					this.total = 0;
+				}
 				this.category = response.category;
 				console.log(this.subcategories);
 			},

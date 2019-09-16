@@ -14,6 +14,7 @@ import { CatalogueService } from '../../../../../../core/services/client/catalog
 export class CategoriaComponent implements OnInit {
 
   public categories:any;
+  public total:number;
   public message:string;
   public failedConect:string;
 
@@ -46,6 +47,7 @@ export class CategoriaComponent implements OnInit {
         }
         else
         {
+          this.total =0;
           this.message = response.message.text;
           console.log(this.message);
         }
