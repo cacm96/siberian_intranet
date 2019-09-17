@@ -23,31 +23,30 @@ import { EquipinfrasService } from '../../../../../../core/services/admin/equipi
 })
 export class RequestDetailComponent implements OnInit {
 
-  public revision: Array < Revision > = new Array < Revision > ();
-  public servicedetail: Array < ServiceDetail > = new Array < ServiceDetail > ();
-  public equipinfras: Array < Equipinfras > = new Array < Equipinfras > ();
+  public revision: Revision;
+  public equipinfras: Equipinfras;
   public message: string;
   public failedConect: string;
-
-  dataSource: MatTableDataSource < Revision >;
 
   constructor(
     private dialogService: DialogService,
     private snackBar: SnackBarService,
-    // tslint:disable-next-line:variable-name
     private _revisionService: RevisionService,
-    // tslint:disable-next-line:variable-name
-    private _serviceDetailService: ServiceDetailService,
-    // tslint:disable-next-line:variable-name
     private _equipinfrasService: EquipinfrasService,
-    // private _route: ActivatedRoute,
-   // private _router: Router,
-    // private _location: Location
+    private _route: ActivatedRoute,
+    private _location: Location
   ) {
 
   }
 
   ngOnInit() {
+  /*  this._route.params.subscribe (
+      params => {
+        let id = params.id;
+        this.getRevision(id);
+        this.getEquipinfras(id);
+      }
+      );*/
     this.getRevision();
    // this.getServiceDetail();
     this.getEquipinfras();
@@ -57,15 +56,8 @@ export class RequestDetailComponent implements OnInit {
     this._revisionService.getOne(1).subscribe
     (
       response => {
-        if (response.status == true) {
-          this.revision = response.revision;
-          console.log(this.revision);
-        } else {
-          this.revision = [];
-          this.message = response.message.text;
-          console.log(this.message);
-        }
-
+        this.revision = response.revision;
+        console.log(this.revision);
       },
       error => {
         console.log( < any > error);
@@ -82,15 +74,8 @@ export class RequestDetailComponent implements OnInit {
     this._serviceDetailService.getOne(1).subscribe
     (
       response => {
-        if (response.status == true) {
           this.servicedetail = response.servicedetail;
           console.log(this.servicedetail);
-        } else {
-          this.servicedetail = [];
-          this.message = response.message.text;
-          console.log(this.message);
-        }
-
       },
       error => {
         console.log( < any > error);
@@ -107,15 +92,8 @@ export class RequestDetailComponent implements OnInit {
     this._equipinfrasService.getOne(1).subscribe
     (
       response => {
-        if (response.status == true) {
-          this.equipinfras = response.equipinfras;
-          console.log(this.equipinfras);
-        } else {
-          this.equipinfras = [];
-          this.message = response.message.text;
-          console.log(this.message);
-        }
-
+        this.equipinfras = response.equipinfras;
+        console.log(this.equipinfras);
       },
       error => {
         console.log( < any > error);
@@ -127,5 +105,9 @@ export class RequestDetailComponent implements OnInit {
       }
       )
   }
+
+  goBack() {
+    this._location.back();
+    }
 
 }
