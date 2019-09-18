@@ -1,6 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../../../../core/ui/material.module';
+
+import { RevisionService } from 'src/app/core/services/admin/revision.service';
+import { ServiceDetailService } from 'src/app/core/services/admin/serviceDetail.service';
+import { EquipinfrasService } from 'src/app/core/services/admin/equipinfras.service';
+
 import { RequestRoutingModule } from './request-routing.module';
 import { RequestComponent } from './request.component';
 import { RequestDetailComponent } from './request-detail/request-detail.component';
@@ -35,6 +40,9 @@ import { TokenInterceptorService } from 'src/app/core/services/token-interceptor
   ],
   providers:
   [
+    RevisionService,
+    ServiceDetailService,
+    EquipinfrasService,
     UserService,
     LocationService,
     RevisionService,
@@ -43,8 +51,7 @@ import { TokenInterceptorService } from 'src/app/core/services/token-interceptor
       useClass : TokenInterceptorService,
       multi: true
     },
-    
-   ],
+  ]
 })
 
 export class RequestModule { }
