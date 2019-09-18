@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { routing,appRoutingProviders } from './app.routing';
+import { routing, appRoutingProviders } from './app.routing';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './core/ui/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -34,6 +34,9 @@ import { EditLocationDialogComponent } from './components/shared/edit-location-d
 import { AddPhoneDialogComponent } from './components/shared/add-phone-dialog/add-phone-dialog.component';
 import { EditPhoneDialogComponent } from './components/shared/edit-phone-dialog/edit-phone-dialog.component';
 import { NotifyDialogComponent } from './components/shared/notify-dialog/notify-dialog.component';
+
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
   declarations: [
@@ -67,7 +70,11 @@ import { NotifyDialogComponent } from './components/shared/notify-dialog/notify-
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    })
   ],
   providers:
   [
