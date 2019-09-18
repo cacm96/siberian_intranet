@@ -12,6 +12,7 @@ import { MessageComponent } from './message/message.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from '../../../../../core/services/admin/user.service'
 import { LocationService } from '../../../../../core/services/admin/location.service'
+import { RevisionService } from '../../../../../core/services/client/revision.service'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from 'src/app/core/services/token-interceptor.service';
 
@@ -36,6 +37,7 @@ import { TokenInterceptorService } from 'src/app/core/services/token-interceptor
   [
     UserService,
     LocationService,
+    RevisionService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass : TokenInterceptorService,
