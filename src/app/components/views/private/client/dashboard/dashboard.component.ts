@@ -11,6 +11,8 @@ import { User } from '../../../../../models/user';
 import { UserService } from '../../../../../core/services/admin/user.service';
 import { Revision } from '../../../../../models/revision';
 import { RevisionService } from '../../../../../core/services/admin/revision.service';
+import { ServiceOrder } from '../../../../../models/serviceOrder';
+import { ServiceOrderService } from '../../../../../core/services/admin/serviceOrder.service';
 import { Equipinfras } from '../../../../../models/equipinfras';
 import { EquipinfrasService } from '../../../../../core/services/admin/equipinfras.service';
 
@@ -20,7 +22,8 @@ import { EquipinfrasService } from '../../../../../core/services/admin/equipinfr
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  public revision: Array < Revision > = new Array < Revision > ();
+  public revisions: any;
+  public serviceOrders: any;
   public equipinfras: Equipinfras;
   public message: string;
   public failedConect: string;
@@ -29,6 +32,7 @@ export class DashboardComponent implements OnInit {
     private dialogService: DialogService,
     private snackBar: SnackBarService,
     private _revisionService: RevisionService,
+    private _serviceorderService: ServiceOrderService,
     private _equipinfrasService: EquipinfrasService,
     private _route: ActivatedRoute,
     private _location: Location
@@ -37,21 +41,46 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getRevision();
+    this.getRevisions();
+    this.getServiceOrders();
   }
 
-  getRevision() {
+  getRevisions() {
     this._revisionService.All().subscribe
     (
       response => {
         if (response.status==true) {
-          this.revision = response.revision;
-          console.log(this.revision);
+          this.revisions = response.revisions;
+          console.log(this.revisions);
         } else {
-          this.revision = [];
+          this.revisions = [];
           this.message = response.message.text;
           console.log(this.message);
-         // console.log('se esta yendo por el else');
+        }
+      },
+      error => {
+        console.log(<any>error);
+        if (error instanceof HttpErrorResponse) {
+          if (error.status === 0) {
+            this.failedConect = Global.failed;
+          }
+        }
+      }
+      )
+  }
+
+
+  getServiceOrders() {
+    this._serviceorderService.All().subscribe
+    (
+      response => {
+        if (response.status==true) {
+          this.serviceOrders = response.serviceOrders;
+          console.log(this.serviceOrders);
+        } else {
+          this.serviceOrders = [];
+          this.message = response.message.text;
+          console.log(this.message);
         }
       },
       error => {

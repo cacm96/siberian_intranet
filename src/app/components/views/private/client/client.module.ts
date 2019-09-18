@@ -4,6 +4,7 @@ import { MaterialModule } from '../../../../core/ui/material.module';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RevisionService } from 'src/app/core/services/admin/revision.service';
+import { ServiceOrderService } from 'src/app/core/services/admin/serviceOrder.service';
 import { EquipinfrasService } from '../../../../core/services/admin/equipinfras.service';
 import { UserService } from '../../../../core/services/admin/user.service';
 import { LocationService } from '../../../../core/services/admin/location.service';
@@ -29,12 +30,14 @@ import { SuggestionComponent } from './suggestion/suggestion.component';
   imports: [
     CommonModule,
     ClientRoutingModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
   providers:
   [
     RevisionService,
     EquipinfrasService,
+    ServiceOrderService,
     UserService,
     LocationService,
     {
