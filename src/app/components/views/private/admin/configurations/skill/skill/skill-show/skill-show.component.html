@@ -1,14 +1,76 @@
+<div class="container">
+    <h2 *ngIf="skill" class="text-center">{{ skill.name }}</h2>
+    <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/skill/skill']">Volver</button>
+    <hr>
+  
 
- <div class="container">
-  <h2 class="text-center">Habilidad</h2>
-  <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/skill/skill']">Volver</button>
-  <hr>
-  <mat-card>
-    <mat-list>
-      <mat-list-item> <b>Código: </b> 1</mat-list-item>
-      <mat-list-item> <b>Nombre:</b> Name</mat-list-item>
-      <mat-list-item> <b>Descripción:</b>Description</mat-list-item>
-      <mat-list-item> <b>Estatus:<span class="badge badge-primary"> Activo</span></b></mat-list-item>
-    </mat-list>
-  </mat-card>
+  <div *ngIf="skill">
+    <mat-card>
+      <div class="row">
+        <div class="col-sm-6">
+          <mat-list>
+            <h3 mat-subheader>Habilidad</h3>
+            <mat-list-item><h4 mat-line><b>Nombre: </b> {{ skill.name }}</h4></mat-list-item>
+            <mat-list-item><h4 mat-line><b>Descripción: </b> {{ skill.description }}</h4></mat-list-item>
+            <mat-list-item *ngIf="skill.status=='active'"><h4 mat-line><b>Estatus:<span class="badge badge-success"> Activo</span></b></h4></mat-list-item>
+            <mat-list-item *ngIf="skill.status=='deleted'"><h4 mat-line><b>Estatus:<span class="badge badge-danger"> Borrado</span></b></h4></mat-list-item>
+          </mat-list>
+        </div>
+      </div>
+    </mat-card>
+
+    <br>
+
+    <mat-card>
+      <div *ngIf="skill.serviceDetails.length>0">
+        <mat-list>
+          <h3 mat-subheader>Detalle Servicio</h3>
+          <mat-list-item *ngFor="let serviceDetails of skill.serviceDetails">
+            <h4 mat-line>{{serviceDetails.name}}</h4>
+          </mat-list-item>
+        </mat-list>
+      </div>
+
+      <div *ngIf="skill.serviceDetails.length<=0">
+        <mat-list>
+          <h3 mat-subheader>Detalle Servicio</h3>
+          <mat-list-item><h4 mat-line>No tiene detalle servicio</h4></mat-list-item>
+        </mat-list>
+      </div>
+    </mat-card>
+
+    <br>
+
+    <mat-card>
+      <div *ngIf="skill.users.length>0">
+        <mat-list>
+          <h3 mat-subheader>Servidores</h3>
+          <mat-list-item *ngFor="let user of skill.users">
+            <h4 mat-line>{{user.firstName}}</h4>
+            <h3 mat-line>{{user.experienceYears}} años de experiencia</h3>
+          </mat-list-item>
+        </mat-list>
+      </div>
+
+      <div *ngIf="skill.users.length<=0">
+        <mat-list>
+          <h3 mat-subheader>Servidores</h3>
+          <mat-list-item><h4 mat-line>No tiene servidores con esta habilidad</h4></mat-list-item>
+        </mat-list>
+      </div>
+    </mat-card>
+
+  </div>
+
+  <div *ngIf="!skill && !failedConect">
+    <div class="row">
+      <div class="col-sm-12 spinner">
+        <mat-spinner></mat-spinner>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="failedConect">
+    <h6 class="text-center">{{failedConect}}</h6>
+  </div>
 </div>

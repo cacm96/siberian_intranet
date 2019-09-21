@@ -5,63 +5,113 @@ import { MatTableDataSource } from '@angular/material/table';
 import { DialogService } from '../../../../../../../../core/services/dialog.service';
 import { SnackBarService } from '../../../../../../../../core/services/snack-bar.service';
 
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Global } from '../../../../../../../../core/services/global';
+import { Skill } from '../../../../../../../../models/skill';
+import { SkillService } from '../../../../../../../../core/services/admin/skill.service';
 
-export interface SkillData {
-  id: string;
-  name: string;
-  description: string;
-  status: string;
-}
 @Component({
   selector: 'sib-skills',
   templateUrl: './skills.component.html',
   styleUrls: ['./skills.component.scss']
 })
 export class SkillsComponent implements OnInit {
-  public skill:any[];
-	displayedColumns: string[] = ['id', 'name', 'description','status','edit','delete'];
-	dataSource: MatTableDataSource<SkillData>;
+  public skills: Array<Skill> = new Array<Skill>();
+  public message: string;
+  public failedConect: string;
 
-	@ViewChild(MatPaginator) paginator: MatPaginator;
-	@ViewChild(MatSort) sort: MatSort;
-  constructor(
-    private dialogService: DialogService,
-		private snackBar: SnackBarService
-  ) 
-  {
-    this.skill = [
-      {id:"1",name:"name 1",description:"description 1",status:"A"},
-      {id:"2",name:"name 2",description:"description 2",status:"A"},
-      {id:"3",name:"name 3",description:"description 3",status:"E"}
-    ];
+  displayedColumns: string[] = ['id', 'name', 'description', 'status', 'edit', 'delete'];
+  dataSource: MatTableDataSource<Skill>;
 
-  this.dataSource = new MatTableDataSource(this.skill);
-   }
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+  constructor
+    (
+      private dialogService: DialogService,
+      private snackBar: SnackBarService,
+      private _skillService: SkillService,
+      private _route: ActivatedRoute,
+      private _router: Router,
+      private _location: Location
+    ) {
+
+  }
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-		this.dataSource.sort = this.sort;
+    this.getSkills();
+  }
+
+  getSkills() {
+    this._skillService.All().subscribe
+      (
+        response => {
+          if (response.status == true) {
+            this.skills = response.skills;
+            console.log(this.skills);
+            this.table();
+          }
+          else {
+            this.skills = [];
+            this.message = response.message.text;
+            console.log(this.message);
+            this.table();
+          }
+
+        },
+        error => {
+          console.log(<any>error);
+          if (error instanceof HttpErrorResponse) {
+            if (error.status === 0) {
+              this.failedConect = Global.failed;
+            }
+          }
+        }
+      )
   }
 
   applyFilter(filterValue: string) {
-		this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.dataSource.filter = filterValue.trim().toLowerCase();
 
-		if (this.dataSource.paginator) {
-		  this.dataSource.paginator.firstPage();
-		}
-	}
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
 
-	onDelete(id){
-		this.dialogService.openConfirmDialog('¿Estás seguro de eliminar la habilidad'+id+' ?').afterClosed().subscribe(res=>{
-			if (res==true) {
-				console.log(id);
-				this.snackBar.openSnackBar('Eliminado Correctamente','¿Deshacer?').onAction().subscribe(() => {
-				  console.log('Recuperado');
-				});
-			}else{
-				console.log(res);
-			}
-		});
-	}
+  table() {
+    this.dataSource = new MatTableDataSource(this.skills);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  onDelete(id) {
+    this.dialogService.openConfirmDialog('¿Estás seguro de eliminar esta habilidad?').afterClosed().subscribe
+      (
+        response => {
+          if (response == true) {
+            this.deleteSkill(id);
+          } else {
+            console.log(response);
+          }
+        }
+      );
+  }
+
+  deleteSkill(id) {
+    this._skillService.deleteOne(id).subscribe
+      (
+        response => {
+          console.log(response);
+          this.message = response.message.text;
+          this.snackBar.openSnackBarSuccess(this.message);
+          this.getSkills();
+        },
+        error => {
+          console.log(<any>error);
+        }
+      )
+  }
 }
 
