@@ -7,10 +7,10 @@ import { User } from '../../../../../../../../models/user';
 import { UserService } from '../../../../../../../../core/services/admin/user.service';
 import { Role } from '../../../../../../../../models/role';
 import { RoleService } from '../../../../../../../../core/services/admin/role.service';
-import { Location } from '../../../../../../../../models/location';
 import { LocationService } from '../../../../../../../../core/services/admin/location.service';
 import { ChangeRoleService } from '../../../../../../../../core/services/admin/change-role.service';
 import { SnackBarService } from '../../../../../../../../core/services/snack-bar.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'sib-user-edit',
@@ -20,8 +20,6 @@ import { SnackBarService } from '../../../../../../../../core/services/snack-bar
 export class UserEditComponent implements OnInit {
 
 	public user: any;
-	public locations:Location;
-	public locationsCant:Number;
 	public roles:Role;
 	public dniTypes:any[];
 	public updateUser:any;
@@ -36,7 +34,8 @@ export class UserEditComponent implements OnInit {
 		private _route: ActivatedRoute,
 		private _router: Router,
     	private snackBar: SnackBarService,
-    	private _changeRoleService: ChangeRoleService
+		private _changeRoleService: ChangeRoleService,
+		private _location: Location,
 	)
 	{
 		this.dniTypes= [
@@ -89,7 +88,6 @@ export class UserEditComponent implements OnInit {
 			{
 				this.user = response;
 				this.user = this.user.user;
-				console.log(this.user);
 			},
 			error =>
 			{
@@ -109,8 +107,6 @@ export class UserEditComponent implements OnInit {
 	{
 		if(form.valid)
 		{
-			console.log(this.user.roleId);
-
 			this._userService.update(this.user).subscribe
 			(
 				response =>
@@ -119,7 +115,6 @@ export class UserEditComponent implements OnInit {
 					{
 						this.updateUser = response.user;
 						this.changeRoleUser(this.user.id,form.value.roleId);
-						console.log(this.updateUser);
 						this.message  = response.message.text;
 						this.snackBar.openSnackBar(this.message,'');
 					}
@@ -165,5 +160,8 @@ export class UserEditComponent implements OnInit {
 			}
 		);
 	}
+	goBack(){
+		this._location.back();
+	  }
 
 }

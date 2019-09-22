@@ -19,6 +19,7 @@ export class EquipsinfrasComponent implements OnInit {
 	public subcategory:any;
 	public category:any;
 	public IdEquipinfras:string;
+	public total:number;
 	public message:string;
 	public failedConect:string;
 
@@ -63,6 +64,7 @@ export class EquipsinfrasComponent implements OnInit {
 				}
 				else
 				{
+					this.total=0;
 					this.message = response.message.text;
 					console.log(this.message);
 				}

@@ -11,49 +11,55 @@ import { ComponentService } from '../../../../../../../../core/services/admin/co
 import { SnackBarService } from '../../../../../../../../core/services/snack-bar.service';
 
 @Component({
-  selector: 'sib-service-detail-edit',
-  templateUrl: './service-detail-edit.component.html',
-  styleUrls: ['./service-detail-edit.component.scss']
+	selector: 'sib-service-detail-edit',
+	templateUrl: './service-detail-edit.component.html',
+	styleUrls: ['./service-detail-edit.component.scss']
 })
 export class ServiceDetailEditComponent implements OnInit {
-  public serviceDetail:ServiceDetail;
-  public components:any;
-  public failedConect:string;
-  public message:string;
+	public serviceDetail:ServiceDetail;
+	public components:any;
+	public types:any[];
+	public failedConect:string;
+	public message:string;
 
-  constructor(
- private _serviceDetailService: ServiceDetailService,
-  private _componentService: ComponentService,
-	private _route: ActivatedRoute,
-	private _router: Router,
-	private _location: Location,
-  private snackBar: SnackBarService
-  ) 
+	constructor(
+		private _serviceDetailService: ServiceDetailService,
+		private _componentService: ComponentService,
+		private _route: ActivatedRoute,
+		private _router: Router,
+		private _location: Location,
+		private snackBar: SnackBarService
+		) 
 
-  { 
-   
-  }
+	{
+		this.types= [
+		{id:"Reparación",name:"Reparación"},
+		{id:"Mantenimiento",name:"Mantenimiento"},
+		{id:"Construcción",name:"Construcción"},
+		{id:"Otros",name:"Otros"},
+		];
 
-  ngOnInit() {
-    this._route.params.subscribe
+	}
+
+	ngOnInit() {
+		this._route.params.subscribe
 		(
 			params =>
 			{
 				let id = params.id;
 				this.getServiceDetails(id);
 			}
-    );
-    this.getComponents();
-  }
+			);
+		this.getComponents();
+	}
 
-  getComponents()
+	getComponents()
 	{
 		this._componentService.All().subscribe
 		(
 			response =>
 			{
 				this.components = response.components;
-				console.log(this.components);
 			},
 			error =>
 			{
@@ -66,17 +72,18 @@ export class ServiceDetailEditComponent implements OnInit {
 					}
 				}
 			}
-		)
+			)
 	}
 
 
-  getServiceDetails(id)
+	getServiceDetails(id)
 	{
 		this._serviceDetailService.getOne(id).subscribe
 		(
 			response =>
 			{
 				this.serviceDetail = response.serviceDetail;
+				console.log(this.serviceDetail);
 			},
 			error =>
 			{
@@ -89,7 +96,7 @@ export class ServiceDetailEditComponent implements OnInit {
 					}
 				}
 			}
-		)
+			)
 	}
 
 	update(form: NgForm)
@@ -118,10 +125,13 @@ export class ServiceDetailEditComponent implements OnInit {
 					this.message  = error.error.message;
 					this.snackBar.openSnackBar(this.message,'');
 				}
-			);
+				);
 		}else
 		{
 		}
 		
 	}
+	goBack(){
+		this._location.back();
+	  }
 }

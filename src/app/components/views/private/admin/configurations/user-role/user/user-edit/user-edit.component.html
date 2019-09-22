@@ -1,19 +1,19 @@
 <div class="container" *ngIf="user">
-	<form #updateForm="ngForm" (ngSubmit)="update(updateForm)">
-		<div class="row">
-			<div class="col-sm-8 offset-2">
-				<div class="row">
-					<div class="col-sm-12">
-						<h2 class="text-center">Editar Usuario</h2>
-					</div>
+	<div class="row">
+		<div class="col-sm-8 offset-2">
+			<div class="row">
+				<div class="col-sm-12">
+					<h2 class="text-center">Editar Usuario</h2>
 				</div>
-				<div class="row">
-					<div class="col-sm-12">
-						<button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/user-role/user']">Volver</button>
-					</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<button mat-raised-button color="primary" (click)="goBack()">Volver</button>
 				</div>
-				<hr>
+			</div>
+			<hr>
 
+			<form #updateForm="ngForm" (ngSubmit)="update(updateForm)">
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="example-container">
@@ -57,17 +57,17 @@
 							</mat-form-field>
 
 							<!-- <mat-label>Subir Imagen</mat-label>
-							<input id="fileInput" type="file"> -->
+								<input id="fileInput" type="file"> -->
 
-							<mat-form-field>
-								<input matInput name="note" [(ngModel)]="user.note" placeholder="Nota">
-							</mat-form-field>
+								<mat-form-field>
+									<input matInput name="note" [(ngModel)]="user.note" placeholder="Nota">
+								</mat-form-field>
 
-							<mat-form-field>
-			                  <mat-select name="roleId" [(ngModel)]="user.role.id" placeholder="Seleccione un Rol" required>
-			                    <mat-option *ngFor="let role of roles" [value]="role.id">{{ role.name }}</mat-option>
-			                  </mat-select>
-			                </mat-form-field>
+								<mat-form-field>
+									<mat-select name="roleId" [(ngModel)]="user.role.id" placeholder="Seleccione un Rol" required>
+										<mat-option *ngFor="let role of roles" [value]="role.id">{{ role.name }}</mat-option>
+									</mat-select>
+								</mat-form-field>
 
 							<!--
 							<div *ngIf="locationsCant>0">
@@ -126,10 +126,9 @@
 				</div>
 				<br>
 				<button mat-raised-button color="primary" type="submit">Guardar</button>
-			</div>
+			</form>
 		</div>
-		
-	</form>
+	</div>
 </div>
 
 <div *ngIf="!user && !failedConect">
@@ -141,6 +140,7 @@
 		</div>
 	</div>
 </div>
+
 <div *ngIf="failedConect">
 	<h6 class="text-center">{{failedConect}}</h6>
 </div>

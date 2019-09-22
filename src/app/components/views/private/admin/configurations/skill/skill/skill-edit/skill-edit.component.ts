@@ -83,4 +83,7 @@ export class SkillEditComponent implements OnInit {
 
   }
 
+  goBack(){
+    this._location.back();
+  }
 }

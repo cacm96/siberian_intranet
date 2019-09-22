@@ -23,6 +23,14 @@ export class VarietyDetailService extends HeaderService{
 		return this.http.post(this.url, params, {headers: this.header});
 	}
 
+	All(): Observable<any>{
+		return this.http.get(this.url, {headers: this.header});
+	}
+
+	getOne(id:Number): Observable<any>{
+		return this.http.get(this.url+"/"+id, {headers: this.header});
+	}
+
     update(varietyDetail:any): Observable<any>{
 		let params = JSON.stringify(varietyDetail);
 		return this.http.put(this.url+'/'+varietyDetail.id, params, {headers: this.header});
@@ -30,7 +38,7 @@ export class VarietyDetailService extends HeaderService{
 
 	updateService(varietyDetail:any): Observable<any>{
 		let params = JSON.stringify(varietyDetail);
-		return this.http.put(this.url+'/'+varietyDetail.id+'/service', params, {headers: this.header});
+		return this.http.put(this.url+'/8'+'/service', {services:varietyDetail}, {headers: this.header});
 	}
 
 	deleteOne(id): Observable<any>{

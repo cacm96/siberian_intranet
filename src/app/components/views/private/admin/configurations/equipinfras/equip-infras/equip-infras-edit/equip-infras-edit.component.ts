@@ -131,5 +131,8 @@ export class EquipInfrasEditComponent implements OnInit {
 		}
 		
 	}
+	goBack(){
+		this._location.back();
+	  }
 
 }

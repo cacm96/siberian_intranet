@@ -1,59 +1,140 @@
 <div class="container">
-    <h2 *ngIf="equipinfras" class="text-center">{{ equipinfras.name }}</h2>
-    <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/equipinfras/equip-infras']">Volver</button>
-    <hr>
-    <div *ngIf="equipinfras">
-      <mat-card>
-        <div class="row">
-          <div class="col-sm-6">
-            <mat-list>
-              <h3 mat-subheader>Equipo/Infraestructura</h3>
-              <mat-list-item><h4 mat-line><b>Nombre: </b> {{ equipinfras.name }}</h4></mat-list-item>
-              <mat-list-item><h4 mat-line><b>Imagen: </b> {{ equipinfras.image_url }}</h4></mat-list-item>
-              <mat-list-item><h4 mat-line><b>Descripción: </b> {{ equipinfras.description }}</h4></mat-list-item>
-              <mat-list-item><h4 mat-line><b>Subcagoría: </b> {{ equipinfras.subcategory.name }}</h4></mat-list-item>
-              <mat-list-item *ngIf="equipinfras.status=='active'"><h4 mat-line><b>Estatus:<span class="badge badge-success"> Activo</span></b></h4></mat-list-item>
-              <mat-list-item *ngIf="equipinfras.status=='deleted'"><h4 mat-line><b>Estatus:<span class="badge badge-danger"> Borrado</span></b></h4></mat-list-item>
-            </mat-list>
-          </div>
+  <h2 *ngIf="equipinfras" class="text-center">{{ equipinfras.name }}</h2>
+  <button mat-raised-button color="primary" (click)="goBack()">Volver</button>
+  <hr>
+  <div *ngIf="equipinfras">
+    <mat-card>
+      <div class="row">
+        <div class="col-sm-6">
+          <mat-list>
+            <h3 mat-subheader>Equipo/Infraestructura</h3>
+            <mat-list-item><h4 mat-line><b>Nombre: </b> {{ equipinfras.name }}</h4></mat-list-item>
+            <mat-list-item><h4 mat-line><b>Imagen: </b> {{ equipinfras.image_url }}</h4></mat-list-item>
+            <mat-list-item><h4 mat-line><b>Descripción: </b> {{ equipinfras.description }}</h4></mat-list-item>
+            <mat-list-item><h4 mat-line><b>Subcagoría: </b> {{ equipinfras.subcategory.name }}</h4></mat-list-item>
+            <mat-list-item *ngIf="equipinfras.status=='active'"><h4 mat-line><b>Estatus:<span class="badge badge-success"> Activo</span></b></h4></mat-list-item>
+            <mat-list-item *ngIf="equipinfras.status=='deleted'"><h4 mat-line><b>Estatus:<span class="badge badge-danger"> Borrado</span></b></h4></mat-list-item>
+          </mat-list>
         </div>
-  
-      </mat-card>
-  
-      <br>
-  
-      <mat-card>
-      <div *ngIf="equipinfras.variety.length>0">
-        <mat-list>
-          <h3 mat-subheader>Variedad</h3>
-          <mat-list-item *ngFor="let variety of equipinfras.variety">
-            <h4 mat-line>{{variety.name}}</h4>
-          </mat-list-item>
-        </mat-list>
-      </div>
-  
-      <div *ngIf="equipinfras.variety.length<=0">
-        <mat-list>
-          <h3 mat-subheader>Variedad</h3>
-          <mat-list-item><h4 mat-line>No tiene variedad</h4></mat-list-item>
-        </mat-list>
       </div>
     </mat-card>
-  
 
-  
-    </div>
-  
-    <div *ngIf="!equipinfras && !failedConect">
-      <div class="row">
-        <div class="col-sm-12 spinner">
-          <mat-spinner></mat-spinner>
-        </div>
+    <br>
+
+
+    <div class="row">
+      <div class="col-sm-12">
+        <h2 class="text-center">Variedades</h2>
       </div>
     </div>
-  
-    <div *ngIf="failedConect">
-      <h6 class="text-center">{{failedConect}}</h6>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <button mat-raised-button color="primary" class="mr-3" [routerLink]="['/auth/admin/configurations/equipinfras/equip-infras',equipinfras.id,'addVariety']">Asignar nueva variedad</button>
+      </div>
     </div>
-    
+
+    <hr>
+
+    <div *ngIf="varieties">
+
+      <div class="row">
+        <div class="col-sm-12">
+          <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="mat-elevation-z8">
+
+            <div *ngIf="varieties.length<=0 && !failedConect">
+              <div class="row">
+                <div class="col-sm-12">
+                  <h3 class="text-center mt-3 mb-3">No hay variedades registradas</h3>
+                </div>
+              </div>
+            </div>
+
+
+            <table *ngIf="varieties.length>0" mat-table [dataSource]="dataSource" matSort>
+
+              <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Ver </th>
+                <td mat-cell *matCellDef="let row">
+                  <button mat-icon-button color="accent" [routerLink]="['variety',row.id,{EquipinfraId:equipinfras.id}]">
+                    <mat-icon>remove_red_eye</mat-icon>
+                  </button>
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+                <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripción </th>
+                <td mat-cell *matCellDef="let row"> {{row.description}}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="varietyDetail">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Modelos </th>
+                <td mat-cell *matCellDef="let row"> {{row.varietyDetails.length}}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Estatus </th>
+                <td mat-cell *matCellDef="let row">
+                  <span *ngIf="row.status=='active'" class="badge badge-success">{{row.status | titlecase}}</span>
+                  <span *ngIf="row.status=='deleted'" class="badge badge-danger">{{row.status | titlecase}}</span>
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="addvarietyDetail">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let row">
+                  <button mat-icon-button color="primary" [routerLink]="['/auth/admin/configurations/equipinfras/equip-infras/',equipinfras.id,'addVariety',row.id,'addVarietyDetails',{EquipinfraId:equipinfras.id}]" matTooltip="Asignar Modelo" matTooltipPosition="right">
+                    <mat-icon>add</mat-icon>
+                  </button>
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="delete">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let row">
+                  <button mat-icon-button color="warn" (click)="onDelete(row.id)" matTooltip="Borrar Variedad" matTooltipPosition="right">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </td>
+              </ng-container>
+
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+              </tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
+  
+  <div *ngIf="!equipinfras && !failedConect">
+    <div class="row">
+      <div class="col-sm-12 spinner">
+        <mat-spinner></mat-spinner>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="failedConect">
+    <h6 class="text-center">{{failedConect}}</h6>
+  </div>
+
+</div>

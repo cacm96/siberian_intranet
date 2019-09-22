@@ -56,5 +56,8 @@ export class SkillShowComponent implements OnInit {
         }
       )
   }
+  goBack(){
+    this._location.back();
+  }
 
 }

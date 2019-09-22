@@ -1,7 +1,7 @@
 
 <div class="container">
   <h2 *ngIf="variety" class="text-center">{{ variety.name }}</h2>
-  <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/equipinfras/variety']">Volver</button>
+  <button mat-raised-button color="primary" (click)="goBack()">Volver</button>
   <hr>
   <div *ngIf="variety">
     <mat-card>
@@ -19,27 +19,7 @@
 
     </mat-card>
 
-    <br>
-
-    <mat-card>
-    <div *ngIf="variety.equipinfras.length>0">
-      <mat-list>
-        <h3 mat-subheader>Equipo/Infraestructura</h3>
-        <mat-list-item *ngFor="let equipinfras of variety.equipinfras">
-          <h4 mat-line>{{equipinfras.VarietyEquipinfras_id}}</h4>
-        </mat-list-item>
-      </mat-list>
-    </div>
-
-    <div *ngIf="variety.equipinfras.length<=0">
-      <mat-list>
-        <h3 mat-subheader>Equipo/Infraestructura</h3>
-        <mat-list-item><h4 mat-line>No tiene variedad</h4></mat-list-item>
-      </mat-list>
-    </div>
-  </mat-card>
-
-
+    <br>  
 
   </div>
 

@@ -13,55 +13,76 @@
 			</div>
 			<hr>
 
-			<form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+			<div *ngIf="varieties">
 
-				<div class="row">
-					<div class="col-sm-12">
-						<div class="example-container">
+				<form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
 
-							<mat-form-field>
-								<mat-select name="VarietyId" [(ngModel)]="VarietyId" placeholder="Seleccione una o mas variedades" required>
-									<mat-option *ngFor="let variety of varieties" [value]="variety.id">{{variety.name}}</mat-option>
-								</mat-select>
-							</mat-form-field>
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="example-container">
+
+								<mat-form-field>
+									<mat-select name="VarietyId" [(ngModel)]="VarietyId" placeholder="Seleccione una o mas variedades" required>
+										<mat-option *ngFor="let variety of varieties" [value]="variety.id">{{variety.name}}</mat-option>
+									</mat-select>
+								</mat-form-field>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-sm-12">
+							<a [routerLink]="['/auth/admin/configurations/equipinfras/variety/create']">¿Nueva Variedad?</a>
+						</div>
+					</div>
+
+					<br>
+
+					<div class="row">
+						<div class="col-sm-12">
+							<button mat-raised-button color="primary" class="mr-3" type="submit" [disabled]="!registerForm.form.valid">Añadir</button>
+						</div>
+					</div>
+				</form>
+
+				<hr>
+
+				<div *ngIf="equipinfras.varieties.length>0">
+					<div class="row">
+						<div class="col-sm-12">
+							<mat-list>
+								<mat-list-item *ngFor="let variety of equipinfras.varieties">
+									<h4 mat-line>{{variety.name}}</h4>
+									<button mat-icon-button color="warn" matTooltip="Borrar Variedad" matTooltipPosition="left" (click)="onDelete(variety.id)"><mat-icon>delete</mat-icon></button>
+									<button mat-icon-button color="primary" matTooltip="Añadir Modelos" matTooltipPosition="right" [routerLink]="[variety.id,'addVarietyDetails',{EquipinfraId:EquipinfraId}]"><mat-icon>add</mat-icon></button>
+								</mat-list-item>
+							</mat-list>
 						</div>
 					</div>
 				</div>
 
-				<div class="row">
-					<div class="col-sm-12">
-						<button mat-raised-button color="primary" class="mr-3" type="submit" [disabled]="!registerForm.form.valid">Añadir</button>
-					</div>
-				</div>
-			</form>
-
-			<hr>
-
-			<div *ngIf="equipinfras.variety.length>0">
-				<div class="row">
-					<div class="col-sm-12">
-						<mat-list>
-							<mat-list-item *ngFor="let variety of equipinfras.variety">
-								<h4 mat-line>{{variety.name}}</h4>
-								<button mat-icon-button color="warn" matTooltip="Borrar Variedad" matTooltipPosition="left" (click)="onDelete(variety.id)"><mat-icon>delete</mat-icon></button>
-								<button mat-icon-button color="primary" matTooltip="Añadir Modelos" matTooltipPosition="right" [routerLink]="[variety.id,'addVarietyDetails',{EquipinfraId:EquipinfraId}]"><mat-icon>add</mat-icon></button>
-							</mat-list-item>
-						</mat-list>
+				<div *ngIf="equipinfras.varieties.length<=0">
+					<div class="row">
+						<div class="col-sm-12">
+							<mat-list>
+								<mat-list-item>
+									<h4 mat-line>No tiene variedades</h4>
+								</mat-list-item>
+							</mat-list>
+						</div>
 					</div>
 				</div>
 			</div>
 
-			<div *ngIf="equipinfras.variety.length<=0">
+			<div *ngIf="total<=0">
+				<h2 class="text-center">{{ message }}</h2>
 				<div class="row">
-					<div class="col-sm-12">
-						<mat-list>
-							<mat-list-item>
-								<h4 mat-line>No tiene variedades</h4>
-							</mat-list-item>
-						</mat-list>
+						<div class="col-sm-12">
+							<a [routerLink]="['/auth/admin/configurations/equipinfras/variety/create']">¿Nueva Variedad?</a>
+						</div>
 					</div>
-				</div>
-			</div>
+		    </div>
+
 		</div>
 	</div>
 </div>

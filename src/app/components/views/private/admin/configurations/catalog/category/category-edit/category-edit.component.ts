@@ -97,4 +97,8 @@ export class CategoryEditComponent implements OnInit {
 		
 	}
 
+	goBack(){
+		this._location.back();
+	  }
+
 }

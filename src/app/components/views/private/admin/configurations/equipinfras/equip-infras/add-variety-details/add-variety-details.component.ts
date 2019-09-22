@@ -22,6 +22,7 @@ export class AddVarietyDetailsComponent implements OnInit {
 	public equipsinfras:any;
 	public equipinfras:any;
 	public EquipinfraId:any;
+	public VarietyId:any;
 	public message:string;
 	public failedConect:string;
 
@@ -46,6 +47,7 @@ export class AddVarietyDetailsComponent implements OnInit {
 			params =>
 			{
 				let id = params.id;
+				this.VarietyId = id;
 				this.EquipinfraId= params.EquipinfraId;
 				this.getVariety(id);
 			}
@@ -69,6 +71,8 @@ export class AddVarietyDetailsComponent implements OnInit {
 						this.equipinfras = this.equipsinfras[i];
 					}
 				}
+
+				console.log(this.equipinfras);
 
 			},
 			error =>
@@ -103,6 +107,7 @@ export class AddVarietyDetailsComponent implements OnInit {
 				{
 					if (response.status==true)
 					{
+						this.getVariety(this.VarietyId);
 						console.log(response);
 						this.message = response.message.text;
 						form.reset();
@@ -138,6 +143,23 @@ export class AddVarietyDetailsComponent implements OnInit {
 		}else
 		{
 		}
+	}
+
+	onDelete(id)
+	{
+		this._varietyDetailService.deleteOne(id).subscribe
+		(
+			response =>
+			{
+	            this.message = response.message.text;
+	            this.snackBar.openSnackBarSuccess(this.message);
+	            this.getVariety(this.VarietyId);
+			},
+			error =>
+			{
+				console.log(<any>error);
+			}
+		)
 	}
 
 	messageSnackBar(message)

@@ -58,4 +58,7 @@ export class VarietyShowComponent implements OnInit {
 			}
 		)
 	}
+	goBack(){
+		this._location.back();
+	  }
 }

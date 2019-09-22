@@ -95,4 +95,7 @@ export class PoliticEditComponent implements OnInit {
 		}
 		
 	}
+	goBack(){
+		this._location.back();
+	  }
 }

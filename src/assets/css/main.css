@@ -480,3 +480,92 @@ table {
   padding: 1rem !important;
   margin:0 !important;
 }
+
+/* Detalle de servicio*/
+.main_request-detail {
+  display: inline-block;
+  width:100%;
+  padding: 0 !important;
+}
+
+.main_request-detail .titulo {
+  text-align: center;
+}
+
+.main_request-detail section div div{
+  display:inline-block;
+}
+.main_request-detail section div p{
+  display:inline-block;
+  width: 300px;
+}
+
+.main_request-detail .derecho {
+  float: right;
+}
+
+.main_request-detail section div div label {
+  width: 100px;
+}
+
+.main_request-detail #tiposervicio {
+  width:140px;
+}
+
+.main_request-detail .extra label {
+  display: block;
+  text-align: center;
+}
+
+.main_request-detail .extra p {
+  display: block;
+  text-align: center;
+}
+
+.main_request-detail .extra .boton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main_request-detail .extra .boton button {
+  display: inline-block;
+  margin: 15px;
+  background: #242451;
+  color: #fff;
+  width: 90px;
+}
+
+.main_request-detail .move label {
+  margin: 1em;
+}
+
+.main_request-detail input {
+  pointer-events: none;
+}
+
+.main_request-detail textarea {
+  pointer-events: none;
+}
+
+.main_request-detail .extra div a {
+  max-width: 150px;
+  max-height: 150px;
+  background-color: #0b173b;
+}
+
+
+/* Dashboard de administrador */
+.main_admin_dashboard .mat-card{
+  width: 100%;
+  padding: 0 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12) !important;
+  margin: 1rem 0;
+  overflow: hidden !important;
+  background-color: #ffffff;
+}
+
+.main_admin_dashboard div {
+  display: inline-block;
+}
