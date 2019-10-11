@@ -1,127 +1,127 @@
 <div class="main_request-detail">
-  
-    <div class="container" *ngIf="revision">
-        <button mat-raised-button color="primary" (click)="goBack()">Volver</button>
-        <h4 class="titulo">Revisión Nro {{revision.id}} </h4>
-        
-        <div class="container">
 
-  
-          <section>
-            <br>
-            <div class="container">
-              <div >             
-                <label for="cliente">Cliente:</label>
-                <p>{{revision?.user.firstName}} {{revision?.user.lastName}}</p>            
-              </div>
-                   
-              <div class=" derecho">            
-                <label for="equipo">Equipo:</label>
-                <p>{{ equipinfras.name }}</p>            
-              </div>
-            </div>
-            
-  
-            <br>
-            <div class="container">
-              <div >
-                <label for="fecha">Fecha:</label>
-                <p></p>
-              </div>
-                      
-              <div class="derecho">
-                <label for="marca">Marca:</label>
-                <p>{{ equipinfras.varieties[0].name }}</p>
-              </div>
-            </div>
-  
-            <br>
-            <div class="container">
-              <div>
-                <label for="direccion">Dirección:</label>
-                <p>{{revision?.location.address}}</p>
-              </div>
-            
-              <div class="derecho">
-                <label for="modelo">Modelo:</label>
-                <p>{{ equipinfras.varieties[0].varietyDetails[0].name }}</p>
-              </div>
-            </div>      
-  
-        </section>
-      </div>
-  
-        
-      <br>
-      <div class="container move">
-        <label for="diagnostico">Diagnóstico:</label>
+  <div class="container" *ngIf="revision">
+    <button mat-raised-button color="primary" (click)="goBack()">Volver</button>
+    <h4 class="titulo">Revisión Nro {{revision.id}} </h4>
+
+    <div class="container">
+
+
+      <section>
         <br>
-        <p></p>
-      </div>
-  
-      <br>
-      <div class="container move">
-        <label for="tipoServicio" id="tiposervicio">Tipo de servicios:</label>
-        <p></p>
-      </div>
-  
-  
-      <br>
-      <div class="container extra">
-        <div class="row">
-          <div class="col-md-4">
-          <label for="componenteAsociado">Componente asociado</label>
-            <div *ngFor="let varietyDetail of revision.varietyDetail">
-              <p>
-                {{ varietyDetail.name }}
-              </p>
+        <div class="container">
+          <div >             
+            <label for="cliente">Cliente:</label>
+            <p>{{revision.user.firstName}} {{revision.user.lastName}}</p>            
+          </div>
+
+          <div class=" derecho">            
+            <label for="equipo">Equipo:</label>
+            <p></p>            
           </div>
         </div>
-        
-          <div class="col-md-4">
-            <label for="serviciosRequeridos">Servicios requeridos</label>    
-            <p></p>          
+
+
+        <br>
+        <div class="container">
+          <div >
+            <label for="fecha">Fecha:</label>
+            <p>{{ revision.createdAt | date: 'dd/MM/yyyy' }}</p>
           </div>
-        
-          <div class="col-md-4">       
-            <label for="personal">Personal adicional</label>              
-            <p></p>      
+
+          <div class="derecho">
+            <label for="marca">Marca:</label>
+            <p></p>
           </div>
         </div>
-      </div>
-  
-      <br>
-  
-      <br>
-      <div class="container">
-        <div class="row extra">
-          <div class="col-md-7">
-            <label for="fotos">Fotos de revisión</label>
-            <div class="container">
-                <a href="">
-                  <img src="" alt="">
-                </a>
-                <a href="">
-                  <img src="" alt="">
-                </a>
-                <a href="">
-                  <img src="" alt="">
-                </a>
-            </div>  
+
+        <br>
+        <div class="container">
+          <div>
+            <label for="direccion">Dirección:</label>
+            <p>{{ revision.location.address }}</p>
           </div>
-        
-          <div class="col-md-5">
-            <label for="costo">Costo/Presupuesto</label>
-            <p >{{ revision?.price }}</p>
-            <br>
-            <div class="boton">
-              <button mat-button>Rechazar</button>
-              <button mat-button>Solicitar</button>
-            </div>
-            
+
+          <div class="derecho">
+            <label for="modelo">Modelo:</label>
+            <p>{{ revision.varietyDetail.name }}</p>
           </div>
         </div>      
-      </div>
-  
+
+      </section>
     </div>
+
+
+    <br>
+    <div class="container move">
+      <label for="diagnostico">Diagnóstico:</label>
+      <br>
+      <p></p>
+    </div>
+
+    <br>
+    <div class="container move">
+      <label for="tipoServicio" id="tiposervicio">Tipo de servicios:</label>
+      <p></p>
+    </div>
+
+
+    <br>
+    <div class="container extra">
+      <div class="row">
+        <div class="col-md-4">
+          <label for="componenteAsociado">Componente asociado</label>
+          <div>
+            <p>
+
+            </p>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <label for="serviciosRequeridos">Servicios requeridos</label>    
+          <p></p>          
+        </div>
+        
+        <div class="col-md-4">       
+          <label for="personal">Personal adicional</label>              
+          <p></p>      
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <br>
+    <div class="container">
+      <div class="row extra">
+        <div class="col-md-7">
+          <label for="fotos">Fotos de revisión</label>
+          <div class="container">
+            <a href="">
+              <img src="" alt="">
+            </a>
+            <a href="">
+              <img src="" alt="">
+            </a>
+            <a href="">
+              <img src="" alt="">
+            </a>
+          </div>  
+        </div>
+        
+        <div class="col-md-5">
+          <label for="costo">Costo/Presupuesto</label>
+          <p >{{ revision.price }}</p>
+          <br>
+          <div class="boton">
+            <button mat-button>Rechazar</button>
+            <button mat-button>Solicitar</button>
+          </div>
+
+        </div>
+      </div>      
+    </div>
+
   </div>
+</div>

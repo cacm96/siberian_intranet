@@ -1,25 +1,34 @@
 <div class="main_dashboard">
   <div class="container">
-      <div class="col-sm-12">
-          <div class="col-sm-12">
-            <h2>Tus Solicitudes (Revisiones)</h2>
-              <hr>
-          </div>
-
-          <div *ngIf="revisions?.length<=0 && !failedConect">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="carouselRequest" class="carousel" data-ride="carousel">
             <div class="container">
-                <h4>No tienes ninguna solicitud (revisión) de servicio</h4>
+              <div class="row">
+                <div class="col-sm-12">
+                  <h2>Tus Solicitudes (Revisiones)</h2>
+                  <hr>
+                </div>
+              </div>
             </div>
-          </div>
+            
+            <div *ngIf="!revisions && !failedConect">
+              <div class="row">
+                <div class="col-sm-12 spinner">
+                  <h3 class="text-center mt-3 mb-3">{{message}}</h3>
+                </div>
+              </div>
+            </div>
 
-          <div id="carouselRequest" class="carousel" data-ride="carousel" *ngIf="revisions?.length>0">
-                   
-            <div class="row">
+            <div class="row" *ngIf="revisions">
+              <div class="col-sm-12" *ngIf="totalRevision<=0">
+                <h3 class="text-center mt-3 mb-3">No hay Revisiones</h3>
+              </div>
               <div class="col-sm-12">
                 <div class="carousel-inner service">
                   <div class="carousel-item active">
                     <div class="container box">
-
                       <div class="row justify-content-between arrow_box">
                         <div class="col-md-6">
                           <button mat-mini-fab class="waves_effect btn-floating" href="#carouselRequest" title="Anterior" data-slide="prev">
@@ -32,45 +41,45 @@
                           </button>
                         </div>
                       </div>
-
                       <div class="row pad_arrow">
-                        <div class="col-md-3"*ngFor="let rev of revisions" >
-                          <mat-card class="servicio" >
-                            <mat-card-header class="titulo border-top-danger">
-                              <mat-card-title>Revisión Nro {{rev.id}}</mat-card-title>
-                            </mat-card-header>
-                            <mat-card-content class="mat_card_content">
-                             <!-- {{ equipinfras.name }}-->
-                              <br>
-                              No calienta
-                              <br>
-                              <span *ngIf="rev.status=='finalized'" class="badge badge-success">Finalizada</span>
-			                        <span *ngIf="rev.status=='diagnosticated'" class="badge badge-primary">Diagnosticada</span>
-			                        <span *ngIf="rev.status=='requested'" class="badge badge-danger">Solicitada</span>
-			                        <span *ngIf="rev.status=='cancelled'" class="badge badge-dark">Cancelada</span>
-                            </mat-card-content>
-                            <mat-card-actions>
-                              <div class="container">
-                                <div class="row justify-content-between">
-                                  <div class="col-sm-5" *ngIf="rev.status == 'finalized'">
-                                    <a [routerLink]="['/auth/client/request/detail/id']">
+                        <div class="col-md-3" *ngFor="let revision of revisions">
+                          <a [routerLink]="['/auth/client/request/detail',revision.id]">
+                            <mat-card class="servicio">
+                              <mat-card-header class="titulo border-top-danger">
+                                <mat-card-title>Solicitud</mat-card-title>
+                              </mat-card-header>
+                              <mat-card-content class="mat_card_content">
+                                Microondas
+                                <br>
+                                {{revision.description | truncate:10}}
+                                <br>
+                                <span *ngIf="revision.status=='requested'" class="badge badge-dark">Solicitada</span>
+                                <span *ngIf="revision.status=='diagnosticated'" class="badge badge-warning">Diagnosticada</span>
+                                <span *ngIf="revision.status=='approved'" class="badge badge-primary">Aprobada</span>
+                                <span *ngIf="revision.status=='finalized'" class="badge badge-success">Finalizada</span>
+                                <span *ngIf="revision.status=='cancelled'" class="badge badge-danger">Cancelada</span>
+
+                              </mat-card-content>
+                              <mat-card-actions>
+                                <div class="container">
+                                  <div class="row justify-content-between">
+                                    <div class="col-sm-5">
                                       <button mat-button>DETALLES</button>
-                                    </a>
-                                  </div>
-                                  <div class="col-sm-5" *ngIf="rev.status !== 'finalized'">
-                                    <a [routerLink]="['/auth/client/profile/show']">
-                                      <button mat-button>DETALLES</button>
-                                    </a>
-                                  </div>
-                                  <div class="col-sm-7">
-                                    <mat-icon>access_time</mat-icon><span>10/11/2019</span>
+                                    </div>
+                                    <div class="col-sm-7">
+                                      <mat-icon>access_time</mat-icon><span>10/11/2019</span>
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
-                            </mat-card-actions>
-                          </mat-card>
+                              </mat-card-actions>
+                            </mat-card>
+                          </a>
                         </div>
+
                       </div>
+                    </div>       
+                  </div>
+
                 </div>
               </div>
             </div>
@@ -79,6 +88,7 @@
       </div>
     </div>
 
+    <div class="container">
       <div class="row">
         <div class="col-sm-12">
           <div id="carouselServices" class="carousel" data-ride="carousel">
@@ -89,9 +99,20 @@
                   <hr>
                 </div>
               </div>
-              
             </div>
-            <div class="row">
+
+            <div *ngIf="!serviceOrders && !failedConect">
+              <div class="row">
+                <div class="col-sm-12 spinner">
+                  <h3 class="text-center mt-3 mb-3">{{message}}</h3>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" *ngIf="serviceOrders">
+              <div class="col-sm-12" *ngIf="totalServiceOrder<=0">
+                <h3 class="text-center mt-3 mb-3">No hay Servicios</h3>
+              </div>
               <div class="col-sm-12">
                 <div class="carousel-inner service">
                   <div class="carousel-item active">
@@ -109,98 +130,22 @@
                         </div>
                       </div>
                       <div class="row pad_arrow">
-                        <div class="col-md-3">
-                          <a [routerLink]="['/auth/client/service']"><mat-card class="servicio">
-                            <mat-card-header class="titulo border-top-dark">
-                              <mat-card-title>Servicio</mat-card-title>
-                            </mat-card-header>
-                            <mat-card-content class="mat_card_content">
-                              Microondas
-                              <br>
-                              No calienta
-                              <br>
-                              <span class="badge badge-danger">En Espera</span>
-                            </mat-card-content>
-                            <mat-card-actions>
-                              <div class="container">
-                                <div class="row justify-content-between">
-                                  <div class="col-sm-5">
-                                    <button mat-button>DETALLES</button>
-                                  </div>
-                                  <div class="col-sm-7">
-                                    <mat-icon>access_time</mat-icon><span>10/11/2019</span>
-                                  </div>
-                                </div>
-                              </div>
-                            </mat-card-actions>
-                          </mat-card></a>
-                        </div>
-                        <div class="col-md-3">
-                          <a [routerLink]="['/auth/client/service']"><mat-card class="servicio">
-                            <mat-card-header class="titulo border-top-danger">
-                              <mat-card-title>Servicio</mat-card-title>
-                            </mat-card-header>
-                            <mat-card-content class="mat_card_content">
-                              Nevera
-                              <br>
-                              No enfría
-                              <br>
-                              <span class="badge badge-danger">En Espera</span>
-                            </mat-card-content>
-                            <mat-card-actions class="boton">
-                              <div class="container">
-                                <div class="row justify-content-between">
-                                  <div class="col-sm-5">
-                                    <button mat-button>DETALLES</button>
-                                  </div>
-                                  <div class="col-sm-7">
-                                    <mat-icon>access_time</mat-icon><span>10/11/2019</span>
-                                  </div>
-                                </div>
-                              </div>
-                            </mat-card-actions>
-                          </mat-card></a>
-                        </div>
-                        <div class="col-md-3">
-                          <a [routerLink]="['/auth/client/service']"><mat-card class="servicio">
-                            <mat-card-header class="titulo border-top-primary">
-                              <mat-card-title>Servicio</mat-card-title>
-                            </mat-card-header>
-                            <mat-card-content class="mat_card_content">
-                              Secadora
-                              <br>
-                              No enciende
-                              <br>
-                              <span class="badge badge-primary">En Ejecución</span>
-                            </mat-card-content>
-                            <mat-card-actions class="boton">
-                              <div class="container">
-                                <div class="row justify-content-between">
-                                  <div class="col-sm-5">
-                                    <button mat-button>DETALLES</button>
-                                  </div>
-                                  <div class="col-sm-7">
-                                    <mat-icon>access_time</mat-icon><span>10/11/2019</span>
-                                  </div>
-                                </div>
-                              </div>
-                            </mat-card-actions>
-                          </mat-card></a>
-                        </div>
-                        <div class="col-md-3">
-                          <a [routerLink]="['/auth/client/service']"><mat-card class="servicio">
-                            <mat-card-header class="titulo border-top-primary">
-                              <mat-card-title>Servicio</mat-card-title>
-                            </mat-card-header>
-                            <mat-card-content class="mat_card_content">
-                              Cafetera
-                              <br>
-                              No cuela
-                              <br>
-                              <span class="badge badge-primary">En Ejecución</span>
-                            </mat-card-content>
-                            <mat-card-actions class="boton">
-                              <div>
+                        <div class="col-md-3" *ngFor="let serviceOrder of serviceOrders">
+                          <a [routerLink]="['/auth/client/service']">
+                            <mat-card class="servicio">
+                              <mat-card-header class="titulo border-top-dark">
+                                <mat-card-title>Servicio</mat-card-title>
+                              </mat-card-header>
+                              <mat-card-content class="mat_card_content">
+                                Microondas
+                                <br>
+                                {{serviceOrder.revision.description | truncate:30}}
+                                <br>
+                                <span *ngIf="serviceOrder.status=='budgeted'" class="badge badge-dark">Solicitada</span>
+                                <span *ngIf="serviceOrder.status=='approved'" class="badge badge-primary">Aprobada</span>
+                                <span *ngIf="serviceOrder.status=='warranty'" class="badge badge-danger">Garantía</span>
+                              </mat-card-content>
+                              <mat-card-actions>
                                 <div class="container">
                                   <div class="row justify-content-between">
                                     <div class="col-sm-5">
@@ -211,199 +156,20 @@
                                     </div>
                                   </div>
                                 </div>
-                              </div>
-                            </mat-card-actions>
-                          </mat-card></a>
+                              </mat-card-actions>
+                            </mat-card>
+                          </a>
                         </div>
                       </div>
                     </div>       
                   </div>
-
-                  <div class="carousel-item">
-                    <div class="container box">
-                      <div class="row justify-content-between arrow_box">
-                        <div class="col-md-6">
-                          <button mat-mini-fab class="waves_effect btn-floating" href="#carouselServices" title="Anterior" data-slide="prev">
-                            <mat-icon>keyboard_arrow_left</mat-icon>
-                          </button>
-                        </div>
-                        <div class="col-md-6 text-md-right">
-                          <button mat-mini-fab class="waves_effect btn-floating" href="#carouselServices" title="Siguiente" data-slide="next">
-                            <mat-icon>keyboard_arrow_right</mat-icon>
-                          </button>
-                        </div>
-                      </div>
-                      <div class="row pad_arrow">
-                        <div class="col-md-3">
-                          <a [routerLink]="['/auth/client/service']"><mat-card class="servicio">
-                            <mat-card-header class="titulo border-top-dark">
-                              <mat-card-title>Servicio</mat-card-title>
-                            </mat-card-header>
-                            <mat-card-content class="mat_card_content">
-                              Microondas
-                              <br>
-                              No calienta
-                              <br>
-                              <span class="badge badge-dark">Cancelada</span>
-                            </mat-card-content>
-                            <mat-card-actions class="boton">
-                              <div class="container">
-                                <div class="row justify-content-between">
-                                  <div class="col-sm-5">
-                                    <button mat-button>DETALLES</button>
-                                  </div>
-                                  <div class="col-sm-7">
-                                    <mat-icon>access_time</mat-icon><span>10/11/2019</span>
-                                  </div>
-                                </div>
-                              </div>
-                            </mat-card-actions>
-                          </mat-card></a>
-                        </div>
-                        <div class="col-md-3">
-                          <a [routerLink]="['/auth/client/service']"><mat-card class="servicio">
-                            <mat-card-header class="titulo border-top-success">
-                              <mat-card-title>Servicio</mat-card-title>
-                            </mat-card-header>
-                            <mat-card-content class="mat_card_content">
-                              Nevera
-                              <br>
-                              No enfría
-                              <br>
-                              <span class="badge badge-success">Terminada</span>
-                            </mat-card-content>
-                            <mat-card-actions class="boton">
-                              <div class="container">
-                                <div class="row justify-content-between">
-                                  <div class="col-sm-5">
-                                    <button mat-button>DETALLES</button>
-                                  </div>
-                                  <div class="col-sm-7">
-                                    <mat-icon>access_time</mat-icon><span>10/11/2019</span>
-                                  </div>
-                                </div>
-                              </div>
-                            </mat-card-actions>
-                          </mat-card></a>
-                        </div>
-                        <div class="col-md-3">
-                          <a [routerLink]="['/auth/client/service']"><mat-card class="servicio">
-                            <mat-card-header class="titulo border-top-success">
-                              <mat-card-title>Servicio</mat-card-title>
-                            </mat-card-header>
-                            <mat-card-content class="mat_card_content">
-                              Secadora
-                              <br>
-                              No enciende
-                              <br>
-                              <span class="badge badge-success">Terminada</span>
-                            </mat-card-content>
-                            <mat-card-actions class="boton">
-                              <div class="container">
-                                <div class="row justify-content-between">
-                                  <div class="col-sm-5">
-                                    <button mat-button>DETALLES</button>
-                                  </div>
-                                  <div class="col-sm-7">
-                                    <mat-icon>access_time</mat-icon><span>10/11/2019</span>
-                                  </div>
-                                </div>
-                              </div>
-                            </mat-card-actions>
-                          </mat-card></a>
-                        </div>
-                      </div>
-                    </div>       
-                  </div>
-
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>-->
-
-    <div class="col-sm-12">
-        <div class="col-sm-12">
-          <h2>Tus Servicios</h2>
-            <hr>
-        </div>
-
-        <div *ngIf="serviceOrders?.length<=0 && !failedConect">
-          <div class="container">
-              <h4>No tienes ningun servicio activo</h4>
-          </div>
-        </div>
-
-        <div id="carouselRequest" class="carousel" data-ride="carousel" *ngIf="serviceOrders?.length>0">
-                 
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="carousel-inner service">
-                <div class="carousel-item active">
-                  <div class="container box">
-
-                    <div class="row justify-content-between arrow_box">
-                      <div class="col-md-6">
-                        <button mat-mini-fab class="waves_effect btn-floating" href="#carouselRequest" title="Anterior" data-slide="prev">
-                          <mat-icon>keyboard_arrow_left</mat-icon>
-                        </button>
-                      </div>
-                      <div class="col-md-6 text-md-right">
-                        <button mat-mini-fab class="waves_effect btn-floating" href="#carouselRequest" title="Siguiente" data-slide="next">
-                          <mat-icon>keyboard_arrow_right</mat-icon>
-                        </button>
-                      </div>
-                    </div>
-
-                    <div class="row pad_arrow">
-                      <div class="col-md-3"*ngFor="let ser of serviceOrders" >
-                        <mat-card class="servicio" >
-                          <mat-card-header class="titulo border-top-danger">
-                            <mat-card-title>Servicio Nro {{ser.id}}</mat-card-title>
-                          </mat-card-header>
-                          <mat-card-content class="mat_card_content">
-                           <!-- {{ equipinfras.name }}-->
-                            <br>
-                            No calienta
-                            <br>
-                            <span *ngIf="ser.status=='finalized'" class="badge badge-success">Finalizado</span>
-                            <span *ngIf="ser.status=='budgeted'" class="badge badge-primary">Presupuestado</span>
-                            <span *ngIf="ser.status==''" class="badge badge-danger">En proceso(?)</span>
-                            <span *ngIf="ser.status=='cancelled'" class="badge badge-dark">Cancelado</span>
-                          </mat-card-content>
-                          <mat-card-actions>
-                            <div class="container">
-                              <div class="row justify-content-between">
-                                <div class="col-sm-5" *ngIf="ser.status == 'finalized'">
-                                  <a [routerLink]="['/auth/client/request/detail/id']">
-                                    <button mat-button>DETALLES</button>
-                                  </a>
-                                </div>
-                                <div class="col-sm-5" *ngIf="ser.status !== 'finalized'">
-                                  <a [routerLink]="['/auth/client/profile/show']">
-                                    <button mat-button>DETALLES</button>
-                                  </a>
-                                </div>
-                                <div class="col-sm-7">
-                                  <mat-icon>access_time</mat-icon><span>10/11/2019</span>
-                                </div>
-                              </div>
-                            </div>
-                          </mat-card-actions>
-                        </mat-card>
-                      </div>
-                    </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
-  
-  
 
     <div class="container">
       <div class="row">
@@ -418,7 +184,10 @@
               </div>
               
             </div>
-            <div class="row">
+            <div class="row" *ngIf="warranties">
+              <div class="col-sm-12" *ngIf="totalWarranty<=0">
+                <h3 class="text-center mt-3 mb-3">No hay Servicios en Garantía</h3>
+              </div>
               <div class="col-sm-12">
                 <div class="carousel-inner service">
                   <div class="carousel-item active">
@@ -436,98 +205,24 @@
                         </div>
                       </div>
                       <div class="row pad_arrow">
-                        <div class="col-md-3">
-                          <a [routerLink]="['/auth/client/service']"><mat-card class="servicio">
-                            <mat-card-header class="titulo border-top-success">
-                              <mat-card-title>Servicio</mat-card-title>
-                            </mat-card-header>
-                            <mat-card-content class="mat_card_content">
-                              Secadora
-                              <br>
-                              Se volvio a dañar
-                              <br>
-                              <span class="badge badge-success">30 dias restantes</span>
-                            </mat-card-content>
-                            <mat-card-actions class="boton">
-                              <div class="container">
-                                <div class="row justify-content-between">
-                                  <div class="col-sm-5">
-                                    <button mat-button>DETALLES</button>
-                                  </div>
-                                  <div class="col-sm-7">
-                                    <mat-icon>access_time</mat-icon><span>10/11/2019</span>
-                                  </div>
-                                </div>
-                              </div>
-                            </mat-card-actions>
-                          </mat-card></a>
-                        </div>
-                        <div class="col-md-3">
-                          <a [routerLink]="['/auth/client/service']"><mat-card class="servicio">
-                            <mat-card-header class="titulo border-top-success">
-                              <mat-card-title>Servicio</mat-card-title>
-                            </mat-card-header>
-                            <mat-card-content class="mat_card_content">
-                              Secadora
-                              <br>
-                              Se volvio a dañar
-                              <br>
-                              <span class="badge badge-success">30 dias restantes</span>
-                            </mat-card-content>
-                            <mat-card-actions class="boton">
-                              <div class="container">
-                                <div class="row justify-content-between">
-                                  <div class="col-sm-5">
-                                    <button mat-button>DETALLES</button>
-                                  </div>
-                                  <div class="col-sm-7">
-                                    <mat-icon>access_time</mat-icon><span>10/11/2019</span>
-                                  </div>
-                                </div>
-                              </div>
-                            </mat-card-actions>
-                          </mat-card></a>
-                        </div>
-                        <div class="col-md-3">
-                          <a [routerLink]="['/auth/client/service']"><mat-card class="servicio">
-                            <mat-card-header class="titulo border-top-primary">
-                              <mat-card-title>Servicio</mat-card-title>
-                            </mat-card-header>
-                            <mat-card-content class="mat_card_content">
-                              Secadora
-                              <br>
-                              Se volvio a dañar
-                              <br>
-                              <span class="badge badge-primary">20 dias restantes</span>
-                            </mat-card-content>
-                            <mat-card-actions class="boton">
-                              <div class="container">
-                                <div class="row justify-content-between">
-                                  <div class="col-sm-5">
-                                    <button mat-button>DETALLES</button>
-                                  </div>
-                                  <div class="col-sm-7">
-                                    <mat-icon>access_time</mat-icon><span>10/11/2019</span>
-                                  </div>
-                                </div>
-                              </div>
-                            </mat-card-actions>
-                          </mat-card></a>
-                        </div>
-                        <div class="col-md-3">
-                          <a [routerLink]="['/auth/client/service']"><mat-card class="servicio">
-                            <mat-card-header class="titulo border-top-primary">
-                              <mat-card-title>Servicio</mat-card-title>
-                            </mat-card-header>
-                            <mat-card-content class="mat_card_content">
-                              Secadora
-                              <br>
-                              Se volvio a dañar
-                              <br>
-                              <span class="badge badge-primary">20 dias restantes</span>
-                            </mat-card-content>
-                            <mat-card-actions class="boton">
-                              <div>
+                        <div class="col-md-3" *ngFor="let warranty of warranties">
+                          <a [routerLink]="['/auth/client/service']">
+                            <mat-card class="servicio">
+                              <mat-card-header class="titulo border-top-dark">
+                                <mat-card-title>Servicio</mat-card-title>
+                              </mat-card-header>
+                              <mat-card-content class="mat_card_content">
+                                Microondas
+                                <br>
+                                {{warranty.revision.description | truncate:30}}
+                                <br>
+                                {{ warranty.warrantyTime}}
+                                <br>
+                                <span *ngIf="warranty.status=='budgeted'" class="badge badge-dark">Solicitada</span>
+                                <span *ngIf="warranty.status=='approved'" class="badge badge-primary">Aprobada</span>
+                                <span *ngIf="warranty.status=='warranty'" class="badge badge-danger">Garantía</span>
+                              </mat-card-content>
+                              <mat-card-actions>
                                 <div class="container">
                                   <div class="row justify-content-between">
                                     <div class="col-sm-5">
@@ -538,106 +233,9 @@
                                     </div>
                                   </div>
                                 </div>
-                              </div>
-                            </mat-card-actions>
-                          </mat-card></a>
-                        </div>
-                      </div>
-                    </div>       
-                  </div>
-
-                  <div class="carousel-item">
-                    <div class="container box">
-                      <div class="row justify-content-between arrow_box">
-                        <div class="col-md-6">
-                          <button mat-mini-fab class="waves_effect btn-floating" href="#carouselWarranty" title="Anterior" data-slide="prev">
-                            <mat-icon>keyboard_arrow_left</mat-icon>
-                          </button>
-                        </div>
-                        <div class="col-md-6 text-md-right">
-                          <button mat-mini-fab class="waves_effect btn-floating" href="#carouselWarranty" title="Siguiente" data-slide="next">
-                            <mat-icon>keyboard_arrow_right</mat-icon>
-                          </button>
-                        </div>
-                      </div>
-                      <div class="row pad_arrow">
-                        <div class="col-md-3">
-                          <a [routerLink]="['/auth/client/service']"><mat-card class="servicio">
-                            <mat-card-header class="titulo border-top-danger">
-                              <mat-card-title>Servicio</mat-card-title>
-                            </mat-card-header>
-                            <mat-card-content class="mat_card_content">
-                              Secadora
-                              <br>
-                              Se volvio a dañar
-                              <br>
-                              <span class="badge badge-danger">10 dias restantes</span>
-                            </mat-card-content>
-                            <mat-card-actions class="boton">
-                              <div class="container">
-                                <div class="row justify-content-between">
-                                  <div class="col-sm-5">
-                                    <button mat-button>DETALLES</button>
-                                  </div>
-                                  <div class="col-sm-7">
-                                    <mat-icon>access_time</mat-icon><span>10/11/2019</span>
-                                  </div>
-                                </div>
-                              </div>
-                            </mat-card-actions>
-                          </mat-card></a>
-                        </div>
-                        <div class="col-md-3">
-                          <a [routerLink]="['/auth/client/service']"><mat-card class="servicio">
-                            <mat-card-header class="titulo border-top-danger">
-                              <mat-card-title>Servicio</mat-card-title>
-                            </mat-card-header>
-                            <mat-card-content class="mat_card_content">
-                              Secadora
-                              <br>
-                              Se volvio a dañar
-                              <br>
-                              <span class="badge badge-danger">10 dias restantes</span>
-                            </mat-card-content>
-                            <mat-card-actions class="boton">
-                              <div class="container">
-                                <div class="row justify-content-between">
-                                  <div class="col-sm-5">
-                                    <button mat-button>DETALLES</button>
-                                  </div>
-                                  <div class="col-sm-7">
-                                    <mat-icon>access_time</mat-icon><span>10/11/2019</span>
-                                  </div>
-                                </div>
-                              </div>
-                            </mat-card-actions>
-                          </mat-card></a>
-                        </div>
-                        <div class="col-md-3">
-                          <a [routerLink]="['/auth/client/service']"><mat-card class="servicio">
-                            <mat-card-header class="titulo border-top-dark">
-                              <mat-card-title>Servicio</mat-card-title>
-                            </mat-card-header>
-                            <mat-card-content class="mat_card_content">
-                              Secadora
-                              <br>
-                              Se volvio a dañar
-                              <br>
-                              <span class="badge badge-dark">5 dias restantes</span>
-                            </mat-card-content>
-                            <mat-card-actions class="boton">
-                              <div class="container">
-                                <div class="row justify-content-between">
-                                  <div class="col-sm-5">
-                                    <button mat-button>DETALLES</button>
-                                  </div>
-                                  <div class="col-sm-7">
-                                    <mat-icon>access_time</mat-icon><span>10/11/2019</span>
-                                  </div>
-                                </div>
-                              </div>
-                            </mat-card-actions>
-                          </mat-card></a>
+                              </mat-card-actions>
+                            </mat-card>
+                          </a>
                         </div>
                       </div>
                     </div>       
