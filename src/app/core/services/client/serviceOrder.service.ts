@@ -3,12 +3,12 @@ import { HeaderService } from '../header.service';
 import { HttpClient, HttpParams  } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { environment } from 'src/environments/environment';
-import { Revision } from '../../../models/revision';
+import { ServiceOrder } from '../../../models/serviceOrder';
 
 @Injectable()
-export class RevisionService extends HeaderService{
+export class ServiceOrderService extends HeaderService{
 
-	url: string = environment.api + 'revision';
+	url: string = environment.api + 'serviceOrder';
 
 	constructor(
 		private http: HttpClient
@@ -16,22 +16,22 @@ export class RevisionService extends HeaderService{
 		super();
 	}
 
-    create(revision: Revision): Observable<any>{
-		let params = JSON.stringify(revision);
+    create(serviceOrder: ServiceOrder): Observable<any>{
+		let params = JSON.stringify(serviceOrder);
 		return this.http.post(this.url, params, {headers: this.header});
 	}
 
-	update(revision:any): Observable<any>{
-		let params = JSON.stringify(revision);
-		return this.http.put(this.url+'/'+revision.id, params, {headers: this.header});
+	update(serviceOrder:any): Observable<any>{
+		let params = JSON.stringify(serviceOrder);
+		return this.http.put(this.url+'/'+serviceOrder.id, params, {headers: this.header});
 	}
 
 	approve(id): Observable<any>{
 		return this.http.put(this.url+'/'+id+'/approve', {}, {headers: this.header});
 	}
 
-	diagnose(id): Observable<any>{
-		return this.http.put(this.url+'/'+id+'/diagnose', {}, {headers: this.header});
+	warranty(id): Observable<any>{
+		return this.http.put(this.url+'/'+id+'/warranty', {}, {headers: this.header});
 	}
 
 	reject(id): Observable<any>{
@@ -42,7 +42,7 @@ export class RevisionService extends HeaderService{
 		return this.http.get(this.url, {headers: this.header});
 	}
 
-	getRevisionUser(userid:any): Observable<any>{
+	getServiceOrderUser(userid:any): Observable<any>{
 		return this.http.get(this.url+"/user/"+userid, {headers: this.header});
 	}
 

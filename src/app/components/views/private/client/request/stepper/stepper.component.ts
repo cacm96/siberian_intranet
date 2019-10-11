@@ -245,9 +245,9 @@ export class StepperComponent implements OnInit {
 
   selectedLender(){
     console.log("Elegido");
-    $(document).ready(() => {
+    /*$(document).ready(() => {
       $('#selectedLender-1').css({'background-color': 'yellow', 'font-size': '200%'});
-    });
+    });*/
   }
 
   messageSnackBar(message)

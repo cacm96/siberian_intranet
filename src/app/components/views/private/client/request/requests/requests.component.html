@@ -1,8 +1,8 @@
 <div class="main_dashboard">
-	<div class="container">
+	<div class="container" *ngIf="revisions">
 		<div class="row">
-			<div class="col-sm-4">
-				<a [routerLink]="['/auth/client/request/detail/1']">
+			<div class="col-sm-4" *ngFor="let revision of revisions">
+				<a [routerLink]="['/auth/client/request/detail',revision.id]">
 					<mat-card class="servicio">
 						<mat-card-header class="titulo mat-card-header-primary">
 							<mat-card-title>Aire Acondicionado</mat-card-title>
@@ -13,11 +13,15 @@
 									<img src="../../../../assets/img/catalogue/aire.png" alt="" class="card-img-top">
 								</div>
 								<div class="col-sm-6">
-									<b>Tipo de Servicio: </b> Mantenimiento
+									Aire Acondicionado
 									<br>
-									<b>Descripción del Problema: </b> Necesito darle mantenimiento
+									{{revision.description}}
 									<br>
-									<span class="badge badge-danger">Solicitada</span>
+									<span *ngIf="revision.status=='requested'" class="badge badge-dark">Solicitada</span>
+									<span *ngIf="revision.status=='diagnosticated'" class="badge badge-warning">Diagnosticada</span>
+									<span *ngIf="revision.status=='approved'" class="badge badge-primary">Aprobada</span>
+									<span *ngIf="revision.status=='finalized'" class="badge badge-success">Finalizada</span>
+									<span *ngIf="revision.status=='cancelled'" class="badge badge-danger">Cancelada</span>
 								</div>
 							</div>
 						</mat-card-content>

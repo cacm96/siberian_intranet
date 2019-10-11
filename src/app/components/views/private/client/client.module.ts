@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../../../core/ui/material.module';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RevisionService } from 'src/app/core/services/admin/revision.service';
-import { ServiceOrderService } from 'src/app/core/services/admin/serviceOrder.service';
+import { RevisionService } from 'src/app/core/services/client/revision.service';
+import { ServiceOrderService } from 'src/app/core/services/client/serviceOrder.service';
 import { EquipinfrasService } from '../../../../core/services/admin/equipinfras.service';
 import { UserService } from '../../../../core/services/admin/user.service';
 import { LocationService } from '../../../../core/services/admin/location.service';

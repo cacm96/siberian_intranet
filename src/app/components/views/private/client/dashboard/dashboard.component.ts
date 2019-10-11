@@ -10,9 +10,9 @@ import { Global } from '../../../../../core/services/global';
 import { User } from '../../../../../models/user';
 import { UserService } from '../../../../../core/services/admin/user.service';
 import { Revision } from '../../../../../models/revision';
-import { RevisionService } from '../../../../../core/services/admin/revision.service';
+import { RevisionService } from '../../../../../core/services/client/revision.service';
 import { ServiceOrder } from '../../../../../models/serviceOrder';
-import { ServiceOrderService } from '../../../../../core/services/admin/serviceOrder.service';
+import { ServiceOrderService } from '../../../../../core/services/client/serviceOrder.service';
 import { Equipinfras } from '../../../../../models/equipinfras';
 import { EquipinfrasService } from '../../../../../core/services/admin/equipinfras.service';
 
@@ -23,8 +23,13 @@ import { EquipinfrasService } from '../../../../../core/services/admin/equipinfr
 })
 export class DashboardComponent implements OnInit {
   public revisions: any;
+  public totalRevision:any;
+  public totalServiceOrder:any;
   public serviceOrders: any;
+  public warranties:any;
+  public totalWarranty;
   public equipinfras: Equipinfras;
+  public userID:string;
   public message: string;
   public failedConect: string;
 
@@ -41,16 +46,19 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getRevisions();
-    this.getServiceOrders();
+    this.userID = localStorage.getItem('resID');
+    this.getRevisions(this.userID);
+    this.getServiceOrders(this.userID);
+    this.getWarranties(this.userID);
   }
 
-  getRevisions() {
-    this._revisionService.All().subscribe
+  getRevisions(userid) {
+    this._revisionService.getRevisionUser(userid).subscribe
     (
       response => {
         if (response.status==true) {
           this.revisions = response.revisions;
+          this.totalRevision = this.revisions.length;
           console.log(this.revisions);
         } else {
           this.revisions = [];
@@ -70,12 +78,14 @@ export class DashboardComponent implements OnInit {
   }
 
 
-  getServiceOrders() {
-    this._serviceorderService.All().subscribe
+  getServiceOrders(userid) {
+    this._serviceorderService.getServiceOrderUser(userid).subscribe
     (
       response => {
         if (response.status==true) {
           this.serviceOrders = response.serviceOrders;
+          this.serviceOrders = this.serviceOrders.filter(serviceOrders=>{return serviceOrders.status =="approved" || serviceOrders.status =="budgeted"});
+          this.totalServiceOrder = this.serviceOrders.length;
           console.log(this.serviceOrders);
         } else {
           this.serviceOrders = [];
@@ -94,15 +104,23 @@ export class DashboardComponent implements OnInit {
       )
   }
 
-  getEquipinfras(id) {
-    this._equipinfrasService.getOne(id).subscribe
+  getWarranties(userid) {
+    this._serviceorderService.getServiceOrderUser(userid).subscribe
     (
       response => {
-        this.equipinfras = response.equipinfras;
-        console.log(this.equipinfras);
+        if (response.status==true) {
+          this.warranties = response.serviceOrders;
+          this.warranties = this.warranties.filter(serviceOrders=>{return serviceOrders.status =="warranty"});
+          this.totalWarranty = this.warranties.length;
+          console.log(this.warranties);
+        } else {
+          this.warranties = [];
+          this.message = response.message.text;
+          console.log(this.message);
+        }
       },
       error => {
-        console.log( < any > error);
+        console.log(<any>error);
         if (error instanceof HttpErrorResponse) {
           if (error.status === 0) {
             this.failedConect = Global.failed;
@@ -111,4 +129,5 @@ export class DashboardComponent implements OnInit {
       }
       )
   }
+
 }
