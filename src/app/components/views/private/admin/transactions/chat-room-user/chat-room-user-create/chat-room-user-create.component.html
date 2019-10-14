@@ -1,3 +1,47 @@
-<p>
-  chat-room-user-create works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 offset-2">
+      <div class="row">
+        <div class="col-sm-12">
+          <h2 class="text-center">Nuevo Chat Salón Usuario</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <button mat-raised-button color="primary" [routerLink]="['/auth/admin/transactions/chat-room-user']">Volver</button>
+        </div>
+      </div>
+      <hr>
+      
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="example-container">
+            
+            <mat-form-field>
+              <mat-select placeholder="Usuario" required>
+                <mat-option value="option">andre@gmail.com</mat-option>
+                <mat-option value="option">rey@gmail.com</mat-option>
+                <mat-option value="option">yasm@gmail.com</mat-option>
+              </mat-select>
+            </mat-form-field>
+      
+             <mat-form-field>
+                <mat-select placeholder="Chat Salón" required>
+                <mat-option value="option">	Chat 1</mat-option>
+                <mat-option value="option">	Chat 2</mat-option>
+                <mat-option value="option">	Chat 3</mat-option>
+                </mat-select>
+              </mat-form-field>
+          
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-sm-12">
+          <button mat-raised-button color="primary" [routerLink]="['/auth/admin/transactions/chat-room-user/create']">Registrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

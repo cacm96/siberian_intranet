@@ -1,34 +1,70 @@
-<div class="main_catalogue">
-	<h2 class="text-center">Nueva Solicitud</h2>
-	<button mat-raised-button color="primary" [routerLink]="['/auth/transactions/request']">Volver</button>
-	<hr>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-8 offset-2">
+			<div class="row">
+				<div class="col-sm-12">
+					<h2 class="text-center">Nueva Solicitud</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<button mat-raised-button color="primary" [routerLink]="['/auth/admin/transactions/request']">Volver</button>
+				</div>
+			</div>
+			<hr>
+			
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="example-container">
+						<mat-form-field>
+							<mat-select placeholder="ID Usuario" required>
+								<mat-option value="option">90898</mat-option>
+								<mat-option value="option">0450</mat-option>
+							</mat-select>
+					</mat-form-field>
+			
+					<mat-form-field>
+							<mat-select placeholder="ID Catálogo Detalle Variedad" required>
+								<mat-option value="option">0986</mat-option>
+								<mat-option value="option">1234</mat-option>
+								<mat-option value="option">57567</mat-option>
+							</mat-select>
+					</mat-form-field>
 
-	<div class="example-container">
-		<mat-form-field>
-				<mat-select placeholder="Catálogo Detalle Variedad">
-					<mat-option value="option">Catalogo 1</mat-option>
-					<mat-option value="option">Catalogo 2</mat-option>
-				</mat-select>
-		</mat-form-field>
+					<mat-form-field>
+						<textarea matInput placeholder="Descripción" required></textarea>
+					</mat-form-field>
 
-		<mat-form-field>
-			    <mat-select placeholder="Locación">
-					<mat-option value="option">Dirección 1</mat-option>
-					<mat-option value="option">Dirección</mat-option>
-				</mat-select>
-		</mat-form-field>
+				<mat-form-field>
+					<mat-select placeholder="ID Ubicación" required>
+						<mat-option value="option">8954</mat-option>
+						<mat-option value="option">20495</mat-option>
+						<mat-option value="option">03405</mat-option>
+					</mat-select>
+				</mat-form-field>
 
-        <mat-form-field>
-			<textarea matInput placeholder="Descripción"></textarea>
-		</mat-form-field>	
+					<mat-form-field>
+						<input matInput placeholder="Precio">
+					</mat-form-field>
+			
+					<mat-form-field [hidden]="true">
+						<input matInput  placeholder="Estatus" value="A">
+					</mat-form-field>
+					
+					<mat-label>Subir Imagen</mat-label>
+					<input id="fileInput" type="file">				
 		
-		<mat-form-field>
-			<mat-select placeholder="Subir Pago"></mat-select>
-			<input id="fileInput" type="file">
-		</mat-form-field>
-
+					<br>
+					
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12">
+					<button mat-raised-button color="primary" [routerLink]="['/auth/admin/transactions/request/create']">Registrar</button>
+				</div>
+			</div>
+		</div>
 	</div>
-
-	<button mat-raised-button color="primary" [routerLink]="['/auth/transactions/request/create']">Registrar</button>
-
 </div>

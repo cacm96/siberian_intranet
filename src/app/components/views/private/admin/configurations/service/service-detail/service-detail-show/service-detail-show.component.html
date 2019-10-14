@@ -1,0 +1,98 @@
+<div class="container">
+    <h2 *ngIf="serviceDetail" class="text-center">{{ serviceDetail.name }}</h2>
+    <button mat-raised-button color="primary" (click)="goBack()">Volver</button>
+    <hr>
+    <div *ngIf="serviceDetail">
+      <mat-card>
+        <div class="row">
+          <div class="col-sm-6">
+            <mat-list>
+              <h3 mat-subheader>Servicio Detalle</h3>
+              <mat-list-item><h4 mat-line><b>Nombre: </b> {{ serviceDetail.name }}</h4></mat-list-item>
+              <mat-list-item><h4 mat-line><b>Precio Estimado: </b> {{ serviceDetail.estimatedPrice }}</h4></mat-list-item>
+              <mat-list-item><h4 mat-line><b>Tiempo Estimado de Garantía: </b> {{ serviceDetail.estimatedWarrantyTime }}</h4></mat-list-item>
+              <mat-list-item><h4 mat-line><b>Nota: </b> {{ serviceDetail.note }}</h4></mat-list-item>
+              <mat-list-item><h4 mat-line><b>Tipo de Servicio: </b> {{ serviceDetail.serviceType }}</h4></mat-list-item>
+              <mat-list-item><h4 mat-line><b>Componente: </b> {{ serviceDetail.component.name}}</h4></mat-list-item>
+              <mat-list-item *ngIf="serviceDetail.status=='active'"><h4 mat-line><b>Estatus:<span class="badge badge-success"> Activo</span></b></h4></mat-list-item>
+              <mat-list-item *ngIf="serviceDetail.status=='deleted'"><h4 mat-line><b>Estatus:<span class="badge badge-danger"> Borrado</span></b></h4></mat-list-item>
+            </mat-list>
+          </div>
+        </div>
+  
+      </mat-card>
+  
+      <br>
+  
+      <mat-card>
+      <div *ngIf="serviceDetail.activities.length>0">
+        <mat-list>
+          <h3 mat-subheader>Actividad</h3>
+          <mat-list-item *ngFor="let activities of serviceDetail.activities">
+            <h4 mat-line>{{activities.name}}</h4>
+          </mat-list-item>
+        </mat-list>
+      </div>
+  
+      <div *ngIf="serviceDetail.activities.length<=0">
+        <mat-list>
+          <h3 mat-subheader>Actividad</h3>
+          <mat-list-item><h4 mat-line>No tiene Actividad</h4></mat-list-item>
+        </mat-list>
+      </div>
+    </mat-card>
+    <br>
+
+    <mat-card>
+      <div *ngIf="serviceDetail.resources.length>0">
+        <mat-list>
+          <h3 mat-subheader>Recurso</h3>
+          <mat-list-item *ngFor="let resources of serviceDetail.resources">
+            <h4 mat-line>{{resources.name}}</h4>
+          </mat-list-item>
+        </mat-list>
+      </div>
+  
+      <div *ngIf="serviceDetail.resources.length<=0">
+        <mat-list>
+          <h3 mat-subheader>Recurso</h3>
+          <mat-list-item><h4 mat-line>No tiene Recurso</h4></mat-list-item>
+        </mat-list>
+      </div>
+    </mat-card>
+    <br>
+    
+    <mat-card>
+      <div *ngIf="serviceDetail.policies.length>0">
+        <mat-list>
+          <h3 mat-subheader>Políticas</h3>
+          <mat-list-item *ngFor="let policies of serviceDetail.policies">
+            <h4 mat-line>{{policies.name}}</h4>
+          </mat-list-item>
+        </mat-list>
+      </div>
+  
+      <div *ngIf="serviceDetail.policies.length<=0">
+        <mat-list>
+          <h3 mat-subheader>Políticas</h3>
+          <mat-list-item><h4 mat-line>No tiene Política</h4></mat-list-item>
+        </mat-list>
+      </div>
+    </mat-card>
+    
+  
+  </div>
+
+  
+    <div *ngIf="!serviceDetail && !failedConect">
+      <div class="row">
+        <div class="col-sm-12 spinner">
+          <mat-spinner></mat-spinner>
+        </div>
+      </div>
+    </div>
+  
+    <div *ngIf="failedConect">
+      <h6 class="text-center">{{failedConect}}</h6>
+    </div>  
+</div>

@@ -1,0 +1,78 @@
+<div class="container" *ngIf="user">
+	<h2 class="text-center">Usuario</h2>
+	<button mat-raised-button color="primary" (click)="goBack()">Volver</button>
+	<hr>
+	<mat-card>
+		<mat-list>
+			<h3 mat-subheader>Datos</h3>
+			<mat-list-item><h4 mat-line><b>Email: </b> {{ user.email }}</h4></mat-list-item>
+			<mat-list-item><h4 mat-line><b>Nombre: </b> {{ user.firstName }}</h4></mat-list-item>
+			<mat-list-item><h4 mat-line><b>Apellido: </b> {{ user.lastName }}</h4></mat-list-item>
+			<mat-list-item><h4 mat-line><b>Dni: </b> {{ user.dniType | titlecase}}-{{ user.dni }}</h4></mat-list-item>
+			<mat-list-item><h4 mat-line><b>Género: </b> {{ user.gender | titlecase }}</h4></mat-list-item>
+			<mat-list-item><h4 mat-line><b>Fecha de Nacimiento: </b> {{ user.dateOfBirth }}</h4></mat-list-item>
+			<mat-list-item *ngIf="user.status=='active'"><h4 mat-line><b>Estatus:<span class="badge badge-success"> Activo</span></b></h4></mat-list-item>
+			<mat-list-item *ngIf="user.status=='inactive'"><h4 mat-line><b>Estatus:<span class="badge badge-success"> Inactivo</span></b></h4></mat-list-item>
+			<mat-list-item><h4 mat-line><b>Nota: </b> {{ user.note }}</h4></mat-list-item>
+			<mat-list-item><h4 mat-line><b>Rol: </b> {{ user.role.name }}</h4></mat-list-item>
+		</mat-list>
+	</mat-card>
+
+	<br>
+
+	<mat-card>
+		<div *ngIf="locationsUser">
+			<mat-list>
+			  <h3 mat-subheader>Direcciones</h3>
+			  <mat-list-item *ngFor="let locationUser of locationsUser">
+			    <h4 mat-line>{{locationUser.address}}</h4>
+			    <p mat-line> {{locationUser.state}} </p>
+			    <p mat-line> {{locationUser.city}} </p>
+			    <p mat-line> {{locationUser.postalCode}} </p>
+			  </mat-list-item>
+			</mat-list>
+		</div>
+
+		<div *ngIf="!locationsUser">
+			<mat-list>
+			  <h3 mat-subheader>Direcciones</h3>
+			  <mat-list-item><h4 mat-line>No tiene direcciones</h4></mat-list-item>
+			</mat-list>
+		</div>
+	</mat-card>
+
+	<br>
+
+	<mat-card>
+		<div *ngIf="phonesUser">
+			<mat-list>
+			  <h3 mat-subheader>Teléfonos</h3>
+			  <mat-list-item *ngFor="let phoneUser of phonesUser">
+			    <h4 mat-line>{{phoneUser.phoneType}}</h4>
+			    <p mat-line> {{phoneUser.number}} </p>
+			  </mat-list-item>
+			</mat-list>
+		</div>
+
+		<div *ngIf="!phonesUser">
+			<mat-list>
+			  <h3 mat-subheader>Teléfonos</h3>
+			  <mat-list-item><h4 mat-line>No tiene teléfonos</h4></mat-list-item>
+			</mat-list>
+		</div>
+	</mat-card>
+
+</div>
+
+<div *ngIf="!user && !failedConect">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 spinner">
+				<mat-spinner></mat-spinner>
+			</div>
+		</div>
+	</div>
+</div>
+<div *ngIf="failedConect">
+	<h6 class="text-center">{{failedConect}}</h6>
+</div>

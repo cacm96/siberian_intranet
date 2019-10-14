@@ -11,25 +11,28 @@ import { LogoutComponent } from './components/views/public/auth/logout/logout.co
 import { ErrorComponent } from './components/shared/error/error.component';
 import { BlockComponent } from './components/shared/block/block.component';
 import { HomeComponent } from './components/shared/home/home.component';
+import { RegisterComponent } from './components/views/public/auth/register/register.component';
 
 const routes: Routes =
 [
 	{path: '', redirectTo: 'login', pathMatch: 'full', canActivate: []},
 	{path: 'login', component: LoginComponent, canActivate: []},
 	{path: 'loginWeit', component: LoginWeitComponent, canActivate: []},
-	{path: 'logout', component: LogoutComponent},
+	{path: 'register', component: RegisterComponent},
+	
 
 	{path: 'auth', canActivate: [], component: HomeComponent,
 		children:
 		[
 			{path: '', redirectTo: 'auth', pathMatch: 'full', canActivate: []},
+			{path: 'logout', component: LogoutComponent},
 
 			{path: 'client', canActivate: [],
 				children:
 				[
 					{
 						path: '',
-		                loadChildren: './components/views/private/client/client.module#ClientModule',
+		                loadChildren: '../app/components/views/private/client/client.module#ClientModule',
 					}
 				]
 			},
@@ -39,7 +42,7 @@ const routes: Routes =
 				[
 					{
 						path: '',
-		                loadChildren: './components/views/private/lender/lender.module#LenderModule',
+		                loadChildren: '../app/components/views/private/lender/lender.module#LenderModule',
 					}
 				]
 			},
@@ -49,7 +52,7 @@ const routes: Routes =
 				[
 					{
 						path: '',
-		                loadChildren: './components/views/private/admin/admin.module#AdminModule',
+		                loadChildren: '../app/components/views/private/admin/admin.module#AdminModule',
 					}
 				]
 			},

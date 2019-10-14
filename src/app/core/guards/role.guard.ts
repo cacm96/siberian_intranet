@@ -2,8 +2,8 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router  } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from '../../core/services/auth.service';
-import { UserService } from '../../core/services/user.service';
+import { AuthService } from '../../core/services/public/auth.service';
+import { UserService } from '../../core/services/admin/user.service';
 import { User } from '../../models/user';
 import { AuthGuard } from './auth.guard';
 
@@ -27,7 +27,7 @@ export class RoleGuard implements CanActivate{
 
   getUser(id)
   {
-    this._userService.getUser(id).subscribe
+    this._userService.getOne(id).subscribe
     (
       response =>
       {
@@ -46,7 +46,7 @@ export class RoleGuard implements CanActivate{
     console.log(this.user);
     if(this.user)
     {
-        if(this.user.rolid=="admin" || this.user.rolid=="member")
+        if(this.user.lastName=="admin" || this.user.lastName=="member")
         {
           console.log("entro true en canactivate")
           return true

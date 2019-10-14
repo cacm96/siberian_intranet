@@ -14,4 +14,8 @@ export class SnackBarService {
   	});
   }
 
+  openSnackBarSuccess(message){
+  	return this.snackBar.open(message);
+  }
+
 }

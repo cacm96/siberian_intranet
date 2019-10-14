@@ -1,3 +1,63 @@
-<p>
-  service-order-detail-create works!
-</p>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-8 offset-2">
+			<div class="row">
+				<div class="col-sm-12">
+					<h2 class="text-center">Nuevo Detalle de Orden de Servicio</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<button mat-raised-button color="primary" [routerLink]="['/auth/admin/transactions/service-order-detail']">Volver</button>
+				</div>
+			</div>
+			<hr>
+			
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="example-container">
+						<mat-form-field>
+							<mat-select placeholder="ID Orden de Servicio" required>
+								<mat-option value="option">90898</mat-option>
+								<mat-option value="option">0450</mat-option>
+							</mat-select>
+					</mat-form-field>
+			
+					<mat-form-field>
+							<mat-select placeholder="ID Detalle de Servicio" required>
+								<mat-option value="option">0986</mat-option>
+								<mat-option value="option">1234</mat-option>
+								<mat-option value="option">57567</mat-option>
+							</mat-select>
+					</mat-form-field>
+
+					<mat-form-field>
+						<textarea matInput placeholder="Monto"></textarea>
+					</mat-form-field>
+
+					<mat-form-field>
+						<textarea matInput placeholder="Duración" required></textarea>
+					</mat-form-field>
+
+					<mat-form-field>
+						<input matInput placeholder="Número de trabajadores">
+					</mat-form-field>
+			
+					<mat-form-field [hidden]="true">
+						<input matInput  placeholder="Estatus" value="A">
+					</mat-form-field>			
+		
+					<br>
+					
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12">
+					<button mat-raised-button color="primary" [routerLink]="['/auth/admin/transactions/service-order-detail/create']">Registrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,3 +1,41 @@
-<p>
-  chat-room-edit works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 offset-2">
+      <div class="row">
+        <div class="col-sm-12">
+          <h2 class="text-center">Editar Chat Salón</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <button mat-raised-button color="primary" [routerLink]="['/auth/admin/transactions/chat-room']">Volver</button>
+        </div>
+      </div>
+      <hr>
+      
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="example-container">
+            <mat-form-field>
+              <input matInput placeholder="Nombre">
+            </mat-form-field>
+            
+            <mat-form-field [hidden]="true">
+              <input matInput  placeholder="Estatus" value="A">
+            </mat-form-field>
+
+            <mat-label>Subir Icono</mat-label>
+					<input id="fileInput" type="file">
+          <br>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-sm-12">
+          <button mat-raised-button color="primary" [routerLink]="['/auth/admin/transactions/chat-room/edit/1']">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

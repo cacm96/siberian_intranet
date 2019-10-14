@@ -1,0 +1,45 @@
+<div class="main_dashboard">
+	<div class="container" *ngIf="revisions">
+		<div class="row">
+			<div class="col-sm-4" *ngFor="let revision of revisions">
+				<a [routerLink]="['/auth/client/request/detail',revision.id]">
+					<mat-card class="servicio">
+						<mat-card-header class="titulo mat-card-header-primary">
+							<mat-card-title>Aire Acondicionado</mat-card-title>
+						</mat-card-header>
+						<mat-card-content class="mat_card_content">
+							<div class="row">
+								<div class="col-sm-6">
+									<img src="../../../../assets/img/catalogue/aire.png" alt="" class="card-img-top">
+								</div>
+								<div class="col-sm-6">
+									Aire Acondicionado
+									<br>
+									{{revision.description}}
+									<br>
+									<span *ngIf="revision.status=='requested'" class="badge badge-dark">Solicitada</span>
+									<span *ngIf="revision.status=='diagnosticated'" class="badge badge-warning">Diagnosticada</span>
+									<span *ngIf="revision.status=='approved'" class="badge badge-primary">Aprobada</span>
+									<span *ngIf="revision.status=='finalized'" class="badge badge-success">Finalizada</span>
+									<span *ngIf="revision.status=='cancelled'" class="badge badge-danger">Cancelada</span>
+								</div>
+							</div>
+						</mat-card-content>
+						<mat-card-actions class="boton">
+							<div class="container">
+								<div class="row justify-content-between">
+									<div class="col-sm-5">
+										<button mat-button>DETALLES</button>
+									</div>
+									<div class="col-sm-7">
+										<mat-icon>access_time</mat-icon><span>10/11/2019</span>
+									</div>
+								</div>
+							</div>
+						</mat-card-actions>
+					</mat-card>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>

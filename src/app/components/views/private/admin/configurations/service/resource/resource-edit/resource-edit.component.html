@@ -1,0 +1,74 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 offset-2">
+      <div class="row">
+        <div class="col-sm-12">
+          <h2 class="text-center">Editar Recurso</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <button mat-raised-button color="primary" (click)="goBack()">Volver</button>
+        </div>
+      </div>
+      <hr>
+      <div *ngIf="resource">
+        <form #updateForm="ngForm" (ngSubmit)="update(updateForm)">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="example-container">
+
+                <mat-form-field>
+                  <input matInput id="inputName" name="name" placeholder="Nombre" [(ngModel)]="resource.name" required>
+                </mat-form-field>
+
+                <mat-form-field>
+                  <textarea matInput name="description" placeholder="Descripción" [(ngModel)]="resource.description" required></textarea>
+                </mat-form-field>
+
+                <mat-form-field>
+                  <mat-select name="resourceType" [(ngModel)]="resource.resourceType" placeholder="Seleccione un Tipo de Recurso" required>
+                    <mat-option *ngFor="let resourceType of resourceTypes" [value]="resourceType.id">{{ resourceType.name }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
+                  <mat-select name="measureUnit" [(ngModel)]="resource.measureUnit" placeholder="Seleccione un Tipo de Recurso" required>
+                    <mat-option *ngFor="let measureUnit of measureUnits" [value]="measureUnit.id">{{ measureUnit.name }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
+                  <textarea matInput name="price" placeholder="Precio" [(ngModel)]="resource.price" required></textarea>
+                </mat-form-field>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <button mat-raised-button color="primary" type="submit" [disabled]="!updateForm.form.valid">Guardar</button>
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+
+      <div *ngIf="!resource && !failedConect">
+        <div class="row">
+          <div class="col-sm-12 spinner">
+            <mat-spinner></mat-spinner>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="failedConect">
+        <h6 class="text-center">{{failedConect}}</h6>
+      </div>
+
+    </div>
+  </div>
+</div>

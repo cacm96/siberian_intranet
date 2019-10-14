@@ -1,3 +1,79 @@
-<p>
-  profile-edit works!
-</p>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-8 offset-2">
+			<div class="row">
+				<div class="col-sm-12">
+					<h2 class="text-center">Editar Prestador</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<button mat-raised-button color="primary" [routerLink]="['/auth/lender/profile/show/1']">Volver</button>
+				</div>
+			</div>
+			<hr>
+			
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="example-container">
+						<mat-form-field>
+							<input matInput placeholder="Email" required>
+    					</mat-form-field>
+    
+				   		<mat-form-field>
+				        	<input matInput placeholder="Contraseña" required>
+				    	</mat-form-field>
+
+						<mat-form-field>
+				        	<input matInput placeholder="Nombre" required>
+				    	</mat-form-field>
+
+				    	<mat-form-field>
+				        	<input matInput placeholder="Apellido" required>
+				    	</mat-form-field>
+
+				    	<mat-form-field>
+							<mat-select placeholder="Tipo DNI" required>
+								<mat-option value="option">Cédula</mat-option>
+								<mat-option value="option">Pasaporte</mat-option>
+								<mat-option value="option">RIF</mat-option>
+							</mat-select>
+						</mat-form-field>
+
+				    	<mat-form-field>
+				        	<input matInput placeholder="DNI" required>
+				    	</mat-form-field>
+
+						<mat-form-field>
+							<mat-select placeholder="Género">
+								<mat-option value="option">Femenino</mat-option>
+								<mat-option value="option">Masculino</mat-option>
+							</mat-select>
+						</mat-form-field>
+
+						<mat-form-field>
+				        	<input type="date" matInput placeholder="Fecha de Nacimiento">
+				    	</mat-form-field>
+
+						<mat-label>Subir Imagen</mat-label>
+              				<input id="fileInput" type="file">
+						
+						<mat-form-field [hidden]="true">
+							<input matInput  placeholder="Estatus" value="A">
+						</mat-form-field>
+
+						<mat-form-field>
+				        	<input matInput placeholder="Nota">
+				    	</mat-form-field>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12">
+					<button mat-raised-button color="primary" [routerLink]="['/auth/lender/profile/edit/1']">Guardar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

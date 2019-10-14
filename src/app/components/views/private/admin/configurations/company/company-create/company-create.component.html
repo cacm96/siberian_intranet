@@ -1,0 +1,78 @@
+
+  <div class="container">
+   <div class="row">
+     <div class="col-sm-8 offset-2">
+       <div class="row">
+         <div class="col-sm-12">
+           <h2 class="text-center">Nueva Empresa</h2>
+         </div>
+       </div>
+       <div class="row">
+         <div class="col-sm-12">
+           <button mat-raised-button color="primary" [routerLink]="['/auth/admin/masters/company']">Volver</button>
+         </div>
+       </div>
+       <hr>
+       
+       <div class="row">
+         <div class="col-sm-12">
+           <div class="example-container">
+             <mat-form-field>
+                  <input matInput placeholder="Rif" required>
+             </mat-form-field>
+              
+             <mat-form-field>
+                <input matInput placeholder="Nombre" required>
+              </mat-form-field>
+
+             <mat-form-field>
+                <textarea matInput placeholder="Misión"></textarea>
+             </mat-form-field>	
+             
+             <mat-form-field>
+                <textarea matInput placeholder="Visión"></textarea>
+             </mat-form-field>
+
+            <mat-form-field>
+                <textarea matInput placeholder="¿Quiénes somos?"></textarea>
+             </mat-form-field>
+             
+             <mat-form-field>
+                <textarea matInput placeholder="Dirección"></textarea>
+             </mat-form-field>
+             
+             <mat-form-field>
+                <input matInput placeholder="Primer Teléfono" required>
+              </mat-form-field>
+
+             <mat-form-field>
+                <input matInput placeholder="Segundo Teléfono">
+              </mat-form-field>
+
+              <mat-label >Subir Imagen</mat-label>
+              <input id="fileInput" type="file" required>
+
+              <mat-form-field>
+                 <input matInput placeholder="Facebook">
+              </mat-form-field>
+
+                <mat-form-field>
+                   <input matInput placeholder="Instagram">
+                </mat-form-field>
+
+                <mat-form-field>
+                  <input matInput placeholder="Twitter">
+               </mat-form-field>
+         
+           </div>
+         </div>
+       </div>
+       
+       <div class="row">
+         <div class="col-sm-12">
+           <button mat-raised-button color="primary" [routerLink]="['/auth/admin/masters/company/create']">Registrar</button>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>

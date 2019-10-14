@@ -1,0 +1,55 @@
+<div class="container">
+  <h2 *ngIf="category" class="text-center">{{ category.name }}</h2>
+  <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/catalog/category']">Volver</button>
+  <hr>
+  <div *ngIf="category">
+    <mat-card>
+      <div class="row">
+        <div class="col-sm-6">
+          <mat-list>
+            <h3 mat-subheader>Categoría</h3>
+            <mat-list-item><h4 mat-line><b>Nombre: </b> {{ category.name }}</h4></mat-list-item>
+            <mat-list-item><h4 mat-line><b>Descripción: </b> {{ category.description }}</h4></mat-list-item>
+            <mat-list-item *ngIf="category.status=='active'"><h4 mat-line><b>Estatus:<span class="badge badge-success"> Activo</span></b></h4></mat-list-item>
+          </mat-list>
+        </div>
+      </div>
+
+    </mat-card>
+
+    <br>
+
+    <mat-card>
+    <div *ngIf="category.subcategories.length>0">
+      <mat-list>
+        <h3 mat-subheader>Subcategorías</h3>
+        <mat-list-item *ngFor="let subcategories of category.subcategories">
+          <h4 mat-line>{{subcategories.name}}</h4>
+        </mat-list-item>
+      </mat-list>
+    </div>
+
+    <div *ngIf="category.subcategories.length<=0">
+      <mat-list>
+        <h3 mat-subheader>Subcategorías</h3>
+        <mat-list-item><h4 mat-line>No tiene direcciones</h4></mat-list-item>
+      </mat-list>
+    </div>
+  </mat-card>
+
+
+  </div>
+
+  <div *ngIf="!category && !failedConect">
+    <div class="row">
+      <div class="col-sm-12 spinner">
+        <mat-spinner></mat-spinner>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="failedConect">
+    <h6 class="text-center">{{failedConect}}</h6>
+  </div>
+  
+</div>

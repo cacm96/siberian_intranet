@@ -1,0 +1,89 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-8 offset-2">
+			<div class="row">
+				<div class="col-sm-12">
+					<h2 class="text-center">Asignar Servicios</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<button mat-raised-button color="primary" (click)="goBack()">Volver</button>
+				</div>
+			</div>
+			<hr>
+
+			<div *ngIf="serviceDetails">
+
+				<form #updateForm="ngForm" (ngSubmit)="update(updateForm)">
+
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="example-container">
+
+								<mat-form-field>
+									<mat-select name="services" [(ngModel)]="services" placeholder="Seleccione uno o mas servicios" multiple required>
+										<mat-option *ngFor="let serviceDetail of serviceDetails" [value]="serviceDetail.id">{{serviceDetail.name}}</mat-option>
+									</mat-select>
+								</mat-form-field>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-sm-12">
+							<a [routerLink]="['/auth/admin/configurations/service/service-detail/create']">¿Nuevo Servicio?</a>
+						</div>
+					</div>
+
+					<br>
+
+					<div class="row">
+						<div class="col-sm-12">
+							<button mat-raised-button color="primary" class="mr-3" type="submit" [disabled]="!updateForm.form.valid">Añadir</button>
+						</div>
+					</div>
+				</form>
+
+				<hr>
+
+				<!-- <div *ngIf="serviceDetailsV.length>0">
+					<div class="row">
+						<div class="col-sm-12">
+							<mat-list>
+								<mat-list-item *ngFor="let serviceDetail of serviceDetailsV">
+									<h4 mat-line>{{variety.name}}</h4>
+									<button mat-icon-button color="warn" matTooltip="Borrar Variedad" matTooltipPosition="left" (click)="onDelete(variety.id)"><mat-icon>delete</mat-icon></button>
+									<button mat-icon-button color="primary" matTooltip="Añadir Modelos" matTooltipPosition="right" [routerLink]="[variety.id,'addVarietyDetails',{EquipinfraId:EquipinfraId}]"><mat-icon>add</mat-icon></button>
+								</mat-list-item>
+							</mat-list>
+						</div>
+					</div>
+				</div>
+
+				<div *ngIf="serviceDetailsV.length<=0">
+					<div class="row">
+						<div class="col-sm-12">
+							<mat-list>
+								<mat-list-item>
+									<h4 mat-line>No tiene servicios</h4>
+								</mat-list-item>
+							</mat-list>
+						</div>
+					</div>
+				</div> -->
+
+			</div>
+
+			<!-- <div *ngIf="total<=0">
+				<h2 class="text-center">{{ message }}</h2>
+				<div class="row">
+					<div class="col-sm-12">
+						<a [routerLink]="['/auth/admin/configurations/equipinfras/variety/create']">¿Nueva Variedad?</a>
+					</div>
+				</div>
+			</div> -->
+
+		</div>
+	</div>
+</div>

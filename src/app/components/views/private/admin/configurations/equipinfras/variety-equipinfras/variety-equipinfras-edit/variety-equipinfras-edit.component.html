@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 offset-2">
+      <div class="row">
+        <div class="col-sm-12">
+          <h2 class="text-center">Editar Variedad por Equipos/Infraestructuras</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/equipinfras/variety-equipinfras']">Volver</button>
+        </div>
+      </div>
+      <hr>
+      
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="example-container">
+            <mat-form-field>
+              <mat-select placeholder="Variedad" required>
+                <mat-option value="option"> Silensis-Cerapy</mat-option>
+                <mat-option value="option">Avanti</mat-option>
+                <mat-option value="option">Dace</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-select placeholder="Equipos/Infraestructuras" required>
+                <mat-option value="option">Pared</mat-option>
+                <mat-option value="option">Piso</mat-option>
+                <mat-option value="option">Aire Acondicionado</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input matInput placeholder="Nombre" required>
+            </mat-form-field>
+
+            <mat-form-field>
+              <textarea matInput placeholder="Descripción"></textarea>
+            </mat-form-field>
+            
+            <mat-form-field [hidden]="true">
+              <input matInput  placeholder="Estatus" value="A">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-sm-12">
+          <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/equipinfras/variety-equipinfras/edit/1']">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

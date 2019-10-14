@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { CanActivate,CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot, Router  } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from '../../core/services/auth.service';
-import { UserService } from '../../core/services/user.service';
+import { AuthService } from '../../core/services/public/auth.service';
+import { UserService } from '../../core/services/admin/user.service';
 import { User } from '../../models/user';
 
 @Injectable({
@@ -41,7 +41,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
 
   getUser(id)
   {
-    this._userService.getUser(id).subscribe
+    this._userService.getOne(id).subscribe
     (
       response =>
       {
@@ -61,7 +61,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     
     if(this.user)
     {
-      if(this.user.rolid=="admin")
+      if(this.user.lastName=="admin")
       {
         return true
       }
