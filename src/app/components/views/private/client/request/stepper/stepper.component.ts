@@ -38,6 +38,7 @@ export class StepperComponent implements OnInit {
   public location:any;
   public locationsUser:any;
   public address:string;
+  public addressFull:string;
   public description:string;
   public dateRevision:any;
   public lenderId:string;
@@ -87,6 +88,35 @@ export class StepperComponent implements OnInit {
       secondCtrl: ['', Validators.required]
     });
 
+  }
+
+  cambio(id){
+    //this.getLocation(id);
+  }
+
+  getLocation(id)
+  {
+    this._locationService.getOne(id).subscribe
+    (
+      response =>
+      {
+        console.log(response);
+        this.location = response.location;
+        this.addressFull = this.location.address;
+        console.log(this.location);
+      },
+      error =>
+      {
+        console.log(<any>error);
+        if(error instanceof HttpErrorResponse)
+        {
+          if(error.status===0)
+          {
+            this.failedConect = Global.failed;
+          }
+        }
+      }
+    )
   }
 
   getUser(id)
@@ -213,7 +243,15 @@ export class StepperComponent implements OnInit {
           {
             console.log(response);
             this.message = response.message.text;
-            this.messageSnackBar(this.message); 
+            this.messageSnackBar(this.message);
+            setTimeout
+            (
+              () =>
+              {
+                this._router.navigate(['/auth/client/request']);
+              },
+              2000
+            );
           }
           else
           {

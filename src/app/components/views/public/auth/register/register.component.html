@@ -29,12 +29,12 @@
 						</div>
 	
 						<div class="col-md-12 mb-3">
-							<label for="dni">Dni</label>
-							<input type="text" class="form-control" name="dni" placeholder="Dni" [(ngModel)]="dni" required>
+							<label for="dni">Cédula</label>
+							<input type="text" class="form-control" name="dni" placeholder="Cédula" [(ngModel)]="dni" required>
 						</div>
 						
 						<div class="col-md-12 mb-3">
-							<label for="dniType">Tipo de Dni</label>
+							<label for="dniType">Tipo de Cédula</label>
 							<select name="dniType" [(ngModel)]="dniTypeSelected" class="form-control" required>
 								<option *ngFor="let dniType of dniTypes" [value]="dniType.id"> {{dniType.name}}</option>
 							</select>

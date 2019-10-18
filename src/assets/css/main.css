@@ -205,7 +205,7 @@ span.badge{
   color:#ffffff !important;
 }
 span.badge-primary{
-  background-color: #283593!important;
+  background-color: #242451!important;
 }
 span.badge-success{
   background-color: #94ce9b!important;
@@ -225,7 +225,7 @@ span.badge-dark{
   background-color: #94ce9b!important;
 }
 /*.border-top-primary{
-  border-top: solid 6px #283593!important;
+  border-top: solid 6px #242451!important;
 }
 .border-top-success{
   border-top: solid 6px #94ce9b!important;
@@ -244,7 +244,7 @@ span.badge-dark{
   background-color: #0b173b !important;
 }
 .mat-card-header-primary{
-  background-color: #283593!important;
+  background-color: #242451!important;
 }
 .mat-card-header-success{
   background-color: #94ce9b!important;
@@ -325,7 +325,7 @@ table {
 }
 
 .main_dashboard .mat-card .mat-card-header{
-  background-color: #185a89;
+  background-color: #242451;
   color: white;
 }
 

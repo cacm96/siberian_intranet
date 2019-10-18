@@ -19,7 +19,9 @@ import { SubcategoriaComponent } from './subcategoria/subcategoria.component';
 import { CategoriaComponent } from './categoria/categoria.component';
 import { EquipsinfrasComponent } from './equipsinfras/equipsinfras.component';
 import { ConfirmComponent } from './confirm/confirm.component';
-
+import { SearchEquipsinfrasPipe } from '../../../../../core/pipes/searchEquipsinfras.pipe';
+import { SearchVarietiesPipe } from '../../../../../core/pipes/searchVarieties.pipe';
+import { SearchVarietiesDetailPipe } from '../../../../../core/pipes/searchVarietiesDetail.pipe';
 
 @NgModule({
   declarations:
@@ -33,6 +35,9 @@ import { ConfirmComponent } from './confirm/confirm.component';
     CategoriaComponent,
     EquipsinfrasComponent,
     ConfirmComponent,
+    SearchEquipsinfrasPipe,
+    SearchVarietiesPipe,
+    SearchVarietiesDetailPipe
   ],
   imports: [
     CommonModule,
