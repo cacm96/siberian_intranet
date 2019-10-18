@@ -53,7 +53,7 @@ display: inline-block;
   border: solid 1px #d2d2d2;
 }
 .stepper_ficha .mat-card .mat-card-header{
-  background-color: #185a89;
+  background-color: #242451;
   color: white;
 }
 .stepper_ficha .mat-card .mat-card-actions{
@@ -91,6 +91,11 @@ display: inline-block;
   width: 250px;
   height: 200px;
   justify-content: center !important;
+}
+
+.card-img{
+  height: 100px !important;
+  width: 100px !important;
 }
 
 .lender_available.closed{

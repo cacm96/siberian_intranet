@@ -10,10 +10,8 @@
 		</mat-nav-list>
 	
 		<div *ngIf="role=='3'">
-			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/dashboard']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Inicio</a>
-			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/request']" ><mat-icon matListIcon class="side_nav_icon">assignment</mat-icon>Mis Solicitudes</a>
-			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/service']" ><mat-icon matListIcon class="side_nav_icon">receipt</mat-icon>Mis Servicios</a>
-			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/catalog']" ><mat-icon matListIcon class="side_nav_icon">pages</mat-icon>Catálogo</a>
+			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/dashboard']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Dashboard</a>
+			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/catalog']" ><mat-icon matListIcon class="side_nav_icon">pages</mat-icon>Solicitar</a>
 			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/suggestion']" ><mat-icon matListIcon class="side_nav_icon">sentiment_satisfied_alt</mat-icon>Sugerencias</a>
 			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/claim']" ><mat-icon matListIcon class="side_nav_icon">thumb_down_alt</mat-icon>Reclamos</a>
 			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/logout']" ><mat-icon matListIcon class="side_nav_icon">arrow_back</mat-icon>Cerrar Sesión</a>
@@ -28,16 +26,8 @@
 	
 		<div *ngIf="role=='1'">
 			<mat-accordion>
-				<mat-expansion-panel>
-					<mat-expansion-panel-header>
-						<mat-panel-title>
-							<mat-icon matListIcon class="side_nav_icon">home</mat-icon>Dashboard
-						</mat-panel-title>
-					</mat-expansion-panel-header>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/dashboard/request']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Solicitudes</a>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/dashboard/revision']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Revisiones</a>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/dashboard/service-order']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Ordenes de Servicios</a>
-				</mat-expansion-panel>
+			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/dashboard']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Dashboard</a>
+				
 				<mat-expansion-panel>
 					<mat-expansion-panel-header>
 						<mat-panel-title>

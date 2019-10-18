@@ -8,6 +8,13 @@
 					</div>
 				</div>
 				<div class="row">
+					<div class="offset-sm-3 col-sm-6">
+						 <mat-form-field class="example-full-width">
+						 	<input matInput id="filterVarieties" name="filterVarieties" [(ngModel)]="filterVarieties" placeholder="Buscar marca...">
+						 </mat-form-field>
+					</div>
+				</div>
+				<div class="row">
 					<div class="col-sm-12">
 						<button mat-raised-button color="primary" (click)="goBack()">Volver</button>
 					</div>
@@ -17,7 +24,7 @@
 				<div *ngIf="varietys && category">
 					<div *ngIf="varietys.length>0">
 						<div class="row">
-							<div class="col-md-4" *ngFor="let variety of varietys">
+							<div class="col-md-4" *ngFor="let variety of varietys | searchVarieties:filterVarieties">
 								<a [routerLink]="['/auth/client/catalog/category',category.id,'subcategory',subcategory.id,'equipinfras',equipinfras.id,'variety',variety.id]" (click)="SetIdVariety(variety.id)">
 									<mat-card class="servicio">
 										<mat-card-header class="titulo mat-card-header-primary">

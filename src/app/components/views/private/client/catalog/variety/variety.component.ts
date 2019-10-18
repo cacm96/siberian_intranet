@@ -19,6 +19,7 @@ export class VarietyComponent implements OnInit {
 	public category:any;
 	public message:string;
 	public failedConect:string;
+	public filterVarieties:any = "";
 
 	constructor
 	(

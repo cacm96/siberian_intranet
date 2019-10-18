@@ -22,6 +22,7 @@ export class EquipsinfrasComponent implements OnInit {
 	public total:number;
 	public message:string;
 	public failedConect:string;
+	public filterEquipsinfras:any = "";
 
 	constructor
 	(
