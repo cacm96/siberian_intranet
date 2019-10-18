@@ -79,7 +79,7 @@ export class RegisterComponent implements OnInit {
                 this.loginRedirect(response);
               },
               2000
-            );  
+            );
           }
           else
           {

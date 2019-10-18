@@ -17,6 +17,11 @@ export class RequestsComponent implements OnInit {
 	public userID:string;
 	public message: string;
 	public failedConect: string;
+	public revisionsRequested:any;
+  public revisionsDiagnosticated:any;
+  public revisionsApproved:any;
+  public revisionsFinalized:any;
+  public revisionsCancelled:any;
 
 	constructor
 	(
@@ -39,7 +44,12 @@ export class RequestsComponent implements OnInit {
 				if (response.status==true)
 				{
 					this.revisions = response.revisions;
-					console.log(this.revisions);
+
+					this.revisionsRequested = this.revisions.filter(revision=>{return revision.status =="requested"});
+					this.revisionsDiagnosticated = this.revisions.filter(revision=>{return revision.status =="diagnosticated"});
+					this.revisionsApproved = this.revisions.filter(revision=>{return revision.status =="approved"});
+					this.revisionsFinalized = this.revisions.filter(revision=>{return revision.status =="finalized"});
+					this.revisionsCancelled = this.revisions.filter(revision=>{return revision.status =="cancelled"});
 				} 
 				else
 				{
@@ -60,4 +70,9 @@ export class RequestsComponent implements OnInit {
 			}
 			)
 	}
+
+	goBack()
+  { 
+    this._location.back(); 
+  }
 }

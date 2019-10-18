@@ -22,6 +22,8 @@ export class VarietyDetailsComponent implements OnInit {
 	public categoryName:string;
 	public message:string;
 	public failedConect:string;
+	public filterVarietiesDetail:any = "";
+
 
 	constructor
 	(

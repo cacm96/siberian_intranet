@@ -8,6 +8,14 @@
 					</div>
 				</div>
 				<div class="row">
+					<div class="offset-sm-3 col-sm-6">
+						 <mat-form-field class="example-full-width">
+						 	<input matInput id="filterEquipsinfras" name="filterEquipsinfras" [(ngModel)]="filterEquipsinfras" placeholder="Buscar equipo...">
+						 </mat-form-field>
+					</div>
+				</div>
+
+				<div class="row">
 					<div class="col-sm-12">
 						<button mat-raised-button color="primary" (click)="goBack()">Volver</button>
 					</div>
@@ -15,7 +23,7 @@
 				<hr>
 				<div *ngIf="equipsinfras && category">
 					<div class="row">
-						<div class="col-md-4" *ngFor="let equipinfras of equipsinfras">
+						<div class="col-md-4" *ngFor="let equipinfras of equipsinfras | searchEquipsinfras:filterEquipsinfras">
 							<a [routerLink]="['/auth/client/catalog/category',category.id,'subcategory',subcategory.id,'equipinfras',equipinfras.id]" (click)="SetIdEquipinfras(equipinfras.id)">
 								<mat-card class="servicio">
 									<mat-card-header class="titulo mat-card-header-primary">

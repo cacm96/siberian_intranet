@@ -10,7 +10,7 @@ import { UserService } from '../../../../core/services/admin/user.service';
 import { LocationService } from '../../../../core/services/admin/location.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from 'src/app/core/services/token-interceptor.service';
-import { TruncatePipe } from 'src/app/core/pipes/truncate.pipe';
+
 
 import { ClientRoutingModule } from './client-routing.module';
 import { ClientComponent } from './client.component';
@@ -27,7 +27,6 @@ import { SuggestionComponent } from './suggestion/suggestion.component';
   	DashboardComponent,
   	ServiceComponent,
   	SuggestionComponent,
-    TruncatePipe,
   ],
   imports: [
     CommonModule,

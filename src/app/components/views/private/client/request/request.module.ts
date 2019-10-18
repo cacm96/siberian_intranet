@@ -20,6 +20,7 @@ import { SheetComponent } from './sheet/sheet.component';
 import { StepperComponent } from './stepper/stepper.component';
 import { MessageComponent } from './message/message.component';
 
+import { TruncatePipe } from 'src/app/core/pipes/truncate.pipe';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { MessageComponent } from './message/message.component';
     SheetComponent,
     StepperComponent,
     MessageComponent,
+    TruncatePipe,
   ],
   imports: [
     CommonModule,

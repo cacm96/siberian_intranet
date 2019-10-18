@@ -31,7 +31,7 @@ export class LocationService extends HeaderService{
 		return this.http.get(this.url+'/'+userID, {headers: this.header});
 	}
 
-	One(id:Number): Observable<any>{
+	getOne(id:Number): Observable<any>{
 		return this.http.get(this.url+"/"+id, {headers: this.header});
 	}
 

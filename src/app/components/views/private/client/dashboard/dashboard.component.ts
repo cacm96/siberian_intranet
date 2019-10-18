@@ -26,12 +26,20 @@ export class DashboardComponent implements OnInit {
   public totalRevision:any;
   public totalServiceOrder:any;
   public serviceOrders: any;
-  public warranties:any;
-  public totalWarranty;
   public equipinfras: Equipinfras;
   public userID:string;
   public message: string;
   public failedConect: string;
+
+  public totalRevisionRequested:number=0;
+  public totalRevisionDiagnosticated:number=0;
+  public totalRevisionApproved:number=0;
+  public totalRevisionFinalized:number=0;
+  public totalRevisionCancelled:number=0;
+
+  public totalServiceOrderBudgeted:number=0;
+  public totalServiceOrderApproved:number=0;
+  public totalServiceOrderWarranty:number=0;
 
   constructor(
     private dialogService: DialogService,
@@ -49,24 +57,56 @@ export class DashboardComponent implements OnInit {
     this.userID = localStorage.getItem('resID');
     this.getRevisions(this.userID);
     this.getServiceOrders(this.userID);
-    this.getWarranties(this.userID);
   }
 
-  getRevisions(userid) {
+  getRevisions(userid)
+  {
     this._revisionService.getRevisionUser(userid).subscribe
     (
-      response => {
-        if (response.status==true) {
+      response =>
+      {
+        if (response.status==true)
+        {
           this.revisions = response.revisions;
           this.totalRevision = this.revisions.length;
+          for (var i=0; i<this.revisions.length; i++)
+          {
+            if( this.revisions[i].status == 'requested')
+            {
+              this.totalRevisionRequested++;
+            }
+
+            if( this.revisions[i].status == 'diagnosticated')
+            {
+              this.totalRevisionDiagnosticated++;
+            }
+
+            if( this.revisions[i].status == 'approved')
+            {
+              this.totalRevisionApproved++;
+            }
+
+            if( this.revisions[i].status == 'finalized')
+            {
+              this.totalRevisionFinalized++;
+            }
+
+            if( this.revisions[i].status == 'cancelled')
+            {
+              this.totalRevisionCancelled++;
+            }
+          }
           console.log(this.revisions);
-        } else {
+        }
+        else
+        {
           this.revisions = [];
           this.message = response.message.text;
           console.log(this.message);
         }
       },
-      error => {
+      error =>
+      {
         console.log(<any>error);
         if (error instanceof HttpErrorResponse) {
           if (error.status === 0) {
@@ -78,48 +118,44 @@ export class DashboardComponent implements OnInit {
   }
 
 
-  getServiceOrders(userid) {
+  getServiceOrders(userid)
+  {
     this._serviceorderService.getServiceOrderUser(userid).subscribe
     (
-      response => {
-        if (response.status==true) {
+      response =>
+      {
+        if (response.status==true)
+        {
           this.serviceOrders = response.serviceOrders;
-          this.serviceOrders = this.serviceOrders.filter(serviceOrders=>{return serviceOrders.status =="approved" || serviceOrders.status =="budgeted"});
           this.totalServiceOrder = this.serviceOrders.length;
+          for (var i=0; i<this.serviceOrders.length; i++)
+          {
+            if( this.serviceOrders[i].status == 'budgeted')
+            {
+              this.totalServiceOrderBudgeted++;
+            }
+
+            if( this.serviceOrders[i].status == 'approved')
+            {
+              this.totalServiceOrderApproved++;
+            }
+
+            if( this.serviceOrders[i].status == 'warranty')
+            {
+              this.totalServiceOrderWarranty++;
+            }
+          }
           console.log(this.serviceOrders);
-        } else {
+        }
+        else
+        {
           this.serviceOrders = [];
           this.message = response.message.text;
           console.log(this.message);
         }
       },
-      error => {
-        console.log(<any>error);
-        if (error instanceof HttpErrorResponse) {
-          if (error.status === 0) {
-            this.failedConect = Global.failed;
-          }
-        }
-      }
-      )
-  }
-
-  getWarranties(userid) {
-    this._serviceorderService.getServiceOrderUser(userid).subscribe
-    (
-      response => {
-        if (response.status==true) {
-          this.warranties = response.serviceOrders;
-          this.warranties = this.warranties.filter(serviceOrders=>{return serviceOrders.status =="warranty"});
-          this.totalWarranty = this.warranties.length;
-          console.log(this.warranties);
-        } else {
-          this.warranties = [];
-          this.message = response.message.text;
-          console.log(this.message);
-        }
-      },
-      error => {
+      error =>
+      {
         console.log(<any>error);
         if (error instanceof HttpErrorResponse) {
           if (error.status === 0) {
