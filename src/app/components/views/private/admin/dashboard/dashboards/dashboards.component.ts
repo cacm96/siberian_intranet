@@ -1,14 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { BorderWidth, Chart, ChartData, Point, ChartColor } from 'chart.js';
 
+import { DialogService } from '../../../../../../core/services/dialog.service';
+import { SnackBarService } from '../../../../../../core/services/snack-bar.service';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import {Location} from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Global } from '../../../../../../core/services/global';
+
+import { Company } from '../../../../../../models/company';
+import { CompanyService } from '../../../../../../core/services/admin/company.service';
+
 @Component({
   selector: 'sib-dashboards',
   templateUrl: './dashboards.component.html',
   styleUrls: ['./dashboards.component.scss']
 })
 export class DashboardsComponent implements OnInit {
+    public company: any;
+    public message: string;
+    public failedConect: string;
 
-  constructor() { }
+  constructor(
+    private dialogService: DialogService,
+    private snackBar: SnackBarService,
+    private _companyService: CompanyService,
+    private _route: ActivatedRoute,
+    private _location: Location
+  ) { }
 
   Linea = [];
   Barra1 = [];
@@ -16,6 +35,7 @@ export class DashboardsComponent implements OnInit {
   Linea2 = [];
 
   ngOnInit() {
+    this.getCompany();
 
     this.Linea = new Chart ('linea', {
         type: 'line',
@@ -292,6 +312,31 @@ export class DashboardsComponent implements OnInit {
           },
       },
     });
+  }
+
+  getCompany() {
+      this._companyService.All().subscribe
+      (
+        response => {
+          if (response.status==true) {
+            this.company = response.company;
+           // this.totalRevision = this.revisions.length;
+            console.log(this.company);
+          } else {
+            this.company = [];
+            this.message = response.message.text;
+            console.log(this.message);
+          }
+        },
+        error => {
+          console.log(<any>error);
+          if (error instanceof HttpErrorResponse) {
+            if (error.status === 0) {
+              this.failedConect = Global.failed;
+            }
+          }
+        }
+        )
   }
 
 }
