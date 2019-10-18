@@ -17,6 +17,11 @@ export class CompanyService extends HeaderService{
 		super();
 	}
 
+	create(company: Company): Observable<any>{
+		let params = JSON.stringify(company);
+		return this.http.post(this.url, params, {headers: this.header});
+	}
+
     All(): Observable<any>{
 		return this.http.get(this.url, {headers: this.header});
 	}

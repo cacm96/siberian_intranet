@@ -7,6 +7,10 @@ import { DashboardsComponent } from './dashboards/dashboards.component';
 import { RequestComponent } from './request/request.component';
 import { RevisionComponent } from './revision/revision.component';
 import { ServiceOrderComponent } from './service-order/service-order.component';
+import { CompanyService } from '../../../../../core/services/admin/company.service';
+import { LocationService } from '../../../../../core/services/admin/location.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService } from 'src/app/core/services/token-interceptor.service';
 
 
 @NgModule({
@@ -22,6 +26,16 @@ import { ServiceOrderComponent } from './service-order/service-order.component';
     CommonModule,
     DashboardRoutingModule,
     MaterialModule
+  ],
+  providers:
+  [
+    CompanyService,
+    LocationService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass : TokenInterceptorService,
+      multi: true
+    },
   ]
 })
 
