@@ -1,13 +1,12 @@
-import { User } from './user';
-import { VarietyDetail } from './varietyDetail';
-import { Location } from './location';
+//import { Subcategory } from "./subcategory";
 
-export class Revision {
-    id: string;
-    description: string;
-    price: number;
-    status: string;
-    user: Array < User > = new Array < User >();
-    varietyDetail: Array < VarietyDetail > = new Array < VarietyDetail >();
-    location: Array < Location > = new Array < Location >();
+export class Revision{
+	id:string;
+  	UserId: number;
+  	VarietyDetailId:number;
+  	LocationId:number;
+  	description:string;
+  	imageRequestUrl:string;
+  	status:string;
+  	//subcategories: Array < Subcategory > = new Array < Subcategory >();
 }

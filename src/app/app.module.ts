@@ -12,9 +12,6 @@ import { TokenInterceptorService } from './core/services/token-interceptor.servi
 import { AuthService } from './core/services/public/auth.service';
 import { UserService } from './core/services/admin/user.service';
 
-import { SearchUserPipe } from './core/pipes/searchUser.pipe';
-import { SearchFunctionPipe } from './core/pipes/searchFunction.pipe';
-
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/views/public/auth/login/login.component';
 import { LoginWeitComponent } from './components/views/public/auth/login-weit/login-weit.component';
@@ -50,8 +47,6 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     SidenavComponent,
     ErrorComponent,
     BlockComponent,
-    SearchUserPipe,
-    SearchFunctionPipe,
     HomeComponent,
     ConfirmDialogComponent,
     SnackBarDeleteComponent,

@@ -4,7 +4,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import {Location} from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Global } from '../../../../../../../../core/services/global';
-import { Equipinfras } from '../../../../../../../../models/Equipinfras';
+import { Equipinfras } from '../../../../../../../../models/equipinfras';
 import { EquipinfrasService } from '../../../../../../../../core/services/admin/equipinfras.service';
 import { Subcategory } from '../../../../../../../../models/subcategory';
 import { SubcategoryService } from '../../../../../../../../core/services/admin/subcategory.service';
