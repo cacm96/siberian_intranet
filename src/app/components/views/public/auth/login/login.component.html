@@ -5,37 +5,25 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4 login-sec " id="loginform">
-        <h2 class="text-center">Ingresa</h2>
         <form class="login-form" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
           <div class="form-group">
             <img src="../../../../../../assets/img/logo/logo_login.png" width="100" height="100">
           </div>  
           <div class="form-group">
-            <label for="email" >Usuario</label>
-            <br>
             <input name="email" [(ngModel)]="email" class="form-control" type="text" placeholder="Correo" required/>
           </div>
           <div class="form-group">
-            <label for="password" >Contraseña</label>
-            <br>
             <input name="password" [(ngModel)]="password" class="form-control" type="password" placeholder="Contraseña" required />
           </div>
-          <!-- <div class="form-group">
-            <small>Esto no va es para ver momentaneamente las vistas de cada rol de forma mas practica</small>
-            <br>
-            <label for="rol" >Rol</label>
-            <br>
-            <select name="rol" [(ngModel)]="rol"class="form-control" required>
-              <option value="client">Cliente</option>
-              <option value="lender">Prestador</option>
-              <option value="admin">Administrador</option>
-            </select>
-          </div> -->
           <div class="form-group">
             <br>
             <button mat-raised-button color="primary" type="submit" class="mr-3">Ingresar</button>
-            <button [routerLink]="['/register']" mat-raised-button color="primary" class="mr-3">Registrarse</button>
           </div>
+
+          <p>¿Olvidaste tu contraseña? <a [routerLink]="['/help']">Obten ayuda</a></p>
+          <p>¿Aun no tienes cuenta? <a [routerLink]="['/register']">Suscribite</a></p>
+          <p><a [routerLink]="['/help']">Seguir como invitado</a></p>
+          
         </form>
       </div>
       <div class="col-md-8 banner-sec">

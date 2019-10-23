@@ -1,4 +1,4 @@
-<div class="main_admin_dashboard" *ngIf="company?.length>0">
+<div class="main_admin_dashboard" *ngIf="total<=0">
 
       <!--  <div *ngIf="company?.length>0">-->
             <div class="col-md-6">
@@ -38,7 +38,7 @@
     <!--  </div>-->
 </div>
 
-        <div class="main_admin_dashboard" *ngIf="company?.length<=0">
+        <div class="main_admin_dashboard" *ngIf="total>0">
             <br>
             <h3>Bienvenido a Siberian</h3>
             <br>

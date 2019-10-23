@@ -8,7 +8,7 @@
 				<div mat-card-avatar class="side_nav_avatar"></div>
 			</mat-card-header>
 		</mat-nav-list>
-	
+
 		<div *ngIf="role=='3'">
 			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/dashboard']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Dashboard</a>
 			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/catalog']" ><mat-icon matListIcon class="side_nav_icon">pages</mat-icon>Solicitar</a>
@@ -16,22 +16,116 @@
 			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/claim']" ><mat-icon matListIcon class="side_nav_icon">thumb_down_alt</mat-icon>Reclamos</a>
 			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/logout']" ><mat-icon matListIcon class="side_nav_icon">arrow_back</mat-icon>Cerrar Sesión</a>
 		</div>
-	
+
 		<div *ngIf="role=='2'">
 			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/dashboard']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Inicio</a>
 			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/request']" ><mat-icon matListIcon class="side_nav_icon">assignment</mat-icon>Mis Solicitudes</a>
 			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/service']" ><mat-icon matListIcon class="side_nav_icon">receipt</mat-icon>Mis Servicios</a>
 			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/logout']" ><mat-icon matListIcon class="side_nav_icon">arrow_back</mat-icon>Cerrar Sesión</a>
 		</div>
-	
+
 		<div *ngIf="role=='1'">
 			<mat-accordion>
-			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/dashboard']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Dashboard</a>
-				
+
 				<mat-expansion-panel>
 					<mat-expansion-panel-header>
 						<mat-panel-title>
-							<mat-icon matListIcon class="side_nav_icon">home</mat-icon>Configuraciones
+							<mat-icon matListIcon class="side_nav_icon">home</mat-icon>Dashboard
+						</mat-panel-title>
+					</mat-expansion-panel-header>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/dashboard']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Cliente</a>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/dashboard']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Prestador</a>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/dashboard']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Gerente</a>
+				</mat-expansion-panel>
+
+				<mat-expansion-panel>
+					<mat-expansion-panel-header>
+						<mat-panel-title>
+							<mat-icon matListIcon class="side_nav_icon">home</mat-icon>Perfil
+						</mat-panel-title>
+					</mat-expansion-panel-header>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/profile/show',user.id]" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Cliente</a>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/profile/show',user.id]" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Prestador</a>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/profile/show',user.id]" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Gerente</a>
+				</mat-expansion-panel>
+
+				<mat-expansion-panel>
+					<mat-expansion-panel-header>
+						<mat-panel-title>
+							<mat-icon matListIcon class="side_nav_icon">home</mat-icon>Servicios
+						</mat-panel-title>
+					</mat-expansion-panel-header>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/catalog']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Solicitar</a>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/request']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>En Revision</a>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/service']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>En Proceso</a>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/history']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Historial</a>
+				</mat-expansion-panel>
+
+				<mat-expansion-panel>
+					<mat-expansion-panel-header>
+						<mat-panel-title>
+							<mat-icon matListIcon class="side_nav_icon">home</mat-icon>Atender Solicitud
+						</mat-panel-title>
+					</mat-expansion-panel-header>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/request']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Solicitudes</a>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/detail-request-lender']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Diagnosticos</a>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/detail-request-lender']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Presupuestos</a>
+				</mat-expansion-panel>
+
+				<mat-expansion-panel>
+					<mat-expansion-panel-header>
+						<mat-panel-title>
+							<mat-icon matListIcon class="side_nav_icon">home</mat-icon>Ver Seguimiento
+						</mat-panel-title>
+					</mat-expansion-panel-header>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/request']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Servicio</a>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/service']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Garantía</a>
+				</mat-expansion-panel>
+
+				<mat-expansion-panel>
+					<mat-expansion-panel-header>
+						<mat-panel-title>
+							<mat-icon matListIcon class="side_nav_icon">home</mat-icon>Reclamos
+						</mat-panel-title>
+					</mat-expansion-panel-header>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/claim']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Crear</a>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/claim']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Atender</a>
+				</mat-expansion-panel>
+
+				<mat-expansion-panel>
+					<mat-expansion-panel-header>
+						<mat-panel-title>
+							<mat-icon matListIcon class="side_nav_icon">home</mat-icon>Promociones
+						</mat-panel-title>
+					</mat-expansion-panel-header>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/promotion']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Crear</a>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/promotion']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Difundir</a>
+				</mat-expansion-panel>
+
+				<mat-expansion-panel>
+					<mat-expansion-panel-header>
+						<mat-panel-title>
+							<mat-icon matListIcon class="side_nav_icon">home</mat-icon>Sugerencias
+						</mat-panel-title>
+					</mat-expansion-panel-header>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/suggestion']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Crear</a>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/suggestion']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Atender</a>
+				</mat-expansion-panel>
+
+				<mat-expansion-panel>
+					<mat-expansion-panel-header>
+						<mat-panel-title>
+							<mat-icon matListIcon class="side_nav_icon">home</mat-icon>Incidencia
+						</mat-panel-title>
+					</mat-expansion-panel-header>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/incidence']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Reportar</a>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/incidence']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Atender</a>
+				</mat-expansion-panel>
+
+				<mat-expansion-panel>
+					<mat-expansion-panel-header>
+						<mat-panel-title>
+							<mat-icon matListIcon class="side_nav_icon">home</mat-icon>Configuración de Maestros
 						</mat-panel-title>
 					</mat-expansion-panel-header>
 					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/company']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Empresa</a>
@@ -43,25 +137,30 @@
 					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/skill']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Habilidades</a>
 					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/promotion']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Promociones</a>
 				</mat-expansion-panel>
-				<!-- <mat-expansion-panel>
+
+				<mat-expansion-panel>
 					<mat-expansion-panel-header>
 						<mat-panel-title>
-							<mat-icon matListIcon class="side_nav_icon">home</mat-icon>Gestiones
+							<mat-icon matListIcon class="side_nav_icon">home</mat-icon>Administración del Sistema
 						</mat-panel-title>
 					</mat-expansion-panel-header>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/gestions/notification/service-order']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Notificaciones</a>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/gestions/bitacora']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Bitácora</a>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/gestions/incidence']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Incidencias</a>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/gestions/calendar']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Calendarios</a>
-				</mat-expansion-panel> -->
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/security']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Seguridad Funcional</a>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/backup']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Respaldo de la BD</a>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/restore']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Recuperar BD</a>
+				</mat-expansion-panel>
+
+				<mat-expansion-panel>
+					<mat-expansion-panel-header>
+						<mat-panel-title>
+							<mat-icon matListIcon class="side_nav_icon">home</mat-icon>Reportes
+						</mat-panel-title>
+					</mat-expansion-panel-header>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/report']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Estadisticos</a>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/report']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Estructurados</a>
+				</mat-expansion-panel>
+
 			</mat-accordion>
-	
-			<!-- <a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/dashboard']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Inicio</a>
-			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/masters']" ><mat-icon matListIcon class="side_nav_icon">settings</mat-icon>Maestros</a>
-			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/parameters']" ><mat-icon matListIcon class="side_nav_icon">settings</mat-icon>Parámetros</a>
-			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations']" ><mat-icon matListIcon class="side_nav_icon">settings</mat-icon>Configuraciones</a>
-			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/transactions']" ><mat-icon matListIcon class="side_nav_icon">settings</mat-icon>Transacciones</a> -->
-			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/logout']" ><mat-icon matListIcon class="side_nav_icon">arrow_back</mat-icon>Cerrar Sesión</a>
+
 		</div>
 	</mat-nav-list>
 </div>

@@ -582,7 +582,7 @@ table {
 /* font-size: 9px;*/
 }
 
-.main_admin_dashboard h3,h4, button {
+.main_admin_dashboard h3, button {
   text-align: center;
 }
 
@@ -591,3 +591,7 @@ table {
   justify-content: center;
   align-items: center;
 }
+
+
+
+
