@@ -18,6 +18,7 @@ import { CompanyService } from '../../../../../../core/services/admin/company.se
 })
 export class DashboardsComponent implements OnInit {
     public company: any;
+    public total:number;
     public message: string;
     public failedConect: string;
 
@@ -318,12 +319,17 @@ export class DashboardsComponent implements OnInit {
       this._companyService.All().subscribe
       (
         response => {
-          if (response.status==true) {
+          if (response.status==true)
+          {
             this.company = response.company;
-           // this.totalRevision = this.revisions.length;
-            console.log(this.company);
-          } else {
-            this.company = [];
+            if(this.company)
+            {
+              this.total = 1;
+            }
+          }
+          else
+          {
+            this.total = 0;
             this.message = response.message.text;
             console.log(this.message);
           }
