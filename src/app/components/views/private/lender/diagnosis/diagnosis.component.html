@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm-8 offset-2">
+        <div class="row">
+          <div class="col-sm-12">
+            <h2 class="text-center">Diagnóstico</h2>
+          </div>
+        </div>
+        <hr>
+        
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="example-container">
+               <mat-card>
+                  <mat-list>
+                      <mat-list-item> <label>Cliente: </label> </mat-list-item>
+                      <mat-list-item><label>Fecha: </label>  </mat-list-item>
+                      <mat-list-item> <label>Dirección: </label> </mat-list-item>
+                      <mat-list-item> <label>Equipo/Infrastructura:  </label> </mat-list-item>
+                    </mat-list>
+                  </mat-card>
+                  
+                  <br>
+
+                    <mat-form-field>
+                        <textarea matInput placeholder=" Descripción del Diagnóstico"></textarea>
+                    </mat-form-field>
+
+                    <mat-checkbox>Perdida Total</mat-checkbox>
+                       
+                    <mat-form-field>
+                        <mat-select placeholder="Tipo de Servicio" >
+                         <mat-option value="option">Tipo 1 </mat-option>
+                         <mat-option value="option">Tipo 2</mat-option>
+                         <mat-option value="option">Tipo 3</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-label >Subir Imagen de Revisión</mat-label>
+                    <br>
+                <input id="fileInput" type="file">
+                 <br>
+
+                 <div class="card-deck">
+                    <div class="card">
+                      <img src="../../../../../../../assets/img/catalogue/refrigerador.png" class="card-img-top" alt="...">
+                      
+                    </div>
+                    <div class="card">
+                      <img src="../../../../../../../assets/img/catalogue/refrigerador.png" class="card-img-top" alt="...">
+                      
+                    </div>
+                    <div class="card">
+                      <img src="../../../../../../../assets/img/catalogue/refrigerador.png" class="card-img-top" alt="...">
+                      
+                    </div>
+                   </div>
+                  
+    
+                </div>
+              </div>
+            </div>
+         
+         <br> 
+
+          <div class="row">
+            <div class="col-sm-12">
+             <button mat-raised-button color="primary" class="mr-3" (click)="goBack()">Volver</button>
+             <button mat-raised-button color="primary" [routerLink]="['/auth/lender/diagnosis']">Enviar</button>
+            </div>
+          </div>
+       
+        </div>
+      </div>
+    </div>
