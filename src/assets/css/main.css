@@ -592,6 +592,34 @@ table {
   align-items: center;
 }
 
+.claim {
 
+}
+
+.claim .centro{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.suggestion {
+
+}
+
+.suggestion .centro {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.incidence {
+
+}
+
+.incidence .centro {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
 
 

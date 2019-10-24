@@ -24,6 +24,8 @@ export class DashboardComponent {
 
   view: CalendarView = CalendarView.Month;
 
+  CalendarView = CalendarView;
+
   viewDate = new Date();
 
   events: CalendarEvent[] = [];
@@ -40,5 +42,9 @@ export class DashboardComponent {
   private readonly darkThemeClass = 'dark-theme';
 
   constructor(@Inject(DOCUMENT) private document) {}
+
+  setView(view: CalendarView) {
+    this.view = view;
+  }
 
 }

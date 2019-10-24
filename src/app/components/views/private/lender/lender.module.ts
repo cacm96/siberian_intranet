@@ -11,6 +11,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { RequestComponent } from './request/request.component';
 import { ServiceComponent } from './service/service.component';
 import { DetailRequestLenderComponent } from './detail-request-lender/detail-request-lender.component';
+import { IncidenceComponent } from './incidence/incidence.component';
 
 @NgModule({
   declarations:
@@ -20,6 +21,7 @@ import { DetailRequestLenderComponent } from './detail-request-lender/detail-req
   	RequestComponent,
   	ServiceComponent,
   	DetailRequestLenderComponent,
+  	IncidenceComponent,
   ],
   imports: [
     CommonModule,
