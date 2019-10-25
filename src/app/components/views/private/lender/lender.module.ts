@@ -10,7 +10,10 @@ import { LenderComponent } from './lender.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RequestComponent } from './request/request.component';
 import { ServiceComponent } from './service/service.component';
-import { DetailRequestLenderComponent } from './detail-request-lender/detail-request-lender.component';
+import { DiagnosisComponent } from './diagnosis/diagnosis.component';
+import { BudgetComponent } from './budget/budget.component';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 
 @NgModule({
   declarations:
@@ -19,12 +22,15 @@ import { DetailRequestLenderComponent } from './detail-request-lender/detail-req
   	DashboardComponent,
   	RequestComponent,
   	ServiceComponent,
-  	DetailRequestLenderComponent,
+  	DiagnosisComponent,
+  	BudgetComponent,
   ],
   imports: [
     CommonModule,
     LenderRoutingModule,
     MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory
