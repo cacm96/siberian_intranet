@@ -1,5 +1,23 @@
 import { Component, ChangeDetectionStrategy, Inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 
+import { DialogService } from '../../../../../core/services/dialog.service';
+import { SnackBarService } from '../../../../../core/services/snack-bar.service';
+
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import {Location} from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Global } from '../../../../../core/services/global';
+
+import { User } from '../../../../../models/user';
+import { UserService } from '../../../../../core/services/admin/user.service';
+import { Revision } from '../../../../../models/revision';
+import { RevisionService } from '../../../../../core/services/client/revision.service';
+import { ServiceOrder } from '../../../../../models/serviceOrder';
+import { ServiceOrderService } from '../../../../../core/services/client/serviceOrder.service';
+
+
+
+
 import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours} from 'date-fns';
 import { CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, CalendarView,
 CalendarDateFormatter } from 'angular-calendar';
@@ -22,6 +40,12 @@ registerLocaleData(localeEs);
 })
 export class DashboardComponent {
 
+  public revisions: any;
+  public serviceOrders: any;
+  public userID:string;
+  public message: string;
+  public failedConect: string;
+
   view: CalendarView = CalendarView.Month;
 
   viewDate = new Date();
@@ -39,6 +63,86 @@ export class DashboardComponent {
 
   private readonly darkThemeClass = 'dark-theme';
 
-  constructor(@Inject(DOCUMENT) private document) {}
+  constructor(@Inject(DOCUMENT)
+    private document,
+    private dialogService: DialogService,
+    private snackBar: SnackBarService,
+    private _revisionService: RevisionService,
+    private _serviceorderService: ServiceOrderService,
+    private _route: ActivatedRoute,
+    private _location: Location
+
+    )
+  {
+
+  }
+
+
+  ngOnInit() {
+    this.userID = localStorage.getItem('resID');
+    this.getRevisions(this.userID);
+    this.getServiceOrders(this.userID);
+  }
+
+  getRevisions(userid)
+  {
+    this._revisionService.getRevisionUser(userid).subscribe
+    (
+      response =>
+      {
+        if (response.status==true)
+        {
+          this.revisions = response.revisions;
+          console.log(this.revisions);
+        }
+        else
+        {
+          this.revisions = [];
+          this.message = response.message.text;
+          console.log(this.message);
+        }
+      },
+      error =>
+      {
+        console.log(<any>error);
+        if (error instanceof HttpErrorResponse) {
+          if (error.status === 0) {
+            this.failedConect = Global.failed;
+          }
+        }
+      }
+      )
+  }
+
+
+  getServiceOrders(userid)
+  {
+    this._serviceorderService.getServiceOrderUser(userid).subscribe
+    (
+      response =>
+      {
+        if (response.status==true)
+        {
+          this.serviceOrders = response.serviceOrders;
+          console.log(this.serviceOrders);
+        }
+        else
+        {
+          this.serviceOrders = [];
+          this.message = response.message.text;
+          console.log(this.message);
+        }
+      },
+      error =>
+      {
+        console.log(<any>error);
+        if (error instanceof HttpErrorResponse) {
+          if (error.status === 0) {
+            this.failedConect = Global.failed;
+          }
+        }
+      }
+      )
+  }
 
 }

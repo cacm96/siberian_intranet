@@ -11,37 +11,42 @@
 
 			<div class="row">
 				<div class="col-sm-12">
-					<h2>Solicitadas</h2>
+					<h2 class="text-center">Solicitudes</h2>
 					<hr>
 				</div>
 			</div>
 
-			<div class="row" *ngIf="revisionsRequested.length<=0">
+			<div class="row" *ngIf="revisions.length<=0">
 				<div class="col-sm-12">
 					<h3 class="text-center mt-3 mb-3">No hay Revisiones con este status</h3>
 				</div>
 			</div>
 
-			<div class="row" *ngIf="revisionsRequested.length>=0">
-				<div class="col-sm-3" *ngFor="let revisionRequested of revisionsRequested">
-					<div class="col-sm-12" *ngIf="revisionRequested.status=='requested'">
-						<a [routerLink]="['/auth/client/request/detail',revisionRequested.id]">
+			<div class="row" *ngIf="revisions.length>=0">
+				<div class="col-sm-4" *ngFor="let revision of revisions">
+					<div class="col-sm-12">
+						<a [routerLink]="['/auth/client/request/detail',revision.id]">
 							<mat-card class="servicio">
 								<mat-card-header class="titulo border-top-danger">
 									<mat-card-title>Solicitud</mat-card-title>
 								</mat-card-header>
 								<mat-card-content class="mat_card_content">
 									<div class="row">
-										<div class="col-sm-6">
+										<div class="col-sm-4">
 											<img src="../../../../assets/img/catalogue/aire.png" alt="" class="card-img-top">
 										</div>
 
-										<div class="col-sm-6">
+										<div class="col-sm-8">
 											Microondas
 											<br>
-											{{revisionRequested.description | truncate:10}}
+											{{revision.description | truncate:25}}
 											<br>
-											<span class="badge badge-dark">Solicitada</span>
+											<span *ngIf="revision.status=='requested'" class="badge badge-dark">Solicitada</span>
+											<span *ngIf="revision.status=='diagnosticated'" class="badge badge-warning">Diagnosticada</span>
+											<span *ngIf="revision.status=='approved'" class="badge badge-primary">Aprobada</span>
+											<span *ngIf="revision.status=='finalized'" class="badge badge-success">Finalizada</span>
+											<span *ngIf="revision.status=='cancelled'" class="badge badge-danger">Cancelada</span>
+
 										</div>
 									</div>
 								</mat-card-content>
@@ -63,227 +68,6 @@
 				</div>
 
 			</div>
-
-
-			<div class="row">
-				<div class="col-sm-12">
-					<h2>Diagnosticadas</h2>
-					<hr>
-				</div>
-			</div>
-
-			<div class="row" *ngIf="revisionsDiagnosticated.length<=0">
-				<div class="col-sm-12">
-					<h3 class="text-center mt-3 mb-3">No hay Revisiones con este status</h3>
-				</div>
-			</div>
-
-
-			<div class="row" *ngIf="revisionsDiagnosticated.length>=0">
-				<div class="col-sm-3" *ngFor="let revisionDiagnosticated of revisionsDiagnosticated">
-					<div class="col-sm-12" *ngIf="revisionDiagnosticated.status=='diagnosticated'">
-						<a [routerLink]="['/auth/client/request/detail',revisionDiagnosticated.id]">
-							<mat-card class="servicio">
-								<mat-card-header class="titulo border-top-danger">
-									<mat-card-title>Solicitud</mat-card-title>
-								</mat-card-header>
-								<mat-card-content class="mat_card_content">
-									<div class="row">
-										<div class="col-sm-6">
-											<img src="../../../../assets/img/catalogue/aire.png" alt="" class="card-img-top">
-										</div>
-
-										<div class="col-sm-6">
-											Microondas
-											<br>
-											{{revisionDiagnosticated.description | truncate:10}}
-											<br>
-											<span class="badge badge-warning">Diagnosticada</span>
-										</div>
-									</div>
-								</mat-card-content>
-								<mat-card-actions>
-									<div class="container">
-										<div class="row justify-content-between">
-											<div class="col-sm-5">
-												<button mat-button>DETALLES</button>
-											</div>
-											<div class="col-sm-7">
-												<mat-icon>access_time</mat-icon><span>10/11/2019</span>
-											</div>
-										</div>
-									</div>
-								</mat-card-actions>
-							</mat-card>
-						</a>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-sm-12">
-					<h2>Aprobadas</h2>
-					<hr>
-				</div>
-			</div>
-
-			<div class="row" *ngIf="revisionsApproved.length<=0">
-				<div class="col-sm-12">
-					<h3 class="text-center mt-3 mb-3">No hay Revisiones con este status</h3>
-				</div>
-			</div>
-
-			<div class="row" *ngIf="revisionsApproved.length>=0">
-				<div class="col-sm-3" *ngFor="let revisionApproved of revisionsApproved">
-					<div class="col-sm-12" *ngIf="revisionApproved.status=='approved'">
-						<a [routerLink]="['/auth/client/request/detail',revisionApproved.id]">
-							<mat-card class="servicio">
-								<mat-card-header class="titulo border-top-danger">
-									<mat-card-title>Solicitud</mat-card-title>
-								</mat-card-header>
-								<mat-card-content class="mat_card_content">
-									<div class="row">
-										<div class="col-sm-6">
-											<img src="../../../../assets/img/catalogue/aire.png" alt="" class="card-img-top">
-										</div>
-
-										<div class="col-sm-6">
-											Microondas
-											<br>
-											{{revisionApproved.description | truncate:10}}
-											<br>
-											<span class="badge badge-primary">Aprobada</span>
-										</div>
-									</div>
-								</mat-card-content>
-								<mat-card-actions>
-									<div class="container">
-										<div class="row justify-content-between">
-											<div class="col-sm-5">
-												<button mat-button>DETALLES</button>
-											</div>
-											<div class="col-sm-7">
-												<mat-icon>access_time</mat-icon><span>10/11/2019</span>
-											</div>
-										</div>
-									</div>
-								</mat-card-actions>
-							</mat-card>
-						</a>
-					</div>
-				</div>
-				
-			</div>
-
-			<div class="row">
-				<div class="col-sm-12">
-					<h2>Finalizadas</h2>
-					<hr>
-				</div>
-			</div>
-
-			<div class="row" *ngIf="revisionsFinalized.length<=0">
-				<div class="col-sm-12">
-					<h3 class="text-center mt-3 mb-3">No hay Revisiones con este status</h3>
-				</div>
-			</div>
-
-			<div class="row" *ngIf="revisionsFinalized.length>=0">
-				<div class="col-sm-3" *ngFor="let revisionFinalized of revisionsFinalized">
-					<div class="col-sm-12" *ngIf="revisionFinalized.status=='finalized'">
-						<a [routerLink]="['/auth/client/request/detail',revisionFinalized.id]">
-							<mat-card class="servicio">
-								<mat-card-header class="titulo border-top-danger">
-									<mat-card-title>Solicitud</mat-card-title>
-								</mat-card-header>
-								<mat-card-content class="mat_card_content">
-									<div class="row">
-										<div class="col-sm-6">
-											<img src="../../../../assets/img/catalogue/aire.png" alt="" class="card-img-top">
-										</div>
-
-										<div class="col-sm-6">
-											Microondas
-											<br>
-											{{revisionFinalized.description | truncate:10}}
-											<br>
-											<span *ngIf="revisionFinalized.status=='finalized'" class="badge badge-success">Finalizada</span>
-										</div>
-									</div>
-								</mat-card-content>
-								<mat-card-actions>
-									<div class="container">
-										<div class="row justify-content-between">
-											<div class="col-sm-5">
-												<button mat-button>DETALLES</button>
-											</div>
-											<div class="col-sm-7">
-												<mat-icon>access_time</mat-icon><span>10/11/2019</span>
-											</div>
-										</div>
-									</div>
-								</mat-card-actions>
-							</mat-card>
-						</a>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-sm-12">
-					<h2>Canceladas</h2>
-					<hr>
-				</div>
-			</div>
-
-			<div class="row" *ngIf="revisionsCancelled.length<=0">
-				<div class="col-sm-12">
-					<h3 class="text-center mt-3 mb-3">No hay Revisiones con este status</h3>
-				</div>
-			</div>
-
-			<div class="row" *ngIf="revisionsCancelled.length>=0">
-				<div class="col-sm-3" *ngFor="let revisionCancelled of revisionsCancelled">
-					<div class="col-sm-12" *ngIf="revisionCancelled.status=='cancelled'">
-						<a [routerLink]="['/auth/client/request/detail',revisionCancelled.id]">
-							<mat-card class="servicio">
-								<mat-card-header class="titulo border-top-danger">
-									<mat-card-title>Solicitud</mat-card-title>
-								</mat-card-header>
-								<mat-card-content class="mat_card_content">
-									<div class="row">
-										<div class="col-sm-6">
-											<img src="../../../../assets/img/catalogue/aire.png" alt="" class="card-img-top">
-										</div>
-
-										<div class="col-sm-6">
-											Microondas
-											<br>
-											{{revisionCancelled.description | truncate:10}}
-											<br>
-											<span class="badge badge-danger">Cancelada</span>
-										</div>
-									</div>
-								</mat-card-content>
-								<mat-card-actions>
-									<div class="container">
-										<div class="row justify-content-between">
-											<div class="col-sm-5">
-												<button mat-button>DETALLES</button>
-											</div>
-											<div class="col-sm-7">
-												<mat-icon>access_time</mat-icon><span>10/11/2019</span>
-											</div>
-										</div>
-									</div>
-								</mat-card-actions>
-							</mat-card>
-						</a>
-					</div>
-				</div>
-			</div>
-
-
 
 		</div>
 	</div>

@@ -18,6 +18,7 @@ import { ClaimComponent } from './claim/claim.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ServiceComponent } from './service/service.component';
 import { SuggestionComponent } from './suggestion/suggestion.component';
+import { RecordComponent } from './record/record.component';
 
 @NgModule({
   declarations:
@@ -27,6 +28,7 @@ import { SuggestionComponent } from './suggestion/suggestion.component';
   	DashboardComponent,
   	ServiceComponent,
   	SuggestionComponent,
+  	RecordComponent,
   ],
   imports: [
     CommonModule,

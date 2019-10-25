@@ -32,7 +32,7 @@ export class LocationService extends HeaderService{
 	}
 
 	getOne(id:Number): Observable<any>{
-		return this.http.get(this.url+"/"+id, {headers: this.header});
+		return this.http.get(this.url+"/one/"+id, {headers: this.header});
 	}
 
     update(location:any): Observable<any>{

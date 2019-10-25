@@ -6,11 +6,13 @@ import { ClaimComponent } from './claim/claim.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ServiceComponent } from './service/service.component';
 import { SuggestionComponent } from './suggestion/suggestion.component';
+import { RecordComponent } from './record/record.component';
 
 const routes: Routes = [
 
 	{path: '', component: ClientComponent, canActivate: []},
 	{path: 'claim', component: ClaimComponent, canActivate: []},
+	{path: 'record', component: RecordComponent, canActivate: []},
 	{path: 'dashboard', component: DashboardComponent, canActivate: []},
 	{path: 'service', component: ServiceComponent, canActivate: []},
 	{path: 'suggestion', component: SuggestionComponent, canActivate: []},
