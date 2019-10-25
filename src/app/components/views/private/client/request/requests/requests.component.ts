@@ -18,17 +18,17 @@ export class RequestsComponent implements OnInit {
 	public message: string;
 	public failedConect: string;
 	public revisionsRequested:any;
-  public revisionsDiagnosticated:any;
-  public revisionsApproved:any;
-  public revisionsFinalized:any;
-  public revisionsCancelled:any;
+	public revisionsDiagnosticated:any;
+	public revisionsApproved:any;
+	public revisionsFinalized:any;
+	public revisionsCancelled:any;
 
 	constructor
 	(
-	    private _revisionService: RevisionService,
-	    private _route: ActivatedRoute,
-	    private _location: Location
-	) { }
+		private _revisionService: RevisionService,
+		private _route: ActivatedRoute,
+		private _location: Location
+		) { }
 
 	ngOnInit() {
 		this.userID = localStorage.getItem('resID');
@@ -73,7 +73,7 @@ export class RequestsComponent implements OnInit {
 	}
 
 	goBack()
-  { 
-    this._location.back(); 
-  }
+	{ 
+		this._location.back(); 
+	}
 }

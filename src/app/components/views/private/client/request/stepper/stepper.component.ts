@@ -17,6 +17,10 @@ import { SnackBarService } from '../../../../../../core/services/snack-bar.servi
 import { DialogService } from '../../../../../../core/services/dialog.service';
 import * as $ from 'jquery';
 
+import { Pipe, PipeTransform } from '@angular/core';
+import { DatePipe } from '@angular/common';
+
+
 @Component({
   selector: 'sib-stepper',
   templateUrl: './stepper.component.html',
@@ -40,12 +44,17 @@ export class StepperComponent implements OnInit {
   public address:string;
   public addressFull:string;
   public description:string;
-  public dateRevision:any;
-  public lenderId:string;
   public failedConect:string;
   public message:string;
   public userID:string;
   public IdVarietyDetail:string;
+  public turnText:string;
+  public turns:any[];
+
+  public dateRevision:any;
+  public turnSelected:string="";
+  public lenderId:string="1";
+  public typeRevision:string="revision";
 
   constructor
   (
@@ -62,6 +71,11 @@ export class StepperComponent implements OnInit {
   {
 
     this.revision = new Revision();
+    console.log(this.revision);
+    this.turns= [
+    {id:"morning",name:"Mañana"},
+    {id:"afternoon",name:"Tarde"},
+    ];
 
   }
 
@@ -91,7 +105,19 @@ export class StepperComponent implements OnInit {
   }
 
   cambio(id){
-    //this.getLocation(id);
+    this.getLocation(id);
+  }
+
+  cambioturn(event){
+    console.log(event);
+    if(event=="morning")
+    {
+      this.turnText = "Mañana"
+    }
+    else
+    {
+      this.turnText = "Tarde";
+    }
   }
 
   getLocation(id)
@@ -232,6 +258,14 @@ export class StepperComponent implements OnInit {
       this.revision.VarietyDetailId = parseInt(this.IdVarietyDetail);
       this.revision.LocationId = parseInt(this.address);
       this.revision.description = this.description;
+      
+      this.revision.calendars = [
+        {
+          date:this.dateRevision,
+          turn:this.turnSelected,
+          LenderId:this.lenderId,
+          type:this.typeRevision
+        }];
 
       console.log(this.revision);
 

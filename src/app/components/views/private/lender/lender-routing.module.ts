@@ -7,6 +7,7 @@ import { RequestComponent } from './request/request.component';
 import { ServiceComponent } from './service/service.component';
 import { DiagnosisComponent} from './diagnosis/diagnosis.component';
 import { BudgetComponent} from './budget/budget.component';
+import { RequestDetailComponent } from './request-detail/request-detail.component';
 
 
 
@@ -16,6 +17,7 @@ const routes: Routes = [
 	{path: '', component: LenderComponent, canActivate: []},
 	{path: 'dashboard', component: DashboardComponent, canActivate: []},
 	{path: 'request', component: RequestComponent, canActivate: []},
+	{path: 'request/detail/:id', component: RequestDetailComponent, canActivate: []},
 	{path: 'service', component: ServiceComponent, canActivate: []},
 	{path: 'diagnosis', component:DiagnosisComponent, canActivate: []},
     {path: 'budget', component:BudgetComponent, canActivate: []},

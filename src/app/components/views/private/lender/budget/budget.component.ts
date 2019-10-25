@@ -6,6 +6,7 @@ import { MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/
 import { MatChipInputEvent} from '@angular/material/chips';
 import { Observable} from 'rxjs';
 import { map, startWith} from 'rxjs/operators';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'sib-budget',
@@ -40,7 +41,7 @@ export class BudgetComponent implements OnInit {
   
   
   
-  constructor() {
+  constructor(private _location: Location) {
 
     this.filteredServices = this.serviceCtrl.valueChanges.pipe(
       startWith(null),
@@ -83,6 +84,10 @@ export class BudgetComponent implements OnInit {
   private _filter(value: any): any[] {
     
     return this.allservices.filter(service => service.name.toLowerCase().includes(value.toString().toLowerCase()));
+  }
+
+  goBack() {
+    this._location.back();
   }
 }
 

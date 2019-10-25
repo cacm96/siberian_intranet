@@ -1,4 +1,4 @@
-//import { Subcategory } from "./subcategory";
+import { Calendar } from "./calendar";
 
 export class Revision{
 	id:string;
@@ -8,5 +8,5 @@ export class Revision{
   	description:string;
   	imageRequestUrl:string;
   	status:string;
-  	//subcategories: Array < Subcategory > = new Array < Subcategory >();
+  	calendars: Array < Calendar > = new Array < Calendar >();
 }
