@@ -57,6 +57,7 @@ export class RequestsComponent implements OnInit {
 					this.message = response.message.text;
 					console.log(this.message);
 				}
+				console.log(this.revisions);
 			},
 			error =>
 			{

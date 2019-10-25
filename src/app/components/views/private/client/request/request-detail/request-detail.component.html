@@ -1,96 +1,131 @@
-<div class="main_request-detail">
+<div class="main_request_detail">
 
   <div class="container" *ngIf="revision">
-    <button mat-raised-button color="primary" (click)="goBack()">Volver</button>
-    <h4 class="titulo">Revisión Nro {{revision.id}} </h4>
 
-    <div class="container">
-
-
-      <section>
-        <br>
-        <div class="container">
-          <div >             
-            <label for="cliente">Cliente:</label>
-            <p>{{revision.user.firstName}} {{revision.user.lastName}}</p>            
-          </div>
-
-          <div class=" derecho">            
-            <label for="equipo">Equipo:</label>
-            <p></p>            
-          </div>
-        </div>
-
-
-        <br>
-        <div class="container">
-          <div >
-            <label for="fecha">Fecha:</label>
-            <p>{{ revision.createdAt | date: 'dd/MM/yyyy' }}</p>
-          </div>
-
-          <div class="derecho">
-            <label for="marca">Marca:</label>
-            <p></p>
-          </div>
-        </div>
-
-        <br>
-        <div class="container">
-          <div>
-            <label for="direccion">Dirección:</label>
-            <p>{{ revision.location.address }}</p>
-          </div>
-
-          <div class="derecho">
-            <label for="modelo">Modelo:</label>
-            <p>{{ revision.varietyDetail.name }}</p>
-          </div>
-        </div>      
-
-      </section>
+    <div class="row">
+      <div class="col-sm-12">
+        <h4 class="titulo text-center">
+          Solicitud
+          <span *ngIf="revision.status=='requested'" class="badge badge-dark">Solicitada</span>
+          <span *ngIf="revision.status=='diagnosticated'" class="badge badge-warning">Diagnosticada</span>
+          <span *ngIf="revision.status=='approved'" class="badge badge-primary">Aprobada</span>
+          <span *ngIf="revision.status=='finalized'" class="badge badge-success">Finalizada</span>
+          <span *ngIf="revision.status=='cancelled'" class="badge badge-danger">Cancelada</span>
+        </h4>
+      </div>
     </div>
 
-
-    <br>
-    <div class="container move">
-      <label for="diagnostico">Diagnóstico:</label>
-      <br>
-      <p></p>
+    <div class="row">
+      <div class="col-sm-12">
+        <button mat-raised-button color="primary" (click)="goBack()">Volver</button>
+      </div>  
     </div>
+  
+    <hr>
 
-    <br>
-    <div class="container move">
-      <label for="tipoServicio" id="tiposervicio">Tipo de servicios:</label>
-      <p></p>
-    </div>
-
-
-    <br>
-    <div class="container extra">
-      <div class="row">
-        <div class="col-md-4">
-          <label for="componenteAsociado">Componente asociado</label>
-          <div>
-            <p>
-
-            </p>
-          </div>
-        </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <mat-card>
+          <mat-card-header class="titulo border-top-danger">
+            <mat-card-title>
+              Código Solicitud {{revision.id}}
+            </mat-card-title>
+          </mat-card-header>
         
-        <div class="col-md-4">
-          <label for="serviciosRequeridos">Servicios requeridos</label>    
-          <p></p>          
-        </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <mat-list>
+                <h3 mat-subheader>Datos del Cliente</h3>
+                <mat-list-item><h4 mat-line><b>Nombre: </b>{{ revision.user.firstName }} {{ revision.user.lastName }}</h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Fecha de la Solicitud: </b>{{ revision.createdAt | date: 'dd/MM/yyyy' }}</h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Dirección: </b>{{ revision.location.address }}</h4></mat-list-item>
+              </mat-list>
+            </div>
         
-        <div class="col-md-4">       
-          <label for="personal">Personal adicional</label>              
-          <p></p>      
-        </div>
+            <div class="col-sm-6">
+              <mat-list>
+                <h3 mat-subheader>Datos del Equipo</h3>
+                <mat-list-item><h4 mat-line><b>Equipo: </b></h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Marca: </b></h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Modelo: </b>{{ revision.varietyDetail.name }}</h4></mat-list-item>
+              </mat-list>
+            </div>
+          </div>
+        </mat-card>
       </div>
     </div>
 
     <br>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <h4 class="titulo text-center">
+          <h4 class="text-center">Diagnostico</h4>
+        </h4>
+      </div>
+    </div>
+    <hr>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <mat-card>
+          <mat-card-header class="titulo border-top-danger">
+            <mat-card-title>
+              Diagnostico
+            </mat-card-title>
+          </mat-card-header>
+        
+          <div class="row">
+            <div class="col-sm-12">
+              <mat-list>
+                <h3 mat-subheader>Resumen</h3>
+                <mat-list-item><h4 mat-line><b>Diagnostico: </b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque illo eaque amet quaerat, magnam recusandae, quis qui ex! Nihil officiis quae laudantium pariatur quis reiciendis veritatis officia nostrum sint eaque.</h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Perdida Total:</b> Si</h4></mat-list-item>
+              </mat-list>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+
+    <br>
+
+
+    <div class="row">
+      <div class="col-sm-12">
+        <h4 class="titulo text-center">
+          <h4 class="text-center">Servicios</h4>
+        </h4>
+      </div>
+    </div>
+    <hr>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <mat-card>
+          <mat-card-header class="titulo border-top-danger">
+            <mat-card-title>
+              Reparación de motor
+            </mat-card-title>
+          </mat-card-header>
+        
+          <div class="row">
+            <div class="col-sm-12">
+              <mat-list>
+                <h3 mat-subheader>Resumen</h3>
+                <mat-list-item><h4 mat-line><b>Tipo de Servicio: </b> Reparación</h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Componente Asociado:</b> Motor</h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Descripción del Servicio:</b> Reparación de motor de lavadora</h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Precio Estimado:</b> 1000</h4></mat-list-item>
+              </mat-list>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+
+    <br>
+
 
     <br>
     <div class="container">
@@ -109,7 +144,7 @@
             </a>
           </div>  
         </div>
-        
+
         <div class="col-md-5">
           <label for="costo">Costo/Presupuesto</label>
           <p >{{ revision.price }}</p>
