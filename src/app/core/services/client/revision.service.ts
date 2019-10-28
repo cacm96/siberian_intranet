@@ -30,6 +30,10 @@ export class RevisionService extends HeaderService{
 		return this.http.put(this.url+'/'+id+'/approve', {}, {headers: this.header});
 	}
 
+	cancel(id): Observable<any>{
+		return this.http.put(this.url+'/'+id+'cancel', {}, {headers: this.header});
+	}
+
 	diagnose(id): Observable<any>{
 		return this.http.put(this.url+'/'+id+'/diagnose', {}, {headers: this.header});
 	}
