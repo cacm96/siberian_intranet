@@ -1,10 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { DialogService } from 'src/app/core/services/dialog.service';
+import { SnackBarService } from 'src/app/core/services/snack-bar.service';
+
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import {Location} from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Global } from '../../../../../../core/services/global';
-import { Revision } from '../../../../../../models/revision';
-import { RevisionService } from '../../../../../../core/services/client/revision.service';
+import { Global } from 'src/app/core/services/global';
+import { Revision } from 'src/app/models/revision';
+import { RevisionService } from 'src/app/core/services/client/revision.service';
 
 @Component({
 	selector: 'sib-requests',
@@ -13,61 +19,119 @@ import { RevisionService } from '../../../../../../core/services/client/revision
 })
 export class RequestsComponent implements OnInit {
 	
-	public revisions: any;
+	public revision:any;
+	public revisions: Array < Revision > = new Array < Revision > ();
 	public userID:string;
-	public message: string;
-	public failedConect: string;
-	public revisionsRequested:any;
-	public revisionsDiagnosticated:any;
-	public revisionsApproved:any;
-	public revisionsFinalized:any;
-	public revisionsCancelled:any;
+	public message:string;
+	public failedConect:string;
+
+	displayedColumns: string[] = ['id', 'equipinfras','location','date','lender','status','delete'];
+	dataSource: MatTableDataSource<Revision>;
+
+	@ViewChild(MatPaginator) paginator: MatPaginator;
+	@ViewChild(MatSort) sort: MatSort;
 
 	constructor
 	(
+		private dialogService: DialogService,
+		private snackBar: SnackBarService,
 		private _revisionService: RevisionService,
 		private _route: ActivatedRoute,
+		private _router: Router,
 		private _location: Location
-		) { }
+		)
+	{
+
+	}
 
 	ngOnInit() {
 		this.userID = localStorage.getItem('resID');
 		this.getRevisions(this.userID);
 	}
 
-	getRevisions(userid)
+	getRevisions(userID)
 	{
-		this._revisionService.getRevisionUser(userid).subscribe
+		this._revisionService.getRevisionUser(userID).subscribe
 		(
 			response =>
 			{
 				if (response.status==true)
 				{
 					this.revisions = response.revisions;
-
-					this.revisionsRequested = this.revisions.filter(revision=>{return revision.status =="requested"});
-					this.revisionsDiagnosticated = this.revisions.filter(revision=>{return revision.status =="diagnosticated"});
-					this.revisionsApproved = this.revisions.filter(revision=>{return revision.status =="approved"});
-					this.revisionsFinalized = this.revisions.filter(revision=>{return revision.status =="finalized"});
-					this.revisionsCancelled = this.revisions.filter(revision=>{return revision.status =="cancelled"});
-				} 
+					console.log(this.revisions[0]);
+					this.table();
+				}
 				else
 				{
 					this.revisions = [];
 					this.message = response.message.text;
 					console.log(this.message);
+					this.table();
 				}
-				console.log(this.revisions);
+
 			},
 			error =>
 			{
 				console.log(<any>error);
-				if (error instanceof HttpErrorResponse)
+				if(error instanceof HttpErrorResponse)
 				{
-					if (error.status === 0) {
+					if(error.status===0)
+					{
 						this.failedConect = Global.failed;
 					}
 				}
+			}
+			)
+	}
+
+	applyFilter(filterValue: string)
+	{
+		this.dataSource.filter = filterValue.trim().toLowerCase();
+
+		if (this.dataSource.paginator) {
+			this.dataSource.paginator.firstPage();
+		}
+	}
+
+	table()
+	{
+		this.dataSource = new MatTableDataSource(this.revisions);
+		console.log(this.dataSource);
+		this.dataSource.paginator = this.paginator;
+		this.dataSource.sort = this.sort;
+	}
+
+	onDelete(id){
+		this.dialogService.openConfirmDialog('¿Estás seguro de cancelar esta Solicitud?').afterClosed().subscribe
+		(
+			response =>
+			{
+				if (response==true)
+				{
+					this.deleteRevision(id);
+				}else
+				{
+					console.log(response);
+				}
+			}
+			);
+	}
+
+
+	deleteRevision(id)
+	{
+		this._revisionService.deleteOne(id).subscribe
+		(
+			response =>
+			{
+				console.log(response);
+				this.message = response.message.text;
+				this.snackBar.openSnackBarSuccess(this.message);
+				this.getRevisions(this.userID);
+			},
+			error =>
+			{
+				console.log(<any>error);
 			}
 			)
 	}

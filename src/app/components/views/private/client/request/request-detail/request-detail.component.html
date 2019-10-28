@@ -33,21 +33,32 @@
           </mat-card-header>
 
           <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-7">
               <mat-list>
-                <h3 mat-subheader>Datos del Cliente</h3>
-                <mat-list-item><h4 mat-line><b>Nombre: </b>{{ revision.user.firstName }} {{ revision.user.lastName }}</h4></mat-list-item>
-                <mat-list-item><h4 mat-line><b>Fecha de la Solicitud: </b>{{ revision.createdAt | date: 'dd/MM/yyyy' }}</h4></mat-list-item>
+                <h3 mat-subheader>Datos de la Revision</h3>
+                <mat-list-item><h4 mat-line><b>Nombre Solicitante: </b>{{ revision.user.firstName }} {{ revision.user.lastName }}</h4></mat-list-item>
                 <mat-list-item><h4 mat-line><b>Dirección: </b>{{ revision.location.address }}</h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Fecha de la Solicitud: </b>{{ revision.createdAt | date: 'dd/MM/yyyy' }}</h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Fecha de la Revision: </b>{{ revision.createdAt | date: 'dd/MM/yyyy' }}</h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Descripción del Problema: </b>{{ revision.description }}</h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Prestador Asignado: </b>Maria Moreno</h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Precio: </b>{{ revision.price }} Bs.S</h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Status: </b>Su solicitud está en espera de ser Aprobada</h4></mat-list-item>
               </mat-list>
             </div>
 
-            <div class="col-sm-6">
+            <div class="col-sm-5">
               <mat-list>
                 <h3 mat-subheader>Datos del Equipo</h3>
                 <mat-list-item><h4 mat-line><b>Equipo: </b></h4></mat-list-item>
                 <mat-list-item><h4 mat-line><b>Marca: </b></h4></mat-list-item>
                 <mat-list-item><h4 mat-line><b>Modelo: </b>{{ revision.varietyDetail.name }}</h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Imagen: </b></h4></mat-list-item>
+                <mat-card class="card_img imgRequest">
+                  <mat-card-content class="mat_card_content">
+                    <img src="../../../../assets/img/request/revision_3.jpg" alt="">
+                  </mat-card-content>
+                </mat-card>
               </mat-list>
             </div>
           </div>
@@ -57,174 +68,173 @@
 
     <br>
 
-    <div class="row">
-      <div class="col-sm-12">
-        <h4 class="titulo text-center">
-          <h4 class="text-center">Diagnostico</h4>
-        </h4>
+    <div *ngIf="revision.status=='diagnosticated'">
+      <div class="row">
+        <div class="col-sm-12">
+          <h4 class="titulo text-center">
+            <h4 class="text-center">Diagnostico</h4>
+          </h4>
+        </div>
       </div>
-    </div>
-    <hr>
+      <hr>
+      
+      <div class="row">
+        <div class="col-sm-12">
+          <mat-card>
+            <mat-card-header class="titulo border-top-danger">
+              <mat-card-title>
+                Diagnostico
+              </mat-card-title>
+            </mat-card-header>
 
-    <div class="row">
-      <div class="col-sm-12">
-        <mat-card>
-          <mat-card-header class="titulo border-top-danger">
-            <mat-card-title>
-              Diagnostico
-            </mat-card-title>
-          </mat-card-header>
-
-          <div class="row">
-            <div class="col-sm-12">
-              <mat-list>
-                <h3 mat-subheader>Resumen</h3>
-                <div *ngIf="revision.status=='diagnosticated'">
-                  <mat-list-item><h4 mat-line><b>Diagnostico: </b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque illo eaque amet quaerat, magnam recusandae, quis qui ex! Nihil officiis quae laudantium pariatur quis reiciendis veritatis officia nostrum sint eaque.</h4></mat-list-item>
-                  <mat-list-item><h4 mat-line><b>Perdida Total:</b> Si</h4></mat-list-item>
-                </div>
-              </mat-list>
-            </div>
-          </div>
-        </mat-card>
-      </div>
-    </div>
-
-    <br>
-
-
-    <div class="row">
-      <div class="col-sm-12">
-        <h4 class="titulo text-center">
-          <h4 class="text-center">Servicios</h4>
-        </h4>
-      </div>
-    </div>
-    <hr>
-
-    <div class="row">
-      <div class="col-sm-12">
-        <mat-card>
-          <mat-card-header class="titulo border-top-danger">
-            <mat-card-title>
-              Reparación de motor
-            </mat-card-title>
-          </mat-card-header>
-
-          <div class="row">
-            <div class="col-sm-12">
-              <mat-list>
-                <h3 mat-subheader>Resumen</h3>
-                <div *ngIf="revision.status=='diagnosticated'">
-                  <mat-list-item><h4 mat-line><b>Tipo de Servicio: </b> Reparación</h4></mat-list-item>
-                  <mat-list-item><h4 mat-line><b>Componente Asociado:</b> Motor</h4></mat-list-item>
-                  <mat-list-item><h4 mat-line><b>Descripción del Servicio:</b> Reparación de motor de lavadora</h4></mat-list-item>
-                  <mat-list-item><h4 mat-line><b>Precio Estimado:</b> 1000</h4></mat-list-item>
-                </div>
-              </mat-list>
-            </div>
-          </div>
-        </mat-card>
-      </div>
-    </div>
-
-    <br>
-
-    <div class="row">
-      <div class="col-sm-12">
-        <h4 class="titulo text-center">
-          <h4 class="text-center">Fotos de la Revisión</h4>
-        </h4>
-      </div>
-    </div>
-    <hr>
-
-    <div class="row">
-      <div class="col-sm-12">
-        <mat-card>
-          <mat-card-header class="titulo border-top-danger">
-            <mat-card-title>
-              Fotos
-            </mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-
-            <div class="container">
-              <div class="row" *ngIf="revision.status=='diagnosticated'">
-                <div class="col-sm-3">
-                  <mat-card class="card_img">
-                    <mat-card-content class="mat_card_content">
-                      <img src="../../../../assets/img/request/revision_1.jpg" alt="" class="card-img-top">
-                    </mat-card-content>
-                  </mat-card>
-                </div>
-                <div class="col-sm-3">
-                  <mat-card class="card_img">
-                    <mat-card-content class="mat_card_content">
-                      <img src="../../../../assets/img/request/revision_2.jpg" alt="" class="card-img-top">
-                    </mat-card-content>
-                  </mat-card>
-                </div>
-                <div class="col-sm-3">
-                  <mat-card class="card_img">
-                    <mat-card-content class="mat_card_content">
-                      <img src="../../../../assets/img/request/revision_3.jpg" alt="" class="card-img-top">
-                    </mat-card-content>
-                  </mat-card>
-                </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <mat-list>
+                  <h3 mat-subheader>Resumen</h3>
+                  <div>
+                    <mat-list-item><h4 mat-line><b>Diagnostico: </b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque illo eaque amet quaerat, magnam recusandae, quis qui ex! Nihil officiis quae laudantium pariatur quis reiciendis veritatis officia nostrum sint eaque.</h4></mat-list-item>
+                    <mat-list-item><h4 mat-line><b>Perdida Total:</b> Si</h4></mat-list-item>
+                  </div>
+                </mat-list>
               </div>
             </div>
-          </mat-card-content>
-        </mat-card>
+          </mat-card>
+        </div>
       </div>
-    </div>
-
-    <br>
-
-    <div class="row">
-      <div class="col-sm-12">
-        <h4 class="titulo text-center">
-          <h4 class="text-center">Presupuesto</h4>
-        </h4>
+      <div class="row">
+        <div class="col-sm-12">
+          <h4 class="titulo text-center">
+            <h4 class="text-center">Servicios</h4>
+          </h4>
+        </div>
       </div>
-    </div>
-    <hr>
+      <hr>
 
-    <div class="row">
-      <div class="col-sm-12">
-        <mat-card>
-          <mat-card-header class="titulo border-top-danger">
-            <mat-card-title>
-              Presupuesto
-            </mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
+      <div class="row">
+        <div class="col-sm-12">
+          <mat-card>
+            <mat-card-header class="titulo border-top-danger">
+              <mat-card-title>
+                Reparación de motor
+              </mat-card-title>
+            </mat-card-header>
+
             <div class="row">
               <div class="col-sm-12">
                 <mat-list>
                   <h3 mat-subheader>Resumen</h3>
                   <div *ngIf="revision.status=='diagnosticated'">
-                    <mat-list-item><h4 mat-line><b>Personal Adicional: </b> 500</h4></mat-list-item>
-                    <mat-list-item><h4 mat-line><b>Servicios:</b> 1000</h4></mat-list-item>
-                    <mat-list-item><h4 mat-line><b>Total:</b> 1500</h4></mat-list-item>
-                    <mat-list-item><h4 mat-line><b>Status:</b> En espera</h4></mat-list-item>
+                    <mat-list-item><h4 mat-line><b>Tipo de Servicio: </b> Reparación</h4></mat-list-item>
+                    <mat-list-item><h4 mat-line><b>Componente Asociado:</b> Motor</h4></mat-list-item>
+                    <mat-list-item><h4 mat-line><b>Descripción del Servicio:</b> Reparación de motor de lavadora</h4></mat-list-item>
+                    <mat-list-item><h4 mat-line><b>Precio Estimado:</b> 1000</h4></mat-list-item>
                   </div>
                 </mat-list>
               </div>
             </div>
-          </mat-card-content>
-        </mat-card>
+          </mat-card>
+        </div>
       </div>
-    </div>
-    <br>
-    <div class="row">
-      <div class="col-sm-1">
-        <button mat-raised-button color="primary" class="mr-3">Aceptar</button>
-      </div>
-      <div class="col-sm-1">
-        <button mat-raised-button color="primary">Rechazar</button>
-      </div>
-    </div>
 
+      <br>
+
+      <div class="row">
+        <div class="col-sm-12">
+          <h4 class="titulo text-center">
+            <h4 class="text-center">Fotos de la Revisión</h4>
+          </h4>
+        </div>
+      </div>
+      <hr>
+
+      <div class="row">
+        <div class="col-sm-12">
+          <mat-card>
+            <mat-card-header class="titulo border-top-danger">
+              <mat-card-title>
+                Fotos
+              </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+
+              <div class="container">
+                <div class="row" *ngIf="revision.status=='diagnosticated'">
+                  <div class="col-sm-3">
+                    <mat-card class="card_img">
+                      <mat-card-content class="mat_card_content">
+                        <img src="../../../../assets/img/request/revision_1.jpg" alt="" class="card-img-top">
+                      </mat-card-content>
+                    </mat-card>
+                  </div>
+                  <div class="col-sm-3">
+                    <mat-card class="card_img">
+                      <mat-card-content class="mat_card_content">
+                        <img src="../../../../assets/img/request/revision_2.jpg" alt="" class="card-img-top">
+                      </mat-card-content>
+                    </mat-card>
+                  </div>
+                  <div class="col-sm-3">
+                    <mat-card class="card_img">
+                      <mat-card-content class="mat_card_content">
+                        <img src="../../../../assets/img/request/revision_3.jpg" alt="" class="card-img-top">
+                      </mat-card-content>
+                    </mat-card>
+                  </div>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row">
+        <div class="col-sm-12">
+          <h4 class="titulo text-center">
+            <h4 class="text-center">Presupuesto</h4>
+          </h4>
+        </div>
+      </div>
+      <hr>
+
+      <div class="row">
+        <div class="col-sm-12">
+          <mat-card>
+            <mat-card-header class="titulo border-top-danger">
+              <mat-card-title>
+                Presupuesto
+              </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <div class="row">
+                <div class="col-sm-12">
+                  <mat-list>
+                    <h3 mat-subheader>Resumen</h3>
+                    <div *ngIf="revision.status=='diagnosticated'">
+                      <mat-list-item><h4 mat-line><b>Personal Adicional: </b> 500</h4></mat-list-item>
+                      <mat-list-item><h4 mat-line><b>Servicios:</b> 1000</h4></mat-list-item>
+                      <mat-list-item><h4 mat-line><b>Total:</b> 1500</h4></mat-list-item>
+                      <mat-list-item><h4 mat-line><b>Status:</b> En espera</h4></mat-list-item>
+                    </div>
+                  </mat-list>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+      
+      <br>
+      <div class="row">
+        <div class="col-sm-1">
+          <button mat-raised-button color="primary" class="mr-3">Aceptar</button>
+        </div>
+        <div class="col-sm-1">
+          <button mat-raised-button color="primary">Rechazar</button>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>
