@@ -220,6 +220,17 @@ span.badge-dark{
   background-color: #121212!important;
 }
 
+span.badge-gray{
+  background-color: #D2D2D2!important;
+}
+
+
+.success{
+  color: #94ce9b!important;
+}
+.danger{
+  color: #D13232!important;
+}
 
 .mat-snack-bar-container.mat-snack-bar-success{
   background-color: #94ce9b!important;
@@ -595,3 +606,9 @@ table {
 
 
 
+.mat-table thead{
+  background-color: #242451!important;
+}
+.mat-table thead th{
+  color:#fff !important;
+}

@@ -6,16 +6,20 @@ import { ClaimComponent } from './claim/claim.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ServiceComponent } from './service/service.component';
 import { SuggestionComponent } from './suggestion/suggestion.component';
-import { RecordComponent } from './record/record.component';
+import { CalificationComponent } from './calification/calification.component';
+import { CalificationDetailComponent } from './calification-detail/calification-detail.component';
+import { IncidenceComponent } from './incidence/incidence.component';
 
 const routes: Routes = [
 
 	{path: '', component: ClientComponent, canActivate: []},
 	{path: 'claim', component: ClaimComponent, canActivate: []},
-	{path: 'record', component: RecordComponent, canActivate: []},
 	{path: 'dashboard', component: DashboardComponent, canActivate: []},
 	{path: 'service', component: ServiceComponent, canActivate: []},
 	{path: 'suggestion', component: SuggestionComponent, canActivate: []},
+	{path: 'incidence', component: IncidenceComponent, canActivate: []},
+	{path: 'calification', component: CalificationComponent, canActivate: []},
+    {path: 'calification/detail/:id', component: CalificationDetailComponent, canActivate: []},
 	{path: 'profile', canActivate: [],
 		children:
 		[

@@ -31,7 +31,7 @@ export class RevisionService extends HeaderService{
 	}
 
 	cancel(id): Observable<any>{
-		return this.http.put(this.url+'/'+id+'cancel', {}, {headers: this.header});
+		return this.http.put(this.url+'/'+id+'/cancel', {}, {headers: this.header});
 	}
 
 	diagnose(id): Observable<any>{
@@ -40,6 +40,10 @@ export class RevisionService extends HeaderService{
 
 	reject(id): Observable<any>{
 		return this.http.put(this.url+'/'+id+'/reject', {}, {headers: this.header});
+	}
+
+	deleteOne(id): Observable<any>{
+		return this.http.delete(this.url+'/'+id, {headers: this.header});
 	}
 
 	All(): Observable<any>{
@@ -54,9 +58,6 @@ export class RevisionService extends HeaderService{
 		return this.http.get(this.url+"/"+id, {headers: this.header});
 	}
 
-	deleteOne(id): Observable<any>{
-		return this.http.delete(this.url+'/'+id, {headers: this.header});
-	}
 
 
 }

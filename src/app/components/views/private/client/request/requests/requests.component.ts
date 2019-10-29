@@ -21,6 +21,7 @@ export class RequestsComponent implements OnInit {
 	
 	public revision:any;
 	public revisions: Array < Revision > = new Array < Revision > ();
+	public total:number=0;
 	public userID:string;
 	public message:string;
 	public failedConect:string;
@@ -58,7 +59,8 @@ export class RequestsComponent implements OnInit {
 				if (response.status==true)
 				{
 					this.revisions = response.revisions;
-					console.log(this.revisions[0]);
+					this.total = this.revisions.length;
+					console.log(this.revisions);
 					this.table();
 				}
 				else
@@ -96,7 +98,6 @@ export class RequestsComponent implements OnInit {
 	table()
 	{
 		this.dataSource = new MatTableDataSource(this.revisions);
-		console.log(this.dataSource);
 		this.dataSource.paginator = this.paginator;
 		this.dataSource.sort = this.sort;
 	}

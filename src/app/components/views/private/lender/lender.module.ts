@@ -24,6 +24,17 @@ import { ServiceOrderService } from 'src/app/core/services/client/serviceOrder.s
 import { ServiceDetailService } from 'src/app/core/services/admin/serviceDetail.service';
 import { EquipinfrasService } from 'src/app/core/services/admin/equipinfras.service';
 import { RequestDetailComponent } from './request-detail/request-detail.component';
+import { DiagnosisDetailComponent } from './diagnosis-detail/diagnosis-detail.component';
+import { BugetDetailComponent } from './buget-detail/buget-detail.component';
+import { ClaimComponent } from './claim/claim.component';
+import { SuggestionComponent } from './suggestion/suggestion.component';
+import { IncidenceComponent } from './incidence/incidence.component';
+import { ExecuteComponent } from './execute/execute.component';
+import { ExecuteDetailComponent } from './execute-detail/execute-detail.component';
+import { DeliveryComponent } from './delivery/delivery.component';
+import { DeliveryDetailComponent } from './delivery-detail/delivery-detail.component';
+import { CalificationComponent } from './calification/calification.component';
+import { CalificationDetailComponent } from './calification-detail/calification-detail.component';
 
 @NgModule({
   declarations:
@@ -35,6 +46,17 @@ import { RequestDetailComponent } from './request-detail/request-detail.componen
   	DiagnosisComponent,
   	BudgetComponent,
   	RequestDetailComponent,
+  	DiagnosisDetailComponent,
+  	BugetDetailComponent,
+  	ClaimComponent,
+  	SuggestionComponent,
+  	IncidenceComponent,
+  	ExecuteComponent,
+  	ExecuteDetailComponent,
+  	DeliveryComponent,
+  	DeliveryDetailComponent,
+  	CalificationComponent,
+  	CalificationDetailComponent,
   ],
   imports: [
     CommonModule,

@@ -14,9 +14,11 @@
               <h3 class="text-center">Solicitudes</h3>
               <span class="text-center small mr-3">Solicitadas: <span class="badge badge-primary">{{totalRevisionRequested}}</span></span>
               <span class="text-center small mr-3">Aprobadas: <span class="badge badge-primary">{{totalRevisionApproved}}</span></span>
-              <span class="text-center small mr-3">Rechazadas: <span class="badge badge-primary">2</span></span>
+              <span class="text-center small mr-3">Rechazadas: <span class="badge badge-primary">{{totalRevisionRejected}}</span></span>
               <span class="text-center small mr-3">Diagnosticadas: <span class="badge badge-primary">{{totalRevisionDiagnosticated}}</span></span>
-              <span class="text-center small">Canceladas: <span class="badge badge-primary">{{totalRevisionCancelled}}</span></span>
+              <span class="text-center small mr-3">Irreparables: <span class="badge badge-primary">{{totalRevisionLost}}</span></span>
+              <span class="text-center small mr-3">Finalizadas: <span class="badge badge-primary">{{totalRevisionFinalized}}</span></span>
+              <span class="text-center small mr-3">Eliminadas: <span class="badge badge-primary">{{totalRevisionCancelled}}</span></span>
             </mat-card-content>
           </mat-card>
         </a>

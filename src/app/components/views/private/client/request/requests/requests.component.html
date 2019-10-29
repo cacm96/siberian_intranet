@@ -27,10 +27,10 @@
 			<div class="col-sm-12">
 				<div class="mat-elevation-z8">
 					
-					<div *ngIf="revisions.length<=0 && !failedConect">
+					<div *ngIf="total<=0 && !failedConect">
 						<div class="row">
 							<div class="col-sm-12">
-								<h3 class="text-center mt-3 mb-3">{{message}}</h3>
+								<h3 class="text-center mt-3 mb-3">No hay Solicitudes</h3>
 							</div>
 						</div>
 					</div>
@@ -71,14 +71,19 @@
 							<th mat-header-cell *matHeaderCellDef mat-sort-header> Estatus </th>
 							<td mat-cell *matCellDef="let row">
 								<span *ngIf="row.status=='requested'" class="badge badge-dark">Solicitada</span>
-								<span *ngIf="row.status=='cancelled'" class="badge badge-danger">Cancelada</span>
+								<span *ngIf="row.status=='approved'" class="badge badge-primary">Aprobada</span>
+								<span *ngIf="row.status=='cancelled'" class="badge badge-danger">Rechazada</span>
+								<span *ngIf="row.status=='diagnosticated'" class="badge badge-warning">Diagnosticada</span>
+								<span *ngIf="row.status=='rejected'" class="badge badge-primary">Irreparable</span>
+								<span *ngIf="row.status=='finalized'" class="badge badge-primary">Finalizada</span>
+								<span *ngIf="row.status=='delete'" class="badge badge-primary">Cancelada</span>
 							</td>
 						</ng-container>
 
 						<ng-container matColumnDef="delete">
 							<th mat-header-cell *matHeaderCellDef></th>
 							<td mat-cell *matCellDef="let row">
-								<button *ngIf="row.status!='cancelled'" mat-icon-button color="warn" (click)="onDelete(row.id)">
+								<button *ngIf="row.status=='requested'" mat-icon-button color="warn" (click)="onDelete(row.id)">
 									<mat-icon>delete</mat-icon>
 								</button>
 							</td>

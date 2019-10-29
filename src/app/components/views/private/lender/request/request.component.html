@@ -25,10 +25,10 @@
 			<div class="col-sm-12">
 				<div class="mat-elevation-z8">
 					
-					<div *ngIf="revisions.length<=0 && !failedConect">
+					<div *ngIf="total<=0 && !failedConect">
 						<div class="row">
 							<div class="col-sm-12">
-								<h3 class="text-center mt-3 mb-3">{{message}}</h3>
+								<h3 class="text-center mt-3 mb-3">No hay Solicitudes Pendientes</h3>
 							</div>
 						</div>
 					</div>

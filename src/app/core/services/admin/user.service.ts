@@ -10,6 +10,7 @@ import { User } from '../../../models/user';
 export class UserService extends HeaderService{
 
 	url: string = environment.api + 'user';
+	url2: string = environment.api + 'lender';
 
 
 	constructor(
@@ -62,6 +63,19 @@ export class UserService extends HeaderService{
 
 	changeRole(uid,rid): Observable<any>{
 		return this.http.put(this.url+'/'+uid+'/role/'+rid, {}, {headers: this.header});
+	}
+
+	getAllLender(): Observable<any>{
+		return this.http.get(this.url2, {headers: this.header});
+	}
+
+	getOneLender(id:Number): Observable<any>{
+		return this.http.get(this.url2+'/'+id, {headers: this.header});
+	}
+
+	setSkillLender(lender:any): Observable<any>{
+		let params = JSON.stringify(lender);
+		return this.http.put(this.url2+''+lender.id, params, {headers: this.header});
 	}
 
 

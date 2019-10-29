@@ -10,40 +10,12 @@ const routes: Routes = [
 		children:
 		[
 			{path: '', component: CatalogsComponent},
-			{path: 'catalogue', canActivate: [],
-				children:
-				[
-					{
-						path: '',
-		                loadChildren: './catalogue/catalogue.module#CatalogueModule',
-					}
-				]
-			},
-			{path: 'catalogue-variety-detail', canActivate: [],
-				children:
-				[
-					{
-						path: '',
-		                loadChildren: './catalogue-variety-detail/catalogue-variety-detail.module#CatalogueVarietyDetailModule',
-					}
-				]
-			},
 			{path: 'category', canActivate: [],
 				children:
 				[
 					{
 						path: '',
 		                loadChildren: './category/category.module#CategoryModule',
-					}
-				]
-			},
-			
-			{path: 'service-type', canActivate: [],
-				children:
-				[
-					{
-						path: '',
-		                loadChildren: './service-type/service-type.module#ServiceTypeModule',
 					}
 				]
 			},

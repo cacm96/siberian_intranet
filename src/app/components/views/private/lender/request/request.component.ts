@@ -21,6 +21,7 @@ export class RequestComponent implements OnInit {
 
 	public revision:any;
 	public revisions: Array < Revision > = new Array < Revision > ();
+	public total:Number=0;
 	public userID:string;
 	public message:string;
 	public failedConect:string;
@@ -59,6 +60,7 @@ export class RequestComponent implements OnInit {
 				{
 					this.revisions = response.revisions;
 					this.revisions = this.revisions.filter(revision=>{return revision.status =="requested"});
+					this.total = this.revisions.length;
 					console.log(this.revisions);
 					this.table();
 				}

@@ -6,7 +6,6 @@ import { RequestDetailComponent } from './request-detail/request-detail.componen
 import { RequestsComponent } from './requests/requests.component';
 import { SheetComponent } from './sheet/sheet.component';
 import { StepperComponent } from './stepper/stepper.component';
-import { MessageComponent } from './message/message.component';
 
 const routes: Routes = [
 
@@ -17,7 +16,6 @@ const routes: Routes = [
 			{path: 'detail/:id', component: RequestDetailComponent, canActivate: []},
 			{path: 'sheet', component: SheetComponent, canActivate: []},
 			{path: 'stepper', component: StepperComponent, canActivate: []},
-			{path: 'message', component: MessageComponent, canActivate: []},
 		]
 	},	
 

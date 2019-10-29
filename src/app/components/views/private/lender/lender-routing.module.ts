@@ -8,8 +8,17 @@ import { ServiceComponent } from './service/service.component';
 import { DiagnosisComponent} from './diagnosis/diagnosis.component';
 import { BudgetComponent} from './budget/budget.component';
 import { RequestDetailComponent } from './request-detail/request-detail.component';
-
-
+import { DiagnosisDetailComponent } from './diagnosis-detail/diagnosis-detail.component';
+import { BugetDetailComponent } from './buget-detail/buget-detail.component';
+import { ClaimComponent } from './claim/claim.component';
+import { SuggestionComponent } from './suggestion/suggestion.component';
+import { IncidenceComponent } from './incidence/incidence.component';
+import { ExecuteComponent } from './execute/execute.component';
+import { ExecuteDetailComponent } from './execute-detail/execute-detail.component';
+import { DeliveryComponent } from './delivery/delivery.component';
+import { DeliveryDetailComponent } from './delivery-detail/delivery-detail.component';
+import { CalificationComponent } from './calification/calification.component';
+import { CalificationDetailComponent } from './calification-detail/calification-detail.component';
 
 
 const routes: Routes = [
@@ -20,7 +29,18 @@ const routes: Routes = [
 	{path: 'request/detail/:id', component: RequestDetailComponent, canActivate: []},
 	{path: 'service', component: ServiceComponent, canActivate: []},
 	{path: 'diagnosis', component:DiagnosisComponent, canActivate: []},
+	{path: 'diagnosis/detail/:id', component: DiagnosisDetailComponent, canActivate: []},
     {path: 'budget', component:BudgetComponent, canActivate: []},
+    {path: 'buget/detail/:id', component: BugetDetailComponent, canActivate: []},
+    {path: 'execute', component:ExecuteComponent, canActivate: []},
+    {path: 'execute/detail/:id', component: ExecuteDetailComponent, canActivate: []},
+    {path: 'delivery', component: DeliveryComponent, canActivate: []},
+    {path: 'delivery/detail/:id', component: DeliveryDetailComponent, canActivate: []},
+    {path: 'calification', component: CalificationComponent, canActivate: []},
+	{path: 'claim', component: ClaimComponent, canActivate: []},
+	{path: 'suggestion', component: SuggestionComponent, canActivate: []},
+	{path: 'incidence', component: IncidenceComponent, canActivate: []},
+
 	{path: 'profile', canActivate: [],
 	
 		children:

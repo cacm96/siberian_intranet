@@ -22,6 +22,7 @@ export class DiagnosisComponent implements OnInit {
 
 	public revision:any;
 	public revisions: Array < Revision > = new Array < Revision > ();
+	public total:number=0;
 	public userID:string;
 	public message:string;
 	public failedConect:string;
@@ -60,6 +61,7 @@ export class DiagnosisComponent implements OnInit {
 				{
 					this.revisions = response.revisions;
 					this.revisions = this.revisions.filter(revision=>{return revision.status =="approved"});
+					this.total=this.revisions.length;
 					console.log(this.revisions);
 					this.table();
 				}

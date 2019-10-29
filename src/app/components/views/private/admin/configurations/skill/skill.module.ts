@@ -5,12 +5,14 @@ import { MaterialModule } from '../../../../../../core/ui/material.module';
 import { SkillRoutingModule } from './skill-routing.module';
 import { SkillComponent } from './skill.component';
 import { SkillsComponent } from './skills/skills.component';
+import { AddSkillLenderComponent } from './add-skill-lender/add-skill-lender.component';
 
 @NgModule({
   declarations:
   [
   	SkillComponent,
-    SkillsComponent
+    SkillsComponent,
+    AddSkillLenderComponent
   ],
   imports: [
     CommonModule,
