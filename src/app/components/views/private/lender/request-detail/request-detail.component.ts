@@ -30,13 +30,16 @@ export class RequestDetailComponent implements OnInit {
 
   }
 
-  ngOnInit() {
-    this._route.params.subscribe (
-      params => {
+  ngOnInit()
+  {
+    this._route.params.subscribe
+    (
+      params =>
+      {
         let id = params.id;
         this.getRevision(id);
       }
-      );
+    );
   }
 
   getRevision(id) {
@@ -58,6 +61,87 @@ export class RequestDetailComponent implements OnInit {
           }
         }
       });
+  }
+
+  onApproved(id){
+    this.dialogService.openConfirmDialog('¿Estás seguro de aprobar esta Solicitud?').afterClosed().subscribe
+    (
+      response =>
+      {
+        if (response==true)
+        {
+          this.approvedRevision(id);
+        }else
+        {
+          console.log(response);
+        }
+      }
+      );
+  }
+
+
+  approvedRevision(id)
+  {
+    this._revisionService.approve(id).subscribe
+    (
+      response =>
+      {
+        console.log(response);
+        this.message = response.message.text;
+        this.snackBar.openSnackBarSuccess(this.message);
+        this.getRevision(id);
+      },
+      error =>
+      {
+        console.log(<any>error);
+      }
+      )
+  }
+
+
+  onCancelled(id){
+    this.dialogService.openConfirmDialog('¿Estás seguro de rechazar esta Solicitud?').afterClosed().subscribe
+    (
+      response =>
+      {
+        if (response==true)
+        {
+          this.cancelRevision(id);
+        }else
+        {
+          console.log(response);
+        }
+      }
+      );
+  }
+
+
+  cancelRevision(id)
+  {
+    this._revisionService.cancel(id).subscribe
+    (
+      response =>
+      {
+        console.log(response);
+        this.message = response.message.text;
+        this.snackBar.openSnackBarSuccess(this.message);
+        this.getRevision(id);
+      },
+      error =>
+      {
+        console.log(<any>error);
+      }
+      )
+  }
+
+  onRegisterDiagnosis()
+  {
+
+  }
+
+  onRejectDiagnosis()
+  {
+
   }
 
   goBack() {

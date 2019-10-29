@@ -7,10 +7,12 @@
         <h4 class="titulo text-center">
           Solicitud
           <span *ngIf="revision.status=='requested'" class="badge badge-dark">Solicitada</span>
-          <span *ngIf="revision.status=='diagnosticated'" class="badge badge-warning">Diagnosticada</span>
           <span *ngIf="revision.status=='approved'" class="badge badge-primary">Aprobada</span>
+          <span *ngIf="revision.status=='cancelled'" class="badge badge-danger">Rechazada</span>
+          <span *ngIf="revision.status=='diagnosticated'" class="badge badge-warning">Diagnosticada</span>
+          <span *ngIf="revision.status=='rejected'" class="badge badge-warning">Irreparable</span>
           <span *ngIf="revision.status=='finalized'" class="badge badge-success">Finalizada</span>
-          <span *ngIf="revision.status=='cancelled'" class="badge badge-danger">Cancelada</span>
+          <span *ngIf="revision.status=='deleted'" class="badge badge-warning">Cancelada</span>
         </h4>
       </div>
     </div>
@@ -43,6 +45,11 @@
                 <mat-list-item><h4 mat-line><b>Descripción del Problema: </b>{{ revision.description }}</h4></mat-list-item>
                 <mat-list-item><h4 mat-line><b>Prestador Asignado: </b>Maria Moreno</h4></mat-list-item>
                 <mat-list-item><h4 mat-line><b>Precio: </b>{{ revision.price }} Bs.S</h4></mat-list-item>
+                <mat-list-item>
+                  <h4 mat-line *ngIf="revision.status=='requested'"><b>Status: </b><span class="badge badge-dark">Solicitada. En espera por Aprobar</span></h4>
+                  <h4 mat-line *ngIf="revision.status=='approved'"><b>Status: </b><span class="badge badge-primary">Aprobada. En espera de Diagnostico</span></h4>
+                  <h4 mat-line *ngIf="revision.status=='cancelled'"><b>Status: </b><span class="badge badge-danger">Rechazada. Su solicitud no fue aceptada</span></h4>
+                </mat-list-item>
               </mat-list>
             </div>
 
@@ -68,6 +75,7 @@
     <br>
 
     <div *ngIf="revision.status=='diagnosticated'">
+
       <div class="row">
         <div class="col-sm-12">
           <h4 class="titulo text-center">
@@ -100,6 +108,7 @@
           </mat-card>
         </div>
       </div>
+
       <div class="row">
         <div class="col-sm-12">
           <h4 class="titulo text-center">
@@ -201,9 +210,7 @@
         <div class="col-sm-12">
           <mat-card>
             <mat-card-header class="titulo border-top-danger">
-              <mat-card-title>
-                Presupuesto
-              </mat-card-title>
+              <mat-card-title>Presupuesto</mat-card-title>
             </mat-card-header>
             <mat-card-content>
               <div class="row">
@@ -229,49 +236,47 @@
     <br>
     <div class="row" *ngIf="revision.status=='requested'">
       <div class="col-sm-1">
-        <button mat-raised-button color="primary" class="mr-3">Aceptar</button>
+        <button mat-raised-button color="primary" class="mr-3" (click)="onApproved(revision.id)">Aceptar</button>
       </div>
       <div class="col-sm-1">
-        <button mat-raised-button color="warn">Rechazar</button>
+        <button mat-raised-button color="warn" (click)="onCancelled(revision.id)">Rechazar</button>
       </div>
     </div>
 
-  </div>
-
-  <div class="row" *ngIf="revision.status=='approved'">
-    <div class="col-sm-8 offset-2">
-      <div class="row">
-        <div class="col-sm-12">
-          <h2 class="text-center">Diagnóstico</h2>
-        </div>
-      </div>
-      <hr>
-
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="example-container">
-
-            <mat-form-field>
-              <textarea matInput placeholder=" Descripción del Diagnóstico"></textarea>
-            </mat-form-field>
-
-            <mat-label >Subir Imagen de Revisión</mat-label>
-            <br>
-            <input id="fileInput" type="file">
-
+    <div class="row" *ngIf="revision.status=='approved'">
+      <div class="col-sm-8 offset-2">
+        <div class="row">
+          <div class="col-sm-12">
+            <h2 class="text-center">Diagnóstico</h2>
           </div>
         </div>
+        <hr>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="example-container">
+
+              <mat-form-field>
+                <textarea matInput placeholder=" Descripción del Diagnóstico"></textarea>
+              </mat-form-field>
+
+              <mat-label >Subir Imagen de Revisión</mat-label>
+              <br>
+              <input id="fileInput" type="file">
+
+            </div>
+          </div>
+        </div>
+
+        <br> 
+
+        <div class="row">
+          <div class="col-sm-12">
+            <button mat-raised-button color="primary" class="mr-3" (click)="onRegisterDiagnosis()">Registrar</button>
+            <button mat-raised-button color="primary" class="mr-3" (click)="onRejectDiagnosis()">Rechazar</button>
+          </div>
+        </div>
+
       </div>
-
-      <br> 
-
-      <div class="row">
-        <div class="col-sm-12">
-          <button mat-raised-button color="primary" class="mr-3" (click)="onRegister">Registrar</button>
-          <button mat-raised-button color="primary" class="mr-3" (click)="onReject()">Rechazar</button>
-       </div>
-     </div>
-
-   </div>
- </div>
-</div>
+    </div>
+  </div>

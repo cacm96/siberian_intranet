@@ -7,10 +7,12 @@
         <h4 class="titulo text-center">
           Solicitud
           <span *ngIf="revision.status=='requested'" class="badge badge-dark">Solicitada</span>
-          <span *ngIf="revision.status=='diagnosticated'" class="badge badge-warning">Diagnosticada</span>
           <span *ngIf="revision.status=='approved'" class="badge badge-primary">Aprobada</span>
+          <span *ngIf="revision.status=='cancelled'" class="badge badge-danger">Rechazada</span>
+          <span *ngIf="revision.status=='diagnosticated'" class="badge badge-warning">Diagnosticada</span>
+          <span *ngIf="revision.status=='rejected'" class="badge badge-warning">Irreparable</span>
           <span *ngIf="revision.status=='finalized'" class="badge badge-success">Finalizada</span>
-          <span *ngIf="revision.status=='cancelled'" class="badge badge-danger">Cancelada</span>
+          <span *ngIf="revision.status=='deleted'" class="badge badge-warning">Cancelada</span>
         </h4>
       </div>
     </div>
@@ -43,7 +45,6 @@
                 <mat-list-item><h4 mat-line><b>Descripción del Problema: </b>{{ revision.description }}</h4></mat-list-item>
                 <mat-list-item><h4 mat-line><b>Prestador Asignado: </b>Maria Moreno</h4></mat-list-item>
                 <mat-list-item><h4 mat-line><b>Precio: </b>{{ revision.price }} Bs.S</h4></mat-list-item>
-                <mat-list-item><h4 mat-line><b>Status: </b>Su solicitud está en espera de ser Aprobada</h4></mat-list-item>
               </mat-list>
             </div>
 
@@ -67,6 +68,70 @@
     </div>
 
     <br>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <mat-card>
+          <mat-card-header class="titulo border-top-danger">
+            <mat-card-title>
+              Seguimiento
+            </mat-card-title>
+          </mat-card-header>
+
+          <div class="row">
+            <div class="offset-sm-2 col-sm-8">
+              <mat-list>
+                <h3 mat-subheader>Status</h3>
+
+                <mat-list-item>
+                  <h4 mat-line>
+                    <span [ngClass]="{'badge badge-primary': revision.status=='requested' || revision.status=='approved' || revision.status=='diagnosticate'}">
+                      Solicitada. En espera por Aprobar
+                    </span>
+                  </h4>
+                  <mat-icon [ngClass]="{'success': revision.status=='requested' || revision.status=='approved' || revision.status=='diagnosticate'}">check_circle</mat-icon>
+                  <mat-icon [ngClass]="{'danger': revision.status=='cancelled' || revision.status=='rejected' }">cancel</mat-icon>
+                </mat-list-item>
+
+
+                <mat-list-item>
+                  <h4 mat-line>
+                    <span [ngClass]="{'badge badge-primary': revision.status=='approved' || revision.status=='diagnosticate', ' badge-gray': revision.status=='requested'}">
+                      Aprobada. En espera de Diagnostico
+                    </span>
+                  </h4>
+                  <mat-icon [ngClass]="{'success': revision.status=='approved' || revision.status=='diagnosticate'}">check_circle</mat-icon>
+                  <mat-icon [ngClass]="{'danger': revision.status=='cancelled' || revision.status=='rejected' }">cancel</mat-icon>
+                </mat-list-item>
+
+                <mat-list-item>
+                  <h4 mat-line><span class="badge badge-gray">Rechazada. Su solicitud no fue aceptada</span></h4><mat-icon>check_circle</mat-icon><mat-icon>cancel</mat-icon>
+                </mat-list-item>
+                <div class="ml-3">
+                  <mat-list-item>
+                    <span class="ml-3 badge badge-gray">Motivo 1</span>
+                  </mat-list-item>
+                    <mat-list-item>
+                      <span class="ml-3 badge badge-gray">Motivo 2</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                      <span class="ml-3 badge badge-gray">Motivo 3</span>
+                    </mat-list-item>
+                </div>
+                <mat-list-item>
+                  <h4 mat-line><span class="badge badge-gray">Diagnosticada. Evaluando Presupuesto</span></h4><mat-icon>check_circle</mat-icon><mat-icon>cancel</mat-icon>
+                </mat-list-item>
+                <mat-list-item>
+                  <h4 mat-line><span class="badge badge-gray">Rechazada. No es posible aplicar un Servicio</span></h4><mat-icon>check_circle</mat-icon><mat-icon>cancel</mat-icon>
+                </mat-list-item>
+              </mat-list>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+
+      <br>
 
     <div *ngIf="revision.status=='diagnosticated'">
       <div class="row">
