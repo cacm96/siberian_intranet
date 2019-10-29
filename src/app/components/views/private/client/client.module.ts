@@ -18,7 +18,9 @@ import { ClaimComponent } from './claim/claim.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ServiceComponent } from './service/service.component';
 import { SuggestionComponent } from './suggestion/suggestion.component';
-import { RecordComponent } from './record/record.component';
+import { IncidenceComponent } from './incidence/incidence.component';
+import { CalificationComponent } from './calification/calification.component';
+import { CalificationDetailComponent } from './calification-detail/calification-detail.component';
 
 @NgModule({
   declarations:
@@ -28,7 +30,9 @@ import { RecordComponent } from './record/record.component';
   	DashboardComponent,
   	ServiceComponent,
   	SuggestionComponent,
-  	RecordComponent,
+  	IncidenceComponent,
+  	CalificationComponent,
+  	CalificationDetailComponent,
   ],
   imports: [
     CommonModule,

@@ -18,8 +18,6 @@ import { RequestDetailComponent } from './request-detail/request-detail.componen
 import { RequestsComponent } from './requests/requests.component';
 import { SheetComponent } from './sheet/sheet.component';
 import { StepperComponent } from './stepper/stepper.component';
-import { MessageComponent } from './message/message.component';
-
 import { TruncatePipe } from 'src/app/core/pipes/truncate.pipe';
 
 
@@ -31,7 +29,6 @@ import { TruncatePipe } from 'src/app/core/pipes/truncate.pipe';
   	RequestsComponent,
     SheetComponent,
     StepperComponent,
-    MessageComponent,
     TruncatePipe,
   ],
   imports: [

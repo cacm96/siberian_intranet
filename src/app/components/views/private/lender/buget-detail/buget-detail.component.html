@@ -1,0 +1,116 @@
+
+<div class="container">
+    <div class="row">
+      <div class="col-sm-8 offset-2">
+        <div class="row">
+          <div class="col-sm-12">
+            <h2 class="text-center">Presupuesto</h2>
+          </div>
+        </div>
+        <hr>
+        
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="example-container">
+               
+                  
+
+                  <mat-form-field class="example-chip-list">
+                      <mat-chip-list #chipList aria-label="Service selection">
+                        <mat-chip
+                          *ngFor="let service of services"
+                          [selectable]="selectable"
+                          [removable]="removable"
+                          (removed)="remove(service)"
+                          color="primary" selected="true">
+                          {{service.name}}
+                          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                        </mat-chip>
+                        <input
+                          placeholder="Nuevo Servicio..."
+                          #serviceInput
+                          [formControl]="serviceCtrl"
+                          [matAutocomplete]="auto"
+                          [matChipInputFor]="chipList"
+                          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                          [matChipInputAddOnBlur]="addOnBlur"
+                          (matChipInputTokenEnd)="add($event)">
+                      </mat-chip-list>
+                      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                        <mat-option *ngFor="let service of filteredServices  | async" [value]="service">
+                          {{service.name}}
+                        </mat-option>
+                      </mat-autocomplete>
+                    </mat-form-field>
+                    
+                    <mat-label>Recursos</mat-label>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <mat-checkbox>Martillo</mat-checkbox>
+                          <div class="col-sm-6 ml-auto">
+                            <mat-form-field>
+                                <input matInput id="inputrecurso" name="recurso" placeholder="Cantidad">
+                            </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <mat-checkbox>Destornillador</mat-checkbox>
+                          <div class="col-sm-6 ml-auto">
+                            <mat-form-field>
+                                <input matInput id="inputrecurso" name="recurso" placeholder="Cantidad">
+                            </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                       
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <mat-checkbox>Brocha</mat-checkbox>
+                          <div class="col-sm-6 ml-auto">
+                            <mat-form-field>
+                                <input matInput id="inputrecurso" name="recurso" placeholder="Cantidad">
+                            </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <mat-checkbox>Clavos</mat-checkbox>
+                          <div class="col-sm-6 ml-auto">
+                            <mat-form-field>
+                                <input matInput id="inputrecurso" name="recurso" placeholder="Cantidad">
+                            </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                            
+                    
+            
+                   
+                   <mat-form-field>
+                      <input matInput id="inputtotal" name="total" placeholder="Monto Total">
+                  </mat-form-field>
+    
+                </div>
+              </div>
+            </div>
+         
+         <br> 
+
+          <div class="row">
+            <div class="col-sm-12">
+             <button mat-raised-button color="primary" class="mr-3" (click)="goBack()">Volver</button>
+             <button mat-raised-button color="primary" [routerLink]="['/auth/lender/budget']">Enviar</button>
+            </div>
+          </div>
+       
+        </div>
+      </div>
+    </div>
+
+    

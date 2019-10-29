@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { SkillComponent } from './skill.component';
 import { SkillsComponent } from './skills/skills.component';
+import { AddSkillLenderComponent } from './add-skill-lender/add-skill-lender.component';
 
 const routes: Routes = [
 
@@ -10,15 +11,10 @@ const routes: Routes = [
 		children:
 		[
 			{path: '', component: SkillsComponent},
-			{path: 'service-detail-skill', canActivate: [],
-				children:
-				[
-					{
-						path: '',
-		                loadChildren: './service-detail-skill/service-detail-skill.module#ServiceDetailSkillModule',
-					}
-				]
-			},
+			
+			{path: ':id/addSkillLender', component: AddSkillLenderComponent},
+
+
 			{path: 'skill', canActivate: [],
 				children:
 				[
@@ -28,12 +24,12 @@ const routes: Routes = [
 					}
 				]
 			},
-			{path: 'skill-worker', canActivate: [],
+			{path: 'lender', canActivate: [],
 				children:
 				[
 					{
 						path: '',
-		                loadChildren: './skill-worker/skill-worker.module#SkillWorkerModule',
+		                loadChildren: './lender/lender.module#LenderModule',
 					}
 				]
 			},

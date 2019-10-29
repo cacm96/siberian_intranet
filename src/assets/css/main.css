@@ -606,3 +606,9 @@ table {
 
 
 
+.mat-table thead{
+  background-color: #242451!important;
+}
+.mat-table thead th{
+  color:#fff !important;
+}

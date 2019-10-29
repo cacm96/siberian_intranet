@@ -29,6 +29,16 @@ const routes: Routes = [
 					}
 				]
 			},
+
+			{path: 'motive', canActivate: [],
+				children:
+				[
+					{
+						path: '',
+		                loadChildren: './motive/motive.module#MotiveModule',
+					}
+				]
+			},
 			
 		]
 	},	
