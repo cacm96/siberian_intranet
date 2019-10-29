@@ -243,7 +243,8 @@ export class StepperComponent implements OnInit {
     this.dialogService.openConfirmDialog('Recuerde que primero se debe realizar una revision antes de abordar el servicio, ¿Desea continuar con su solicitud?').afterClosed().subscribe(res=>{
       if (res==true)
       {
-        this.register();
+        //this.register();
+        this._router.navigate(['/auth/client/request']);
       }
       else
       {

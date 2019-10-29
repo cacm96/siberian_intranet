@@ -1,90 +1,82 @@
 <div class="main_dashboard">
-
   <div class="container">
 
     <div class="row">
-      <div class="col-sm-12">
-        <h2 class="text-center">Solicitudes y Servicios</h2>
-        <hr>
-      </div>
-    </div>
-    
-    <div class="row">
 
       <div class="col-sm-6">
-
-        <mat-card class="mat-card">
-          <mat-card-header>
-            <mat-card-title><b><a [routerLink]="['/auth/lender/request']">Solicitudes</a></b></mat-card-title>
-          </mat-card-header>
-          <mat-card-content class="mat_card_content">
-            <mat-icon class="dashboard_icon text-center">insert_chart</mat-icon>
-            <h3 class="text-center">Solicitudes</h3>
-            <span class="text-center small mr-3">Solicitadas: <span class="badge badge-primary">{{totalRevisionRequested}}</span></span>
-            <span class="text-center small mr-3">Diagnosticadas: <span class="badge badge-primary">{{totalRevisionDiagnosticated}}</span></span>
-            <span class="text-center small mr-3">Aprobadas: <span class="badge badge-primary">{{totalRevisionApproved}}</span></span>
-            <span class="text-center small mr-3">Finalizadas: <span class="badge badge-primary">{{totalRevisionFinalized}}</span></span>
-            <span class="text-center small">Canceladas: <span class="badge badge-primary">{{totalRevisionCancelled}}</span></span>
-          </mat-card-content>
-
-        </mat-card>
+        <a [routerLink]="['/auth/lender/request']">
+          <mat-card class="mat-card">
+            <mat-card-header>
+              <mat-card-title><b>Solicitudes</b></mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="mat_card_content">
+              <mat-icon class="dashboard_icon text-center">insert_chart</mat-icon>
+              <h3 class="text-center">Solicitudes</h3>
+            </mat-card-content>
+          </mat-card>
+        </a>
       </div>
 
       <div class="col-sm-6">
-
-        <mat-card class="mat-card">
-          <mat-card-header>
-            <mat-card-title><b><a [routerLink]="['/auth/lender/service']">Servicios</a></b></mat-card-title>
-          </mat-card-header>
-          <mat-card-content class="mat_card_content">
-            <mat-icon class="dashboard_icon text-center">assignment</mat-icon>
-            <h3 class="text-center">Servicios</h3>
-            <span class="text-center small mr-3">Solicitados: <span class="badge badge-primary">{{totalServiceOrderBudgeted}}</span></span>
-            <span class="text-center small mr-3">Aprobados: <span class="badge badge-primary">{{totalServiceOrderApproved}}</span></span>
-            <span class="text-center small">Garantía: <span class="badge badge-primary">{{totalServiceOrderWarranty}}</span></span>
-          </mat-card-content>
-        </mat-card>
+        <a [routerLink]="['/auth/lender/service']">
+          <mat-card class="mat-card">
+            <mat-card-header>
+              <mat-card-title><b>Servicios</b></mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="mat_card_content">
+              <mat-icon class="dashboard_icon text-center">insert_chart</mat-icon>
+              <h3 class="text-center">Servicios</h3>
+            </mat-card-content>
+          </mat-card>
+        </a>
       </div>
 
     </div>
 
     <div class="row">
-      <div class="col-sm-12">
-        <h2 class="text-center">Resumen de Incidencias y Agenda</h2>
-        <hr>
-      </div>
-    </div>
-
-    <div class="row">
 
       <div class="col-sm-6">
-        <a [routerLink]="['/auth/client/request']">
+        <a [routerLink]="['/auth/lender/incidence']">
           <mat-card class="mat-card">
             <mat-card-header>
               <mat-card-title><b>Incidencias</b></mat-card-title>
             </mat-card-header>
             <mat-card-content class="mat_card_content">
-              <mat-icon class="dashboard_icon text-center">warning</mat-icon>
+              <mat-icon class="dashboard_icon text-center">insert_chart</mat-icon>
               <h3 class="text-center">Incidencias</h3>
-              <span class="text-center small mr-3">Procesadas: <span class="badge badge-primary">3</span></span>
-              <span class="text-center small">Resueltas: <span class="badge badge-primary">3</span></span>
             </mat-card-content>
           </mat-card>
         </a>
       </div>
 
+      <div class="col-sm-6">
+        <a [routerLink]="['/auth/lender/claim']">
+          <mat-card class="mat-card">
+            <mat-card-header>
+              <mat-card-title><b>Reclamos</b></mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="mat_card_content">
+              <mat-icon class="dashboard_icon text-center">insert_chart</mat-icon>
+              <h3 class="text-center">Reclamos</h3>
+            </mat-card-content>
+          </mat-card>
+        </a>
+      </div>
+
+    </div>
+
+
+    <div class="row">
 
       <div class="col-sm-6">
-        <a [routerLink]="['/auth/client/request']">
+        <a [routerLink]="['/auth/lender/calendar']">
           <mat-card class="mat-card">
             <mat-card-header>
               <mat-card-title><b>Agenda</b></mat-card-title>
             </mat-card-header>
             <mat-card-content class="mat_card_content">
-              <mat-icon class="dashboard_icon text-center">warning</mat-icon>
+              <mat-icon class="dashboard_icon text-center">insert_chart</mat-icon>
               <h3 class="text-center">Agenda</h3>
-              <span class="text-center small mr-3">Procesadas: <span class="badge badge-primary">3</span></span>
-              <span class="text-center small">Resueltas: <span class="badge badge-primary">3</span></span>
             </mat-card-content>
           </mat-card>
         </a>
@@ -92,82 +84,9 @@
 
     </div>
 
+
   </div>
+
+
 </div>
 
-
-<!--CALENDARIO AGENDA-->
-
-<!-- <div class="container">
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12">
-            <h2>Agenda</h2>
-            <hr>
-          </div>
-        </div>
-      </div>
-
-      <div class="row text-center">
-        <div class="col-md-4">
-          <div class="btn-group">
-            <div class="btn btn-primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"
-            (viewDateChange)="closeOpenMonthViewDay()">
-            Anterior
-          </div>
-          <div class="btn btn-outline-secondary" mwlCalendarToday [(viewDate)]="viewDate">
-            Hoy
-          </div>
-          <div class="btn btn-primary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"
-          (viewDateChange)="closeOpenMonthViewDay()">
-          Siguiente
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'Es' }}</h3>
-    </div>
-
-    <div class="col-md-4">
-      <div class="btn-group">
-        <div class="btn sib" (click)="setView(CalendarView.Month)" [class.active]="view === CalendarView.Month">
-          Mes
-        </div>
-
-        <div class="btn sib" (click)="setView(CalendarView.Week)" [class.active]="view === CalendarView.Week">
-          Semana
-        </div>
-
-        <div class="btn sib" (click)="setView(CalendarView.Day)" [class.active]="view === CalendarView.Day">
-          Día
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-  <br />
-  <div [ngSwitch]="view">
-    <mwl-calendar-month-view
-    *ngSwitchCase="'month'"
-    [viewDate]="viewDate"
-    [events]="events"
-    [activeDayIsOpen]="true"
-    >
-  </mwl-calendar-month-view>
-  <mwl-calendar-week-view
-  *ngSwitchCase="'week'"
-  [viewDate]="viewDate"
-  [events]="events"
-  >
-</mwl-calendar-week-view>
-<mwl-calendar-day-view
-*ngSwitchCase="'day'"
-[viewDate]="viewDate"
-[events]="events"
->
-</mwl-calendar-day-view>
-</div> -->

@@ -12,6 +12,15 @@ import { Global } from 'src/app/core/services/global';
 import { Revision } from 'src/app/models/revision';
 import { RevisionService } from 'src/app/core/services/client/revision.service';
 
+
+export interface RevisionR {
+id: string;
+equipinfras: string;
+location: string;
+date: string;
+lender: string;
+status: string;
+}
 @Component({
 	selector: 'sib-requests',
 	templateUrl: './requests.component.html',
@@ -20,14 +29,14 @@ import { RevisionService } from 'src/app/core/services/client/revision.service';
 export class RequestsComponent implements OnInit {
 	
 	public revision:any;
-	public revisions: Array < Revision > = new Array < Revision > ();
+	public revisions: any[];
 	public total:number=0;
 	public userID:string;
 	public message:string;
 	public failedConect:string;
 
 	displayedColumns: string[] = ['id', 'equipinfras','location','date','lender','status','delete'];
-	dataSource: MatTableDataSource<Revision>;
+	dataSource: MatTableDataSource<RevisionR>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
 	@ViewChild(MatSort) sort: MatSort;
@@ -42,12 +51,19 @@ export class RequestsComponent implements OnInit {
 		private _location: Location
 		)
 	{
+		this.revisions =
+		[
+	      {id:"1" ,equipinfras:"Lavadora",location:"Calle San Rafael",date:"10-11-2019",lender:"Maria Moreno",status:"requested",},
+	      {id:"1" ,equipinfras:"Cocina",location:"Calle San Rafael",date:"11-11-2019",lender:"Maria Moreno",status:"approved",},
+	    ];
+
+	    this.table();
 
 	}
 
 	ngOnInit() {
 		this.userID = localStorage.getItem('resID');
-		this.getRevisions(this.userID);
+		//this.getRevisions(this.userID);
 	}
 
 	getRevisions(userID)
