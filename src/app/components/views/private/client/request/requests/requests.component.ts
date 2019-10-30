@@ -35,7 +35,7 @@ export class RequestsComponent implements OnInit {
 	public message:string;
 	public failedConect:string;
 
-	displayedColumns: string[] = ['id', 'equipinfras','location','date','lender','status','delete'];
+	displayedColumns: string[] = ['id','client', 'equipinfras','location','date','lender','status','delete'];
 	dataSource: MatTableDataSource<RevisionR>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
@@ -53,8 +53,8 @@ export class RequestsComponent implements OnInit {
 	{
 		this.revisions =
 		[
-	      {id:"1" ,equipinfras:"Lavadora",location:"Calle San Rafael",date:"10-11-2019",lender:"Maria Moreno",status:"requested",},
-	      {id:"1" ,equipinfras:"Cocina",location:"Calle San Rafael",date:"11-11-2019",lender:"Maria Moreno",status:"approved",},
+	      {id:"1" ,client:"Anderson Diaz",equipinfras:"Lavadora",location:"Calle San Rafael",date:"10-11-2019",lender:"Maria Moreno",status:"requested",},
+	      {id:"1" ,client:"Anderson Diaz",equipinfras:"Cocina",location:"Calle San Rafael",date:"11-11-2019",lender:"Maria Moreno",status:"approved",},
 	    ];
 
 	    this.table();
@@ -63,7 +63,7 @@ export class RequestsComponent implements OnInit {
 
 	ngOnInit() {
 		this.userID = localStorage.getItem('resID');
-		//this.getRevisions(this.userID);
+		this.getRevisions(this.userID);
 	}
 
 	getRevisions(userID)
