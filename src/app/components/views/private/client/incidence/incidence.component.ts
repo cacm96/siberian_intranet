@@ -34,7 +34,7 @@ export class IncidenceComponent implements OnInit {
   ) 
   { 
     this.incidence = [
-      {id: '1', equipinfra: 'Pared', address: 'Santa Elena', lender: 'Maria Moreno', type: 'revision', status: 'requested',},
+      {id: '1', equipinfra: 'Pared', address: 'Santa Elena', lender: 'Maria Moreno', type: 'revision', status: 'approved',},
       {id: '1', equipinfra: 'Pared', address: 'Ubr. Rosaleda', lender: 'Junior Camacho', type: 'servicio', status: 'approved',}
     ];
 

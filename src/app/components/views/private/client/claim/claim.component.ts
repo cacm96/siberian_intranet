@@ -34,9 +34,9 @@ export class ClaimComponent implements OnInit {
   ) 
   { 
     this.claim = [
-      {id: '1' , equipinfra: 'Lavadora', address: 'Av. Rotaria', lender: 'Maria Moreno', date_end: '31-08-2019', status: 'warranty',},
-      {id: '1' , equipinfra: 'Aire Acondicionado', address: 'Urb. Los Libertadores', lender: 'Maria Moreno', date_end: '30-09-2019', status: 'warranty',},
-      {id: '1' , equipinfra: 'Lavadora', address: 'Av. Rotaria', lender: 'Maria Moreno', date_end: '31-05-2020', status: 'warranty',},
+      {id: '1' , equipinfra: 'Lavadora', address: 'Av. Rotaria', lender: 'Maria Moreno', date_end: '31-08-2019', status: 'finalized',},
+      {id: '1' , equipinfra: 'Aire Acondicionado', address: 'Urb. Los Libertadores', lender: 'Maria Moreno', date_end: '30-09-2019', status: 'finalized',},
+      {id: '1' , equipinfra: 'Lavadora', address: 'Av. Rotaria', lender: 'Maria Moreno', date_end: '31-05-2020', status: 'finalized',},
     ];
 
     this.dataSource = new MatTableDataSource(this.claim);
