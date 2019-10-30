@@ -41,6 +41,8 @@ export class DashboardComponent implements OnInit {
 
   public totalServiceOrderBudgeted:number=0;
   public totalServiceOrderApproved:number=0;
+  public totalServiceOrderRejected:number=0;
+  public totalServiceOrderFinalized:number=0;
   public totalServiceOrderWarranty:number=0;
 
   constructor(

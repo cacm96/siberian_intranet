@@ -35,6 +35,8 @@ import { DeliveryComponent } from './delivery/delivery.component';
 import { DeliveryDetailComponent } from './delivery-detail/delivery-detail.component';
 import { CalificationComponent } from './calification/calification.component';
 import { CalificationDetailComponent } from './calification-detail/calification-detail.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { ServiceDetailComponent } from './service-detail/service-detail.component';
 
 @NgModule({
   declarations:
@@ -57,6 +59,8 @@ import { CalificationDetailComponent } from './calification-detail/calification-
   	DeliveryDetailComponent,
   	CalificationComponent,
   	CalificationDetailComponent,
+  	CalendarComponent,
+  	ServiceDetailComponent,
   ],
   imports: [
     CommonModule,

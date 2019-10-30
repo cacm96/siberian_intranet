@@ -41,8 +41,8 @@ displayedColumns: string[] = ['id','client','equipinfras','code','amount','start
   ) 
   {
     this.Delivery= [
-      {id:"1" ,client: "Anderson Diaz",equipinfras:"Lavadora",code:"1000",amount:"50000",startdate:"12-11-2019",enddate:"13-11-2019",services:"2",status:"executed",},
-      {id:"2" ,client: "Anderson Diaz",equipinfras:"Cocina",code:"2000",amount:"100000",startdate:"12-11-2019",enddate:"14-11-2019",services:"3",status:"executed",},
+      {id:"1" ,client: "Anderson Diaz",equipinfras:"Lavadora",code:"1000",amount:"50000",startdate:"12-11-2019",enddate:"13-11-2019",services:"2",status:"finalized",},
+      {id:"2" ,client: "Anderson Diaz",equipinfras:"Cocina",code:"2000",amount:"100000",startdate:"12-11-2019",enddate:"14-11-2019",services:"3",status:"finalized",},
     ];
 
   this.dataSource = new MatTableDataSource(this.Delivery);

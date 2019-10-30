@@ -51,6 +51,7 @@ export class DiagnosisComponent implements OnInit {
 		[
 	      {id:"1" ,client:"Anderson Diaz",equipinfras:"Lavadora",location:"Calle San Rafael",date:"10-11-2019",lender:"Maria Moreno",status:"diagnosticated",},
 	      {id:"1" ,client:"Anderson Diaz",equipinfras:"Cocina",location:"Calle San Rafael",date:"11-11-2019",lender:"Maria Moreno",status:"approved",},
+	      {id:"1" ,client:"Anderson Diaz",equipinfras:"Aire Acondicionado",location:"Calle San Rafael",date:"11-11-2019",lender:"Maria Moreno",status:"rejected",},
 	    ];
 
 		this.dataSource = new MatTableDataSource(this.Diagnosis);

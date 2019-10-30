@@ -71,9 +71,9 @@
 								<span *ngIf="row.status=='approved'" class="badge badge-primary">Aprobada</span>
 								<span *ngIf="row.status=='cancelled'" class="badge badge-danger">Rechazada</span>
 								<span *ngIf="row.status=='diagnosticated'" class="badge badge-warning">Diagnosticada</span>
-								<span *ngIf="row.status=='rejected'" class="badge badge-primary">Irreparable</span>
-								<span *ngIf="row.status=='finalized'" class="badge badge-primary">Finalizada</span>
-								<span *ngIf="row.status=='delete'" class="badge badge-primary">Cancelada</span>
+								<span *ngIf="row.status=='rejected'" class="badge badge-danger">Irreparable</span>
+								<span *ngIf="row.status=='finalized'" class="badge badge-success">Finalizada</span>
+								<span *ngIf="row.status=='delete'" class="badge badge-danger">Cancelada</span>
 							</td>
 						</ng-container>
 

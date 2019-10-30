@@ -82,7 +82,7 @@
                 </mat-list-item>
 
                 <mat-list-item>
-                  <h4 mat-line><span class="badge badge-gray">Aprobada. En espera por Diagnostico</span></h4><mat-icon>check_circle</mat-icon><mat-icon>cancel</mat-icon>
+                  <h4 mat-line><span class="badge badge-primary">Aprobada. En espera por Diagnostico</span></h4><mat-icon class="success">check_circle</mat-icon><mat-icon>cancel</mat-icon>
                 </mat-list-item>
 
                 <mat-list-item>
@@ -100,10 +100,13 @@
                   </mat-list-item>
                 </div>
                 <mat-list-item>
-                  <h4 mat-line><span class="badge badge-gray">Diagnosticada. Evaluando Presupuesto</span></h4><mat-icon>check_circle</mat-icon><mat-icon>cancel</mat-icon>
+                  <h4 mat-line><span class="badge badge-primary">Diagnosticada. Evaluando Presupuesto</span></h4><mat-icon class="success">check_circle</mat-icon><mat-icon>cancel</mat-icon>
                 </mat-list-item>
                 <mat-list-item>
                   <h4 mat-line><span class="badge badge-gray">Rechazada. No es posible aplicar un Servicio</span></h4><mat-icon>check_circle</mat-icon><mat-icon>cancel</mat-icon>
+                </mat-list-item>
+                <mat-list-item>
+                  <h4 mat-line><span class="badge badge-primary">Finalizada. <a [routerLink]="['/auth/client/service/detail/1']" class="title" >Servicio presupuestado</a></span></h4><mat-icon class="success">check_circle</mat-icon><mat-icon>cancel</mat-icon>
                 </mat-list-item>
               </mat-list>
             </div>

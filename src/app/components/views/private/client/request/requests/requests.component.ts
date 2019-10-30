@@ -55,6 +55,10 @@ export class RequestsComponent implements OnInit {
 		[
 	      {id:"1" ,client:"Anderson Diaz",equipinfras:"Lavadora",location:"Calle San Rafael",date:"10-11-2019",lender:"Maria Moreno",status:"requested",},
 	      {id:"1" ,client:"Anderson Diaz",equipinfras:"Cocina",location:"Calle San Rafael",date:"11-11-2019",lender:"Maria Moreno",status:"approved",},
+	      {id:"1" ,client:"Anderson Diaz",equipinfras:"Aire Acondicionado",location:"Calle San Rafael",date:"11-11-2019",lender:"Maria Moreno",status:"cancelled",},
+	      {id:"1" ,client:"Anderson Diaz",equipinfras:"Aire Acondicionado",location:"Calle San Rafael",date:"11-11-2019",lender:"Maria Moreno",status:"diagnosticated",},
+	      {id:"1" ,client:"Anderson Diaz",equipinfras:"Aire Acondicionado",location:"Calle San Rafael",date:"11-11-2019",lender:"Maria Moreno",status:"rejected",},
+	      {id:"1" ,client:"Anderson Diaz",equipinfras:"Aire Acondicionado",location:"Calle San Rafael",date:"11-11-2019",lender:"Maria Moreno",status:"finalized",},
 	    ];
 
 	    this.table();

@@ -7,7 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BugetDetailComponent implements OnInit {
 
-  constructor() { }
+	public serviceDetails:any[];
+	public serviceDetailsSelected:string="";
+
+  constructor()
+  {
+		this.serviceDetails= [
+			{id:"Reparación",name:"Reparación de motor"},
+			{id:"Mantenimiento",name:"Mantenimiento de motor"},
+		];
+  }
 
   ngOnInit() {
   }

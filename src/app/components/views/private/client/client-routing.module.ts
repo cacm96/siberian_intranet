@@ -9,6 +9,7 @@ import { SuggestionComponent } from './suggestion/suggestion.component';
 import { CalificationComponent } from './calification/calification.component';
 import { CalificationDetailComponent } from './calification-detail/calification-detail.component';
 import { IncidenceComponent } from './incidence/incidence.component';
+import { ServiceDetailComponent } from './service-detail/service-detail.component';
 
 const routes: Routes = [
 
@@ -16,6 +17,7 @@ const routes: Routes = [
 	{path: 'claim', component: ClaimComponent, canActivate: []},
 	{path: 'dashboard', component: DashboardComponent, canActivate: []},
 	{path: 'service', component: ServiceComponent, canActivate: []},
+	{path: 'service/detail/:id', component: ServiceDetailComponent, canActivate: []},
 	{path: 'suggestion', component: SuggestionComponent, canActivate: []},
 	{path: 'incidence', component: IncidenceComponent, canActivate: []},
 	{path: 'calification', component: CalificationComponent, canActivate: []},
