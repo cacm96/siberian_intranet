@@ -612,3 +612,14 @@ table {
 .mat-table thead th{
   color:#fff !important;
 }
+
+.main_report mat-card {
+  width: 700px;
+  height: 350px;
+}
+
+.main_report .grafica {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
