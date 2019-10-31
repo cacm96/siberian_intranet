@@ -34,6 +34,7 @@ import { NotifyDialogComponent } from './components/shared/notify-dialog/notify-
 
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { AddCalificationDialogComponent } from './components/shared/add-calification-dialog/add-calification-dialog.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     EditPhoneDialogComponent,
     AddPhoneDialogComponent,
     NotifyDialogComponent,
+    AddCalificationDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -92,7 +94,8 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     AddLocationDialogComponent,
     EditLocationDialogComponent,
     AddPhoneDialogComponent,
-    EditPhoneDialogComponent
+    EditPhoneDialogComponent,
+    AddCalificationDialogComponent
   ]
 })
 export class AppModule { }
