@@ -13,13 +13,13 @@
 					</div>
 				</div>
 				<hr>
-				<div>
+				<div *ngIf="categories">
 					<div class="row">
-						<div class="col-md-3">
-							<a [routerLink]="['/auth/client/catalog/category/1']">
+						<div class="col-md-3" *ngFor="let category of categories">
+							<a [routerLink]="['/auth/client/catalog/category',category.id]">
 								<mat-card class="servicio">
 									<mat-card-header class="titulo mat-card-header-primary">
-										<mat-card-title>Electrodomesticos</mat-card-title>
+										<mat-card-title>{{ category.name }}</mat-card-title>
 									</mat-card-header>
 									<mat-card-content class="mat_card_content">
 										<div class="row">

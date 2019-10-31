@@ -12,15 +12,6 @@ import { Global } from 'src/app/core/services/global';
 import { Revision } from 'src/app/models/revision';
 import { RevisionService } from 'src/app/core/services/client/revision.service';
 
-
-export interface RevisionR {
-id: string;
-equipinfras: string;
-location: string;
-date: string;
-lender: string;
-status: string;
-}
 @Component({
 	selector: 'sib-requests',
 	templateUrl: './requests.component.html',
@@ -29,14 +20,14 @@ status: string;
 export class RequestsComponent implements OnInit {
 	
 	public revision:any;
-	public revisions: any[];
+	public revisions: Array < Revision > = new Array < Revision > ();
 	public total:number=0;
 	public userID:string;
 	public message:string;
 	public failedConect:string;
 
-	displayedColumns: string[] = ['id','client', 'equipinfras','location','date','lender','status','delete'];
-	dataSource: MatTableDataSource<RevisionR>;
+	displayedColumns: string[] = ['id', 'equipinfras','location','date','lender','status','delete'];
+	dataSource: MatTableDataSource<Revision>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
 	@ViewChild(MatSort) sort: MatSort;
@@ -51,17 +42,6 @@ export class RequestsComponent implements OnInit {
 		private _location: Location
 		)
 	{
-		this.revisions =
-		[
-	      {id:"1" ,client:"Anderson Diaz",equipinfras:"Lavadora",location:"Calle San Rafael",date:"10-11-2019",lender:"Maria Moreno",status:"requested",},
-	      {id:"1" ,client:"Anderson Diaz",equipinfras:"Cocina",location:"Calle San Rafael",date:"11-11-2019",lender:"Maria Moreno",status:"approved",},
-	      {id:"1" ,client:"Anderson Diaz",equipinfras:"Aire Acondicionado",location:"Calle San Rafael",date:"11-11-2019",lender:"Maria Moreno",status:"cancelled",},
-	      {id:"1" ,client:"Anderson Diaz",equipinfras:"Aire Acondicionado",location:"Calle San Rafael",date:"11-11-2019",lender:"Maria Moreno",status:"diagnosticated",},
-	      {id:"1" ,client:"Anderson Diaz",equipinfras:"Aire Acondicionado",location:"Calle San Rafael",date:"11-11-2019",lender:"Maria Moreno",status:"rejected",},
-	      {id:"1" ,client:"Anderson Diaz",equipinfras:"Aire Acondicionado",location:"Calle San Rafael",date:"11-11-2019",lender:"Maria Moreno",status:"finalized",},
-	    ];
-
-	    this.table();
 
 	}
 

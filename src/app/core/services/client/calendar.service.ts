@@ -32,6 +32,10 @@ export class CalendarService extends HeaderService{
 		return this.http.get(this.url+"/lender/"+lenderId, {headers: this.header});
 	}
 
+	getAllLenderFreeRevision(date:any,turn:any): Observable<any>{
+		return this.http.get(this.url+"/lendersFree/"+date+"/"+turn, {headers: this.header});
+	}
+
 	create(calendar: Calendar): Observable<any>{
 		let params = JSON.stringify(calendar);
 		return this.http.post(this.url, params, {headers: this.header});
