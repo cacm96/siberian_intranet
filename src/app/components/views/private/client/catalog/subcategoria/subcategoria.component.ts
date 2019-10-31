@@ -47,16 +47,21 @@ export class SubcategoriaComponent implements OnInit {
 		(
 			response =>
 			{
-				if(response.category.subcategories.length>0)
-				{
-					this.subcategories = response.category.subcategories;
-				}
-				else
-				{
-					this.total = 0;
-				}
-				this.category = response.category;
-				console.log(this.subcategories);
+				if (response.status==true)
+		        {
+		        	this.category = response.category;
+		        	if(response.category.subcategories.length>0)
+					{
+						this.subcategories = response.category.subcategories;
+						console.log(this.subcategories);
+					}
+		        }
+		        else
+		        {
+		          this.total =0;
+		          this.message = response.message.text;
+		          console.log(this.message);
+		        }
 			},
 			error =>
 			{
@@ -75,11 +80,6 @@ export class SubcategoriaComponent implements OnInit {
 	goBack()
 	{ 
 		this._location.back(); 
-	}
-
-	SetNameSubcategory(name)
-	{
-		localStorage.setItem('subcategoryName',name);
 	}
 
 }

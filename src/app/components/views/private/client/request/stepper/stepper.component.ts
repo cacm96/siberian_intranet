@@ -7,18 +7,21 @@ import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import {Location} from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Global } from '../../../../../../core/services/global';
-import { User } from '../../../../../../models/user';
-import { UserService } from '../../../../../../core/services/admin/user.service';
-import { LocationService } from '../../../../../../core/services/admin/location.service';
-import { Revision } from '../../../../../../models/revision';
-import { RevisionService } from '../../../../../../core/services/client/revision.service';
+import { Global } from 'src/app/core/services/global';
 import { SnackBarService } from '../../../../../../core/services/snack-bar.service';
 import { DialogService } from '../../../../../../core/services/dialog.service';
-import * as $ from 'jquery';
-
 import { Pipe, PipeTransform } from '@angular/core';
 import { DatePipe } from '@angular/common';
+
+
+import { User } from 'src/app/models/user';
+import { UserService } from 'src/app//core/services/admin/user.service';
+import { LocationService } from 'src/app/core/services/admin/location.service';
+import { Revision } from 'src/app/models/revision';
+import { RevisionService } from 'src/app/core/services/client/revision.service';
+import { EquipinfrasService } from 'src/app/core/services/admin/equipinfras.service';
+import { VarietyDetailService } from 'src/app/core/services/admin/varietyDetail.service';
+import { CalendarService } from 'src/app/core/services/client/calendar.service';
 
 
 @Component({
@@ -29,38 +32,62 @@ import { DatePipe } from '@angular/common';
     provide: STEPPER_GLOBAL_OPTIONS, useValue: {showError: true}
   }]
 })
-export class StepperComponent implements OnInit {
+export class StepperComponent implements OnInit
+{
 
   public isDate:boolean=false;
+  public isVariety:boolean=false;
+  public isVarietyDetail:boolean=false;
+  public isTurn:boolean=false;
+
   public fecha:Date;
-  public requestParams:any;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
 
   public user: any;
   public revision:Revision;
+  public IdEquipinfras:any;
+  public equipinfras:any;
+  public varieties:any;
+  public variety:any;
+  public varietyDetails:any;
+  public varietyDetail:any;
   public location:any;
   public locationsUser:any;
-  public address:string;
-  public addressFull:string;
-  public description:string;
-  public failedConect:string;
-  public message:string;
-  public userID:string;
-  public IdVarietyDetail:string;
-  public turnText:string;
+  public lenders:any;
+
+  public varietySelected:string = "";
+  public varietyDetailSelected:string = "";
   public turns:any[];
 
+  public categoryName:string;
+  public subcategoryName:string
+  public equipinfrasName:string;
+  public varietyName:string;
+  public varietyDetailName:string;
+  public varietyDetailDescription:string;
+  public locationId:string;
+  public addressFull:string;
+  public descriptionProblem:string;
+  public userId:string;
+  public VarietyDetailId:string;
+  public turnText:string;
   public dateRevision:any;
   public turnSelected:string="";
   public lenderId:string="1";
   public typeRevision:string="revision";
+
+  public failedConect:string;
+  public message:string;
 
   constructor
   (
     private _userService: UserService,
     public _locationService: LocationService,
     public _revisionService: RevisionService,
+    private _equipinfrasService: EquipinfrasService,
+    public _varietyDetailService: VarietyDetailService,
+    public _calendarService:CalendarService,
     private snackBar: SnackBarService,
     private dialogService: DialogService,
     private _formBuilder: FormBuilder,
@@ -71,29 +98,26 @@ export class StepperComponent implements OnInit {
   {
 
     this.revision = new Revision();
-    console.log(this.revision);
-    this.turns= [
-    {id:"morning",name:"Mañana"},
-    {id:"afternoon",name:"Tarde"},
+    this.turns =
+    [
+      {id:"morning",name:"Mañana"},
+      {id:"afternoon",name:"Tarde"},
     ];
-
   }
 
   ngOnInit()
   {
-    this.IdVarietyDetail= localStorage.getItem('IdVarietyDetail');
-
     this._route.params.subscribe
     (
       params =>
       {
-        this.requestParams = JSON.parse(params.data);
-        console.log(this.requestParams);
-        this.userID= localStorage.getItem('resID');;
-        this.getUser(this.userID);
-        this.getLocationsUser(this.userID)
+        this.userId = localStorage.getItem('resID');
+        this.IdEquipinfras = localStorage.getItem('IdEquipinfras');
+        this.getUser(this.userId);
+        this.getLocationsUser(this.userId)
+        this.getEquipinfras(this.IdEquipinfras);
       }
-      );
+    );
 
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
@@ -104,12 +128,127 @@ export class StepperComponent implements OnInit {
 
   }
 
-  cambio(id){
+  getEquipinfras(id,event?)
+  {
+    this._equipinfrasService.getOne(id).subscribe
+    (
+      response =>
+      {
+        if (response.status==true)
+        {
+          this.equipinfras = response.equipinfras;
+          this.equipinfrasName = this.equipinfras.name;
+          this.subcategoryName = this.equipinfras.subcategory.name;
+          //this.categoryName = this.equipinfras.category.name;
+          this.varieties = response.equipinfras.varieties;
+
+          for (var i=0; i<this.varieties.length; i++)
+          {
+            if( this.varieties[i].id == event)
+            {
+              this.variety = response.equipinfras.varieties[i];
+              this.varietyName = this.variety.name;
+              this.varietyDetails = this.variety.varietyDetails;
+            }
+          }
+        }
+      },
+      error =>
+      {
+        console.log(<any>error);
+        if(error instanceof HttpErrorResponse)
+        {
+          if(error.status===0)
+          {
+            this.failedConect = Global.failed;
+          }
+        }
+      }
+      )
+  }
+
+  getVarietyDetail(id)
+  {
+    this._varietyDetailService.getOne(id).subscribe
+    (
+      response =>
+      {
+        if (response.status==true)
+        {
+          this.varietyDetail = response.varietyDetail;
+          this.varietyDetailName = this.varietyDetail.name;
+          this.varietyDetailDescription = this.varietyDetail.description;
+          console.log(this.varietyDetail);
+        }
+      },
+      error =>
+      {
+        console.log(<any>error);
+        if(error instanceof HttpErrorResponse)
+        {
+          if(error.status===0)
+          {
+            this.failedConect = Global.failed;
+          }
+        }
+      }
+      )
+  }
+
+  getLendersFree(date,turn)
+  {
+    this._calendarService.getAllLenderFreeRevision(date,turn).subscribe
+    (
+      response =>
+      {
+        if (response.status==true)
+        {
+          this.lenders = response.lenders;
+          console.log(this.lenders);
+        }
+      },
+      error =>
+      {
+        console.log(<any>error);
+        if(error instanceof HttpErrorResponse)
+        {
+          if(error.status===0)
+          {
+            this.failedConect = Global.failed;
+          }
+        }
+      }
+      )
+  }
+
+  changeVariety(event)
+  {
+    this.isVariety=true;
+    this.getEquipinfras(this.IdEquipinfras,event);
+  }
+
+  changeVarietyDetail(event)
+  {
+    this.isVarietyDetail=true;
+    this.getVarietyDetail(event);
+  }
+
+  changeLocation(id)
+  {
     this.getLocation(id);
   }
 
-  cambioturn(event){
-    console.log(event);
+  changeDate(type: string, event: MatDatepickerInputEvent<Date>)
+  {
+    this.isDate = true;
+    this.fecha = event.value;
+    this.dateRevision = event.value;
+  }
+
+  changeTurn(event)
+  {
+    this.isTurn = true;
+    this.getLendersFree(this.dateRevision,event);
     if(event=="morning")
     {
       this.turnText = "Mañana"
@@ -126,10 +265,8 @@ export class StepperComponent implements OnInit {
     (
       response =>
       {
-        console.log(response);
         this.location = response.location;
         this.addressFull = this.location.address;
-        console.log(this.location);
       },
       error =>
       {
@@ -203,11 +340,8 @@ export class StepperComponent implements OnInit {
       response =>
       {
         this.location = response;
-        console.log(this.location);
         this.createLocation(this.location);
-
-      }
-      );
+      });
 
   }
 
@@ -219,10 +353,9 @@ export class StepperComponent implements OnInit {
       {
         if(response.status==true)
         {
-          console.log(response);
           this.message  = response.message.text;
           this.snackBar.openSnackBar(this.message,'');
-          this.getLocationsUser(this.userID);
+          this.getLocationsUser(this.userId);
         }
       },
       error =>
@@ -232,19 +365,12 @@ export class StepperComponent implements OnInit {
       );
   }
 
-  addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
-    this.isDate = true;
-    console.log(this.isDate);
-    this.fecha = event.value;
-    console.log(this.fecha);
-  }
-
-  onConfirm(){
+  onConfirm()
+  {
     this.dialogService.openConfirmDialog('Recuerde que primero se debe realizar una revision antes de abordar el servicio, ¿Desea continuar con su solicitud?').afterClosed().subscribe(res=>{
       if (res==true)
       {
-        //this.register();
-        this._router.navigate(['/auth/client/request']);
+        this.register();
       }
       else
       {
@@ -255,10 +381,10 @@ export class StepperComponent implements OnInit {
 
   register()
   {
-      this.revision.UserId = parseInt(this.userID);
-      this.revision.VarietyDetailId = parseInt(this.IdVarietyDetail);
-      this.revision.LocationId = parseInt(this.address);
-      this.revision.description = this.description;
+      this.revision.UserId = parseInt(this.userId);
+      this.revision.VarietyDetailId = parseInt(this.VarietyDetailId);
+      this.revision.LocationId = parseInt(this.locationId);
+      this.revision.description = this.descriptionProblem;
       
       this.revision.calendars = [
         {
@@ -269,6 +395,8 @@ export class StepperComponent implements OnInit {
         }];
 
       console.log(this.revision);
+
+      /*
 
       this._revisionService.create(this.revision).subscribe
       (
@@ -313,6 +441,7 @@ export class StepperComponent implements OnInit {
           }
         }
       );
+      */
   }
 
 

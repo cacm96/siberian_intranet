@@ -13,13 +13,13 @@
 					</div>
 				</div>
 				<hr>
-				<div>
+				<div *ngIf="subcategories">
 					<div class="row">
-						<div class="col-md-3">
-							<a [routerLink]="['/auth/client/catalog/category/1/subcategory/1']">
+						<div class="col-md-3" *ngFor="let subcategory of subcategories">
+							<a [routerLink]="['/auth/client/catalog/category',category.id,'subcategory',subcategory.id]">
 								<mat-card class="servicio">
 									<mat-card-header class="titulo mat-card-header-primary">
-										<mat-card-title>Electrodemesticos</mat-card-title>
+										<mat-card-title>{{ category.name }}</mat-card-title>
 									</mat-card-header>
 									<mat-card-content class="mat_card_content">
 										<div class="row">
@@ -27,7 +27,7 @@
 												<img src="../../../../../../../assets/img/category/Electrodomesticos.png" alt="" class="card-img-top">
 												<br>
 												<br>
-												<p class="text-center"><b>Linea Blanca</b></p>
+												<p class="text-center"><b>{{ subcategory.name }}</b></p>
 											</div>
 										</div>
 									</mat-card-content>
