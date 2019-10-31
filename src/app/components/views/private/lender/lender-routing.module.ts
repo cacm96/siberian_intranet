@@ -19,19 +19,23 @@ import { DeliveryComponent } from './delivery/delivery.component';
 import { DeliveryDetailComponent } from './delivery-detail/delivery-detail.component';
 import { CalificationComponent } from './calification/calification.component';
 import { CalificationDetailComponent } from './calification-detail/calification-detail.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { ServiceDetailComponent } from './service-detail/service-detail.component';
 
 
 const routes: Routes = [
 
 	{path: '', component: LenderComponent, canActivate: []},
 	{path: 'dashboard', component: DashboardComponent, canActivate: []},
+	{path: 'calendar', component: CalendarComponent, canActivate: []},
 	{path: 'request', component: RequestComponent, canActivate: []},
 	{path: 'request/detail/:id', component: RequestDetailComponent, canActivate: []},
 	{path: 'service', component: ServiceComponent, canActivate: []},
+	{path: 'service/detail/:id', component: ServiceDetailComponent, canActivate: []},
 	{path: 'diagnosis', component:DiagnosisComponent, canActivate: []},
 	{path: 'diagnosis/detail/:id', component: DiagnosisDetailComponent, canActivate: []},
     {path: 'budget', component:BudgetComponent, canActivate: []},
-    {path: 'buget/detail/:id', component: BugetDetailComponent, canActivate: []},
+    {path: 'budget/detail/:id', component: BugetDetailComponent, canActivate: []},
     {path: 'execute', component:ExecuteComponent, canActivate: []},
     {path: 'execute/detail/:id', component: ExecuteDetailComponent, canActivate: []},
     {path: 'delivery', component: DeliveryComponent, canActivate: []},

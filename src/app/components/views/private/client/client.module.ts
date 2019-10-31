@@ -21,6 +21,7 @@ import { SuggestionComponent } from './suggestion/suggestion.component';
 import { IncidenceComponent } from './incidence/incidence.component';
 import { CalificationComponent } from './calification/calification.component';
 import { CalificationDetailComponent } from './calification-detail/calification-detail.component';
+import { ServiceDetailComponent } from './service-detail/service-detail.component';
 
 @NgModule({
   declarations:
@@ -33,6 +34,7 @@ import { CalificationDetailComponent } from './calification-detail/calification-
   	IncidenceComponent,
   	CalificationComponent,
   	CalificationDetailComponent,
+  	ServiceDetailComponent,
   ],
   imports: [
     CommonModule,

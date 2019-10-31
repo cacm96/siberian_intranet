@@ -1,18 +1,12 @@
 <div class="main_request_detail">
 
-  <div class="container" *ngIf="revision">
+  <div class="container">
 
     <div class="row">
       <div class="col-sm-12">
         <h4 class="titulo text-center">
           Solicitud
-          <span *ngIf="revision.status=='requested'" class="badge badge-dark">Solicitada</span>
-          <span *ngIf="revision.status=='approved'" class="badge badge-primary">Aprobada</span>
-          <span *ngIf="revision.status=='cancelled'" class="badge badge-danger">Rechazada</span>
-          <span *ngIf="revision.status=='diagnosticated'" class="badge badge-warning">Diagnosticada</span>
-          <span *ngIf="revision.status=='rejected'" class="badge badge-warning">Irreparable</span>
-          <span *ngIf="revision.status=='finalized'" class="badge badge-success">Finalizada</span>
-          <span *ngIf="revision.status=='deleted'" class="badge badge-warning">Cancelada</span>
+          <span class="badge badge-dark">Solicitada</span>
         </h4>
       </div>
     </div>
@@ -30,7 +24,7 @@
         <mat-card>
           <mat-card-header class="titulo border-top-danger">
             <mat-card-title>
-              Código Solicitud {{revision.id}}
+              Código Solicitud 1
             </mat-card-title>
           </mat-card-header>
 
@@ -38,22 +32,22 @@
             <div class="col-sm-7">
               <mat-list>
                 <h3 mat-subheader>Datos de la Revision</h3>
-                <mat-list-item><h4 mat-line><b>Nombre Solicitante: </b>{{ revision.user.firstName }} {{ revision.user.lastName }}</h4></mat-list-item>
-                <mat-list-item><h4 mat-line><b>Dirección: </b>{{ revision.location.address }}</h4></mat-list-item>
-                <mat-list-item><h4 mat-line><b>Fecha de la Solicitud: </b>{{ revision.createdAt | date: 'dd/MM/yyyy' }}</h4></mat-list-item>
-                <mat-list-item><h4 mat-line><b>Fecha de la Revision: </b>{{ revision.createdAt | date: 'dd/MM/yyyy' }}</h4></mat-list-item>
-                <mat-list-item><h4 mat-line><b>Descripción del Problema: </b>{{ revision.description }}</h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Nombre Solicitante: </b>Anderson Diaz</h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Dirección: </b>Calle Cabuadre</h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Fecha de la Solicitud: </b>30-10-2019</h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Fecha de la Revision: </b>02-11-2019</h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Descripción del Problema: </b>Se daño el motor</h4></mat-list-item>
                 <mat-list-item><h4 mat-line><b>Prestador Asignado: </b>Maria Moreno</h4></mat-list-item>
-                <mat-list-item><h4 mat-line><b>Precio: </b>{{ revision.price }} Bs.S</h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Precio: </b>50000 Bs.S</h4></mat-list-item>
               </mat-list>
             </div>
 
             <div class="col-sm-5">
               <mat-list>
                 <h3 mat-subheader>Datos del Equipo</h3>
-                <mat-list-item><h4 mat-line><b>Equipo: </b></h4></mat-list-item>
-                <mat-list-item><h4 mat-line><b>Marca: </b></h4></mat-list-item>
-                <mat-list-item><h4 mat-line><b>Modelo: </b>{{ revision.varietyDetail.name }}</h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Equipo: </b> Lavadora</h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Marca: </b>LG</h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Modelo: </b>F900</h4></mat-list-item>
                 <mat-list-item><h4 mat-line><b>Imagen: </b></h4></mat-list-item>
                 <mat-card class="card_img imgRequest">
                   <mat-card-content class="mat_card_content">
@@ -84,24 +78,11 @@
                 <h3 mat-subheader>Status</h3>
 
                 <mat-list-item>
-                  <h4 mat-line>
-                    <span [ngClass]="{'badge badge-primary': revision.status=='requested' || revision.status=='approved' || revision.status=='diagnosticate'}">
-                      Solicitada. En espera por Aprobar
-                    </span>
-                  </h4>
-                  <mat-icon [ngClass]="{'success': revision.status=='requested' || revision.status=='approved' || revision.status=='diagnosticate'}">check_circle</mat-icon>
-                  <mat-icon [ngClass]="{'danger': revision.status=='cancelled' || revision.status=='rejected' }">cancel</mat-icon>
+                  <h4 mat-line><span class="badge badge-primary">Solicitada. En espera por Aprobar</span></h4><mat-icon class="success">check_circle</mat-icon><mat-icon>cancel</mat-icon>
                 </mat-list-item>
 
-
                 <mat-list-item>
-                  <h4 mat-line>
-                    <span [ngClass]="{'badge badge-primary': revision.status=='approved' || revision.status=='diagnosticate', ' badge-gray': revision.status=='requested'}">
-                      Aprobada. En espera de Diagnostico
-                    </span>
-                  </h4>
-                  <mat-icon [ngClass]="{'success': revision.status=='approved' || revision.status=='diagnosticate'}">check_circle</mat-icon>
-                  <mat-icon [ngClass]="{'danger': revision.status=='cancelled' || revision.status=='rejected' }">cancel</mat-icon>
+                  <h4 mat-line><span class="badge badge-primary">Aprobada. En espera por Diagnostico</span></h4><mat-icon class="success">check_circle</mat-icon><mat-icon>cancel</mat-icon>
                 </mat-list-item>
 
                 <mat-list-item>
@@ -111,18 +92,21 @@
                   <mat-list-item>
                     <span class="ml-3 badge badge-gray">Motivo 1</span>
                   </mat-list-item>
-                    <mat-list-item>
-                      <span class="ml-3 badge badge-gray">Motivo 2</span>
-                    </mat-list-item>
-                    <mat-list-item>
-                      <span class="ml-3 badge badge-gray">Motivo 3</span>
-                    </mat-list-item>
+                  <mat-list-item>
+                    <span class="ml-3 badge badge-gray">Motivo 2</span>
+                  </mat-list-item>
+                  <mat-list-item>
+                    <span class="ml-3 badge badge-gray">Motivo 3</span>
+                  </mat-list-item>
                 </div>
                 <mat-list-item>
-                  <h4 mat-line><span class="badge badge-gray">Diagnosticada. Evaluando Presupuesto</span></h4><mat-icon>check_circle</mat-icon><mat-icon>cancel</mat-icon>
+                  <h4 mat-line><span class="badge badge-primary">Diagnosticada. Evaluando Presupuesto</span></h4><mat-icon class="success">check_circle</mat-icon><mat-icon>cancel</mat-icon>
                 </mat-list-item>
                 <mat-list-item>
                   <h4 mat-line><span class="badge badge-gray">Rechazada. No es posible aplicar un Servicio</span></h4><mat-icon>check_circle</mat-icon><mat-icon>cancel</mat-icon>
+                </mat-list-item>
+                <mat-list-item>
+                  <h4 mat-line><span class="badge badge-primary">Finalizada. <a [routerLink]="['/auth/client/service/detail/1']" class="title" >Servicio presupuestado</a></span></h4><mat-icon class="success">check_circle</mat-icon><mat-icon>cancel</mat-icon>
                 </mat-list-item>
               </mat-list>
             </div>
@@ -131,175 +115,5 @@
       </div>
     </div>
 
-      <br>
-
-    <div *ngIf="revision.status=='diagnosticated'">
-      <div class="row">
-        <div class="col-sm-12">
-          <h4 class="titulo text-center">
-            <h4 class="text-center">Diagnostico</h4>
-          </h4>
-        </div>
-      </div>
-      <hr>
-      
-      <div class="row">
-        <div class="col-sm-12">
-          <mat-card>
-            <mat-card-header class="titulo border-top-danger">
-              <mat-card-title>
-                Diagnostico
-              </mat-card-title>
-            </mat-card-header>
-
-            <div class="row">
-              <div class="col-sm-12">
-                <mat-list>
-                  <h3 mat-subheader>Resumen</h3>
-                  <div>
-                    <mat-list-item><h4 mat-line><b>Diagnostico: </b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque illo eaque amet quaerat, magnam recusandae, quis qui ex! Nihil officiis quae laudantium pariatur quis reiciendis veritatis officia nostrum sint eaque.</h4></mat-list-item>
-                    <mat-list-item><h4 mat-line><b>Perdida Total:</b> Si</h4></mat-list-item>
-                  </div>
-                </mat-list>
-              </div>
-            </div>
-          </mat-card>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-12">
-          <h4 class="titulo text-center">
-            <h4 class="text-center">Servicios</h4>
-          </h4>
-        </div>
-      </div>
-      <hr>
-
-      <div class="row">
-        <div class="col-sm-12">
-          <mat-card>
-            <mat-card-header class="titulo border-top-danger">
-              <mat-card-title>
-                Reparación de motor
-              </mat-card-title>
-            </mat-card-header>
-
-            <div class="row">
-              <div class="col-sm-12">
-                <mat-list>
-                  <h3 mat-subheader>Resumen</h3>
-                  <div *ngIf="revision.status=='diagnosticated'">
-                    <mat-list-item><h4 mat-line><b>Tipo de Servicio: </b> Reparación</h4></mat-list-item>
-                    <mat-list-item><h4 mat-line><b>Componente Asociado:</b> Motor</h4></mat-list-item>
-                    <mat-list-item><h4 mat-line><b>Descripción del Servicio:</b> Reparación de motor de lavadora</h4></mat-list-item>
-                    <mat-list-item><h4 mat-line><b>Precio Estimado:</b> 1000</h4></mat-list-item>
-                  </div>
-                </mat-list>
-              </div>
-            </div>
-          </mat-card>
-        </div>
-      </div>
-
-      <br>
-
-      <div class="row">
-        <div class="col-sm-12">
-          <h4 class="titulo text-center">
-            <h4 class="text-center">Fotos de la Revisión</h4>
-          </h4>
-        </div>
-      </div>
-      <hr>
-
-      <div class="row">
-        <div class="col-sm-12">
-          <mat-card>
-            <mat-card-header class="titulo border-top-danger">
-              <mat-card-title>
-                Fotos
-              </mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-
-              <div class="container">
-                <div class="row" *ngIf="revision.status=='diagnosticated'">
-                  <div class="col-sm-3">
-                    <mat-card class="card_img">
-                      <mat-card-content class="mat_card_content">
-                        <img src="../../../../assets/img/request/revision_1.jpg" alt="" class="card-img-top">
-                      </mat-card-content>
-                    </mat-card>
-                  </div>
-                  <div class="col-sm-3">
-                    <mat-card class="card_img">
-                      <mat-card-content class="mat_card_content">
-                        <img src="../../../../assets/img/request/revision_2.jpg" alt="" class="card-img-top">
-                      </mat-card-content>
-                    </mat-card>
-                  </div>
-                  <div class="col-sm-3">
-                    <mat-card class="card_img">
-                      <mat-card-content class="mat_card_content">
-                        <img src="../../../../assets/img/request/revision_3.jpg" alt="" class="card-img-top">
-                      </mat-card-content>
-                    </mat-card>
-                  </div>
-                </div>
-              </div>
-            </mat-card-content>
-          </mat-card>
-        </div>
-      </div>
-
-      <br>
-
-      <div class="row">
-        <div class="col-sm-12">
-          <h4 class="titulo text-center">
-            <h4 class="text-center">Presupuesto</h4>
-          </h4>
-        </div>
-      </div>
-      <hr>
-
-      <div class="row">
-        <div class="col-sm-12">
-          <mat-card>
-            <mat-card-header class="titulo border-top-danger">
-              <mat-card-title>
-                Presupuesto
-              </mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <div class="row">
-                <div class="col-sm-12">
-                  <mat-list>
-                    <h3 mat-subheader>Resumen</h3>
-                    <div *ngIf="revision.status=='diagnosticated'">
-                      <mat-list-item><h4 mat-line><b>Personal Adicional: </b> 500</h4></mat-list-item>
-                      <mat-list-item><h4 mat-line><b>Servicios:</b> 1000</h4></mat-list-item>
-                      <mat-list-item><h4 mat-line><b>Total:</b> 1500</h4></mat-list-item>
-                      <mat-list-item><h4 mat-line><b>Status:</b> En espera</h4></mat-list-item>
-                    </div>
-                  </mat-list>
-                </div>
-              </div>
-            </mat-card-content>
-          </mat-card>
-        </div>
-      </div>
-      
-      <br>
-      <div class="row">
-        <div class="col-sm-1">
-          <button mat-raised-button color="primary" class="mr-3">Aceptar</button>
-        </div>
-        <div class="col-sm-1">
-          <button mat-raised-button color="primary">Rechazar</button>
-        </div>
-      </div>
-
-    </div>
   </div>
 </div>

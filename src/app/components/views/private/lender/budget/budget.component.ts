@@ -1,13 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { COMMA, ENTER} from '@angular/cdk/keycodes';
-import { ElementRef, ViewChild} from '@angular/core';
-import { FormControl} from '@angular/forms';
-import { MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
-import { MatChipInputEvent} from '@angular/material/chips';
-import { Observable} from 'rxjs';
-import { map, startWith} from 'rxjs/operators';
+import { Component, OnInit , ViewChild} from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
+import { DialogService } from '../../../../../core/services/dialog.service';
+import { SnackBarService } from '../../../../../core/services/snack-bar.service';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import {Location} from '@angular/common';
 
+export interface BudgetData {
+  id: string;
+  client:string;
+  equipinfras: string;
+  location: string;
+  date: string;
+  lender: string;
+  status: string;
+  }
+  
 @Component({
   selector: 'sib-budget',
   templateUrl: './budget.component.html',
@@ -15,79 +24,50 @@ import {Location} from '@angular/common';
 })
 export class BudgetComponent implements OnInit {
 
-  visible = true;
-  selectable = true;
-  removable = true;
-  addOnBlur = true;
-  separatorKeysCodes: number[] = [ENTER, COMMA];
-  serviceCtrl = new FormControl();
-  filteredServices: Observable<string[]>;
-  services: any = [];
-  allservices: any = [
-  {
-    id: 1,
-    name: 'Reparar'
-  },
-  {
-    id: 2,
-    name: 'Pintar'
-  },
-  {
-    id: 3,
-    name: 'Lijar'
-  }
-];
-  @ViewChild('serviceInput') serviceInput: ElementRef; 
+  public Budget:any[];
+displayedColumns: string[] = ['id','client','equipinfras','location','date','lender','status'];
+  dataSource: MatTableDataSource<BudgetData>;
+  
+@ViewChild(MatPaginator) paginator: MatPaginator;
+@ViewChild(MatSort) sort: MatSort;
   
   
   
-  constructor(private _location: Location) {
+  constructor(
+    private dialogService: DialogService,
+    private snackBar: SnackBarService,
+    private _route: ActivatedRoute,
+		private _router: Router,
+		private _location: Location
+    ) 
+    {
 
-    this.filteredServices = this.serviceCtrl.valueChanges.pipe(
-      startWith(null),
-      map((service: string | null) => service ? this._filter(service) : this.allservices.slice()));
+      this.Budget= [
+        {id:"1" ,client:"Anderson diaz",equipinfras:"Lavadora",location:"Calle San Rafael",date:"10-11-2019",lender:"Maria Moreno",status:"diagnosticated",},
+	      {id:"2" ,client:"Anderson diaz",equipinfras:"Cocina",location:"Calle San Rafael",date:"11-11-2019",lender:"Maria Moreno",status:"finalized",},
+        {id:"1" ,client:"Anderson Diaz",equipinfras:"Aire Acondicionado",location:"Calle San Rafael",date:"11-11-2019",lender:"Maria Moreno",status:"finalized",},
+      ];
+  
+    this.dataSource = new MatTableDataSource(this.Budget);
    }
 
   ngOnInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
-  add(event: MatChipInputEvent): void {
-    debugger
-    const input = event.input;
-    const value = event.value;
-    // Add our service
-    if ((value || '').trim()) {
-      this.services.push({
-        id:Math.random(),
-        name:value.trim()
-      });
-    }
+  applyFilter(filterValue: string) {
+		this.dataSource.filter = filterValue.trim().toLowerCase();
 
-    // Reset the input value
-    if (input) {
-      input.value = '';
-    }
+		if (this.dataSource.paginator) {
+		  this.dataSource.paginator.firstPage();
+		}
+	}
 
-    this.serviceCtrl.setValue(null);
-  }
-
-  remove(service, indx): void {
-    this.services.splice(indx, 1);
-  }
-
-  selected(event: MatAutocompleteSelectedEvent): void {
-    this.services.push(event.option.value);
-    this.serviceInput.nativeElement.value = '';
-    this.serviceCtrl.setValue(null);
-  }
-
-  private _filter(value: any): any[] {
-    
-    return this.allservices.filter(service => service.name.toLowerCase().includes(value.toString().toLowerCase()));
-  }
-
-  goBack() {
-    this._location.back();
-  }
+	
+  goBack()
+	{ 
+		this._location.back(); 
+	}
 }
 

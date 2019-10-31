@@ -211,7 +211,7 @@ span.badge-success{
   background-color: #94ce9b!important;
 }
 span.badge-warning{
-  background-color: #d0667a!important;
+  background-color: #185a89!important;
 }
 span.badge-danger{
   background-color: #D13232!important;
@@ -611,4 +611,15 @@ table {
 }
 .mat-table thead th{
   color:#fff !important;
+}
+
+.main_report mat-card {
+  width: 700px;
+  height: 350px;
+}
+
+.main_report .grafica {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

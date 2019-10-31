@@ -1,54 +1,73 @@
-<div class="main_admin_dashboard" *ngIf="total<=0">
+<div class="main_dashboard">
+  <div class="container">
 
-      <!--  <div *ngIf="company?.length>0">-->
-            <div class="col-md-6">
-                <mat-card>
-                    <div class="container">
-                        <canvas id="linea"></canvas>
-                    </div>
-                </mat-card>
-            </div>
-                                            
-            <div class="col-md-6">
-                <mat-card>
-                    <div class="container">
-                        <canvas id="barra1"></canvas>
-                    </div>
-                </mat-card>
-            </div>          
-                            
-            <br>
-                            
-            <div class="col-md-6">
-                <mat-card>
-                    <div class="container">
-                        <canvas id="barra2"></canvas>
-                    </div>
-                </mat-card>
-            </div>     
-                
-            <div class="col-md-6">
-                <mat-card>
-                    <div class="container">                
-                        <canvas id="linea2"></canvas>
-                    </div>
-                </mat-card>
-            </div>        
+    <div class="row">
 
-    <!--  </div>-->
+      <div class="col-sm-6">
+        <a [routerLink]="['/auth/admin/report']">
+          <mat-card class="mat-card">
+            <mat-card-header>
+              <mat-card-title><b>Solicitudes</b></mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="mat_card_content">
+              <mat-icon class="dashboard_icon text-center">insert_chart</mat-icon>
+              <h3 class="text-center">Reportes</h3>
+            </mat-card-content>
+          </mat-card>
+        </a>
+      </div>
+
+      <div class="col-sm-6">
+        <a [routerLink]="['/auth/admin/report']">
+          <mat-card class="mat-card">
+            <mat-card-header>
+              <mat-card-title><b>Servicios</b></mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="mat_card_content">
+              <mat-icon class="dashboard_icon text-center">insert_chart</mat-icon>
+              <h3 class="text-center">Reportes</h3>
+            </mat-card-content>
+          </mat-card>
+        </a>
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="col-sm-6">
+        <a [routerLink]="['/auth/admin/report']">
+          <mat-card class="mat-card">
+            <mat-card-header>
+              <mat-card-title><b>Reclamos</b></mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="mat_card_content">
+              <mat-icon class="dashboard_icon text-center">insert_chart</mat-icon>
+              <h3 class="text-center">Reportes</h3>
+            </mat-card-content>
+          </mat-card>
+        </a>
+      </div>
+
+      <div class="col-sm-6">
+        <a [routerLink]="['/auth/admin/report']">
+          <mat-card class="mat-card">
+            <mat-card-header>
+              <mat-card-title><b>Incidencias</b></mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="mat_card_content">
+              <mat-icon class="dashboard_icon text-center">insert_chart</mat-icon>
+              <h3 class="text-center">Reportes</h3>
+            </mat-card-content>
+          </mat-card>
+        </a>
+      </div>
+
+    </div>
+
+
+  </div>
+
+
 </div>
-
-        <div class="main_admin_dashboard" *ngIf="total>0">
-            <br>
-            <h3>Bienvenido a Siberian</h3>
-            <br>
-            <h4>Para comenzar registra a tu empresa</h4>
-            <br>
-            <a [routerLink]="['/auth/admin/configurations/company/create']">
-                <button mat-button> Comienza aquí! </button>
-            </a>
-        </div>
-    
-    
-                                               
 

@@ -1,68 +1,74 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
+import { DialogService } from '../../../../../core/services/dialog.service';
+import { SnackBarService } from '../../../../../core/services/snack-bar.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import {Location} from '@angular/common';
-import { HttpErrorResponse } from '@angular/common/http';
-import { Global } from 'src/app//core/services/global';
-import { Revision } from 'src/app/models/revision';
-import { RevisionService } from 'src/app/core/services/client/revision.service';
-import { ServiceOrder } from 'src/app//models/serviceOrder';
-import { ServiceOrderService } from 'src/app/core/services/client/serviceOrder.service';
 
+export interface ExecuteData {
+  id: string;
+  client:string;
+  equipinfras: string;
+  code: string;
+  date: string;
+  amount: string;
+  startdate: string;
+  enddate: string;
+  services: string;
+  status: string;
+  }
 @Component({
   selector: 'sib-service',
   templateUrl: './service.component.html',
   styleUrls: ['./service.component.scss']
 })
 export class ServiceComponent implements OnInit {
-	public serviceOrders: any;
-	public userID:string;
-	public message: string;
-	public failedConect: string;
-
-	constructor
-	(
-		private _revisionService: RevisionService,
-		private _serviceorderService: ServiceOrderService,
-		private _route: ActivatedRoute,
+  public Execute:any[];
+displayedColumns: string[] = ['id','client','equipinfras','code','amount','startdate','enddate','services','status'];
+  dataSource: MatTableDataSource<ExecuteData>;
+  
+@ViewChild(MatPaginator) paginator: MatPaginator;
+@ViewChild(MatSort) sort: MatSort;
+  
+  constructor(
+    private dialogService: DialogService,
+    private snackBar: SnackBarService,
+    private _route: ActivatedRoute,
+		private _router: Router,
 		private _location: Location
-		) { }
+  ) 
+  
+  { 
+    this.Execute= [
+      {id:"1" ,client: "Anderson Diaz",equipinfras:"Lavadora",code:"1000",amount:"50000",startdate:"12-11-2019",enddate:"13-11-2019",services:"2",status:"budgeted",},
+      {id:"2" ,client: "Anderson Diaz",equipinfras:"Cocina",code:"2000",amount:"100000",startdate:"12-11-2019",enddate:"14-11-2019",services:"3",status:"approved",},
+      {id:"2" ,client: "Anderson Diaz",equipinfras:"Cocina",code:"2000",amount:"100000",startdate:"12-11-2019",enddate:"14-11-2019",services:"3",status:"rejected",},
+      {id:"2" ,client: "Anderson Diaz",equipinfras:"Cocina",code:"2000",amount:"100000",startdate:"12-11-2019",enddate:"14-11-2019",services:"3",status:"finalized",},
+      {id:"2" ,client: "Anderson Diaz",equipinfras:"Cocina",code:"2000",amount:"100000",startdate:"12-11-2019",enddate:"14-11-2019",services:"3",status:"warranty",},
 
-	ngOnInit() {
-		this.userID = localStorage.getItem('resID');
-		this.getServiceOrders(this.userID);
-	}
+    ];
 
-	getServiceOrders(id) {
-		this._serviceorderService.getServiceOrderUser(id).subscribe
-		(
-			response => {
-				if (response.status==true)
-				{
-					this.serviceOrders = response.serviceOrders;
-					console.log(this.serviceOrders);
-				}
-				else
-				{
-					this.serviceOrders = [];
-					this.message = response.message.text;
-					console.log(this.message);
-				}
-			},
-			error => {
-				console.log(<any>error);
-				if (error instanceof HttpErrorResponse) {
-					if (error.status === 0) {
-						this.failedConect = Global.failed;
-					}
-				}
-			}
-			)
+  this.dataSource = new MatTableDataSource(this.Execute);
+  }
+
+  ngOnInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  applyFilter(filterValue: string) {
+		this.dataSource.filter = filterValue.trim().toLowerCase();
+
+		if (this.dataSource.paginator) {
+		  this.dataSource.paginator.firstPage();
+		}
 	}
 
 
-	goBack()
+  goBack()
 	{ 
 		this._location.back(); 
 	}
-
 }

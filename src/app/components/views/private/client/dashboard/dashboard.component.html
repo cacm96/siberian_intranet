@@ -32,9 +32,11 @@
             <mat-card-content class="mat_card_content">
               <mat-icon class="dashboard_icon text-center">assignment</mat-icon>
               <h3 class="text-center">Servicios</h3>
-              <span class="text-center small mr-3">Solicitados: <span class="badge badge-primary">{{totalServiceOrderBudgeted}}</span></span>
+              <span class="text-center small mr-3">Presupuestados: <span class="badge badge-primary">{{totalServiceOrderBudgeted}}</span></span>
               <span class="text-center small mr-3">Aprobados: <span class="badge badge-primary">{{totalServiceOrderApproved}}</span></span>
-              <span class="text-center small">Garantía: <span class="badge badge-primary">{{totalServiceOrderWarranty}}</span></span>
+              <span class="text-center small mr-3">Rechazados: <span class="badge badge-primary">{{totalServiceOrderRejected}}</span></span>
+              <span class="text-center small mr-3">Finalizados: <span class="badge badge-primary">{{totalServiceOrderFinalized}}</span></span>
+              <span class="text-center small">En Garantía: <span class="badge badge-primary">{{totalServiceOrderWarranty}}</span></span>
             </mat-card-content>
           </mat-card>
         </a>
@@ -45,7 +47,7 @@
     <div class="row">
 
       <div class="col-sm-6">
-        <a [routerLink]="['/auth/client/request']">
+        <a [routerLink]="['/auth/client/incidence']">
           <mat-card class="mat-card">
             <mat-card-header>
               <mat-card-title><b>Incidencias</b></mat-card-title>
@@ -53,24 +55,13 @@
             <mat-card-content class="mat_card_content">
               <mat-icon class="dashboard_icon text-center">warning</mat-icon>
               <h3 class="text-center">Incidencias</h3>
-              <span class="text-center small mr-3">Procesadas: <span class="badge badge-primary">3</span></span>
-              <span class="text-center small">Resueltas: <span class="badge badge-primary">3</span></span>
+              <span class="text-center small mr-3">Reportadas: <span class="badge badge-primary">3</span></span>
             </mat-card-content>
-
-          <!-- <mat-card-actions class="boton">
-            <div class="container">
-              <div class="row justify-content-center">
-                <div class="text-center">
-                  <button [routerLink]="['/auth/client/catalog']" mat-button>Ver Incidencias</button>
-                </div>
-              </div>
-            </div>
-          </mat-card-actions> -->
         </mat-card>
       </a>
     </div>
     <div class="col-sm-6">
-      <a [routerLink]="['/auth/client/service']">
+      <a [routerLink]="['/auth/client/claim']">
         <mat-card class="mat-card">
           <mat-card-header>
             <mat-card-title><b>Reclamos</b></mat-card-title>
@@ -78,17 +69,8 @@
           <mat-card-content class="mat_card_content">
             <mat-icon class="dashboard_icon text-center">sentiment_dissatisfied</mat-icon>
             <h3 class="text-center">Reclamos</h3>
-            <span class="text-center small mr-3">Procesados: <span class="badge badge-primary">3</span></span>
+            <span class="text-center small mr-3">Reportados: <span class="badge badge-primary">3</span></span>
           </mat-card-content>
-          <!-- <mat-card-actions class="boton">
-            <div class="container">
-              <div class="row justify-content-center">
-                <div class="text-center">
-                  <button [routerLink]="['/auth/client/service']" mat-button>Ver Reclamos</button>
-                </div>
-              </div>
-            </div>
-          </mat-card-actions> -->
         </mat-card>
       </a>
     </div>

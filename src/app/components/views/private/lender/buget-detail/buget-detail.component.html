@@ -1,116 +1,111 @@
+<div class="main_request_detail">
 
-<div class="container">
+  <div class="container">
+
     <div class="row">
-      <div class="col-sm-8 offset-2">
-        <div class="row">
-          <div class="col-sm-12">
-            <h2 class="text-center">Presupuesto</h2>
-          </div>
-        </div>
-        <hr>
-        
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="example-container">
-               
-                  
-
-                  <mat-form-field class="example-chip-list">
-                      <mat-chip-list #chipList aria-label="Service selection">
-                        <mat-chip
-                          *ngFor="let service of services"
-                          [selectable]="selectable"
-                          [removable]="removable"
-                          (removed)="remove(service)"
-                          color="primary" selected="true">
-                          {{service.name}}
-                          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-                        </mat-chip>
-                        <input
-                          placeholder="Nuevo Servicio..."
-                          #serviceInput
-                          [formControl]="serviceCtrl"
-                          [matAutocomplete]="auto"
-                          [matChipInputFor]="chipList"
-                          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                          [matChipInputAddOnBlur]="addOnBlur"
-                          (matChipInputTokenEnd)="add($event)">
-                      </mat-chip-list>
-                      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-                        <mat-option *ngFor="let service of filteredServices  | async" [value]="service">
-                          {{service.name}}
-                        </mat-option>
-                      </mat-autocomplete>
-                    </mat-form-field>
-                    
-                    <mat-label>Recursos</mat-label>
-                    <br>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <mat-checkbox>Martillo</mat-checkbox>
-                          <div class="col-sm-6 ml-auto">
-                            <mat-form-field>
-                                <input matInput id="inputrecurso" name="recurso" placeholder="Cantidad">
-                            </mat-form-field>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <mat-checkbox>Destornillador</mat-checkbox>
-                          <div class="col-sm-6 ml-auto">
-                            <mat-form-field>
-                                <input matInput id="inputrecurso" name="recurso" placeholder="Cantidad">
-                            </mat-form-field>
-                        </div>
-                      </div>
-                    </div>
-                       
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <mat-checkbox>Brocha</mat-checkbox>
-                          <div class="col-sm-6 ml-auto">
-                            <mat-form-field>
-                                <input matInput id="inputrecurso" name="recurso" placeholder="Cantidad">
-                            </mat-form-field>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <mat-checkbox>Clavos</mat-checkbox>
-                          <div class="col-sm-6 ml-auto">
-                            <mat-form-field>
-                                <input matInput id="inputrecurso" name="recurso" placeholder="Cantidad">
-                            </mat-form-field>
-                        </div>
-                      </div>
-                    </div>
-                            
-                    
-            
-                   
-                   <mat-form-field>
-                      <input matInput id="inputtotal" name="total" placeholder="Monto Total">
-                  </mat-form-field>
-    
-                </div>
-              </div>
-            </div>
-         
-         <br> 
-
-          <div class="row">
-            <div class="col-sm-12">
-             <button mat-raised-button color="primary" class="mr-3" (click)="goBack()">Volver</button>
-             <button mat-raised-button color="primary" [routerLink]="['/auth/lender/budget']">Enviar</button>
-            </div>
-          </div>
-       
-        </div>
+      <div class="col-sm-12">
+        <h4 class="titulo text-center">
+          Solicitud
+          <span class="badge badge-primary">Aprobada</span>
+        </h4>
       </div>
     </div>
 
+    <div class="row">
+      <div class="col-sm-12">
+        <button mat-raised-button color="primary" [routerLink]="['/auth/lender/diagnosis']">Volver</button>
+      </div>  
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <mat-card>
+          <mat-card-header class="titulo border-top-danger">
+            <mat-card-title>
+              <a [routerLink]="['/auth/lender/request/detail/1']" class="title" >Código Solicitud 1</a>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <br>
+            <div class="row">
+              <div class="col-sm-8 offset-2">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <h2 class="text-center">Presupuesto</h2>
+                  </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="example-container">
+
+                      <mat-form-field>
+                        <mat-select name="serviceDetails" [(ngModel)]="serviceDetailsSelected" placeholder="Seleccione uno o mas Servicios" required multiple>
+                          <mat-option *ngFor="let serviceDetail of serviceDetails" [value]="serviceDetail.id">{{serviceDetail.name}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                      <br>
+
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <mat-list>
+                            <h5><b>Servicios y Recursos seleccionados:</b></h5>
+                            <div class="ml-3">
+                              <mat-list-item><h4 mat-subheader><b>Reparacion de Motor: </b>20000 Bs.S</h4></mat-list-item>
+                              <div class="ml-3">
+                                <mat-list-item>
+                                  <h6 mat-subheader><b>Destornillador</b></h6>
+                                </mat-list-item>
+                                <mat-list-item>
+                                  <h6 mat-subheader><b>Martillo</b></h6>
+                                </mat-list-item>
+                                <mat-list-item>
+                                  <h6 mat-subheader><b>Personas</b></h6>
+                                </mat-list-item>
+
+                                <mat-list-item>
+                                  <h6 mat-subheader><b>Medidor</b></h6>
+                                </mat-list-item>
+                              </div>
+                            </div>
+                          </mat-list>
+                        </div>
+                      </div>
+
+                      <br>
+
+                      <mat-form-field>
+                        <input matInput id="inputtotal" name="total" placeholder="Monto Total Estimado">
+                      </mat-form-field>
+
+                    </div>
+                  </div>
+                </div>
+
+
+
+                <div class="row">
+                  <div class="col-sm-12">
+                    <button mat-raised-button color="primary" class="mr-3">Enviar</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <br>
+          </mat-card-content>
+
+        </mat-card>
+      </div>
+    </div>
+
+    <br>
+
     
+
+  </div>
+</div>

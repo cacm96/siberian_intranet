@@ -7,13 +7,6 @@
 						<h2 class="text-center">Seleccione un Equipo</h2>
 					</div>
 				</div>
-				<div class="row">
-					<div class="offset-sm-3 col-sm-6">
-						 <mat-form-field class="example-full-width">
-						 	<input matInput id="filterEquipsinfras" name="filterEquipsinfras" [(ngModel)]="filterEquipsinfras" placeholder="Buscar equipo...">
-						 </mat-form-field>
-					</div>
-				</div>
 
 				<div class="row">
 					<div class="col-sm-12">
@@ -21,13 +14,13 @@
 					</div>
 				</div>
 				<hr>
-				<div *ngIf="equipsinfras && category">
+				<div >
 					<div class="row">
-						<div class="col-md-4" *ngFor="let equipinfras of equipsinfras | searchEquipsinfras:filterEquipsinfras">
-							<a [routerLink]="['/auth/client/catalog/category',category.id,'subcategory',subcategory.id,'equipinfras',equipinfras.id]" (click)="SetIdEquipinfras(equipinfras.id)">
+						<div class="col-md-4" >
+							<a [routerLink]="['/auth/client/request/stepper']">
 								<mat-card class="servicio">
 									<mat-card-header class="titulo mat-card-header-primary">
-										<mat-card-title>{{ subcategory.name }}</mat-card-title>
+										<mat-card-title>Linea Blanca</mat-card-title>
 									</mat-card-header>
 									<mat-card-content class="mat_card_content">
 										<div class="row">
@@ -35,11 +28,11 @@
 												<img src="../../../../../../../assets/img/catalogue/aire.png" alt="" class="card-img-top">
 											</div>
 											<div class="col-sm-7">
-												<b>Equipo: </b> {{ equipinfras.name }}
+												<b>Equipo: </b> Lavadora
 												<br>
-												<b>Descripción: </b> {{ equipinfras.description }}
+												<b>Descripción: </b> Lavadora
 												<br>
-												<b>Marcas: </b><span class="badge badge-primary">{{ equipinfras.varieties.length }}</span>
+												<b>Marcas: </b><span class="badge badge-primary">1</span>
 											</div>
 										</div>
 									</mat-card-content>

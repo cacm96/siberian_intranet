@@ -13,13 +13,13 @@
 					</div>
 				</div>
 				<hr>
-				<div *ngIf="categories">
+				<div>
 					<div class="row">
-						<div class="col-md-3" *ngFor="let category of categories">
-							<a [routerLink]="['/auth/client/catalog/category',category.id]" (click)="SetNameCategory(category.name)">
+						<div class="col-md-3">
+							<a [routerLink]="['/auth/client/catalog/category/1']">
 								<mat-card class="servicio">
 									<mat-card-header class="titulo mat-card-header-primary">
-										<mat-card-title>{{ category.name }}</mat-card-title>
+										<mat-card-title>Electrodomesticos</mat-card-title>
 									</mat-card-header>
 									<mat-card-content class="mat_card_content">
 										<div class="row">
@@ -43,19 +43,5 @@
 				</div>
 			</div>
 		</div>
-<!-- 		<div class="row">
-			<div class="col-sm-3">
-				<img src="../../../../../../../assets/img/category/Electrodomesticos.png" alt="" class="card-img-top mat-card">
-			</div>
-			<div class="col-sm-3">
-				<img src="../../../../../../../assets/img/category/Electrodomesticos.png" alt="" class="card-img-top">
-			</div>
-			<div class="col-sm-3">
-				<img src="../../../../../../../assets/img/category/Electrodomesticos.png" alt="" class="card-img-top">
-			</div>
-			<div class="col-sm-3">
-				<img src="../../../../../../../assets/img/category/Electrodomesticos.png" alt="" class="card-img-top">
-			</div>
-		</div> -->
 	</div>
 </div>
