@@ -5,6 +5,7 @@ import { NotifyDialogComponent } from '../../components/shared/notify-dialog/not
 import { EditLocationDialogComponent } from '../../components/shared/edit-location-dialog/edit-location-dialog.component';
 import { AddPhoneDialogComponent } from '../../components/shared/add-phone-dialog/add-phone-dialog.component';
 import { EditPhoneDialogComponent } from '../../components/shared/edit-phone-dialog/edit-phone-dialog.component';
+import { AddCalificationDialogComponent } from '../../components/shared/add-calification-dialog/add-calification-dialog.component';
 
 import {MatDialog} from '@angular/material/dialog';
 
@@ -54,6 +55,12 @@ export class DialogService {
       data:{
         phone:phone
       }
+    });
+  }
+
+  openAddCalificationDialog(){
+    return this.dialog.open(AddCalificationDialogComponent,{
+      width: '350px',
     });
   }
 }
