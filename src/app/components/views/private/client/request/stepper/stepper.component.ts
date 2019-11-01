@@ -176,6 +176,7 @@ export class StepperComponent implements OnInit
         if (response.status==true)
         {
           this.varietyDetail = response.varietyDetail;
+          this.VarietyDetailId = this.varietyDetail.id;
           this.varietyDetailName = this.varietyDetail.name;
           this.varietyDetailDescription = this.varietyDetail.description;
           console.log(this.varietyDetail);
@@ -205,6 +206,82 @@ export class StepperComponent implements OnInit
         {
           this.lenders = response.lenders;
           console.log(this.lenders);
+        }
+      },
+      error =>
+      {
+        console.log(<any>error);
+        if(error instanceof HttpErrorResponse)
+        {
+          if(error.status===0)
+          {
+            this.failedConect = Global.failed;
+          }
+        }
+      }
+      )
+  }
+
+  getLocation(id)
+  {
+    this._locationService.getOne(id).subscribe
+    (
+      response =>
+      {
+        this.location = response.location;
+        this.locationId = this.location.id;
+        this.addressFull = this.location.address;
+      },
+      error =>
+      {
+        console.log(<any>error);
+        if(error instanceof HttpErrorResponse)
+        {
+          if(error.status===0)
+          {
+            this.failedConect = Global.failed;
+          }
+        }
+      }
+    )
+  }
+
+
+  getUser(id)
+  {
+    this._userService.getOne(id).subscribe
+    (
+      response =>
+      {
+        this.user = response.user;
+      },
+      error =>
+      {
+        console.log(<any>error);
+        if(error instanceof HttpErrorResponse)
+        {
+          if(error.status===0)
+          {
+            this.failedConect = Global.failed;
+          }
+        }
+      }
+      )
+  }
+
+  getLocationsUser(id)
+  {
+    this._locationService.AllLocationUser(id).subscribe
+    (
+      response =>
+      {
+        if (response.status == true)
+        {
+          this.locationsUser = response.locations;
+        }
+        else
+        {
+          console.log(response);
         }
       },
       error =>
@@ -259,80 +336,6 @@ export class StepperComponent implements OnInit
     }
   }
 
-  getLocation(id)
-  {
-    this._locationService.getOne(id).subscribe
-    (
-      response =>
-      {
-        this.location = response.location;
-        this.addressFull = this.location.address;
-      },
-      error =>
-      {
-        console.log(<any>error);
-        if(error instanceof HttpErrorResponse)
-        {
-          if(error.status===0)
-          {
-            this.failedConect = Global.failed;
-          }
-        }
-      }
-    )
-  }
-
-  getUser(id)
-  {
-    this._userService.getOne(id).subscribe
-    (
-      response =>
-      {
-        this.user = response.user;
-      },
-      error =>
-      {
-        console.log(<any>error);
-        if(error instanceof HttpErrorResponse)
-        {
-          if(error.status===0)
-          {
-            this.failedConect = Global.failed;
-          }
-        }
-      }
-      )
-  }
-
-  getLocationsUser(id)
-  {
-    this._locationService.AllLocationUser(id).subscribe
-    (
-      response =>
-      {
-        if (response.status == true)
-        {
-          this.locationsUser = response.locations;
-        }
-        else
-        {
-          console.log(response);
-        }
-      },
-      error =>
-      {
-        console.log(<any>error);
-        if(error instanceof HttpErrorResponse)
-        {
-          if(error.status===0)
-          {
-            this.failedConect = Global.failed;
-          }
-        }
-      }
-      )
-  }
-
   onAddLocation()
   {
     this.dialogService.openAddLocationDialog().afterClosed().subscribe
@@ -340,6 +343,7 @@ export class StepperComponent implements OnInit
       response =>
       {
         this.location = response;
+        console.log(response);
         this.createLocation(this.location);
       });
 
@@ -396,8 +400,6 @@ export class StepperComponent implements OnInit
 
       console.log(this.revision);
 
-      /*
-
       this._revisionService.create(this.revision).subscribe
       (
         response =>
@@ -441,7 +443,6 @@ export class StepperComponent implements OnInit
           }
         }
       );
-      */
   }
 
 

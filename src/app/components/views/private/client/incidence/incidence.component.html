@@ -1,81 +1,59 @@
-<div class="container">
+<!-- <div class="calendar">
 	<div class="row">
 		<div class="col-sm-12">
 			<h2 class="text-center">Incidencias</h2>
 		</div>
 	</div>
+
 	<div class="row">
 		<div class="col-sm-12">
-			<button mat-raised-button color="primary" [routerLink]="['/auth/client/dashboard']">Volver</button>
+			<button mat-raised-button color="primary" class="mr-3" [routerLink]="['/auth/admin/configurations/promotion/promotion/']">Nueva incidencia</button>
+			<button mat-raised-button color="primary" (click)="goBack()">Volver</button>
 		</div>
 	</div>
 	<hr>
-	
-	<div class="row">
-		<div class="col-sm-12">
-			<mat-form-field>
-				<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar">
-			</mat-form-field>
+
+	<div class="row text-center">
+		<div class="col-md-4">
+			<div class="btn-group">
+				<div mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate">
+					<button mat-raised-button color="primary"> Anterior </button>
+				</div>
+				<div mwlCalendarToday [(viewDate)]="viewDate">
+					<button mat-raised-button color="primary"> Hoy </button>
+				</div>
+				<div mwlCalendarNextView [view]="view" [(viewDate)]="viewDate">
+					<button mat-raised-button color="primary"> Siguiente </button>
+				</div>
+			</div>
 		</div>
-	</div>
-	
-	<div class="row">
-		<div class="col-sm-12">
-			<div class="mat-elevation-z8">
-				<table mat-table [dataSource]="dataSource" matSort>
-
-					<ng-container matColumnDef="id">
-						<th mat-header-cell *matHeaderCellDef mat-sort-header> Ver </th>
-						<td mat-cell *matCellDef="let row">
-							<button mat-icon-button color="accent">
-								<mat-icon>remove_red_eye</mat-icon>
-							</button>
-						</td>
-					</ng-container>
-					
-					<ng-container matColumnDef="equipinfra">
-						<th mat-header-cell *matHeaderCellDef mat-sort-header> Equipo </th>
-						<td mat-cell *matCellDef="let row"> {{row.equipinfra}}</td>
-					</ng-container>
-
-					<ng-container matColumnDef="address">
-						<th mat-header-cell *matHeaderCellDef mat-sort-header> Dirección </th>
-						<td mat-cell *matCellDef="let row"> {{row.address}}</td>
-					</ng-container>
-					
-					<ng-container matColumnDef="lender">
-						<th mat-header-cell *matHeaderCellDef mat-sort-header> Prestador </th>
-						<td mat-cell *matCellDef="let row"> {{row.lender}}</td>
-					</ng-container>
-					
-					<ng-container matColumnDef="type">
-						<th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo </th>
-						<td mat-cell *matCellDef="let row"> {{row.type}} </td>
-					</ng-container>
-
-					<ng-container matColumnDef="status">
-						<th mat-header-cell *matHeaderCellDef mat-sort-header> Estatus </th>
-						<td mat-cell *matCellDef="let row">
-							<span *ngIf="row.status=='approved'" class="badge badge-success">Activo</span>
-						</td>
-					</ng-container>
-
-					<ng-container matColumnDef="incident">
-						<th mat-header-cell *matHeaderCellDef mat-sort-header> Generar </th>
-						<td mat-cell *matCellDef="let row">
-							<button mat-icon-button color="accent">
-								<mat-icon>report_problem</mat-icon>
-							</button>
-						</td>
-					</ng-container>
-
-					<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-					<tr mat-row *matRowDef="let row; columns: displayedColumns;">
-					</tr>
-				</table>
-
-				<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+		<div class="col-md-4">
+			<h3>
+				{{ viewDate | calendarDate:(view + 'ViewTitle'):locale:weekStartsOn }}
+			</h3>
+		</div>
+		<div class="col-md-4">
+			<div class="btn-group">
+				<div (click)="setView(CalendarView.Month)" [class.active]="view === CalendarView.Month">
+					<button mat-raised-button color="primary"> Mes </button>
+				</div>
+				<div (click)="setView(CalendarView.Week)" [class.active]="view === CalendarView.Week">
+					<button mat-raised-button color="primary"> Semana </button>
+				</div>
+				<div (click)="setView(CalendarView.Day)" [class.active]="view === CalendarView.Day">
+					<button mat-raised-button color="primary"> Dia </button>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
+	<br />
+
+	<div [ngSwitch]="view">
+		<mwl-calendar-month-view *ngSwitchCase="'month'" [viewDate]="viewDate" [events]="events"
+		[locale]="locale" [weekStartsOn]="weekStartsOn" [weekendDays]="weekendDays"></mwl-calendar-month-view>
+		<mwl-calendar-week-view *ngSwitchCase="'week'" [viewDate]="viewDate" [events]="events"
+		[locale]="locale" [weekStartsOn]="weekStartsOn" [weekendDays]="weekendDays"></mwl-calendar-week-view>
+
+		<mwl-calendar-day-view *ngSwitchCase="'day'" [viewDate]="viewDate" [events]="events" [locale]="locale"></mwl-calendar-day-view>
+	</div>
+</div> -->

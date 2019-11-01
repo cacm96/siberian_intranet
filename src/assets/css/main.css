@@ -383,6 +383,13 @@ table {
   margin:0;
 }
 
+.main_dashboard .principal_graph {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 .main_dashboard .btn-floating {
     display: inline-block;
     color: #fff;

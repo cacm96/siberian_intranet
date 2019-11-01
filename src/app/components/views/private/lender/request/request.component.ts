@@ -12,32 +12,22 @@ import { Global } from 'src/app/core/services/global';
 import { Revision } from 'src/app/models/revision';
 import { RevisionService } from 'src/app/core/services/client/revision.service';
 
-export interface RevisionR {
-	id: string;
-	client: string;
-	equipinfras: string;
-	location: string;
-	date: string;
-	lender: string;
-	status: string;
-	}
-
 @Component({
-  selector: 'sib-request',
-  templateUrl: './request.component.html',
-  styleUrls: ['./request.component.scss']
+	selector: 'sib-request',
+	templateUrl: './request.component.html',
+	styleUrls: ['./request.component.scss']
 })
 export class RequestComponent implements OnInit {
 
 	public revision:any;
-	public revisions: any[];
+	public revisions: Array < Revision > = new Array < Revision > ();
 	public total:number=0;
 	public userID:string;
 	public message:string;
 	public failedConect:string;
 
-	displayedColumns: string[] = ['id','client','equipinfras','location','date','lender','status','approved', 'cancelled'];
-	dataSource: MatTableDataSource<RevisionR>;
+	displayedColumns: string[] = ['id','equipinfras','client','location','date','status','approved','rejected'];
+	dataSource: MatTableDataSource<Revision>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
 	@ViewChild(MatSort) sort: MatSort;
@@ -52,14 +42,7 @@ export class RequestComponent implements OnInit {
 		private _location: Location
 		)
 	{
-		this.revisions =
-		[
-	      {id:"1" ,client:"Anderson Diaz",equipinfras:"Lavadora",location:"Calle San Rafael",date:"10-11-2019",lender:"Maria Moreno",status:"requested",},
-	      {id:"1" ,client:"Anderson Diaz",equipinfras:"Cocina",location:"Calle San Rafael",date:"11-11-2019",lender:"Maria Moreno",status:"approved",},
-	      {id:"1" ,client:"Anderson Diaz",equipinfras:"Aire Acondicionado",location:"Calle San Rafael",date:"11-11-2019",lender:"Maria Moreno",status:"cancelled",},
-	    ];
 
-	    this.table();
 	}
 
 	ngOnInit() {
@@ -69,14 +52,14 @@ export class RequestComponent implements OnInit {
 
 	getRevisions(userID)
 	{
-		this._revisionService.getRevisionUser(userID).subscribe
+		this._revisionService.getRevisionLender(userID).subscribe
 		(
 			response =>
 			{
 				if (response.status==true)
 				{
 					this.revisions = response.revisions;
-					this.revisions = this.revisions.filter(revision=>{return revision.status =="requested"});
+					this.revisions = this.revisions.filter(revision=>{return revision.status =="requested" || revision.status =="approved" || revision.status =="rejected"});
 					this.total = this.revisions.length;
 					console.log(this.revisions);
 					this.table();
@@ -156,26 +139,30 @@ export class RequestComponent implements OnInit {
 	}
 
 
-	onCancelled(id){
-		this.dialogService.openConfirmDialog('¿Estás seguro de rechazar esta Solicitud?').afterClosed().subscribe
+	onRejected(id){
+		this.dialogService.openRejectedRequestDialog().afterClosed().subscribe
 		(
 			response =>
 			{
-				if (response==true)
+				if(response!=false)
 				{
-					this.cancelRevision(id);
-				}else
+					var motive = response.motive;
+					var note = response.note;
+					this.rejectedRevision(id,motive,note);
+				}
+				else
 				{
 					console.log(response);
 				}
+				
 			}
 			);
 	}
 
 
-	cancelRevision(id)
+	rejectedRevision(id,motiveId,note?)
 	{
-		this._revisionService.cancel(id).subscribe
+		this._revisionService.rejected(id,motiveId,note).subscribe
 		(
 			response =>
 			{

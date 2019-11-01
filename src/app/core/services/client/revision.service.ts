@@ -38,8 +38,12 @@ export class RevisionService extends HeaderService{
 		return this.http.put(this.url+'/'+id+'/diagnose', {}, {headers: this.header});
 	}
 
-	reject(id): Observable<any>{
-		return this.http.put(this.url+'/'+id+'/reject', {}, {headers: this.header});
+	rejected(id,motiveId,note?): Observable<any>{
+		return this.http.put(this.url+'/'+id+'/reject/'+motiveId, {description:note}, {headers: this.header});
+	}
+
+	irreparable(id,motiveId,note?): Observable<any>{
+		return this.http.put(this.url+'/'+id+'/irreparable/'+motiveId, {description:note}, {headers: this.header});
 	}
 
 	deleteOne(id): Observable<any>{
@@ -52,6 +56,10 @@ export class RevisionService extends HeaderService{
 
 	getRevisionUser(userid:any): Observable<any>{
 		return this.http.get(this.url+"/user/"+userid, {headers: this.header});
+	}
+
+	getRevisionLender(lenderid:any): Observable<any>{
+		return this.http.get(this.url+"/lender/"+lenderid, {headers: this.header});
 	}
 
 	getOne(id:Number): Observable<any>{

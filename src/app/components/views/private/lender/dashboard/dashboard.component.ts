@@ -41,6 +41,8 @@ registerLocaleData(localeEs);
 export class DashboardComponent {
 
   public revisions: any;
+  public totalRevision:number=0;
+  public totalService:number=0;
   public serviceOrders: any;
   public userID:string;
   public message: string;
@@ -86,13 +88,14 @@ export class DashboardComponent {
 
   getRevisions(userid)
   {
-    this._revisionService.getRevisionUser(userid).subscribe
+    this._revisionService.getRevisionLender(userid).subscribe
     (
       response =>
       {
         if (response.status==true)
         {
           this.revisions = response.revisions;
+          this.totalRevision = this.revisions.length;
           console.log(this.revisions);
         }
         else
@@ -124,6 +127,7 @@ export class DashboardComponent {
         if (response.status==true)
         {
           this.serviceOrders = response.serviceOrders;
+          this.totalService = this.serviceOrders.length;
           console.log(this.serviceOrders);
         }
         else
