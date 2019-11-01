@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../../../core/ui/material.module';
 
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
@@ -37,6 +39,8 @@ import { CalificationComponent } from './calification/calification.component';
 import { CalificationDetailComponent } from './calification-detail/calification-detail.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { ServiceDetailComponent } from './service-detail/service-detail.component';
+
+registerLocaleData(localeEs);
 
 @NgModule({
   declarations:

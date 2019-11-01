@@ -1,57 +1,55 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+
+import { CalendarDateFormatter, CalendarEvent, CalendarView, DAYS_OF_WEEK } from 'angular-calendar';
+import { CustomDateFormatter } from '../../../../../core/pipes/custom-date-formatter.provider';
+
 import { DialogService } from '../../../../../core/services/dialog.service';
 import { SnackBarService } from '../../../../../core/services/snack-bar.service';
-
-export interface IncidenceData {
-  id: string;
-  equipinfra: string;
-  address: string;
-  lender: string;
-  type: string;
-  status: string;
-}
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'sib-incidence',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './incidence.component.html',
-  styleUrls: ['./incidence.component.scss']
+  styleUrls: ['./incidence.component.scss'],
+  providers: [
+    {
+      provide: CalendarDateFormatter,
+      useClass: CustomDateFormatter
+    }
+  ]
 })
 export class IncidenceComponent implements OnInit {
+  view: CalendarView = CalendarView.Month;
+  viewDate = new Date();
+  events: CalendarEvent[] = [];
+  locale: any = 'es';
+  weekStartsOn: number = DAYS_OF_WEEK.MONDAY;
+  weekendDays: number[] = [DAYS_OF_WEEK.FRIDAY, DAYS_OF_WEEK.SATURDAY];
+  CalendarView = CalendarView;
 
-  public incidence: any[];
-  displayedColumns: string[] = ['id', 'equipinfra', 'address', 'lender', 'type', 'status', 'incident'];
-  dataSource: MatTableDataSource<IncidenceData>;
+  setView(view: CalendarView) {
+    this.view = view;
+  }  
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
   constructor
   (
     private dialogService: DialogService,
-    private snackBar: SnackBarService
+    private snackBar: SnackBarService,
+    private _route: ActivatedRoute,
+		private _router: Router,
+		private _location: Location
   ) 
   { 
-    this.incidence = [
-      {id: '1', equipinfra: 'Pared', address: 'Santa Elena', lender: 'Maria Moreno', type: 'revision', status: 'approved',},
-      {id: '1', equipinfra: 'Pared', address: 'Ubr. Rosaleda', lender: 'Junior Camacho', type: 'servicio', status: 'approved',}
-    ];
-
-    this.dataSource = new MatTableDataSource(this.incidence);
   }
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
   }
 
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
-  }
+  goBack()
+	{ 
+		this._location.back(); 
+	}
 
 }
