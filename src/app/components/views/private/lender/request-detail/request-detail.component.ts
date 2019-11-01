@@ -8,6 +8,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Global } from '../../../../../core/services/global';
 import { Revision } from '../../../../../models/revision';
 import { RevisionService } from '../../../../../core/services/client/revision.service';
+import { environment } from 'src/environments/environment';
+
+const BASE_URL = environment.imgURL;
 
 @Component({
   selector: 'sib-request-detail',
@@ -19,6 +22,7 @@ export class RequestDetailComponent implements OnInit {
   public revision: any;
   public message: string;
   public failedConect: string;
+  public urldelafault:string="assets/img/request/revision_3.jpg"
 
   constructor(
     private dialogService: DialogService,
@@ -99,26 +103,30 @@ export class RequestDetailComponent implements OnInit {
   }
 
 
-  onCancelled(id){
-    this.dialogService.openConfirmDialog('¿Estás seguro de rechazar esta Solicitud?').afterClosed().subscribe
+  onRejected(id){
+    this.dialogService.openRejectedRequestDialog().afterClosed().subscribe
     (
       response =>
       {
-        if (response==true)
+        if(response!=false)
         {
-          this.cancelRevision(id);
-        }else
+          var motive = response.motive;
+          var note = response.note;
+          this.rejectedRevision(id,motive,note);
+        }
+        else
         {
           console.log(response);
         }
+        
       }
       );
   }
 
 
-  cancelRevision(id)
+  rejectedRevision(id,motiveId,note?)
   {
-    this._revisionService.cancel(id).subscribe
+    this._revisionService.rejected(id,motiveId,note).subscribe
     (
       response =>
       {

@@ -60,7 +60,7 @@ export class RequestComponent implements OnInit {
 				if (response.status==true)
 				{
 					this.revisions = response.revisions;
-					this.revisions = this.revisions.filter(revision=>{return revision.status =="requested"});
+					this.revisions = this.revisions.filter(revision=>{return revision.status =="requested" || revision.status =="approved" || revision.status =="rejected"});
 					this.total = this.revisions.length;
 					console.log(this.revisions);
 					this.table();
