@@ -42,6 +42,10 @@ export class RevisionService extends HeaderService{
 		return this.http.put(this.url+'/'+id+'/reject/'+motiveId, {description:note}, {headers: this.header});
 	}
 
+	irreparable(id,motiveId,note?): Observable<any>{
+		return this.http.put(this.url+'/'+id+'/irreparable/'+motiveId, {description:note}, {headers: this.header});
+	}
+
 	deleteOne(id): Observable<any>{
 		return this.http.delete(this.url+'/'+id, {headers: this.header});
 	}

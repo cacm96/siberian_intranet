@@ -45,14 +45,14 @@
 							</td>
 						</ng-container>
 
+						<ng-container matColumnDef="equipinfras">
+							<th mat-header-cell *matHeaderCellDef mat-sort-header> Equipo </th>
+							<td mat-cell *matCellDef="let row"> {{ row.varietyDetail.Equipinfra.name }} - {{ row.varietyDetail.variety.name }} - {{ row.varietyDetail.name }} </td>
+						</ng-container>
+
 						<ng-container matColumnDef="client">
 							<th mat-header-cell *matHeaderCellDef mat-sort-header> Cliente </th>
 							<td mat-cell *matCellDef="let row"> {{row.user.firstName | titlecase }} {{row.user.lastName | titlecase}} </td>
-						</ng-container>
-
-						<ng-container matColumnDef="equipinfras">
-							<th mat-header-cell *matHeaderCellDef mat-sort-header> Equipo </th>
-							<td mat-cell *matCellDef="let row"> {{ row.varietyDetail.Equipinfra.name }} </td>
 						</ng-container>
 
 						<ng-container matColumnDef="location">
@@ -60,10 +60,9 @@
 							<td mat-cell *matCellDef="let row"> {{row.location.address}}</td>
 						</ng-container>
 
-
 						<ng-container matColumnDef="date">
-							<th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </th>
-							<td mat-cell *matCellDef="let row"> <!--{{ row.calendar.date }}--></td>
+							<th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha</th>
+							<td mat-cell *matCellDef="let row"> <!--{{ row.calendar.date }}-->10-11-2019</td>
 						</ng-container>
 
 						<ng-container matColumnDef="status">

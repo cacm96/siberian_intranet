@@ -25,7 +25,7 @@ export class BudgetComponent implements OnInit {
   public message:string;
   public failedConect:string;
 
-  displayedColumns: string[] = ['id','equipinfras','client','location','date','status'];
+  displayedColumns: string[] = ['id','equipinfras','fechaI','fechaF','servicios','monto','status','approved','rejected'];
   dataSource: MatTableDataSource<Revision>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -102,9 +102,85 @@ export class BudgetComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
+  onApproved(id){
+    this.dialogService.openConfirmDialog('¿Estás seguro de aprobar esta Solicitud?').afterClosed().subscribe
+    (
+      response =>
+      {
+        if (response==true)
+        {
+          //this.approvedRevision(id);
+        }else
+        {
+          console.log(response);
+        }
+      }
+      );
+  }
+
+
+  approvedRevision(id)
+  {
+    this._revisionService.approve(id).subscribe
+    (
+      response =>
+      {
+        console.log(response);
+        this.message = response.message.text;
+        this.snackBar.openSnackBarSuccess(this.message);
+        this.getRevisions(this.userID);
+      },
+      error =>
+      {
+        console.log(<any>error);
+      }
+      )
+  }
+
+
+  onRejected(id){
+    this.dialogService.openRejectedRequestDialog().afterClosed().subscribe
+    (
+      response =>
+      {
+        if(response!=false)
+        {
+          var motive = response.motive;
+          var note = response.note;
+          //this.rejectedRevision(id,motive,note);
+        }
+        else
+        {
+          console.log(response);
+        }
+        
+      }
+      );
+  }
+
+
+  rejectedRevision(id,motiveId,note?)
+  {
+    this._revisionService.rejected(id,motiveId,note).subscribe
+    (
+      response =>
+      {
+        console.log(response);
+        this.message = response.message.text;
+        this.snackBar.openSnackBarSuccess(this.message);
+        this.getRevisions(this.userID);
+      },
+      error =>
+      {
+        console.log(<any>error);
+      }
+      )
+  }
+
   goBack()
   { 
     this._location.back(); 
   }
 }
+
 

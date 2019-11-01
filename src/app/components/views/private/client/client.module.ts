@@ -22,6 +22,8 @@ import { IncidenceComponent } from './incidence/incidence.component';
 import { CalificationComponent } from './calification/calification.component';
 import { CalificationDetailComponent } from './calification-detail/calification-detail.component';
 import { ServiceDetailComponent } from './service-detail/service-detail.component';
+import { BudgetComponent } from './budget/budget.component';
+import { BudgetDetailComponent } from './budget-detail/budget-detail.component';
 
 @NgModule({
   declarations:
@@ -35,6 +37,8 @@ import { ServiceDetailComponent } from './service-detail/service-detail.componen
   	CalificationComponent,
   	CalificationDetailComponent,
   	ServiceDetailComponent,
+  	BudgetComponent,
+  	BudgetDetailComponent,
   ],
   imports: [
     CommonModule,

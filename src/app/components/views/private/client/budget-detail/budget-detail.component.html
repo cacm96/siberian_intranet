@@ -1,0 +1,121 @@
+<div class="main_request_detail">
+
+	<div class="container">
+
+		<div class="row">
+			<div class="col-sm-12">
+				<h4 class="titulo text-center">
+					Servicio
+					<span class="badge badge-dark">Presupuestado</span>
+				</h4>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<button mat-raised-button color="primary" [routerLink]="['/auth/client/service']">Volver</button>
+			</div>  
+		</div>
+
+		<hr>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<mat-card>
+					<mat-card-header class="titulo border-top-danger">
+						<mat-card-title>
+							Código Servicio 0001
+						</mat-card-title>
+					</mat-card-header>
+					<mat-card-content>
+
+						<div class="row">
+							<div class="col-sm-12">
+								<mat-list>
+									<mat-list-item><h4 mat-line><b>Revision Asociada: </b><a [routerLink]="['/auth/client/request/detail/1']" class="title" >0001</a></h4></mat-list-item>
+									<h3 mat-subheader>Servicios y Rercusos Necesarios</h3>
+									<div class="row">
+										<div class="col-sm-4">
+											<div class="ml-3">
+												<mat-list-item><h4 mat-subheader><b>Reparacion de Motor: </b>20000 Bs.S</h4></mat-list-item>
+												<div class="ml-3">
+													<mat-list-item>
+														<h6 mat-subheader><b>Destornillador</b></h6>
+													</mat-list-item>
+													<mat-list-item>
+														<h6 mat-subheader><b>Martillo</b></h6>
+													</mat-list-item>
+													<mat-list-item>
+														<h6 mat-subheader><b>Personas</b></h6>
+													</mat-list-item>
+											
+													<mat-list-item>
+														<h6 mat-subheader><b>Medidor</b></h6>
+													</mat-list-item>
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-4">
+											<div class="ml-3">
+												<mat-list-item><h4 mat-subheader><b>Reparacion de Motor: </b>20000 Bs.S</h4></mat-list-item>
+												<div class="ml-3">
+													<mat-list-item>
+														<h6 mat-subheader><b>Destornillador</b></h6>
+													</mat-list-item>
+													<mat-list-item>
+														<h6 mat-subheader><b>Martillo</b></h6>
+													</mat-list-item>
+													<mat-list-item>
+														<h6 mat-subheader><b>Personas</b></h6>
+													</mat-list-item>
+											
+													<mat-list-item>
+														<h6 mat-subheader><b>Medidor</b></h6>
+													</mat-list-item>
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-4">
+											<div class="ml-3">
+												<mat-list-item><h4 mat-subheader><b>Reparacion de Motor: </b>20000 Bs.S</h4></mat-list-item>
+												<div class="ml-3">
+													<mat-list-item>
+														<h6 mat-subheader><b>Destornillador</b></h6>
+													</mat-list-item>
+													<mat-list-item>
+														<h6 mat-subheader><b>Martillo</b></h6>
+													</mat-list-item>
+													<mat-list-item>
+														<h6 mat-subheader><b>Personas</b></h6>
+													</mat-list-item>
+											
+													<mat-list-item>
+														<h6 mat-subheader><b>Medidor</b></h6>
+													</mat-list-item>
+												</div>
+											</div>
+										</div>
+									</div>
+                					<mat-list-item><h4 mat-line><b>Monto: </b>500000 Bs.S</h4></mat-list-item>
+								</mat-list>
+							</div>
+						</div>
+
+					</mat-card-content>
+				</mat-card>
+			</div>
+		</div>
+
+		<br>
+
+	    <div class="row">
+	      <div class="col-sm-1">
+	        <button mat-raised-button color="primary" class="mr-3" (click)="onApproved()">Aceptar</button>
+	      </div>
+	      <div class="col-sm-1">
+	        <button mat-raised-button color="warn" (click)="onRejected()">Rechazar</button>
+	      </div>
+	    </div>
+
+	</div>
+</div>
