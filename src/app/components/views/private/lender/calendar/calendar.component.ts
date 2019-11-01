@@ -3,6 +3,11 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CalendarDateFormatter, CalendarEvent, CalendarView, DAYS_OF_WEEK } from 'angular-calendar';
 import { CustomDateFormatter } from '../../../../../core/pipes/custom-date-formatter.provider';
 
+import { DialogService } from '../../../../../core/services/dialog.service';
+import { SnackBarService } from '../../../../../core/services/snack-bar.service';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import {Location} from '@angular/common';
+
 
 @Component({
   selector: 'sib-calendar',
@@ -29,9 +34,20 @@ export class CalendarComponent implements OnInit {
     this.view = view;
   }
 
-  constructor() { }
+  constructor(
+    private dialogService: DialogService,
+    private snackBar: SnackBarService,
+    private _route: ActivatedRoute,
+		private _router: Router,
+		private _location: Location
+  ) { }
 
   ngOnInit() {
   }
+
+  goBack()
+	{ 
+		this._location.back(); 
+	}
 
 }
