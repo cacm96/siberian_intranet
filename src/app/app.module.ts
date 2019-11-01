@@ -11,6 +11,7 @@ import { TokenInterceptorService } from './core/services/token-interceptor.servi
 
 import { AuthService } from './core/services/public/auth.service';
 import { UserService } from './core/services/admin/user.service';
+import { MotiveService } from 'src/app/core/services/admin/motive.service';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/views/public/auth/login/login.component';
@@ -35,6 +36,8 @@ import { NotifyDialogComponent } from './components/shared/notify-dialog/notify-
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { AddCalificationDialogComponent } from './components/shared/add-calification-dialog/add-calification-dialog.component';
+import { RejectedRequestDialogComponent } from './components/shared/rejected-request-dialog/rejected-request-dialog.component';
+import { RejectedDiagnosisDialogComponent } from './components/shared/rejected-diagnosis-dialog/rejected-diagnosis-dialog.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +60,8 @@ import { AddCalificationDialogComponent } from './components/shared/add-califica
     AddPhoneDialogComponent,
     NotifyDialogComponent,
     AddCalificationDialogComponent,
+    RejectedRequestDialogComponent,
+    RejectedDiagnosisDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -78,6 +83,7 @@ import { AddCalificationDialogComponent } from './components/shared/add-califica
     appRoutingProviders,
     AuthService,
     UserService,
+    MotiveService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass : TokenInterceptorService,
@@ -95,7 +101,9 @@ import { AddCalificationDialogComponent } from './components/shared/add-califica
     EditLocationDialogComponent,
     AddPhoneDialogComponent,
     EditPhoneDialogComponent,
-    AddCalificationDialogComponent
+    AddCalificationDialogComponent,
+    RejectedRequestDialogComponent,
+    RejectedDiagnosisDialogComponent
   ]
 })
 export class AppModule { }

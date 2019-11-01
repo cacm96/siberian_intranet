@@ -49,4 +49,8 @@ export class RoleService extends HeaderService{
 		return this.http.put(this.url2+'/'+uid+'/role/'+rid, {headers: this.header});
 	}
 
+	addFunctions(rid): Observable<any>{
+		return this.http.put(this.url+'/'+rid+'/functions',{}, {headers: this.header});
+	}
+
 }

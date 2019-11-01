@@ -84,7 +84,7 @@ export class DashboardComponent implements OnInit {
             {
               this.totalRevisionApproved++;
             }
-            if( this.revisions[i].status == 'cancelled')
+            if( this.revisions[i].status == 'rejected')
             {
               this.totalRevisionRejected++;
             }
@@ -94,7 +94,7 @@ export class DashboardComponent implements OnInit {
               this.totalRevisionDiagnosticated++;
             }
 
-            if( this.revisions[i].status == 'rejected')
+            if( this.revisions[i].status == 'irreparable')
             {
               this.totalRevisionLost++;
             }
@@ -104,7 +104,7 @@ export class DashboardComponent implements OnInit {
               this.totalRevisionFinalized++;
             }
 
-            if( this.revisions[i].status == 'deleted')
+            if( this.revisions[i].status == 'cancelled')
             {
               this.totalRevisionCancelled++;
             }

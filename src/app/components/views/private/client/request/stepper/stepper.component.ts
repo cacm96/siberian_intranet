@@ -74,7 +74,7 @@ export class StepperComponent implements OnInit
   public turnText:string;
   public dateRevision:any;
   public turnSelected:string="";
-  public lenderId:string="1";
+  public lenderId:string="2";
   public typeRevision:string="revision";
 
   public failedConect:string;
@@ -343,6 +343,7 @@ export class StepperComponent implements OnInit
       response =>
       {
         this.location = response;
+        console.log(response);
         this.createLocation(this.location);
       });
 

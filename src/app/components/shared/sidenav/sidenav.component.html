@@ -12,6 +12,7 @@
 		<div *ngIf="role=='3'">
 			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/dashboard']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Dashboard</a>
 
+
 			<mat-accordion>
 
 
@@ -50,10 +51,33 @@
 		</div>
 
 		<div *ngIf="role=='2'">
-			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/dashboard']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Inicio</a>
-			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/request']" ><mat-icon matListIcon class="side_nav_icon">assignment</mat-icon>Mis Solicitudes</a>
-			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/service']" ><mat-icon matListIcon class="side_nav_icon">receipt</mat-icon>Mis Servicios</a>
-			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/logout']" ><mat-icon matListIcon class="side_nav_icon">arrow_back</mat-icon>Cerrar Sesión</a>
+			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/dashboard']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Dashboard</a>
+
+			<mat-accordion>
+				<mat-expansion-panel>
+					<mat-expansion-panel-header>
+						<mat-panel-title>
+							<mat-icon matListIcon class="side_nav_icon">home</mat-icon>Servicios
+						</mat-panel-title>
+					</mat-expansion-panel-header>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/request']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Atender</a>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/diagnosis']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Diagnosticar</a>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/budget']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Presupuestar</a>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/execute']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Ejecutar</a>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/delivery']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Entregar</a>
+				</mat-expansion-panel>
+				
+
+				<mat-expansion-panel>
+					<mat-expansion-panel-header>
+						<mat-panel-title>
+							<mat-icon matListIcon class="side_nav_icon">home</mat-icon>Reclamos
+						</mat-panel-title>
+					</mat-expansion-panel-header>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/claim']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Atender</a>
+				</mat-expansion-panel>
+			</mat-accordion>
+
 		</div>
 
 		<div *ngIf="role=='1'">

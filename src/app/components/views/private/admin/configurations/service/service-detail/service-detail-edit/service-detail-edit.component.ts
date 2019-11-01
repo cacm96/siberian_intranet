@@ -100,7 +100,11 @@ export class ServiceDetailEditComponent implements OnInit {
 	}
 
 	update(form: NgForm)
-	{  this.serviceDetail.ComponentId = form.value.ComponentId;
+	{
+		//this.serviceDetail.ComponentId = form.value.ComponentId;
+
+		console.log(this.serviceDetail);
+
 		if(form.valid)
 		{
 			this._serviceDetailService.update(this.serviceDetail).subscribe
@@ -109,11 +113,13 @@ export class ServiceDetailEditComponent implements OnInit {
 				{
 					if(response.status==true)
 					{
+						console.log(response);
 						this.message  = response.message.text;
 						this.snackBar.openSnackBar(this.message,'');
 					}
 					else
 					{
+						console.log(response);
 						this.message  = response.message.text;
 						this.snackBar.openSnackBar(this.message,'');
 						this.getServiceDetails(this.serviceDetail.id);

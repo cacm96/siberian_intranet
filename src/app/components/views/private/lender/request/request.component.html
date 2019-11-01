@@ -1,7 +1,8 @@
+
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12">
-			<h2 class="text-center">Solicitudes por Atender</h2>
+			<h2 class="text-center">Solicitudes</h2>
 		</div>
 	</div>
 	<div class="row">
@@ -25,7 +26,13 @@
 			<div class="col-sm-12">
 				<div class="mat-elevation-z8">
 					
-					
+					<div *ngIf="total<=0 && !failedConect">
+						<div class="row">
+							<div class="col-sm-12">
+								<h3 class="text-center mt-3 mb-3">No hay Solicitudes por antender</h3>
+							</div>
+						</div>
+					</div>
 
 					<table *ngIf="revisions.length>0" mat-table [dataSource]="dataSource" matSort>
 
@@ -40,36 +47,31 @@
 
 						<ng-container matColumnDef="client">
 							<th mat-header-cell *matHeaderCellDef mat-sort-header> Cliente </th>
-							<td mat-cell *matCellDef="let row"> {{ row.client }} </td>
+							<td mat-cell *matCellDef="let row"> {{row.user.firstName | titlecase }} {{row.user.lastName | titlecase}} </td>
 						</ng-container>
 
 						<ng-container matColumnDef="equipinfras">
 							<th mat-header-cell *matHeaderCellDef mat-sort-header> Equipo </th>
-							<td mat-cell *matCellDef="let row"> {{ row.equipinfras }} </td>
+							<td mat-cell *matCellDef="let row"> {{ row.varietyDetail.Equipinfra.name }} </td>
 						</ng-container>
 
 						<ng-container matColumnDef="location">
 							<th mat-header-cell *matHeaderCellDef mat-sort-header> Dirección </th>
-							<td mat-cell *matCellDef="let row"> {{ row.location }}</td>
+							<td mat-cell *matCellDef="let row"> {{row.location.address}}</td>
 						</ng-container>
 
 
 						<ng-container matColumnDef="date">
 							<th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </th>
-							<td mat-cell *matCellDef="let row"> {{ row.date }}</td>
-						</ng-container>
-
-						<ng-container matColumnDef="lender">
-							<th mat-header-cell *matHeaderCellDef mat-sort-header> Prestador </th>
-							<td mat-cell *matCellDef="let row"> {{ row.lender }}</td>
+							<td mat-cell *matCellDef="let row"> <!--{{ row.calendar.date }}--></td>
 						</ng-container>
 
 						<ng-container matColumnDef="status">
 							<th mat-header-cell *matHeaderCellDef mat-sort-header> Estatus </th>
 							<td mat-cell *matCellDef="let row">
 								<span *ngIf="row.status=='requested'" class="badge badge-dark">Solicitada</span>
-								<span *ngIf="row.status=='cancelled'" class="badge badge-danger">Rechazada</span>
 								<span *ngIf="row.status=='approved'" class="badge badge-primary">Aprobada</span>
+								<span *ngIf="row.status=='rejected'" class="badge badge-danger">Rechazada</span>
 							</td>
 						</ng-container>
 
@@ -86,14 +88,15 @@
 							</td>
 						</ng-container>
 
-						<ng-container matColumnDef="cancelled">
+						<ng-container matColumnDef="rejected">
 							<th mat-header-cell *matHeaderCellDef>Rechazar</th>
 							<td mat-cell *matCellDef="let row">
-								<button *ngIf="row.status=='requested'" mat-icon-button color="warn" (click)="onCancelled(row.id)">
+								<button *ngIf="row.status=='requested'" mat-icon-button color="warn" (click)="onRejected(row.id)">
 									<mat-icon>cancel</mat-icon>
 								</button>
 							</td>
 						</ng-container>
+
 
 						<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 						<tr mat-row *matRowDef="let row; columns: displayedColumns;">
