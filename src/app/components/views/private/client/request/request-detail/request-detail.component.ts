@@ -8,6 +8,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Global } from '../../../../../../core/services/global';
 import { Revision } from '../../../../../../models/revision';
 import { RevisionService } from '../../../../../../core/services/client/revision.service';
+import { environment } from 'src/environments/environment';
+
+const BASE_URL = environment.imgURL;
 
 @Component({
   selector: 'sib-request-detail',
@@ -19,6 +22,7 @@ export class RequestDetailComponent implements OnInit {
   public revision: any;
   public message: string;
   public failedConect: string;
+  public urldelafault:string="assets/img/request/revision_3.jpg"
 
   constructor(
     private dialogService: DialogService,
@@ -37,6 +41,7 @@ export class RequestDetailComponent implements OnInit {
         this.getRevision(id);
       }
       );
+    console.log(BASE_URL);
   }
 
   getRevision(id) {
@@ -46,6 +51,7 @@ export class RequestDetailComponent implements OnInit {
       {
         this.revision = response.revision;
         console.log(this.revision);
+        console.log(response);
       },
       error =>
       {

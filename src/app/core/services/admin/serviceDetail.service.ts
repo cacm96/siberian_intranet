@@ -33,6 +33,7 @@ export class ServiceDetailService extends HeaderService{
 
     update(serviceDetail:any): Observable<any>{
 		let params = JSON.stringify(serviceDetail);
+		console.log(params);
 		return this.http.put(this.url+'/'+serviceDetail.id, params, {headers: this.header});
 	}
 
