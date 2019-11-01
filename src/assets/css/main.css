@@ -610,9 +610,6 @@ table {
   align-items: center;
 }
 
-
-
-
 .mat-table thead{
   background-color: #242451!important;
 }
@@ -629,4 +626,16 @@ table {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.calendar button {
+
+}
+.calendar button:hover {
+  
+}
+
+.calendar button:active {
+  color: #000000;
+  background-color: #e4e3e3;
 }
