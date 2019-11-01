@@ -13,6 +13,7 @@ import { MotivesComponent } from './motives/motives.component';
 import { MotiveCreateComponent } from './motive-create/motive-create.component';
 import { MotiveEditComponent } from './motive-edit/motive-edit.component';
 import { MotiveShowComponent } from './motive-show/motive-show.component';
+import { MotiveDeleteComponent } from './motive-delete/motive-delete.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MotiveShowComponent } from './motive-show/motive-show.component';
 	MotivesComponent,
 	MotiveCreateComponent,
 	MotiveEditComponent,
-	MotiveShowComponent
+  MotiveShowComponent,
+  MotiveDeleteComponent
   ],
   imports: [
     CommonModule,
