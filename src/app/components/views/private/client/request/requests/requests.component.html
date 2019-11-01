@@ -49,7 +49,7 @@
 
 						<ng-container matColumnDef="equipinfras">
 							<th mat-header-cell *matHeaderCellDef mat-sort-header> Equipo </th>
-							<td mat-cell *matCellDef="let row"> Lavadora - LG - F900 </td>
+							<td mat-cell *matCellDef="let row"> {{ row.varietyDetail.Equipinfra.name }} </td>
 						</ng-container>
 
 						<ng-container matColumnDef="location">
@@ -60,12 +60,12 @@
 
 						<ng-container matColumnDef="date">
 							<th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </th>
-							<td mat-cell *matCellDef="let row"> 10-10-19</td>
+							<td mat-cell *matCellDef="let row"> <!--{{ row.calendar.date }}--></td>
 						</ng-container>
 
 						<ng-container matColumnDef="lender">
 							<th mat-header-cell *matHeaderCellDef mat-sort-header> Prestador </th>
-							<td mat-cell *matCellDef="let row"> Maria Moreno</td>
+							<td mat-cell *matCellDef="let row"> <!--{{ row.calendars.lender.name }}--></td>
 						</ng-container>
 
 						<ng-container matColumnDef="status">

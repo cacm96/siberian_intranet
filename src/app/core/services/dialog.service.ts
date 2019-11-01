@@ -6,6 +6,8 @@ import { EditLocationDialogComponent } from '../../components/shared/edit-locati
 import { AddPhoneDialogComponent } from '../../components/shared/add-phone-dialog/add-phone-dialog.component';
 import { EditPhoneDialogComponent } from '../../components/shared/edit-phone-dialog/edit-phone-dialog.component';
 import { AddCalificationDialogComponent } from '../../components/shared/add-calification-dialog/add-calification-dialog.component';
+import { RejectedRequestDialogComponent } from '../../components/shared/rejected-request-dialog/rejected-request-dialog.component';
+import { RejectedDiagnosisDialogComponent } from '../../components/shared/rejected-diagnosis-dialog/rejected-diagnosis-dialog.component';
 
 import {MatDialog} from '@angular/material/dialog';
 
@@ -63,4 +65,20 @@ export class DialogService {
       width: '350px',
     });
   }
+
+  openRejectedRequestDialog(){
+    return this.dialog.open(RejectedRequestDialogComponent,{
+      width: '350px',
+    });
+  }
+
+  openRejectedDiagnosisDialog(){
+    return this.dialog.open(RejectedDiagnosisDialogComponent,{
+      width: '350px',
+    });
+  }
+
+
+
+
 }
