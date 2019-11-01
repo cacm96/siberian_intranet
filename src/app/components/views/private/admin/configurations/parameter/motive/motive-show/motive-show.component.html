@@ -1,14 +1,34 @@
-
 <div class="container">
-  <h2 class="text-center">Motivo</h2>
+  <h2 *ngIf="motive" class="text-center">{{ motive.name }}</h2>
   <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/parameter/motive']">Volver</button>
   <hr>
-  <mat-card>
-    <mat-list>
-      <mat-list-item> <b>Código: </b>1</mat-list-item>
-      <mat-list-item> <b>Nombre:</b>Marca</mat-list-item>
-      <mat-list-item> <b>Descripción:</b>La marca que posee el equipo</mat-list-item>
-      <mat-list-item> <b>Estatus:<span class="badge badge-primary">Activo</span></b></mat-list-item>
-    </mat-list>
-  </mat-card>
+  <div *ngIf="motive">
+    <mat-card>
+      <div class="row">
+        <div class="col-sm-6">
+          <mat-list>
+            <h3 mat-subheader>Motivo</h3>
+            <mat-list-item><h4 mat-line><b>Nombre: </b> {{ motive.name }}</h4></mat-list-item>
+            <mat-list-item><h4 mat-line><b>Descripción: </b> {{ motive.description }}</h4></mat-list-item>
+            <mat-list-item *ngIf="motive.status=='active'"><h4 mat-line><b>Estatus:<span class="badge badge-success"> Activo</span></b></h4></mat-list-item>
+          </mat-list>
+        </div>
+      </div>
+
+    </mat-card>
+
+  </div>
+
+  <div *ngIf="!motive && !failedConect">
+    <div class="row">
+      <div class="col-sm-12 spinner">
+        <mat-spinner></mat-spinner>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="failedConect">
+    <h6 class="text-center">{{failedConect}}</h6>
+  </div>
+  
 </div>

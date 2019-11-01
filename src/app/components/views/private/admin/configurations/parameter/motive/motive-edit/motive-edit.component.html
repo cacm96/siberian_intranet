@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="row">
     <div class="col-sm-8 offset-2">
@@ -8,36 +9,51 @@
       </div>
       <div class="row">
         <div class="col-sm-12">
-          <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/parameter/motive']">Volver</button>
+          <button mat-raised-button color="primary" (click)="goBack()">Volver</button>
         </div>
       </div>
       <hr>
-      
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="example-container">
-           
-            <mat-form-field>
-              <input matInput placeholder="Nombre" required>
-            </mat-form-field>
-    
-            <mat-form-field>
-              <textarea matInput placeholder="Descripción"></textarea>
-            </mat-form-field>	
-        
-            <mat-form-field [hidden]="true">
-              <input matInput  placeholder="Estatus" value="A" >
-            </mat-form-field>
 
+      <div *ngIf="motive">
+
+        <form #updateForm="ngForm" (ngSubmit)="update(updateForm)">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="example-container">
+
+                <mat-form-field>
+                  <input matInput id="inputName" name="name" placeholder="Nombre" [(ngModel)]="motive.name" required>
+                </mat-form-field>
+
+                <mat-form-field>
+                  <textarea matInput name="description" placeholder="Descripción" [(ngModel)]="motive.description" required></textarea>
+                </mat-form-field> 
+
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <button mat-raised-button color="primary" type="submit">Guardar</button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+
+      <div *ngIf="!motive && !failedConect">
+        <div class="row">
+          <div class="col-sm-12 spinner">
+            <mat-spinner></mat-spinner>
           </div>
         </div>
       </div>
-      
-      <div class="row">
-        <div class="col-sm-12">
-          <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/parameter/motive/edit/1']">Guardar</button>
-        </div>
+
+      <div *ngIf="failedConect">
+        <h6 class="text-center">{{failedConect}}</h6>
       </div>
+
     </div>
   </div>
 </div>
