@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'sib-add-calification-dialog',
   templateUrl: './add-calification-dialog.component.html',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddCalificationDialogComponent implements OnInit {
 
-  constructor() { }
+  
+  constructor()
+   { }
 
   ngOnInit() {
+
+    
+
+    
   }
 
+ 
+  
 }

@@ -27,8 +27,10 @@ export interface CalificationData {
 })
 export class CalificationComponent implements OnInit {
 
+  public calification:any;
+
   public Calification:any[];
-  displayedColumns: string[] = ['id','client','equipinfras','code','amount','startdate','enddate','services','status'];
+  displayedColumns: string[] = ['id','client','equipinfras','code','amount','startdate','enddate','services','status','rate'];
     dataSource: MatTableDataSource<CalificationData>;
     
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -39,7 +41,7 @@ export class CalificationComponent implements OnInit {
     private snackBar: SnackBarService,
     private _route: ActivatedRoute,
 		private _router: Router,
-		private _location: Location
+    private _location: Location
   ) 
   { 
 
@@ -64,6 +66,18 @@ export class CalificationComponent implements OnInit {
 		}
 	}
 
+  onAddCalification()
+  {
+    this.dialogService.openAddCalificationDialog().afterClosed().subscribe
+    (
+      response =>
+      {
+        this.calification = response;
+      });
+
+  }
+
+ 
 
   goBack()
 	{ 
