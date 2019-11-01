@@ -83,7 +83,7 @@
 						<ng-container matColumnDef="addActivity">
 							<th mat-header-cell *matHeaderCellDef>Asignar Actividad</th>
 							<td mat-cell *matCellDef="let row">
-								<button mat-icon-button color="primary" >
+								<button mat-icon-button color="primary" [routerLink]="[row.id,'addActivity']">
 									<mat-icon>add</mat-icon>
 								</button>
 							</td>
@@ -92,7 +92,7 @@
 						<ng-container matColumnDef="addResource">
 							<th mat-header-cell *matHeaderCellDef>Asignar Recurso</th>
 							<td mat-cell *matCellDef="let row">
-								<button mat-icon-button color="primary" >
+								<button mat-icon-button color="primary" [routerLink]="[row.id,'addResource']">
 									<mat-icon>add</mat-icon>
 								</button>
 							</td>
@@ -101,7 +101,7 @@
 						<ng-container matColumnDef="addPolitic">
 							<th mat-header-cell *matHeaderCellDef>Asignar Politica</th>
 							<td mat-cell *matCellDef="let row">
-								<button mat-icon-button color="primary" >
+								<button mat-icon-button color="primary" [routerLink]="[row.id,'addPolitic']">
 									<mat-icon>add</mat-icon>
 								</button>
 							</td>
@@ -110,7 +110,7 @@
 						<ng-container matColumnDef="addSkill">
 							<th mat-header-cell *matHeaderCellDef>Asignar Habilidad</th>
 							<td mat-cell *matCellDef="let row">
-								<button mat-icon-button color="primary" >
+								<button mat-icon-button color="primary" [routerLink]="[row.id,'addSkill']">
 									<mat-icon>add</mat-icon>
 								</button>
 							</td>

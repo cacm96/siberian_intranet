@@ -1,3 +1,88 @@
-<p>
-  add-resource works!
-</p>
+<div class="container" *ngIf="serviceDetail">
+    <div class="row">
+      <div class="col-sm-8 offset-2">
+        
+        <div class="row">
+          <div class="col-sm-12">
+            <h2 class="text-center">Asignar Recurso</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <button mat-raised-button color="primary" (click)="goBack()">Volver</button>
+          </div>
+        </div>
+        <hr>
+  
+        <div *ngIf="resources">
+  
+          <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+  
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="example-container">
+  
+                  <mat-form-field>
+                    <mat-select name="resourceId" [(ngModel)]="resourceId" placeholder="Seleccione uno o mas recursos" required>
+                      <mat-option *ngFor="let resource of resources" [value]="resource.id">{{resource.name}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+  
+            <div class="row">
+              <div class="col-sm-12">
+                <a [routerLink]="['/auth/admin/configurations/service/resource/create']">¿Nuevo Recurso?</a>
+              </div>
+            </div>
+  
+            <br>
+  
+            <div class="row">
+              <div class="col-sm-12">
+                <button mat-raised-button color="primary" class="mr-3" type="submit" [disabled]="!registerForm.form.valid">Añadir</button>
+              </div>
+            </div>
+          </form>
+  
+          <hr>
+  
+          <div *ngIf="serviceDetail.resources.length>0">
+            <div class="row">
+              <div class="col-sm-12">
+                <mat-list>
+                  <mat-list-item *ngFor="let resource of serviceDetail.resources">
+                    <h4 mat-line>{{resource.name}}</h4>
+                    <button mat-icon-button color="warn" matTooltip="Borrar Recurso" matTooltipPosition="left" (click)="onDelete(resource.id)"><mat-icon>delete</mat-icon></button>
+                  </mat-list-item>
+                </mat-list>
+              </div>
+            </div>
+          </div>
+  
+          <div *ngIf="serviceDetail.resources.length<=0">
+            <div class="row">
+              <div class="col-sm-12">
+                <mat-list>
+                  <mat-list-item>
+                    <h4 mat-line>No tiene Recursos</h4>
+                  </mat-list-item>
+                </mat-list>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div *ngIf="total<=0">
+          <h2 class="text-center">{{ message }}</h2>
+          <div class="row">
+              <div class="col-sm-12">
+                <a [routerLink]="['/auth/admin/configurations/service/resource/create']">¿Nuevo Recurso?</a>
+              </div>
+            </div>
+          </div>
+          
+      </div>
+    </div>
+  </div>

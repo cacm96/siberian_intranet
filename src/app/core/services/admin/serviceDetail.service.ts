@@ -40,4 +40,24 @@ export class ServiceDetailService extends HeaderService{
 		return this.http.delete(this.url+'/'+id, {headers: this.header});
 	}
 
+	addActivity(serviceDetail:any): Observable<any>{
+		let params = JSON.stringify(serviceDetail.activities);
+		return this.http.put(this.url+'/'+serviceDetail.id, params, {headers: this.header});
+	}
+
+	addPolitic(serviceDetail:any): Observable<any>{
+		let params = JSON.stringify(serviceDetail.policies);
+		return this.http.put(this.url+'/'+serviceDetail.id, params, {headers: this.header});
+	}
+
+	addResource(serviceDetail:any): Observable<any>{
+		let params = JSON.stringify(serviceDetail.resources);
+		return this.http.put(this.url+'/'+serviceDetail.id, params, {headers: this.header});
+	}
+
+	addSkill(serviceDetail:any): Observable<any>{
+		let params = JSON.stringify(serviceDetail.skills);
+		return this.http.put(this.url+'/'+serviceDetail.id, params, {headers: this.header});
+	}
+
 }
