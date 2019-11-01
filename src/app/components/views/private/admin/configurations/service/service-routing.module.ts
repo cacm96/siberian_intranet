@@ -3,10 +3,6 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { ServiceComponent } from './service.component';
 import { ServicesComponent } from './services/services.component';
-import { AddResourceComponent } from './add-resource/add-resource.component';
-import { AddPoliticComponent } from './add-politic/add-politic.component';
-import { AddActivityComponent } from './add-activity/add-activity.component';
-import { AddSkillComponent } from './add-skill/add-skill.component';
 
 const routes: Routes = [
 
@@ -14,11 +10,6 @@ const routes: Routes = [
 		children:
 		[
 			{path: '', component: ServicesComponent},
-
-			{path: ':id/addResource', component: AddResourceComponent},
-			{path: ':id/addPolitic', component: AddPoliticComponent},
-			{path: ':id/addActivity', component: AddActivityComponent},
-			{path: ':id/addSkill', component: AddSkillComponent},
 
 			{path: 'activity', canActivate: [],
 				children:

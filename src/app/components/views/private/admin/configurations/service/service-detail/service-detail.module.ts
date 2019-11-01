@@ -15,6 +15,10 @@ import { ServiceDetailCreateComponent } from './service-detail-create/service-de
 import { ServiceDetailEditComponent } from './service-detail-edit/service-detail-edit.component';
 import { ServiceDetailShowComponent } from './service-detail-show/service-detail-show.component';
 import { ServiceDetailDeleteComponent } from './service-detail-delete/service-detail-delete.component';
+import { AddActivityComponent } from './add-activity/add-activity.component';
+import { AddResourceComponent } from './add-resource/add-resource.component';
+import { AddPoliticComponent } from './add-politic/add-politic.component';
+import { AddSkillComponent } from './add-skill/add-skill.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,11 @@ import { ServiceDetailDeleteComponent } from './service-detail-delete/service-de
 	ServiceDetailCreateComponent,
 	ServiceDetailEditComponent,
 	ServiceDetailShowComponent,
-	ServiceDetailDeleteComponent
+	ServiceDetailDeleteComponent,
+	AddActivityComponent,
+	AddResourceComponent,
+	AddPoliticComponent,
+	AddSkillComponent
   ],
   imports: [
     CommonModule,

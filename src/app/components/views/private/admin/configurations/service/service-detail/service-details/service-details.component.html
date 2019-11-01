@@ -79,6 +79,42 @@
 									<span *ngIf="row.status=='deleted'" class="badge badge-danger">{{row.status | titlecase}}</span>
 								</td>
 						</ng-container>
+
+						<ng-container matColumnDef="addActivity">
+							<th mat-header-cell *matHeaderCellDef>Asignar Actividad</th>
+							<td mat-cell *matCellDef="let row">
+								<button mat-icon-button color="primary" >
+									<mat-icon>add</mat-icon>
+								</button>
+							</td>
+						</ng-container>
+
+						<ng-container matColumnDef="addResource">
+							<th mat-header-cell *matHeaderCellDef>Asignar Recurso</th>
+							<td mat-cell *matCellDef="let row">
+								<button mat-icon-button color="primary" >
+									<mat-icon>add</mat-icon>
+								</button>
+							</td>
+						</ng-container>
+
+						<ng-container matColumnDef="addPolitic">
+							<th mat-header-cell *matHeaderCellDef>Asignar Politica</th>
+							<td mat-cell *matCellDef="let row">
+								<button mat-icon-button color="primary" >
+									<mat-icon>add</mat-icon>
+								</button>
+							</td>
+						</ng-container>
+
+						<ng-container matColumnDef="addSkill">
+							<th mat-header-cell *matHeaderCellDef>Asignar Habilidad</th>
+							<td mat-cell *matCellDef="let row">
+								<button mat-icon-button color="primary" >
+									<mat-icon>add</mat-icon>
+								</button>
+							</td>
+						</ng-container>
 	
 						<ng-container matColumnDef="edit">
 							<th mat-header-cell *matHeaderCellDef></th>
