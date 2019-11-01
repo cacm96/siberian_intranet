@@ -16,13 +16,13 @@
 			<div class="col-md-4">
 				<div class="btn-group">
 					<div mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate">
-							<button mat-raised-button color="primary"> Anterior </button>
+							<button mat-raised-button color="primary" class="mr-3"> Anterior </button>
 					</div>
 					<div mwlCalendarToday [(viewDate)]="viewDate">
-							<button mat-raised-button color="primary"> Hoy </button>
+							<button mat-raised-button color="primary" class="mr-3"> Hoy </button>
 					</div>
 					<div mwlCalendarNextView [view]="view" [(viewDate)]="viewDate">
-							<button mat-raised-button color="primary"> Siguiente </button>
+							<button mat-raised-button color="primary" class="mr-3"> Siguiente </button>
 					</div>
 				</div>
 			</div>
@@ -34,13 +34,13 @@
 			<div class="col-md-4">
 				<div class="btn-group">
 					<div (click)="setView(CalendarView.Month)" [class.active]="view === CalendarView.Month">
-						<button mat-raised-button color="primary"> Mes </button>
+						<button mat-raised-button color="primary" class="mr-3"> Mes </button>
 					</div>
 					<div (click)="setView(CalendarView.Week)" [class.active]="view === CalendarView.Week">
-							<button mat-raised-button color="primary"> Semana </button>
+							<button mat-raised-button color="primary" class="mr-3"> Semana </button>
 					</div>
 					<div (click)="setView(CalendarView.Day)" [class.active]="view === CalendarView.Day">
-							<button mat-raised-button color="primary"> Dia </button>
+							<button mat-raised-button color="primary" class="mr-3"> Dia </button>
 					</div>
 				</div>
 			</div>
