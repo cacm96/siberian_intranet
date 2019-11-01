@@ -6,7 +6,15 @@
       <div class="col-sm-12">
         <h4 class="titulo text-center">
           Solicitud
-          <span class="badge badge-dark">Solicitada</span>
+          
+          <span *ngIf="revision.status=='requested'" class="badge badge-dark">Solicitada</span>
+          <span *ngIf="revision.status=='approved'" class="badge badge-primary">Aprobada</span>
+          <span *ngIf="revision.status=='rejected'" class="badge badge-danger">Rechazada</span>
+          <span *ngIf="revision.status=='diagnosticated'" class="badge badge-warning">Diagnosticada</span>
+          <span *ngIf="revision.status=='irreparable'" class="badge badge-danger">Irreparable</span>
+          <span *ngIf="revision.status=='finalized'" class="badge badge-success">Finalizada</span>
+          <span *ngIf="revision.status=='cancelled'" class="badge badge-success">Cancelada</span>
+
         </h4>
       </div>
     </div>
@@ -51,7 +59,7 @@
                 <mat-list-item><h4 mat-line><b>Imagen: </b></h4></mat-list-item>
                 <mat-card class="card_img imgRequest">
                   <mat-card-content class="mat_card_content">
-                    <img [src]="BASE_URL + revision?.imageUrl || urldelafault" alt="">
+                    <img [src]="BASE_URL + revision?.imageRequestUrl || urldelafault" alt="">
                   </mat-card-content>
                 </mat-card>
               </mat-list>
