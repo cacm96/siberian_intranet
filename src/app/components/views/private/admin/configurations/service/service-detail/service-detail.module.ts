@@ -5,6 +5,10 @@ import { ServiceDetailRoutingModule } from './service-detail-routing.module';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServiceDetailService } from 'src/app/core/services/admin/serviceDetail.service';
+import { ActivityService } from 'src/app/core/services/admin/activity.service';
+import { ResourceService } from 'src/app/core/services/admin/resource.service';
+import { PolicyService } from 'src/app/core/services/admin/policy.service';
+import { SkillService } from 'src/app/core/services/admin/skill.service';
 import { ComponentService } from 'src/app/core/services/admin/component.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from 'src/app/core/services/token-interceptor.service';
@@ -16,6 +20,16 @@ import { ServiceDetailEditComponent } from './service-detail-edit/service-detail
 import { ServiceDetailShowComponent } from './service-detail-show/service-detail-show.component';
 import { ServiceDetailDeleteComponent } from './service-detail-delete/service-detail-delete.component';
 
+import { AddActivityComponent } from './add-activity/add-activity.component';
+import { AddResourceComponent } from './add-resource/add-resource.component';
+import { AddPoliticComponent } from './add-politic/add-politic.component';
+import { AddSkillComponent } from './add-skill/add-skill.component';
+
+import { ShowActivityDetailComponent } from './show-activity-detail/show-activity-detail.component';
+import { ShowPoliticDetailComponent } from './show-politic-detail/show-politic-detail.component';
+import { ShowResourceDetailComponent } from './show-resource-detail/show-resource-detail.component';
+import { ShowSkillDetailComponent } from './show-skill-detail/show-skill-detail.component';
+
 @NgModule({
   declarations: [
 	ServiceDetailComponent,
@@ -23,7 +37,15 @@ import { ServiceDetailDeleteComponent } from './service-detail-delete/service-de
 	ServiceDetailCreateComponent,
 	ServiceDetailEditComponent,
 	ServiceDetailShowComponent,
-	ServiceDetailDeleteComponent
+  ServiceDetailDeleteComponent,
+	AddActivityComponent,
+	AddResourceComponent,
+	AddPoliticComponent,
+	AddSkillComponent,
+	ShowActivityDetailComponent,
+	ShowPoliticDetailComponent,
+	ShowResourceDetailComponent,
+	ShowSkillDetailComponent
   ],
   imports: [
     CommonModule,
@@ -34,6 +56,10 @@ import { ServiceDetailDeleteComponent } from './service-detail-delete/service-de
   providers:
   [
     ServiceDetailService,
+    ActivityService,
+    ResourceService,
+    PolicyService,
+    SkillService,
     ComponentService,
     {
       provide: HTTP_INTERCEPTORS,
