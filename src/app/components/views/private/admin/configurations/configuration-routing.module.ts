@@ -30,15 +30,6 @@ const routes: Routes = [
 					}
 				]
 			},
-			{path: 'equipinfras', canActivate: [],
-				children:
-				[
-					{
-						path:'',
-		                loadChildren: './equipinfras/equipinfras.module#EquipinfrasModule',
-					}
-				]
-			},
 			{path: 'parameter', canActivate: [],
 				children:
 				[
@@ -66,12 +57,21 @@ const routes: Routes = [
 					}
 				]
 			},
-			{path: 'skill', canActivate: [],
+			{path: 'service-detail', canActivate: [],
 				children:
 				[
 					{
 						path: '',
-		                loadChildren: '../configurations/skill/skill.module#SkillModule',
+		                loadChildren: './service-detail/service-detail.module#ServiceDetailModule',
+					}
+				]
+			},	
+			{path: 'lender', canActivate: [],
+				children:
+				[
+					{
+						path: '',
+		                loadChildren: './lender/lender.module#LenderModule',
 					}
 				]
 			},

@@ -285,11 +285,11 @@ span.badge-gray{
 }
 
 .toolbar a{
-  color: #121212 !important;
+  color: #ffffff !important;
 }
 
 .toolbar a:hover,.toolbar a.active{
-  color:  #185a89 !important;
+  color:  rgb(20,90,137) !important;
 }
 
 table {
@@ -461,7 +461,7 @@ table {
 
 /* width */
 ::-webkit-scrollbar {
-    width: 5px;
+    width: 0px;
 }
 
 /* Track */
@@ -629,4 +629,20 @@ table {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.padding-sidenav ~ .mat-expansion-panel-content>.mat-expansion-panel-body>.mat-list-item>.mat-list-item-content{
+  padding-left: 40px !important;
+}
+
+
+.mat-card .mat-card-header {
+    background-color: #242451;
+    color: white;
+}
+
+.mat-card{
+  padding-top:0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }

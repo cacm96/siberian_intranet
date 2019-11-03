@@ -29,7 +29,7 @@ export interface CompanyData {
 export class CompaniesComponent implements OnInit {
 
   public company:any[];
-  displayedColumns: string[] = ['id','rif','name','mision','vision','aboutUs','address','phoneOne','phoneTwo','edit','delete'];
+  displayedColumns: string[] = ['id','rif','name','mision','vision','aboutUs','address','phoneOne','phoneTwo','edit'];
   dataSource: MatTableDataSource<CompanyData>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

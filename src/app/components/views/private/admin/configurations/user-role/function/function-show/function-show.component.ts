@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'sib-function-show',
@@ -8,15 +7,9 @@ import { Location } from '@angular/common';
 })
 export class FunctionShowComponent implements OnInit {
 
-  constructor(
-    private _location: Location,
-  ) { }
+  constructor() { }
 
   ngOnInit() {
-  }
-
-  goBack(){
-    this._location.back();
   }
 
 }

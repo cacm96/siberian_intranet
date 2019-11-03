@@ -1,5 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { DialogService } from 'src/app/core/services/dialog.service';
+import { SnackBarService } from 'src/app/core/services/snack-bar.service';
+
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import {Location} from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Global } from 'src/app/core/services/global';
+import { Role } from 'src/app/models/role';
+import { RoleService } from 'src/app/core/services/admin/role.service';
+import { FunctionService } from 'src/app/core/services/admin/function.service';
 
 @Component({
   selector: 'sib-function-create',
@@ -8,14 +20,170 @@ import { Location } from '@angular/common';
 })
 export class FunctionCreateComponent implements OnInit {
 
-  constructor(
-    private _location: Location,
-  ) { }
+	public functions:any;
+	public roles:any;
+	public roleSelected:string;
+	public role:any;
+	public roleFunctions:any;
+	public roleId:any;
+	public message:string;
+	public failedConect:string;
+	current_selected: string;
 
-  ngOnInit() {
-  }
-  goBack(){
-    this._location.back();
-  }
+	public roleFunctionsSelected:any;
+
+
+	constructor
+	(
+		private dialogService: DialogService,
+		private snackBar: SnackBarService,
+		private _roleService: RoleService,
+		private _functionService: FunctionService,
+		private _route: ActivatedRoute,
+		private _router: Router,
+		private _location: Location
+		)
+	{
+
+	}
+
+	ngOnInit()
+	{
+		this.getRoles();
+		this.getFunctions();
+	}
+
+	getRoles()
+	{
+		this._roleService.All().subscribe
+		(
+			response =>
+			{
+				if (response.status==true)
+				{
+					this.roles = response.roles;
+					this.roleSelected="";
+				}
+
+			},
+			error =>
+			{
+				console.log(<any>error);
+				if(error instanceof HttpErrorResponse)
+				{
+					if(error.status===0)
+					{
+						this.failedConect = Global.failed;
+					}
+				}
+			}
+			)
+	}
+
+	getRole(id)
+	{
+		this._roleService.getOne(id).subscribe
+		(
+			response =>
+			{
+				this.role = response.role;
+				this.roleFunctions=this.role.functions;
+				if(this.roleFunctions)
+				{
+					this.roleFunctionsSelected = [];
+					for(let roleFunction of this.roleFunctions)
+					{
+						this.roleFunctionsSelected.push(roleFunction.id);
+					}
+				}
+				console.log(this.roleFunctionsSelected);
+			},
+			error =>
+			{
+				console.log(<any>error);
+				if(error instanceof HttpErrorResponse)
+				{
+					if(error.status===0)
+					{
+						this.failedConect = Global.failed;
+					}
+				}
+			}
+			)
+	}
+
+	getFunctions()
+	{
+		this._functionService.All().subscribe
+		(
+			response =>
+			{
+				if (response.status==true)
+				{
+					this.functions = response.functions;
+					console.log(this.functions);
+				}
+
+			},
+			error =>
+			{
+				console.log(<any>error);
+				if(error instanceof HttpErrorResponse)
+				{
+					if(error.status===0)
+					{
+						this.failedConect = Global.failed;
+					}
+				}
+			}
+			)
+	}
+
+
+	register(functions)
+	{	
+		this._roleService.addFunctions(this.roleId,functions).subscribe
+		(
+			response =>
+			{
+				if (response.status==true)
+				{
+					this.message = response.message.text;
+					this.messageSnackBar(this.message);
+				}
+				else
+				{
+					this.message = response.message.text;
+					this.messageSnackBar(this.message);
+				}
+			},
+			error =>
+			{
+				console.log(error);
+			});
+	}
+
+	changeRole(event)
+	{
+		this. roleId = event;
+		this.getRole(event);
+	}
+
+	onSelection(event, value) 
+	{
+		console.log(event.value);
+	}
+
+	messageSnackBar(message)
+	{
+		this.snackBar.openSnackBarSuccess(message);
+	}
+
+
+	goBack()
+	{
+		this._location.back();
+	}
+
 
 }

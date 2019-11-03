@@ -28,6 +28,24 @@ const routes: Routes = [
 					}
 				]
 			},
+			{path: 'equip-infras', canActivate: [],
+				children:
+				[
+					{
+						path: '',
+		                loadChildren: './equip-infras/equip-infras.module#EquipInfrasModule',
+					}
+				]
+			},
+			{path: 'variety', canActivate: [],
+				children:
+				[
+					{
+						path: '',
+		                loadChildren: './variety/variety.module#VarietyModule',
+					}
+				]
+			},
 			
 		]
 	},	
