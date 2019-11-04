@@ -23,7 +23,7 @@ export class EquipInfrassComponent implements OnInit {
   public message:string;
   public failedConect:string;
 
-	displayedColumns: string[] = ['id','name','description','subcategory','type','varieties','status','addvariety','edit','delete'];
+	displayedColumns: string[] = ['id','name','description','type','varieties','status','addvariety','edit','delete'];
 	dataSource: MatTableDataSource<Equipinfras>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;

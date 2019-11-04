@@ -11,6 +11,7 @@ import { AddVarietyComponent } from './add-variety/add-variety.component';
 import { AddVarietyDetailsComponent } from './add-variety-details/add-variety-details.component';
 import { ShowVarietyDetailComponent } from './show-variety-detail/show-variety-detail.component';
 import { AddServiceDetailComponent } from './add-service-detail/add-service-detail.component';
+import { EditVarietyDetailComponent } from './edit-variety-detail/edit-variety-detail.component';
 
 const routes: Routes = [
 
@@ -22,10 +23,11 @@ const routes: Routes = [
 			{path: 'edit/:id', component: EquipInfrasEditComponent},
 			{path: 'show/:id', component: EquipInfrasShowComponent},
 			{path: 'show/:id/variety/:id', component: ShowVarietyDetailComponent},
-			{path: 'show/:id/variety/:id/varietyDetails/:id/addServiceDetail', component: AddServiceDetailComponent},
 			{path: 'delete/:id', component: EquipInfrasDeleteComponent},
 			{path: ':id/addVariety', component: AddVarietyComponent},
-			{path: ':id/addVariety/:id/addVarietyDetails', component: AddVarietyDetailsComponent}
+			{path: ':id/addVariety/:id/addVarietyDetails', component: AddVarietyDetailsComponent},
+			{path: 'show/:id/variety/:id/varietyDetails/:id/addServiceDetail', component: AddServiceDetailComponent},
+			{path: 'editVarietyDetail/:id', component: EditVarietyDetailComponent},
 		]
 	},
 

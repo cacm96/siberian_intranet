@@ -34,14 +34,16 @@ export class ShowVarietyDetailComponent implements OnInit {
 	public EquipinfraId:any;
 	public message:string;
 	public failedConect:string;
+	public arrayVariety:any;
 
 
 	displayedColumns: string[] = ['id','name','description','serviceDetail','status','addServiceDetail','edit','delete'];
 	dataSource: MatTableDataSource<VarietyDetail>;
 
-	@ViewChild(MatPaginator) paginator: MatPaginator;
-	@ViewChild(MatSort) sort: MatSort;
+	displayedColumnsV: string[] = ['name','description','status'];
+  	dataSourceV: MatTableDataSource<VarietyDetail>;
 
+	@ViewChild(MatPaginator) paginator: MatPaginator;
 
 	constructor
 	(
@@ -78,6 +80,10 @@ export class ShowVarietyDetailComponent implements OnInit {
 			response =>
 			{
 		        this.variety = response.variety;
+
+		        this.arrayVariety = [];
+				this.arrayVariety.push(this.variety);
+
 		        console.log(this.variety);
 		        this.equipsinfras = this.variety.equipinfras;
 				
@@ -129,8 +135,8 @@ export class ShowVarietyDetailComponent implements OnInit {
 	table()
 	{
 		this.dataSource = new MatTableDataSource(this.varietysDetail);
+		this.dataSourceV = new MatTableDataSource(this.arrayVariety);
 		this.dataSource.paginator = this.paginator;
-		this.dataSource.sort = this.sort;
 	}
 
 	onDelete(id)
