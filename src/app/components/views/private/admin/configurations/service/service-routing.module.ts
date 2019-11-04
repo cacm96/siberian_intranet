@@ -47,15 +47,15 @@ const routes: Routes = [
 					}
 				]
 			},
-			{path: 'service-detail', canActivate: [],
+			{path: 'skill', canActivate: [],
 				children:
 				[
 					{
 						path: '',
-		                loadChildren: './service-detail/service-detail.module#ServiceDetailModule',
+		                loadChildren: './skill/skill.module#SkillModule',
 					}
 				]
-			},	
+			},
 		]
 	},	
 

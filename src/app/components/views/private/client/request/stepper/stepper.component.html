@@ -89,7 +89,7 @@
 							<div class="lender_available" [class.open]="isTurn" [class.closed]="!isTurn">
 								<h4 class="text-center mb-3">Prestadores disponibles</h4>
 								<div class="row">
-									<div class="col-md-3" *ngFor="let lender of lenders">
+									<div class="col-md-3" *ngFor="let lender of lenders | slice:0:4">
 										<a id="selectedLender-1" (click)="selectedLender()">
 											<mat-card>
 												<mat-card-header class="titulo">

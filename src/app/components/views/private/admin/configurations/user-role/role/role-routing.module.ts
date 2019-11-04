@@ -17,7 +17,7 @@ const routes: Routes = [
 			{path: 'create', component: RoleCreateComponent},
 			{path: 'edit/:id', component: RoleEditComponent},
 			{path: 'show/:id', component: RoleShowComponent},
-			{path: 'delete/:id', component: RoleDeleteComponent}
+			{path: 'delete/:id', component: RoleDeleteComponent},
 		]
 	},
 

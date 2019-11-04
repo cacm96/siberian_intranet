@@ -43,9 +43,9 @@
                 <mat-list-item><h4 mat-line><b>Cliente: </b>{{revision.user.firstName | titlecase }} {{revision.user.lastName | titlecase}}</h4></mat-list-item>
                 <mat-list-item><h4 mat-line><b>Dirección: </b>{{ revision.location.address }}</h4></mat-list-item>
                 <mat-list-item><h4 mat-line><b>Fecha de la Solicitud: </b> {{ revision.createdAt |date:"longDate"}}</h4></mat-list-item>
-                <mat-list-item><h4 mat-line><b>Fecha de la Revision: </b><!--{{ revision.calendar.date }}--></h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Fecha de la Revision: </b>{{ revision.calendar.date |date:"longDate" }}</h4></mat-list-item>
                 <mat-list-item><h4 mat-line><b>Descripción del Problema: </b>{{ revision.description }}</h4></mat-list-item>
-                <mat-list-item><h4 mat-line><b>Prestador Seleccionado: </b><!--{{revision.calendar.lender.firstName | titlecase }} {{revision.calendar.lender.lastName | titlecase}}--></h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Prestador Seleccionado: </b>{{revision.calendar.lender.firstName | titlecase }} {{revision.calendar.lender.lastName | titlecase}}</h4></mat-list-item>
                 <mat-list-item><h4 mat-line><b>Precio: </b>{{ revision.price }} Bs.S</h4></mat-list-item>
               </mat-list>
             </div>
