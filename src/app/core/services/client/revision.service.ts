@@ -30,12 +30,24 @@ export class RevisionService extends HeaderService{
 		return this.http.put(this.url+'/'+id+'/approve', {}, {headers: this.header});
 	}
 
+	cancel(id): Observable<any>{
+		return this.http.put(this.url+'/'+id+'/cancel', {}, {headers: this.header});
+	}
+
 	diagnose(id): Observable<any>{
 		return this.http.put(this.url+'/'+id+'/diagnose', {}, {headers: this.header});
 	}
 
-	reject(id): Observable<any>{
-		return this.http.put(this.url+'/'+id+'/reject', {}, {headers: this.header});
+	rejected(id,motiveId,note?): Observable<any>{
+		return this.http.put(this.url+'/'+id+'/reject/'+motiveId, {description:note}, {headers: this.header});
+	}
+
+	irreparable(id,motiveId,note?): Observable<any>{
+		return this.http.put(this.url+'/'+id+'/irreparable/'+motiveId, {description:note}, {headers: this.header});
+	}
+
+	deleteOne(id): Observable<any>{
+		return this.http.delete(this.url+'/'+id, {headers: this.header});
 	}
 
 	All(): Observable<any>{
@@ -46,13 +58,14 @@ export class RevisionService extends HeaderService{
 		return this.http.get(this.url+"/user/"+userid, {headers: this.header});
 	}
 
+	getRevisionLender(lenderid:any): Observable<any>{
+		return this.http.get(this.url+"/lender/"+lenderid, {headers: this.header});
+	}
+
 	getOne(id:Number): Observable<any>{
 		return this.http.get(this.url+"/"+id, {headers: this.header});
 	}
 
-	deleteOne(id): Observable<any>{
-		return this.http.delete(this.url+'/'+id, {headers: this.header});
-	}
 
 
 }

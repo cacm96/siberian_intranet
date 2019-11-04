@@ -9,7 +9,7 @@ import { ServicesComponent } from './services/services.component';
   declarations:
   [
   	ServiceComponent,
-  	ServicesComponent,
+  	ServicesComponent
   ],
   imports: [
     CommonModule,

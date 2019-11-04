@@ -7,6 +7,9 @@ import { LocationService } from '../../../../../core/services/admin/location.ser
 import { RevisionService } from 'src/app/core/services/client/revision.service';
 import { ServiceDetailService } from 'src/app/core/services/admin/serviceDetail.service';
 import { EquipinfrasService } from 'src/app/core/services/admin/equipinfras.service';
+import { VarietyService } from 'src/app/core/services/admin/variety.service';
+import { VarietyDetailService } from 'src/app/core/services/admin/varietyDetail.service';
+import { CalendarService } from 'src/app/core/services/client/calendar.service';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -18,8 +21,6 @@ import { RequestDetailComponent } from './request-detail/request-detail.componen
 import { RequestsComponent } from './requests/requests.component';
 import { SheetComponent } from './sheet/sheet.component';
 import { StepperComponent } from './stepper/stepper.component';
-import { MessageComponent } from './message/message.component';
-
 import { TruncatePipe } from 'src/app/core/pipes/truncate.pipe';
 
 
@@ -31,7 +32,6 @@ import { TruncatePipe } from 'src/app/core/pipes/truncate.pipe';
   	RequestsComponent,
     SheetComponent,
     StepperComponent,
-    MessageComponent,
     TruncatePipe,
   ],
   imports: [
@@ -45,8 +45,11 @@ import { TruncatePipe } from 'src/app/core/pipes/truncate.pipe';
     RevisionService,
     ServiceDetailService,
     EquipinfrasService,
+    VarietyService,
+    VarietyDetailService,
     UserService,
     LocationService,
+    CalendarService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass : TokenInterceptorService,

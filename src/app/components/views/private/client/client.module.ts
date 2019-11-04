@@ -18,6 +18,12 @@ import { ClaimComponent } from './claim/claim.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ServiceComponent } from './service/service.component';
 import { SuggestionComponent } from './suggestion/suggestion.component';
+import { IncidenceComponent } from './incidence/incidence.component';
+import { CalificationComponent } from './calification/calification.component';
+import { CalificationDetailComponent } from './calification-detail/calification-detail.component';
+import { ServiceDetailComponent } from './service-detail/service-detail.component';
+import { BudgetComponent } from './budget/budget.component';
+import { BudgetDetailComponent } from './budget-detail/budget-detail.component';
 
 @NgModule({
   declarations:
@@ -27,6 +33,12 @@ import { SuggestionComponent } from './suggestion/suggestion.component';
   	DashboardComponent,
   	ServiceComponent,
   	SuggestionComponent,
+  	IncidenceComponent,
+  	CalificationComponent,
+  	CalificationDetailComponent,
+  	ServiceDetailComponent,
+  	BudgetComponent,
+  	BudgetDetailComponent,
   ],
   imports: [
     CommonModule,

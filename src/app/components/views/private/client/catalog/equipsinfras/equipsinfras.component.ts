@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import {Location} from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Global } from '../../../../../../core/services/global';
-import { CatalogueService } from '../../../../../../core/services/client/catalogue.service';
-
+import { Global } from 'src/app/core/services/global';
+import { SubcategoryService } from 'src/app//core/services/admin/subcategory.service';
 
 @Component({
 	selector: 'sib-equipsinfras',
@@ -14,11 +13,8 @@ import { CatalogueService } from '../../../../../../core/services/client/catalog
 export class EquipsinfrasComponent implements OnInit {
 
 	public equipsinfras:any;
-	public equipinfras:any;
-	public varietys:any;
 	public subcategory:any;
 	public category:any;
-	public IdEquipinfras:string;
 	public total:number;
 	public message:string;
 	public failedConect:string;
@@ -26,7 +22,7 @@ export class EquipsinfrasComponent implements OnInit {
 
 	constructor
 	(
-		private _catalogueService: CatalogueService,
+    	private _subcategoryService: SubcategoryService,
 		private _route: ActivatedRoute,
 		private _router: Router,
 		private _location: Location
@@ -43,8 +39,6 @@ export class EquipsinfrasComponent implements OnInit {
 			{
 				let id = params.id;
 				this.getSubcategory(id);
-				this.IdEquipinfras= localStorage.getItem('IdEquipinfras');
-				//this.getEquipinfras(this.IdEquipinfras);
 			}
 		);
 	}
@@ -52,16 +46,16 @@ export class EquipsinfrasComponent implements OnInit {
 
 	getSubcategory(id)
 	{
-		this._catalogueService.getSubcategory(id).subscribe
+		this._subcategoryService.getOne(id).subscribe
 		(
 			response =>
 			{
 				if (response.status==true)
 				{
-					this.equipsinfras = response.subcategory.equipinfras;
 					this.subcategory = response.subcategory;
 					this.category = response.subcategory.category;
-					console.log(this.equipsinfras);
+					this.equipsinfras = response.subcategory.equipinfras;
+					console.log(this.subcategory);
 				}
 				else
 				{
@@ -84,39 +78,6 @@ export class EquipsinfrasComponent implements OnInit {
 			}
 			)
 	}
-
-	/*getEquipinfras(id)
-	{
-		this._catalogueService.getEquipinfras(id).subscribe
-		(
-			response =>
-			{
-				if (response.status==true)
-				{
-					this.equipinfras = response.equipinfras;
-					this.varietys = response.equipinfras.variety;
-					console.log(response);
-				}
-				else
-				{
-					this.message = response.message.text;
-					console.log(this.message);
-				}
-
-			},
-			error =>
-			{
-				console.log(<any>error);
-				if(error instanceof HttpErrorResponse)
-				{
-					if(error.status===0)
-					{
-						this.failedConect = Global.failed;
-					}
-				}
-			}
-			)
-	}*/
 
 	goBack()
 	{ 

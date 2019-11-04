@@ -5,6 +5,9 @@ import { MaterialModule } from '../../../../../core/ui/material.module';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CatalogueService } from 'src/app/core/services/client/catalogue.service';
+import { SubcategoryService } from 'src/app//core/services/admin/subcategory.service';
+
+
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from 'src/app/core/services/token-interceptor.service';
 
@@ -48,6 +51,7 @@ import { SearchVarietiesDetailPipe } from '../../../../../core/pipes/searchVarie
   providers:
   [
     CatalogueService,
+    SubcategoryService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass : TokenInterceptorService,

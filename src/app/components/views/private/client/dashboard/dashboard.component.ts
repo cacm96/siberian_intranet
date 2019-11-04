@@ -32,13 +32,17 @@ export class DashboardComponent implements OnInit {
   public failedConect: string;
 
   public totalRevisionRequested:number=0;
-  public totalRevisionDiagnosticated:number=0;
   public totalRevisionApproved:number=0;
+  public totalRevisionRejected:number=0;
+  public totalRevisionDiagnosticated:number=0;
+  public totalRevisionLost:number=0;
   public totalRevisionFinalized:number=0;
   public totalRevisionCancelled:number=0;
 
   public totalServiceOrderBudgeted:number=0;
   public totalServiceOrderApproved:number=0;
+  public totalServiceOrderRejected:number=0;
+  public totalServiceOrderFinalized:number=0;
   public totalServiceOrderWarranty:number=0;
 
   constructor(
@@ -76,14 +80,23 @@ export class DashboardComponent implements OnInit {
               this.totalRevisionRequested++;
             }
 
+            if( this.revisions[i].status == 'approved')
+            {
+              this.totalRevisionApproved++;
+            }
+            if( this.revisions[i].status == 'rejected')
+            {
+              this.totalRevisionRejected++;
+            }
+
             if( this.revisions[i].status == 'diagnosticated')
             {
               this.totalRevisionDiagnosticated++;
             }
 
-            if( this.revisions[i].status == 'approved')
+            if( this.revisions[i].status == 'irreparable')
             {
-              this.totalRevisionApproved++;
+              this.totalRevisionLost++;
             }
 
             if( this.revisions[i].status == 'finalized')
@@ -95,6 +108,7 @@ export class DashboardComponent implements OnInit {
             {
               this.totalRevisionCancelled++;
             }
+
           }
           console.log(this.revisions);
         }

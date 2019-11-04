@@ -26,6 +26,22 @@ export class ServiceOrderService extends HeaderService{
 		return this.http.put(this.url+'/'+serviceOrder.id, params, {headers: this.header});
 	}
 
+	All(): Observable<any>{
+		return this.http.get(this.url, {headers: this.header});
+	}
+
+	getOne(id:Number): Observable<any>{
+		return this.http.get(this.url+"/"+id, {headers: this.header});
+	}
+
+	deleteOne(id): Observable<any>{
+		return this.http.delete(this.url+'/'+id, {headers: this.header});
+	}
+
+	getServiceOrderUser(userid:any): Observable<any>{
+		return this.http.get(this.url+"/user/"+userid, {headers: this.header});
+	}
+
 	approve(id): Observable<any>{
 		return this.http.put(this.url+'/'+id+'/approve', {}, {headers: this.header});
 	}
@@ -36,22 +52,6 @@ export class ServiceOrderService extends HeaderService{
 
 	reject(id): Observable<any>{
 		return this.http.put(this.url+'/'+id+'/reject', {}, {headers: this.header});
-	}
-
-	All(): Observable<any>{
-		return this.http.get(this.url, {headers: this.header});
-	}
-
-	getServiceOrderUser(userid:any): Observable<any>{
-		return this.http.get(this.url+"/user/"+userid, {headers: this.header});
-	}
-
-	getOne(id:Number): Observable<any>{
-		return this.http.get(this.url+"/"+id, {headers: this.header});
-	}
-
-	deleteOne(id): Observable<any>{
-		return this.http.delete(this.url+'/'+id, {headers: this.header});
 	}
 
 

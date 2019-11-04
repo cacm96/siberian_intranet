@@ -1,126 +1,126 @@
-<div class="main_request-detail">
+<div class="main_request_detail">
 
   <div class="container" *ngIf="revision">
-    <button mat-raised-button color="primary" (click)="goBack()">Volver</button>
-    <h4 class="titulo">Revisión Nro {{revision.id}} </h4>
 
-    <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h4 class="titulo text-center">
+          Solicitud
+          
+          <span *ngIf="revision.status=='requested'" class="badge badge-dark">Solicitada</span>
+          <span *ngIf="revision.status=='approved'" class="badge badge-primary">Aprobada</span>
+          <span *ngIf="revision.status=='rejected'" class="badge badge-danger">Rechazada</span>
+          <span *ngIf="revision.status=='diagnosticated'" class="badge badge-warning">Diagnosticada</span>
+          <span *ngIf="revision.status=='irreparable'" class="badge badge-danger">Irreparable</span>
+          <span *ngIf="revision.status=='finalized'" class="badge badge-success">Finalizada</span>
+          <span *ngIf="revision.status=='cancelled'" class="badge badge-success">Cancelada</span>
 
-
-      <section>
-        <br>
-        <div class="container">
-          <div >             
-            <label for="cliente">Cliente:</label>
-            <p>{{revision.user.firstName}} {{revision.user.lastName}}</p>            
-          </div>
-
-          <div class=" derecho">            
-            <label for="equipo">Equipo:</label>
-            <p></p>            
-          </div>
-        </div>
-
-
-        <br>
-        <div class="container">
-          <div >
-            <label for="fecha">Fecha:</label>
-            <p>{{ revision.createdAt | date: 'dd/MM/yyyy' }}</p>
-          </div>
-
-          <div class="derecho">
-            <label for="marca">Marca:</label>
-            <p></p>
-          </div>
-        </div>
-
-        <br>
-        <div class="container">
-          <div>
-            <label for="direccion">Dirección:</label>
-            <p>{{ revision.location.address }}</p>
-          </div>
-
-          <div class="derecho">
-            <label for="modelo">Modelo:</label>
-            <p>{{ revision.varietyDetail.name }}</p>
-          </div>
-        </div>      
-
-      </section>
+        </h4>
+      </div>
     </div>
 
-
-    <br>
-    <div class="container move">
-      <label for="diagnostico">Diagnóstico:</label>
-      <br>
-      <p></p>
+    <div class="row">
+      <div class="col-sm-12">
+        <button mat-raised-button color="primary" (click)="goBack()">Volver</button>
+      </div>  
     </div>
 
-    <br>
-    <div class="container move">
-      <label for="tipoServicio" id="tiposervicio">Tipo de servicios:</label>
-      <p></p>
-    </div>
+    <hr>
 
+    <div class="row">
+      <div class="col-sm-12">
+        <mat-card>
+          <mat-card-header class="titulo border-top-danger">
+            <mat-card-title>
+              Código Solicitud 1
+            </mat-card-title>
+          </mat-card-header>
 
-    <br>
-    <div class="container extra">
-      <div class="row">
-        <div class="col-md-4">
-          <label for="componenteAsociado">Componente asociado</label>
-          <div>
-            <p>
+          <div class="row">
+            <div class="col-sm-7">
+              <mat-list>
+                <h3 mat-subheader>Datos de la Revision</h3>
+                <mat-list-item><h4 mat-line><b>Cliente: </b>{{revision.user.firstName | titlecase }} {{revision.user.lastName | titlecase}}</h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Dirección: </b>{{ revision.location.address }}</h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Fecha de la Solicitud: </b> {{ revision.createdAt |date:"longDate"}}</h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Fecha de la Revision: </b><!--{{ revision.calendar.date }}--></h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Descripción del Problema: </b>{{ revision.description }}</h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Prestador Seleccionado: </b><!--{{revision.calendar.lender.firstName | titlecase }} {{revision.calendar.lender.lastName | titlecase}}--></h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Precio: </b>{{ revision.price }} Bs.S</h4></mat-list-item>
+              </mat-list>
+            </div>
 
-            </p>
+            <div class="col-sm-5">
+              <mat-list>
+                <h3 mat-subheader>Datos del Equipo</h3>
+                <mat-list-item><h4 mat-line><b>Equipo: </b> {{ revision.varietyDetail.Equipinfra.name }}</h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Marca: </b>{{ revision.varietyDetail.variety.name }}</h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Modelo: </b>{{ revision.varietyDetail.name }}</h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Imagen: </b></h4></mat-list-item>
+                <mat-card class="card_img imgRequest">
+                  <mat-card-content class="mat_card_content">
+                    <img [src]="BASE_URL + revision?.imageRequestUrl || urldelafault" alt="">
+                  </mat-card-content>
+                </mat-card>
+              </mat-list>
+            </div>
           </div>
-        </div>
-        
-        <div class="col-md-4">
-          <label for="serviciosRequeridos">Servicios requeridos</label>    
-          <p></p>          
-        </div>
-        
-        <div class="col-md-4">       
-          <label for="personal">Personal adicional</label>              
-          <p></p>      
-        </div>
+        </mat-card>
       </div>
     </div>
 
     <br>
 
-    <br>
-    <div class="container">
-      <div class="row extra">
-        <div class="col-md-7">
-          <label for="fotos">Fotos de revisión</label>
-          <div class="container">
-            <a href="">
-              <img src="" alt="">
-            </a>
-            <a href="">
-              <img src="" alt="">
-            </a>
-            <a href="">
-              <img src="" alt="">
-            </a>
-          </div>  
-        </div>
-        
-        <div class="col-md-5">
-          <label for="costo">Costo/Presupuesto</label>
-          <p >{{ revision.price }}</p>
-          <br>
-          <div class="boton">
-            <button mat-button>Rechazar</button>
-            <button mat-button>Solicitar</button>
-          </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <mat-card>
+          <mat-card-header class="titulo border-top-danger">
+            <mat-card-title>
+              Seguimiento
+            </mat-card-title>
+          </mat-card-header>
 
-        </div>
-      </div>      
+          <div class="row">
+            <div class="offset-sm-2 col-sm-8">
+              <mat-list>
+                <h3 mat-subheader>Status</h3>
+
+                <mat-list-item>
+                  <h4 mat-line><span class="badge badge-primary">Solicitada. En espera por Aprobar</span></h4><mat-icon class="success">check_circle</mat-icon><mat-icon>cancel</mat-icon>
+                </mat-list-item>
+
+                <mat-list-item>
+                  <h4 mat-line><span class="badge badge-primary">Aprobada. En espera por Diagnostico</span></h4><mat-icon class="success">check_circle</mat-icon><mat-icon>cancel</mat-icon>
+                </mat-list-item>
+
+                <mat-list-item>
+                  <h4 mat-line><span class="badge badge-gray">Rechazada. Su solicitud no fue aceptada</span></h4><mat-icon>check_circle</mat-icon><mat-icon>cancel</mat-icon>
+                </mat-list-item>
+                <div class="ml-3">
+                  <mat-list-item>
+                    <span class="ml-3 badge badge-gray">Motivo 1</span>
+                  </mat-list-item>
+                  <mat-list-item>
+                    <span class="ml-3 badge badge-gray">Motivo 2</span>
+                  </mat-list-item>
+                  <mat-list-item>
+                    <span class="ml-3 badge badge-gray">Motivo 3</span>
+                  </mat-list-item>
+                </div>
+                <mat-list-item>
+                  <h4 mat-line><span class="badge badge-primary">Diagnosticada. Evaluando Presupuesto</span></h4><mat-icon class="success">check_circle</mat-icon><mat-icon>cancel</mat-icon>
+                </mat-list-item>
+                <mat-list-item>
+                  <h4 mat-line><span class="badge badge-gray">Rechazada. No es posible aplicar un Servicio</span></h4><mat-icon>check_circle</mat-icon><mat-icon>cancel</mat-icon>
+                </mat-list-item>
+                <mat-list-item>
+                  <h4 mat-line><span class="badge badge-primary">Finalizada. <a [routerLink]="['/auth/client/service/detail/1']" class="title" >Servicio presupuestado</a></span></h4><mat-icon class="success">check_circle</mat-icon><mat-icon>cancel</mat-icon>
+                </mat-list-item>
+              </mat-list>
+            </div>
+          </div>
+        </mat-card>
+      </div>
     </div>
 
   </div>

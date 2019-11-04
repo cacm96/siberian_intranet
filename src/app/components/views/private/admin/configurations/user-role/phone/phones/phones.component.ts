@@ -18,8 +18,8 @@ export interface PhoneData {
 
 @Component({
   selector: 'sib-phones',
-  templateUrl: './Phones.component.html',
-  styleUrls: ['./Phones.component.scss']
+  templateUrl: './phones.component.html',
+  styleUrls: ['./phones.component.scss']
 })
 export class PhonesComponent implements OnInit {
 

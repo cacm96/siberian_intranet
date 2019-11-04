@@ -24,7 +24,7 @@
 				<div *ngIf="equipsinfras && category">
 					<div class="row">
 						<div class="col-md-4" *ngFor="let equipinfras of equipsinfras | searchEquipsinfras:filterEquipsinfras">
-							<a [routerLink]="['/auth/client/catalog/category',category.id,'subcategory',subcategory.id,'equipinfras',equipinfras.id]" (click)="SetIdEquipinfras(equipinfras.id)">
+							<a [routerLink]="['/auth/client/request/stepper']" (click)="SetIdEquipinfras(equipinfras.id)">
 								<mat-card class="servicio">
 									<mat-card-header class="titulo mat-card-header-primary">
 										<mat-card-title>{{ subcategory.name }}</mat-card-title>
@@ -39,7 +39,6 @@
 												<br>
 												<b>Descripción: </b> {{ equipinfras.description }}
 												<br>
-												<b>Marcas: </b><span class="badge badge-primary">{{ equipinfras.varieties.length }}</span>
 											</div>
 										</div>
 									</mat-card-content>
@@ -62,3 +61,12 @@
 		</div>
 	</div>
 </div>
+
+
+
+
+
+
+
+
+

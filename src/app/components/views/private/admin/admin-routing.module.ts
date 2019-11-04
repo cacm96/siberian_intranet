@@ -2,10 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './admin.component';
+import { BackupComponent } from './backup/backup.component';
+import { RestoreComponent } from './restore/restore.component';
+import { ReportComponent } from './report/report.component';
 
 const routes: Routes = [
 
 	{path: '', component: AdminComponent, canActivate: []},
+
+	{path: 'backup', component: BackupComponent, canActivate: []},
+	{path: 'restore', component: RestoreComponent, canActivate: []},
+	{path: 'report', component: ReportComponent, canActivate: []},
 	
 	{path: 'dashboard', canActivate: [],
 		children:
@@ -13,25 +20,6 @@ const routes: Routes = [
 			{
 				path: '',
                 loadChildren: './dashboard/dashboard.module#DashboardModule',
-			}
-		]
-	},
-	{path: 'masters', canActivate: [],
-		children:
-		[
-			{
-				path: '',
-                loadChildren: './masters/master.module#MasterModule',
-			}
-		]
-	},
-
-	{path: 'parameters', canActivate: [],
-		children:
-		[
-			{
-				path: '',
-                loadChildren: './parameters/parameter.module#ParameterModule',
 			}
 		]
 	},
@@ -56,15 +44,6 @@ const routes: Routes = [
 		]
 	},
 
-	{path: 'transactions', canActivate: [],
-		children:
-		[
-			{
-				path: '',
-                loadChildren: './transactions/transaction.module#TransactionModule',
-			}
-		]
-	},
 ];
 
 @NgModule({
