@@ -1,13 +1,13 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12">
-			<h2 class="text-center">Parámetro de Cliente</h2>
+			<h2 class="text-center">Promociones</h2>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-sm-12">
-			<button mat-raised-button color="primary" class="mr-3" [routerLink]="['/auth/admin/configurations/parameter/parameter-client/create']">Nuevo Parámetro Cliente</button>
-	        <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/parameter']">Volver</button>
+			<button mat-raised-button color="primary" class="mr-3" [routerLink]="['create']">Nueva promoción</button>
+			<button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/parameter']">Volver</button>
 		</div>
 	</div>
 	<hr>
@@ -28,38 +28,46 @@
 					<ng-container matColumnDef="id">
 						<th mat-header-cell *matHeaderCellDef mat-sort-header> Ver </th>
 						<td mat-cell *matCellDef="let row">
-							<button mat-icon-button color="accent" [routerLink]="['/auth/admin/configurations/parameter/parameter-client/show/', row.id]">
+							<button mat-icon-button color="accent" [routerLink]="['show', row.id]">
 								<mat-icon>remove_red_eye</mat-icon>
 							</button>
 						</td>
 					</ng-container>
-					 
-					
-					<ng-container matColumnDef="parameter_id">
-						<th mat-header-cell *matHeaderCellDef mat-sort-header>ID Parámetro </th>
-						<td mat-cell *matCellDef="let row"> {{row.parameter_id}}</td>
+
+					<ng-container matColumnDef="name">
+						<th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+						<td mat-cell *matCellDef="let row"> {{row.name}}</td>
 					</ng-container>
 
-					<ng-container matColumnDef="parameter_value">
-						<th mat-header-cell *matHeaderCellDef mat-sort-header>Parámetro Valido </th>
-						<td mat-cell *matCellDef="let row"> {{row.parameter_value}}</td>
-					</ng-container>
-
-					<ng-container matColumnDef="client_id">
-						<th mat-header-cell *matHeaderCellDef mat-sort-header>ID Cliente </th>
-						<td mat-cell *matCellDef="let row"> {{row.client_id}}</td>
-					</ng-container>
-
-					<ng-container matColumnDef="created_at">
-						<th mat-header-cell *matHeaderCellDef mat-sort-header>Creado en </th>
-						<td mat-cell *matCellDef="let row"> {{row.created_at}}</td>
-					</ng-container>
-
-					<ng-container matColumnDef="updated_at">
-						<th mat-header-cell *matHeaderCellDef mat-sort-header>Actualizado en </th>
-						<td mat-cell *matCellDef="let row"> {{row.updated_at}}</td>
+					<ng-container matColumnDef="description">
+						<th mat-header-cell *matHeaderCellDef mat-sort-header> Descripción </th>
+						<td mat-cell *matCellDef="let row"> {{row.description}}</td>
 					</ng-container>
 					
+					<ng-container matColumnDef="percentDiscount">
+						<th mat-header-cell *matHeaderCellDef mat-sort-header>Descuento </th>
+						<td mat-cell *matCellDef="let row"> {{row.percentDiscount}}</td>
+					</ng-container>
+
+					<ng-container matColumnDef="idSubcategory">
+						<th mat-header-cell *matHeaderCellDef mat-sort-header>Subcategoria </th>
+						<td mat-cell *matCellDef="let row"> {{row.idSubcategory}}</td>
+					</ng-container>
+
+					<ng-container matColumnDef="date_init">
+						<th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha de inicio </th>
+						<td mat-cell *matCellDef="let row"> {{row.date_init}}</td>
+					</ng-container>
+
+					<ng-container matColumnDef="date_end">
+						<th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha de finalización</th>
+						<td mat-cell *matCellDef="let row"> {{row.date_end}}</td>
+					</ng-container>
+
+					<ng-container matColumnDef="image">
+						<th mat-header-cell *matHeaderCellDef mat-sort-header> Imagen </th>
+						<td mat-cell *matCellDef="let row"> {{row.image}}</td>
+					</ng-container>
 
 					<ng-container matColumnDef="status">
 						<th mat-header-cell *matHeaderCellDef mat-sort-header> Estatus </th>
@@ -68,12 +76,11 @@
 							<span *ngIf="row.status=='E'" class="badge badge-danger">Eliminado</span>
 						</td>
 					</ng-container>
-					
 
 					<ng-container matColumnDef="edit">
 						<th mat-header-cell *matHeaderCellDef></th>
 						<td mat-cell *matCellDef="let row">
-							<button mat-icon-button color="accent" [routerLink]="['/auth/admin/configurations/parameter/parameter-client/edit/', row.id]">
+							<button mat-icon-button color="accent" [routerLink]="['edit', row.id]">
 								<mat-icon>edit</mat-icon>
 							</button>
 						</td>

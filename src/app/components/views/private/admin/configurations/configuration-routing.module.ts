@@ -39,15 +39,6 @@ const routes: Routes = [
 					}
 				]
 			},
-			{path: 'promotion', canActivate: [],
-				children:
-				[
-					{
-						path: '',
-		                loadChildren: './promotion-origin/promotion-origin.module#PromotionOriginModule',
-					}
-				]
-			},
 			{path: 'service', canActivate: [],
 				children:
 				[

@@ -11,49 +11,47 @@ import { SubcategoryService } from '../../../../../../../../core/services/admin/
 import { SnackBarService } from '../../../../../../../../core/services/snack-bar.service';
 
 @Component({
-  selector: 'sib-equip-infras-create',
-  templateUrl: './equip-infras-create.component.html',
-  styleUrls: ['./equip-infras-create.component.scss']
+	selector: 'sib-equip-infras-create',
+	templateUrl: './equip-infras-create.component.html',
+	styleUrls: ['./equip-infras-create.component.scss']
 })
 export class EquipInfrasCreateComponent implements OnInit {
 
-  public equipinfras:Equipinfras;
-  public subcategories:Subcategory;
-  public SubcategoryId:string;
-  //public name:string;
-  //public description:string;
-  //public image_url:string;
-  public types:any[];
-  public typeSelected:string="";
-  public total:Number;
-  public failedConect:string;
+	public equipinfras:Equipinfras;
+	public subcategories:Subcategory;
+	public SubcategoryId:string;
+	public types:any[];
+	public typeSelected:string="";
+	public total:Number;
+	public failedConect:string;
 
-  public message:string;
-  
-  constructor(
+	public message:string;
 
-    private _equipinfrasService: EquipinfrasService,
-    private _subcategoryService: SubcategoryService,
-	private _router: Router,
-	private _location: Location,
-	private snackBar: SnackBarService
-  ) 
-  { 
-    this.types= [
+	constructor(
+
+		private _equipinfrasService: EquipinfrasService,
+		private _subcategoryService: SubcategoryService,
+		private _router: Router,
+		private _location: Location,
+		private snackBar: SnackBarService
+		) 
+	{ 
+		this.types=
+		[
 			{id:"E",name:"Equipo"},
 			{id:"I",name:"Infraestructura"},
-    ];
-    
-    this.equipinfras = new Equipinfras();
+		];
+
+		this.equipinfras = new Equipinfras();
 		console.log(this.equipinfras);
-  }
+	}
 
-  ngOnInit()
-  {
-    this.getSubcategories();
-  }
+	ngOnInit()
+	{
+		this.getSubcategories();
+	}
 
-  getSubcategories()
+	getSubcategories()
 	{
 		this._subcategoryService.All().subscribe
 		(
@@ -86,14 +84,14 @@ export class EquipInfrasCreateComponent implements OnInit {
 			}
 			)
 	}
- 
-  register(form: NgForm)
+
+	register(form: NgForm)
 	{
 		if(form.valid)
 		{
-      this.equipinfras.name = form.value.name;
-      this.equipinfras.description = form.value.description;
-      this.equipinfras.image_url = form.value.image_url;
+			this.equipinfras.name = form.value.name;
+			this.equipinfras.description = form.value.description;
+			this.equipinfras.image_url = form.value.image_url;
 			this.equipinfras.type = form.value.type;
 			this.equipinfras.SubcategoryId= form.value.SubcategoryId;
 
@@ -149,5 +147,5 @@ export class EquipInfrasCreateComponent implements OnInit {
 
 	goBack(){
 		this._location.back();
-	  }
+	}
 }

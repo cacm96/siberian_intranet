@@ -1,6 +1,7 @@
 <div class="container">
     <h2 *ngIf="skill" class="text-center">{{ skill.name }}</h2>
-    <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/skill/skill']">Volver</button>
+            <button mat-raised-button color="primary" (click)="goBack()">Volver</button>
+    
     <hr>
   
 
