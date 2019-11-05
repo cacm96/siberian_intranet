@@ -13,6 +13,7 @@ import { SubcategoryService } from 'src/app//core/services/admin/subcategory.ser
 export class EquipsinfrasComponent implements OnInit {
 
 	public equipsinfras:any;
+	public varieties:any;
 	public subcategory:any;
 	public category:any;
 	public total:number;

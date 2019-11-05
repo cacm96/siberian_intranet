@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../../../../../../core/ui/material.module';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RoleService } from 'src/app/core/services/admin/role.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from 'src/app/core/services/token-interceptor.service';
 
+import { RoleService } from 'src/app/core/services/admin/role.service';
+import { FunctionService } from 'src/app/core/services/admin/function.service';
 
 import { RoleRoutingModule } from './role-routing.module';
 import { RoleComponent } from './role.component';
@@ -16,6 +17,7 @@ import { RoleEditComponent } from './role-edit/role-edit.component';
 import { RoleShowComponent } from './role-show/role-show.component';
 import { RoleDeleteComponent } from './role-delete/role-delete.component';
 
+
 @NgModule({
   declarations: [
 	RoleComponent,
@@ -23,7 +25,7 @@ import { RoleDeleteComponent } from './role-delete/role-delete.component';
 	RoleCreateComponent,
 	RoleEditComponent,
 	RoleShowComponent,
-	RoleDeleteComponent
+	RoleDeleteComponent,
   ],
   imports: [
     CommonModule,
@@ -34,6 +36,7 @@ import { RoleDeleteComponent } from './role-delete/role-delete.component';
   providers:
   [
     RoleService,
+    FunctionService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass : TokenInterceptorService,

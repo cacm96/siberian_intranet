@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'sib-function-edit',
@@ -8,14 +7,9 @@ import { Location } from '@angular/common';
 })
 export class FunctionEditComponent implements OnInit {
 
-  constructor(
-    private _location: Location,
-  ) { }
+  constructor() { }
 
   ngOnInit() {
   }
 
-  goBack(){
-    this._location.back();
-  }
 }
