@@ -1,14 +1,19 @@
 
 <div class="container">
   <h2 *ngIf="variety" class="text-center">{{ variety.name }}</h2>
-  <button mat-raised-button color="primary" (click)="goBack()">Volver</button>
+      <button mat-raised-button color="primary" (click)="goBack()" matTooltip="Volver" matTooltipPosition="above"><mat-icon>arrow_back</mat-icon></button>
+  
   <hr>
   <div *ngIf="variety">
     <mat-card>
+      <mat-card-header class="titulo border-top-danger">
+        <mat-card-title>
+          {{variety.name}}
+        </mat-card-title>
+      </mat-card-header>
       <div class="row">
         <div class="col-sm-6">
           <mat-list>
-            <h3 mat-subheader>Variedad</h3>
             <mat-list-item><h4 mat-line><b>Nombre: </b> {{ variety.name }}</h4></mat-list-item>
             <mat-list-item><h4 mat-line><b>Descripción: </b> {{ variety.description }}</h4></mat-list-item>
             <mat-list-item *ngIf="variety.status=='active'"><h4 mat-line><b>Estatus:<span class="badge badge-success"> Activo</span></b></h4></mat-list-item>

@@ -73,10 +73,13 @@ export class EquipInfrasShowComponent implements OnInit {
 				if (response.status==true)
 				{
 					this.equipinfras = response.equipinfras;
+
 					this.arrayEquip = [];
 					this.arrayEquip.push(this.equipinfras);
-					this.varieties = response.equipinfras.varieties;
 					console.log(this.equipinfras);
+					
+					this.varieties = response.equipinfras.varieties;
+					
 					if(this.varieties.length>0)
 					{
 						console.log(this.varieties);

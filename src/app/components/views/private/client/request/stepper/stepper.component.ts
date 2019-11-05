@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, ReactiveFormsModule, FormGroup, Validators} from '@angular/forms';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper'
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 
@@ -41,6 +41,9 @@ export class StepperComponent implements OnInit
   public isTurn:boolean=false;
 
   public fecha:Date;
+  public minDate= new Date();
+
+  isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
 
@@ -103,6 +106,7 @@ export class StepperComponent implements OnInit
       {id:"morning",name:"Mañana"},
       {id:"afternoon",name:"Tarde"},
     ];
+    console.log(this.minDate);
   }
 
   ngOnInit()
