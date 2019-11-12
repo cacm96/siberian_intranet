@@ -26,7 +26,7 @@ export class VarietysComponent implements OnInit {
   public message:string;
   public failedConect:string;
 
-  displayedColumns: string[] = ['id','name','description','equipinfras','status','edit','delete'];
+  displayedColumns: string[] = ['id','name','description','equipinfras','status','addequipinfras','edit','delete'];
   dataSource: MatTableDataSource <Variety>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

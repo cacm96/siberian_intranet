@@ -7,8 +7,8 @@
 	</div>
 	<div class="row">
 		<div class="col-sm-12">
-			<button mat-raised-button color="primary" class="mr-3" [routerLink]="['/auth/admin/configurations/catalog/category/create']">Nueva Categoría</button>
-			<button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/catalog/']">Volver</button>
+			<button mat-raised-button matTooltip="Nueva Categoría" matTooltipPosition="above" color="primary" class="mr-3" [routerLink]="['/auth/admin/configurations/catalog/category/create']"><mat-icon>add</mat-icon></button>
+			<button mat-raised-button matTooltip="Volver" matTooltipPosition="above" color="primary" [routerLink]="['/auth/admin/configurations/catalog/']"><mat-icon>arrow_back</mat-icon></button>
 		</div>
 	</div>
 	<hr>
@@ -38,40 +38,50 @@
 					<table *ngIf="categories.length>0" mat-table [dataSource]="dataSource" matSort>
 
 						<ng-container matColumnDef="id">
-							<th mat-header-cell *matHeaderCellDef mat-sort-header> Ver </th>
+							<th mat-header-cell *matHeaderCellDef> </th>
 							<td mat-cell *matCellDef="let row">
-								<button mat-icon-button color="accent" [routerLink]="['/auth/admin/configurations/catalog/category/show/', row.id]">
+								    <button mat-icon-button color="accent" [routerLink]="['/auth/admin/configurations/catalog/category/show/', row.id]" matTooltip="Detalle" matTooltipPosition="above" >
 									<mat-icon>remove_red_eye</mat-icon>
 								</button>
 							</td>
 						</ng-container>
 
 						<ng-container matColumnDef="name">
-							<th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+							<th mat-header-cell *matHeaderCellDef > Nombre </th>
 							<td mat-cell *matCellDef="let row"> {{row.name}} </td>
 						</ng-container>
 
 						<ng-container matColumnDef="description">
-							<th mat-header-cell *matHeaderCellDef mat-sort-header> Descripción </th>
+							<th mat-header-cell *matHeaderCellDef> Descripción </th>
 							<td mat-cell *matCellDef="let row"> {{row.description}}</td>
 						</ng-container>
 
 						<ng-container matColumnDef="subcategories">
-							<th mat-header-cell *matHeaderCellDef mat-sort-header> Subcategorías </th>
+							<th mat-header-cell *matHeaderCellDef> Subcategorías </th>
 							<td mat-cell *matCellDef="let row"> {{row.subcategories.length}} </td>
 						</ng-container>
 
 						<ng-container matColumnDef="status">
-							<th mat-header-cell *matHeaderCellDef mat-sort-header> Estatus </th>
+							<th mat-header-cell *matHeaderCellDef> Estatus </th>
 							<td mat-cell *matCellDef="let row">
 								<span *ngIf="row.status=='active'" class="badge badge-success">{{row.status | titlecase}}</span>
+								<span *ngIf="row.status=='deleted'" class="badge badge-danger">{{row.status | titlecase}}</span>
 							</td>
 						</ng-container>
+				   
+						<ng-container matColumnDef="addsubcategory">
+								<th mat-header-cell *matHeaderCellDef></th>
+								<td mat-cell *matCellDef="let row">
+									<button mat-icon-button color="primary" [routerLink]="[row.id,'addSubcategory']" matTooltip="Asignar Subcategoría" matTooltipPosition="above">
+										<mat-icon>add</mat-icon>
+									</button>
+								</td>
+							</ng-container>
 
 						<ng-container matColumnDef="edit">
 							<th mat-header-cell *matHeaderCellDef></th>
 							<td mat-cell *matCellDef="let row">
-								<button mat-icon-button color="accent" [routerLink]="['/auth/admin/configurations/catalog/category/edit/', row.id]">
+								<button mat-icon-button color="accent" [routerLink]="['/auth/admin/configurations/catalog/category/edit/', row.id]" matTooltip="Editar" matTooltipPosition="above">
 									<mat-icon>edit</mat-icon>
 								</button>
 							</td>
@@ -80,7 +90,7 @@
 						<ng-container matColumnDef="delete">
 							<th mat-header-cell *matHeaderCellDef></th>
 							<td mat-cell *matCellDef="let row">
-								<button mat-icon-button color="warn" (click)="onDelete(row.id)">
+								<button mat-icon-button color="warn" (click)="onDelete(row.id)" matTooltip="Eliminar" matTooltipPosition="above">
 									<mat-icon>delete</mat-icon>
 								</button>
 							</td>

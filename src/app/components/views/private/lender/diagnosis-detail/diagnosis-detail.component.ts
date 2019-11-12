@@ -12,4 +12,4 @@ export class DiagnosisDetailComponent implements OnInit {
   ngOnInit() {
   }
 
-}
+  }
