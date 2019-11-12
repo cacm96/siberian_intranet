@@ -72,9 +72,9 @@
       </div>
     </div>
 
-    <div *ngIf="total<=0">
-      <h2 class="text-center">{{ message }}</h2>
-    </div>
 
   </div>
+    <div *ngIf="total<=0">
+      <h3 class="text-center">{{ message }} <a [routerLink]="['/auth/admin/configurations/catalog/sub-category/create']">¿Nueva Subcategoría?</a></h3>
+    </div>
 </div>
