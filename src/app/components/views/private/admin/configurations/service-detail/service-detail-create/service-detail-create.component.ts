@@ -155,7 +155,7 @@ export class ServiceDetailCreateComponent implements OnInit
         response => {
           if (response.status == true) {
             this.activities = response.activities;
-            this.activityId = "";
+            //this.activityId = "";
             console.log(this.activities);
           }
           else {
