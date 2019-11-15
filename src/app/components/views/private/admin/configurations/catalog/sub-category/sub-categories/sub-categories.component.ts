@@ -24,7 +24,7 @@ export class SubCategoriesComponent implements OnInit {
   public message:string;
   public failedConect:string;
 
-  displayedColumns: string[] = ['id', 'name', 'description', 'category','equipinfras', 'status', 'addequipinfras','edit','delete'];
+  displayedColumns: string[] = ['id', 'name', 'description', 'category', 'status','edit','delete'];
   dataSource: MatTableDataSource<Subcategory>;
   
   @ViewChild(MatPaginator) paginator: MatPaginator;

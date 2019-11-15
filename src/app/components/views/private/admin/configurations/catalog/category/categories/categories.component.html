@@ -68,15 +68,6 @@
 								<span *ngIf="row.status=='deleted'" class="badge badge-danger">{{row.status | titlecase}}</span>
 							</td>
 						</ng-container>
-				   
-						<ng-container matColumnDef="addsubcategory">
-								<th mat-header-cell *matHeaderCellDef></th>
-								<td mat-cell *matCellDef="let row">
-									<button mat-icon-button color="primary" [routerLink]="[row.id,'addSubcategory']" matTooltip="Asignar Subcategoría" matTooltipPosition="above">
-										<mat-icon>add</mat-icon>
-									</button>
-								</td>
-							</ng-container>
 
 						<ng-container matColumnDef="edit">
 							<th mat-header-cell *matHeaderCellDef></th>
