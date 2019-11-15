@@ -3,6 +3,7 @@ import {NgForm} from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Global } from '../../../../../../../../core/services/global';
+import {Location} from '@angular/common';
 import { Category } from '../../../../../../../../models/category';
 import { CategoryService } from '../../../../../../../../core/services/admin/category.service';
 import { Subcategory } from '../../../../../../../../models/subcategory';
@@ -29,6 +30,7 @@ export class SubCategoryEditComponent implements OnInit {
 		private _categoryService: CategoryService,
 		private _route: ActivatedRoute,
 		private _router: Router,
+		private _location: Location,
     	private snackBar: SnackBarService
 	)
 	{
@@ -125,5 +127,9 @@ export class SubCategoryEditComponent implements OnInit {
 		}
 		
 	}
+
+	goBack(){
+		this._location.back();
+	  }
 
 }
