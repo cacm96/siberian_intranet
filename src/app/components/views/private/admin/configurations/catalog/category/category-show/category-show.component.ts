@@ -1,12 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {NgForm} from '@angular/forms';
+
+import { MatTableDataSource } from '@angular/material/table';
+import { DialogService } from '../../../../../../../../core/services/dialog.service';
+
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import {Location} from '@angular/common';
+import { Location} from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { Global } from '../../../../../../../../core/services/global';
 import { Category } from '../../../../../../../../models/category';
+import { Subcategory } from '../../../../../../../../models/subcategory';
 import { CategoryService } from '../../../../../../../../core/services/admin/category.service';
 import { SnackBarService } from '../../../../../../../../core/services/snack-bar.service';
+import { SubcategoryService } from '../../../../../../../../core/services/admin/subcategory.service';
 
 @Component({
   selector: 'sib-category-show',
@@ -15,10 +23,26 @@ import { SnackBarService } from '../../../../../../../../core/services/snack-bar
 })
 export class CategoryShowComponent implements OnInit {
 
-	public category:Category;
-	public subcategories:any;
-	public message:string;
-  	public failedConect:string;
+	
+
+	  public category:Category;
+	  public arrayCategory:any;
+	  public subcategories: Array < Subcategory > = new Array < Subcategory > ();
+	  public message:string;
+	  public failedConect:string;
+	
+	  displayedColumns: string[] = ['name','description','status'];
+	  dataSource: MatTableDataSource<Subcategory>;
+
+	  
+		displayedColumnsC: string[] = ['name', 'description','subcategories','status'];
+		dataSourceC: MatTableDataSource<Category>;
+
+		  
+	
+ 
+	  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
 	constructor
 	(
@@ -26,7 +50,8 @@ export class CategoryShowComponent implements OnInit {
 		private _route: ActivatedRoute,
 		private _router: Router,
 		private _location: Location,
-    	private snackBar: SnackBarService
+    	private snackBar: SnackBarService,
+    	private dialogService: DialogService,
     )
     {
 
@@ -44,16 +69,37 @@ export class CategoryShowComponent implements OnInit {
 		);
 	}
 
+
 	getCategory(id)
 	{
 		this._categoryService.getOne(id).subscribe
 		(
 			response =>
 			{
-				this.category = response.category;
-				this.subcategories = this.category.subcategories;
-				console.log(this.subcategories);
-				console.log(this.category);
+				if (response.status==true)
+        {
+          this.category = response.category;
+          this.arrayCategory = [];
+          this.arrayCategory.push(this.category);
+          console.log(this.category);
+          this.subcategories = response.category.subcategories;
+					
+          if(this.subcategories.length>0)
+					{
+						console.log(this.subcategories);
+						this.table();
+					}
+					else
+					{
+						this.subcategories = [];
+						console.log(this.subcategories);
+						this.table();
+					}
+				}
+				else
+		        {
+		          console.log(response);
+		        }
 			},
 			error =>
 			{
@@ -69,4 +115,29 @@ export class CategoryShowComponent implements OnInit {
 		)
 	}
 
+
+
+
+	applyFilter(filterValue: string)
+  {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  table()
+  {
+    this.dataSource = new MatTableDataSource(this.subcategories);
+    this.dataSourceC = new MatTableDataSource(this.arrayCategory);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+  goBack(){
+	this._location.back();
+  }
+
+
 }
+
