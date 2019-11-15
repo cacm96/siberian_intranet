@@ -31,15 +31,24 @@ export class ServiceDetailCreateComponent implements OnInit
 {
 
 	public serviceDetail:ServiceDetail;
+	public serviceDetailOne:any;
 	
 	public serviceDetailCreate:any;
+	
 	public activities: any;
 	public resources:any;
 	public policies:any;
 	public skills:any;
 
+	public activitiesSelected:any;
+	public resourcesSelected:any;
+	public policiesSelected:any;
+	public skillsSelected:any;
+
+
 	public components:Componentt;
 	public ComponentId:string;
+
 	
 	public types:any[];
 	public typeSelected:string="";
@@ -112,6 +121,10 @@ export class ServiceDetailCreateComponent implements OnInit
 	{
 		this.getComponents();
 		this.getCategories();
+		this.getActivities();
+		this.getResources();
+		this.getPolicies();
+		this.getSkills();
 
 	}
 
@@ -150,31 +163,135 @@ export class ServiceDetailCreateComponent implements OnInit
 
 	getActivities()
 	{
-    this._activityService.All().subscribe
-      (
-        response => {
-          if (response.status == true) {
-            this.activities = response.activities;
-            //this.activityId = "";
-            console.log(this.activities);
-          }
-          else {
-            this.total = 0;
-            this.message = response.message.text;
-            console.log(this.message);
-          }
+		this._activityService.All().subscribe
+		(
+			response =>
+			{
+				if (response.status == true)
+				{
+					this.activities = response.activities;
+					console.log(this.activities);
+				}
+				else
+				{
+					this.total = 0;
+					this.message = response.message.text;
+					console.log(this.message);
+				}
 
-        },
-        error => {
-          console.log(<any>error);
-          if (error instanceof HttpErrorResponse) {
-            if (error.status === 0) {
-              this.failedConect = Global.failed;
-            }
-          }
-        }
-      )
-  }
+			},
+			error => 
+			{
+				console.log(<any>error);
+				if (error instanceof HttpErrorResponse)
+				{
+					if (error.status === 0)
+					{
+						this.failedConect = Global.failed;
+					}
+				}
+			}
+			)
+	}
+
+	getResources()
+	{
+		this._resourceService.All().subscribe
+		(
+			response =>
+			{
+				if (response.status == true)
+				{
+					this.resources = response.resources;
+					console.log(this.resources);
+				}
+				else
+				{
+					this.total = 0;
+					this.message = response.message.text;
+					console.log(this.message);
+				}
+
+			},
+			error => 
+			{
+				console.log(<any>error);
+				if (error instanceof HttpErrorResponse)
+				{
+					if (error.status === 0)
+					{
+						this.failedConect = Global.failed;
+					}
+				}
+			}
+			)
+	}
+
+	getPolicies()
+	{
+		this._policyService.All().subscribe
+		(
+			response =>
+			{
+				if (response.status == true)
+				{
+					this.policies = response.policies;
+					console.log(this.policies);
+				}
+				else
+				{
+					this.total = 0;
+					this.message = response.message.text;
+					console.log(this.message);
+				}
+
+			},
+			error => 
+			{
+				console.log(<any>error);
+				if (error instanceof HttpErrorResponse)
+				{
+					if (error.status === 0)
+					{
+						this.failedConect = Global.failed;
+					}
+				}
+			}
+			)
+	}
+
+	getSkills()
+	{
+		this._skillService.All().subscribe
+		(
+			response =>
+			{
+				if (response.status == true)
+				{
+					this.skills = response.skills;
+					console.log(this.skills);
+				}
+				else
+				{
+					this.total = 0;
+					this.message = response.message.text;
+					console.log(this.message);
+				}
+
+			},
+			error => 
+			{
+				console.log(<any>error);
+				if (error instanceof HttpErrorResponse)
+				{
+					if (error.status === 0)
+					{
+						this.failedConect = Global.failed;
+					}
+				}
+			}
+			)
+	}
 
 	getCategories()
 	{
@@ -369,10 +486,7 @@ export class ServiceDetailCreateComponent implements OnInit
 					if (response.status==true)
 					{
 						this.serviceDetailCreate = response.serviceDetail;
-						this.activities = this.serviceDetailCreate.activities;
-						this.resources = this.serviceDetailCreate.resources;
-						this.policies = this.serviceDetailCreate.policies;
-						this.skills = this.serviceDetailCreate.skills;
+						this.getServiceDetail(this.serviceDetailCreate.id);
 						this.message = response.message.text;
 						console.log(this.serviceDetailCreate);
 						this.messageSnackBar(this.message);
@@ -407,6 +521,134 @@ export class ServiceDetailCreateComponent implements OnInit
 				}
 				);
 		}
+	}
+
+	getServiceDetail(id)
+	{
+		this._serviceDetailService.getOne(id).subscribe
+		(
+			response =>
+			{
+				this.serviceDetailOne = response.serviceDetail;
+
+				if(this.serviceDetailOne.activities)
+				{
+					this.activitiesSelected = [];
+					for(let activity of this.serviceDetailOne.activities)
+					{
+						this.activitiesSelected.push(activity.id);
+					}
+				}
+
+				if(this.serviceDetailOne.resources)
+				{
+					this.resourcesSelected = [];
+					for(let resource of this.serviceDetailOne.resources)
+					{
+						this.resourcesSelected.push(resource.id);
+					}
+				}
+
+				if(this.serviceDetailOne.policies)
+				{
+					this.policiesSelected = [];
+					for(let policy of this.serviceDetailOne.policies)
+					{
+						this.policiesSelected.push(policy.id);
+					}
+				}
+
+				if(this.serviceDetailOne.skills)
+				{
+					this.skillsSelected = [];
+					for(let skill of this.serviceDetailOne.skills)
+					{
+						this.skillsSelected.push(skill.id);
+					}
+				}
+			},
+			error =>
+			{
+				console.log(<any>error);
+				if(error instanceof HttpErrorResponse)
+				{
+					if(error.status===0)
+					{
+						this.failedConect = Global.failed;
+					}
+				}
+			}
+			)
+	}
+
+	updateActivities(form: NgForm)
+	{
+
+		if(form.valid)
+		{
+			this._serviceDetailService.addActivity(this.serviceDetailOne.id,form.value.activities).subscribe
+			(
+				response =>
+				{
+					if(response.status==true)
+					{
+						console.log(response);
+						this.message  = response.message.text;
+						this.messageSnackBar(this.message);
+						this.getServiceDetail(this.serviceDetailOne.id);
+					}
+					else
+					{
+						console.log(response);
+						this.message  = response.message.text;
+						this.messageSnackBar(this.message);
+						this.getServiceDetail(this.serviceDetailOne.id);
+					}
+				},
+				error =>
+				{
+					console.log(error);
+					this.message  = error.error.message;
+					this.snackBar.openSnackBar(this.message,'');
+				}
+				);
+		}
+
+	}
+
+	updatePolicies(form: NgForm)
+	{
+
+		if(form.valid)
+		{
+			this._serviceDetailService.addPolicy(this.serviceDetailOne.id,form.value.policies).subscribe
+			(
+				response =>
+				{
+					if(response.status==true)
+					{
+						console.log(response);
+						this.message  = response.message.text;
+						this.messageSnackBar(this.message);
+						this.getServiceDetail(this.serviceDetailOne.id);
+					}
+					else
+					{
+						console.log(response);
+						this.message  = response.message.text;
+						this.messageSnackBar(this.message);
+						this.getServiceDetail(this.serviceDetailOne.id);
+					}
+				},
+				error =>
+				{
+					console.log(error);
+					this.message  = error.error.message;
+					this.snackBar.openSnackBar(this.message,'');
+				}
+				);
+		}
+
 	}
 
 	getVarietyDetail(id)

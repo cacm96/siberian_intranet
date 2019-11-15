@@ -1,10 +1,10 @@
 <div class="container" *ngIf="serviceDetail">
 	<div class="row">
 		<div class="col-sm-8 offset-2">
-      
+
 			<div class="row">
 				<div class="col-sm-12">
-					<h2 class="text-center">Asignar Actividad</h2>
+					<h2 class="text-center">Asignar Actividades</h2>
 				</div>
 			</div>
 			<div class="row">
@@ -16,18 +16,15 @@
 
 			<div *ngIf="activities">
 
-				<form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+				<form #updateForm="ngForm" (ngSubmit)="update(updateForm)">
 
 					<div class="row">
 						<div class="col-sm-12">
-							<div class="example-container">
-
-								<mat-form-field>
-									<mat-select name="activityId" [(ngModel)]="activityId" placeholder="Seleccione una o mas actividades" required>
-										<mat-option *ngFor="let activity of activities" [value]="activity.id">{{activity.name}}</mat-option>
-									</mat-select>
-								</mat-form-field>
-							</div>
+							<mat-form-field>
+								<mat-select name="activities" [(ngModel)]="activitiesSelected" placeholder="Seleccione una o mas actividades" multiple>
+									<mat-option *ngFor="let activity of activities" [value]="activity.id">{{activity.name}}</mat-option>
+								</mat-select>
+							</mat-form-field>
 						</div>
 					</div>
 
@@ -41,7 +38,7 @@
 
 					<div class="row">
 						<div class="col-sm-12">
-							<button mat-raised-button color="primary" class="mr-3" type="submit" [disabled]="!registerForm.form.valid">Añadir</button>
+							<button mat-raised-button color="primary" class="mr-3" type="submit">Añadir</button>
 						</div>
 					</div>
 				</form>
@@ -54,7 +51,6 @@
 							<mat-list>
 								<mat-list-item *ngFor="let activity of serviceDetail.activities">
 									<h4 mat-line>{{activity.name}}</h4>
-									<button mat-icon-button color="warn" matTooltip="Borrar Actividad" matTooltipPosition="left" (click)="onDelete(activity.id)"><mat-icon>delete</mat-icon></button>
 								</mat-list-item>
 							</mat-list>
 						</div>
@@ -77,12 +73,12 @@
 			<div *ngIf="total<=0">
 				<h2 class="text-center">{{ message }}</h2>
 				<div class="row">
-						<div class="col-sm-12">
-							<a [routerLink]="['/auth/admin/configurations/service/activity/create']">¿Nueva Actividad?</a>
-						</div>
+					<div class="col-sm-12">
+						<a [routerLink]="['/auth/admin/configurations/service/activity/create']">¿Nueva Actividad?</a>
 					</div>
-        </div>
-        
+				</div>
+			</div>
+
 		</div>
 	</div>
 </div>

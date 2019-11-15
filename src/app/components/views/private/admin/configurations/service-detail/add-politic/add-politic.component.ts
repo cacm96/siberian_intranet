@@ -14,162 +14,149 @@ import { SnackBarService } from 'src/app/core/services/snack-bar.service';
   templateUrl: './add-politic.component.html',
   styleUrls: ['./add-politic.component.scss']
 })
-export class AddPoliticComponent implements OnInit {
+export class AddPoliticComponent implements OnInit
+{
 
-  public policies: any;
-  public auxPolicies: any;
   public serviceDetail: ServiceDetail;
-  public policyId: string;
-  public serviceDetailId: string;
-  public total: Number;
+  public policies: any;
+  public policiesSelected:any;
+  public total:number;
   public message: string;
   public failedConect: string;
 
-  public seriviceDetailUpdate: any = {
-    id: Number,
-    policies: []
-  };
-
   constructor
-    (
-      private _policyService: PolicyService,
-      private _serviceDetailService: ServiceDetailService,
-      private _router: Router,
-      private _route: ActivatedRoute,
-      private _location: Location,
-      private snackBar: SnackBarService
-    ) {
+  (
+    private _policyService: PolicyService,
+    private _serviceDetailService: ServiceDetailService,
+    private _router: Router,
+    private _route: ActivatedRoute,
+    private _location: Location,
+    private snackBar: SnackBarService
+    )
+  {
   }
 
-  ngOnInit() {
+  ngOnInit()
+  {
     this._route.params.subscribe
-      (
-        params => {
-          let id = params.id;
-          this.serviceDetailId = id;
-          this.seriviceDetailUpdate.id = id;
-          this.getServiceDetail(id);
-        }
+    (
+      params =>
+      {
+        let id = params.id;
+        this.getServiceDetail(id);
+      }
       );
     this.getPolicies();
-    this.auxPolicies = [];
   }
 
-  getPolicies() {
+  getPolicies()
+  {
     this._policyService.All().subscribe
-      (
-        response => {
-          if (response.status == true) {
-            this.policies = response.policies;
-            this.policyId = "";
-            console.log(this.policies);
-          }
-          else {
-            this.total = 0;
-            this.message = response.message.text;
-            console.log(this.message);
-          }
-
-        },
-        error => {
-          console.log(<any>error);
-          if (error instanceof HttpErrorResponse) {
-            if (error.status === 0) {
-              this.failedConect = Global.failed;
-            }
-          }
+    (
+      response =>
+      {
+        if (response.status == true)
+        {
+          this.policies = response.policies;
+          console.log(this.policies);
         }
-      )
-  }
-
-  getServiceDetail(id) {
-    this._serviceDetailService.getOne(id).subscribe
-      (
-        response => {
-          this.serviceDetail = response.serviceDetail;
-          console.log(this.serviceDetail);
-        },
-        error => {
-          console.log(<any>error);
-          if (error instanceof HttpErrorResponse) {
-            if (error.status === 0) {
-              this.failedConect = Global.failed;
-            }
-          }
+        else
+        {
+          this.total = 0;
+          this.message = response.message.text;
+          console.log(this.message);
         }
-      )
-  }
 
-
-  register(form: NgForm)
-	{
-		if(form.valid)
-		{
-      if(this.serviceDetail.policies){
-        for(let policy of this.serviceDetail.policies) {
-          this.auxPolicies.push(policy.id);
+      },
+      error => 
+      {
+        console.log(<any>error);
+        if (error instanceof HttpErrorResponse)
+        {
+          if (error.status === 0)
+          {
+            this.failedConect = Global.failed;
+          }
         }
       }
-      this.auxPolicies.push(this.policyId);
-      this.seriviceDetailUpdate.policies = this.auxPolicies;
-      console.log(this.seriviceDetailUpdate.policies," politicas");
-      console.log(this.seriviceDetailUpdate," update");
+      )
+  }
 
-			this._serviceDetailService.addPolitic(this.seriviceDetailUpdate).subscribe
-			(
-				response =>
-				{
-					if (response.status==true)
-					{
-						this.getServiceDetail(this.serviceDetailId);
-						this.message = response.message.text;
-						this.messageSnackBar(this.message); 
-						form.reset();
-					}
-					else
-					{
-						console.log(response);
-						this.getServiceDetail(this.serviceDetailId);
-						this.message = response.message.text;
-						this.messageSnackBar(this.message);
+  getServiceDetail(id)
+  {
+    this._serviceDetailService.getOne(id).subscribe
+    (
+      response =>
+      {
+        this.serviceDetail = response.serviceDetail;
+
+        if(this.serviceDetail.policies)
+        {
+          this.policiesSelected = [];
+          for(let policy of this.serviceDetail.policies)
+          {
+            this.policiesSelected.push(policy.id);
           }
-          //this.seriviceDetailUpdate.activities = [];
-				},
-				error =>
-				{
-					console.log(error);
+        }
+      },
+      error =>
+      {
+        console.log(<any>error);
+        if(error instanceof HttpErrorResponse)
+        {
+          if(error.status===0)
+          {
+            this.failedConect = Global.failed;
+          }
+        }
+      }
+      )
+  }
 
-					if(error instanceof HttpErrorResponse)
-					{
-						if(error.status===404)
-						{
-							this.message = error.error.message;
-							console.log(error);
-							this.messageSnackBar(this.message);
-						}
-					}else
-					{
-						//this.message = error.error.message;
-						console.log(error);
-						//this.messageSnackBar(this.message);
-					}
-				}
-				);
-		}else
-		{
-		}
-	}
+  update(form: NgForm)
+  {
 
-  onDelete(id) {
+    if(form.valid)
+    {
+      this._serviceDetailService.addPolicy(this.serviceDetail.id,form.value.policies).subscribe
+      (
+        response =>
+        {
+          if(response.status==true)
+          {
+            console.log(response);
+            this.message  = response.message.text;
+            this.messageSnackBar(this.message);
+            this.getServiceDetail(this.serviceDetail.id);
+          }
+          else
+          {
+            console.log(response);
+            this.message  = response.message.text;
+            this.messageSnackBar(this.message);
+            this.getServiceDetail(this.serviceDetail.id);
+          }
+        },
+        error =>
+        {
+          console.log(error);
+          this.message  = error.error.message;
+          this.snackBar.openSnackBar(this.message,'');
+        }
+        );
+    }
     
   }
 
-  messageSnackBar(message) {
+  messageSnackBar(message)
+  {
     this.snackBar.openSnackBarSuccess(message);
   }
 
-  goBack() {
+  goBack()
+  {
     this._location.back();
   }
+
 
 }

@@ -7,7 +7,8 @@
 	
 	<div class="row">
 		<div class="col-sm-12">
-			<button mat-raised-button color="primary" (click)="goBack()">Volver</button>
+			<button mat-raised-button color="primary" (click)="goBack()" matTooltip="Volver" matTooltipPosition="above"><mat-icon>arrow_back</mat-icon></button>
+			
 		</div>
 	</div>
 	<hr>
@@ -127,57 +128,47 @@
 			<ng-template matStepLabel>Actividades</ng-template>
 
 			<div class="row">
-				<div class="col-sm-4 offset-sm-4">
-					<div *ngIf="serviceDetailCreate">
-					
+				<div class="col-sm-6 offset-sm-3">
+					<div *ngIf="serviceDetailOne">
+
 						<div *ngIf="activities">
-					
-							<form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
-					
+
+							<form #updateActivitiesForm="ngForm" (ngSubmit)="updateActivities(updateActivitiesForm)">
+
 								<div class="row">
 									<div class="col-sm-12">
-										<div class="example-container">
-					
-											<mat-form-field>
-												<mat-select name="activityId" [(ngModel)]="activityId" placeholder="Seleccione una o mas actividades" required>
-													<mat-option *ngFor="let activity of activities" [value]="activity.id">{{activity.name}}</mat-option>
-												</mat-select>
-											</mat-form-field>
-										</div>
+										<mat-form-field>
+											<mat-select name="activities" [(ngModel)]="activitiesSelected" placeholder="Seleccione una o mas actividades" multiple>
+												<mat-option *ngFor="let activity of activities" [value]="activity.id">{{activity.name}}</mat-option>
+											</mat-select>
+										</mat-form-field>
 									</div>
 								</div>
-					
-								<div class="row">
-									<div class="col-sm-12">
-										<a [routerLink]="['/auth/admin/configurations/service/activity/create']">¿Nueva Actividad?</a>
-									</div>
-								</div>
-					
+
 								<br>
-					
+
 								<div class="row">
 									<div class="col-sm-12">
-										<button mat-raised-button color="primary" class="mr-3" type="submit" [disabled]="!registerForm.form.valid">Añadir</button>
+										<button mat-raised-button color="primary" class="mr-3" type="submit">Añadir</button>
 									</div>
 								</div>
 							</form>
-					
+
 							<hr>
-					
-							<div *ngIf="serviceDetail.activities.length>0">
+
+							<div *ngIf="serviceDetailOne.activities.length>0">
 								<div class="row">
 									<div class="col-sm-12">
 										<mat-list>
-											<mat-list-item *ngFor="let activity of serviceDetail.activities">
+											<mat-list-item *ngFor="let activity of serviceDetailOne.activities">
 												<h4 mat-line>{{activity.name}}</h4>
-												<button mat-icon-button color="warn" matTooltip="Borrar Actividad" matTooltipPosition="left" (click)="onDelete(activity.id)"><mat-icon>delete</mat-icon></button>
 											</mat-list-item>
 										</mat-list>
 									</div>
 								</div>
 							</div>
-					
-							<div *ngIf="serviceDetail.activities.length<=0">
+
+							<div *ngIf="serviceDetailOne.activities.length<=0">
 								<div class="row">
 									<div class="col-sm-12">
 										<mat-list>
@@ -189,7 +180,7 @@
 								</div>
 							</div>
 						</div>
-					
+
 					</div>
 				</div>
 			</div>
@@ -208,28 +199,82 @@
 			</div>
 		</mat-step>
 
-		<mat-step completed="true">
-			<ng-template matStepLabel>Recursos</ng-template>
-			<div>
-				<button  mat-raised-button color="primary" class="mr-3" matStepperPrevious>Atras</button>
-				<button  mat-raised-button color="primary" class="mr-3" matStepperNext>Siguiente</button>
-			</div>
-		</mat-step>
 
 		<mat-step completed="true">
 			<ng-template matStepLabel>Politicas</ng-template>
+
+			<div class="row">
+				<div class="col-sm-6 offset-sm-3">
+					<div *ngIf="serviceDetailOne">
+
+						<div *ngIf="policies">
+
+							<form #updatePoliciesForm="ngForm" (ngSubmit)="updatePolicies(updatePoliciesForm)">
+
+								<div class="row">
+									<div class="col-sm-12">
+										<mat-form-field>
+											<mat-select name="policies" [(ngModel)]="policiesSelected" placeholder="Seleccione una o mas politicas" multiple>
+												<mat-option *ngFor="let policy of policies" [value]="policy.id">{{policy.name}}</mat-option>
+											</mat-select>
+										</mat-form-field>
+									</div>
+								</div>
+
+								<br>
+
+								<div class="row">
+									<div class="col-sm-12">
+										<button mat-raised-button color="primary" class="mr-3" type="submit">Añadir</button>
+									</div>
+								</div>
+							</form>
+
+							<hr>
+
+							<div *ngIf="serviceDetailOne.policies.length>0">
+								<div class="row">
+									<div class="col-sm-12">
+										<mat-list>
+											<mat-list-item *ngFor="let policy of serviceDetailOne.policies">
+												<h4 mat-line>{{policy.name}}</h4>
+											</mat-list-item>
+										</mat-list>
+									</div>
+								</div>
+							</div>
+
+							<div *ngIf="serviceDetailOne.policies.length<=0">
+								<div class="row">
+									<div class="col-sm-12">
+										<mat-list>
+											<mat-list-item>
+												<h4 mat-line>No tiene Politicas</h4>
+											</mat-list-item>
+										</mat-list>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<div *ngIf="!serviceDetailCreate">
+				<div class="row">
+					<div class="col-sm-12">
+						<h4 class="text-center">Primero debe registrar un servicio</h4>
+					</div>
+				</div>
+			</div>
+
 			<div>
 				<button  mat-raised-button color="primary" class="mr-3" matStepperPrevious>Atras</button>
 				<button  mat-raised-button color="primary" class="mr-3" matStepperNext>Siguiente</button>
 			</div>
 		</mat-step>
 
-		<mat-step completed="true">
-			<ng-template matStepLabel>Habilidades</ng-template>
-			<div>
-				<button  mat-raised-button color="primary" class="mr-3" matStepperPrevious>Atras</button>
-			</div>
-		</mat-step>
 	</mat-horizontal-stepper>
 
 </div>
