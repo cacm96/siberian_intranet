@@ -44,7 +44,7 @@
 					</ng-container>
 
 					<ng-container matColumnDef="code">
-						<th mat-header-cell *matHeaderCellDef mat-sort-header> Codigo </th>
+						<th mat-header-cell *matHeaderCellDef mat-sort-header> Código </th>
 						<td mat-cell *matCellDef="let row"> {{ row.code }} </td>
 					</ng-container>
 
@@ -75,7 +75,7 @@
 							<span *ngIf="row.status=='approved'" class="badge badge-primary">Aprobado</span>
 							<span *ngIf="row.status=='rejected'" class="badge badge-danger">Rechazado</span>
 							<span *ngIf="row.status=='finalized'" class="badge badge-success">Finalizado</span>
-							<span *ngIf="row.status=='warranty'" class="badge badge-warning">En Garantia</span>
+							<span *ngIf="row.status=='warranty'" class="badge badge-warning">En Garantía</span>
 						</td>
 					</ng-container>
 
