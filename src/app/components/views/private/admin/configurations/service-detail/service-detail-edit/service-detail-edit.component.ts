@@ -15,7 +15,8 @@ import { SnackBarService } from 'src/app/core/services/snack-bar.service';
 	templateUrl: './service-detail-edit.component.html',
 	styleUrls: ['./service-detail-edit.component.scss']
 })
-export class ServiceDetailEditComponent implements OnInit {
+export class ServiceDetailEditComponent implements OnInit
+{
 	public serviceDetail:ServiceDetail;
 	public components:any;
 	public types:any[];
@@ -41,13 +42,14 @@ export class ServiceDetailEditComponent implements OnInit {
 
 	}
 
-	ngOnInit() {
+	ngOnInit()
+	{
 		this._route.params.subscribe
 		(
 			params =>
 			{
 				let id = params.id;
-				this.getServiceDetails(id);
+				this.getServiceDetail(id);
 			}
 			);
 		this.getComponents();
@@ -76,7 +78,7 @@ export class ServiceDetailEditComponent implements OnInit {
 	}
 
 
-	getServiceDetails(id)
+	getServiceDetail(id)
 	{
 		this._serviceDetailService.getOne(id).subscribe
 		(
@@ -116,13 +118,14 @@ export class ServiceDetailEditComponent implements OnInit {
 						console.log(response);
 						this.message  = response.message.text;
 						this.snackBar.openSnackBar(this.message,'');
+						this.getServiceDetail(this.serviceDetail.id);
 					}
 					else
 					{
 						console.log(response);
 						this.message  = response.message.text;
 						this.snackBar.openSnackBar(this.message,'');
-						this.getServiceDetails(this.serviceDetail.id);
+						this.getServiceDetail(this.serviceDetail.id);
 					}
 				},
 				error =>

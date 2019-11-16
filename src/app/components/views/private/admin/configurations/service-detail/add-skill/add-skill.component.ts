@@ -15,162 +15,146 @@ import { SnackBarService } from 'src/app/core/services/snack-bar.service';
   templateUrl: './add-skill.component.html',
   styleUrls: ['./add-skill.component.scss']
 })
-export class AddSkillComponent implements OnInit {
-
-  public skills: any;
-  public auxSkills: any;
+export class AddSkillComponent implements OnInit
+{
   public serviceDetail: ServiceDetail;
-  public skillId: string;
-  public serviceDetailId: string;
-  public total: Number;
+  public skills: any;
+  public skillsSelected:any;
+  public total:number;
   public message: string;
   public failedConect: string;
 
-  public seriviceDetailUpdate: any = {
-    id: Number,
-    skills: []
-  };
-
   constructor
-    (
-      private _skillService: SkillService,
-      private _serviceDetailService: ServiceDetailService,
-      private _router: Router,
-      private _route: ActivatedRoute,
-      private _location: Location,
-      private snackBar: SnackBarService
-    ) {
+  (
+    private _skillService: SkillService,
+    private _serviceDetailService: ServiceDetailService,
+    private _router: Router,
+    private _route: ActivatedRoute,
+    private _location: Location,
+    private snackBar: SnackBarService
+    )
+  {
   }
 
-  ngOnInit() {
+  ngOnInit()
+  {
     this._route.params.subscribe
-      (
-        params => {
-          let id = params.id;
-          this.serviceDetailId = id;
-          this.seriviceDetailUpdate.id = id;
-          this.getServiceDetail(id);
-        }
+    (
+      params =>
+      {
+        let id = params.id;
+        this.getServiceDetail(id);
+      }
       );
-    this.getskills();
-    this.auxSkills = [];
+    this.getSkills();
   }
 
-  getskills() {
+  getSkills()
+  {
     this._skillService.All().subscribe
-      (
-        response => {
-          if (response.status == true) {
-            this.skills = response.skills;
-            this.skillId = "";
-            console.log(this.skills);
-          }
-          else {
-            this.total = 0;
-            this.message = response.message.text;
-            console.log(this.message);
-          }
-
-        },
-        error => {
-          console.log(<any>error);
-          if (error instanceof HttpErrorResponse) {
-            if (error.status === 0) {
-              this.failedConect = Global.failed;
-            }
-          }
+    (
+      response =>
+      {
+        if (response.status == true)
+        {
+          this.skills = response.skills;
+          console.log(this.skills);
         }
-      )
-  }
-
-  getServiceDetail(id) {
-    this._serviceDetailService.getOne(id).subscribe
-      (
-        response => {
-          this.serviceDetail = response.serviceDetail;
-          console.log(this.serviceDetail);
-        },
-        error => {
-          console.log(<any>error);
-          if (error instanceof HttpErrorResponse) {
-            if (error.status === 0) {
-              this.failedConect = Global.failed;
-            }
-          }
+        else
+        {
+          this.total = 0;
+          this.message = response.message.text;
+          console.log(this.message);
         }
-      )
-  }
 
-
-  register(form: NgForm)
-	{
-		if(form.valid)
-		{
-      if(this.serviceDetail.skills){
-        for(let skill of this.serviceDetail.skills) {
-          this.auxSkills.push(skill.id);
+      },
+      error => 
+      {
+        console.log(<any>error);
+        if (error instanceof HttpErrorResponse)
+        {
+          if (error.status === 0)
+          {
+            this.failedConect = Global.failed;
+          }
         }
       }
-      this.auxSkills.push(this.skillId);
-      this.seriviceDetailUpdate.skills = this.auxSkills;
-      console.log(this.seriviceDetailUpdate.skills," habilidades");
-      console.log(this.seriviceDetailUpdate," update");
-
-			this._serviceDetailService.addSkill(this.seriviceDetailUpdate).subscribe
-			(
-				response =>
-				{
-					if (response.status==true)
-					{
-						this.getServiceDetail(this.serviceDetailId);
-						this.message = response.message.text;
-						this.messageSnackBar(this.message); 
-						form.reset();
-					}
-					else
-					{
-						console.log(response);
-						this.getServiceDetail(this.serviceDetailId);
-						this.message = response.message.text;
-						this.messageSnackBar(this.message);
-          }
-          //this.seriviceDetailUpdate.skills = [];
-				},
-				error =>
-				{
-					console.log(error);
-
-					if(error instanceof HttpErrorResponse)
-					{
-						if(error.status===404)
-						{
-							this.message = error.error.message;
-							console.log(error);
-							this.messageSnackBar(this.message);
-						}
-					}else
-					{
-						//this.message = error.error.message;
-						console.log(error);
-						//this.messageSnackBar(this.message);
-					}
-				}
-				);
-		}else
-		{
-		}
-	}
-
-  onDelete(id) {
-
+      )
   }
 
-  messageSnackBar(message) {
+  getServiceDetail(id)
+  {
+    this._serviceDetailService.getOne(id).subscribe
+    (
+      response =>
+      {
+        this.serviceDetail = response.serviceDetail;
+
+        if(this.serviceDetail.skills)
+        {
+          this.skillsSelected = [];
+          for(let activity of this.serviceDetail.skills)
+          {
+            this.skillsSelected.push(activity.id);
+          }
+        }
+      },
+      error =>
+      {
+        console.log(<any>error);
+        if(error instanceof HttpErrorResponse)
+        {
+          if(error.status===0)
+          {
+            this.failedConect = Global.failed;
+          }
+        }
+      }
+      )
+  }
+
+  update(form: NgForm)
+  {
+
+    if(form.valid)
+    {
+      this._serviceDetailService.addSkill(this.serviceDetail.id,form.value.skills).subscribe
+      (
+        response =>
+        {
+          if(response.status==true)
+          {
+            console.log(response);
+            this.message  = response.message.text;
+            this.messageSnackBar(this.message);
+            this.getServiceDetail(this.serviceDetail.id);
+          }
+          else
+          {
+            console.log(response);
+            this.message  = response.message.text;
+            this.messageSnackBar(this.message);
+            this.getServiceDetail(this.serviceDetail.id);
+          }
+        },
+        error =>
+        {
+          console.log(error);
+          this.message  = error.error.message;
+          this.snackBar.openSnackBar(this.message,'');
+        }
+        );
+    }
+    
+  }
+
+  messageSnackBar(message)
+  {
     this.snackBar.openSnackBarSuccess(message);
   }
 
-  goBack() {
+  goBack()
+  {
     this._location.back();
   }
-
 }
