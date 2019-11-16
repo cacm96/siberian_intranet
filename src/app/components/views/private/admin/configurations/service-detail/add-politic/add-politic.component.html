@@ -23,7 +23,7 @@
                 <div class="example-container">
   
                   <mat-form-field>
-                    <mat-select name="policyId" [(ngModel)]="policyId" placeholder="Seleccione una o mas políticas" required>
+                    <mat-select name="policyId" [(ngModel)]="policyId" placeholder="Seleccione una o más políticas" required>
                       <mat-option *ngFor="let policy of policies" [value]="policy.id">{{policy.name}}</mat-option>
                     </mat-select>
                   </mat-form-field>
@@ -78,7 +78,7 @@
           <h2 class="text-center">{{ message }}</h2>
           <div class="row">
               <div class="col-sm-12">
-                <a [routerLink]="['/auth/admin/configurations/service/politic/create']">¿Nueva Políca?</a>
+                <a [routerLink]="['/auth/admin/configurations/service/politic/create']">¿Nueva Política?</a>
               </div>
             </div>
           </div>

@@ -23,7 +23,7 @@
 							<div class="example-container">
 
 								<mat-form-field>
-									<mat-select name="activityId" [(ngModel)]="activityId" placeholder="Seleccione una o mas actividades" required>
+									<mat-select name="activityId" [(ngModel)]="activityId" placeholder="Seleccione una o más actividades" required>
 										<mat-option *ngFor="let activity of activities" [value]="activity.id">{{activity.name}}</mat-option>
 									</mat-select>
 								</mat-form-field>

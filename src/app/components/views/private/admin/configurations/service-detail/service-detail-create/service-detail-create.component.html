@@ -27,7 +27,7 @@
 
 					<div class="service_create" [class.open]="isCategory" [class.closed]="!isCategory">
 						<mat-form-field>
-							<mat-select name="subcategory" [(ngModel)]="subcategorySelected" placeholder="Seleccione una Sub categoría" (ngModelChange)="changeSubcategory($event)" required>
+							<mat-select name="subcategory" [(ngModel)]="subcategorySelected" placeholder="Seleccione una Subcategoría" (ngModelChange)="changeSubcategory($event)" required>
 								<mat-option *ngFor="let subcategory of subcategories" [value]="subcategory.id">{{ subcategory.name }}</mat-option>
 							</mat-select>
 						</mat-form-field>
@@ -35,7 +35,7 @@
 
 					<div class="service_create" [class.open]="isSubcategory" [class.closed]="!isSubcategory">
 						<mat-form-field>
-							<mat-select name="equipinfras" [(ngModel)]="equipinfrasSelected" placeholder="Seleccione un Equipo o Infraestrutura" (ngModelChange)="changeEquipinfras($event)" required>
+							<mat-select name="equipinfras" [(ngModel)]="equipinfrasSelected" placeholder="Seleccione un Equipo o Infraestructura" (ngModelChange)="changeEquipinfras($event)" required>
 								<mat-option *ngFor="let equipinfra of equipinfras" [value]="equipinfra.id">{{ equipinfra.name }}</mat-option>
 							</mat-select>
 						</mat-form-field>
@@ -98,11 +98,11 @@
 							</mat-form-field>
 
 							<mat-form-field>
-								<input matInput name="estimatedWarrantyTime" placeholder="Tiempo Estimado de Garantia" [(ngModel)]="estimatedWarrantyTime">
+								<input matInput name="estimatedWarrantyTime" placeholder="Tiempo Estimado de Garantía" [(ngModel)]="estimatedWarrantyTime">
 							</mat-form-field>
 
 							<br>
-							<button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.form.valid">Registar</button>
+							<button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.form.valid">Registrar</button>
 						</div>
 					</div>
 				</form>
@@ -139,7 +139,7 @@
 										<div class="example-container">
 					
 											<mat-form-field>
-												<mat-select name="activityId" [(ngModel)]="activityId" placeholder="Seleccione una o mas actividades" required>
+												<mat-select name="activityId" [(ngModel)]="activityId" placeholder="Seleccione una o más actividades" required>
 													<mat-option *ngFor="let activity of activities" [value]="activity.id">{{activity.name}}</mat-option>
 												</mat-select>
 											</mat-form-field>
@@ -217,7 +217,7 @@
 		</mat-step>
 
 		<mat-step completed="true">
-			<ng-template matStepLabel>Politicas</ng-template>
+			<ng-template matStepLabel>Políticas</ng-template>
 			<div>
 				<button  mat-raised-button color="primary" class="mr-3" matStepperPrevious>Atras</button>
 				<button  mat-raised-button color="primary" class="mr-3" matStepperNext>Siguiente</button>
