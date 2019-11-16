@@ -147,6 +147,11 @@ export class AddResourceComponent implements OnInit
 
 	}
 
+	onSelection(event, value) 
+	{
+		console.log(event.value);
+	}
+
 	messageSnackBar(message)
 	{
 		this.snackBar.openSnackBarSuccess(message);

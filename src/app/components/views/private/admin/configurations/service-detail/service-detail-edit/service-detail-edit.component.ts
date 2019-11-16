@@ -23,6 +23,18 @@ export class ServiceDetailEditComponent implements OnInit
 	public failedConect:string;
 	public message:string;
 
+	public seriviceDetailUpdate: any =
+	{
+		id: Number,
+	    ComponentId: Number,
+	    serviceType: String,
+	    name: String,
+	    note: String,
+	    estimatedPrice: String,
+	    estimatedWarrantyTime: String,
+	};
+
+
 	constructor(
 		private _serviceDetailService: ServiceDetailService,
 		private _componentService: ComponentService,
@@ -103,13 +115,20 @@ export class ServiceDetailEditComponent implements OnInit
 
 	update(form: NgForm)
 	{
-		//this.serviceDetail.ComponentId = form.value.ComponentId;
 
 		console.log(this.serviceDetail);
 
+		this.seriviceDetailUpdate.id = this.serviceDetail.id;
+		this.seriviceDetailUpdate.ComponentId= form.value.ComponentId;
+		this.seriviceDetailUpdate.serviceType = form.value.type;
+		this.seriviceDetailUpdate.name = form.value.name;
+		this.seriviceDetailUpdate.note = form.value.note;
+		this.seriviceDetailUpdate.estimatedPrice = form.value.estimatedPrice;
+		this.seriviceDetailUpdate.estimatedWarrantyTime = form.value.estimatedWarrantyTime;
+
 		if(form.valid)
 		{
-			this._serviceDetailService.update(this.serviceDetail).subscribe
+			this._serviceDetailService.update(this.seriviceDetailUpdate).subscribe
 			(
 				response =>
 				{

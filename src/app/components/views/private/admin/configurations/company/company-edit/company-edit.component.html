@@ -9,61 +9,81 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-12">
-						<button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/company']">Volver</button>
+						<button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/company']" matTooltip="Volver" matTooltipPosition="above"><mat-icon>arrow_back</mat-icon></button>
 					</div>
 				</div>
 				<hr>
 
 				<div class="row">
-					<div class="col-sm-6">
-						<mat-form-field>
-							<input matInput name="name" [(ngModel)]="company.name" placeholder="Nombre" required>
-						</mat-form-field>
+					<div class="col-sm-12">
+						<mat-card>
+							<mat-card-header class="titulo border-top-danger">
+								<mat-card-title>
+									{{ company.name }}
+								</mat-card-title>
+							</mat-card-header>
+							<mat-card-content>
+								<br>
+								<div class="row">
+									<div class="col-sm-10 offset-sm-1">
+										<div class="row">
+											<div class="col-sm-6">
+												<mat-form-field>
+													<input matInput name="name" [(ngModel)]="company.name" placeholder="Nombre" required>
+												</mat-form-field>
 
-						<mat-form-field>
-							<input matInput name="rif" [(ngModel)]="company.rif" placeholder="RIF" required>
-						</mat-form-field>
+												<mat-form-field>
+													<input matInput name="rif" [(ngModel)]="company.rif" placeholder="RIF" required>
+												</mat-form-field>
 
-						<mat-form-field>
-							<textarea matInput name="aboutUs" [(ngModel)]="company.aboutUs" placeholder="¿Quiénes somos?"></textarea>
-						</mat-form-field>
+												<mat-form-field>
+													<textarea matInput name="aboutUs" [(ngModel)]="company.aboutUs" placeholder="¿Quiénes somos?"></textarea>
+												</mat-form-field>
 
-						<mat-form-field>
-							<textarea matInput name="vision" [(ngModel)]="company.vision" placeholder="Visión"></textarea>
-						</mat-form-field>
-						
-						<mat-form-field>
-							<input matInput name="phoneOne" [(ngModel)]="company.phoneOne" placeholder="Primer Teléfono" required>
-						</mat-form-field>
+												<mat-form-field>
+													<textarea matInput name="vision" [(ngModel)]="company.vision" placeholder="Visión"></textarea>
+												</mat-form-field>
 
-						<mat-form-field>
-							<input matInput name="phoneTwo" [(ngModel)]="company.phoneTwo" placeholder="Segundo Teléfono">
-						</mat-form-field>
-					</div>
-					<div class="col-sm-6">
-						<mat-form-field>
-							<textarea matInput name="address" [(ngModel)]="company.address" placeholder="Dirección"></textarea>
-						</mat-form-field>
+												<mat-form-field>
+													<input matInput name="phoneOne" [(ngModel)]="company.phoneOne" placeholder="Primer Teléfono" required>
+												</mat-form-field>
 
-						<mat-form-field>
-							<input matInput name="facebook" [(ngModel)]="company.facebook" placeholder="Facebook">
-						</mat-form-field>
+												<mat-form-field>
+													<input matInput name="phoneTwo" [(ngModel)]="company.phoneTwo" placeholder="Segundo Teléfono">
+												</mat-form-field>
+											</div>
+											<div class="col-sm-6">
+												<mat-form-field>
+													<textarea matInput name="address" [(ngModel)]="company.address" placeholder="Dirección"></textarea>
+												</mat-form-field>
 
-						<mat-form-field>
-							<input matInput name="instagram" [(ngModel)]="company.instagram" placeholder="Instagram">
-						</mat-form-field>
+												<mat-form-field>
+													<input matInput name="facebook" [(ngModel)]="company.facebook" placeholder="Facebook">
+												</mat-form-field>
 
-						<mat-form-field>
-							<input matInput name="twitter" [(ngModel)]="company.twitter" placeholder="Twitter">
-						</mat-form-field>
+												<mat-form-field>
+													<input matInput name="instagram" [(ngModel)]="company.instagram" placeholder="Instagram">
+												</mat-form-field>
 
-						<input id="fileInput" type="file" required>	
+												<mat-form-field>
+													<input matInput name="twitter" [(ngModel)]="company.twitter" placeholder="Twitter">
+												</mat-form-field>
+
+												<input id="fileInput" type="file" required>	
+											</div>
+										</div>
+										<br>
+										<button mat-raised-button color="primary" type="submit">Guardar</button>
+									</div>
+								</div>
+							</mat-card-content>
+						</mat-card>
 					</div>
 				</div>
 			</div>
 		</div>
 		<br>
-		<button mat-raised-button color="primary" type="submit">Guardar</button>
+		
 	</form>
 </div>
 
@@ -76,6 +96,7 @@
 		</div>
 	</div>
 </div>
+
 <div *ngIf="failedConect">
 	<h6 class="text-center">{{failedConect}}</h6>
 </div>
