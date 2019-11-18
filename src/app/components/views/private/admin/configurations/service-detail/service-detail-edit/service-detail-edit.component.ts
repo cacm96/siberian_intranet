@@ -15,12 +15,25 @@ import { SnackBarService } from 'src/app/core/services/snack-bar.service';
 	templateUrl: './service-detail-edit.component.html',
 	styleUrls: ['./service-detail-edit.component.scss']
 })
-export class ServiceDetailEditComponent implements OnInit {
+export class ServiceDetailEditComponent implements OnInit
+{
 	public serviceDetail:ServiceDetail;
 	public components:any;
 	public types:any[];
 	public failedConect:string;
 	public message:string;
+
+	public seriviceDetailUpdate: any =
+	{
+		id: Number,
+	    ComponentId: Number,
+	    serviceType: String,
+	    name: String,
+	    note: String,
+	    estimatedPrice: String,
+	    estimatedWarrantyTime: String,
+	};
+
 
 	constructor(
 		private _serviceDetailService: ServiceDetailService,
@@ -41,13 +54,14 @@ export class ServiceDetailEditComponent implements OnInit {
 
 	}
 
-	ngOnInit() {
+	ngOnInit()
+	{
 		this._route.params.subscribe
 		(
 			params =>
 			{
 				let id = params.id;
-				this.getServiceDetails(id);
+				this.getServiceDetail(id);
 			}
 			);
 		this.getComponents();
@@ -76,7 +90,7 @@ export class ServiceDetailEditComponent implements OnInit {
 	}
 
 
-	getServiceDetails(id)
+	getServiceDetail(id)
 	{
 		this._serviceDetailService.getOne(id).subscribe
 		(
@@ -101,13 +115,20 @@ export class ServiceDetailEditComponent implements OnInit {
 
 	update(form: NgForm)
 	{
-		//this.serviceDetail.ComponentId = form.value.ComponentId;
 
 		console.log(this.serviceDetail);
 
+		this.seriviceDetailUpdate.id = this.serviceDetail.id;
+		this.seriviceDetailUpdate.ComponentId= form.value.ComponentId;
+		this.seriviceDetailUpdate.serviceType = form.value.type;
+		this.seriviceDetailUpdate.name = form.value.name;
+		this.seriviceDetailUpdate.note = form.value.note;
+		this.seriviceDetailUpdate.estimatedPrice = form.value.estimatedPrice;
+		this.seriviceDetailUpdate.estimatedWarrantyTime = form.value.estimatedWarrantyTime;
+
 		if(form.valid)
 		{
-			this._serviceDetailService.update(this.serviceDetail).subscribe
+			this._serviceDetailService.update(this.seriviceDetailUpdate).subscribe
 			(
 				response =>
 				{
@@ -116,13 +137,14 @@ export class ServiceDetailEditComponent implements OnInit {
 						console.log(response);
 						this.message  = response.message.text;
 						this.snackBar.openSnackBar(this.message,'');
+						this.getServiceDetail(this.serviceDetail.id);
 					}
 					else
 					{
 						console.log(response);
 						this.message  = response.message.text;
 						this.snackBar.openSnackBar(this.message,'');
-						this.getServiceDetails(this.serviceDetail.id);
+						this.getServiceDetail(this.serviceDetail.id);
 					}
 				},
 				error =>

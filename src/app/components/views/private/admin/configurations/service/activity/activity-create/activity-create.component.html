@@ -32,7 +32,7 @@
                 </mat-form-field>	
           
                 <mat-form-field>
-                  <mat-select name="difficultyDegree" [(ngModel)]="difficultyDegreeSelected" placeholder="Seleccione un Grado de doficultad" required>
+                  <mat-select name="difficultyDegree" [(ngModel)]="difficultyDegreeSelected" placeholder="Seleccione un Grado de dificultad" required>
                     <mat-option *ngFor="let difficultyDegree of difficultyDegrees" [value]="difficultyDegree.id">{{ difficultyDegree.name }}</mat-option>
                   </mat-select>
                 </mat-form-field>

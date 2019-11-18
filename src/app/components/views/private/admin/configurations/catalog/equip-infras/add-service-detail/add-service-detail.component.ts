@@ -158,7 +158,7 @@ export class AddServiceDetailComponent implements OnInit {
 					this.message  = error.error.message;
 					this.snackBar.openSnackBar(this.message,'');
 				}
-				);
+			);
 		}else
 		{
 		}

@@ -20,11 +20,11 @@
 
           <ng-container matColumnDef="category">
             <th mat-header-cell *matHeaderCellDef> Categoría </th>
-            <td mat-cell *matCellDef="let row"> Electrodomesticos</td>
+            <td mat-cell *matCellDef="let row"> {{ row.subcategory.Category.name }}</td>
           </ng-container>
 
           <ng-container matColumnDef="subcategory">
-            <th mat-header-cell *matHeaderCellDef> Sub Categoría </th>
+            <th mat-header-cell *matHeaderCellDef> Subcategoría </th>
             <td mat-cell *matCellDef="let row"> {{ row.subcategory.name }} </td>
           </ng-container>
 
@@ -80,7 +80,7 @@
             <div *ngIf="varieties.length<=0 && !failedConect">
               <div class="row">
                 <div class="col-sm-12">
-                  <h3 class="text-center mt-3 mb-3">Este Equipo/Infraestrcutura no tiene variedades asociadas</h3>
+                  <h3 class="text-center mt-3 mb-3">Este Equipo/Infraestructura no tiene variedades asociadas</h3>
                 </div>
               </div>
             </div>

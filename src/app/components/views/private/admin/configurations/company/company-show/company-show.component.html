@@ -1,23 +1,42 @@
+<div class="container" *ngIf="company">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="text-center">Empresa</h2>
+        </div>
+    </div>
 
-<div class="container">
-    <h2 class="text-center">Empresa</h2>
-    <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/company']">Volver</button>
+    <div class="row">
+        <div class="col-sm-12">
+            <button mat-raised-button  matTooltip="Editar" matTooltipPosition="above"color="primary" class="mr-3" [routerLink]="['edit',company.id]"><mat-icon>edit</mat-icon></button>
+        </div>
+    </div>
+
     <hr>
+
     <mat-card>
-      <mat-list>
-        <mat-list-item> <b>Código: </b> 1</mat-list-item>
-        <mat-list-item> <b>Rif: </b> j-012285524</mat-list-item>
-        <mat-list-item> <b>Nombre:</b> Se hace de todo</mat-list-item>
-        <mat-list-item> <b>Misión: </b> Misión</mat-list-item>
-        <mat-list-item> <b>Visión: </b> Visión</mat-list-item>
-        <mat-list-item> <b>¿Quiénes somos?:</b>¿Quiénes somos?</mat-list-item>
-        <mat-list-item> <b>Dirección: </b> carrera 20 con calle 20</mat-list-item>
-        <mat-list-item> <b>Primer Teléfono: </b> 0251 1112233</mat-list-item>
-        <mat-list-item> <b>Segundo Teléfono: </b> 0251 4445566</mat-list-item>
-        <mat-list-item> <b>Imagen: </b>url</mat-list-item>
-        <mat-list-item> <b>Facebook: </b>Se hace de todo</mat-list-item>
-        <mat-list-item> <b>Instagram: </b>@shtodo</mat-list-item>
-        <mat-list-item> <b>Twitter: </b> @shtodo</mat-list-item>
-      </mat-list>
+        <mat-card-header class="titulo border-top-danger"><mat-card-title>{{ company.name }}</mat-card-title></mat-card-header>
+        <div class="row">
+            <div class="col-sm-12">
+                <mat-list>
+                    <mat-list-item> <b>Rif: </b> {{ company.rif }}</mat-list-item>
+                    <mat-list-item> <b>Nombre:</b> {{ company.name }}</mat-list-item>
+                    <mat-list-item> <b>Misión: </b> </mat-list-item>
+                    <mat-list-item> <b>Visión: </b> {{ company.vision }}</mat-list-item>
+                    <mat-list-item> <b>¿Quiénes somos?:</b>{{ company.aboutUs }}</mat-list-item>
+                    <mat-list-item> <b>Dirección: </b> {{ company.address }}</mat-list-item>
+                    <mat-list-item> <b>Primer Teléfono: </b> {{ company.phoneOne }}</mat-list-item>
+                    <mat-list-item> <b>Segundo Teléfono: </b> {{ company.phoneTwo }}</mat-list-item>
+                    <mat-list-item> <b>Facebook: </b>www.facebook.com/{{ company.facebook }}</mat-list-item>
+                    <mat-list-item> <b>Instagram: </b>{{ company.instagram}}</mat-list-item>
+                    <mat-list-item> <b>Twitter: </b> {{ company.twitter }}</mat-list-item>
+                    <mat-list-item> <b>Imagen: </b>url</mat-list-item>
+                    <mat-card class="card_img imgRequest">
+                      <mat-card-content class="mat_card_content">
+                        <img [src]="BASE_URL + company?.imageUrl || urldelafault" alt="">
+                      </mat-card-content>
+                    </mat-card>
+                </mat-list>
+            </div>
+        </div>
     </mat-card>
 </div>
