@@ -19,6 +19,24 @@ const routes: Routes = [
 					}
 				]
 			},
+			{path: 'parametro', canActivate: [],
+				children:
+				[
+					{
+						path: '',
+		                loadChildren: './parametro/parametro.module#ParametroModule',
+					}
+				]
+			},
+			{path: 'group', canActivate: [],
+				children:
+				[
+					{
+						path: '',
+		                loadChildren: './group/group.module#GroupModule',
+					}
+				]
+			},
 			{path: 'promotion-target', canActivate: [],
 				children:
 				[
