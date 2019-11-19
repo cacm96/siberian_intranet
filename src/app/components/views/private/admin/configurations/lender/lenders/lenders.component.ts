@@ -25,7 +25,7 @@ export class LendersComponent implements OnInit
 	public failedConect:string;
 	public isChangeC:number=0;
 
-	displayedColumns: string[] = ['id', 'email','firstName','lastName','dni','gender','status','edit','delete'];
+	displayedColumns: string[] = ['id', 'email','firstName','lastName','dni','gender','status','addSkill','edit','delete'];
 	dataSource: MatTableDataSource<User>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;

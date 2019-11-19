@@ -17,7 +17,7 @@ const routes: Routes = [
 			{path: 'create', component: LenderCreateComponent},
 			{path: 'edit/:id', component: LenderEditComponent},
 			{path: 'show/:id', component: LenderShowComponent},
-			{path: ':id/addSkillLender', component: AddSkillLenderComponent},
+			{path: ':id/addSkill', component: AddSkillLenderComponent},
 		]
 	},
 

@@ -1,6 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '../../../../../../../core/ui/material.module';
+import { MaterialModule } from 'src/app/core/ui/material.module';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PromotionService } from 'src/app/core/services/admin/promotion.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService } from 'src/app/core/services/token-interceptor.service';
+
 import { PromotionRoutingModule } from './promotion-routing.module';
 import { PromotionComponent } from './promotion.component';
 import { PromotionsComponent } from './promotions/promotions.component';
@@ -22,6 +28,15 @@ import { PromotionDeleteComponent } from './promotion-delete/promotion-delete.co
     CommonModule,
     MaterialModule,
     PromotionRoutingModule
-  ]
+  ],
+  providers:
+  [
+    PromotionService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass : TokenInterceptorService,
+      multi: true
+    },
+  ],
 })
 export class PromotionModule { }
