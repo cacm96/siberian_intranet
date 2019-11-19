@@ -616,12 +616,82 @@ export class ServiceDetailCreateComponent implements OnInit
 
 	}
 
+	updateResources(form: NgForm)
+	{
+
+		if(form.valid)
+		{
+			this._serviceDetailService.addResource(this.serviceDetailOne.id,form.value.resources).subscribe
+			(
+				response =>
+				{
+					if(response.status==true)
+					{
+						console.log(response);
+						this.message  = response.message.text;
+						this.messageSnackBar(this.message);
+						this.getServiceDetail(this.serviceDetailOne.id);
+					}
+					else
+					{
+						console.log(response);
+						this.message  = response.message.text;
+						this.messageSnackBar(this.message);
+						this.getServiceDetail(this.serviceDetailOne.id);
+					}
+				},
+				error =>
+				{
+					console.log(error);
+					this.message  = error.error.message;
+					this.snackBar.openSnackBar(this.message,'');
+				}
+				);
+		}
+
+	}
+
 	updatePolicies(form: NgForm)
 	{
 
 		if(form.valid)
 		{
 			this._serviceDetailService.addPolicy(this.serviceDetailOne.id,form.value.policies).subscribe
+			(
+				response =>
+				{
+					if(response.status==true)
+					{
+						console.log(response);
+						this.message  = response.message.text;
+						this.messageSnackBar(this.message);
+						this.getServiceDetail(this.serviceDetailOne.id);
+					}
+					else
+					{
+						console.log(response);
+						this.message  = response.message.text;
+						this.messageSnackBar(this.message);
+						this.getServiceDetail(this.serviceDetailOne.id);
+					}
+				},
+				error =>
+				{
+					console.log(error);
+					this.message  = error.error.message;
+					this.snackBar.openSnackBar(this.message,'');
+				}
+				);
+		}
+
+	}
+
+	updateSkills(form: NgForm)
+	{
+
+		if(form.valid)
+		{
+			this._serviceDetailService.addSkill(this.serviceDetailOne.id,form.value.skills).subscribe
 			(
 				response =>
 				{

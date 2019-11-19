@@ -37,7 +37,7 @@ export class ShowVarietyDetailComponent implements OnInit {
 	public arrayVariety:any;
 
 
-	displayedColumns: string[] = ['id','name','description','serviceDetail','status','addServiceDetail','edit','delete'];
+	displayedColumns: string[] = ['id','name','description','status','addServiceDetail','edit','delete'];
 	dataSource: MatTableDataSource<VarietyDetail>;
 
 	displayedColumnsV: string[] = ['name','description','status'];
