@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
@@ -8,6 +8,11 @@ import { Skill } from '../../../../../../../../models/skill';
 import { SkillService } from '../../../../../../../../core/services/admin/skill.service';
 import { SnackBarService } from '../../../../../../../../core/services/snack-bar.service';
 
+
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+
 @Component({
   selector: 'sib-skill-show',
   templateUrl: './skill-show.component.html',
@@ -16,8 +21,15 @@ import { SnackBarService } from '../../../../../../../../core/services/snack-bar
 export class SkillShowComponent implements OnInit {
 
   public skill: Skill;
+  public arraySkill: any;
   public message: string;
   public failedConect: string;
+
+  displayedColumns: string[] = ['name','description','status','serviceDetails'];
+	dataSource: MatTableDataSource<Skill>;
+	
+	@ViewChild(MatPaginator) paginator: MatPaginator;
+	@ViewChild(MatSort) sort: MatSort;
 
   constructor
     (
@@ -44,7 +56,11 @@ export class SkillShowComponent implements OnInit {
       (
         response => {
           this.skill = response.skill;
+          this.arraySkill = [];
+          this.arraySkill.push(this.skill);
           console.log(this.skill);
+
+          this.table();
         },
         error => {
           console.log(<any>error);
@@ -56,6 +72,13 @@ export class SkillShowComponent implements OnInit {
         }
       )
   }
+
+	table()
+	{
+		this.dataSource = new MatTableDataSource(this.arraySkill);
+
+  }
+  
   goBack(){
     this._location.back();
   }

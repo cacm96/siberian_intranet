@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import {Location} from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -6,6 +6,10 @@ import { Global } from '../../../../../../../../core/services/global';
 import {Componentt } from '../../../../../../../../models/componentt';
 import { ComponentService } from '../../../../../../../../core/services/admin/component.service';
 import { SnackBarService } from '../../../../../../../../core/services/snack-bar.service';
+
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'sib-component-show',
@@ -15,8 +19,15 @@ import { SnackBarService } from '../../../../../../../../core/services/snack-bar
 export class ComponentShowComponent implements OnInit {
 
   public component:Componentt;
-	public message:string;
+  public arrayComponent:any;
+  public message:string;
   public failedConect:string;
+
+  displayedColumns: string[] = ['name','description','status','serviceDetails'];
+  dataSourceC: MatTableDataSource<Componentt>;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     private _componentService: ComponentService,
@@ -43,8 +54,12 @@ export class ComponentShowComponent implements OnInit {
 		(
 			response =>
 			{
-        this.component = response.component;
-        console.log(this.component);
+			this.component = response.component;
+			this.arrayComponent = [];
+			this.arrayComponent.push(this.component);
+			console.log(this.arrayComponent);
+
+			this.table();
 			},
 			error =>
 			{
@@ -59,6 +74,14 @@ export class ComponentShowComponent implements OnInit {
 			}
 		)
 	}
+
+	table()
+	{
+		this.dataSourceC = new MatTableDataSource(this.arrayComponent);
+
+	}
+
+
 	goBack(){
 		this._location.back();
 	  }
