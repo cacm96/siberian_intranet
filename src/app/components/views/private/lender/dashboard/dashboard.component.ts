@@ -50,6 +50,8 @@ export class DashboardComponent {
 
   view: CalendarView = CalendarView.Month;
 
+  CalendarView = CalendarView;
+
   viewDate = new Date();
 
   events: CalendarEvent[] = [];
@@ -147,6 +149,10 @@ export class DashboardComponent {
         }
       }
       )
+  }
+
+  setView(view: CalendarView) {
+    this.view = view;
   }
 
 }
