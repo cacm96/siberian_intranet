@@ -48,8 +48,8 @@ export class ActivityCreateComponent implements OnInit {
 			console.log(form.value);
 			this.activity.name = form.value.name;
 			this.activity.description = form.value.description;
-      this.activity.estimatedTime = form.value.estimatedTime;
-      this.activity.difficultyDegree = form.value.difficultyDegree;
+      		this.activity.estimatedTime = form.value.estimatedTime;
+      		this.activity.difficultyDegree = form.value.difficultyDegree;
 			this._activityService.create(this.activity).subscribe
 			(
 				response =>
