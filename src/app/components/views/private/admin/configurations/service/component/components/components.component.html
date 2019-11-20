@@ -6,13 +6,11 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-12">
-      <button mat-raised-button color="primary" class="mr-3" [routerLink]="['/auth/admin/configurations/service/component/create']">Nuevo Componente</button>
-      <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/service/']">Volver</button>
-    </div>
-  </div>
-
-  <hr>
+		<div class="col-sm-12">
+      <button mat-raised-button matTooltip="Nuevo Componente" matTooltipPosition="above" color="primary" class="mr-3" [routerLink]="['/auth/admin/configurations/service/component/create']"><mat-icon>add</mat-icon></button>
+			<button mat-raised-button matTooltip="Volver" matTooltipPosition="above" color="primary" [routerLink]="['/auth/admin/configurations/service/']"><mat-icon>arrow_back</mat-icon></button>		</div>
+	</div>
+	<hr>
 
   <div *ngIf="components">
     <div class="row">
@@ -38,9 +36,9 @@
           <table *ngIf="components.length>0" mat-table [dataSource]="dataSource" matSort>
 
             <ng-container matColumnDef="id">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Ver </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
               <td mat-cell *matCellDef="let row">
-                <button mat-icon-button color="accent" [routerLink]="['/auth/admin/configurations/service/component/show/', row.id]">
+                <button mat-icon-button color="accent" [routerLink]="['/auth/admin/configurations/service/component/show/', row.id]" matTooltip="Ver" matTooltipPosition="above">
                   <mat-icon>remove_red_eye</mat-icon>
                 </button>
               </td>
@@ -72,7 +70,7 @@
             <ng-container matColumnDef="edit">
               <th mat-header-cell *matHeaderCellDef></th>
               <td mat-cell *matCellDef="let row">
-                <button mat-icon-button color="accent" [routerLink]="['/auth/admin/configurations/service/component/edit/', row.id]">
+                <button mat-icon-button color="accent" [routerLink]="['/auth/admin/configurations/service/component/edit/', row.id]" matTooltip="Editar" matTooltipPosition="above">
                   <mat-icon>edit</mat-icon>
                 </button>
               </td>
@@ -81,7 +79,7 @@
             <ng-container matColumnDef="delete">
               <th mat-header-cell *matHeaderCellDef></th>
               <td mat-cell *matCellDef="let row">
-                <button mat-icon-button color="warn" (click)="onDelete(row.id)">
+                <button mat-icon-button color="warn" (click)="onDelete(row.id)" matTooltip="Eliminar" matTooltipPosition="above">
                   <mat-icon>delete</mat-icon>
                 </button>
               </td>
