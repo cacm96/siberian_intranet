@@ -647,10 +647,26 @@ table {
 .mat-table thead th{
   color:#fff !important;
 }
+/* REPORTES*/
+.main_report .reporte {
+  background-color: #e4e3e3;
+}
 
 .main_report mat-card {
-  width: 700px;
-  height: 350px;
+  border-radius:10px 10px 10px 10px;
+}
+
+.main_report button{
+  background-color: #242451;
+    color: white;
+}
+.main_report .botones div{
+  display:inline-block;
+}
+
+.main_report .botones .exportar,.filtro {
+  float:right;
+  padding: 5px;
 }
 
 .main_report .grafica {
