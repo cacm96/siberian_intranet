@@ -53,9 +53,9 @@
                   </mat-list-item>
                   <div class="ml-3">
                     <div *ngFor="let bitacora of revision.bitacoras">
-                      <div *ngIf="bitacora.eventType=='requestEvaluation'">
+                      <div *ngIf="bitacora.eventType=='closure'">
                         <mat-list-item>
-                          <h4 mat-line><b>Motivos: </b> {{ bitacora.motive.name }} - {{ bitacora.motive.description }}</h4>
+                          <h4 mat-line><b>Motivo: </b> {{ bitacora.motive.name }} - {{ bitacora.motive.description }} - {{ bitacora.description }}</h4>
                         </mat-list-item>
                       </div>
                     </div>
@@ -72,7 +72,7 @@
                     <div *ngFor="let bitacora of revision.bitacoras">
                       <div *ngIf="bitacora.eventType=='closure'">
                         <mat-list-item>
-                          <h4 mat-line><b>Motivos: </b> {{ bitacora.motive.name }} - {{ bitacora.motive.description }}</h4>
+                          <h4 mat-line><b>Motivo: </b> {{ bitacora.motive.name }} - {{ bitacora.motive.description }} - {{ bitacora.description }}</h4>
                         </mat-list-item>
                       </div>
                     </div>

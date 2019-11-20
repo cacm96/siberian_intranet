@@ -30,11 +30,11 @@
             </mat-card-title>
           </mat-card-header>
           <mat-card-content>
-            <form #updateForm="ngForm" (ngSubmit)="onRegisterDiagnosis(updateForm)">
 
-              <br>
-              <div class="row">
-                <div class="col-sm-8 offset-2">
+            <br>
+            <div class="row">
+              <div class="col-sm-8 offset-2">
+                <form #updateForm="ngForm" (ngSubmit)="onRegisterDiagnosis(updateForm)">
 
                   <div class="row">
                     <div class="col-sm-12">
@@ -47,7 +47,7 @@
                       <div class="example-container">
 
                         <mat-form-field>
-                          <textarea matInput name="note" [(ngModel)]="revision.note" placeholder=" Descripción del Diagnóstico" required></textarea>
+                          <textarea matInput name="note" [(ngModel)]="note" placeholder=" Descripción del Diagnóstico" required></textarea>
                         </mat-form-field>
 
                         <mat-label >Subir Imagen de Revisión</mat-label>
@@ -60,16 +60,23 @@
 
                   <br> 
 
-                  <div class="row">
+                  <div class="row" *ngIf="revision.status=='approved'">
                     <div class="col-sm-12">
-                      <button *ngIf="revision.status=='approved'" mat-raised-button color="primary" type="submit" class="mr-3" [disabled]="!updateForm.form.valid">Registrar</button>
-                      <button *ngIf="revision.status=='diagnosticated'" mat-raised-button color="primary" type="submit" class="mr-3" [disabled]="!updateForm.form.valid">Editar</button>
-                      <button *ngIf="revision.status=='diagnosticated'" mat-raised-button color="warn" class="mr-3" (click)="onRejectDiagnosis(revision.id)">Rechazar</button>
+                      <button mat-raised-button color="primary" type="submit" class="mr-3" [disabled]="!updateForm.form.valid">Registrar</button>
                     </div>
                   </div>
+                </form>
+
+                <div class="row" *ngIf="revision.status=='diagnosticated'">
+                  <div class="col-sm-12">
+                    <button mat-raised-button color="warn" class="mr-3" (click)="onRejectDiagnosis(revision.id)">Rechazar</button>
+                  </div>
                 </div>
+                
               </div>
-            </form>
+            </div>
+            
+
             <br>
           </mat-card-content>
 

@@ -23,6 +23,8 @@ export class DiagnosisDetailComponent implements OnInit
 
 	public revision: any;
 	public revisionId:any;
+	public bitacoras:any;
+	public note:any;
 	public message: string;
 	public failedConect: string;
 	public urldelafault:string="assets/img/request/revision_3.jpg"
@@ -56,6 +58,15 @@ export class DiagnosisDetailComponent implements OnInit
 			response =>
 			{
 				this.revision = response.revision;
+				this.bitacoras = this.revision.bitacoras;
+				for (var i=0; i<this.bitacoras.length; i++)
+				{
+					if( this.bitacoras[i].eventType == "execution")
+					{
+						this.note = this.bitacoras[i].description;
+					}
+				}
+
 				console.log(this.revision);
 			},
 			error =>

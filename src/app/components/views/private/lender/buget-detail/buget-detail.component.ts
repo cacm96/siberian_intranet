@@ -8,6 +8,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Global } from 'src/app/core/services/global';
 import { Revision } from 'src/app/models/revision';
 import { RevisionService } from 'src/app/core/services/client/revision.service';
+import { ServiceDetailService } from 'src/app/core/services/admin/serviceDetail.service';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class BugetDetailComponent implements OnInit
 
   public revision: any;
   public revisionId:any;
+  public serviceDetails:any;
   public message: string;
   public failedConect: string;
 
@@ -27,6 +29,7 @@ export class BugetDetailComponent implements OnInit
     private dialogService: DialogService,
     private snackBar: SnackBarService,
     private _revisionService: RevisionService,
+    public _serviceDetailService: ServiceDetailService,
     private _route: ActivatedRoute,
     private _location: Location
     ) {
@@ -44,6 +47,36 @@ export class BugetDetailComponent implements OnInit
         this.getRevision(id);
       }
       );
+    this.getServiceDetails();
+  }
+
+  getServiceDetails()
+  {
+    this._serviceDetailService.All().subscribe
+    (
+      response =>
+      {
+        this.serviceDetails = response.serviceDetails;
+        console.log(this.serviceDetails);
+
+      },
+      error =>
+      {
+        console.log(<any>error);
+        if(error instanceof HttpErrorResponse)
+        {
+          if(error.status===0)
+          {
+            this.failedConect = Global.failed;
+          }
+        }
+      }
+      )
+  }
+  changeServiceDetails(event)
+  {
+    console.log(event);
+
   }
 
   getRevision(id) {

@@ -39,11 +39,11 @@ export class RevisionService extends HeaderService{
 	}
 
 	rejected(id,motiveId,note?): Observable<any>{
-		return this.http.put(this.url+'/'+id+'/reject/'+motiveId, {description:note}, {headers: this.header});
+		return this.http.put(this.url+'/'+id+'/reject/'+motiveId, {nota:note}, {headers: this.header});
 	}
 
 	irreparable(id,motiveId,note?): Observable<any>{
-		return this.http.put(this.url+'/'+id+'/irreparable/'+motiveId, {description:note}, {headers: this.header});
+		return this.http.put(this.url+'/'+id+'/irreparable/'+motiveId, {nota:note}, {headers: this.header});
 	}
 
 	deleteOne(id): Observable<any>{
