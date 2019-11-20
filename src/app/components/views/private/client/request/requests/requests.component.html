@@ -7,8 +7,9 @@
 	</div>
 	<div class="row">
 		<div class="col-sm-12">
-			<button mat-raised-button color="primary" class="mr-3" [routerLink]="['/auth/client/catalog']">Nueva Solicitud</button>
-			<button mat-raised-button color="primary" (click)="goBack()">Volver</button>
+			<button mat-raised-button matTooltip="Nueva Solicitud" matTooltipPosition="above" color="primary" class="mr-3" [routerLink]="['/auth/client/catalog']"><mat-icon>add</mat-icon></button>
+			<button mat-raised-button matTooltip="Volver" matTooltipPosition="above" color="primary" (click)="goBack()"><mat-icon>arrow_back</mat-icon></button>
+			
 		</div>
 	</div>
 	<hr>
@@ -36,7 +37,7 @@
 						</div>
 					</div>
 
-					<table *ngIf="revisions.length>0" mat-table [dataSource]="dataSource" matSort>
+					<table *ngIf="total>0" mat-table [dataSource]="dataSource" matSort>
 
 						<ng-container matColumnDef="id">
 							<th mat-header-cell *matHeaderCellDef mat-sort-header></th>
@@ -52,14 +53,18 @@
 							<td mat-cell *matCellDef="let row"> {{ row.varietyDetail.Equipinfra.name }}</td>
 						</ng-container>
 
+						<ng-container matColumnDef="description">
+							<th mat-header-cell *matHeaderCellDef mat-sort-header> Descripción </th>
+							<td mat-cell *matCellDef="let row"> {{row.description}}</td>
+						</ng-container>
+
 						<ng-container matColumnDef="location">
 							<th mat-header-cell *matHeaderCellDef mat-sort-header> Dirección </th>
 							<td mat-cell *matCellDef="let row"> {{row.location.address}}</td>
 						</ng-container>
 
-
 						<ng-container matColumnDef="date">
-							<th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Revisión </th>
+							<th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha de Revisión </th>
 							<td mat-cell *matCellDef="let row">{{ row.calendars.date |date:"longDate"}}</td>
 						</ng-container>
 

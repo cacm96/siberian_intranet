@@ -7,7 +7,7 @@
 		</div>
 		<div class="row">
 			<div class="col-sm-12">
-				<button mat-raised-button color="primary" (click)="goBack()">Volver</button>
+				<button mat-raised-button matTooltip="Volver" matTooltipPosition="above" color="primary" (click)="goBack()"><mat-icon>arrow_back</mat-icon></button>
 			</div>
 		</div>
 		<hr>
@@ -157,13 +157,13 @@
 														<br>
 														<b>Categoría: </b> {{ categoryName }}
 														<br>
-														<b>Sub Categoría: </b> {{ subcategoryName }}
+														<b>Subcategoría: </b> {{ subcategoryName }}
 														<br>
 														<b>Descripción del Problema: </b> {{ descriptionProblem }}
 														<br>
 														<b>Prestador Asignado: </b> Maria Moreno
 														<br>
-														<b>Fecha Revisión: </b> {{ dateRevision |date:"longDate" }}
+														<b>Fecha de Revisión: </b> {{ dateRevision |date:"longDate" }}
 														<br>
 														<b>Turno: </b> {{ turnText}}
 														<br>

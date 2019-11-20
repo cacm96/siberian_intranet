@@ -7,6 +7,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from 'src/app/core/services/token-interceptor.service';
 
 import { UserService } from 'src/app/core/services/admin/user.service';
+import { SkillService } from 'src/app/core/services/admin/skill.service';
 
 import { LenderRoutingModule } from './lender-routing.module';
 import { LenderComponent } from './lender.component';
@@ -34,6 +35,7 @@ import { AddSkillLenderComponent } from './add-skill-lender/add-skill-lender.com
   providers:
   [
     UserService,
+    SkillService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass : TokenInterceptorService,

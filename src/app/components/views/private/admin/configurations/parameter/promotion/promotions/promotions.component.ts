@@ -1,58 +1,83 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
-import { DialogService } from '../../../../../../../../core/services/dialog.service';
-import { SnackBarService } from '../../../../../../../../core/services/snack-bar.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { DialogService } from 'src/app/core/services/dialog.service';
+import { SnackBarService } from 'src/app/core/services/snack-bar.service';
 
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import {Location} from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Global } from 'src/app/core/services/global';
+import { Promotion } from 'src/app/models/promotion';
+import { PromotionService } from 'src/app/core/services/admin/promotion.service';
 
-export interface PromotionData {
-  id: string;
-  name: string;
-  description: string;
-  percentDiscount: string;
-  create_at: string;
-  update_at: string;
-  date_init: string;
-  date_end: string;
-  idSubcategory: string;
-  image: string;
-  status: string;
-}
 
 @Component({
   selector: 'sib-promotions',
   templateUrl: './promotions.component.html',
   styleUrls: ['./promotions.component.scss']
 })
-export class PromotionsComponent implements OnInit {
+export class PromotionsComponent implements OnInit
+{
 
-  public promotion:any[];
-  displayedColumns: string[] = ['id', 'name', 'description','percentDiscount','idSubcategory','date_init','date_end','image','status','edit','delete'];
-  dataSource: MatTableDataSource<PromotionData>;
+  public promotions:Array < Promotion > = new Array < Promotion > ();
+  public message:string;
+  public failedConect:string;
+
+  displayedColumns: string[] = ['id','name','description','type','status','difusion','edit','delete'];
+  dataSource: MatTableDataSource <Promotion>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  constructor
-  (
-    private dialogService: DialogService,
-    private snackBar: SnackBarService
-  ) 
-  { 
-    this.promotion = [
-      {id:"1" ,name:"Descuento Mes de las madres",description:"Descuento por el mes de mayo en el mantenimiento de Neveras",percentDiscount:"15%",idSubcategory:"Nevera",date_init: "01-05-2020",date_end: "31-05-2020",image:"url1",status:"A",},
-      {id:"2" ,name:"Descuento de linea blanca",description:"Descuento en todas nuestros servicio de linea blanca",percentDiscount:"10%",idSubcategory:"cocina",date_init: "01-06-2020",date_end: "05-06-2020",image:"url1",status:"A",},
-      {id:"3" ,name:"Descuento decembrinas",description:"Descuento en el mes de diciembre en servicio de pintura",percentDiscount:"15%",idSubcategory:"Pared",date_init: "31-12-2019",date_end: "31-12-2019",image:"url1",status:"A",},
-    ];
 
-  this.dataSource = new MatTableDataSource(this.promotion);
+  constructor(
+    private dialogService: DialogService,
+    private snackBar: SnackBarService,
+    private _promotionService: PromotionService,
+    private _route: ActivatedRoute,
+    private _router: Router,
+    private _location: Location
+    ) { 
+
   }
 
-  ngOnInit()
+  ngOnInit() {
+    this.getPromotions();
+  }
+
+  getPromotions()
   {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  
+    this._promotionService.All().subscribe
+    (
+      response =>
+      {
+        if (response.status==true)
+        {
+          this.promotions = response.promotions;
+          console.log(this.promotions);
+          this.table();
+        }
+        else
+        {
+          this.promotions = [];
+          this.message = response.message.text;
+          console.log(this.message);
+          this.table();
+        }
+
+      },
+      error =>
+      {
+        console.log(<any>error);
+        if(error instanceof HttpErrorResponse)
+        {
+          if(error.status===0)
+          {
+            this.failedConect = Global.failed;
+          }
+        }
+      }
+      )
   }
 
   applyFilter(filterValue: string) {
@@ -63,16 +88,45 @@ export class PromotionsComponent implements OnInit {
     }
   }
 
-  onDelete(id){
-    this.dialogService.openConfirmDialog('¿Estás seguro de eliminar la promoción '+id+' ?').afterClosed().subscribe(res=>{
-      if (res==true) {
-        console.log(id);
-        this.snackBar.openSnackBar('Eliminada Correctamente','¿Deshacer?').onAction().subscribe(() => {
-          console.log('Recuperado');
-        });
-      }else{
-        console.log(res);
-      }
-    });
+  table()
+  {
+    this.dataSource = new MatTableDataSource(this.promotions);
+    this.dataSource.paginator = this.paginator;
   }
+
+  onDelete(id)
+  {
+    this.dialogService.openConfirmDialog('¿Estás seguro de eliminar esta Promoción?').afterClosed().subscribe
+    (
+      response =>
+      {
+        if (response==true)
+        {
+          this.deletePromotion(id);
+        }else
+        {
+          console.log(response);
+        }
+      }
+      );
+  }
+
+  deletePromotion(id)
+  {
+    this._promotionService.deleteOne(id).subscribe
+    (
+      response =>
+      {
+        console.log(response);
+        this.message = response.message.text;
+        this.snackBar.openSnackBarSuccess(this.message);
+        this.getPromotions();
+      },
+      error =>
+      {
+        console.log(<any>error);
+      }
+      )
+  }
+
 }

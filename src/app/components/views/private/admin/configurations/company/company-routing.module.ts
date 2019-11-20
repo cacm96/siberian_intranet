@@ -14,7 +14,7 @@ const routes: Routes = [
 	{path: '', component: CompanyComponent, canActivate: [],
 		children:
 		[
-			{path: '', component: CompaniesComponent},
+			{path: '', component: CompanyShowComponent},
 			{path: 'create', component: CompanyCreateComponent},
 			{path: 'edit/:id', component: CompanyEditComponent},
 			{path: 'show/:id', component: CompanyShowComponent},

@@ -73,9 +73,8 @@ export class UserService extends HeaderService{
 		return this.http.get(this.url2+'/'+id, {headers: this.header});
 	}
 
-	setSkillLender(lender:any): Observable<any>{
-		let params = JSON.stringify(lender);
-		return this.http.put(this.url2+''+lender.id, params, {headers: this.header});
+	setSkillLender(lenderId:any, skills:any): Observable<any>{
+		return this.http.put(this.url2+'/'+lenderId, { skills: skills }, {headers: this.header});
 	}
 
 

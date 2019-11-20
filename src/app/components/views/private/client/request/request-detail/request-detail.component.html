@@ -21,7 +21,7 @@
 
     <div class="row">
       <div class="col-sm-12">
-        <button mat-raised-button color="primary" (click)="goBack()">Volver</button>
+        <button mat-raised-button matTooltip="Volver" matTooltipPosition="above" color="primary" (click)="goBack()"><mat-icon>arrow_back</mat-icon></button>
       </div>  
     </div>
 
@@ -39,11 +39,11 @@
           <div class="row">
             <div class="col-sm-7">
               <mat-list>
-                <h3 mat-subheader>Datos de la Revision</h3>
+                <h3 mat-subheader>Datos de la Revisión</h3>
                 <mat-list-item><h4 mat-line><b>Cliente: </b>{{revision.user.firstName | titlecase }} {{revision.user.lastName | titlecase}}</h4></mat-list-item>
                 <mat-list-item><h4 mat-line><b>Dirección: </b>{{ revision.location.address }}</h4></mat-list-item>
                 <mat-list-item><h4 mat-line><b>Fecha de la Solicitud: </b> {{ revision.createdAt |date:"longDate"}}</h4></mat-list-item>
-                <mat-list-item><h4 mat-line><b>Fecha de la Revision: </b>{{ revision.calendar.date |date:"longDate" }}</h4></mat-list-item>
+                <mat-list-item><h4 mat-line><b>Fecha de la Revisión: </b>{{ revision.calendar.date |date:"longDate" }}</h4></mat-list-item>
                 <mat-list-item><h4 mat-line><b>Descripción del Problema: </b>{{ revision.description }}</h4></mat-list-item>
                 <mat-list-item><h4 mat-line><b>Prestador Seleccionado: </b>{{revision.calendar.lender.firstName | titlecase }} {{revision.calendar.lender.lastName | titlecase}}</h4></mat-list-item>
                 <mat-list-item><h4 mat-line><b>Precio: </b>{{ revision.price }} Bs.S</h4></mat-list-item>
