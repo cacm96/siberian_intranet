@@ -1,35 +1,136 @@
 <div class="main_report">
+
   <div class="row">
     <div class="col-sm-12">
       <h2 class="text-center">Reportes</h2>
     </div>
   </div>
 
+  <div class="col-sm-12">
+
+    <div class="col-sm-12">
+      <h4>Título del Reporte</h4>
+    </div>
+
+    <br>
+
+    <div class="botones">
+      <div class="fecha">
+        <button mat-raised-button >Fecha/Tiempo <mat-icon>date_range</mat-icon></button>
+      </div>
+
+      <!--MODAL FECHA
+      <ng-template #callFecha>
+          <h1 mat-dialog-title>Fecha</h1>
+          <div mat-dialog-content>
+            <p>Escoge por rango</p>
+            <mat-form-field class="example-full-width">
+              <label for="">Desde</label>
+              <input name="dateFechaIn" [(ngModel)]="dateFechaIn" matInput [matDatepicker]="picker" placeholder="Elija una fecha"  [min] = "minDate" (dateChange)="changeDate('change', $event)" required>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker touchUi #picker></mat-datepicker>
+    
+              <label for="">Hasta</label>
+              <input name="dateFechaFin" [(ngModel)]="dateFechaFin" matInput [matDatepicker]="picker" placeholder="Elija una fecha"  [min] = "maxDate" (dateChange)="changeDate('change', $event)" required>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker touchUi #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+    
+          <div mat-dialog-actions>
+            <button mat-raise-button (click)="onNoClick()">Cancelar</button>
+            <button mat-raised-button [mat-dialog-close]="data.fecha" cdkFocusInitial>Aplicar</button>
+          </div>
+      </ng-template>-->
+      
+
+      <!--HASTA AQUI MODAL FECHA-->
+
+
+
+      <div class="exportar">
+        <button mat-raised-button>Exportar <mat-icon>arrow_downward</mat-icon></button>
+      </div>
+      <div class="filtro">
+        <button mat-raised-button>Filtros <mat-icon>tune</mat-icon></button>
+      </div>
+
+      <!--MODAL FILTROS-->
+      <ng-template #callFiltro>
+
+          <h1 mat-dialog-title>Filtros</h1>
+          <div mat-dialog-content>
+            <mat-form-field>
+              <label for="">Filtro 1</label>
+              <mat-select name="filtro" placeholder="Escoja una opción" required>
+                <mat-option *ngFor="" [value]="" >Opción 1</mat-option>
+              </mat-select>
+              <label for="">Filtro 2</label>
+              <mat-select name="filtro" placeholder="Escoja una opción" required>
+                <mat-option *ngFor="" [value]="" >Opción 2</mat-option>
+              </mat-select>
+           </mat-form-field>
+          </div>
+          <div mat-dialog-actions>
+            <button mat-raise-button (click)="onNoClick()">Cancelar</button>
+            <button mat-raised-button [mat-dialog-close]="data" cdkFocusInitial>Aplicar</button>
+          </div>
+      </ng-template>
+      
+
+      <!--HASTA AQUI MODAL FILTROS-->
+
+    </div>
+
+    <br>
+
+    <mat-card>
+      <table *ngIf="" mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> </th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-icon-button color="accent" matTooltip="Detalle" matTooltipPosition="above" >
+              <mat-icon>remove_red_eye</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef > Nombre </th>
+          <td mat-cell *matCellDef="let row"> </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef> Descripción </th>
+          <td mat-cell *matCellDef="let row"> </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="subcategories">
+          <th mat-header-cell *matHeaderCellDef> Subcategorías </th>
+          <td mat-cell *matCellDef="let row">  </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef> Estatus </th>
+          <td mat-cell *matCellDef="let row">
+            <span *ngIf="row.status=='active'" class="badge badge-success"></span>
+          </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      
+    </mat-card>
+  </div>
+    <!--
   <div class="grafica">
       <mat-card>
           <canvas id="linea"></canvas>
         </mat-card>
   </div>
   <br>
-  
-  <div class="grafica">
-      <mat-card>
-          <canvas id="barra1"></canvas>
-        </mat-card>
-  </div>
-  <br>
-
-  <div class="grafica">
-      <mat-card>
-          <canvas id="linea2"></canvas>
-        </mat-card>
-  </div>
-  <br>
-
-  <div class="grafica">
-      <mat-card>
-          <canvas id="barra2"></canvas>
-        </mat-card>
-  </div>
+  <br>-->
 
 </div>
