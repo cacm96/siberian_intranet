@@ -1,12 +1,13 @@
 <div class="main_request_detail">
 
-  <div class="container">
+  <div class="container" *ngIf="revision">
 
     <div class="row">
       <div class="col-sm-12">
         <h4 class="titulo text-center">
           Solicitud
-          <span class="badge badge-primary">Aprobada</span>
+          <span *ngIf="revision.status=='diagnosticated'" class="badge badge-warning">Diagnosticada</span>
+          <span *ngIf="revision.status=='finalized'" class="badge badge-success">Finalizada</span>
         </h4>
       </div>
     </div>
@@ -24,7 +25,7 @@
         <mat-card>
           <mat-card-header class="titulo border-top-danger">
             <mat-card-title>
-              <a [routerLink]="['/auth/lender/request/detail/1']" class="title" >Código Solicitud 1</a>
+              <a [routerLink]="['/auth/lender/request/detail,revision.id']" class="title" >Código Solicitud {{ revision.id }}</a>
             </mat-card-title>
           </mat-card-header>
           <mat-card-content>
@@ -37,10 +38,10 @@
                   </div>
                 </div>
 
+                <form #updateForm="ngForm" (ngSubmit)="onRegisterDiagnosis(updateForm)">
 
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="example-container">
+                  <div class="row">
+                    <div class="col-sm-12">
 
                       <mat-form-field>
                         <mat-select name="serviceDetails" [(ngModel)]="serviceDetailsSelected" placeholder="Seleccione uno o mas Servicios" required multiple>
@@ -79,33 +80,32 @@
                       <br>
 
                       <mat-form-field>
-                        <input matInput id="inputtotal" name="total" placeholder="Monto Total Estimado">
+                        <input matInput id="amount" name="amount" [(ngModel)]="amount" placeholder="Monto Total Estimado">
+                      </mat-form-field>
+
+                      <mat-form-field>
+                        <input matInput id="warrantyTime" name="warrantyTime" [(ngModel)]="warrantyTime" placeholder="Monto Total Estimado">
                       </mat-form-field>
 
                     </div>
                   </div>
-                </div>
 
-
-
-                <div class="row">
-                  <div class="col-sm-12">
-                    <button mat-raised-button color="primary" class="mr-3">Enviar</button>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <button *ngIf="revision.status=='diagnosticated'" mat-raised-button color="primary" type="submit" class="mr-3" [disabled]="!updateForm.form.valid">Registrar</button>
+                      <button *ngIf="revision.status=='finalized'" mat-raised-button color="primary" type="submit" class="mr-3" [disabled]="!updateForm.form.valid">Editar</button>
+                    </div>
                   </div>
-                </div>
+
+                </form>
 
               </div>
             </div>
             <br>
           </mat-card-content>
-
         </mat-card>
       </div>
     </div>
-
     <br>
-
-    
-
   </div>
 </div>
