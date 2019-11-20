@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild  } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Global } from '../../../../../../../../core/services/global';
+import { MatTableDataSource } from '@angular/material/table';
+import { DialogService } from '../../../../../../../../core/services/dialog.service';
 import { User } from '../../../../../../../../models/user';
+import { Location } from '../../../../../../../../models/location';
 import { UserService } from '../../../../../../../../core/services/admin/user.service';
 import { LocationService } from '../../../../../../../../core/services/admin/location.service';
 import { Phone } from '../../../../../../../../models/phone';
 import { PhoneService } from '../../../../../../../../core/services/admin/phone.service';
 import { SnackBarService } from '../../../../../../../../core/services/snack-bar.service';
-import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'sib-user-show',
@@ -18,11 +23,30 @@ import { Location } from '@angular/common';
 })
 export class UserShowComponent implements OnInit {
 
-	public user: any;
-	public locationsUser:any;
-	public phonesUser:any;
+
+	public user:User;
+	public arrayUser:any;
+	public locations:Array < Location > = new Array < Location > ();
+	public phones:Array < Phone > = new Array < Phone > ();
+    public message:string;
 	public failedConect:string;
-	public message:string;
+	  
+	
+	
+	displayedColumnsU: string[] = ['email','firstName','lastName','dni','gender','role','status'];
+	dataSourceU: MatTableDataSource<User>;
+	
+
+	displayedColumnsP: string[] = ['number','phoneType'];
+	dataSourceP: MatTableDataSource<Phone>; 
+
+	displayedColumns: string[] = ['address','state','city','postalCode'];
+	dataSource: MatTableDataSource<Location>; 
+
+	@ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+	
+	
 
 	constructor
 	(
@@ -32,7 +56,7 @@ export class UserShowComponent implements OnInit {
 		private _route: ActivatedRoute,
 		private _router: Router,
 		private snackBar: SnackBarService,
-		private _location: Location,
+		
 	)
 	{
 	}
@@ -45,11 +69,13 @@ export class UserShowComponent implements OnInit {
 			{
 				let id = params.id;
 				this.getUser(id);
-				this.getLocationsUser(id)
-				this.getPhonesUser(id)
+				
 			}
 		);
 	}
+
+
+	
 
 	getUser(id)
 	{
@@ -57,9 +83,43 @@ export class UserShowComponent implements OnInit {
 		(
 			response =>
 			{
-				this.user = response;
-				this.user = this.user.user;
-				console.log(this.user);
+				if (response.status==true)
+        {
+          this.user = response.user;
+          this.arrayUser = [];
+          this.arrayUser.push(this.user);
+		  console.log(this.user)
+		 this.phones = response.user.phones;
+		 this.locations = response.user.locations;	
+
+          if(this.locations.length>0)
+					{
+						console.log(this.locations);
+						this.table();
+					}
+					else
+					{
+						this.locations = [];
+						console.log(this.locations);
+						this.table();
+					}
+
+		 if(this.phones.length>0)
+					{
+						console.log(this.phones);
+						this.table();
+					}
+					else
+					{
+						this.phones = [];
+						console.log(this.phones);
+						this.table();
+					}
+				}
+				else
+		        {
+		          console.log(response);
+		        }
 			},
 			error =>
 			{
@@ -75,53 +135,29 @@ export class UserShowComponent implements OnInit {
 		)
 	}
 
-	getLocationsUser(id)
+	
+
+	applyFilter(filterValue: string)
 	{
-		this._locationService.AllLocationUser(id).subscribe
-		(
-			response =>
-			{
-				this.locationsUser = response.locations;
-				console.log(this.locationsUser);
-			},
-			error =>
-			{
-				console.log(<any>error);
-				if(error instanceof HttpErrorResponse)
-				{
-					if(error.status===0)
-					{
-						this.failedConect = Global.failed;
-					}
-				}
-			}
-		)
-	}
-
-	getPhonesUser(id)
-	{
-		this._phoneService.AllPhoneUser(id).subscribe
-		(
-			response =>
-			{
-				this.phonesUser = response.phones;
-			},
-			error =>
-			{
-				console.log(<any>error);
-				if(error instanceof HttpErrorResponse)
-				{
-					if(error.status===0)
-					{
-						this.failedConect = Global.failed;
-					}
-				}
-			}
-		)
-	}
-
-	goBack(){
-		this._location.back();
+	  this.dataSource.filter = filterValue.trim().toLowerCase();
+	  if (this.dataSource.paginator) {
+		this.dataSource.paginator.firstPage();
 	  }
 
+	}
+  
+	table()
+	{ 
+		this.dataSource = new MatTableDataSource(this.locations);
+		this.dataSourceP = new MatTableDataSource(this.phones);
+		this.dataSourceU = new MatTableDataSource(this.arrayUser);
+	  
+	  
+	this.dataSource.paginator = this.paginator;
+	  this.dataSource.sort = this.sort;
+	}
+
+	
 }
+
+
