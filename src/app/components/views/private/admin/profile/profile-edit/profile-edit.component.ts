@@ -6,6 +6,7 @@ import { Global } from '../../../../../../core/services/global'
 import { User } from '../../../../../../models/user';
 import { UserService } from '../../../../../../core/services/admin/user.service';
 import { SnackBarService } from '../../../../../../core/services/snack-bar.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'sib-profile-edit',
@@ -25,7 +26,8 @@ export class ProfileEditComponent implements OnInit {
 		private _userService: UserService,
 		private _route: ActivatedRoute,
 		private _router: Router,
-    	private snackBar: SnackBarService
+		private snackBar: SnackBarService,
+		private _location: Location,
 	)
 	{
 		this.dniTypes= [
@@ -104,5 +106,9 @@ export class ProfileEditComponent implements OnInit {
 		}
 		
 	}
+
+	goBack(){
+		this._location.back();
+	  }
 
 }
