@@ -22,6 +22,7 @@ export class BugetDetailComponent implements OnInit
   public revision: any;
   public revisionId:any;
   public serviceDetails:any;
+  public serviceDetailsFilter:any;
   public message: string;
   public failedConect: string;
 
@@ -73,10 +74,37 @@ export class BugetDetailComponent implements OnInit
       }
       )
   }
+
   changeServiceDetails(event)
   {
     console.log(event);
+    this.getServiceDetailsFilter(event);
+    
+  }
 
+  getServiceDetailsFilter(arrays)
+  {
+    this._serviceDetailService.All().subscribe
+    (
+      response =>
+      {
+        this.serviceDetailsFilter = response.serviceDetails;
+        //this.serviceDetailsFilter.filter(serviceDetails => { return serviceDetails.id == "1" });
+        console.log(this.serviceDetailsFilter);
+
+      },
+      error =>
+      {
+        console.log(<any>error);
+        if(error instanceof HttpErrorResponse)
+        {
+          if(error.status===0)
+          {
+            this.failedConect = Global.failed;
+          }
+        }
+      }
+      )
   }
 
   getRevision(id) {
