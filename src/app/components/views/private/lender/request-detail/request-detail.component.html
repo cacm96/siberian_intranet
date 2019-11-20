@@ -9,13 +9,17 @@
           <span *ngIf="revision.status=='requested'" class="badge badge-dark">Solicitada</span>
           <span *ngIf="revision.status=='approved'" class="badge badge-primary">Aprobada</span>
           <span *ngIf="revision.status=='rejected'" class="badge badge-danger">Rechazada</span>
+          <span *ngIf="revision.status=='diagnosticated'" class="badge badge-warning">Diagnosticada</span>
+          <span *ngIf="revision.status=='irreparable'" class="badge badge-danger">Irreparable</span>
+          <span *ngIf="revision.status=='finalized'" class="badge badge-success">Finalizada</span>
+          <span *ngIf="revision.status=='cancelled'" class="badge badge-success">Cancelada</span>
         </h4>
       </div>
     </div>
 
     <div class="row">
       <div class="col-sm-12">
-        <button mat-raised-button color="primary" (click)="goBack()">Volver</button>
+        <button mat-raised-button matTooltip="Volver" matTooltipPosition="above" color="primary" (click)="goBack()"><mat-icon>arrow_back</mat-icon></button>
       </div>  
     </div>
 
@@ -42,17 +46,39 @@
                 <mat-list-item><h4 mat-line><b>Prestador Seleccionado: </b>{{revision.calendar.lender.firstName | titlecase }} {{revision.calendar.lender.lastName | titlecase}}</h4></mat-list-item>
                 <mat-list-item><h4 mat-line><b>Precio: </b>{{ revision.price }} Bs.S</h4></mat-list-item>
                 <mat-list-item *ngIf="revision.status=='requested'"><h4 mat-line><b>Status: </b> Solicitud en espera de ser Aprobada</h4></mat-list-item>
-                <mat-list-item *ngIf="revision.status=='approved'"><h4 mat-line><b>Status: </b> Solicitud Aprobada <a [routerLink]="['/auth/lender/diagnosis/detail/1']" class="title" >Diagnosticar!!</a></h4></mat-list-item>
+                <mat-list-item *ngIf="revision.status=='approved'"><h4 mat-line><b>Status: </b> Solicitud Aprobada, en espera por diagnostico. <a [routerLink]="['/auth/lender/diagnosis/detail',revision.id]" class="title" >Diagnosticar!!</a></h4></mat-list-item>
                 <div *ngIf="revision.status=='rejected'">
                   <mat-list-item>
                     <h4 mat-line><b>Status: </b> Solicitud Rechazada</h4>
                   </mat-list-item>
                   <div class="ml-3">
-                    <mat-list-item>
-                      <h4 mat-line><b>Motivos: </b> Vive Lejos</h4>
-                    </mat-list-item>
+                    <div *ngFor="let bitacora of revision.bitacoras">
+                      <div *ngIf="bitacora.eventType=='closure'">
+                        <mat-list-item>
+                          <h4 mat-line><b>Motivo: </b> {{ bitacora.motive.name }} - {{ bitacora.motive.description }} - {{ bitacora.description }}</h4>
+                        </mat-list-item>
+                      </div>
+                    </div>
                   </div>
                 </div>
+
+                <mat-list-item *ngIf="revision.status=='diagnosticated'"><h4 mat-line><b>Status: </b> Solicitud Diagnosticada, en espera por presupuesto. <a [routerLink]="['/auth/lender/budget/detail',revision.id]" class="title" >Presupuestar!!</a></h4></mat-list-item>
+
+                <div *ngIf="revision.status=='irreparable'">
+                  <mat-list-item>
+                    <h4 mat-line><b>Status: </b> Solicitud Rechazada</h4>
+                  </mat-list-item>
+                  <div class="ml-3">
+                    <div *ngFor="let bitacora of revision.bitacoras">
+                      <div *ngIf="bitacora.eventType=='closure'">
+                        <mat-list-item>
+                          <h4 mat-line><b>Motivo: </b> {{ bitacora.motive.name }} - {{ bitacora.motive.description }} - {{ bitacora.description }}</h4>
+                        </mat-list-item>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
               </mat-list>
             </div>
 

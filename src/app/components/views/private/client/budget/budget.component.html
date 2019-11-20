@@ -7,7 +7,7 @@
   </div>
   <div class="row">
     <div class="col-sm-12">
-      <button mat-raised-button color="primary" (click)="goBack()">Volver</button>
+      <button mat-raised-button matTooltip="Volver" matTooltipPosition="above" color="primary" (click)="goBack()"><mat-icon>arrow_back</mat-icon></button>
     </div>
   </div>
   <hr>
@@ -47,7 +47,7 @@
 
             <ng-container matColumnDef="equipinfras">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Equipo </th>
-              <td mat-cell *matCellDef="let row"> {{ row.varietyDetail.Equipinfra.name }} - {{ row.varietyDetail.variety.name }} - {{ row.varietyDetail.name }} </td>
+              <td mat-cell *matCellDef="let row"> {{ row.varietyDetail.Equipinfra.name }}</td>
             </ng-container>
 
             <ng-container matColumnDef="fechaI">

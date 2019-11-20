@@ -26,7 +26,7 @@ export class DiagnosisComponent implements OnInit {
 	public message:string;
 	public failedConect:string;
 
-	displayedColumns: string[] = ['id','equipinfras','client','location','date','status'];
+	displayedColumns: string[] = ['id','equipinfras','client','description','location','date','status'];
 	dataSource: MatTableDataSource<Revision>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;

@@ -34,16 +34,16 @@ export class RevisionService extends HeaderService{
 		return this.http.put(this.url+'/'+id+'/cancel', {}, {headers: this.header});
 	}
 
-	diagnose(id): Observable<any>{
-		return this.http.put(this.url+'/'+id+'/diagnose', {}, {headers: this.header});
+	diagnose(id:any, note:any): Observable<any>{
+		return this.http.put(this.url+'/'+id+'/diagnose', {nota:note}, {headers: this.header});
 	}
 
 	rejected(id,motiveId,note?): Observable<any>{
-		return this.http.put(this.url+'/'+id+'/reject/'+motiveId, {description:note}, {headers: this.header});
+		return this.http.put(this.url+'/'+id+'/reject/'+motiveId, {nota:note}, {headers: this.header});
 	}
 
 	irreparable(id,motiveId,note?): Observable<any>{
-		return this.http.put(this.url+'/'+id+'/irreparable/'+motiveId, {description:note}, {headers: this.header});
+		return this.http.put(this.url+'/'+id+'/irreparable/'+motiveId, {nota:note}, {headers: this.header});
 	}
 
 	deleteOne(id): Observable<any>{
