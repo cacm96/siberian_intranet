@@ -1,57 +1,40 @@
 <div class="container">
-  <h2 *ngIf="component" class="text-center">{{ component.name }}</h2>
-  <button mat-raised-button color="primary" (click)="goBack()">Volver</button>
+  <h2 *ngIf="component" class="text-center">Componente</h2>
+  <button mat-raised-button color="primary" (click)="goBack()" matTooltip="Volver" matTooltipPosition="above"><mat-icon>arrow_back</mat-icon></button>
   <hr>
   <div *ngIf="component">
-    <mat-card>
-      <div class="row">
-        <div class="col-sm-6">
-          <mat-list>
-            <h3 mat-subheader>Equipo/Infraestructura</h3>
-            <mat-list-item><h4 mat-line><b>Nombre: </b> {{ component.name }}</h4></mat-list-item>
-            <mat-list-item><h4 mat-line><b>Descripción: </b> {{ component.description }}</h4></mat-list-item>
-            <mat-list-item *ngIf="component.status=='active'"><h4 mat-line><b>Estatus:<span class="badge badge-success"> Activo</span></b></h4></mat-list-item>
-            <mat-list-item *ngIf="component.status=='deleted'"><h4 mat-line><b>Estatus:<span class="badge badge-danger"> Borrado</span></b></h4></mat-list-item>
-          </mat-list>
-        </div>
-      </div>
 
-    </mat-card>
-
-    <br>
-
-    <mat-card>
-    <div *ngIf="component.serviceDetails.length>0">
-      <mat-list>
-        <h3 mat-subheader>Detalle Servicio</h3>
-        <mat-list-item *ngFor="let serviceDetails of component.serviceDetails">
-          <h4 mat-line>{{serviceDetails.name}}</h4>
-        </mat-list-item>
-      </mat-list>
-    </div>
-
-    <div *ngIf="component.serviceDetails.length<=0">
-      <mat-list>
-        <h3 mat-subheader>Detalle Servicio</h3>
-        <mat-list-item><h4 mat-line>No tiene Componente</h4></mat-list-item>
-      </mat-list>
-    </div>
-  </mat-card>
-
-
-
-  </div>
-
-  <div *ngIf="!component && !failedConect">
     <div class="row">
-      <div class="col-sm-12 spinner">
-        <mat-spinner></mat-spinner>
+      <div class="col-sm-12">
+        <table mat-table [dataSource]="dataSourceC" class="mat-elevation-z8">
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <td mat-cell *matCellDef="let row"> {{ row.name }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef> Descripción </th>
+            <td mat-cell *matCellDef="let row"> {{ row.description }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> Estatus </th>
+            <td mat-cell *matCellDef="let row">
+              <span *ngIf="row.status=='active'" class="badge badge-success">{{row.status | titlecase}}</span>
+              <span *ngIf="row.status=='deleted'" class="badge badge-danger">{{row.status | titlecase}}</span>
+            </td>
+          </ng-container>
+
+           <ng-container matColumnDef="serviceDetails">
+            <th mat-header-cell *matHeaderCellDef> Detalles de Servicio </th>
+            <td mat-cell *matCellDef="let row"> {{ row.serviceDetails.length }} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
       </div>
     </div>
-  </div>
-
-  <div *ngIf="failedConect">
-    <h6 class="text-center">{{failedConect}}</h6>
-  </div>
   
 </div>
