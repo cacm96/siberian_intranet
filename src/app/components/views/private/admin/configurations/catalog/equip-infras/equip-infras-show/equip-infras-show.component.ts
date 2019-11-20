@@ -76,7 +76,7 @@ export class EquipInfrasShowComponent implements OnInit {
 
 					this.arrayEquip = [];
 					this.arrayEquip.push(this.equipinfras);
-					console.log(this.equipinfras);
+					console.log(this.arrayEquip);
 					
 					this.varieties = response.equipinfras.varieties;
 					
