@@ -1,43 +1,40 @@
-
 <div class="container">
-  <h2 *ngIf="variety" class="text-center">{{ variety.name }}</h2>
-      <button mat-raised-button color="primary" (click)="goBack()" matTooltip="Volver" matTooltipPosition="above"><mat-icon>arrow_back</mat-icon></button>
-  
+  <h2 *ngIf="variety" class="text-center">Variedad</h2>
+  <button mat-raised-button color="primary" (click)="goBack()" matTooltip="Volver" matTooltipPosition="above"><mat-icon>arrow_back</mat-icon></button>
   <hr>
   <div *ngIf="variety">
-    <mat-card>
-      <mat-card-header class="titulo border-top-danger">
-        <mat-card-title>
-          {{variety.name}}
-        </mat-card-title>
-      </mat-card-header>
-      <div class="row">
-        <div class="col-sm-6">
-          <mat-list>
-            <mat-list-item><h4 mat-line><b>Nombre: </b> {{ variety.name }}</h4></mat-list-item>
-            <mat-list-item><h4 mat-line><b>Descripción: </b> {{ variety.description }}</h4></mat-list-item>
-            <mat-list-item *ngIf="variety.status=='active'"><h4 mat-line><b>Estatus:<span class="badge badge-success"> Activo</span></b></h4></mat-list-item>
-            <mat-list-item *ngIf="variety.status=='deleted'"><h4 mat-line><b>Estatus:<span class="badge badge-danger"> Borrado</span></b></h4></mat-list-item>
-          </mat-list>
-        </div>
-      </div>
 
-    </mat-card>
-
-    <br>  
-
-  </div>
-
-  <div *ngIf="!variety && !failedConect">
     <div class="row">
-      <div class="col-sm-12 spinner">
-        <mat-spinner></mat-spinner>
+      <div class="col-sm-12">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <td mat-cell *matCellDef="let row"> {{ row.name }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef> Descripción </th>
+            <td mat-cell *matCellDef="let row"> {{ row.description }} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> Estatus </th>
+            <td mat-cell *matCellDef="let row">
+              <span *ngIf="row.status=='active'" class="badge badge-success">{{row.status | titlecase}}</span>
+              <span *ngIf="row.status=='deleted'" class="badge badge-danger">{{row.status | titlecase}}</span>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
       </div>
     </div>
+
   </div>
 
-  <div *ngIf="failedConect">
-    <h6 class="text-center">{{failedConect}}</h6>
-  </div>
-  
+
+
 </div>
