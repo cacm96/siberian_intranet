@@ -7,6 +7,7 @@ import { CategoryCreateComponent } from './category-create/category-create.compo
 import { CategoryEditComponent } from './category-edit/category-edit.component';
 import { CategoryShowComponent } from './category-show/category-show.component';
 import { CategoryDeleteComponent } from './category-delete/category-delete.component';
+import { AddSubcategoryComponent } from './add-subcategory/add-subcategory.component';
 
 const routes: Routes = [
 
@@ -17,7 +18,8 @@ const routes: Routes = [
 			{path: 'create', component: CategoryCreateComponent},
 			{path: 'edit/:id', component: CategoryEditComponent},
 			{path: 'show/:id', component: CategoryShowComponent},
-			{path: 'delete/:id', component: CategoryDeleteComponent}
+			{path: 'delete/:id', component: CategoryDeleteComponent},
+			{path: ':id/addSubcategory', component:AddSubcategoryComponent}
 		]
 	},
 

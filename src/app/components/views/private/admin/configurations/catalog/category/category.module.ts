@@ -14,6 +14,7 @@ import { CategoryCreateComponent } from './category-create/category-create.compo
 import { CategoryEditComponent } from './category-edit/category-edit.component';
 import { CategoryShowComponent } from './category-show/category-show.component';
 import { CategoryDeleteComponent } from './category-delete/category-delete.component';
+import { AddSubcategoryComponent } from './add-subcategory/add-subcategory.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CategoryDeleteComponent } from './category-delete/category-delete.compo
   	CategoryCreateComponent,
   	CategoryEditComponent,
   	CategoryShowComponent,
-  	CategoryDeleteComponent
+  	CategoryDeleteComponent,
+  	AddSubcategoryComponent
   ],
   imports: [
     CommonModule,

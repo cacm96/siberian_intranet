@@ -65,6 +65,7 @@ export class MotiveShowComponent implements OnInit {
 				this.arrayMotive = [];
 				this.arrayMotive.push(this.motive);
 				console.log(this.arrayMotive);
+				this.table();
 			},
 			error =>
 			{
