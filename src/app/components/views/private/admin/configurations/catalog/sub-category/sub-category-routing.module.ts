@@ -7,6 +7,8 @@ import { SubCategoryCreateComponent } from './sub-category-create/sub-category-c
 import { SubCategoryEditComponent } from './sub-category-edit/sub-category-edit.component';
 import { SubCategoryShowComponent } from './sub-category-show/sub-category-show.component';
 import { SubCategoryDeleteComponent } from './sub-category-delete/sub-category-delete.component';
+import { AddEquipInfrasComponent } from './add-equip-infras/add-equip-infras.component';
+
 
 
 const routes: Routes = [
@@ -18,7 +20,8 @@ const routes: Routes = [
 			{path: 'create', component: SubCategoryCreateComponent},
 			{path: 'edit/:id', component: SubCategoryEditComponent},
 			{path: 'show/:id', component: SubCategoryShowComponent},
-			{path: 'delete/:id', component: SubCategoryDeleteComponent}
+			{path: 'delete/:id', component: SubCategoryDeleteComponent},
+			{path: ':id/addEquipInfras', component:AddEquipInfrasComponent}
 		]
 	},
 

@@ -14,6 +14,7 @@ import { ComponentCreateComponent } from './component-create/component-create.co
 import { ComponentEditComponent } from './component-edit/component-edit.component';
 import { ComponentShowComponent } from './component-show/component-show.component';
 import { ComponentDeleteComponent } from './component-delete/component-delete.component';
+import { AddServiceDetailComponent } from './add-service-detail/add-service-detail.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ComponentDeleteComponent } from './component-delete/component-delete.co
 	ComponentEditComponent,
 	ComponentShowComponent,
 	ComponentDeleteComponent,
+	AddServiceDetailComponent,
   ],
   imports: [
     CommonModule,
