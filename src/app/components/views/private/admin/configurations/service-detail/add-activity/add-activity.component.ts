@@ -23,6 +23,7 @@ export class AddActivityComponent implements OnInit
   public total:number;
   public message: string;
   public failedConect: string;
+  public test : any;
 
   constructor
   (
