@@ -4,36 +4,40 @@ import { Router, ActivatedRoute, Params } from "@angular/router";
 import { Location } from "@angular/common";
 import { HttpErrorResponse } from "@angular/common/http";
 import { Global } from "../../../../../../../../core/services/global";
-import { Group } from "../../../../../../../../models/group";
-import { GroupService } from "../../../../../../../../core/services/admin/group.service";
+import { Question } from "../../../../../../../../models/question";
+import { QuestionService } from "../../../../../../../../core/services/admin/question.service";
 import { SnackBarService } from "../../../../../../../../core/services/snack-bar.service";
 
 @Component({
-  selector: "sib-group-create",
-  templateUrl: "./group-create.component.html",
-  styleUrls: ["./group-create.component.scss"]
+  selector: "sib-question-create",
+  templateUrl: "./question-create.component.html",
+  styleUrls: ["./question-create.component.scss"]
 })
-export class GroupCreateComponent implements OnInit {
-  public group: Group;
+export class QuestionCreateComponent implements OnInit {
+
+  public quest: Question;
   public message: string;
+  public name: string;
+
   constructor(
-    private _groupService: GroupService,
+    private _questionService: QuestionService,
     private _router: Router,
     private _location: Location,
     private snackBar: SnackBarService
   ) {
-    this.group = new Group();
-    console.log(this.group);
+    this.quest = new Question();
+    console.log(this.quest);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+
+  }
 
   register(form: NgForm) {
     if (form.valid) {
       console.log(form.value);
-      this.group.name = form.value.name;
-      this.group.description = form.value.description;
-      this._groupService.create(this.group).subscribe(
+      this.quest.question = form.value.question;
+      this._questionService.create(this.quest).subscribe(
         response => {
           if (response.status == true) {
             console.log(response);
