@@ -9,8 +9,8 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import {Location} from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Global } from 'src/app/core/services/global';
-import { Revision } from 'src/app/models/revision';
-import { RevisionService } from 'src/app/core/services/client/revision.service';
+import { ServiceOrder } from 'src/app/models/serviceOrder';
+import { ServiceOrderService } from 'src/app/core/services/client/serviceOrder.service';
   
 @Component({
   selector: 'sib-budget',
@@ -18,24 +18,24 @@ import { RevisionService } from 'src/app/core/services/client/revision.service';
   styleUrls: ['./budget.component.scss']
 })
 export class BudgetComponent implements OnInit {
-  public revision:any;
-  public revisions: Array < Revision > = new Array < Revision > ();
+  
+  public serviceOrder:any;
+  public serviceOrders: Array < ServiceOrder > = new Array < ServiceOrder > ();
   public total:number=0;
   public userID:string;
   public message:string;
   public failedConect:string;
 
-  displayedColumns: string[] = ['id','equipinfras','fechaI','fechaF','servicios','monto','status','approved','rejected'];
-  dataSource: MatTableDataSource<Revision>;
+  displayedColumns: string[] = ['id','equipinfras','amount','warrantyTime','serviceDetails','status','approved','rejected'];
+  dataSource: MatTableDataSource<ServiceOrder>; //,'revision','serviceDetails'
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-
   constructor
   (
     private dialogService: DialogService,
     private snackBar: SnackBarService,
-    private _revisionService: RevisionService,
+    private _serviceOrderService: ServiceOrderService,
     private _route: ActivatedRoute,
     private _router: Router,
     private _location: Location
@@ -46,26 +46,27 @@ export class BudgetComponent implements OnInit {
 
   ngOnInit() {
     this.userID = localStorage.getItem('resID');
-    this.getRevisions(this.userID);
+    this.getServiceOrder(this.userID);
   }
 
-  getRevisions(userID)
+
+  getServiceOrder(userID)
   {
-    this._revisionService.getRevisionLender(userID).subscribe
+    this._serviceOrderService.getServiceOrderUser(userID).subscribe
     (
       response =>
       {
         if (response.status==true)
         {
-          this.revisions = response.revisions;
-          this.revisions = this.revisions.filter(revision=>{return revision.status =="diagnosticated" || revision.status =="finalized"});
-          this.total = this.revisions.length;
-          console.log(this.revisions);
+          this.serviceOrders = response.serviceOrders;
+          this.serviceOrders= this.serviceOrders.filter(serviceOrder=>{return serviceOrder.status =="budgeted"});
+          this.total = this.serviceOrders.length;
+          console.log(this.serviceOrders);
           this.table();
         }
         else
         {
-          this.revisions = [];
+          this.serviceOrders = [];
           this.message = response.message.text;
           console.log(this.message);
           this.table();
@@ -86,6 +87,7 @@ export class BudgetComponent implements OnInit {
       )
   }
 
+
   applyFilter(filterValue: string)
   {
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -97,19 +99,19 @@ export class BudgetComponent implements OnInit {
 
   table()
   {
-    this.dataSource = new MatTableDataSource(this.revisions);
+    this.dataSource = new MatTableDataSource(this.serviceOrders);
     this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
   }
 
+
   onApproved(id){
-    this.dialogService.openConfirmDialog('¿Estás seguro de aprobar esta Solicitud?').afterClosed().subscribe
+    this.dialogService.openConfirmDialog('¿Estás seguro de aprobar este presupuesto?').afterClosed().subscribe
     (
       response =>
       {
         if (response==true)
         {
-          this.approveServiceOrder(id);
+          this.approvedServiceOrder(id);
         }else
         {
           console.log(response);
@@ -119,16 +121,16 @@ export class BudgetComponent implements OnInit {
   }
 
 
-  approveServiceOrder(id)
+  approvedServiceOrder(id)
   {
-    this._revisionService.approve(id).subscribe
+    this._serviceOrderService.approve(id).subscribe
     (
       response =>
       {
         console.log(response);
         this.message = response.message.text;
         this.snackBar.openSnackBarSuccess(this.message);
-        this.getRevisions(this.userID);
+        this.getServiceOrder(this.userID);
       },
       error =>
       {
@@ -147,28 +149,28 @@ export class BudgetComponent implements OnInit {
         {
           var motive = response.motive;
           var note = response.note;
-          //this.rejectedRevision(id,motive,note);
+          this.rejectedOrderService(id,motive,note);
         }
         else
         {
           console.log(response);
         }
-        
+
       }
       );
   }
 
 
-  rejectedRevision(id,motiveId,note?)
+  rejectedOrderService(id,motiveId,note?)
   {
-    this._revisionService.rejected(id,motiveId,note).subscribe
+    this._serviceOrderService.rejected(id,motiveId,note).subscribe
     (
       response =>
       {
         console.log(response);
         this.message = response.message.text;
         this.snackBar.openSnackBarSuccess(this.message);
-        this.getRevisions(this.userID);
+        this.getServiceOrder(this.userID);
       },
       error =>
       {
@@ -181,6 +183,8 @@ export class BudgetComponent implements OnInit {
   { 
     this._location.back(); 
   }
+
+  
 }
 
 
