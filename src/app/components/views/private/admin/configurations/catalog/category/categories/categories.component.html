@@ -69,6 +69,15 @@
 							</td>
 						</ng-container>
 
+						<ng-container matColumnDef="addSubcategory">
+							<th mat-header-cell *matHeaderCellDef></th>
+							<td mat-cell *matCellDef="let row">
+								<button mat-icon-button color="primary" [routerLink]="[row.id,'addSubcategory']" matTooltip="Asignar SubCategoría" matTooltipPosition="above">
+									<mat-icon>add</mat-icon>
+								</button>
+							</td>
+						</ng-container>
+
 						<ng-container matColumnDef="edit">
 							<th mat-header-cell *matHeaderCellDef></th>
 							<td mat-cell *matCellDef="let row">

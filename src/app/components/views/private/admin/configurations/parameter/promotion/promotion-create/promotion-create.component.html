@@ -1,73 +1,103 @@
 <div class="container">
+
 	<div class="row">
-		<div class="col-sm-8 offset-2">
-			<div class="row">
-				<div class="col-sm-12">
-					<h2 class="text-center">Nueva Promoción</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-12">
-					<button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/parameter/promotion']">Volver</button>
-				</div>
-			</div>
-			<hr>
-			
-			<div class="row">
-				<div class="col-sm-12">
-					<div class="example-container">
-						
-						<mat-form-field>
-							<input matInput placeholder="Nombre">
-						</mat-form-field>
-						
-						<mat-form-field>
-							<textarea matInput placeholder="Descripción"></textarea>
-						</mat-form-field>	
-
-						<mat-form-field>
-							<input matInput placeholder="Descuento">
-						</mat-form-field>
-
-						<mat-form-field>
-							<mat-select placeholder="Subcategoría" required>
-								<mat-option value="option">Cocina</mat-option>
-								<mat-option value="option">Nevera</mat-option>
-								<mat-option value="option">Pared</mat-option>
-							</mat-select>
-						</mat-form-field>
-						
-						<mat-form-field>
-							<input matInput [matDatepicker]="myDatepicker2" placeholder="Fecha de Inicio">
-							<mat-datepicker-toggle matSuffix [for]="myDatepicker2" ></mat-datepicker-toggle>
-							<mat-datepicker #myDatepicker2></mat-datepicker>
-						</mat-form-field>
-
-						<mat-form-field>
-							<input matInput [matDatepicker]="myDatepicker3"  placeholder="Fecha de Finalización">
-							<mat-datepicker-toggle matSuffix [for]="myDatepicker3"></mat-datepicker-toggle>
-							<mat-datepicker #myDatepicker3></mat-datepicker>
-						</mat-form-field>
-						
-
-
-						<mat-label>Subir Imagen</mat-label>
-						<input id="fileInput" type="file">
-						
-						<mat-form-field [hidden]="true">
-							<input matInput  placeholder="Estatus" value="A">
-						</mat-form-field>
-
-						<br>
-						
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-12">
-					<button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/promotion/promotion/create']">Registrar</button>
-				</div>
-			</div>
-		</div>
+	  <div class="col-sm-12">
+		<h2 class="text-center">Nueva Promoción</h2>
+	  </div>
 	</div>
-</div>
+  
+	<div class="row">
+	  <div class="col-sm-12">
+		<button mat-raised-button color="primary" (click)="goBack()" matTooltip="Volver" matTooltipPosition="above"><mat-icon>arrow_back</mat-icon></button>
+	  </div>  
+	</div>
+  
+	<hr>
+  
+	<div class="row">
+	  <div class="col-sm-12">
+		<mat-card>
+		  <mat-card-header class="titulo border-top-danger">
+			<mat-card-title>Promoción</mat-card-title>
+		  </mat-card-header>
+		  <mat-card-content>
+			<div class="row">
+			  <div class="col-sm-8 offset-2">
+				<form #registerForm="ngForm" (ngSubmit)="register(registerForm)" enctype="multipart/form-data">
+				  <br>
+	   
+				  <mat-form-field>
+					<input matInput  name="name" placeholder="Nombre" [(ngModel)]="name" required>
+				  </mat-form-field>
+
+				  <mat-form-field>
+					<input matInput name="description" placeholder="Descripción" [(ngModel)]="description" required>
+				  </mat-form-field>
+				
+
+						<mat-form-field>
+								<mat-select name="type" [(ngModel)]="typeSelected" placeholder="Seleccione un Tipo de Promoción" required>
+									<mat-option *ngFor="let type of types" [value]="type.id">{{ type.name }}</mat-option>
+								</mat-select>
+							</mat-form-field>
+
+
+						<mat-form-field>
+									<mat-select name="SubcategoryId" [(ngModel)]="SubcategoryId" placeholder="Seleccione una Subcategoría" (ngModelChange)="changeSubcategory($event)">
+										<mat-option *ngFor="let subcategory of subcategories" [value]="subcategory.id">{{ subcategory.name }}</mat-option>
+									</mat-select>
+								</mat-form-field>
+		
+								<mat-form-field>
+										<mat-select name="Equipinfraid" [(ngModel)]="EquipinfraId" placeholder="Seleccione un Equipo o Infraestructura" (ngModelChange)="changeEquipinfras($event)" >
+											<mat-option *ngFor="let equipinfra of equipinfras" [value]="equipinfra.id">{{ equipinfra.name }}</mat-option>
+										</mat-select>
+									</mat-form-field>
+
+							<!--<div class="promotion_create" [class.open]="isType" [class.closed]="!isType">
+								<mat-form-field>
+									<mat-select name="subcategory" [(ngModel)]="subcategorySelected" placeholder="Seleccione una Subcategoría" (ngModelChange)="changeSubcategory($event)" required>
+										<mat-option *ngFor="let subcategory of subcategories" [value]="subcategory.id">{{ subcategory.name }}</mat-option>
+									</mat-select>
+								</mat-form-field>
+							</div>
+		
+							<div class="promotion_create" [class.open]="isType" [class.closed]="!isType">
+								<mat-form-field>
+									<mat-select name="equipinfras" [(ngModel)]="equipinfrasSelected" placeholder="Seleccione un Equipo o Infraestructura" (ngModelChange)="changeEquipinfras($event)" required>
+										<mat-option *ngFor="let equipinfra of equipinfras" [value]="equipinfra.id">{{ equipinfra.name }}</mat-option>
+									</mat-select>
+								</mat-form-field>
+							</div> -->
+					   
+							<mat-form-field>
+									<input matInput name="percentDiscount" placeholder="Porcentaje de Descuento" [(ngModel)]="percentDiscount">
+								</mat-form-field>
+								
+								<mat-form-field class="example-full-width">
+										<input name="dateStart" [(ngModel)]="dateStart" matInput [matDatepicker]="picker" placeholder="Elija una fecha de Inicio"  [min] = "minDate" (dateChange)="changeDate('change', $event)" required>
+										<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+										<mat-datepicker touchUi #picker></mat-datepicker>
+									</mat-form-field>
+
+
+									<mat-form-field class="example-full-width">
+											<input name="dateEnd" [(ngModel)]="dateEnd" matInput [matDatepicker]="picker2" placeholder="Elija una fecha de Finalicación"  [min] = "minDate" (dateChange)="changeDate('change', $event)" required>
+											<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+											<mat-datepicker touchUi #picker></mat-datepicker>
+										</mat-form-field>
+
+				  <div class="row">
+					<div class="col-sm-12">
+					  <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.form.valid">Registrar</button>
+					</div>
+				  </div>
+
+				</form>
+			  </div>
+			</div>
+		  </mat-card-content>
+		</mat-card>
+	  </div>
+	</div>
+  </div>
