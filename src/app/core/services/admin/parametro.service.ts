@@ -9,7 +9,7 @@ import { Parametro } from '../../../models/parametro';
 @Injectable()
 export class ParametroService extends HeaderService{
 
-	url: string = environment.api + 'parametro';
+	url: string = environment.api + 'parameter';
 
 
 	constructor(
