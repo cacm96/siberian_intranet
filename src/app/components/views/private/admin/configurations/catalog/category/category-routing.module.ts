@@ -19,7 +19,7 @@ const routes: Routes = [
 			{path: 'edit/:id', component: CategoryEditComponent},
 			{path: 'show/:id', component: CategoryShowComponent},
 			{path: 'delete/:id', component: CategoryDeleteComponent},
-			{path: ':id/addSubcategory', component:AddSubcategoryComponent}
+			{path: ':id/addSubcategory', component: AddSubcategoryComponent}
 		]
 	},
 

@@ -40,4 +40,13 @@ export class CategoryService extends HeaderService{
 		return this.http.delete(this.url+'/'+id, {headers: this.header});
 	}
 
+	addSubcategory(categoryId:any,subcategories:any): Observable<any>{
+		return this.http.put(this.url+'/'+categoryId, {subcategories: subcategories}, {headers: this.header});
+	}
+ 
+	deleteSubcategory(CategoryId:any, SubcategoryId:any): Observable<any>{
+		return this.http.delete(this.url+"/"+CategoryId+"/subcategory/"+SubcategoryId, {headers: this.header});
+	}
+
+	
 }

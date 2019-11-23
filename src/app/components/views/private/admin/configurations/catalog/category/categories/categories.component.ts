@@ -27,7 +27,7 @@ export class CategoriesComponent implements OnInit {
   public failedConect:string;
   public total:Number=0;
 
-	displayedColumns: string[] = ['id', 'name', 'description','subcategories','status','edit','delete'];
+	displayedColumns: string[] = ['id', 'name', 'description','subcategories','status','addSubcategory','edit','delete'];
   dataSource: MatTableDataSource<Category>;
   
   @ViewChild(MatPaginator) paginator: MatPaginator;
