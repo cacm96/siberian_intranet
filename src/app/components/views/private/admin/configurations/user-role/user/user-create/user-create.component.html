@@ -42,13 +42,13 @@
 					</mat-form-field>
 
 					<mat-form-field>
-						<input matInput name="dni" [(ngModel)]="dni" placeholder="Cédula" required>
-					</mat-form-field>
-
-					<mat-form-field>
 					  <mat-select name="dniType" [(ngModel)]="dniTypeSelected" placeholder="Seleccione un Tipo de Dni" required>
 						<mat-option *ngFor="let dniType of dniTypes" [value]="dniType.id">{{ dniType.name }}</mat-option>
 					  </mat-select>
+					</mat-form-field>
+
+					<mat-form-field>
+						<input matInput name="dni" [(ngModel)]="dni" placeholder="Cédula" required>
 					</mat-form-field>
 
 					<mat-form-field>

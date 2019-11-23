@@ -22,6 +22,19 @@ export class AddResourceComponent implements OnInit
 	public total:number;
 	public message: string;
 	public failedConect: string;
+	public quantityResource:any;
+	public arrayQuantityAux:any;
+	public arrayResourcesAux:any;
+
+	public resourcesUpdate: any =
+	{
+    	id: Number,
+    	quantity: Number
+  	};
+  	public arrayResourcesUpdate:any;
+
+
+	public isResources:boolean=false;
 
 	constructor
 	(
@@ -57,7 +70,6 @@ export class AddResourceComponent implements OnInit
 				if (response.status == true)
 				{
 					this.resources = response.resources;
-					console.log(this.resources);
 				}
 				else
 				{
@@ -114,7 +126,25 @@ export class AddResourceComponent implements OnInit
 
 	update(form: NgForm)
 	{
+		console.log(form.value);
 
+		if(form.value.resources)
+		{
+			this.arrayResourcesUpdate = [];
+
+        	for(let resources of form.value.resources)
+        	{
+          		this.resourcesUpdate.id = resources.id;
+      			this.resourcesUpdate.quantity = resources.quantity;
+      			console.log(this.resourcesUpdate);
+      			this.arrayResourcesUpdate.push(this.resourcesUpdate);
+        	}
+      		console.log(this.arrayResourcesUpdate);
+      }
+
+
+
+		/*
 		if(form.valid)
 		{
 			this._serviceDetailService.addResource(this.serviceDetail.id,form.value.resources).subscribe
@@ -143,13 +173,14 @@ export class AddResourceComponent implements OnInit
 					this.snackBar.openSnackBar(this.message,'');
 				}
 				);
-		}
+		}*/
 
 	}
 
-	onSelection(event, value) 
+	changeResources(event) 
 	{
-		console.log(event.value);
+		this.isResources = true;
+		this.quantityResource = event;
 	}
 
 	messageSnackBar(message)
