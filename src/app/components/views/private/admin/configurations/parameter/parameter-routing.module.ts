@@ -55,6 +55,15 @@ const routes: Routes = [
 					}
 				]
 			},
+			{path: 'question', canActivate: [],
+				children:
+				[
+					{
+						path: '',
+		                loadChildren: './question/question.module#QuestionModule',
+					}
+				]
+			},
 			
 		]
 	},	
