@@ -7,7 +7,7 @@
   </div>
   <div class="row">
     <div class="col-sm-12">
-      <button mat-raised-button color="primary" (click)="goBack()">Volver</button>
+      <button mat-raised-button matTooltip="Volver" matTooltipPosition="above" color="primary" (click)="goBack()"><mat-icon>arrow_back</mat-icon></button>
     </div>
   </div>
   <hr>
@@ -34,42 +34,53 @@
             </div>
           </div>
 
-          <table *ngIf="revisions.length>0" mat-table [dataSource]="dataSource" matSort>
+          <table *ngIf="revisions.length>0" mat-table [dataSource]="dataSource">
 
             <ng-container matColumnDef="id">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Diagnosticar </th>
+              <th mat-header-cell *matHeaderCellDef></th>
               <td mat-cell *matCellDef="let row">
-                <button mat-icon-button color="accent" [routerLink]="['/auth/lender/diagnosis/detail', row.id]">
+                
+                <button *ngIf="row.status=='diagnosticated' || row.status=='approved'" mat-icon-button color="accent" matTooltip="Diagnosticar" matTooltipPosition="above" [routerLink]="['/auth/lender/diagnosis/detail', row.id]">
                   <mat-icon>find_in_page</mat-icon>
                 </button>
+
+                <button *ngIf="row.status=='irreparable'" mat-icon-button color="accent" matTooltip="Detalle" matTooltipPosition="above" [routerLink]="['/auth/lender/request/detail', row.id]">
+                  <mat-icon>remove_red_eye</mat-icon>
+                </button>
+
               </td>
             </ng-container>
 
             <ng-container matColumnDef="equipinfras">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Equipo </th>
-              <td mat-cell *matCellDef="let row"> {{ row.varietyDetail.Equipinfra.name }} - {{ row.varietyDetail.variety.name }} - {{ row.varietyDetail.name }} </td>
+              <th mat-header-cell *matHeaderCellDef> Equipo </th>
+              <td mat-cell *matCellDef="let row"> {{ row.varietyDetail.Equipinfra.name }}</td>
             </ng-container>
 
             <ng-container matColumnDef="client">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Cliente </th>
+              <th mat-header-cell *matHeaderCellDef> Cliente </th>
               <td mat-cell *matCellDef="let row"> {{row.user.firstName | titlecase }} {{row.user.lastName | titlecase}} </td>
             </ng-container>
 
+            <ng-container matColumnDef="description">
+              <th mat-header-cell *matHeaderCellDef> Descripción </th>
+              <td mat-cell *matCellDef="let row"> {{row.description}}</td>
+            </ng-container>
+
             <ng-container matColumnDef="location">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Dirección </th>
+              <th mat-header-cell *matHeaderCellDef> Dirección </th>
               <td mat-cell *matCellDef="let row"> {{row.location.address}}</td>
             </ng-container>
 
             <ng-container matColumnDef="date">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </th>
-              <td mat-cell *matCellDef="let row"> <!--{{ row.calendar.date }}-->10-11-2019</td>
+              <th mat-header-cell *matHeaderCellDef> Fecha </th>
+              <td mat-cell *matCellDef="let row">{{ row.calendars.date |date:"longDate"}}</td>
             </ng-container>
 
             <ng-container matColumnDef="status">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Estatus </th>
+              <th mat-header-cell *matHeaderCellDef> Estatus </th>
               <td mat-cell *matCellDef="let row">
                 <span *ngIf="row.status=='approved'" class="badge badge-primary">Aprobada</span>
-                <span *ngIf="row.status=='diagnosticated'" class="badge badge-warning">Solicitada</span>
+                <span *ngIf="row.status=='diagnosticated'" class="badge badge-warning">Diagnosticada</span>
                 <span *ngIf="row.status=='irreparable'" class="badge badge-danger">Rechazada</span>
               </td>
             </ng-container>

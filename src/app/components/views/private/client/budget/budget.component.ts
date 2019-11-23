@@ -109,7 +109,7 @@ export class BudgetComponent implements OnInit {
       {
         if (response==true)
         {
-          //this.approvedRevision(id);
+          this.approveServiceOrder(id);
         }else
         {
           console.log(response);
@@ -119,7 +119,7 @@ export class BudgetComponent implements OnInit {
   }
 
 
-  approvedRevision(id)
+  approveServiceOrder(id)
   {
     this._revisionService.approve(id).subscribe
     (

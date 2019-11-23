@@ -26,7 +26,7 @@ export class RequestComponent implements OnInit {
 	public message:string;
 	public failedConect:string;
 
-	displayedColumns: string[] = ['id','equipinfras','client','location','date','status','approved','rejected'];
+	displayedColumns: string[] = ['id','equipinfras','client','description','location','date','status','approved','rejected'];
 	dataSource: MatTableDataSource<Revision>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;

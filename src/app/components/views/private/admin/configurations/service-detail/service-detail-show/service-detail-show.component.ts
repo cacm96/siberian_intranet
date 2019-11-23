@@ -28,6 +28,7 @@ import { DialogService } from 'src/app/core/services/dialog.service';
 export class ServiceDetailShowComponent implements OnInit {
 
 	public serviceDetail: ServiceDetail;
+	public arrayServiceDetail:any;
 	public activities: Array<Activity> = new Array<Activity>();
 	public policies: Array<Policy> = new Array<Policy>();
 	public resources: Array<Resource> = new Array<Resource>();
@@ -36,17 +37,20 @@ export class ServiceDetailShowComponent implements OnInit {
 	public message: string;
 	public failedConect: string;
 
-	displayedColumnsActivity: string[] = ['id', 'name', 'description', 'estimatedTime','difficultyDegree','status', 'delete'];
-	dataSourceActivity: MatTableDataSource<Activity>;
+	displayedColumnsA: string[] = ['name', 'description', 'estimatedTime','difficultyDegree','status'];
+	dataSourceA: MatTableDataSource<Activity>;
 
-	displayedColumnsPolicy: string[] = ['id', 'name', 'description', 'actionPlan', 'status', 'delete'];
-	dataSourcePolicy: MatTableDataSource<Policy>;
+	displayedColumnsP: string[] = ['name', 'description', 'actionPlan', 'status'];
+	dataSourceP: MatTableDataSource<Policy>;
 
-	displayedColumnsResource: string[] = ['id', 'name', 'description', 'resourceType','measureUnit','price','status', 'delete'];
-	dataSourceResource: MatTableDataSource<Resource>;
+	displayedColumnsR: string[] = ['name', 'description', 'resourceType','measureUnit','price','status'];
+	dataSourceR: MatTableDataSource<Resource>;
 
-	displayedColumnsSkill: string[] = ['id', 'name', 'description', 'status', 'delete'];
-	dataSourceSkill: MatTableDataSource<Skill>;
+	displayedColumnsS: string[] = ['name', 'description', 'status'];
+	dataSourceS: MatTableDataSource<Skill>;
+
+	displayedColumns: string[] = ['name', 'estimatedPrice', 'estimatedWarrantyTime','note','serviceType','ComponentId','status'];
+	dataSource: MatTableDataSource<ServiceDetail>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
 	@ViewChild(MatSort) sort: MatSort;
@@ -73,95 +77,110 @@ export class ServiceDetailShowComponent implements OnInit {
 		this._serviceDetailService.getOne(id).subscribe
 			(
 				response => {
-					if(response.status==true){
-						this.serviceDetail = response.serviceDetail;
-						this.activities = response.serviceDetail.activities;
-						this.policies = response.serviceDetail.policies;
-						this.resources = response.serviceDetail.resources;
-						this.skills = response.serviceDetail.skills;
-						console.log(this.serviceDetail);
+					if (response.status==true)
+				{
+					this.serviceDetail = response.serviceDetail;
+
+					this.arrayServiceDetail = [];
+					this.arrayServiceDetail.push(this.serviceDetail);
+					console.log(this.arrayServiceDetail);
+					
+					this.activities = response.serviceDetail.activities;
+                    this.policies = response.serviceDetail.policies;
+					this.resources = response.serviceDetail.resources;
+					this.skills = response.serviceDetail.skills;
+
+					if(this.activities.length>0)
+					{
+						console.log(this.activities);
+						this.table();
 					}
-					else{
+					else
+					{
 						this.activities = [];
-						this.policies = [];
-						this.resources = [];
-						this.skills = [];
+						console.log(this.activities);
+						this.table();
 					}
-				},
-				error => {
-					console.log(<any>error);
-					if (error instanceof HttpErrorResponse) {
-						if (error.status === 0) {
-							this.failedConect = Global.failed;
-						}
+				 
+					if(this.policies.length>0)
+					{
+						console.log(this.policies);
+						this.table();
+					}
+					else
+					{
+						this.policies = [];
+						console.log(this.policies);
+						this.table();
+					}
+
+					if(this.resources.length>0)
+					{
+						console.log(this.resources);
+						this.table();
+					}
+					else
+					{
+						this.resources = [];
+						console.log(this.resources);
+						this.table();
+					}
+
+					if(this.skills.length>0)
+					{
+						console.log(this.skills);
+						this.table();
+					}
+					else
+					{
+						this.skills = [];
+						console.log(this.skills);
+						this.table();
+					}
+
+				}
+				else
+		        {
+		          console.log(response);
+		        }
+			},
+			error =>
+			{
+				console.log(<any>error);
+				if(error instanceof HttpErrorResponse)
+				{
+					if(error.status===0)
+					{
+						this.failedConect = Global.failed;
 					}
 				}
+			}
 			)
 	}
 
-	applyFilterActivity(entity: string, filterValue: string)
+	applyFilter(filterValue: string)
 	{
-		this.dataSourceActivity.filter = filterValue.trim().toLowerCase();
+		this.dataSource.filter = filterValue.trim().toLowerCase();
 
-		if (this.dataSourceActivity.paginator) {
-			this.dataSourceActivity.paginator.firstPage();
+		if (this.dataSource.paginator) {
+			this.dataSource.paginator.firstPage();
 		}
 	}
 
-	applyFilterPolicy(entity: string, filterValue: string)
-	{
-		this.dataSourcePolicy.filter = filterValue.trim().toLowerCase();
 
-		if (this.dataSourcePolicy.paginator) {
-			this.dataSourcePolicy.paginator.firstPage();
-		}
+	table()
+	{
+		this.dataSource = new MatTableDataSource(this.arrayServiceDetail);
+
+		this.dataSourceA = new MatTableDataSource(this.activities);
+		this.dataSourceP = new MatTableDataSource(this.policies);
+		this.dataSourceR = new MatTableDataSource(this.resources);
+		this.dataSourceS = new MatTableDataSource(this.skills);
+		this.dataSource.paginator = this.paginator;
+		this.dataSource.sort = this.sort;
 	}
 
-	applyFilterResource(entity: string, filterValue: string)
-	{
-		this.dataSourceResource.filter = filterValue.trim().toLowerCase();
-
-		if (this.dataSourceResource.paginator) {
-			this.dataSourceResource.paginator.firstPage();
-		}
-	}
-
-	applyFilterSkill(entity: string, filterValue: string)
-	{
-		this.dataSourceSkill.filter = filterValue.trim().toLowerCase();
-
-		if (this.dataSourceSkill.paginator) {
-			this.dataSourceSkill.paginator.firstPage();
-		}
-	}
-
-	tableActivity()
-	{
-		this.dataSourceActivity = new MatTableDataSource(this.activities);
-		this.dataSourceActivity.paginator = this.paginator;
-		this.dataSourceActivity.sort = this.sort;
-	}
-
-	tablePolicy()
-	{
-		this.dataSourcePolicy = new MatTableDataSource(this.policies);
-		this.dataSourcePolicy.paginator = this.paginator;
-		this.dataSourcePolicy.sort = this.sort;
-	}
-
-	tableResource()
-	{
-		this.dataSourceResource = new MatTableDataSource(this.resources);
-		this.dataSourceResource.paginator = this.paginator;
-		this.dataSourceResource.sort = this.sort;
-	}
-
-	tableSkill()
-	{
-		this.dataSourceSkill = new MatTableDataSource(this.skills);
-		this.dataSourceSkill.paginator = this.paginator;
-		this.dataSourceSkill.sort = this.sort;
-	}
+	
 
 
 	goBack() {

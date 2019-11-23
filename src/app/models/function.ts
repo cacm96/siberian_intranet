@@ -1,6 +1,8 @@
 export class Function{
 	id:string;
-  	name: string;
-  	description:string;
+	title: string;
+	entity:string;
+	action:string;
+	url:string;
   	status:string;
 }
