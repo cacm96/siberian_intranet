@@ -4,6 +4,7 @@ import { MaterialModule } from 'src/app/core/ui/material.module';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ParametroService } from 'src/app/core/services/admin/parametro.service';
+import { GroupService } from 'src/app/core/services/admin/group.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from 'src/app/core/services/token-interceptor.service';
 
@@ -25,11 +26,13 @@ import { ParametroShowComponent } from './parametro-show/parametro-show.componen
   imports: [
     CommonModule,
     MaterialModule,
+    FormsModule,
     ParametroRoutingModule
   ],
   providers:
   [
     ParametroService,
+    GroupService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass : TokenInterceptorService,
