@@ -12,13 +12,36 @@
             <mat-card-content class="mat_card_content">
               <mat-icon class="dashboard_icon text-center">insert_chart</mat-icon>
               <h3 class="text-center">Solicitudes</h3>
-              <span class="text-center small mr-3">Solicitadas: <span class="badge badge-primary">{{totalRevisionRequested}}</span></span>
-              <span class="text-center small mr-3">Aprobadas: <span class="badge badge-primary">{{totalRevisionApproved}}</span></span>
-              <span class="text-center small mr-3">Rechazadas: <span class="badge badge-primary">{{totalRevisionRejected}}</span></span>
-              <span class="text-center small mr-3">Diagnosticadas: <span class="badge badge-primary">{{totalRevisionDiagnosticated}}</span></span>
-              <span class="text-center small mr-3">Irreparables: <span class="badge badge-primary">{{totalRevisionLost}}</span></span>
-              <span class="text-center small mr-3">Finalizadas: <span class="badge badge-primary">{{totalRevisionFinalized}}</span></span>
-              <span class="text-center small mr-3">Eliminadas: <span class="badge badge-primary">{{totalRevisionCancelled}}</span></span>
+              <div class="row">
+                <ul>
+                  <div class="column-md-2">
+                   <li><span class="text-center small mr-3">Solicitadas: <span class="badge badge-primary">{{totalRevisionRequested}}</span></span></li>
+                   <li><span class="text-center small mr-3">Aprobadas: <span class="badge badge-primary">{{totalRevisionApproved}}</span></span></li>
+                   <li><span class="text-center small mr-3">Rechazadas: <span class="badge badge-primary">{{totalRevisionRejected}}</span></span></li> 
+                    
+                    
+                  </div>
+                </ul>
+                  <div class=row>
+                    <div class="column-md-2">
+                        <ul>
+                          <li><span class="text-center small mr-3">Diagnosticadas: <span class="badge badge-primary">{{totalRevisionDiagnosticated}}</span></span></li>
+                          <li><span class="text-center small mr-3">Irreparables: <span class="badge badge-primary">{{totalRevisionLost}}</span></span></li>
+                          <li><span class="text-center small mr-3">Finalizadas: <span class="badge badge-primary">{{totalRevisionFinalized}}</span></span></li>
+                          
+                        </ul>
+                    </div>
+                    <div class="col-md-2">
+                        <ul>
+                          <li>
+                              <li> <span class="text-center small mr-3">Eliminadas: <span class="badge badge-primary">{{totalRevisionCancelled}}</span></span></li>
+                          </li>
+                        </ul>
+                    </div>
+                  
+                  
+              </div>
+             
             </mat-card-content>
           </mat-card>
         </a>
@@ -32,11 +55,22 @@
             <mat-card-content class="mat_card_content">
               <mat-icon class="dashboard_icon text-center">assignment</mat-icon>
               <h3 class="text-center">Servicios</h3>
-              <span class="text-center small mr-3">Presupuestados: <span class="badge badge-primary">{{totalServiceOrderBudgeted}}</span></span>
-              <span class="text-center small mr-3">Aprobados: <span class="badge badge-primary">{{totalServiceOrderApproved}}</span></span>
-              <span class="text-center small mr-3">Rechazados: <span class="badge badge-primary">{{totalServiceOrderRejected}}</span></span>
-              <span class="text-center small mr-3">Finalizados: <span class="badge badge-primary">{{totalServiceOrderFinalized}}</span></span>
-              <span class="text-center small">En Garantía: <span class="badge badge-primary">{{totalServiceOrderWarranty}}</span></span>
+              <div class="row">
+                <div class="column-md-4">
+                  <ul>
+                    <li><span class="text-center small mr-3">Presupuestados: <span class="badge badge-primary">{{totalServiceOrderBudgeted}}</span></span></li>
+                    <li><span class="text-center small mr-3">Aprobados: <span class="badge badge-primary">{{totalServiceOrderApproved}}</span></span></li>
+                    <li><span class="text-center small mr-3">Rechazados: <span class="badge badge-primary">{{totalServiceOrderRejected}}</span></span></li>
+                    <li><span class="text-center small mr-3">Finalizados: <span class="badge badge-primary">{{totalServiceOrderFinalized}}</span></span></li>
+                    <li> <span class="text-center small">En Garantía: <span class="badge badge-primary">{{totalServiceOrderWarranty}}</span></span></li>
+                  </ul>
+                </div>
+              </div>
+              
+              
+              
+              
+             
             </mat-card-content>
           </mat-card>
         </a>
