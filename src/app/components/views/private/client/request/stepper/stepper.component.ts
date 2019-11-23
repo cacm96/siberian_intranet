@@ -83,6 +83,9 @@ export class StepperComponent implements OnInit
   public failedConect:string;
   public message:string;
 
+  public lender : any;
+  public filter : any;
+
   constructor
   (
     private _userService: UserService,
@@ -467,5 +470,12 @@ export class StepperComponent implements OnInit
   { 
     this._location.back(); 
   }
+
+  changeResources(event) {
+    this.lenderId = event.value;
+    //console.log(this.lenderId);
+    //console.log(typeof(this.lenderId));
+  }
+
 }
 
