@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CategoryService } from 'src/app/core/services/admin/category.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from 'src/app/core/services/token-interceptor.service';
+import { SubcategoryService } from 'src/app/core/services/admin/subcategory.service';
 
 import { CategoryRoutingModule } from './category-routing.module';
 import { CategoryComponent } from './category.component';
@@ -35,6 +36,8 @@ import { AddSubcategoryComponent } from './add-subcategory/add-subcategory.compo
   providers:
   [
     CategoryService,
+    SubcategoryService,
+    
     {
       provide: HTTP_INTERCEPTORS,
       useClass : TokenInterceptorService,

@@ -5,8 +5,8 @@ export class Promotion{
 	name:string;
 	description:string;
 	type:string;
-	EquipinfraId:number;
-	SubcategoryId:number;
+	EquipinfraId:string;
+	SubcategoryId:string;
 	percentDiscount:number;
 	dateStart:string;
 	dateEnd:string;
