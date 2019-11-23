@@ -6,25 +6,25 @@ import { DialogService } from '../../../../../../../../core/services/dialog.serv
 import { SnackBarService } from '../../../../../../../../core/services/snack-bar.service';
 
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Global } from '../../../../../../../../core/services/global';
-import { Group } from '../../../../../../../../models/group';
-import { GroupService } from '../../../../../../../../core/services/admin/group.service';
+import { Question } from '../../../../../../../../models/question';
+import { QuestionService } from '../../../../../../../../core/services/admin/question.service';
 
 @Component({
-  selector: 'sib-groups',
-  templateUrl: './groups.component.html',
-  styleUrls: ['./groups.component.scss']
+  selector: 'sib-questions',
+  templateUrl: './questions.component.html',
+  styleUrls: ['./questions.component.scss']
 })
-export class GroupsComponent implements OnInit {
+export class QuestionsComponent implements OnInit {
 
-  public groups:Array < Group> = new Array < Group > ();
+  public questions : Array < Question> = new Array < Question > ();
   public message:string;
   public failedConect:string;
 
-  displayedColumns: string[] = ['id', 'name', 'description', 'parameters', 'status','edit','delete'];
-  dataSource: MatTableDataSource <Group>;
+  displayedColumns: string[] = ['id', 'question', 'status','edit','delete'];
+  dataSource: MatTableDataSource <Question>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -32,7 +32,7 @@ export class GroupsComponent implements OnInit {
   constructor(
     private dialogService: DialogService,
     private snackBar: SnackBarService,
-    private _groupService: GroupService,
+    private _questionService: QuestionService,
     private _route: ActivatedRoute,
     private _router: Router,
     private _location: Location
@@ -41,24 +41,24 @@ export class GroupsComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.getGroups();
+    this.getQuestions();
   }
 
-  getGroups()
+  getQuestions()
   {
-    this._groupService.All().subscribe
+    this._questionService.All().subscribe
     (
       response =>
       {
         if (response.status==true)
         {
-          this.groups = response.groups;
-          console.log(this.groups);
+          this.questions = response.question;
+          console.log(this.questions);
           this.table();
         }
         else
         {
-          this.groups = [];
+          this.questions = [];
           this.message = response.message.text;
           console.log(this.message);
           this.table();
@@ -87,22 +87,22 @@ export class GroupsComponent implements OnInit {
 		}
 	}
 
-	table()
+  table()
   {
-    this.dataSource = new MatTableDataSource(this.groups);
+    this.dataSource = new MatTableDataSource(this.questions);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
 
 	onDelete(id)
   {
-    this.dialogService.openConfirmDialog('¿Estás seguro de eliminar este grupo?').afterClosed().subscribe
+    this.dialogService.openConfirmDialog('¿Estás seguro de eliminar esta pregunta?').afterClosed().subscribe
     (
       response =>
       {
         if (response==true)
         {
-          this.deleteGroup(id);
+          this.deleteQuestion(id);
         }else
         {
           console.log(response);
@@ -111,16 +111,16 @@ export class GroupsComponent implements OnInit {
       );
   }
 
-  deleteGroup(id)
+  deleteQuestion(id)
   {
-    this._groupService.deleteOne(id).subscribe
+    this._questionService.deleteOne(id).subscribe
     (
       response =>
       {
         console.log(response);
         this.message = response.message.text;
         this.snackBar.openSnackBarSuccess(this.message);
-        this.getGroups();
+        this.getQuestions();
       },
       error =>
       {
@@ -128,4 +128,5 @@ export class GroupsComponent implements OnInit {
       }
       )
   }
+
 }
