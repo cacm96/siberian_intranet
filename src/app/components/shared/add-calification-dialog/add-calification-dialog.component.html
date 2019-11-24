@@ -14,11 +14,6 @@
           <a [routerLink]="['/auth/client/calification']" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
         </div>
 
-        <h2>Responde estas breves preguntas</h2>
-        <mat-radio-group aria-label="test" [(ngModel)]="questionSelected" (change)="changeQuestion($event)">
-            <mat-radio-button class="col-md-3" *ngFor="let question of questions" [value]="question.id">
-            </mat-radio-button>
-          </mat-radio-group>
 
       </div>
     
