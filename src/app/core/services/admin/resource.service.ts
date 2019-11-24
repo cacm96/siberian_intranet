@@ -30,6 +30,10 @@ export class ResourceService extends HeaderService{
 	getOne(id:Number): Observable<any>{
 		return this.http.get(this.url+"/"+id, {headers: this.header});
 	}
+	
+	getAllWhere(ids:any): Observable<any>{
+		return this.http.get(this.url+"/by/ids", {headers: this.header});
+	}
 
     update(resource:any): Observable<any>{
 		let params = JSON.stringify(resource);
@@ -41,3 +45,4 @@ export class ResourceService extends HeaderService{
 	}
 
 }
+ 

@@ -18,6 +18,7 @@ export class AddResourceComponent implements OnInit
 {
 	public serviceDetail: ServiceDetail;
 	public resources: any;
+	public resource:any;
 	public resourcesSelected:any;
 	public total:number;
 	public message: string;
@@ -32,6 +33,9 @@ export class AddResourceComponent implements OnInit
     	quantity: Number
   	};
   	public arrayResourcesUpdate:any;
+
+  	public arraySearchResource:any;
+
 
 
 	public isResources:boolean=false;
@@ -93,6 +97,38 @@ export class AddResourceComponent implements OnInit
 			)
 	}
 
+	getResourcesWhere(ids)
+	{
+		this._resourceService.getAllWhere(ids).subscribe
+		(
+			response =>
+			{
+				if (response.status == true)
+				{
+					this.arraySearchResource = response.resources;
+					console.log(this.arraySearchResource);
+				}
+				else
+				{
+					this.message = response.message.text;
+					console.log(this.message);
+				}
+
+			},
+			error => 
+			{
+				console.log(<any>error);
+				if (error instanceof HttpErrorResponse)
+				{
+					if (error.status === 0)
+					{
+						this.failedConect = Global.failed;
+					}
+				}
+			}
+			)
+	}
+
 	getServiceDetail(id)
 	{
 		this._serviceDetailService.getOne(id).subscribe
@@ -108,6 +144,11 @@ export class AddResourceComponent implements OnInit
 					{
 						this.resourcesSelected.push(resource.id);
 					}
+					if(this.resourcesSelected.length>0)
+					{
+						this.isResources = true;
+					}
+					console.log(this.isResources);
 				}
 			},
 			error =>
@@ -126,28 +167,15 @@ export class AddResourceComponent implements OnInit
 
 	update(form: NgForm)
 	{
-		console.log(form.value);
-
 		if(form.value.resources)
 		{
 			this.arrayResourcesUpdate = [];
 
-        	for(let resources of form.value.resources)
-        	{
-          		this.resourcesUpdate.id = resources.id;
-      			this.resourcesUpdate.quantity = resources.quantity;
-      			console.log(this.resourcesUpdate);
-      			this.arrayResourcesUpdate.push(this.resourcesUpdate);
-        	}
-      		console.log(this.arrayResourcesUpdate);
-      }
+        	this.arrayResourcesUpdate = form.value.resources.map((val)=>{  
+	            return {id: val.id, quantity: val.quantity};
+	        })
 
-
-
-		/*
-		if(form.valid)
-		{
-			this._serviceDetailService.addResource(this.serviceDetail.id,form.value.resources).subscribe
+	        this._serviceDetailService.addResource(this.serviceDetail.id,this.arrayResourcesUpdate).subscribe
 			(
 				response =>
 				{
@@ -172,15 +200,15 @@ export class AddResourceComponent implements OnInit
 					this.message  = error.error.message;
 					this.snackBar.openSnackBar(this.message,'');
 				}
-				);
-		}*/
-
+			);
+      }		
 	}
 
 	changeResources(event) 
 	{
 		this.isResources = true;
 		this.quantityResource = event;
+		this.getResourcesWhere(event);
 	}
 
 	messageSnackBar(message)
