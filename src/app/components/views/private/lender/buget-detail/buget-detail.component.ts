@@ -32,6 +32,7 @@ export class BugetDetailComponent implements OnInit
   public message: string;
   public failedConect: string;
   public isServiceDetail:boolean=false;
+  public amountTotal:any=0;
   public urldelafault:string="assets/img/request/revision_3.jpg"
 
   constructor(
@@ -99,6 +100,11 @@ export class BugetDetailComponent implements OnInit
       this.isServiceDetail=false;
     }
     console.log(this.serviceDetailsFilter);
+
+    for(var i=0; i<this.serviceDetailsFilter.length;i++)
+    {
+      this.amountTotal += this.serviceDetailsFilter[i].estimatedPrice;
+    }
   }
 
   getRevision(id) {
@@ -126,14 +132,15 @@ export class BugetDetailComponent implements OnInit
   {
     this.serviceOrder.RevisionId = this.revision.id;
     this.serviceOrder.warrantyTime = form.value.warrantyTime;
-    this.serviceOrder.amount = form.value.amount;
-    this.serviceOrder.serviceOrderDetails = this.arrayServiceOrderDetailsCreate;
+    this.serviceOrder.amount = this.amountTotal;
 
     this.arrayServiceOrderDetailsCreate = [];
 
     this.arrayServiceOrderDetailsCreate = form.value.serviceDetails.map((val)=>{  
-        return {id: val.id, duration: val.duration, amount: val.amount};
+        return {id: val.id, duration: val.duration, amount: val.estimatedPrice};
     })
+
+    this.serviceOrder.serviceOrderDetails = this.arrayServiceOrderDetailsCreate;
 
     console.log(this.arrayServiceOrderDetailsCreate,this.serviceOrder);
 
@@ -152,6 +159,7 @@ export class BugetDetailComponent implements OnInit
           }
           else
           {
+            console.log(response);
             this.message  = response.message.text;
             this.snackBar.openSnackBar(this.message,'');
             this.getRevision(this.revisionId);

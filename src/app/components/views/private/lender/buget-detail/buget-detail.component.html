@@ -139,12 +139,12 @@
                                 <div class="row">
                                   <div class="col-sm-6">
                                     <mat-form-field>
-                                      <input matInput name="duration" [(ngModel)]="serviceDetail.duration" placeholder="Duración del servicio">
+                                      <input matInput name="duration" [(ngModel)]="serviceDetail.duration" placeholder="Duración del servicio" required>
                                     </mat-form-field>
                                   </div>
                                   <div class="col-sm-6">
                                     <mat-form-field>
-                                      <input matInput name="amount" [(ngModel)]="serviceDetail.estimatedPrice" placeholder="Monto Total del Servicio">
+                                      <input matInput name="amount" [(ngModel)]="serviceDetail.estimatedPrice" placeholder="Monto Total del Servicio" required>
                                     </mat-form-field>
                                   </div>
                                 </div>
@@ -154,16 +154,13 @@
                                   </mat-list-item>
                                 </div>
                               </div>
+                              <mat-list-item><h4 mat-subheader><b>Monto Total: </b>{{ amountTotal }}</h4></mat-list-item>
                             </mat-list>
                           </div>
                         </div>
                       </div>
 
                       <br>
-
-                      <mat-form-field>
-                        <input matInput id="amount" name="amount" [(ngModel)]="amountAcum" placeholder="Monto Total Estimado">
-                      </mat-form-field>
 
                       <mat-form-field>
                         <input matInput id="warrantyTime" name="warrantyTime" [(ngModel)]="warrantyTime" placeholder="Tiempo Estimado de Garantia">
