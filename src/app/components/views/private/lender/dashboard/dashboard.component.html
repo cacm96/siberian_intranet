@@ -44,7 +44,29 @@
             <mat-card-content class="mat_card_content">
               <mat-icon class="dashboard_icon text-center">insert_chart</mat-icon>
               <h3 class="text-center">Solicitudes</h3>
-              Pendientes: <span class="badge badge-primary">{{totalRevision}}</span>
+              <div class=row>
+                  <div class="col-md-4">
+                    <ul style="list-style-type:none;">
+                      <li> <span class="small mr-3">Solicitadas: <span class="badge badge-primary">{{totalRevisionRequested}}</span></span></li>
+                      <li> <span class="small mr-3">Aprobadas: <span class="badge badge-primary">{{totalRevisionApproved}}</span></span></li>
+                      
+                    </ul>
+                  </div>
+                  <div class="col-md-4">
+                      <ul style="list-style-type:none;" class="left" >
+                        <li ><span class="small mr-3">Rechazadas: <span class="badge badge-primary">{{totalRevisionRejected}}</span></span></li>
+                        <li><span class="small mr-3">Diagnosticadas: <span class="badge badge-primary">{{totalRevisionDiagnosticated}}</span></span></li>
+                        
+                      </ul>
+                  </div>
+                  <div class="col-md-4">
+                      <ul style="list-style-type:none;" >
+                          <li><span class="small mr-3">Irreparables: <span class="badge badge-primary">{{totalRevisionLost}}</span></span></li>
+                          <li><span class="small mr-3">Finalizadas: <span class="badge badge-primary">{{totalRevisionFinalized}}</span></span></li>
+                        
+                      </ul>
+                  </div>
+              </div>  
 
             </mat-card-content>
           </mat-card>
@@ -60,7 +82,26 @@
             <mat-card-content class="mat_card_content">
               <mat-icon class="dashboard_icon text-center">assignment</mat-icon>
               <h3 class="text-center">Servicios</h3>
-              Pendientes: <span class="badge badge-primary">{{totalService}}</span>
+              <div class="row">
+                  <div class="col-md-4">
+                    <ul style="list-style-type:none;"class="left">
+                      <li><span class="small mr-3">Cotizados: <span class="badge badge-primary">{{totalServiceOrderBudgeted}}</span></span></li>
+                      <li><span class="small mr-3">Aprobados: <span class="badge badge-primary">{{totalServiceOrderApproved}}</span></span></li>
+                    </ul>
+                  </div>
+                  <div class="col-md-4">
+                    <ul style="list-style-type:none;">
+                      <li><span class="small mr-3">Rechazados: <span class="badge badge-primary">{{totalServiceOrderRejected}}</span></span></li>
+                      <li><span class="small mr-3">Finalizados: <span class="badge badge-primary">{{totalServiceOrderFinalized}}</span></span></li>
+                    </ul>
+                  </div>
+                  <div class="col-md-4">
+                      <ul style="list-style-type:none;" class="left">
+                        <li> <span class="small mr-3">Garantía: <span class="badge badge-primary">{{totalServiceOrderWarranty}}</span></span></li>
+                        <li> <span class="small mr-3">OTRO<span class="badge badge-primary"></span></span></li>
+                      </ul>
+                  </div>
+              </div>
             </mat-card-content>
           </mat-card>
         </a>
