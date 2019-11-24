@@ -14,6 +14,9 @@ import { Variety } from '../../../../../../../../models/variety';
 import { EquipinfrasService } from '../../../../../../../../core/services/admin/equipinfras.service';
 import { SnackBarService } from '../../../../../../../../core/services/snack-bar.service';
 import { DialogService } from '../../../../../../../../core/services/dialog.service';
+import { environment } from 'src/environments/environment';
+
+const BASE_URL = environment.imgURL;
 
 
 @Component({
@@ -28,6 +31,7 @@ export class EquipInfrasShowComponent implements OnInit {
 	public varieties:Array < Variety > = new Array < Variety > ();
 	public message:string;
 	public failedConect:string;
+	public urldelafault: string="assets/img/request/revision_3.jpg"
 
 	displayedColumns: string[] = ['id','name','description','varietyDetail','status','addvarietyDetail','delete'];
 	dataSource: MatTableDataSource<Variety>;
