@@ -209,13 +209,13 @@
 					</mat-expansion-panel>
 
 					<mat-expansion-panel>
-						<mat-expansion-panel-header>
+						<mat-expansion-panel-header class ="padding-sidenav">
 							<mat-panel-title>
 								<mat-icon matListIcon class="side_nav_icon">cloud_circle</mat-icon>Base de Datos
 							</mat-panel-title>
 						</mat-expansion-panel-header>
-						<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/backup']" ><mat-icon matListIcon class="side_nav_icon">assessment</mat-icon>Recuperar</a>
-						<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/restore']" ><mat-icon matListIcon class="side_nav_icon">assessment</mat-icon>Repaldo</a>
+						<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/backup']" ><mat-icon matListIcon class="side_nav_icon">cloud_download</mat-icon>Recuperar</a>
+						<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/restore']" ><mat-icon matListIcon class="side_nav_icon">cloud_upload</mat-icon>Repaldo</a>
 					</mat-expansion-panel>
 
 
