@@ -8,6 +8,10 @@ import { EditPhoneDialogComponent } from '../../components/shared/edit-phone-dia
 import { AddCalificationDialogComponent } from '../../components/shared/add-calification-dialog/add-calification-dialog.component';
 import { RejectedRequestDialogComponent } from '../../components/shared/rejected-request-dialog/rejected-request-dialog.component';
 import { RejectedDiagnosisDialogComponent } from '../../components/shared/rejected-diagnosis-dialog/rejected-diagnosis-dialog.component';
+import { DateDialogComponent } from '../../components/shared/date-dialog/date-dialog.component';
+// tslint:disable-next-line:max-line-length
+import { ReportStatisticalFilterDialogComponent } from '../../components/shared/report-statistical-filter-dialog/report-statistical-filter-dialog.component';
+
 
 import {MatDialog} from '@angular/material/dialog';
 
@@ -78,6 +82,17 @@ export class DialogService {
     });
   }
 
+  openDateDialog() {
+    return this.dialog.open(DateDialogComponent, {
+      width: '350px',
+    });
+  }
+
+  openStatisticalFilterDialog() {
+    return this.dialog.open(ReportStatisticalFilterDialogComponent, {
+      width: '350px',
+    });
+  }
 
 
 

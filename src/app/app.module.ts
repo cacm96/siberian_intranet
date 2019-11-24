@@ -40,6 +40,7 @@ import { AddCalificationDialogComponent } from './components/shared/add-califica
 import { RejectedRequestDialogComponent } from './components/shared/rejected-request-dialog/rejected-request-dialog.component';
 import { RejectedDiagnosisDialogComponent } from './components/shared/rejected-diagnosis-dialog/rejected-diagnosis-dialog.component';
 import { DateDialogComponent } from './components/shared/date-dialog/date-dialog.component';
+import { ReportStatisticalFilterDialogComponent } from './components/shared/report-statistical-filter-dialog/report-statistical-filter-dialog.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { DateDialogComponent } from './components/shared/date-dialog/date-dialog
     RejectedRequestDialogComponent,
     RejectedDiagnosisDialogComponent,
     DateDialogComponent,
+    ReportStatisticalFilterDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -107,7 +109,9 @@ import { DateDialogComponent } from './components/shared/date-dialog/date-dialog
     EditPhoneDialogComponent,
     AddCalificationDialogComponent,
     RejectedRequestDialogComponent,
-    RejectedDiagnosisDialogComponent
+    RejectedDiagnosisDialogComponent,
+    DateDialogComponent,
+    ReportStatisticalFilterDialogComponent,
   ]
 })
 export class AppModule { }

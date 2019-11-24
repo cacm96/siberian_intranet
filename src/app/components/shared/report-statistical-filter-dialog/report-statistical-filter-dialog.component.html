@@ -1,0 +1,36 @@
+<div>
+    <h1 mat-dialog-title>Filtros</h1>
+    <div mat-dialog-content>
+
+      <mat-form-field class="example-full-width">
+        <mat-label for="">Género</mat-label>
+        <mat-select [(value)]="genre">
+          <mat-option>None</mat-option>
+          <mat-option value="option1">Masculino</mat-option>
+          <mat-option value="option2">Femenino</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <mat-form-field class="example-full-width">
+        <mat-label for="">Tipo de servicio</mat-label>
+        <mat-select [(value)]="type">
+          <mat-option>None</mat-option>
+          <mat-option value="option1">Reparación</mat-option>
+          <mat-option value="option2">Mantenimiento</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label for="">Nombre del servicio</mat-label>
+        <mat-select>
+        </mat-select>
+      </mat-form-field>
+    </div>
+      
+    <div mat-dialog-actions>
+      <p class="text-center">
+        <button mat-raised-button color="warn" [mat-dialog-close]="false">Cancelar</button>
+        <button mat-raised-button color="accent" [mat-dialog-close]="true">Aplicar</button>
+      </p>
+    </div>
+  </div>
