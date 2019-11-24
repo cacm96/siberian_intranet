@@ -64,6 +64,15 @@ const routes: Routes = [
 					}
 				]
 			},
+			{path: 'notification', canActivate: [],
+				children:
+				[
+					{
+						path: '',
+		                loadChildren: './notification/notification.module#NotificationModule',
+					}
+				]
+			},
 			
 		]
 	},	
