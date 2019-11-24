@@ -25,6 +25,7 @@ import { GroupShowComponent } from './group-show/group-show.component';
   imports: [
     CommonModule,
     MaterialModule,
+    FormsModule,
     GroupRoutingModule
   ],
   providers:

@@ -70,6 +70,7 @@
                 <div class="row" *ngIf="revision.status=='diagnosticated'">
                   <div class="col-sm-12">
                     <button mat-raised-button color="warn" class="mr-3" (click)="onRejectDiagnosis(revision.id)">Rechazar</button>
+                    <button mat-raised-button color="primary" class="mr-3" [routerLink]="['/auth/lender/budget/detail',revision.id]">Presupuestar</button>
                   </div>
                 </div>
                 

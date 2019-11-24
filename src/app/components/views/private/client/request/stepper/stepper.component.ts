@@ -77,11 +77,17 @@ export class StepperComponent implements OnInit
   public turnText:string;
   public dateRevision:any;
   public turnSelected:string="";
-  public lenderId:string="1";
+  public lenderId:any;
+  public lenderName:any;
   public typeRevision:string="revision";
 
   public failedConect:string;
   public message:string;
+
+  public lenderOne : any;
+  public lenderSelected:string="";
+
+  public modeloId:any; 
 
   constructor
   (
@@ -106,7 +112,6 @@ export class StepperComponent implements OnInit
       {id:"morning",name:"Mañana"},
       {id:"afternoon",name:"Tarde"},
     ];
-    console.log(this.minDate);
   }
 
   ngOnInit()
@@ -273,6 +278,29 @@ export class StepperComponent implements OnInit
       )
   }
 
+  getOneLender(id)
+  {
+    this._userService.getOneLender(id).subscribe
+    (
+      response =>
+      {
+        this.lenderOne = response.lender;
+        this.lenderName= this.lenderOne.firstName+" "+this.lenderOne.lastName;
+      },
+      error =>
+      {
+        console.log(<any>error);
+        if(error instanceof HttpErrorResponse)
+        {
+          if(error.status===0)
+          {
+            this.failedConect = Global.failed;
+          }
+        }
+      }
+      )
+  }
+
   getLocationsUser(id)
   {
     this._locationService.AllLocationUser(id).subscribe
@@ -311,6 +339,7 @@ export class StepperComponent implements OnInit
   changeVarietyDetail(event)
   {
     this.isVarietyDetail=true;
+    this.modeloId = event;
     this.getVarietyDetail(event);
   }
 
@@ -389,6 +418,7 @@ export class StepperComponent implements OnInit
 
   register()
   {
+
       this.revision.UserId = parseInt(this.userId);
       this.revision.VarietyDetailId = parseInt(this.VarietyDetailId);
       this.revision.LocationId = parseInt(this.locationId);
@@ -413,14 +443,17 @@ export class StepperComponent implements OnInit
             console.log(response);
             this.message = response.message.text;
             this.messageSnackBar(this.message);
-            setTimeout
-            (
-              () =>
-              {
-                this._router.navigate(['/auth/client/request']);
-              },
-              2000
-            );
+            this.isTurn=false;
+            this.isDate=false;
+            this.dateRevision="";
+            // setTimeout
+            // (
+            //   () =>
+            //   {
+            //     this._router.navigate(['/auth/client/request']);
+            //   },
+            //   2000
+            // );
           }
           else
           {
@@ -450,13 +483,6 @@ export class StepperComponent implements OnInit
   }
 
 
-  selectedLender(){
-    console.log("Elegido");
-    /*$(document).ready(() => {
-      $('#selectedLender-1').css({'background-color': 'yellow', 'font-size': '200%'});
-    });*/
-  }
-
   messageSnackBar(message)
   {
     this.snackBar.openSnackBarSuccess(message);
@@ -467,5 +493,12 @@ export class StepperComponent implements OnInit
   { 
     this._location.back(); 
   }
+
+  changeLender(event) {
+    this.lenderId = event.value;
+    console.log(event);
+    this.getOneLender(this.lenderId);
+  }
+
 }
 
