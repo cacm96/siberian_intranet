@@ -353,11 +353,15 @@ export class StepperComponent implements OnInit
     this.isDate = true;
     this.fecha = event.value;
     this.dateRevision = event.value;
+    this.isTurn=false;
+    this.turnSelected="";
+    this.lenderSelected="";
   }
 
   changeTurn(event)
   {
     this.isTurn = true;
+    this.lenderSelected="";
     this.getLendersFree(this.dateRevision,event);
     if(event=="morning")
     {
@@ -443,9 +447,6 @@ export class StepperComponent implements OnInit
             console.log(response);
             this.message = response.message.text;
             this.messageSnackBar(this.message);
-            this.isTurn=false;
-            this.isDate=false;
-            this.dateRevision="";
             // setTimeout
             // (
             //   () =>

@@ -97,7 +97,7 @@ export class AddResourceComponent implements OnInit
 			)
 	}
 
-	getResourcesWhere(ids)
+	/*getResourcesWhere(ids)
 	{
 		this._resourceService.getAllWhere(ids).subscribe
 		(
@@ -127,7 +127,7 @@ export class AddResourceComponent implements OnInit
 				}
 			}
 			)
-	}
+	}*/
 
 	getServiceDetail(id)
 	{
@@ -208,7 +208,7 @@ export class AddResourceComponent implements OnInit
 	{
 		this.isResources = true;
 		this.quantityResource = event;
-		this.getResourcesWhere(event);
+		//this.getResourcesWhere(event);
 	}
 
 	messageSnackBar(message)
