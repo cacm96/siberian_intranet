@@ -43,6 +43,17 @@ export class DashboardComponent {
   public revisions: any;
   public totalRevision:number=0;
   public totalService:number=0;
+  public totalServiceOrderBudgeted=0;
+  public totalServiceOrderApproved=1;
+  public totalServiceOrderRejected=2;
+  public totalServiceOrderFinalized=0;
+  public totalServiceOrderWarranty=3;
+  public totalRevisionRequested=4;
+  public totalRevisionApproved=5;
+  public totalRevisionRejected=0;
+  public totalRevisionDiagnosticated=7;
+  public totalRevisionLost=3;
+  public totalRevisionFinalized=10;
   public serviceOrders: any;
   public userID:string;
   public message: string;

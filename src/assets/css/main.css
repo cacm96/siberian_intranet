@@ -370,6 +370,10 @@ table {
   transform: translate3d(0,-3px,0);
 }
 
+.left {
+  text-align: left;
+}
+
 .main_dashboard .mat-card-content{
   padding: 1rem 0;
   margin:0;
