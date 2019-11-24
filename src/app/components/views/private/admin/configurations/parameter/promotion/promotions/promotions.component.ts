@@ -25,7 +25,7 @@ export class PromotionsComponent implements OnInit
   public message:string;
   public failedConect:string;
 
-  displayedColumns: string[] = ['id','name','description','type','status','difusion','edit','delete'];
+  displayedColumns: string[] = ['id','name','description','type','status','edit','delete'];
   dataSource: MatTableDataSource <Promotion>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

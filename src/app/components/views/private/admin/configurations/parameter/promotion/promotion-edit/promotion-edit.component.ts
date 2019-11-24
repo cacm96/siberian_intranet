@@ -4,14 +4,14 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Global } from 'src/app/core/services/global';
-import { Subcategory } from '../../../../../../../../models/subcategory';
-import { SubcategoryService } from '../../../../../../../../core/services/admin/subcategory.service';
-import { Equipinfras } from '../../../../../../../../models/equipinfras';
-import { EquipinfrasService } from '../../../../../../../../core/services/admin/equipinfras.service';
-import { Promotion } from '../../../../../../../../models/promotion';
-import { PromotionService } from '../../../../../../../../core/services/admin/promotion.service';
+import { Subcategory } from 'src/app/models/subcategory';
+import { SubcategoryService } from 'src/app/core/services/admin/subcategory.service';
+import { Equipinfras } from 'src/app/models/equipinfras';
+import { EquipinfrasService } from 'src/app/core/services/admin/equipinfras.service';
+import { Promotion } from 'src/app/models/promotion';
+import { PromotionService } from 'src/app/core/services/admin/promotion.service';
 
-import { SnackBarService } from '../../../../../../../../core/services/snack-bar.service';
+import { SnackBarService } from 'src/app/core/services/snack-bar.service';
 
 @Component({
   selector: 'sib-promotion-edit',
@@ -20,32 +20,40 @@ import { SnackBarService } from '../../../../../../../../core/services/snack-bar
 })
 export class PromotionEditComponent implements OnInit {
 
-  public promotion:Promotion;
-  public equipinfras:any;
+	public promotion:Promotion;
+	public equipinfras:any;
 	public subcategories:any;
 	public types:any[];
 	public failedConect:string;
-  public message:string;
-  
-  constructor(
-    private _promotionService: PromotionService,
-    private _equipinfrasService: EquipinfrasService,
+	public message:string;
+
+	public isType:boolean=false;
+	public isSubcategory:boolean=false;
+	public isEquipinfras:boolean=false;
+
+	public minDateStart= new Date();
+	public minDateEnd= new Date();
+
+
+	constructor(
+		private _promotionService: PromotionService,
+		private _equipinfrasService: EquipinfrasService,
 		private _subcategoryService: SubcategoryService,
 		private _route: ActivatedRoute,
 		private _router: Router,
 		private _location: Location,
 		private snackBar: SnackBarService
-  ) 
-  {
-    this.types =
+		) 
+	{
+		this.types =
 		[
-      {id:"target",name:"Específico"},
-			{id:"generic",name:"Genérico"},
+		{id:"target",name:"Específico"},
+		{id:"generic",name:"Genérico"},
 		];
-   }
+	}
 
-  ngOnInit() {
-    this._route.params.subscribe
+	ngOnInit() {
+		this._route.params.subscribe
 		(
 			params =>
 			{
@@ -53,12 +61,12 @@ export class PromotionEditComponent implements OnInit {
 				this.getPromotion(id);
 			}
 			);
-    this.getSubcategories();
-    this.getEquipinfras();
+		this.getSubcategories();
+		this.getEquipinfras();
 
-  }
+	}
 
-  getSubcategories()
+	getSubcategories()
 	{
 		this._subcategoryService.All().subscribe
 		(
@@ -79,9 +87,9 @@ export class PromotionEditComponent implements OnInit {
 				}
 			}
 			)
-  }
-  
-  getEquipinfras()
+	}
+
+	getEquipinfras()
 	{
 		this._equipinfrasService.All().subscribe
 		(
@@ -102,15 +110,28 @@ export class PromotionEditComponent implements OnInit {
 				}
 			}
 			)
-  }
-  
-  getPromotion(id)
+	}
+
+	getPromotion(id)
 	{
 		this._promotionService.getOne(id).subscribe
 		(
 			response =>
 			{
 				this.promotion = response.promotions;
+				
+				if(this.promotion.type=="target")
+				{
+					this.isEquipinfras = true;
+					this.isSubcategory = false;
+				}
+
+				if(this.promotion.type=="generic")
+				{
+					this.isSubcategory = true;
+					this.isEquipinfras = false;
+
+				}
 				console.log(this.promotion);
 			},
 			error =>
@@ -125,12 +146,26 @@ export class PromotionEditComponent implements OnInit {
 				}
 			}
 			)
-  }
-  
-  update(form: NgForm)
+	}
+
+	changeType(event)
 	{
-    this.promotion.SubcategoryId = form.value.SubcategoryId;
-    this.promotion.EquipinfraId = form.value.EquipinfraId;
+		if(event=="generic")
+		{
+			this.isSubcategory=true;
+			this.isEquipinfras=false;
+		}
+
+		if(event=="target")
+		{
+			this.isEquipinfras=true;
+			this.isSubcategory=false;
+		}
+		console.log(this.isSubcategory,this.isEquipinfras);
+	}
+
+	update(form: NgForm)
+	{
 		if(form.valid)
 		{
 			this._promotionService.update(this.promotion).subscribe
@@ -159,10 +194,11 @@ export class PromotionEditComponent implements OnInit {
 		}else
 		{
 		}
-		
+
 	}
-	goBack(){
+	goBack()
+	{
 		this._location.back();
-	  }
+	}
 }
 

@@ -9,82 +9,77 @@ import { SubcategoryService } from 'src/app/core/services/admin/subcategory.serv
 import { EquipinfrasService } from 'src/app/core/services/admin/equipinfras.service';
 import { PromotionService } from 'src/app/core/services/admin/promotion.service';
 import { SnackBarService } from 'src/app/core/services/snack-bar.service';
+import {MatDatepickerInputEvent} from '@angular/material/datepicker'
+
 
 @Component({
   selector: 'sib-promotion-create',
   templateUrl: './promotion-create.component.html',
   styleUrls: ['./promotion-create.component.scss']
 })
-export class PromotionCreateComponent implements OnInit {
+export class PromotionCreateComponent implements OnInit
+{
 
 	public promotion:Promotion;
-
-	public promotionOne:any;
-	
-	public promotionCreate:any;
-	
 	public subcategories: any;
 	public equipinfras:any;
-	
+
 	public EquipinfrasId:string;
 	public SubcategoryId:string;
-	//public subcategoriesSelected:any;
-	//public equipinfrasSelected:any;
-	
+
 	public types:any[];
 	public typeSelected:string="";
-	
+
 	public total:Number;
-	
+
 	public failedConect:string;
 	public message:string;
 
 	public IdEquipinfras:any;
-
-  public subcategoriesSelected:any;
-  
-  public equipinfrassSelected:any;
-  
+	public subcategoriesSelected:any;
+	public equipinfrassSelected:any;
 	public subcategorySelected:string = "";
 	public equipinfrasSelected:string = "";
-	
-  public subcategory:any;
+
+	public subcategory:any;
 	public equipinfrasOne:any;
-	
 
 	public isType:boolean=false;
 	public isSubcategory:boolean=false;
 	public isEquipinfras:boolean=false;
-  
-  
 
-  constructor
-  (
-        private _promotionService: PromotionService,
+	public minDateStart= new Date();
+	public minDateEnd= new Date();
+
+
+
+	constructor
+	(
+		private _promotionService: PromotionService,
 		private _subcategoryService: SubcategoryService,
-        private _equipinfrasService: EquipinfrasService,
+		private _equipinfrasService: EquipinfrasService,
 		private _router: Router,
 		private _location: Location,
 		private snackBar: SnackBarService
-  ) 
-  {
-    this.promotion = new Promotion();
+		) 
+	{
+		this.promotion = new Promotion();
+		
 		this.types =
 		[
-      {id:"target",name:"Específico"},
+			{id:"target",name:"Específico"},
 			{id:"generic",name:"Genérico"},
 		];
-   }
+	}
 
-  ngOnInit() {
+	ngOnInit()
+	{
+		this.getEquipinfrass();
+		this.getSubcategories();
+	}
 
-    this.getEquipinfrass();
-    this.getSubcategories();
-		
-  }
 
-
-  getSubcategories()
+	getSubcategories()
 	{
 		this._subcategoryService.All().subscribe
 		(
@@ -114,8 +109,9 @@ export class PromotionCreateComponent implements OnInit {
 				}
 			}
 			)
-  }
-  getEquipinfrass()
+	}
+
+	getEquipinfrass()
 	{
 		this._equipinfrasService.All().subscribe
 		(
@@ -146,7 +142,8 @@ export class PromotionCreateComponent implements OnInit {
 			}
 			)
 	}
-  getSubcategory(id)
+
+	getSubcategory(id)
 	{
 		this._subcategoryService.getOne(id).subscribe
 		(
@@ -165,7 +162,7 @@ export class PromotionCreateComponent implements OnInit {
 					}
 				}
 			}
-		)
+			)
 	}
 
 	getEquipinfras(id)
@@ -188,41 +185,34 @@ export class PromotionCreateComponent implements OnInit {
 				}
 			}
 			)
-  }
-  changeType(event)
-	{
-		this.isType=true;
-		this.types;
-		this.subcategorySelected = "";
-		this.equipinfrasSelected = "";
-	}
-  
-  changeSubcategory(event)
-	{
-		this.isSubcategory=true;
-    this.getSubcategory(event);
-    this.isEquipinfras=false;
-		this.equipinfrasSelected = "";
-		
 	}
 
-	changeEquipinfras(event)
+	changeType(event)
 	{
-    this.isEquipinfras=true;
-		this.IdEquipinfras=event;
-    this.getEquipinfras(event);
-    this.isSubcategory=false;
-		
-  }
-  
+		if(event=="generic")
+		{
+			this.isSubcategory=true;
+			this.isEquipinfras=false;
+			this.equipinfrasSelected = "";
+		}
 
-  register(form: NgForm)
+		if(event=="target")
+		{
+			this.isEquipinfras=true;
+			this.isSubcategory=false;
+			this.subcategorySelected = "";
+		}
+		console.log(this.isSubcategory,this.isEquipinfras);
+	}
+
+
+	register(form: NgForm)
 	{
 		if(form.valid)
 		{
 			this.promotion.name = form.value.name;
 			this.promotion.description = form.value.description;
-            this.promotion.percentDiscount= form.value.percentDiscount;
+			this.promotion.percentDiscount= form.value.percentDiscount;
 			this.promotion.type = form.value.type;
 			this.promotion.EquipinfraId=form.value.EquipinfraId;
 			this.promotion.SubcategoryId=form.value.SubcategoryId;
@@ -235,11 +225,8 @@ export class PromotionCreateComponent implements OnInit {
 				{
 					if (response.status==true)
 					{
-						//this.promotionCreate = response.promotion;
-						//this.getPromotion(this.promotionCreate.id);
 						this.message = response.message.text;
 						form.reset();
-						//console.log(this.promotionCreate);
 						this.messageSnackBar(this.message);
 					}
 					else
@@ -263,74 +250,16 @@ export class PromotionCreateComponent implements OnInit {
 						}
 					}else
 					{
-						
+
 						console.log(error);
-						
+
 					}
 				}
 				);
 		}
 	}
 
-  /*getPromotion(id)
-	{
-		this._promotionService.getOne(id).subscribe
-		(
-			response =>
-			{
-				this.promotionOne = response.serviceDetail;
-
-				if(this.promotionOne.subcategories)
-				{
-					this.subcategoriesSelected = [];
-					for(let activity of this.promotionOne.activities)
-					{
-						this.subcategoriesSelected.push(subcategory.id);
-					}
-				}
-
-				if(this.serviceDetailOne.resources)
-				{
-					this.resourcesSelected = [];
-					for(let resource of this.serviceDetailOne.resources)
-					{
-						this.resourcesSelected.push(resource.id);
-					}
-				}
-
-				if(this.serviceDetailOne.policies)
-				{
-					this.policiesSelected = [];
-					for(let policy of this.serviceDetailOne.policies)
-					{
-						this.policiesSelected.push(policy.id);
-					}
-				}
-
-				if(this.serviceDetailOne.skills)
-				{
-					this.skillsSelected = [];
-					for(let skill of this.serviceDetailOne.skills)
-					{
-						this.skillsSelected.push(skill.id);
-					}
-				}
-			},
-			error =>
-			{
-				console.log(<any>error);
-				if(error instanceof HttpErrorResponse)
-				{
-					if(error.status===0)
-					{
-						this.failedConect = Global.failed;
-					}
-				}
-			}
-			)
-	}*/
-
-  messageSnackBar(message)
+	messageSnackBar(message)
 	{
 		this.snackBar.openSnackBarSuccess(message);
 	}

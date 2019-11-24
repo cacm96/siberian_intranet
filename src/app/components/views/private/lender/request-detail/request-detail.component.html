@@ -45,8 +45,11 @@
                 <mat-list-item><h4 mat-line><b>Descripción del Problema: </b>{{ revision.description }}</h4></mat-list-item>
                 <mat-list-item><h4 mat-line><b>Prestador Seleccionado: </b>{{revision.calendar.lender.firstName | titlecase }} {{revision.calendar.lender.lastName | titlecase}}</h4></mat-list-item>
                 <mat-list-item><h4 mat-line><b>Precio: </b>{{ revision.price }} Bs.S</h4></mat-list-item>
+
                 <mat-list-item *ngIf="revision.status=='requested'"><h4 mat-line><b>Status: </b> Solicitud en espera de ser Aprobada</h4></mat-list-item>
+
                 <mat-list-item *ngIf="revision.status=='approved'"><h4 mat-line><b>Status: </b> Solicitud Aprobada, en espera por diagnostico. <a [routerLink]="['/auth/lender/diagnosis/detail',revision.id]" class="title" >Diagnosticar!!</a></h4></mat-list-item>
+                
                 <div *ngIf="revision.status=='rejected'">
                   <mat-list-item>
                     <h4 mat-line><b>Status: </b> Solicitud Rechazada</h4>

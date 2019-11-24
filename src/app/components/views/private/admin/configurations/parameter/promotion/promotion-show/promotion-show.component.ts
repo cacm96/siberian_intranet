@@ -31,7 +31,7 @@ export class PromotionShowComponent implements OnInit {
 	public failedConect:string;
 
   	
-	displayedColumns: string[] = ['name','description','type','EquipinfraId','SubcategoryId','percentDiscount','dateStart','dateEnd','parameters','status'];
+	displayedColumns: string[] = ['name','description','type','EquipinfraId','SubcategoryId','percentDiscount','dateStart','dateEnd','status'];
 	dataSource: MatTableDataSource<Promotion>;
 
 	displayedColumnsP: string[] = ['name','description','status'];

@@ -69,7 +69,7 @@ export class UserService extends HeaderService{
 		return this.http.get(this.url2, {headers: this.header});
 	}
 
-	getOneLender(id:Number): Observable<any>{
+	getOneLender(id:any): Observable<any>{
 		return this.http.get(this.url2+'/'+id, {headers: this.header});
 	}
 
