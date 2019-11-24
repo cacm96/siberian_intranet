@@ -45,7 +45,7 @@ export class QuestionEditComponent implements OnInit {
       (
         response => {
           this.question = response.question;
-
+          console.log(this.question);
         },
         error => {
           console.log(<any>error);
