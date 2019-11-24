@@ -24,7 +24,7 @@ export class QuestionShowComponent implements OnInit {
   public message: string;
   public failedConect: string;
 
-  displayedColumns: string[] = ['question','status'];
+  displayedColumns: string[] = ['enquire', 'description','status'];
 	dataSource: MatTableDataSource<Question>;
 	
 	@ViewChild(MatPaginator) paginator: MatPaginator;
@@ -76,6 +76,8 @@ export class QuestionShowComponent implements OnInit {
 	{
 		this.dataSource = new MatTableDataSource(this.arrayQuestion);
 
+    this.dataSource.paginator = this.paginator;
+		this.dataSource.sort = this.sort;
   }
   
   goBack(){

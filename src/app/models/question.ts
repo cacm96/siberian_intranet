@@ -1,7 +1,6 @@
 export class Question {
     id:string;
-    question: string;
+    enquire: string;
+    description: string;
     status:string;
-  	create_at:string;
-  	update_at:string;
 }

@@ -14,7 +14,6 @@ import { SnackBarService } from "../../../../../../../../core/services/snack-bar
   styleUrls: ["./question-create.component.scss"]
 })
 export class QuestionCreateComponent implements OnInit {
-
   public quest: Question;
   public message: string;
   public name: string;
@@ -29,14 +28,14 @@ export class QuestionCreateComponent implements OnInit {
     console.log(this.quest);
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   register(form: NgForm) {
     if (form.valid) {
       console.log(form.value);
-      this.quest.question = form.value.question;
+      this.quest.enquire = form.value.enquire;
+      this.quest.description = form.value.description;
+
       this._questionService.create(this.quest).subscribe(
         response => {
           if (response.status == true) {
