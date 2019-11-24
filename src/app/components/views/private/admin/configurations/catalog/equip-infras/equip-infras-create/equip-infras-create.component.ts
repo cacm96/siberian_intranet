@@ -25,6 +25,9 @@ export class EquipInfrasCreateComponent implements OnInit {
 	public total:Number;
 	public failedConect:string;
 
+	public auxImgString: string;
+	public auxImg: any;
+
 	public message:string;
 
 	constructor(
@@ -91,9 +94,15 @@ export class EquipInfrasCreateComponent implements OnInit {
 		{
 			this.equipinfras.name = form.value.name;
 			this.equipinfras.description = form.value.description;
-			this.equipinfras.image_url = form.value.image_url;
 			this.equipinfras.type = form.value.type;
 			this.equipinfras.SubcategoryId= form.value.SubcategoryId;
+
+			this.auxImgString = form.value.image_url;
+			this.auxImg = this.auxImgString.substr(12);
+			console.log('split');
+			console.log(this.auxImg);
+
+			this.equipinfras.image_url = form.value.image_url;
 
 			console.log(this.equipinfras);
 
