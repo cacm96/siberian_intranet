@@ -8,5 +8,6 @@ export class Resource{
   	measureUnit:string;
   	price:string;
   	status:string;
+  	quantity:string;
   	//serviceDetails: Array < Subcategory > = new Array < Subcategory >();
 }

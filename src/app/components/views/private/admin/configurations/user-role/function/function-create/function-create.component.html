@@ -31,7 +31,7 @@
 
                   <mat-selection-list #functionAll [(ngModel)]="roleFunctionsSelected" (selectionChange)="onSelection($event, functionAll.selectedOptions)">
                     <mat-list-option *ngFor="let function of functions" [value]='function.id'>
-                      {{function.action}}
+                      {{function.title}}
                     </mat-list-option>
                   </mat-selection-list>
                   <p>

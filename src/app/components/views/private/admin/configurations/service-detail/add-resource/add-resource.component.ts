@@ -18,10 +18,27 @@ export class AddResourceComponent implements OnInit
 {
 	public serviceDetail: ServiceDetail;
 	public resources: any;
+	public resource:any;
 	public resourcesSelected:any;
 	public total:number;
 	public message: string;
 	public failedConect: string;
+	public quantityResource:any;
+	public arrayQuantityAux:any;
+	public arrayResourcesAux:any;
+
+	public resourcesUpdate: any =
+	{
+    	id: Number,
+    	quantity: Number
+  	};
+  	public arrayResourcesUpdate:any;
+
+  	public arraySearchResource:any;
+
+
+
+	public isResources:boolean=false;
 
 	constructor
 	(
@@ -57,11 +74,42 @@ export class AddResourceComponent implements OnInit
 				if (response.status == true)
 				{
 					this.resources = response.resources;
-					console.log(this.resources);
 				}
 				else
 				{
 					this.total = 0;
+					this.message = response.message.text;
+					console.log(this.message);
+				}
+
+			},
+			error => 
+			{
+				console.log(<any>error);
+				if (error instanceof HttpErrorResponse)
+				{
+					if (error.status === 0)
+					{
+						this.failedConect = Global.failed;
+					}
+				}
+			}
+			)
+	}
+
+	getResourcesWhere(ids)
+	{
+		this._resourceService.getAllWhere(ids).subscribe
+		(
+			response =>
+			{
+				if (response.status == true)
+				{
+					this.arraySearchResource = response.resources;
+					console.log(this.arraySearchResource);
+				}
+				else
+				{
 					this.message = response.message.text;
 					console.log(this.message);
 				}
@@ -96,6 +144,11 @@ export class AddResourceComponent implements OnInit
 					{
 						this.resourcesSelected.push(resource.id);
 					}
+					if(this.resourcesSelected.length>0)
+					{
+						this.isResources = true;
+					}
+					console.log(this.isResources);
 				}
 			},
 			error =>
@@ -114,10 +167,15 @@ export class AddResourceComponent implements OnInit
 
 	update(form: NgForm)
 	{
-
-		if(form.valid)
+		if(form.value.resources)
 		{
-			this._serviceDetailService.addResource(this.serviceDetail.id,form.value.resources).subscribe
+			this.arrayResourcesUpdate = [];
+
+        	this.arrayResourcesUpdate = form.value.resources.map((val)=>{  
+	            return {id: val.id, quantity: val.quantity};
+	        })
+
+	        this._serviceDetailService.addResource(this.serviceDetail.id,this.arrayResourcesUpdate).subscribe
 			(
 				response =>
 				{
@@ -142,14 +200,15 @@ export class AddResourceComponent implements OnInit
 					this.message  = error.error.message;
 					this.snackBar.openSnackBar(this.message,'');
 				}
-				);
-		}
-
+			);
+      }		
 	}
 
-	onSelection(event, value) 
+	changeResources(event) 
 	{
-		console.log(event.value);
+		this.isResources = true;
+		this.quantityResource = event;
+		this.getResourcesWhere(event);
 	}
 
 	messageSnackBar(message)

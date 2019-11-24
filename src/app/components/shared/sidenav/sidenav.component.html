@@ -140,6 +140,7 @@
 						</mat-panel-title>
 					</mat-expansion-panel-header>
 					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/parameter/promotion']" ><mat-icon matListIcon class="side_nav_icon">create</mat-icon>Crear</a>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/parameter/promotion/create']" ><mat-icon matListIcon class="side_nav_icon">create</mat-icon>Difundir</a>
 				</mat-expansion-panel>
 
 				<mat-expansion-panel>
@@ -159,8 +160,8 @@
 							<mat-icon matListIcon class="side_nav_icon">warning</mat-icon>Incidencias
 						</mat-panel-title>
 					</mat-expansion-panel-header>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/incidence']" ><mat-icon matListIcon class="side_nav_icon">remove_red_eye</mat-icon>Ver</a>
-					<!-- <a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/incidence']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Atender</a> -->
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/incidence']" ><mat-icon matListIcon class="side_nav_icon">remove_red_eye</mat-icon>Crear</a>
+					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/incidence']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Atender</a>
 				</mat-expansion-panel>
 				
 
@@ -207,7 +208,17 @@
 						<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/user-role/user']" ><mat-icon matListIcon class="side_nav_icon">supervisor_account</mat-icon>Usuarios</a>
 					</mat-expansion-panel>
 
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/backup']" ><mat-icon matListIcon class="side_nav_icon">cloud_circle</mat-icon>Base de Datos</a>
+					<mat-expansion-panel>
+						<mat-expansion-panel-header>
+							<mat-panel-title>
+								<mat-icon matListIcon class="side_nav_icon">cloud_circle</mat-icon>Base de Datos
+							</mat-panel-title>
+						</mat-expansion-panel-header>
+						<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/backup']" ><mat-icon matListIcon class="side_nav_icon">assessment</mat-icon>Recuperar</a>
+						<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/restore']" ><mat-icon matListIcon class="side_nav_icon">assessment</mat-icon>Repaldo</a>
+					</mat-expansion-panel>
+
+
 				</mat-expansion-panel>
 
 				<mat-expansion-panel>
