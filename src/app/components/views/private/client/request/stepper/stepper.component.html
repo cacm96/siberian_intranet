@@ -99,7 +99,7 @@
 									<div class="lender_available" [class.open]="isTurn" [class.closed]="!isTurn">
 										<h4 class="text-center mb-3">Prestadores disponibles</h4>
 										
-										<mat-radio-group aria-label="test" [(ngModel)]="lenderSelected" (change)="changeLender($event)">
+										<mat-radio-group aria-label="test" name="lender" [(ngModel)]="lenderSelected" (change)="changeLender($event)">
 											<mat-radio-button class="col-md-3" *ngFor="let lender of lenders | slice:0:4" [value]="lender.id">
 												<mat-card>
 													<mat-card-header class="titulo">

@@ -102,4 +102,8 @@ export class DeliveryComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
+  goBack()
+  { 
+    this._location.back(); 
+  }
 }
