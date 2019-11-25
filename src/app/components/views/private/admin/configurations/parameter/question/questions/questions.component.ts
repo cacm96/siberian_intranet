@@ -57,25 +57,6 @@ export class QuestionsComponent implements OnInit {
     this._questionService.All().subscribe(
       response => {
         if (response.status == true) {
-          console.log('response');
-          console.log(response);
-
-          console.log("bandera 1");
-          console.log((new Date(response.questions[0].createdAt)).getTime());
-          console.log(new Date(response.questions[0].createdAt));
-          console.log(new Date(response.questions[0].updatedAt))
-
-          console.log("bandera 2");
-          
-          /*for ( let quest of response.questions) {
-            quest.createdAt = new Date(quest.createdAt * 1000);
-            quest.updatedAt = new Date(quest.updatedAt * 1000);
-            this.auxQuestions.push(quest);
-          }
-          console.log(this.auxQuestions);
-          */
-
-         console.log(response);
 
          this.questions = response.questions;
          console.log(this.questions);
@@ -108,7 +89,6 @@ export class QuestionsComponent implements OnInit {
   }
 
   table() {
-    //this.sortItem();
     this.questions = this.snackBar.orderByDateAsc(this.questions);
     this.dataSource = new MatTableDataSource(this.questions);
     this.dataSource.paginator = this.paginator;
@@ -142,12 +122,4 @@ export class QuestionsComponent implements OnInit {
     );
   }
 
-  sortItem() {
-    this.questions.sort(
-      function(a,b){
-        a.updatedAt = new Date(a.updatedAt);
-        b.updatedAt = new Date(b.updatedAt);
-        return a.updatedAt.getTime() < b.updatedAt.getTime() ? 1 : -1; 
-      });
-  }
 }
