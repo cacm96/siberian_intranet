@@ -1,6 +1,5 @@
-
 import { Component, OnInit, } from '@angular/core';
-
+import { QuestionService } from '../../../../app/core/services/admin/question.service';
 
 
 @Component({
