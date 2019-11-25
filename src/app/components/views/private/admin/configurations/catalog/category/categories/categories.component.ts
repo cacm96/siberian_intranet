@@ -98,6 +98,7 @@ export class CategoriesComponent implements OnInit {
 
   table()
   {
+    this.categories = this.snackBar.orderByDateAsc(this.categories);
     this.dataSource = new MatTableDataSource(this.categories);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

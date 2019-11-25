@@ -8,4 +8,6 @@ export class ServiceOrder {
     status: string;
     RevisionId:string;
     serviceOrderDetails: Array < ServiceOrderDetail > = new Array < ServiceOrderDetail >();
+    createdAt:Date;
+    updatedAt:Date;
 }

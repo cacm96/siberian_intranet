@@ -11,5 +11,8 @@ export class Promotion{
 	dateStart:string;
 	dateEnd:string;
   	status:string;
-  	parameters: Array < Parametro > = new Array < Parametro >();
+	parameters: Array < Parametro > = new Array < Parametro >();
+	createdAt:Date;
+	updateAt:Date;
+
 }

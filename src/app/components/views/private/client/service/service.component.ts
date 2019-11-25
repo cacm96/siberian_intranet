@@ -59,6 +59,7 @@ export class ServiceComponent implements OnInit
       {
         if (response.status==true)
         {
+          this.serviceOrders = this.snackBar.orderByDateAsc(this.serviceOrders);
           this.serviceOrders = response.serviceOrders;
           this.total = this.serviceOrders.length;
           console.log(this.serviceOrders);
