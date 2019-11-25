@@ -4,6 +4,7 @@ export class Phone{
   	UserId:string;
   	phoneType:string;
   	status:string;
-  	create_at:string;
-  	update_at:string;
+  	create_at:Date;
+	update_at:Date;
+	
 }

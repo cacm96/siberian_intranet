@@ -107,6 +107,7 @@ export class UserClientComponent implements OnInit {
 
 	table()
 	{
+		this.users = this.snackBar.orderByDateAsc(this.users);
 		this.dataSource = new MatTableDataSource(this.users);
 		this.dataSource.paginator = this.paginator;
 		this.dataSource.sort = this.sort;
