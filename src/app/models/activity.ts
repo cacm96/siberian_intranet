@@ -8,5 +8,6 @@ export class Activity{
     difficultyDegree:string;
   	status:string;
     serviceDetails: Array < ServiceDetail > = new Array < ServiceDetail >();
-
+    createdAt:Date;
+  	updatedAt:Date;
 }

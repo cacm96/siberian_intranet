@@ -7,5 +7,6 @@ export class Policy{
     actionPlan:string;
   	status:string;
     serviceDetails: Array < ServiceDetail > = new Array < ServiceDetail >();
-
+    createdAt:Date;
+  	updatedAt:Date;
 }

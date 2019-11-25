@@ -99,6 +99,7 @@ export class UserInactivesComponent implements OnInit, OnChanges {
 
 	table()
 	{
+		this.users = this.snackBar.orderByDateAsc(this.users);
 		this.dataSource = new MatTableDataSource(this.users);
 		this.dataSource.paginator = this.paginator;
 		this.dataSource.sort = this.sort;
