@@ -98,6 +98,7 @@ export class RequestComponent implements OnInit {
 
 	table()
 	{
+		this.revisions = this.snackBar.orderByDateAsc(this.revisions);
 		this.dataSource = new MatTableDataSource(this.revisions);
 		this.dataSource.paginator = this.paginator;
 		this.dataSource.sort = this.sort;

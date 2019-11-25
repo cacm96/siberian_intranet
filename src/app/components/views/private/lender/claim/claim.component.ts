@@ -96,6 +96,7 @@ export class ClaimComponent implements OnInit {
 
   table()
   {
+    this.serviceOrders = this.snackBar.orderByDateAsc(this.serviceOrders);
     this.dataSource = new MatTableDataSource(this.serviceOrders);
     this.dataSource.paginator = this.paginator;
   }

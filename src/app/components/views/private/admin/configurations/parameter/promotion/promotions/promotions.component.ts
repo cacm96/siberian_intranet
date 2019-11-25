@@ -90,6 +90,7 @@ export class PromotionsComponent implements OnInit
 
   table()
   {
+    this.promotions = this.snackBar.orderByDateAsc(this.promotions);
     this.dataSource = new MatTableDataSource(this.promotions);
     this.dataSource.paginator = this.paginator;
   }

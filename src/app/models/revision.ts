@@ -8,5 +8,7 @@ export class Revision{
   	description:string;
   	imageRequestUrl:string;
   	status:string;
-  	calendars: Array < Calendar > = new Array < Calendar >();
+	calendars: Array < Calendar > = new Array < Calendar >();
+	createdAt:Date;
+	updatedAt:Date;
 }

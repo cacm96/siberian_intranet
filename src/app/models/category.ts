@@ -5,5 +5,7 @@ export class Category{
   	name: string;
   	description:string;
   	status:string;
-  	subcategories: Array < Subcategory > = new Array < Subcategory >();
+	  subcategories: Array < Subcategory > = new Array < Subcategory >();
+	  createdAt:Date;
+	  updatedAt:Date;
 }
