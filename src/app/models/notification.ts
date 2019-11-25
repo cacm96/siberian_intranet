@@ -3,4 +3,6 @@ export class Notification {
     name: string;
     message: string;
     status: string;
+    createdAt:Date;
+  	updatedAt:Date;
 }

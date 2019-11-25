@@ -94,6 +94,7 @@ export class RolesComponent implements OnInit {
 
   table()
   {
+    this.roles = this.snackBar.orderByDateAsc(this.roles);
     this.dataSource = new MatTableDataSource(this.roles);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

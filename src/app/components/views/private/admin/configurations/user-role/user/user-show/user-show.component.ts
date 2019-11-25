@@ -151,6 +151,8 @@ export class UserShowComponent implements OnInit {
 		this.dataSource = new MatTableDataSource(this.locations);
 		this.dataSourceP = new MatTableDataSource(this.phones);
 		this.dataSourceU = new MatTableDataSource(this.arrayUser);
+		this.locations = this.snackBar.orderByDateAsc(this.locations);
+		this.phones = this.snackBar.orderByDateAsc(this.phones);
 	  
 	  
 	this.dataSource.paginator = this.paginator;

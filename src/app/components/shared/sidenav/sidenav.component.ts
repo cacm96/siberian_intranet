@@ -15,7 +15,7 @@ export class SidenavComponent implements OnInit {
 	public role:string;
 	public user:any;
 	public failedConect:string;
-
+	functions: any;
 
 	constructor
 	(
@@ -29,6 +29,8 @@ export class SidenavComponent implements OnInit {
 		let id = this._authService.getID();
 		this.getUser(id);
 		this.role=this._authService.getRole();
+		this.functions = JSON.parse(localStorage.getItem('functions'))
+		console.log(this.functions)
 	}
 
 	getUser(id)

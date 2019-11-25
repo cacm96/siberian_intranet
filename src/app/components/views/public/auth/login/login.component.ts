@@ -11,7 +11,7 @@ import { SnackBarService } from '../../../../../core/services/snack-bar.service'
 })
 export class LoginComponent implements OnInit {
   
-  public email:string="gilberto@gmail.com";
+  public email:string="anderson@gmail.com";
   public password:string="12345678";
   public message:string;
   public resID:string;
@@ -39,7 +39,8 @@ export class LoginComponent implements OnInit {
           if (response.status==true)
           {
             console.log(response);
-            this.resID = response.user.id;
+						this.resID = response.user.id;
+						localStorage.setItem('functions', JSON.stringify(response.user.role.functions));
             this.loginRedirect(response);
           }
           else

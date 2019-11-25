@@ -21,4 +21,6 @@ export class User{
 	role: Array < Role > = new Array < Role >();
 	locations: Array < Location > = new Array < Location >();
 	phones: Array < Phone > = new Array < Phone >();
+	createdAt:Date;
+  	updatedAt:Date;
 }

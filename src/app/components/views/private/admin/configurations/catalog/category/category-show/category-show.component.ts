@@ -121,6 +121,7 @@ export class CategoryShowComponent implements OnInit
 
 	table()
 	{
+		this.subcategories = this.snackBar.orderByDateAsc(this.subcategories);
 		this.dataSource = new MatTableDataSource(this.subcategories);
 		this.dataSourceC = new MatTableDataSource(this.arrayCategory);
 		this.dataSource.paginator = this.paginator;

@@ -22,10 +22,14 @@ export class QuestionsComponent implements OnInit {
   public message: string;
   public failedConect: string;
 
+  public auxQuestion: any;
+  public auxQuestions: Array<Question> = new Array<Question>();
+
   displayedColumns: string[] = [
     "id",
     "enquire",
     "description",
+    "kind",
     "status",
     "edit",
     "delete"
@@ -42,7 +46,9 @@ export class QuestionsComponent implements OnInit {
     private _route: ActivatedRoute,
     private _router: Router,
     private _location: Location
-  ) {}
+  ) {
+    this.auxQuestions = [];
+  }
 
   ngOnInit() {
     this.getQuestions();
@@ -52,9 +58,10 @@ export class QuestionsComponent implements OnInit {
     this._questionService.All().subscribe(
       response => {
         if (response.status == true) {
-          console.log(response);
-          this.questions = response.questions;
-          console.log(this.questions);
+
+         this.questions = response.questions;
+         console.log(this.questions);
+
           this.table();
         } else {
           this.questions = [];
@@ -83,6 +90,7 @@ export class QuestionsComponent implements OnInit {
   }
 
   table() {
+    this.questions = this.snackBar.orderByDateAsc(this.questions);
     this.dataSource = new MatTableDataSource(this.questions);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
@@ -114,4 +122,5 @@ export class QuestionsComponent implements OnInit {
       }
     );
   }
+
 }
