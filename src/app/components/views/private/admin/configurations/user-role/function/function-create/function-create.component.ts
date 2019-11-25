@@ -22,7 +22,7 @@ export class FunctionCreateComponent implements OnInit {
 
 	public functions:any;
 	public roles:any;
-	public roleSelected:string;
+	public roleSelected:any;
 	public role:any;
 	public roleFunctions:any;
 	public roleId:any;
@@ -88,15 +88,15 @@ export class FunctionCreateComponent implements OnInit {
 			{
 				this.role = response.role;
 				this.roleFunctions=this.role.functions;
-				if(this.roleFunctions)
+				/*if(this.roleFunctions)
 				{
 					this.roleFunctionsSelected = [];
 					for(let roleFunction of this.roleFunctions)
 					{
 						this.roleFunctionsSelected.push(roleFunction.id);
 					}
-				}
-				console.log(this.roleFunctionsSelected);
+				}*/
+				console.log(this.roleFunctions);
 			},
 			error =>
 			{
@@ -139,10 +139,14 @@ export class FunctionCreateComponent implements OnInit {
 			)
 	}
 
+	compareFn(o1: any, o2: any) {
+    return o1 && o2 ? o1.id === o2.id : o1 === o2;
+  }
 
-	register(functions)
+	register()
 	{	
-		this._roleService.addFunctions(this.roleId,functions).subscribe
+		let functionsIds = this.roleFunctions.map(x => x.id)
+		this._roleService.addFunctions(this.roleId, functionsIds).subscribe
 		(
 			response =>
 			{
@@ -165,13 +169,9 @@ export class FunctionCreateComponent implements OnInit {
 
 	changeRole(event)
 	{
-		this. roleId = event;
+		this.roleId = event;
 		this.getRole(event);
-	}
-
-	onSelection(event, value) 
-	{
-		console.log(event.value);
+		console.log(this.roleSelected)
 	}
 
 	messageSnackBar(message)
