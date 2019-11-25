@@ -83,7 +83,6 @@ export class ResourceShowComponent implements OnInit {
 	table()
 	{
 		this.dataSource = new MatTableDataSource(this.arrayResource);
-
 	}
 
 	goBack(){

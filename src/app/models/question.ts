@@ -3,4 +3,6 @@ export class Question {
     enquire: string;
     description: string;
     status:string;
+    createdAt:Date;
+  	updatedAt:Date;
 }
