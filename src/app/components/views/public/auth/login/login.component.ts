@@ -39,7 +39,8 @@ export class LoginComponent implements OnInit {
           if (response.status==true)
           {
             console.log(response);
-            this.resID = response.user.id;
+						this.resID = response.user.id;
+						localStorage.setItem('functions', JSON.stringify(response.user.role.functions));
             this.loginRedirect(response);
           }
           else

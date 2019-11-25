@@ -4,7 +4,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import {Location} from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Global } from 'src/app/core/services/global';
-import { Promotion } from 'src/app/models/Promotion';
+import { Promotion } from 'src/app/models/promotion';
 import { SubcategoryService } from 'src/app/core/services/admin/subcategory.service';
 import { EquipinfrasService } from 'src/app/core/services/admin/equipinfras.service';
 import { PromotionService } from 'src/app/core/services/admin/promotion.service';
