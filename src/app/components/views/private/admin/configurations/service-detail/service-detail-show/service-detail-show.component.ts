@@ -171,10 +171,13 @@ export class ServiceDetailShowComponent implements OnInit {
 	table()
 	{
 		this.dataSource = new MatTableDataSource(this.arrayServiceDetail);
-
+		this.activities = this.snackBar.orderByDateAsc(this.activities);
 		this.dataSourceA = new MatTableDataSource(this.activities);
+		this.policies = this.snackBar.orderByDateAsc(this.policies);
 		this.dataSourceP = new MatTableDataSource(this.policies);
+		this.resources = this.snackBar.orderByDateAsc(this.resources);
 		this.dataSourceR = new MatTableDataSource(this.resources);
+		this.skills = this.snackBar.orderByDateAsc(this.skills);
 		this.dataSourceS = new MatTableDataSource(this.skills);
 		this.dataSource.paginator = this.paginator;
 		this.dataSource.sort = this.sort;

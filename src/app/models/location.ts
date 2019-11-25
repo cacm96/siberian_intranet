@@ -7,6 +7,6 @@ export class Location{
   UserId:string;
   isLivingPlace:boolean;
   status:string;
-  create_at:string;
-  update_at:string;
+  create_at:Date;
+  update_at:Date;
 }

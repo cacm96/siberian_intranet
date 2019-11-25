@@ -29,9 +29,9 @@
                     </mat-select>
                   </mat-form-field>
 
-                  <mat-selection-list #functionAll [(ngModel)]="roleFunctionsSelected" (selectionChange)="onSelection($event, functionAll.selectedOptions)">
-                    <mat-list-option *ngFor="let function of functions" [value]='function.id'>
-                      {{function.title}}
+                  <mat-selection-list #functionAll [(ngModel)]="roleFunctions" [compareWith]="compareFn">
+                    <mat-list-option [disabled]="roleSelected == 1 || roleSelected == 4" *ngFor="let function of functions" [value]='function'>
+                      {{function?.description}}
                     </mat-list-option>
                   </mat-selection-list>
                   <p>

@@ -8,4 +8,6 @@ export class Skill {
     status: string;
     serviceDetails: Array<ServiceDetail> = new Array<ServiceDetail>();
     users: Array<User> = new Array<User>();
+    createdAt:Date;
+    updatedAt:Date;
 }

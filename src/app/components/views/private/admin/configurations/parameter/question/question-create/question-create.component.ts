@@ -18,12 +18,22 @@ export class QuestionCreateComponent implements OnInit {
   public message: string;
   public name: string;
 
+  public kindTypes:any[];
+  public kindTypeSelected:string="";
+
   constructor(
     private _questionService: QuestionService,
     private _router: Router,
     private _location: Location,
     private snackBar: SnackBarService
   ) {
+
+    this.kindTypes= [
+			{id:"cliente",name:"Cliente"},
+			{id:"prestador",name:"Prestador"},
+			{id:"servicio",name:"Servicio"}
+		];
+
     this.quest = new Question();
     console.log(this.quest);
   }
@@ -35,6 +45,7 @@ export class QuestionCreateComponent implements OnInit {
       console.log(form.value);
       this.quest.enquire = form.value.enquire;
       this.quest.description = form.value.description;
+      this.quest.kind = form.value.kind;
 
       this._questionService.create(this.quest).subscribe(
         response => {

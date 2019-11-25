@@ -29,6 +29,7 @@ export class QuestionsComponent implements OnInit {
     "id",
     "enquire",
     "description",
+    "kind",
     "status",
     "edit",
     "delete"
