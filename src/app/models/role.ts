@@ -4,5 +4,7 @@ export class Role{
   	name: string;
   	description:string;
   	status:string;
-  	functions: Array < number >;
+	  functions: Array < number >;
+	createdAt:Date;
+  	updatedAt:Date;
 }

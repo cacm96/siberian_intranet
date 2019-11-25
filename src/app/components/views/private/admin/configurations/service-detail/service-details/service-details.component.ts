@@ -94,6 +94,7 @@ export class ServiceDetailsComponent implements OnInit {
 
 	table()
   {
+    this.serviceDetails = this.snackBar.orderByDateAsc(this.serviceDetails);
     this.dataSource = new MatTableDataSource(this.serviceDetails);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
