@@ -83,6 +83,7 @@ export class NotificationsComponent implements OnInit {
   }
 
   table() {
+    this.notifications = this.snackBar.orderByDateAsc(this.notifications);
     this.dataSource = new MatTableDataSource(this.notifications);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

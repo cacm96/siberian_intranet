@@ -16,4 +16,6 @@ export class ServiceDetail{
     resources: Array < Resource > = new Array < Resource >();
     policies: Array < Policy > = new Array < Policy >();
     skills: Array < Skill > = new Array < Skill >();
+    createdAt:Date;
+    updatedAt:Date;
 }
