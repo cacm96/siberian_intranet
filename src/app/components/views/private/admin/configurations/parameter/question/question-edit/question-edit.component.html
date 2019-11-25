@@ -23,7 +23,7 @@
 
           <mat-card-header class="titulo border-top-danger">
             <mat-card-title>
-              {{ question.question }}
+              {{ question.enquire }}
             </mat-card-title>
           </mat-card-header>
 
@@ -34,13 +34,22 @@
                   <br>
 
                   <mat-form-field>
-                    <input matInput id="inputEnquire" name="enquire" placeholder="Pregunta" [(ngModel)]="question.enquire" required>
+                    <input matInput id="inputEnquire" name="enquire" placeholder="Pregunta"
+                      [(ngModel)]="question.enquire" required>
                   </mat-form-field>
 
                   <mat-form-field>
-                      <textarea matInput name="description" placeholder="Descripción" [(ngModel)]="question.description"
-                        required></textarea>
-                    </mat-form-field>
+                    <textarea matInput name="description" placeholder="Descripción" [(ngModel)]="question.description"
+                      required></textarea>
+                  </mat-form-field>
+
+                  <mat-form-field>
+                    <mat-select name="kind" [(ngModel)]="question.kind" placeholder="Seleccione un Tipo de Pregunta"
+                      required>
+                      <mat-option *ngFor="let kindType of kindTypes" [value]="kindType.id">{{ kindType.name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
 
                   <div class="row">
                     <div class="col-sm-12">

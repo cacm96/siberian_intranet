@@ -4,5 +4,6 @@ export class Question {
     description: string;
     status:string;
     createdAt:Date;
-  	updatedAt:Date;
+    updatedAt:Date;
+    kind: string;
 }

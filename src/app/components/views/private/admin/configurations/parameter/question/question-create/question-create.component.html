@@ -38,6 +38,12 @@
                 required></textarea>
             </mat-form-field>
 
+            <mat-form-field>
+              <mat-select name="kind" [(ngModel)]="kindTypeSelected" placeholder="Seleccione un Tipo de Pregunta" required>
+                <mat-option *ngFor="let kindType of kindTypes" [value]="kindType.id">{{ kindType.name }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
             <div class="row">
               <div class="col-sm-12">
                 <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.form.valid">Registrar</button>
