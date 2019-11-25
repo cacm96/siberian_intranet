@@ -6,6 +6,6 @@ export class ServiceOrder {
     warrantyTime: string;
     amount: number;
     status: string;
-    revision: Array < Revision > = new Array < Revision >();
+    RevisionId:string;
     serviceOrderDetails: Array < ServiceOrderDetail > = new Array < ServiceOrderDetail >();
 }

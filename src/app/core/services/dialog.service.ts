@@ -66,7 +66,7 @@ export class DialogService {
 
   openAddCalificationDialog(){
     return this.dialog.open(AddCalificationDialogComponent,{
-      width: '900px',
+      width: '1500px',
     });
   }
 

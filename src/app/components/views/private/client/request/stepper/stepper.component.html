@@ -99,7 +99,7 @@
 									<div class="lender_available" [class.open]="isTurn" [class.closed]="!isTurn">
 										<h4 class="text-center mb-3">Prestadores disponibles</h4>
 										
-										<mat-radio-group aria-label="test" [(ngModel)]="lenderSelected" (change)="changeLender($event)">
+										<mat-radio-group aria-label="test" name="lender" [(ngModel)]="lenderSelected" (change)="changeLender($event)">
 											<mat-radio-button class="col-md-3" *ngFor="let lender of lenders | slice:0:4" [value]="lender.id">
 												<mat-card>
 													<mat-card-header class="titulo">
@@ -108,6 +108,17 @@
 												
 													<mat-card-content  class="titulo lenderOption">
 														<img src="../../../../assets/img/profile/avatar.png" alt="" class="card-img">
+														<div class="row">
+															<div class="col-sm-12">
+																<div class="ec-stars-wrapper">
+																	<a [routerLink]="['/auth/profile']" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+																	<a [routerLink]="['/auth/profile']" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+																	<a [routerLink]="['/auth/profile']" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
+																	<a [routerLink]="['/auth/profile']" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
+																	<a [routerLink]="['/auth/profile']" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+																</div>
+															</div>
+														</div>
 													</mat-card-content>
 												</mat-card>
 

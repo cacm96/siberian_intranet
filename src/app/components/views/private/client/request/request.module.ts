@@ -10,6 +10,7 @@ import { EquipinfrasService } from 'src/app/core/services/admin/equipinfras.serv
 import { VarietyService } from 'src/app/core/services/admin/variety.service';
 import { VarietyDetailService } from 'src/app/core/services/admin/varietyDetail.service';
 import { CalendarService } from 'src/app/core/services/client/calendar.service';
+import { ServiceOrderService } from 'src/app/core/services/client/serviceOrder.service';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -50,6 +51,7 @@ import { TruncatePipe } from 'src/app/core/pipes/truncate.pipe';
     UserService,
     LocationService,
     CalendarService,
+    ServiceOrderService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass : TokenInterceptorService,

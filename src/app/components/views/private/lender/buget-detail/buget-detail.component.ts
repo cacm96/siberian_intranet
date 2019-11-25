@@ -9,7 +9,11 @@ import { Global } from 'src/app/core/services/global';
 import { Revision } from 'src/app/models/revision';
 import { RevisionService } from 'src/app/core/services/client/revision.service';
 import { ServiceDetailService } from 'src/app/core/services/admin/serviceDetail.service';
+import { ServiceOrder } from 'src/app/models/serviceOrder';
+import { ServiceOrderService } from 'src/app/core/services/client/serviceOrder.service';
+import { environment } from 'src/environments/environment';
 
+const BASE_URL = environment.imgURL;
 
 @Component({
   selector: 'sib-buget-detail',
@@ -21,19 +25,28 @@ export class BugetDetailComponent implements OnInit
 
   public revision: any;
   public revisionId:any;
+  public serviceOrder:ServiceOrder;
   public serviceDetails:any;
   public serviceDetailsFilter:any;
+  public arrayServiceOrderDetailsCreate:any;
   public message: string;
   public failedConect: string;
+  public isServiceDetail:boolean=false;
+  public amountTotal:any=0;
+  public urldelafault:string="assets/img/request/revision_3.jpg";
+  public totalResoucesSelected:number=0;
 
   constructor(
     private dialogService: DialogService,
     private snackBar: SnackBarService,
     private _revisionService: RevisionService,
     public _serviceDetailService: ServiceDetailService,
+    private _serviceOrderService: ServiceOrderService,
     private _route: ActivatedRoute,
     private _location: Location
     ) {
+
+    this.serviceOrder = new ServiceOrder();
 
   }
 
@@ -49,6 +62,7 @@ export class BugetDetailComponent implements OnInit
       }
       );
     this.getServiceDetails();
+    console.log(this.isServiceDetail);
   }
 
   getServiceDetails()
@@ -77,34 +91,22 @@ export class BugetDetailComponent implements OnInit
 
   changeServiceDetails(event)
   {
-    console.log(event);
-    this.getServiceDetailsFilter(event);
-    
-  }
-
-  getServiceDetailsFilter(arrays)
-  {
-    this._serviceDetailService.All().subscribe
-    (
-      response =>
-      {
-        this.serviceDetailsFilter = response.serviceDetails;
-        //this.serviceDetailsFilter.filter(serviceDetails => { return serviceDetails.id == "1" });
-        console.log(this.serviceDetailsFilter);
-
-      },
-      error =>
-      {
-        console.log(<any>error);
-        if(error instanceof HttpErrorResponse)
-        {
-          if(error.status===0)
-          {
-            this.failedConect = Global.failed;
-          }
-        }
-      }
-      )
+    this.serviceDetailsFilter = event;
+    this.totalResoucesSelected = this.serviceDetailsFilter.resources.length;
+    if(event)
+    {
+      this.isServiceDetail=true;
+    }
+    else
+    {
+      this.isServiceDetail=false;
+    }
+    console.log(this.serviceDetailsFilter);
+    /*
+    for(var i=0; i<this.serviceDetailsFilter.length;i++)
+    {
+      this.amountTotal += this.serviceDetailsFilter[i].estimatedPrice;
+    }*/
   }
 
   getRevision(id) {
@@ -113,7 +115,7 @@ export class BugetDetailComponent implements OnInit
       response =>
       {
         this.revision = response.revision;
-        console.log(this.revision);
+        //console.log(this.revision);
       },
       error =>
       {
@@ -128,22 +130,38 @@ export class BugetDetailComponent implements OnInit
       });
   }
 
-  onRegisterBudget(form: NgForm)
+  register(form: NgForm)
   {
+    this.serviceOrder.RevisionId = this.revision.id;
+    this.serviceOrder.warrantyTime = form.value.warrantyTime;
+    this.serviceOrder.amount = this.amountTotal;
+
+    this.arrayServiceOrderDetailsCreate = [];
+
+    this.arrayServiceOrderDetailsCreate = form.value.serviceDetails.map((val)=>{  
+        return {id: val.id, duration: val.duration, amount: val.estimatedPrice};
+    })
+
+    this.serviceOrder.serviceOrderDetails = this.arrayServiceOrderDetailsCreate;
+
+    console.log(this.arrayServiceOrderDetailsCreate,this.serviceOrder);
+
     if(form.valid)
     {
-      this._revisionService.diagnose(this.revisionId,form.value.note).subscribe
+      this._serviceOrderService.create(this.serviceOrder).subscribe
       (
         response =>
         {
           if(response.status==true)
           {
+            console.log(response);
             this.message  = response.message.text;
             this.snackBar.openSnackBar(this.message,'');
             this.getRevision(this.revisionId);
           }
           else
           {
+            console.log(response);
             this.message  = response.message.text;
             this.snackBar.openSnackBar(this.message,'');
             this.getRevision(this.revisionId);
