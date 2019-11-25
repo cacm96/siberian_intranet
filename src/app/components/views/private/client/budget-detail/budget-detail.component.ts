@@ -6,9 +6,6 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import {Location} from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Global } from 'src/app/core/services/global';
-import { Revision } from 'src/app/models/revision';
-import { RevisionService } from 'src/app/core/services/client/revision.service';
-import { ServiceDetailService } from 'src/app/core/services/admin/serviceDetail.service';
 import { ServiceOrder } from 'src/app/models/serviceOrder';
 import { ServiceOrderService } from 'src/app/core/services/client/serviceOrder.service';
 import { environment } from 'src/environments/environment';
@@ -36,8 +33,6 @@ export class BudgetDetailComponent implements OnInit
   constructor(
     private dialogService: DialogService,
     private snackBar: SnackBarService,
-    private _revisionService: RevisionService,
-    public _serviceDetailService: ServiceDetailService,
     private _serviceOrderService: ServiceOrderService,
     private _route: ActivatedRoute,
     private _location: Location
