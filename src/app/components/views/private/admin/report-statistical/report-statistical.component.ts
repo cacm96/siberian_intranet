@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService } from '../../../../../core/services/dialog.service';
 import { BorderWidth, Chart, ChartData, Point, ChartColor } from 'chart.js';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'sib-report-statistical',
@@ -8,6 +10,8 @@ import { BorderWidth, Chart, ChartData, Point, ChartColor } from 'chart.js';
   styleUrls: ['./report-statistical.component.scss']
 })
 export class ReportStatisticalComponent implements OnInit {
+  displayedColumns: string[] = ['id', 'name', 'description', 'addSubcategory', 'status'];
+  //dataSource: MatTableDataSource<Category>;
 
   constructor(
     private dialogService: DialogService,
@@ -65,9 +69,6 @@ export class ReportStatisticalComponent implements OnInit {
         scales: {
             xAxes: [
                 {
-                    ticks: {
-                       // callback: Math.floor,
-                    },
                     minBarLength: 2,
                     gridLines: {
                         display: false,

@@ -20,4 +20,34 @@ export class ReportStatisticalFilterDialogComponent implements OnInit {
   closeDialog() {
     this.dialogRef.close();
   }
+/*
+  getLocation(id)
+  {
+    this._locationService.getOne(id).subscribe
+    (
+      response =>
+      {
+        this.location = response.location;
+        this.locationId = this.location.id;
+        this.addressFull = this.location.address;
+      },
+      error =>
+      {
+        console.log(<any>error);
+        if(error instanceof HttpErrorResponse)
+        {
+          if(error.status===0)
+          {
+            this.failedConect = Global.failed;
+          }
+        }
+      }
+    )
+  }
+  
+  changeLocation(id)
+  {
+    this.getLocation(id);
+  }
+  */
 }
