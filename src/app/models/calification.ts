@@ -1,12 +1,11 @@
 export class Calification {
   id: string;
   AuthorId: string;
-  ServiceDetailId: string;
   UserId: string;
+  ServiceDetailId: string; 
   ServiceOrderDetailId: string;
-  questions: string;
   typeQualification: string;
   status: string;
-  create_at: string;
-  update_at: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
