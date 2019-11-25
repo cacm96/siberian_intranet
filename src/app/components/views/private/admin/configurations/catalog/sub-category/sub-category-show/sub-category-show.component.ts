@@ -120,6 +120,8 @@ export class SubCategoryShowComponent implements OnInit {
 
   table()
   {
+  	this.equipinfras = this.snackBar.orderByDateAsc(this.equipinfras);
+  	this.arraySubcategory = this.snackBar.orderByDateAsc(this.arraySubcategory);
     this.dataSource = new MatTableDataSource(this.equipinfras);
     this.dataSourceS = new MatTableDataSource(this.arraySubcategory);
     this.dataSource.paginator = this.paginator;
