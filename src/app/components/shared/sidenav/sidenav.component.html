@@ -1,227 +1,54 @@
 <div *ngIf="user">
-	<mat-nav-list>
-		
-		<mat-nav-list>
-			<mat-card-header class="side_nav_header">
-				<mat-card-title>{{user.firstName | titlecase }} {{user.lastName | titlecase}}</mat-card-title>
-				<mat-card-subtitle>{{this.user.role.name}}</mat-card-subtitle>
-				<div mat-card-avatar class="side_nav_avatar"></div>
-			</mat-card-header>
-		</mat-nav-list>
+  <mat-nav-list>
 
-		<div *ngIf="role=='3'">
-			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/dashboard']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Inicio</a>
+    <mat-nav-list>
+      <mat-card-header class="side_nav_header">
+        <mat-card-title>{{user.firstName | titlecase }} {{user.lastName | titlecase}}</mat-card-title>
+        <mat-card-subtitle>{{this.user.role.name}}</mat-card-subtitle>
+        <div mat-card-avatar class="side_nav_avatar"></div>
+      </mat-card-header>
+    </mat-nav-list>
 
+    <mat-accordion>
+      <ng-container *ngFor="let f of functions">
+        <ng-container *ngIf="f.functions.length; else elseTemplate">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <mat-icon matListIcon class="side_nav_icon">{{f?.icon}}</mat-icon>{{f?.title}}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
 
-			<mat-accordion>
+            <ng-container *ngFor="let child of f.functions">
+              <ng-container *ngIf="child.functions.length; else elseTemplate">
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header class="padding-sidenav">
+                    <mat-panel-title>
+                      <mat-icon matListIcon class="side_nav_icon">{{child?.icon}}</mat-icon>{{child?.title}}
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
 
+                  <a *ngFor="let c of child.functions" [routerLinkActive]="['active']" mat-list-item
+                    [routerLink]="[c.urlIntranet]">
+                    <mat-icon matListIcon class="side_nav_icon">{{c?.icon}}</mat-icon>{{c?.title}}
+                  </a>
+                </mat-expansion-panel>
+              </ng-container>
+              <ng-template #elseTemplate>
+                <a [routerLinkActive]="['active']" mat-list-item [routerLink]="[child.urlIntranet]">
+                  <mat-icon matListIcon class="side_nav_icon">{{child?.icon}}</mat-icon>{{child?.title}}
+                </a>
+              </ng-template>
+            </ng-container>
+          </mat-expansion-panel>
+        </ng-container>
+        <ng-template #elseTemplate>
+          <a [routerLinkActive]="['active']" mat-list-item [routerLink]="[f.urlIntranet]">
+            <mat-icon matListIcon class="side_nav_icon">{{f?.icon}}</mat-icon>{{f?.title}}
+          </a>
+        </ng-template>
+      </ng-container>
+    </mat-accordion>
 
-				<mat-expansion-panel>
-					<mat-expansion-panel-header>
-						<mat-panel-title>
-							<mat-icon matListIcon class="side_nav_icon">assignment_ind</mat-icon>Servicios
-						</mat-panel-title>
-					</mat-expansion-panel-header>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/catalog']" ><mat-icon matListIcon class="side_nav_icon">assignment</mat-icon>Solicitar</a>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/budget']" ><mat-icon matListIcon class="side_nav_icon">receipt</mat-icon>Aceptar Presupuesto</a>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/calification']" ><mat-icon matListIcon class="side_nav_icon">star_border</mat-icon>Calificar</a>
-				</mat-expansion-panel>
-
-
-				<mat-expansion-panel>
-					<mat-expansion-panel-header>
-						<mat-panel-title>
-							<mat-icon matListIcon class="side_nav_icon">feedback</mat-icon>Reclamos
-						</mat-panel-title>
-					</mat-expansion-panel-header>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/claim']" ><mat-icon matListIcon class="side_nav_icon">add_circle_outline</mat-icon>Crear</a>
-				</mat-expansion-panel>
-
-				<mat-expansion-panel>
-					<mat-expansion-panel-header>
-						<mat-panel-title>
-							<mat-icon matListIcon class="side_nav_icon">message</mat-icon>Sugerencias
-						</mat-panel-title>
-					</mat-expansion-panel-header>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/suggestion']" ><mat-icon matListIcon class="side_nav_icon">add_circle_outline</mat-icon>Crear</a>
-				</mat-expansion-panel>
-
-			</mat-accordion>
-
-		</div>
-
-		<div *ngIf="role=='2'">
-			<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/dashboard']" ><mat-icon matListIcon class="side_nav_icon">home</mat-icon>Inicio</a>
-
-			<mat-accordion>
-				<mat-expansion-panel>
-					<mat-expansion-panel-header>
-						<mat-panel-title>
-							<mat-icon matListIcon class="side_nav_icon">assignment_ind</mat-icon>Servicios
-						</mat-panel-title>
-					</mat-expansion-panel-header>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/request']" ><mat-icon matListIcon class="side_nav_icon">check_circle</mat-icon>Atender</a>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/diagnosis']" ><mat-icon matListIcon class="side_nav_icon">assignment_late</mat-icon>Diagnosticar</a>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/budget']" ><mat-icon matListIcon class="side_nav_icon">receipt</mat-icon>Presupuestar</a>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/execute']" ><mat-icon matListIcon class="side_nav_icon">done</mat-icon>Ejecutar</a>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/delivery']" ><mat-icon matListIcon class="side_nav_icon">done_all</mat-icon>Cerrar Servicio</a>
-				</mat-expansion-panel>
-				
-
-				<mat-expansion-panel>
-					<mat-expansion-panel-header>
-						<mat-panel-title>
-							<mat-icon matListIcon class="side_nav_icon">feedback</mat-icon>Reclamos
-						</mat-panel-title>
-					</mat-expansion-panel-header>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/claim']" ><mat-icon matListIcon class="side_nav_icon">check_circle</mat-icon>Atender</a>
-				</mat-expansion-panel>
-			</mat-accordion>
-
-		</div>
-
-		<div *ngIf="role=='1'">
-
-			<mat-accordion>
-
-				<mat-expansion-panel>
-					<mat-expansion-panel-header>
-						<mat-panel-title>
-							<mat-icon matListIcon class="side_nav_icon">home</mat-icon>Inicio
-						</mat-panel-title>
-					</mat-expansion-panel-header>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/dashboard']" ><mat-icon matListIcon class="side_nav_icon">perm_identity</mat-icon>Cliente</a>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/dashboard']" ><mat-icon matListIcon class="side_nav_icon">perm_identity</mat-icon>Prestador</a>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/dashboard']" ><mat-icon matListIcon class="side_nav_icon">perm_identity</mat-icon>Gerente</a>
-				</mat-expansion-panel>
-
-				<mat-expansion-panel>
-					<mat-expansion-panel-header>
-						<mat-panel-title>
-							<mat-icon matListIcon class="side_nav_icon">assignment_ind</mat-icon>Servicios
-						</mat-panel-title>
-					</mat-expansion-panel-header>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/catalog']" ><mat-icon matListIcon class="side_nav_icon">assignment</mat-icon>Solicitar</a>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/request']" ><mat-icon matListIcon class="side_nav_icon">check_circle</mat-icon>Atender</a>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/diagnosis']" ><mat-icon matListIcon class="side_nav_icon">assignment_late</mat-icon>Diagnosticar</a>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/budget']" ><mat-icon matListIcon class="side_nav_icon">receipt</mat-icon>Presupuestar</a>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/budget']" ><mat-icon matListIcon class="side_nav_icon">receipt</mat-icon>Evaluar Presupuesto</a>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/execute']" ><mat-icon matListIcon class="side_nav_icon">done</mat-icon>Ejecutar</a>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/delivery']" ><mat-icon matListIcon class="side_nav_icon">done_all</mat-icon>Cerrar Servicio</a>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/calification']" ><mat-icon matListIcon class="side_nav_icon">star_border</mat-icon>Calificar</a>
-				</mat-expansion-panel>
-
-
-				<mat-expansion-panel>
-					<mat-expansion-panel-header>
-						<mat-panel-title>
-							<mat-icon matListIcon class="side_nav_icon">feedback</mat-icon>Reclamos
-						</mat-panel-title>
-					</mat-expansion-panel-header>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/claim']" ><mat-icon matListIcon class="side_nav_icon">add_circle_outline</mat-icon>Crear</a>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/claim']" ><mat-icon matListIcon class="side_nav_icon">check_circle</mat-icon>Atender</a>
-				</mat-expansion-panel>
-
-				<mat-expansion-panel>
-					<mat-expansion-panel-header>
-						<mat-panel-title>
-							<mat-icon matListIcon class="side_nav_icon">card_giftcard</mat-icon>Promociones
-						</mat-panel-title>
-					</mat-expansion-panel-header>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/parameter/promotion']" ><mat-icon matListIcon class="side_nav_icon">add_circle_outline</mat-icon>Crear</a>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/parameter/promotion/create']" ><mat-icon matListIcon class="side_nav_icon">record_voice_over</mat-icon>Difundir</a>
-				</mat-expansion-panel>
-
-				<mat-expansion-panel>
-					<mat-expansion-panel-header>
-						<mat-panel-title>
-							<mat-icon matListIcon class="side_nav_icon">message</mat-icon>Sugerencias
-						</mat-panel-title>
-					</mat-expansion-panel-header>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/client/suggestion']" ><mat-icon matListIcon class="side_nav_icon">add_circle_outline</mat-icon>Crear</a>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/suggestion']" ><mat-icon matListIcon class="side_nav_icon">check_circle</mat-icon>Atender</a>
-				</mat-expansion-panel>
-
-
-				<mat-expansion-panel>
-					<mat-expansion-panel-header>
-						<mat-panel-title>
-							<mat-icon matListIcon class="side_nav_icon">warning</mat-icon>Incidencias
-						</mat-panel-title>
-					</mat-expansion-panel-header>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/incidence']" ><mat-icon matListIcon class="side_nav_icon">add_circle_outline</mat-icon>Crear</a>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/lender/incidence']" ><mat-icon matListIcon class="side_nav_icon">check_circle</mat-icon>Atender</a>
-				</mat-expansion-panel>
-				
-
-				<mat-expansion-panel>
-					<mat-expansion-panel-header>
-						<mat-panel-title>
-							<mat-icon matListIcon class="side_nav_icon">dashboard</mat-icon>Configuración
-						</mat-panel-title>
-					</mat-expansion-panel-header>
-
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/company']" ><mat-icon matListIcon class="side_nav_icon">laptop</mat-icon>Web</a>
-
-					<mat-expansion-panel>
-						<mat-expansion-panel-header class ="padding-sidenav">
-							<mat-panel-title>
-								<mat-icon matListIcon class="side_nav_icon">list_alt</mat-icon>Parámetros
-							</mat-panel-title>
-						</mat-expansion-panel-header>
-						<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/catalog']" ><mat-icon matListIcon class="side_nav_icon">assignment_turned_in</mat-icon>Clasificación de Servicios</a>
-						<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/service']" ><mat-icon matListIcon class="side_nav_icon">assignment_turned_in</mat-icon>Características de Servicios</a>
-						<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/parameter']" ><mat-icon matListIcon class="side_nav_icon">assignment_turned_in</mat-icon>Genéricos</a>
-					</mat-expansion-panel>
-
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/service-detail']" ><mat-icon matListIcon class="side_nav_icon">assignment_ind</mat-icon>Servicios</a>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/lender']" ><mat-icon matListIcon class="side_nav_icon">account_box</mat-icon>Personal</a>
-
-				</mat-expansion-panel>
-
-				<mat-expansion-panel>
-					<mat-expansion-panel-header>
-						<mat-panel-title>
-							<mat-icon matListIcon class="side_nav_icon">settings_applications</mat-icon>Administración del Sistema
-						</mat-panel-title>
-					</mat-expansion-panel-header>
-					
-					<mat-expansion-panel>
-						<mat-expansion-panel-header class ="padding-sidenav">
-							<mat-panel-title>
-								<mat-icon matListIcon class="side_nav_icon">lock</mat-icon>Seguridad Funcional
-							</mat-panel-title>
-						</mat-expansion-panel-header>
-						<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/user-role/role']" ><mat-icon matListIcon class="side_nav_icon">supervisor_account</mat-icon>Roles</a>
-						<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/user-role/function/create']" ><mat-icon matListIcon class="side_nav_icon">supervisor_account</mat-icon>Permisos</a>
-						<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/configurations/user-role/user']" ><mat-icon matListIcon class="side_nav_icon">supervisor_account</mat-icon>Usuarios</a>
-					</mat-expansion-panel>
-
-					<mat-expansion-panel>
-						<mat-expansion-panel-header class ="padding-sidenav">
-							<mat-panel-title>
-								<mat-icon matListIcon class="side_nav_icon">cloud_circle</mat-icon>Base de Datos
-							</mat-panel-title>
-						</mat-expansion-panel-header>
-						<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/backup']" ><mat-icon matListIcon class="side_nav_icon">cloud_download</mat-icon>Recuperar</a>
-						<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/restore']" ><mat-icon matListIcon class="side_nav_icon">cloud_upload</mat-icon>Repaldo</a>
-					</mat-expansion-panel>
-
-
-				</mat-expansion-panel>
-
-				<mat-expansion-panel>
-					<mat-expansion-panel-header>
-						<mat-panel-title>
-							<mat-icon matListIcon class="side_nav_icon">bar_chart</mat-icon>Reportes
-						</mat-panel-title>
-					</mat-expansion-panel-header>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/reportStatistical']" ><mat-icon matListIcon class="side_nav_icon">assessment</mat-icon>Estadísticos</a>
-					<a [routerLinkActive]="['active']" mat-list-item [routerLink]="['/auth/admin/reportStructured']" ><mat-icon matListIcon class="side_nav_icon">assessment</mat-icon>Estructurados</a>
-				</mat-expansion-panel>
-
-			</mat-accordion>
-
-		</div>
-	</mat-nav-list>
+  </mat-nav-list>
 </div>
