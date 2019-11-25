@@ -67,7 +67,11 @@
 
 						<ng-container matColumnDef="date">
 							<th mat-header-cell *matHeaderCellDef> Fecha de Revisión</th>
-							<td mat-cell *matCellDef="let row">{{ row.calendars.date |date:"longDate"}}</td>
+							<td mat-cell *matCellDef="let row">
+								{{ row.calendars.date |date:"longDate"}} - 
+								<div *ngIf="row.calendars.turn=='morning'">Mañana</div>
+								<div *ngIf="row.calendars.turn=='afternoon'">Tarde</div>
+							</td>
 						</ng-container>
 
 						<ng-container matColumnDef="status">

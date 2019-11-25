@@ -42,6 +42,12 @@
                 <mat-list-item><h4 mat-line><b>Dirección: </b>{{ revision.location.address }}</h4></mat-list-item>
                 <mat-list-item><h4 mat-line><b>Fecha de la Solicitud: </b> {{ revision.createdAt |date:"longDate"}}</h4></mat-list-item>
                 <mat-list-item><h4 mat-line><b>Fecha de la Revisión: </b>{{ revision.calendar.date |date:"longDate" }}</h4></mat-list-item>
+                <mat-list-item>
+                  <h4 mat-line><b>Turno: </b>
+                    <span *ngIf="revision.calendar.turn=='morning'">Mañana</span>
+                    <span *ngIf="revision.calendar.turn=='afternoon'">Tarde</span>
+                  </h4>
+                </mat-list-item>
                 <mat-list-item><h4 mat-line><b>Descripción del Problema: </b>{{ revision.description }}</h4></mat-list-item>
                 <mat-list-item><h4 mat-line><b>Prestador Seleccionado: </b>{{revision.calendar.lender.firstName | titlecase }} {{revision.calendar.lender.lastName | titlecase}}</h4></mat-list-item>
                 <mat-list-item><h4 mat-line><b>Precio: </b>{{ revision.price }} Bs.S</h4></mat-list-item>
