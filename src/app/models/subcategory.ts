@@ -7,5 +7,7 @@ export class Subcategory{
   	CategoryId:string;
   	status:string;
   	equipinfras: Array < Equipinfras > = new Array < Equipinfras >();
+  	createdAt:Date;
+  	updatedAt:Date;
 
 }

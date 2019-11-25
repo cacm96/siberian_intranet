@@ -7,5 +7,6 @@ export class Variety{
   	description:string;
   	status:string;
     equipinfras: Array < Equipinfras > = new Array < Equipinfras >();
-
+    createdAt:Date;
+  	updatedAt:Date;
 }

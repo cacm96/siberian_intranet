@@ -3,4 +3,6 @@ export class Component {
     name: string;
     description: string;
     status: string;
+    createdAt:Date;
+  	updatedAt:Date;
 }

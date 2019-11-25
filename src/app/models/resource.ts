@@ -10,4 +10,6 @@ export class Resource{
   	status:string;
   	quantity:string;
   	//serviceDetails: Array < Subcategory > = new Array < Subcategory >();
+    createdAt:Date;
+  	updatedAt:Date;
 }

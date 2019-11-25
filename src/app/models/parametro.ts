@@ -9,4 +9,6 @@ export class Parametro{
   	status:string;
   	users: Array < User > = new Array < User >();
   	promotions: Array < Promotion > = new Array < Promotion >();
+  	createdAt:Date;
+  	updatedAt:Date;
 }
