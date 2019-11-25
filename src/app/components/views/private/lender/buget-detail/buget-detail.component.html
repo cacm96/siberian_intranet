@@ -122,39 +122,47 @@
                     <div class="col-sm-12">
 
                       <mat-form-field>
-                        <mat-select name="serviceDetails" [(ngModel)]="serviceDetailsSelected" placeholder="Seleccione uno o mas Servicios" (ngModelChange)="changeServiceDetails($event)" required multiple>
+                        <mat-select name="serviceDetails" [(ngModel)]="serviceDetailsSelected" placeholder="Seleccione un Servicio" (ngModelChange)="changeServiceDetails($event)" required>
                           <mat-option *ngFor="let serviceDetail of serviceDetails" [value]="serviceDetail">{{serviceDetail.name}}</mat-option>
                         </mat-select>
                       </mat-form-field>
 
                       <br>
 
-                      <div class="service_create" [class.open]="isServiceDetail" [class.closed]="!isServiceDetail">
+                      <div *ngIf="serviceDetailsFilter" class="service_create" [class.open]="isServiceDetail" [class.closed]="!isServiceDetail">
                         <div class="row">
                           <div class="col-sm-12">
                             <mat-list>
-                              <h5><b>Servicios y Recursos seleccionados:</b></h5>
-                              <div class="ml-3" *ngFor="let serviceDetail of serviceDetailsFilter">
-                                <mat-list-item><h4 mat-subheader><b>{{ serviceDetail.name }}</b></h4></mat-list-item>
+                              <div class="ml-3">
                                 <div class="row">
                                   <div class="col-sm-6">
                                     <mat-form-field>
-                                      <input matInput name="duration" [(ngModel)]="serviceDetail.duration" placeholder="Duración del servicio" required>
+                                      <input matInput name="duration" [(ngModel)]="serviceDetailsFilter.duration" placeholder="Duración del servicio (días)" required>
                                     </mat-form-field>
                                   </div>
                                   <div class="col-sm-6">
                                     <mat-form-field>
-                                      <input matInput name="amount" [(ngModel)]="serviceDetail.estimatedPrice" placeholder="Monto Total del Servicio" required>
+                                      <input matInput name="amount" [(ngModel)]="serviceDetailsFilter.estimatedPrice" placeholder="Monto Total del Servicio" required>
                                     </mat-form-field>
                                   </div>
                                 </div>
                                 <div class="ml-3" >
-                                  <mat-list-item *ngFor="let resource of serviceDetail.resources">
-                                    <h6 mat-subheader><b>{{ resource.name }} - Cantidad: {{ resource.quantity }}</b></h6>
-                                  </mat-list-item>
+                                  <h6><b>Recursos seleccionados:</b></h6>
+
+                                  <div *ngIf="totalResoucesSelected>0">
+                                    <mat-list-item *ngFor="let resource of serviceDetailsFilter.resources">
+                                      <h6 mat-subheader><b>{{ resource.quantity }} {{ resource.name }}</b></h6>
+                                    </mat-list-item>
+                                  </div>
+
+                                  <div *ngIf="totalResoucesSelected<=0">
+                                    <mat-list-item>
+                                      <h6 mat-subheader><b>Este servicio no tiene recursos configurados</b></h6>
+                                    </mat-list-item>
+                                  </div>
+
                                 </div>
                               </div>
-                              <mat-list-item><h4 mat-subheader><b>Monto Total: </b>{{ amountTotal }}</h4></mat-list-item>
                             </mat-list>
                           </div>
                         </div>
@@ -163,7 +171,7 @@
                       <br>
 
                       <mat-form-field>
-                        <input matInput id="warrantyTime" name="warrantyTime" [(ngModel)]="warrantyTime" placeholder="Tiempo Estimado de Garantia">
+                        <input matInput id="warrantyTime" name="warrantyTime" [(ngModel)]="warrantyTime" placeholder="Tiempo Estimado de Garantia" required>
                       </mat-form-field>
 
                     </div>
@@ -171,7 +179,7 @@
 
                   <div class="row">
                     <div class="col-sm-12">
-                      <button *ngIf="revision.status=='diagnosticated'" mat-raised-button color="primary" type="submit" class="mr-3" [disabled]="!updateForm.form.valid">Registrar</button>
+                      <button *ngIf="revision.status=='diagnosticated'" mat-raised-button color="primary" type="submit" class="mr-3" [disabled]="!updateForm.form.valid || totalResoucesSelected<=0">Registrar</button>
                       <button *ngIf="revision.status=='finalized'" mat-raised-button color="primary" type="submit" class="mr-3" [disabled]="!updateForm.form.valid">Editar</button>
                     </div>
                   </div>

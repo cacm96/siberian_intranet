@@ -33,7 +33,8 @@ export class BugetDetailComponent implements OnInit
   public failedConect: string;
   public isServiceDetail:boolean=false;
   public amountTotal:any=0;
-  public urldelafault:string="assets/img/request/revision_3.jpg"
+  public urldelafault:string="assets/img/request/revision_3.jpg";
+  public totalResoucesSelected:number=0;
 
   constructor(
     private dialogService: DialogService,
@@ -91,7 +92,8 @@ export class BugetDetailComponent implements OnInit
   changeServiceDetails(event)
   {
     this.serviceDetailsFilter = event;
-    if(event.length>0)
+    this.totalResoucesSelected = this.serviceDetailsFilter.resources.length;
+    if(event)
     {
       this.isServiceDetail=true;
     }
@@ -100,11 +102,11 @@ export class BugetDetailComponent implements OnInit
       this.isServiceDetail=false;
     }
     console.log(this.serviceDetailsFilter);
-
+    /*
     for(var i=0; i<this.serviceDetailsFilter.length;i++)
     {
       this.amountTotal += this.serviceDetailsFilter[i].estimatedPrice;
-    }
+    }*/
   }
 
   getRevision(id) {
