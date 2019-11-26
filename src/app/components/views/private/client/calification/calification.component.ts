@@ -58,7 +58,7 @@ export class CalificationComponent implements OnInit {
         if (response.status==true)
         {
           this.serviceOrders = response.serviceOrders;
-          this.serviceOrders= this.serviceOrders.filter(serviceOrder=>{return serviceOrder.status =="finalized" || serviceOrder.status =="warranty"|| serviceOrder.status =="approved"});
+          this.serviceOrders= this.serviceOrders.filter(serviceOrder=>{return serviceOrder.status =="finalized" || serviceOrder.status =="warranty"});
           this.total = this.serviceOrders.length;
           console.log(this.serviceOrders);
           this.table();
