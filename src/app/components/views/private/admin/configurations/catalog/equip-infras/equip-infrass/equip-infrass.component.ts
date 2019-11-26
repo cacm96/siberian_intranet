@@ -92,6 +92,7 @@ export class EquipInfrassComponent implements OnInit {
 
   table()
   {
+    this.equipinfrass = this.snackBar.orderByDateAsc(this.equipinfrass);
     this.dataSource = new MatTableDataSource(this.equipinfrass);
     this.dataSource.paginator = this.paginator;
   }

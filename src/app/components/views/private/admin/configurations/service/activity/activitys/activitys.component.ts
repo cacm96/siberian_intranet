@@ -90,6 +90,7 @@ export class ActivitysComponent implements OnInit {
 
 	table()
   {
+    this.activities = this.snackBar.orderByDateAsc(this.activities);
     this.dataSource = new MatTableDataSource(this.activities);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

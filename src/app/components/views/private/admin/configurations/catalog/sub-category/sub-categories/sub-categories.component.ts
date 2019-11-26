@@ -94,6 +94,7 @@ export class SubCategoriesComponent implements OnInit {
 
   table()
   {
+    this.subcategories = this.snackBar.orderByDateAsc(this.subcategories);
     this.dataSource = new MatTableDataSource(this.subcategories);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

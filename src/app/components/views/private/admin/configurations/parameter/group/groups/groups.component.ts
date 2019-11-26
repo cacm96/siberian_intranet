@@ -89,6 +89,7 @@ export class GroupsComponent implements OnInit {
 
 	table()
   {
+    this.groups = this.snackBar.orderByDateAsc(this.groups);
     this.dataSource = new MatTableDataSource(this.groups);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
