@@ -11,7 +11,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Global } from 'src/app/core/services/global';
 import { Revision } from 'src/app/models/revision';
 import { RevisionService } from 'src/app/core/services/client/revision.service';
-  
+
 @Component({
   selector: 'sib-budget',
   templateUrl: './budget.component.html',
@@ -41,7 +41,6 @@ export class BudgetComponent implements OnInit {
     private _location: Location
     )
   {
-
   }
 
   ngOnInit() {
@@ -104,8 +103,8 @@ export class BudgetComponent implements OnInit {
   }
 
   goBack()
-  { 
-    this._location.back(); 
+  {
+    this._location.back();
   }
 }
 
