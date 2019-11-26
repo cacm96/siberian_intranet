@@ -57,15 +57,14 @@ export class ExecuteComponent implements OnInit {
  getServiceOrder(userID)
    //getServiceOrder(lenderID)
   {
-    this._serviceOrderService.getServiceOrderUser(userID).subscribe
-    //this._serviceOrderService.getServiceOrderLender(lenderID).subscribe
+    this._serviceOrderService.getServiceOrderUser(lenderID).subscribe
     (
       response =>
       {
         if (response.status==true)
         {
           this.serviceOrders = response.serviceOrders;
-          this.serviceOrders= this.serviceOrders.filter(serviceOrder=>{return serviceOrder.status =="approved"});
+          this.serviceOrders= this.serviceOrders.filter(serviceOrder=>{return serviceOrder.status =="budgeted"});
           this.total = this.serviceOrders.length;
           console.log(this.serviceOrders);
           this.table();
