@@ -44,6 +44,9 @@ import { RejectedDiagnosisDialogComponent } from './components/shared/rejected-d
 import { DateDialogComponent } from './components/shared/date-dialog/date-dialog.component';
 import { ReportStatisticalFilterDialogComponent } from './components/shared/report-statistical-filter-dialog/report-statistical-filter-dialog.component';
 
+import { EquipinfrasService } from 'src/app/core/services/admin/equipinfras.service';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -94,6 +97,7 @@ import { ReportStatisticalFilterDialogComponent } from './components/shared/repo
     MotiveService,
     QuestionService,
     ServiceDetailService,
+    EquipinfrasService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass : TokenInterceptorService,
