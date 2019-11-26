@@ -1,6 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-
+import { ServiceDetail } from 'src/app/models/serviceDetail';
+import { ServiceDetailService } from 'src/app/core/services/admin/serviceDetail.service';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import {Location} from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Global } from 'src/app/core/services/global';
 
 @Component({
   selector: 'sib-report-statistical-filter-dialog',
@@ -9,27 +14,57 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class ReportStatisticalFilterDialogComponent implements OnInit {
 
+  public serviceDetails:any;
+  public types:any;
+  public typeSelected:string="";
+  public message:string;
+  public failedConect:string;
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data,
-    public dialogRef: MatDialogRef<ReportStatisticalFilterDialogComponent>
+    public dialogRef: MatDialogRef<ReportStatisticalFilterDialogComponent>,
+    private _serviceDetailService: ServiceDetailService,
+    private _route: ActivatedRoute,
+    private _router: Router,
+    private _location: Location,
+    private dialogService: DialogService,
+    private snackBar: SnackBarService,
   ) { }
 
-  ngOnInit() {
+  ngOnInit()
+  {
+    this.types =
+    [
+      {id:"Reparación",name:"Reparación"},
+      {id:"Mantenimiento",name:"Mantenimiento"},
+      {id:"Construcción",name:"Construcción"},
+      {id:"Otros",name:"Otros"},
+    ];
+    this.getServiceDetails();
   }
 
   closeDialog() {
     this.dialogRef.close();
   }
-/*
-  getLocation(id)
+
+  getServiceDetails()
   {
-    this._locationService.getOne(id).subscribe
+    this._serviceDetailService.All().subscribe
     (
       response =>
       {
-        this.location = response.location;
-        this.locationId = this.location.id;
-        this.addressFull = this.location.address;
+        if (response.status==true)
+        {
+          this.serviceDetails = response.serviceDetails;
+          console.log(this.serviceDetails);
+        }
+        else
+        {
+          this.serviceDetails = [];
+          this.message = response.message.text;
+          console.log(this.message);
+        }
+
       },
       error =>
       {
@@ -42,12 +77,6 @@ export class ReportStatisticalFilterDialogComponent implements OnInit {
           }
         }
       }
-    )
+      )
   }
-  
-  changeLocation(id)
-  {
-    this.getLocation(id);
-  }
-  */
 }

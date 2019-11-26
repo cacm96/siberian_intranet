@@ -14,6 +14,7 @@ import { AuthService } from './core/services/public/auth.service';
 import { UserService } from './core/services/admin/user.service';
 import { MotiveService } from 'src/app/core/services/admin/motive.service';
 import { QuestionService } from 'src/app/core/services/admin/question.service';
+import { ServiceDetailService } from 'src/app/core/services/admin/serviceDetail.service';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/views/public/auth/login/login.component';
@@ -92,6 +93,7 @@ import { ReportStatisticalFilterDialogComponent } from './components/shared/repo
     UserService,
     MotiveService,
     QuestionService,
+    ServiceDetailService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass : TokenInterceptorService,
