@@ -28,6 +28,7 @@ import {
         MatProgressBarModule,
         MatTooltipModule,
         MatAutocompleteModule,
+        MatRadioModule,
 } from '@angular/material';
 
 
@@ -61,6 +62,7 @@ import {
         MatProgressBarModule,
         MatTooltipModule,
         MatAutocompleteModule,
+        MatRadioModule,
     ],
     exports: [
         MatButtonModule,
@@ -91,6 +93,7 @@ import {
         MatProgressBarModule,
         MatTooltipModule,
         MatAutocompleteModule,
+        MatRadioModule,
     ],
     providers: [  
         MatDatepickerModule,  

@@ -1,19 +1,21 @@
 <div class="main_request_detail">
 
-  <div class="container">
+  <div class="container" *ngIf="revision">
 
     <div class="row">
       <div class="col-sm-12">
         <h4 class="titulo text-center">
           Solicitud
-          <span class="badge badge-primary">Aprobada</span>
+          <span *ngIf="revision.status=='approved'" class="badge badge-primary">Aprobada</span>
+          <span *ngIf="revision.status=='diagnosticated'" class="badge badge-warning">Diagnosticada</span>
+          <span *ngIf="revision.status=='irreparable'" class="badge badge-danger">Irreparable</span>
         </h4>
       </div>
     </div>
 
     <div class="row">
       <div class="col-sm-12">
-        <button mat-raised-button color="primary" [routerLink]="['/auth/lender/diagnosis']">Volver</button>
+        <button mat-raised-button color="primary" (click)="goBack()" matTooltip="Volver" matTooltipPosition="above"><mat-icon>arrow_back</mat-icon></button>
       </div>  
     </div>
 
@@ -24,47 +26,58 @@
         <mat-card>
           <mat-card-header class="titulo border-top-danger">
             <mat-card-title>
-              <a [routerLink]="['/auth/lender/request/detail/1']" class="title" >Código Solicitud 1</a>
+              <a [routerLink]="['/auth/lender/request/detail',revision.id]" class="title" >Código Solicitud {{ revision.id}}</a>
             </mat-card-title>
           </mat-card-header>
           <mat-card-content>
+
             <br>
             <div class="row">
               <div class="col-sm-8 offset-2">
-                <div class="row">
-                  <div class="col-sm-12">
-                    <h2 class="text-center">Diagnóstico</h2>
-                  </div>
-                </div>
+                <form #updateForm="ngForm" (ngSubmit)="onRegisterDiagnosis(updateForm)">
 
-
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="example-container">
-
-                      <mat-form-field>
-                        <textarea matInput placeholder=" Descripción del Diagnóstico"></textarea>
-                      </mat-form-field>
-
-                      <mat-label >Subir Imagen de Revisión</mat-label>
-                      <br>
-                      <input id="fileInput" type="file">
-
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <h2 class="text-center">Diagnóstico</h2>
                     </div>
                   </div>
-                </div>
 
-                <br> 
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="example-container">
 
-                <div class="row">
+                        <mat-form-field>
+                          <textarea matInput name="note" [(ngModel)]="note" placeholder=" Descripción del Diagnóstico" required></textarea>
+                        </mat-form-field>
+
+                        <mat-label >Subir Imagen de Revisión</mat-label>
+                        <br>
+                        <input id="fileInput" type="file">
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <br> 
+
+                  <div class="row" *ngIf="revision.status=='approved'">
+                    <div class="col-sm-12">
+                      <button mat-raised-button color="primary" type="submit" class="mr-3" [disabled]="!updateForm.form.valid">Registrar</button>
+                    </div>
+                  </div>
+                </form>
+
+                <div class="row" *ngIf="revision.status=='diagnosticated'">
                   <div class="col-sm-12">
-                    <button mat-raised-button color="primary" class="mr-3" (click)="onRegisterDiagnosis()">Registrar</button>
-                    <button mat-raised-button color="primary" class="mr-3" (click)="onRejectDiagnosis()">Rechazar</button>
+                    <button mat-raised-button color="warn" class="mr-3" (click)="onRejectDiagnosis(revision.id)">Rechazar</button>
+                    <button mat-raised-button color="primary" class="mr-3" [routerLink]="['/auth/lender/budget/detail',revision.id]">Presupuestar</button>
                   </div>
                 </div>
-
+                
               </div>
             </div>
+            
+
             <br>
           </mat-card-content>
 
@@ -73,8 +86,6 @@
     </div>
 
     <br>
-
-    
 
   </div>
 </div>

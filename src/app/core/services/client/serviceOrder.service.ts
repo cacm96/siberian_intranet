@@ -41,6 +41,9 @@ export class ServiceOrderService extends HeaderService{
 	getServiceOrderUser(userid:any): Observable<any>{
 		return this.http.get(this.url+"/user/"+userid, {headers: this.header});
 	}
+	getServiceOrderLender(lenderid:any): Observable<any>{
+		return this.http.get(this.url+"/lender/"+lenderid, {headers: this.header});
+	}
 
 	approve(id): Observable<any>{
 		return this.http.put(this.url+'/'+id+'/approve', {}, {headers: this.header});
@@ -50,7 +53,7 @@ export class ServiceOrderService extends HeaderService{
 		return this.http.put(this.url+'/'+id+'/warranty', {}, {headers: this.header});
 	}
 
-	reject(id): Observable<any>{
+	rejected(id,motive,note): Observable<any>{
 		return this.http.put(this.url+'/'+id+'/reject', {}, {headers: this.header});
 	}
 

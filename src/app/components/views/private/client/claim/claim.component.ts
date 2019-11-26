@@ -5,14 +5,14 @@ import {MatTableDataSource} from '@angular/material/table';
 import { DialogService } from '../../../../../core/services/dialog.service';
 import { SnackBarService } from '../../../../../core/services/snack-bar.service';
 
-export interface ClaimData {
-  id: string;
-  equipinfra: string;
-  address: string;
-  date_end: string;
-  lender: string;
-  status: string;
-}
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import {Location} from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Global } from 'src/app/core/services/global';
+import { ServiceOrder } from 'src/app/models/serviceOrder';
+import { ServiceOrderService } from 'src/app/core/services/client/serviceOrder.service';
+
+
 
 @Component({
   selector: 'sib-claim',
@@ -21,38 +21,92 @@ export interface ClaimData {
 })
 export class ClaimComponent implements OnInit {
 
-  public claim: any [];
-  displayedColumns: string[] = ['id', 'equipinfra', 'address', 'date_end', 'lender', 'status', 'claim'];
-  dataSource: MatTableDataSource<ClaimData>;
+  public serviceOrder:any;
+  public serviceOrders: Array < ServiceOrder > = new Array < ServiceOrder > ();
+  public total:number=0;
+  public userID:string;
+  public message:string;
+  public failedConect:string;
+
+  displayedColumns: string[] = ['id','equipinfras','amount','warrantyTime','serviceDetails','status','claim'];
+  dataSource: MatTableDataSource<ServiceOrder>; //,'revision','serviceDetails'
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+
   constructor
   (
-    private dialogService: DialogService,
-    private snackBar: SnackBarService
+     private dialogService: DialogService,
+    private snackBar: SnackBarService,
+    private _serviceOrderService: ServiceOrderService,
+    private _route: ActivatedRoute,
+    private _router: Router,
+    private _location: Location
   ) 
   { 
-    this.claim = [
-      {id: '1' , equipinfra: 'Lavadora', address: 'Av. Rotaria', lender: 'Maria Moreno', date_end: '31-08-2019', status: 'finalized',},
-      {id: '1' , equipinfra: 'Aire Acondicionado', address: 'Urb. Los Libertadores', lender: 'Maria Moreno', date_end: '30-09-2019', status: 'finalized',},
-      {id: '1' , equipinfra: 'Lavadora', address: 'Av. Rotaria', lender: 'Maria Moreno', date_end: '31-05-2020', status: 'finalized',},
-    ];
-
-    this.dataSource = new MatTableDataSource(this.claim);
   }
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this.userID = localStorage.getItem('resID');
+    this.getServiceOrder(this.userID);
   }
 
-  applyFilter(filterValue: string) {
+  getServiceOrder(userID)
+  {
+    this._serviceOrderService.getServiceOrderUser(userID).subscribe
+    (
+      response =>
+      {
+        if (response.status==true)
+        {
+          this.serviceOrders = response.serviceOrders;
+          this.serviceOrders= this.serviceOrders.filter(serviceOrder=>{return serviceOrder.status =="finalized" || serviceOrder.status =="warranty"|| serviceOrder.status =="approved"});
+          this.total = this.serviceOrders.length;
+          console.log(this.serviceOrders);
+          this.table();
+        }
+        else
+        {
+          this.serviceOrders = [];
+          this.message = response.message.text;
+          console.log(this.message);
+          this.table();
+        }
+
+      },
+      error =>
+      {
+        console.log(<any>error);
+        if(error instanceof HttpErrorResponse)
+        {
+          if(error.status===0)
+          {
+            this.failedConect = Global.failed;
+          }
+        }
+      }
+      )
+  }
+
+
+  applyFilter(filterValue: string)
+  {
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  table()
+  {
+    this.serviceOrders = this.snackBar.orderByDateAsc(this.serviceOrders);
+    this.dataSource = new MatTableDataSource(this.serviceOrders);
+    this.dataSource.paginator = this.paginator;
+  }
+  goBack()
+  { 
+    this._location.back(); 
   }
 
 }

@@ -1,76 +1,60 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import { DialogService } from '../../../../../../../core/services/dialog.service';
-import { SnackBarService } from '../../../../../../../core/services/snack-bar.service';
-
-export interface CompanyData {
-  id: string;
-  rif: string;
-  name: string;
-  mision: string;
-  vision: string;
-  aboutUs: string;
-  address: string;
-  phoneOne: string;
-  phoneTwo: string;
-  imageUrl: string;
-  facebook: string;
-  instagram: string;
-  twitter: string;
-}
+import { Component, OnInit } from '@angular/core';
+import {NgForm} from '@angular/forms';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import {Location} from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Global } from 'src/app/core/services/global';
+import { Company } from 'src/app/models/company';
+import { CompanyService } from 'src/app/core/services/admin/company.service';
 
 @Component({
   selector: 'sib-companies',
   templateUrl: './companies.component.html',
   styleUrls: ['./companies.component.scss']
 })
-export class CompaniesComponent implements OnInit {
+export class CompaniesComponent implements OnInit
+{
 
-  public company:any[];
-  displayedColumns: string[] = ['id','rif','name','mision','vision','aboutUs','address','phoneOne','phoneTwo','edit','delete'];
-  dataSource: MatTableDataSource<CompanyData>;
+  public company:any;
+  public message:string;
+  public failedConect:string;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-
-  constructor(
-    private dialogService: DialogService,
-    private snackBar: SnackBarService
+  constructor
+  (
+    private _companyService: CompanyService,
+    private _route: ActivatedRoute,
+    private _router: Router,
+    private _location: Location
     )
-     { 
-      this.company = [
-        {id:"1",rif:"j-012285524",name:"Se hace de todo",mision:"misión",vision:"visión",aboutUs:"¿Quiénes somos?",address:"carrera 20 con calle 20",phoneOne:"0251 1112233",phoneTwo:"0251 4445566"},
-      ];
-  
-    this.dataSource = new MatTableDataSource(this.company);
-     }
-
-  ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+  {
   }
 
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+  ngOnInit()
+  {
+    this.getCompanies();
   }
 
-  onDelete(id){
-    this.dialogService.openConfirmDialog('¿Estás seguro de eliminar la Empresa'+id+' ?').afterClosed().subscribe(res=>{
-      if (res==true) {
-        console.log(id);
-        this.snackBar.openSnackBar('Eliminado Correctamente','¿Deshacer?').onAction().subscribe(() => {
-          console.log('Recuperado');
-        });
-      }else{
-        console.log(res);
+  getCompanies()
+  {
+    this._companyService.All().subscribe
+    (
+      response =>
+      {
+        this.company = response.company;
+        console.log(this.company);
+      },
+      error =>
+      {
+        console.log(<any>error);
+        if(error instanceof HttpErrorResponse)
+        {
+          if(error.status===0)
+          {
+            this.failedConect = Global.failed;
+          }
+        }
       }
-    });
+      )
   }
 }
 

@@ -5,6 +5,8 @@ import { AdminComponent } from './admin.component';
 import { BackupComponent } from './backup/backup.component';
 import { RestoreComponent } from './restore/restore.component';
 import { ReportComponent } from './report/report.component';
+import { ReportStructuredComponent } from './report-structured/report-structured.component';
+import { ReportStatisticalComponent } from './report-statistical/report-statistical.component';
 
 const routes: Routes = [
 
@@ -13,6 +15,9 @@ const routes: Routes = [
 	{path: 'backup', component: BackupComponent, canActivate: []},
 	{path: 'restore', component: RestoreComponent, canActivate: []},
 	{path: 'report', component: ReportComponent, canActivate: []},
+	{path: 'reportStructured', component: ReportStructuredComponent, canActivate: []},
+	{path: 'reportStatistical', component: ReportStatisticalComponent, canActivate: []},
+	
 	
 	{path: 'dashboard', canActivate: [],
 		children:

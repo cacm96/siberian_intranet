@@ -6,6 +6,8 @@ import { AdminComponent } from './admin.component';
 import { BackupComponent } from './backup/backup.component';
 import { RestoreComponent } from './restore/restore.component';
 import { ReportComponent } from './report/report.component';
+import { ReportStructuredComponent } from './report-structured/report-structured.component';
+import { ReportStatisticalComponent } from './report-statistical/report-statistical.component';
 
 @NgModule({
   declarations:
@@ -14,6 +16,8 @@ import { ReportComponent } from './report/report.component';
   	BackupComponent,
   	RestoreComponent,
   	ReportComponent,
+  	ReportStructuredComponent,
+  	ReportStatisticalComponent,
   ],
   imports: [
     CommonModule,

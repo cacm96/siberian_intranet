@@ -1,12 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {NgForm} from '@angular/forms';
+
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import {Location} from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Global } from '../../../../../../../../core/services/global';
+
 import { Activity } from '../../../../../../../../models/activity';
 import { ActivityService } from '../../../../../../../../core/services/admin/activity.service';
-import { SnackBarService } from '../../../../../../../../core/services/snack-bar.service';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'sib-activity-show',
@@ -16,15 +20,21 @@ import { SnackBarService } from '../../../../../../../../core/services/snack-bar
 export class ActivityShowComponent implements OnInit {
 
   public activity:Activity;
-	public message:string;
+  public arrayActivity:any;
+  public message:string;
   public failedConect:string;
+
+  displayedColumnsA: string[] = ['name','description','estimatedTime','difficultyDegree'];
+  dataSourceA: MatTableDataSource<Activity>;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     private _activityService: ActivityService,
 		private _route: ActivatedRoute,
 		private _router: Router,
-		private _location: Location,
-    private snackBar: SnackBarService
+		private _location: Location
   ) { }
 
   ngOnInit() {
@@ -45,8 +55,20 @@ export class ActivityShowComponent implements OnInit {
 		(
 			response =>
 			{
-        this.activity = response.activity;
-        console.log(this.activity);
+				if (response.status==true)
+				{
+				console.log("Que trae response: ",response)
+				this.activity = response.activity;
+				this.arrayActivity = [];
+				this.arrayActivity.push(this.activity);
+				console.log(this.arrayActivity);
+
+				this.table();
+				}
+				else
+				{
+					this.table();
+				}
 			},
 			error =>
 			{
@@ -61,6 +83,13 @@ export class ActivityShowComponent implements OnInit {
 			}
 		)
 	}
+
+
+	table()
+	{
+		this.dataSourceA = new MatTableDataSource(this.arrayActivity);
+	}
+
 	goBack(){
 		this._location.back();
 	  }

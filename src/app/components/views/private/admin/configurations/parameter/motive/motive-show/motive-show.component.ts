@@ -1,12 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+
 import {NgForm} from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import {Location} from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Global } from '../../../../../../../../core/services/global';
-import { Motive } from '../../../../../../../../models/motive';
-import { MotiveService } from '../../../../../../../../core/services/admin/motive.service';
-import { SnackBarService } from '../../../../../../../../core/services/snack-bar.service';
+import { Global } from 'src/app/core/services/global';
+import { SnackBarService } from 'src/app/core/services/snack-bar.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { DialogService } from 'src/app/core/services/dialog.service';
+import { MatPaginator } from '@angular/material/paginator';
+
+import { Motive } from 'src/app/models/motive';
+import { MotiveService } from 'src/app/core/services/admin/motive.service';
 
 @Component({
   selector: 'sib-motive-show',
@@ -16,9 +21,15 @@ import { SnackBarService } from '../../../../../../../../core/services/snack-bar
 export class MotiveShowComponent implements OnInit {
 
 	public motive:Motive;
-	public subcategories:any;
+	public arrayMotive:any;
 	public message:string;
   	public failedConect:string;
+
+  	displayedColumns: string[] = ['name','description','status'];
+	dataSource: MatTableDataSource<Motive>;
+
+	@ViewChild(MatPaginator) paginator: MatPaginator;
+
 
 	constructor
 	(
@@ -51,7 +62,10 @@ export class MotiveShowComponent implements OnInit {
 			response =>
 			{
 				this.motive = response.motive;
-				console.log(this.motive);
+				this.arrayMotive = [];
+				this.arrayMotive.push(this.motive);
+				console.log(this.arrayMotive);
+				this.table();
 			},
 			error =>
 			{
@@ -65,6 +79,26 @@ export class MotiveShowComponent implements OnInit {
 				}
 			}
 		)
+	}
+
+	applyFilter(filterValue: string)
+	{
+		this.dataSource.filter = filterValue.trim().toLowerCase();
+
+		if (this.dataSource.paginator) {
+			this.dataSource.paginator.firstPage();
+		}
+	}
+
+	table()
+	{
+		this.dataSource = new MatTableDataSource(this.arrayMotive);
+		this.dataSource.paginator = this.paginator;
+	}
+
+	goBack()
+	{
+		this._location.back();
 	}
 
 }

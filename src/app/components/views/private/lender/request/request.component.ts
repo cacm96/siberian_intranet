@@ -12,7 +12,6 @@ import { Global } from 'src/app/core/services/global';
 import { Revision } from 'src/app/models/revision';
 import { RevisionService } from 'src/app/core/services/client/revision.service';
 
-
 @Component({
 	selector: 'sib-request',
 	templateUrl: './request.component.html',
@@ -27,7 +26,7 @@ export class RequestComponent implements OnInit {
 	public message:string;
 	public failedConect:string;
 
-	displayedColumns: string[] = ['id','client','equipinfras','location','date','status','approved','rejected'];
+	displayedColumns: string[] = ['id','equipinfras','client','description','location','date','status','approved','rejected'];
 	dataSource: MatTableDataSource<Revision>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
@@ -99,6 +98,7 @@ export class RequestComponent implements OnInit {
 
 	table()
 	{
+		this.revisions = this.snackBar.orderByDateAsc(this.revisions);
 		this.dataSource = new MatTableDataSource(this.revisions);
 		this.dataSource.paginator = this.paginator;
 		this.dataSource.sort = this.sort;

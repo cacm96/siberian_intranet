@@ -10,6 +10,8 @@ import { CalificationComponent } from './calification/calification.component';
 import { CalificationDetailComponent } from './calification-detail/calification-detail.component';
 import { IncidenceComponent } from './incidence/incidence.component';
 import { ServiceDetailComponent } from './service-detail/service-detail.component';
+import { BudgetComponent } from './budget/budget.component';
+import { BudgetDetailComponent } from './budget-detail/budget-detail.component';
 
 const routes: Routes = [
 
@@ -18,6 +20,8 @@ const routes: Routes = [
 	{path: 'dashboard', component: DashboardComponent, canActivate: []},
 	{path: 'service', component: ServiceComponent, canActivate: []},
 	{path: 'service/detail/:id', component: ServiceDetailComponent, canActivate: []},
+	{path: 'budget', component:BudgetComponent, canActivate: []},
+    {path: 'budget/detail/:id', component: BudgetDetailComponent, canActivate: []},
 	{path: 'suggestion', component: SuggestionComponent, canActivate: []},
 	{path: 'incidence', component: IncidenceComponent, canActivate: []},
 	{path: 'calification', component: CalificationComponent, canActivate: []},

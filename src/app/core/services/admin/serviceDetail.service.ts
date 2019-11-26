@@ -32,6 +32,7 @@ export class ServiceDetailService extends HeaderService{
 	}
 
     update(serviceDetail:any): Observable<any>{
+		console.log(serviceDetail);
 		let params = JSON.stringify(serviceDetail);
 		console.log(params);
 		return this.http.put(this.url+'/'+serviceDetail.id, params, {headers: this.header});
@@ -39,6 +40,22 @@ export class ServiceDetailService extends HeaderService{
 
 	deleteOne(id): Observable<any>{
 		return this.http.delete(this.url+'/'+id, {headers: this.header});
+	}
+
+	addActivity(serviceId:any,activities:any): Observable<any>{
+		return this.http.put(this.url+'/'+serviceId, {activities: activities}, {headers: this.header});
+	}
+
+	addPolicy(serviceId:any,policies:any): Observable<any>{
+		return this.http.put(this.url+'/'+serviceId, {policies: policies}, {headers: this.header});
+	}
+
+	addResource(serviceId:any,resources:any): Observable<any>{
+		return this.http.put(this.url+'/'+serviceId, {resources: resources}, {headers: this.header});
+	}
+
+	addSkill(serviceId:any,skills:any): Observable<any>{
+		return this.http.put(this.url+'/'+serviceId, {skills: skills}, {headers: this.header});
 	}
 
 }

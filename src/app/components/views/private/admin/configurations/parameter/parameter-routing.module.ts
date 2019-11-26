@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { ParameterComponent } from './parameter.component';
 import { ParametersComponent } from './parameters/parameters.component';
-import { ParameterClientComponent } from './parameter-client/parameter-client.component';
 
 const routes: Routes = [
 
@@ -11,31 +10,66 @@ const routes: Routes = [
 		children:
 		[
 			{path: '', component: ParametersComponent},
-			{path: 'parameter', canActivate: [],
+			{path: 'promotion', canActivate: [],
 				children:
 				[
 					{
 						path: '',
-		                loadChildren: '../parameter/parameter/parameter.module#ParameterModule',
+		                loadChildren: './promotion/promotion.module#PromotionModule',
 					}
 				]
 			},
-			{path: 'parameter-client', canActivate: [],
+			{path: 'parametro', canActivate: [],
 				children:
 				[
 					{
 						path: '',
-		                loadChildren: './parameter-client/parameter-client.module#ParameterClientModule',
+		                loadChildren: './parametro/parametro.module#ParametroModule',
 					}
 				]
 			},
-
+			{path: 'group', canActivate: [],
+				children:
+				[
+					{
+						path: '',
+		                loadChildren: './group/group.module#GroupModule',
+					}
+				]
+			},
+			{path: 'promotion-target', canActivate: [],
+				children:
+				[
+					{
+						path: '',
+		                loadChildren: './promotion-target/promotion-target.module#PromotionTargetModule',
+					}
+				]
+			},
 			{path: 'motive', canActivate: [],
 				children:
 				[
 					{
 						path: '',
 		                loadChildren: './motive/motive.module#MotiveModule',
+					}
+				]
+			},
+			{path: 'question', canActivate: [],
+				children:
+				[
+					{
+						path: '',
+		                loadChildren: './question/question.module#QuestionModule',
+					}
+				]
+			},
+			{path: 'notification', canActivate: [],
+				children:
+				[
+					{
+						path: '',
+		                loadChildren: './notification/notification.module#NotificationModule',
 					}
 				]
 			},

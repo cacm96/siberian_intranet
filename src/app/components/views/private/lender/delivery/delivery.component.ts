@@ -6,19 +6,12 @@ import { DialogService } from '../../../../../core/services/dialog.service';
 import { SnackBarService } from '../../../../../core/services/snack-bar.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import {Location} from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Global } from 'src/app/core/services/global';
+import { ServiceOrder } from 'src/app/models/serviceOrder';
+import { ServiceOrderService } from 'src/app/core/services/client/serviceOrder.service';
 
-export interface DeliveryData {
-  id: string;
-  client:string;
-  equipinfras: string;
-  code: string;
-  date: string;
-  amount: string;
-  startdate: string;
-  enddate: string;
-  services: string;
-  status: string;
-  }
+
 @Component({
   selector: 'sib-delivery',
   templateUrl: './delivery.component.html',
@@ -26,45 +19,92 @@ export interface DeliveryData {
 })
 export class DeliveryComponent implements OnInit {
 
-  public Delivery:any[];
-displayedColumns: string[] = ['id','client','equipinfras','code','amount','startdate','enddate','services','status'];
-  dataSource: MatTableDataSource<DeliveryData>;
+  public serviceOrder:any;
+  public serviceOrders: Array < ServiceOrder > = new Array < ServiceOrder > ();
+  public total:number=0;
+  public userID:string;
+  public message:string;
+  public failedConect:string;
+
+  displayedColumns: string[] = ['id','equipinfras','amount','warrantyTime','serviceDetails','status'];
+  dataSource: MatTableDataSource<ServiceOrder>; //,'revision','serviceDetails'
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
   
-@ViewChild(MatPaginator) paginator: MatPaginator;
-@ViewChild(MatSort) sort: MatSort;
   constructor(
     private dialogService: DialogService,
     private snackBar: SnackBarService,
+    private _serviceOrderService: ServiceOrderService,
     private _route: ActivatedRoute,
-		private _router: Router,
-		private _location: Location
+    private _router: Router,
+    private _location: Location
   ) 
   {
-    this.Delivery= [
-      {id:"1" ,client: "Anderson Diaz",equipinfras:"Lavadora",code:"1000",amount:"50000",startdate:"12-11-2019",enddate:"13-11-2019",services:"2",status:"finalized",},
-      {id:"2" ,client: "Anderson Diaz",equipinfras:"Cocina",code:"2000",amount:"100000",startdate:"12-11-2019",enddate:"14-11-2019",services:"3",status:"finalized",},
-    ];
-
-  this.dataSource = new MatTableDataSource(this.Delivery);
    }
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this.userID = localStorage.getItem('resID');
+    this.getServiceOrder(this.userID);
   }
 
-  applyFilter(filterValue: string) {
-		this.dataSource.filter = filterValue.trim().toLowerCase();
+  getServiceOrder(userID)
+  {
+    this._serviceOrderService.getServiceOrderUser(userID).subscribe
+    //this._serviceOrderService.getServiceOrderLender(userID).subscribe
+    (
+      response =>
+      {
+        if (response.status==true)
+        {
+          this.serviceOrders = response.serviceOrders;
+          this.serviceOrders= this.serviceOrders.filter(serviceOrder=>{return serviceOrder.status =="approved" || serviceOrder.status =="completed"});
+          this.total = this.serviceOrders.length;
+          console.log(this.serviceOrders);
+          this.table();
+        }
+        else
+        {
+          this.serviceOrders = [];
+          this.message = response.message.text;
+          console.log(this.message);
+          this.table();
+        }
 
-		if (this.dataSource.paginator) {
-		  this.dataSource.paginator.firstPage();
-		}
-	}
+      },
+      error =>
+      {
+        console.log(<any>error);
+        if(error instanceof HttpErrorResponse)
+        {
+          if(error.status===0)
+          {
+            this.failedConect = Global.failed;
+          }
+        }
+      }
+      )
+  }
 
-	
+
+  applyFilter(filterValue: string)
+  {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  table()
+  {
+    this.serviceOrders = this.snackBar.orderByDateAsc(this.serviceOrders);
+    this.dataSource = new MatTableDataSource(this.serviceOrders);
+    this.dataSource.paginator = this.paginator;
+  }
+
   goBack()
-	{ 
-		this._location.back(); 
-	}
-
+  { 
+    this._location.back(); 
+  }
 }

@@ -15,6 +15,7 @@ import { SubCategoryCreateComponent } from './sub-category-create/sub-category-c
 import { SubCategoryEditComponent } from './sub-category-edit/sub-category-edit.component';
 import { SubCategoryShowComponent } from './sub-category-show/sub-category-show.component';
 import { SubCategoryDeleteComponent } from './sub-category-delete/sub-category-delete.component';
+import { AddEquipInfrasComponent } from './add-equip-infras/add-equip-infras.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SubCategoryDeleteComponent } from './sub-category-delete/sub-category-d
 	SubCategoryCreateComponent,
 	SubCategoryEditComponent,
 	SubCategoryShowComponent,
-	SubCategoryDeleteComponent
+	SubCategoryDeleteComponent,
+	AddEquipInfrasComponent
   ],
   imports: [
     CommonModule,

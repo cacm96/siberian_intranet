@@ -1,7 +1,3 @@
-.mat-stepper-horizontal, .mat-stepper-vertical{
-  background-color: #f2f2f2 !important;
-}
-
 .mat-card{
   display: inline-block;
   width:100%;
@@ -117,4 +113,21 @@ a{
 
 .addLocation:hover,.addPhone:hover{
   color: blue !important;
+}
+
+.mat-card-header .mat-card-title{
+  margin:0 !important;
+}
+.mat-card{
+  padding: 0 !important;
+}
+.titulo.lenderOption{
+  padding: 1rem !important;
+}
+
+input[type="file"] {
+    
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
 }

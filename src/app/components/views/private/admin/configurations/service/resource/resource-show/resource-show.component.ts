@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import {Location} from '@angular/common';
@@ -8,6 +8,11 @@ import { Resource } from '../../../../../../../../models/resource';
 import { ResourceService } from '../../../../../../../../core/services/admin/resource.service';
 import { SnackBarService } from '../../../../../../../../core/services/snack-bar.service';
 
+
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+
 @Component({
   selector: 'sib-resource-show',
   templateUrl: './resource-show.component.html',
@@ -16,8 +21,16 @@ import { SnackBarService } from '../../../../../../../../core/services/snack-bar
 export class ResourceShowComponent implements OnInit {
 
 	public resource:Resource;
+	public arrayResource: any;
 	public message:string;
   	public failedConect:string;
+
+	displayedColumns: string[] = ['name','description','resourceType','measureUnit','price','status','serviceDetails'];
+	dataSource: MatTableDataSource<Resource>;
+	
+	@ViewChild(MatPaginator) paginator: MatPaginator;
+	@ViewChild(MatSort) sort: MatSort;
+	
 
 	constructor
 	(
@@ -49,6 +62,9 @@ export class ResourceShowComponent implements OnInit {
 			response =>
 			{
 				this.resource = response.resource;
+				this.arrayResource = [];
+				this.arrayResource.push(this.resource);
+				this.table();
 			},
 			error =>
 			{
@@ -62,6 +78,11 @@ export class ResourceShowComponent implements OnInit {
 				}
 			}
 		)
+	}
+
+	table()
+	{
+		this.dataSource = new MatTableDataSource(this.arrayResource);
 	}
 
 	goBack(){

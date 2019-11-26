@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CategoryService } from 'src/app/core/services/admin/category.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from 'src/app/core/services/token-interceptor.service';
+import { SubcategoryService } from 'src/app/core/services/admin/subcategory.service';
 
 import { CategoryRoutingModule } from './category-routing.module';
 import { CategoryComponent } from './category.component';
@@ -14,6 +15,7 @@ import { CategoryCreateComponent } from './category-create/category-create.compo
 import { CategoryEditComponent } from './category-edit/category-edit.component';
 import { CategoryShowComponent } from './category-show/category-show.component';
 import { CategoryDeleteComponent } from './category-delete/category-delete.component';
+import { AddSubcategoryComponent } from './add-subcategory/add-subcategory.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { CategoryDeleteComponent } from './category-delete/category-delete.compo
   	CategoryCreateComponent,
   	CategoryEditComponent,
   	CategoryShowComponent,
-  	CategoryDeleteComponent
+  	CategoryDeleteComponent,
+  	AddSubcategoryComponent
   ],
   imports: [
     CommonModule,
@@ -33,6 +36,8 @@ import { CategoryDeleteComponent } from './category-delete/category-delete.compo
   providers:
   [
     CategoryService,
+    SubcategoryService,
+    
     {
       provide: HTTP_INTERCEPTORS,
       useClass : TokenInterceptorService,

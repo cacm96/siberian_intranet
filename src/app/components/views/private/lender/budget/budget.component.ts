@@ -1,73 +1,110 @@
-import { Component, OnInit , ViewChild} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
-import { DialogService } from '../../../../../core/services/dialog.service';
-import { SnackBarService } from '../../../../../core/services/snack-bar.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { DialogService } from 'src/app/core/services/dialog.service';
+import { SnackBarService } from 'src/app/core/services/snack-bar.service';
+
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import {Location} from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Global } from 'src/app/core/services/global';
+import { Revision } from 'src/app/models/revision';
+import { RevisionService } from 'src/app/core/services/client/revision.service';
 
-export interface BudgetData {
-  id: string;
-  client:string;
-  equipinfras: string;
-  location: string;
-  date: string;
-  lender: string;
-  status: string;
-  }
-  
 @Component({
   selector: 'sib-budget',
   templateUrl: './budget.component.html',
   styleUrls: ['./budget.component.scss']
 })
 export class BudgetComponent implements OnInit {
+  public revision:any;
+  public revisions: Array < Revision > = new Array < Revision > ();
+  public total:number=0;
+  public userID:string;
+  public message:string;
+  public failedConect:string;
 
-  public Budget:any[];
-displayedColumns: string[] = ['id','client','equipinfras','location','date','lender','status'];
-  dataSource: MatTableDataSource<BudgetData>;
-  
-@ViewChild(MatPaginator) paginator: MatPaginator;
-@ViewChild(MatSort) sort: MatSort;
-  
-  
-  
-  constructor(
+  displayedColumns: string[] = ['id','equipinfras','client','location','date','status'];
+  dataSource: MatTableDataSource<Revision>;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+  constructor
+  (
     private dialogService: DialogService,
     private snackBar: SnackBarService,
+    private _revisionService: RevisionService,
     private _route: ActivatedRoute,
-		private _router: Router,
-		private _location: Location
-    ) 
-    {
-
-      this.Budget= [
-        {id:"1" ,client:"Anderson diaz",equipinfras:"Lavadora",location:"Calle San Rafael",date:"10-11-2019",lender:"Maria Moreno",status:"diagnosticated",},
-	      {id:"2" ,client:"Anderson diaz",equipinfras:"Cocina",location:"Calle San Rafael",date:"11-11-2019",lender:"Maria Moreno",status:"finalized",},
-        {id:"1" ,client:"Anderson Diaz",equipinfras:"Aire Acondicionado",location:"Calle San Rafael",date:"11-11-2019",lender:"Maria Moreno",status:"finalized",},
-      ];
-  
-    this.dataSource = new MatTableDataSource(this.Budget);
-   }
+    private _router: Router,
+    private _location: Location
+    )
+  {
+  }
 
   ngOnInit() {
+    this.userID = localStorage.getItem('resID');
+    this.getRevisions(this.userID);
+  }
+
+  getRevisions(userID)
+  {
+    this._revisionService.getRevisionLender(userID).subscribe
+    (
+      response =>
+      {
+        if (response.status==true)
+        {
+          this.revisions = response.revisions;
+          this.revisions = this.revisions.filter(revision=>{return revision.status =="diagnosticated" || revision.status =="finalized"});
+          this.total = this.revisions.length;
+          console.log(this.revisions);
+          this.table();
+        }
+        else
+        {
+          this.revisions = [];
+          this.message = response.message.text;
+          console.log(this.message);
+          this.table();
+        }
+
+      },
+      error =>
+      {
+        console.log(<any>error);
+        if(error instanceof HttpErrorResponse)
+        {
+          if(error.status===0)
+          {
+            this.failedConect = Global.failed;
+          }
+        }
+      }
+      )
+  }
+
+  applyFilter(filterValue: string)
+  {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  table()
+  {
+    this.revisions = this.snackBar.orderByDateAsc(this.revisions);
+    this.dataSource = new MatTableDataSource(this.revisions);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
 
-  applyFilter(filterValue: string) {
-		this.dataSource.filter = filterValue.trim().toLowerCase();
-
-		if (this.dataSource.paginator) {
-		  this.dataSource.paginator.firstPage();
-		}
-	}
-
-	
   goBack()
-	{ 
-		this._location.back(); 
-	}
+  {
+    this._location.back();
+  }
 }
 

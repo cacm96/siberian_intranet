@@ -7,6 +7,7 @@ import { ComponentCreateComponent } from './component-create/component-create.co
 import { ComponentEditComponent } from './component-edit/component-edit.component';
 import { ComponentShowComponent } from './component-show/component-show.component';
 import { ComponentDeleteComponent } from './component-delete/component-delete.component';
+import { AddServiceDetailComponent } from './add-service-detail/add-service-detail.component';
 
 const routes: Routes = [
 
@@ -17,7 +18,8 @@ const routes: Routes = [
 			{path: 'create', component: ComponentCreateComponent},
 			{path: 'edit/:id', component: ComponentEditComponent},
 			{path: 'show/:id', component: ComponentShowComponent},
-			{path: 'delete/:id', component: ComponentDeleteComponent}
+			{path: 'delete/:id', component: ComponentDeleteComponent},
+			{path: ':id/addServiceDetail',component: AddServiceDetailComponent }
 		]
 	},
 
