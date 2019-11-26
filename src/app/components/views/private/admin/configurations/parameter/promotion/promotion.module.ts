@@ -13,6 +13,7 @@ import { PromotionCreateComponent } from './promotion-create/promotion-create.co
 import { PromotionEditComponent } from './promotion-edit/promotion-edit.component';
 import { PromotionShowComponent } from './promotion-show/promotion-show.component';
 import { PromotionDeleteComponent } from './promotion-delete/promotion-delete.component';
+import { DiffusionComponent } from './diffusion/diffusion.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PromotionDeleteComponent } from './promotion-delete/promotion-delete.co
 	PromotionCreateComponent,
 	PromotionEditComponent,
 	PromotionShowComponent,
-	PromotionDeleteComponent
+	PromotionDeleteComponent,
+	DiffusionComponent
   ],
   imports: [
     CommonModule,
