@@ -6,7 +6,6 @@
       <div class="col-sm-12">
         <h4 class="titulo text-center">
           Solicitud
-          
           <span *ngIf="revision.status=='requested'" class="badge badge-dark">Solicitada</span>
           <span *ngIf="revision.status=='approved'" class="badge badge-primary">Aprobada</span>
           <span *ngIf="revision.status=='rejected'" class="badge badge-danger">Rechazada</span>
@@ -14,7 +13,6 @@
           <span *ngIf="revision.status=='irreparable'" class="badge badge-danger">Irreparable</span>
           <span *ngIf="revision.status=='finalized'" class="badge badge-success">Finalizada</span>
           <span *ngIf="revision.status=='cancelled'" class="badge badge-success">Cancelada</span>
-
         </h4>
       </div>
     </div>
@@ -22,7 +20,7 @@
     <div class="row">
       <div class="col-sm-12">
         <button mat-raised-button matTooltip="Volver" matTooltipPosition="above" color="primary" (click)="goBack()"><mat-icon>arrow_back</mat-icon></button>
-      </div>  
+      </div> 
     </div>
 
     <hr>
@@ -70,6 +68,32 @@
     </div>
 
     <br>
+    <div class="row">
+        <div class="col-sm-12">
+          <mat-card>
+            <mat-card-header class="titulo border-top-danger">
+              <mat-card-title>
+                Diagnostico
+              </mat-card-title>
+            </mat-card-header>
+
+            <div class="row">
+                <div class="ml-3">
+                  <mat-list>
+                    <div *ngFor="let b of revision.bitacoras">
+                      <div *ngIf="b.eventType=='execution'">
+                        <mat-list-item>
+                          <h4 mat-line><b>Diagnostico: </b> {{ b.description }} </h4>
+                          <h4 mat-line><b>Motivo: </b> {{ b.motive.name }} - {{ b.motive.description }}</h4>
+                        </mat-list-item>
+                      </div>
+                    </div>
+                  </mat-list>
+                  </div>
+            </div>
+          </mat-card>
+        </div>
+        </div>
 
     <div class="row">
       <div class="col-sm-12">

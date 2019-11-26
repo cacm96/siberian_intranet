@@ -63,7 +63,7 @@ export class BudgetDetailComponent implements OnInit
       response =>
       {
         this.serviceOrder = response.serviceOrder;
-        console.log(this.serviceOrder);
+        console.log("serviceOrder", this.serviceOrder);
       },
       error =>
       {
