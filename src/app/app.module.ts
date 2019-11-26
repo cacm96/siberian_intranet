@@ -45,6 +45,7 @@ import { DateDialogComponent } from './components/shared/date-dialog/date-dialog
 import { ReportStatisticalFilterDialogComponent } from './components/shared/report-statistical-filter-dialog/report-statistical-filter-dialog.component';
 
 import { EquipinfrasService } from 'src/app/core/services/admin/equipinfras.service';
+import { HomeSuperComponent } from './components/views/private/super/home-super/home-super.component';
 
 
 @NgModule({
@@ -72,6 +73,7 @@ import { EquipinfrasService } from 'src/app/core/services/admin/equipinfras.serv
     RejectedDiagnosisDialogComponent,
     DateDialogComponent,
     ReportStatisticalFilterDialogComponent,
+    HomeSuperComponent,
   ],
   imports: [
     CommonModule,

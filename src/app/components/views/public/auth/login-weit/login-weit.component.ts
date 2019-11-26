@@ -27,6 +27,8 @@ export class LoginWeitComponent implements OnInit {
 			window.location.replace(actualRoute+'/auth/lender/dashboard');
 		else if (this.role=="1")
 			window.location.replace(actualRoute+'/auth/admin/dashboard');
+		else if (this.role=="4")
+			window.location.replace(actualRoute+'/auth/super');
 		else
 			window.location.replace(actualRoute+'/auth');
 

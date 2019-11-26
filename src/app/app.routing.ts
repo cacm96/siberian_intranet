@@ -12,6 +12,7 @@ import { ErrorComponent } from './components/shared/error/error.component';
 import { BlockComponent } from './components/shared/block/block.component';
 import { HomeComponent } from './components/shared/home/home.component';
 import { RegisterComponent } from './components/views/public/auth/register/register.component';
+import { HomeSuperComponent } from './components/views/private/super/home-super/home-super.component';
 
 const routes: Routes =
 [
@@ -24,8 +25,10 @@ const routes: Routes =
 	{path: 'auth', canActivate: [], component: HomeComponent,
 		children:
 		[
-			{path: '', redirectTo: 'auth', pathMatch: 'full', canActivate: []},
+			{path: '', redirectTo: 'super', pathMatch: 'full', canActivate: []},
 			{path: 'logout', component: LogoutComponent},
+
+			{path: 'super', component: HomeSuperComponent},
 
 			{path: 'client', canActivate: [],
 				children:

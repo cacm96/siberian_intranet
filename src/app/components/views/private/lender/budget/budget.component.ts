@@ -57,7 +57,7 @@ export class BudgetComponent implements OnInit {
         if (response.status==true)
         {
           this.revisions = response.revisions;
-          this.revisions = this.revisions.filter(revision=>{return revision.status =="diagnosticated" || revision.status =="finalized"});
+          this.revisions = this.revisions.filter(revision=>{return revision.status =="diagnosticated"});
           this.total = this.revisions.length;
           console.log(this.revisions);
           this.table();
