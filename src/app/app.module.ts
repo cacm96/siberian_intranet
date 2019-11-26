@@ -14,6 +14,7 @@ import { AuthService } from './core/services/public/auth.service';
 import { UserService } from './core/services/admin/user.service';
 import { MotiveService } from 'src/app/core/services/admin/motive.service';
 import { QuestionService } from 'src/app/core/services/admin/question.service';
+import { ServiceDetailService } from 'src/app/core/services/admin/serviceDetail.service';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/views/public/auth/login/login.component';
@@ -42,6 +43,9 @@ import { RejectedRequestDialogComponent } from './components/shared/rejected-req
 import { RejectedDiagnosisDialogComponent } from './components/shared/rejected-diagnosis-dialog/rejected-diagnosis-dialog.component';
 import { DateDialogComponent } from './components/shared/date-dialog/date-dialog.component';
 import { ReportStatisticalFilterDialogComponent } from './components/shared/report-statistical-filter-dialog/report-statistical-filter-dialog.component';
+
+import { EquipinfrasService } from 'src/app/core/services/admin/equipinfras.service';
+
 
 @NgModule({
   declarations: [
@@ -92,6 +96,8 @@ import { ReportStatisticalFilterDialogComponent } from './components/shared/repo
     UserService,
     MotiveService,
     QuestionService,
+    ServiceDetailService,
+    EquipinfrasService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass : TokenInterceptorService,
