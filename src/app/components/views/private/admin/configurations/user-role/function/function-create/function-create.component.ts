@@ -154,6 +154,7 @@ export class FunctionCreateComponent implements OnInit {
 				{
 					this.message = response.message.text;
 					this.messageSnackBar(this.message);
+					this.getRole(this.roleId)
 				}
 				else
 				{

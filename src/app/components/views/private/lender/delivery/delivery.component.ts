@@ -22,6 +22,7 @@ export class DeliveryComponent implements OnInit {
   public serviceOrder:any;
   public serviceOrders: Array < ServiceOrder > = new Array < ServiceOrder > ();
   public total:number=0;
+  //public lenderID:string;
   public userID:string;
   public message:string;
   public failedConect:string;
@@ -46,12 +47,15 @@ export class DeliveryComponent implements OnInit {
   ngOnInit() {
     this.userID = localStorage.getItem('resID');
     this.getServiceOrder(this.userID);
+    /*this.lenderID = localStorage.getItem('resID');
+    this.getServiceOrder(this.lenderID);*/
   }
 
   getServiceOrder(userID)
+  //getServiceOrder(lenderID)
   {
     this._serviceOrderService.getServiceOrderUser(userID).subscribe
-    //this._serviceOrderService.getServiceOrderLender(userID).subscribe
+    //this._serviceOrderService.getServiceOrderLender(lenderID).subscribe
     (
       response =>
       {

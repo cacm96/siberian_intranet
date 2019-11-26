@@ -7,13 +7,14 @@
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="qa avz">
-								<img  class="bpj" src="../../../../../../assets/img/profile/avatar.png" alt="..."/>
+								<img  class="bpj" [src]="user?.imageUrl || '../../../../../../assets/img/profile/avatar.png'" alt="..."/>
 								<h2 class="qb">
 									<h3>{{ user.firstName }} {{ user.lastName }}</h3>
 									<h6>{{ user.role.name }}</h6>
 								</h2>
 								<div class="row justify-content-center">
-									<button mat-raised-button color="accent" [routerLink]="['/auth/client/profile/show',user.id]">
+									<input #File type="file" accept="image/*" style="display:none" (change)="uploadPic($event)"/>
+									<button mat-raised-button color="accent" (click)="file.nativeElement.click()">
 										<mat-icon>photo_library</mat-icon>
 										Cambiar Foto de Perfil
 									</button>

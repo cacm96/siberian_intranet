@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import {Location} from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Global } from '../../../../../../../core/services/global';
-import { Company } from '../../../../../../../models/company';
 import { CompanyService } from '../../../../../../../core/services/admin/company.service';
 import { SnackBarService } from '../../../../../../../core/services/snack-bar.service';
 
@@ -19,6 +18,7 @@ export class CompanyEditComponent implements OnInit {
 	public updateCompany;
 	public failedConect:string;
 	public message:string;
+	@ViewChild('File') file: ElementRef;
 
 	constructor
 	(
@@ -75,6 +75,7 @@ export class CompanyEditComponent implements OnInit {
 						
 						this.message  = "Editado Correctamente";
 						this.snackBar.openSnackBar(this.message,'');
+						this._location.back();
 					}
 					else
 					{
@@ -114,6 +115,23 @@ export class CompanyEditComponent implements OnInit {
 			//this.onIsError();
 		}
 		
+	}
+
+	uploadPic(event: any) {
+		let file: File = event.target.files[0];
+		if (file) {
+			let reader = new FileReader();
+
+			reader.onload = (e: any) => {
+				this.company.imageUrl = e.target.result;
+			}
+
+			reader.onerror = (e) => {
+				console.log(e);
+			}
+
+			reader.readAsDataURL(file);
+		}
 	}
 
 }
