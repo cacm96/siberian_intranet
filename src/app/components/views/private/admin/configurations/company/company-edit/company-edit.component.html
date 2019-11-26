@@ -68,8 +68,11 @@
 												<mat-form-field>
 													<input matInput name="twitter" [(ngModel)]="company.twitter" placeholder="Twitter">
 												</mat-form-field>
-
-												<input id="fileInput" type="file" required>	
+												<input #File type="file" accept="image/*" style="display:none !important" (change)="uploadPic($event)"/>
+												<a mat-raised-button color="accent" (click)="file.nativeElement.click()">
+													<mat-icon>photo_library</mat-icon>
+													Logo de la empresa
+												</a>
 											</div>
 										</div>
 										<br>

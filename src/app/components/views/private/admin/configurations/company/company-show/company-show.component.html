@@ -46,10 +46,10 @@
                             <mat-list-item> <b>Facebook: </b>www.facebook.com/{{ company.facebook }}</mat-list-item>
                             <mat-list-item> <b>Instagram: </b>{{ company.instagram}}</mat-list-item>
                             <mat-list-item> <b>Twitter: </b> {{ company.twitter }}</mat-list-item>
-                            <mat-list-item> <b>Imagen: </b>url</mat-list-item>
-                            <mat-card class="card_img imgRequest">
-                              <mat-card-content class="mat_card_content">
-                                <img [src]="BASE_URL + company?.imageUrl || urldelafault" alt="">
+                            <mat-list-item> <b>Imagen: </b></mat-list-item>
+                            <mat-card >
+                              <mat-card-content>
+                                <img [src]="company?.imageUrl || urldelafault" alt="" width="60%" height="auto">
                               </mat-card-content>
                             </mat-card>
                         </mat-list>

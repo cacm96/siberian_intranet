@@ -29,31 +29,21 @@ export class SidenavComponent implements OnInit {
 		let id = this._authService.getID();
 		this.getUser(id);
 		this.role=this._authService.getRole();
-		this.functions = JSON.parse(localStorage.getItem('functions'))
 		//console.log(this.functions)
 	}
 
-	getUser(id)
-	{
-		this._userService.getOne(id).subscribe
-		(
-			response =>
-			{
-				this.user = response;
-				this.user = this.user.user;
-			},
-			error =>
-			{
-				console.log(<any>error);
-				if(error instanceof HttpErrorResponse)
-				{
-					if(error.status===0)
-					{
-						this.failedConect = Global.failed;
-					}
-				}
-			}
-		)
+	getUser(id) {
+	  this._userService.getFunctions(id).subscribe(response => {
+	    this.user = response.user;
+			this.functions = this.user.role.functions;
+	  }, error => {
+	    console.log( < any > error);
+	    if (error instanceof HttpErrorResponse) {
+	      if (error.status === 0) {
+	        this.failedConect = Global.failed;
+	      }
+	    }
+	  })
 	}
 
 }
