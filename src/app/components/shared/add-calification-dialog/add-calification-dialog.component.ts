@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject} from '@angular/core';
 import { QuestionService } from '../../../../app/core/services/admin/question.service';
+import { Question } from 'src/app/models/question';
 
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Router, ActivatedRoute, Params } from '@angular/router';
@@ -15,10 +16,12 @@ import { SnackBarService } from 'src/app/core/services/snack-bar.service';
   styleUrls: ['./add-calification-dialog.component.scss']
 })
 export class AddCalificationDialogComponent implements OnInit {
-  public question:any;
+  public questions:any;
+  public calification:any;
+  public calificationSelected:string="";
   public message:string;
   public failedConect:string;
-  public isQuestion:boolean= false;
+ // public isQuestion:boolean= false;
 
   constructor
   (
@@ -33,6 +36,15 @@ export class AddCalificationDialogComponent implements OnInit {
 
 
   ngOnInit() {
+    this.getQuestion(event);
+    this.calification =
+    [
+      {id:"muyMalo",name:"1"},
+      {id:"malo",name:"2"},
+      {id:"regular",name:"3"},
+      {id:"bueno",name:"4"},
+      {id:"muyBueno",name:"5"},
+    ];
   }
 
   getQuestion(event)
@@ -43,12 +55,12 @@ export class AddCalificationDialogComponent implements OnInit {
       {
         if (response.status==true)
         {
-          this.question = response.question;
-          console.log(this.question);
+          this.questions = response.questions;
+          console.log(this.questions);
         }
         else
         {
-          this.question = [];
+          this.questions = [];
           this.message = response.message.text;
           console.log(this.message);
         }
@@ -70,7 +82,7 @@ export class AddCalificationDialogComponent implements OnInit {
 
   changeQuestion(event)
   {
-    console.log(event)
+    console.log(event);
 
   }
 
