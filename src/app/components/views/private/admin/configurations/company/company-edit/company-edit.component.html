@@ -28,20 +28,25 @@
 									<div class="col-sm-10 offset-sm-1">
 										<div class="row">
 											<div class="col-sm-6">
-												<mat-form-field>
-													<input matInput name="name" [(ngModel)]="company.name" placeholder="Nombre" required>
-												</mat-form-field>
 
 												<mat-form-field>
 													<input matInput name="rif" [(ngModel)]="company.rif" placeholder="RIF" required>
 												</mat-form-field>
 
 												<mat-form-field>
-													<textarea matInput name="aboutUs" [(ngModel)]="company.aboutUs" placeholder="¿Quiénes somos?"></textarea>
+													<input matInput name="name" [(ngModel)]="company.name" placeholder="Nombre" required>
+												</mat-form-field>
+
+												<mat-form-field>
+													<textarea matInput name="mision" [(ngModel)]="company.mision" placeholder="Misión"></textarea>
 												</mat-form-field>
 
 												<mat-form-field>
 													<textarea matInput name="vision" [(ngModel)]="company.vision" placeholder="Visión"></textarea>
+												</mat-form-field>
+
+												<mat-form-field>
+													<textarea matInput name="aboutUs" [(ngModel)]="company.aboutUs" placeholder="¿Quiénes somos?"></textarea>
 												</mat-form-field>
 
 												<mat-form-field>
@@ -58,6 +63,10 @@
 												</mat-form-field>
 
 												<mat-form-field>
+													<input matInput name="revisionPrice" [(ngModel)]="company.revisionPrice" placeholder="Precio Revisión">
+												</mat-form-field>
+
+												<mat-form-field>
 													<input matInput name="facebook" [(ngModel)]="company.facebook" placeholder="Facebook">
 												</mat-form-field>
 
@@ -68,8 +77,11 @@
 												<mat-form-field>
 													<input matInput name="twitter" [(ngModel)]="company.twitter" placeholder="Twitter">
 												</mat-form-field>
-
-												<input id="fileInput" type="file" required>	
+												<input #File type="file" accept="image/*" style="display:none !important" (change)="uploadPic($event)"/>
+												<a mat-raised-button color="accent" (click)="file.nativeElement.click()">
+													<mat-icon>photo_library</mat-icon>
+													Logo de la empresa
+												</a>
 											</div>
 										</div>
 										<br>

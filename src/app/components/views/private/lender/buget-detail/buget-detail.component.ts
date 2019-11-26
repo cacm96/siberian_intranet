@@ -35,6 +35,7 @@ export class BugetDetailComponent implements OnInit
   public amountTotal:any=0;
   public urldelafault:string="assets/img/request/revision_3.jpg";
   public totalResoucesSelected:number=0;
+  public arrayAux: any;
 
   constructor(
     private dialogService: DialogService,
@@ -101,9 +102,19 @@ export class BugetDetailComponent implements OnInit
     {
       this.isServiceDetail=false;
     }
-    console.log(this.serviceDetailsFilter);
-    /*
-    for(var i=0; i<this.serviceDetailsFilter.length;i++)
+    console.log("serviceDetailsFilter",this.serviceDetailsFilter);
+    this.amountTotal += this.serviceDetailsFilter.estimatedPrice;
+    this.arrayAux =[];
+    this.arrayAux.push(this.serviceDetailsFilter);
+    console.log("arrayAux - u",this.arrayAux);
+    this.arrayAux = this.arrayAux.map((val)=>{
+      return {ServiceDetailId: val.id, duration: val.duration, amount: val.estimatedPrice};
+  })
+  console.log("arrayAux -rr ",this.arrayAux);
+
+
+
+    /*for(var i=0; i<this.arrayAux.length;i++)
     {
       this.amountTotal += this.serviceDetailsFilter[i].estimatedPrice;
     }*/
@@ -136,15 +147,17 @@ export class BugetDetailComponent implements OnInit
     this.serviceOrder.warrantyTime = form.value.warrantyTime;
     this.serviceOrder.amount = this.amountTotal;
 
-    this.arrayServiceOrderDetailsCreate = [];
+   // this.arrayServiceOrderDetailsCreate = [];
 
-    this.arrayServiceOrderDetailsCreate = form.value.serviceDetails.map((val)=>{  
-        return {id: val.id, duration: val.duration, amount: val.estimatedPrice};
-    })
+    /*this.arrayServiceOrderDetailsCreate = form.value.serviceDetailsFilter.map((val)=>{
+      this.arrayAux.push({id: val.id, duration: val.duration, amount: val.estimatedPrice});
+    })*/
+   // console.log("arrayAux", this.arrayAux);
+  // this.arrayServiceOrderDetailsCreate.push({ ServiceDetailId: this.arrayAux.id, duration: form.value.duration, amount: form.value.estimatedPrice})
+    console.log("arrayServiceOrderDetailsCreate", this.arrayAux);
+    this.serviceOrder.serviceOrderDetails = this.arrayAux;
 
-    this.serviceOrder.serviceOrderDetails = this.arrayServiceOrderDetailsCreate;
-
-    console.log(this.arrayServiceOrderDetailsCreate,this.serviceOrder);
+    console.log("hola ", this.serviceOrder);
 
     if(form.valid)
     {

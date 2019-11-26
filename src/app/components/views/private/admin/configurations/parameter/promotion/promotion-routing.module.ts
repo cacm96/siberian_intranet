@@ -7,6 +7,8 @@ import { PromotionCreateComponent } from './promotion-create/promotion-create.co
 import { PromotionEditComponent } from './promotion-edit/promotion-edit.component';
 import { PromotionShowComponent } from './promotion-show/promotion-show.component';
 import { PromotionDeleteComponent } from './promotion-delete/promotion-delete.component';
+import { DiffusionComponent } from './diffusion/diffusion.component';
+
 
 const routes: Routes = [
 
@@ -17,7 +19,8 @@ const routes: Routes = [
 			{path: 'create', component: PromotionCreateComponent},
 			{path: 'edit/:id', component: PromotionEditComponent},
 			{path: 'show/:id', component: PromotionShowComponent},
-			{path: 'delete/:id', component: PromotionDeleteComponent}
+			{path: 'delete/:id', component: PromotionDeleteComponent},
+			{path: 'diffusion', component: DiffusionComponent}
 		]
 	},
 
