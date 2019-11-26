@@ -5,6 +5,8 @@ export class Group{
   	name: string;
   	description:string;
   	status:string;
-  	parameters: Array < Parametro > = new Array < Parametro >();
+	parameters: Array < Parametro > = new Array < Parametro >();
+	createdAt:Date;
+  	updatedAt:Date;
 
 }

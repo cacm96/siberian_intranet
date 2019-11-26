@@ -126,6 +126,7 @@ export class EquipInfrasShowComponent implements OnInit {
 
 	table()
 	{
+		this.varieties = this.snackBar.orderByDateAsc(this.varieties);
 		this.dataSource = new MatTableDataSource(this.varieties);
 		this.dataSourceE = new MatTableDataSource(this.arrayEquip);
 		this.dataSource.paginator = this.paginator;
