@@ -432,7 +432,7 @@ export class StepperComponent implements OnInit
         {
           date:this.dateRevision,
           turn:this.turnSelected,
-          LenderId:"1",
+          LenderId:this.lenderId,
           type:this.typeRevision
         }];
 
