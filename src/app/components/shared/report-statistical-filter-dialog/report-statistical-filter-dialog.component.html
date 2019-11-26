@@ -2,29 +2,28 @@
     <h1 mat-dialog-title>Filtros</h1>
     <div mat-dialog-content>
 
-      <mat-form-field class="example-full-width">
+      <mat-form-field>
         <mat-label for="">Género</mat-label>
         <mat-select [(value)]="genre">
-          <mat-option>None</mat-option>
-          <mat-option value="option1">Masculino</mat-option>
-          <mat-option value="option2">Femenino</mat-option>
+          <mat-option value="Masculino">Masculino</mat-option>
+          <mat-option value="Femenino">Femenino</mat-option>
         </mat-select>
       </mat-form-field>
       
-      <mat-form-field class="example-full-width">
+      <mat-form-field>
         <mat-label for="">Tipo de servicio</mat-label>
-        <mat-select [(value)]="type">
-          <mat-option>None</mat-option>
-          <mat-option value="option1">Reparación</mat-option>
-          <mat-option value="option2">Mantenimiento</mat-option>
+        <mat-select name="type" [(ngModel)]="typeSelected" placeholder="Seleccione un Tipo" required>
+          <mat-option *ngFor="let type of types" [value]="type.id">{{ type.name }}</mat-option>
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field class="example-full-width">
-        <mat-label for="">Nombre del servicio</mat-label>
-        <mat-select>
+      <mat-form-field>
+        <mat-label for="">Servicios</mat-label>
+        <mat-select name="serviceDetail" [(ngModel)]="serviceDetailSelected" placeholder="Seleccione un Servicio" required>
+          <mat-option *ngFor="let serviceDetail of serviceDetails" [value]="serviceDetail.id">{{ serviceDetail.name }}</mat-option>
         </mat-select>
       </mat-form-field>
+
     </div>
       
     <div mat-dialog-actions>
