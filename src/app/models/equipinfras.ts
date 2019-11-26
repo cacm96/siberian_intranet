@@ -11,5 +11,7 @@ export class Equipinfras{
 	SubcategoryId:string;
 	subcategory: Array < Subcategory > = new Array < Subcategory >();
 	varieties: Array < Variety > = new Array < Variety >();
+	createdAt:Date;
+	updateAt:Date;
 
 }

@@ -96,6 +96,7 @@ export class VarietysComponent implements OnInit {
 
 	table()
   {
+    this.varietys = this.snackBar.orderByDateAsc(this.varietys);
     this.dataSource = new MatTableDataSource(this.varietys);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

@@ -93,6 +93,7 @@ export class PoliticsComponent implements OnInit {
 
 	table()
   {
+    this.policies = this.snackBar.orderByDateAsc(this.policies);
     this.dataSource = new MatTableDataSource(this.policies);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

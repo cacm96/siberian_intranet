@@ -91,6 +91,7 @@ export class ComponentsComponent implements OnInit {
 
 	table()
   {
+    this.components = this.snackBar.orderByDateAsc(this.components);
     this.dataSource = new MatTableDataSource(this.components);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

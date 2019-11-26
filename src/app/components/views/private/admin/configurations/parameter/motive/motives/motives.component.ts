@@ -88,6 +88,7 @@ export class MotivesComponent implements OnInit {
 
   table()
   {
+    this.motives = this.snackBar.orderByDateAsc(this.motives);
     this.dataSource = new MatTableDataSource(this.motives);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

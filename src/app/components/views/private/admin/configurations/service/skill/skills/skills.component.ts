@@ -81,6 +81,7 @@ export class SkillsComponent implements OnInit {
   }
 
   table() {
+    this.skills = this.snackBar.orderByDateAsc(this.skills);
     this.dataSource = new MatTableDataSource(this.skills);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
