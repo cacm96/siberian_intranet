@@ -50,11 +50,12 @@ export class ExecuteComponent implements OnInit {
   ngOnInit() {
     this.userID = localStorage.getItem('resID');
     this.getServiceOrder(this.userID);
-    //this.lenderID = localStorage.getItem('resID');
-    //this.getServiceOrder(this.lenderID);
+    /*this.lenderID = localStorage.getItem('resID');
+    this.getServiceOrder(this.lenderID);*/
   }
 
-  getServiceOrder(userID)
+ getServiceOrder(userID)
+   //getServiceOrder(lenderID)
   {
     this._serviceOrderService.getServiceOrderUser(userID).subscribe
     //this._serviceOrderService.getServiceOrderLender(lenderID).subscribe
