@@ -62,7 +62,7 @@ export class DeliveryComponent implements OnInit {
         if (response.status==true)
         {
           this.serviceOrders = response.serviceOrders;
-          this.serviceOrders= this.serviceOrders.filter(serviceOrder=>{return serviceOrder.status =="approved" || serviceOrder.status =="completed"});
+          this.serviceOrders= this.serviceOrders.filter(serviceOrder=>{return serviceOrder.status =="completed"});
           this.total = this.serviceOrders.length;
           console.log(this.serviceOrders);
           this.table();

@@ -37,7 +37,7 @@
 			  <ng-container matColumnDef="id">
 				<th mat-header-cell *matHeaderCellDef ></th>
 				<td mat-cell *matCellDef="let row">
-				  <button mat-icon-button color="accent" matTooltip="Reclamar" matTooltipPosition="above" [routerLink]="['/auth/client/request/detail', row.id]">
+				  <button mat-icon-button color="accent" matTooltip="Reclamar" matTooltipPosition="above" [routerLink]="['/auth/client/claim/detail', row.id]">
 					<mat-icon>remove_red_eye</mat-icon>
 				  </button>
 				</td>
