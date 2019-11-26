@@ -14,7 +14,16 @@
           <a [routerLink]="['/auth/client/calification']" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
         </div>
       </div>
-    
+
+      <div class="service_create" [class.open]="isQuestion" [class.closed]="!isQuestion">
+        <mat-form-field *ngFor="let q of question">
+          <mat-label for="">{{q.enquire}}</mat-label>
+            <mat-select name="answer" [(ngModel)]="answerSelected" (ngModelChange)="changeQuestion($event)" placeholder="Respuesta">
+              <mat-option value="Masculino">Masculino</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
   <div mat-dialog-actions>
 			<p class="text-center">
         <button mat-raised-button color="warn" [mat-dialog-close]="false" >Cancelar</button>
