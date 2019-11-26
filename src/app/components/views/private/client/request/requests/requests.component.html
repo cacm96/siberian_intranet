@@ -89,7 +89,7 @@
 						<ng-container matColumnDef="delete">
 							<th mat-header-cell *matHeaderCellDef></th>
 							<td mat-cell *matCellDef="let row">
-								<button *ngIf="row.status=='requested'" mat-icon-button color="warn" (click)="onDelete(row.id)" matTooltip="Cancelar Solicitud" matTooltipPosition="above">
+								<button *ngIf="row.status=='requested'" mat-icon-button color="warn" (click)="onCancelled(row.id)" matTooltip="Cancelar Solicitud" matTooltipPosition="above">
 									<mat-icon>delete</mat-icon>
 								</button>
 							</td>

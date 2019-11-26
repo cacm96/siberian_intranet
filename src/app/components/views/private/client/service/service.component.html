@@ -68,7 +68,7 @@
 
 							<ng-container matColumnDef="lender">
 								<th mat-header-cell *matHeaderCellDef> Cliente </th>
-								<td mat-cell *matCellDef="let row"> Gilberto Perez </td>
+								<td mat-cell *matCellDef="let row"> {{row.revision.user.firstName | titlecase }} {{row.revision.user.lastName | titlecase}} </td>
 							</ng-container>
 
 							<ng-container matColumnDef="status">

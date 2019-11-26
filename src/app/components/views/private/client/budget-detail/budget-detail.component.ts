@@ -7,6 +7,8 @@ import {Location} from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Global } from 'src/app/core/services/global';
 import { ServiceOrder } from 'src/app/models/serviceOrder';
+import { ServiceOrderDetail } from 'src/app/models/serviceOrderDetail';
+import { ServiceDetailResource } from 'src/app/models/serviceDetailResource';
 import { ServiceOrderService } from 'src/app/core/services/client/serviceOrder.service';
 import { environment } from 'src/environments/environment';
 

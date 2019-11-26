@@ -224,6 +224,9 @@ span.badge-gray{
   background-color: #D2D2D2!important;
 }
 
+.gray{
+  color: #D2D2D2!important;
+}
 
 .success{
   color: #94ce9b!important;
@@ -693,4 +696,13 @@ table {
   padding-top:0 !important;
   padding-left: 0 !important;
   padding-right: 0 !important;
+}
+
+.main_company_show .company h2,h4{
+  text-align: center;
+}
+
+.main_company_show .company .comenzar{
+  text-align: center;
+  margin: 0 auto;
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DialogService } from '../../../../../core/services/dialog.service';
 
 @Component({
   selector: 'sib-report-structured',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReportStructuredComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private dialogService: DialogService,
+  ) { }
 
   ngOnInit() {
   }
 
+  openDate() {
+    this.dialogService.openDateDialog().afterClosed();
+  }
 }

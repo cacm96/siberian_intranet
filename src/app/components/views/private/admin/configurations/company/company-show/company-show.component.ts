@@ -18,7 +18,7 @@ const BASE_URL = environment.imgURL;
 export class CompanyShowComponent implements OnInit
 {
 
-	public company:any;
+	public company: Company = new Company();
 	public message:string;
 	public failedConect:string;
 	public urldelafault:string="assets/img/logo/logo_login.png"
