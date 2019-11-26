@@ -1,78 +1,87 @@
 
-  <div class="container">
-   <div class="row">
-     <div class="col-sm-8 offset-2">
-       <div class="row">
-         <div class="col-sm-12">
-           <h2 class="text-center">Crear Empresa</h2>
-         </div>
-       </div>
-       <div class="row">
-         <div class="col-sm-12">
-           <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/company']">Volver</button>
-         </div>
-       </div>
-       <hr>
-       
-       <div class="row">
-         <div class="col-sm-12">
-           <div class="example-container">
-             <mat-form-field>
-                  <input matInput placeholder="Rif" required>
-             </mat-form-field>
-              
-             <mat-form-field>
-                <input matInput placeholder="Nombre" required>
-              </mat-form-field>
-
-             <mat-form-field>
-                <textarea matInput placeholder="Misión"></textarea>
-             </mat-form-field>	
-             
-             <mat-form-field>
-                <textarea matInput placeholder="Visión"></textarea>
-             </mat-form-field>
-
-            <mat-form-field>
-                <textarea matInput placeholder="¿Quiénes somos?"></textarea>
-             </mat-form-field>
-             
-             <mat-form-field>
-                <textarea matInput placeholder="Dirección"></textarea>
-             </mat-form-field>
-             
-             <mat-form-field>
-                <input matInput placeholder="Primer Teléfono" required>
-              </mat-form-field>
-
-             <mat-form-field>
-                <input matInput placeholder="Segundo Teléfono">
-              </mat-form-field>
-
-              <mat-label >Subir Imagen</mat-label>
-              <input id="fileInput" type="file" required>
-
-              <mat-form-field>
-                 <input matInput placeholder="Facebook">
-              </mat-form-field>
-
-                <mat-form-field>
-                   <input matInput placeholder="Instagram">
-                </mat-form-field>
-
-                <mat-form-field>
-                  <input matInput placeholder="Twitter">
-               </mat-form-field>
-         
-           </div>
-         </div>
-       </div>
-       
-       <div class="row">
-         <div class="col-sm-12">
-           <button mat-raised-button color="primary" [routerLink]="['/auth/admin/configurations/company/create']">Registrar</button>
-         </div>
-       </div>
+<div class="container">
+ <div class="row">
+   <div class="col-sm-8 offset-2">
+    <div class="row">
+      <div class="col-sm-12">
+        <h2 class="text-center">Crear Empresa</h2>
+      </div>
+    </div>
+    <div class="row">
+     <div class="col-sm-12">
+       <button mat-raised-button color="primary" (click)="goBack()" matTooltip="Volver" matTooltipPosition="above"><mat-icon>arrow_back</mat-icon></button>
      </div>
    </div>
- </div>
+   <hr>
+
+   <div class="row">
+     <div class="col-sm-12">
+       <div class="example-container">
+        <form #registerForm="ngForm" (ngSubmit)="register(registerForm)" >
+          <mat-form-field>
+            <input matInput name="rif" [(ngModel)]="rif" placeholder="RIF" required>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput name="name" [(ngModel)]="name" placeholder="Nombre" required>
+          </mat-form-field>
+
+          <mat-form-field>
+            <textarea matInput name="mision" [(ngModel)]="mision" placeholder="Misión"></textarea>
+          </mat-form-field>	
+
+          <mat-form-field>
+            <textarea matInput name="vision" [(ngModel)]="vision" placeholder="Visión"></textarea>
+          </mat-form-field>
+
+          <mat-form-field>
+            <textarea matInput name="aboutUs" [(ngModel)]="aboutUs" placeholder="¿Quiénes somos?"></textarea>
+          </mat-form-field>
+
+          <mat-form-field>
+            <textarea matInput name="address" [(ngModel)]="address" placeholder="Dirección"></textarea>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput name="phoneOne" [(ngModel)]="phoneOne" placeholder="Primer Teléfono" required>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput name="phoneTwo" [(ngModel)]="phoneTwo" placeholder="Segundo Teléfono">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput name="revisionPrice" [(ngModel)]="revisionPrice" placeholder="Precio Revisión">
+          </mat-form-field>
+
+              <!--<div class="row">
+                <div class="col-sm-12">
+                  <input name="imageUrl" [(ngModel)]="imageUrl" (change)="onFileChange($event)" type="file"/>
+                </div>
+              </div>-->
+
+              <mat-form-field>
+                <input matInput name="facebook" [(ngModel)]="facebook" placeholder="Facebook">
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput name="instagram" [(ngModel)]="instagram" placeholder="Instagram">
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput name="twitter" [(ngModel)]="twitter" placeholder="Twitter">
+              </mat-form-field>
+
+              <div class="row">
+               <div class="col-sm-12">
+                <!--  <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.form.valid">Registrar</button>-->
+                <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.form.valid">Registrar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
