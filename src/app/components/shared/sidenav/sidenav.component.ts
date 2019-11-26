@@ -30,7 +30,7 @@ export class SidenavComponent implements OnInit {
 		this.getUser(id);
 		this.role=this._authService.getRole();
 		this.functions = JSON.parse(localStorage.getItem('functions'))
-		console.log(this.functions)
+		//console.log(this.functions)
 	}
 
 	getUser(id)
