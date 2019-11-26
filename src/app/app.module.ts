@@ -40,6 +40,8 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { AddCalificationDialogComponent } from './components/shared/add-calification-dialog/add-calification-dialog.component';
 import { RejectedRequestDialogComponent } from './components/shared/rejected-request-dialog/rejected-request-dialog.component';
 import { RejectedDiagnosisDialogComponent } from './components/shared/rejected-diagnosis-dialog/rejected-diagnosis-dialog.component';
+import { DateDialogComponent } from './components/shared/date-dialog/date-dialog.component';
+import { ReportStatisticalFilterDialogComponent } from './components/shared/report-statistical-filter-dialog/report-statistical-filter-dialog.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +66,8 @@ import { RejectedDiagnosisDialogComponent } from './components/shared/rejected-d
     AddCalificationDialogComponent,
     RejectedRequestDialogComponent,
     RejectedDiagnosisDialogComponent,
+    DateDialogComponent,
+    ReportStatisticalFilterDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -107,7 +111,9 @@ import { RejectedDiagnosisDialogComponent } from './components/shared/rejected-d
     EditPhoneDialogComponent,
     AddCalificationDialogComponent,
     RejectedRequestDialogComponent,
-    RejectedDiagnosisDialogComponent
+    RejectedDiagnosisDialogComponent,
+    DateDialogComponent,
+    ReportStatisticalFilterDialogComponent,
   ]
 })
 export class AppModule { }

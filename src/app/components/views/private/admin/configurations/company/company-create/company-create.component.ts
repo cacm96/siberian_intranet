@@ -3,6 +3,7 @@ import {Location} from '@angular/common';
 import {NgForm} from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Company } from '../../../../../../../models/company';
 import { CompanyService } from '../../../../../../../core/services/admin/company.service';
 import { SnackBarService } from '../../../../../../../core/services/snack-bar.service';
 
@@ -12,7 +13,7 @@ import { SnackBarService } from '../../../../../../../core/services/snack-bar.se
   styleUrls: ['./company-create.component.scss']
 })
 export class CompanyCreateComponent implements OnInit {
-  public company: any;
+  public company: Company = new Company();
     public message: string;
     public failedConect: string;
 
@@ -21,7 +22,7 @@ export class CompanyCreateComponent implements OnInit {
     private _companyService: CompanyService,
     private _location: Location,
     private snackBar: SnackBarService
-  ) { }
+  ) {}
 
   ngOnInit() {
   }
@@ -31,14 +32,17 @@ export class CompanyCreateComponent implements OnInit {
 			console.log(form.value);
    this.company.rif = form.value.rif;
    this.company.name = form.value.name;
+   this.company.mision = form.value.mision;
    this.company.vision = form.value.vision;
    this.company.aboutUs = form.value.aboutUs;
    this.company.address = form.value.address;
+   //this.company.image_path=form.value.image_path;
    this.company.phoneOne = form.value.phoneOne;
    this.company.phoneTwo = form.value.phoneTwo;
    this.company.facebook = form.value.facebook;
    this.company.instagram = form.value.instagram;
    this.company.twitter = form.value.twitter;
+   console.log(this.company);
 
    this._companyService.create(this.company).subscribe
 			(

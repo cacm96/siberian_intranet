@@ -50,7 +50,7 @@ export class RoleService extends HeaderService{
 	}
 
 	addFunctions(rid,functions): Observable<any>{
-		return this.http.put(this.url+'/'+rid+'/functions',{functions:functions}, {headers: this.header});
+		return this.http.put(this.url+'/'+rid+'/functions',{ functions }, {headers: this.header});
 	}
 
 }
