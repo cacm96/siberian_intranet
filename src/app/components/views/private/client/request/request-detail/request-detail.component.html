@@ -124,7 +124,33 @@
       </div>
     </div>
 
-    <br />
+    <br>
+    <div class="row">
+        <div class="col-sm-12">
+          <mat-card>
+            <mat-card-header class="titulo border-top-danger">
+              <mat-card-title>
+                Diagnostico
+              </mat-card-title>
+            </mat-card-header>
+
+            <div class="row">
+                <div class="ml-3">
+                  <mat-list>
+                    <div *ngFor="let b of revision.bitacoras">
+                      <div *ngIf="b.eventType=='execution'">
+                        <mat-list-item>
+                          <h4 mat-line><b>Diagnostico: </b> {{ b.description }} </h4>
+                          <h4 mat-line><b>Motivo: </b> {{ b.motive.name }} - {{ b.motive.description }}</h4>
+                        </mat-list-item>
+                      </div>
+                    </div>
+                  </mat-list>
+                  </div>
+            </div>
+          </mat-card>
+        </div>
+        </div>
 
     <div class="row">
       <div class="col-sm-12">
