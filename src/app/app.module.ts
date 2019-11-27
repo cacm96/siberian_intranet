@@ -45,7 +45,13 @@ import { DateDialogComponent } from './components/shared/date-dialog/date-dialog
 import { ReportStatisticalFilterDialogComponent } from './components/shared/report-statistical-filter-dialog/report-statistical-filter-dialog.component';
 
 import { EquipinfrasService } from 'src/app/core/services/admin/equipinfras.service';
+
 import { HomeSuperComponent } from './components/views/private/super/home-super/home-super.component';
+
+import { CalendarDialogComponent } from './components/shared/calendar-dialog/calendar-dialog.component';
+import {DpDatePickerModule} from 'ng2-date-picker';
+import { ServiceOrderService } from 'src/app/core/services/client/serviceOrder.service';
+
 
 
 @NgModule({
@@ -73,7 +79,11 @@ import { HomeSuperComponent } from './components/views/private/super/home-super/
     RejectedDiagnosisDialogComponent,
     DateDialogComponent,
     ReportStatisticalFilterDialogComponent,
+<<<<<<< HEAD
     HomeSuperComponent,
+=======
+    CalendarDialogComponent
+>>>>>>> 8d1206601df70d629ce43e14cf1f871cac0376c9
   ],
   imports: [
     CommonModule,
@@ -85,7 +95,8 @@ import { HomeSuperComponent } from './components/views/private/super/home-super/
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MaterialModule,
-    MatPaginatorModule,
+		MatPaginatorModule,
+		DpDatePickerModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory
@@ -99,7 +110,8 @@ import { HomeSuperComponent } from './components/views/private/super/home-super/
     MotiveService,
     QuestionService,
     ServiceDetailService,
-    EquipinfrasService,
+		EquipinfrasService,
+		ServiceOrderService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass : TokenInterceptorService,
@@ -121,7 +133,8 @@ import { HomeSuperComponent } from './components/views/private/super/home-super/
     RejectedRequestDialogComponent,
     RejectedDiagnosisDialogComponent,
     DateDialogComponent,
-    ReportStatisticalFilterDialogComponent,
+		ReportStatisticalFilterDialogComponent,
+		CalendarDialogComponent
   ]
 })
 export class AppModule { }

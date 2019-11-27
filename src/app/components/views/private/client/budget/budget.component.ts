@@ -112,7 +112,7 @@ export class BudgetComponent implements OnInit {
       {
         if (response==true)
         {
-          this.approvedServiceOrder(id);
+          //this.approvedServiceOrder(id);
         }else
         {
           console.log(response);
@@ -122,23 +122,7 @@ export class BudgetComponent implements OnInit {
   }
 
 
-  approvedServiceOrder(id)
-  {
-    this._serviceOrderService.approve(id).subscribe
-    (
-      response =>
-      {
-        console.log(response);
-        this.message = response.message.text;
-        this.snackBar.openSnackBarSuccess(this.message);
-        this.getServiceOrder(this.userID);
-      },
-      error =>
-      {
-        console.log(<any>error);
-      }
-      )
-  }
+ 
 
 
   onRejected(id){
