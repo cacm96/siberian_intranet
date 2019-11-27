@@ -11,6 +11,8 @@ export class ServiceDetailService extends HeaderService{
 
 	url: string = environment.api + 'serviceDetail';
 
+	url2: string = environment.api + 'report/serviceDetails?';
+
 
 	constructor(
 		private http: HttpClient
@@ -25,6 +27,10 @@ export class ServiceDetailService extends HeaderService{
 
     All(): Observable<any>{
 		return this.http.get(this.url, {headers: this.header});
+	}
+
+	getAll(): Observable<any>{
+		return this.http.get(this.url2, {headers: this.header});
 	}
 
 	getOne(id:Number): Observable<any>{

@@ -39,11 +39,11 @@ export class AddCalificationDialogComponent implements OnInit {
     this.getQuestion(event);
     this.calification =
     [
-      {id:"muyMalo",name:"1"},
-      {id:"malo",name:"2"},
-      {id:"regular",name:"3"},
-      {id:"bueno",name:"4"},
-      {id:"muyBueno",name:"5"},
+      {id:"1",name:"Muy Malo"},
+      {id:"2",name:"malo"},
+      {id:"3",name:"Regular"},
+      {id:"4",name:"Bueno"},
+      {id:"5",name:"Muy Bueno"},
     ];
   }
 
