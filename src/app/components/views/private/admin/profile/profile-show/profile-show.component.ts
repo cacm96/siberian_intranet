@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef  } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -18,6 +18,7 @@ export class ProfileShowComponent implements OnInit {
 	public failedConect:string;
 	public message:string;
 	public userID:string;
+	@ViewChild('File') file: ElementRef;
 
 	constructor
 	(
@@ -62,4 +63,24 @@ export class ProfileShowComponent implements OnInit {
 		)
 	}
 
+	uploadPic(event: any) {
+		let file: File = event.target.files[0];
+		if (file) {
+			let reader = new FileReader();
+
+			reader.onload = (e: any) => {
+				this.user.imageUrl = e.target.result;
+				this._userService.update(this.user).subscribe(_ => {
+					console.log(_)
+					this.user = _.user;
+				}, e => console.log(e))
+			}
+
+			reader.onerror = (e) => {
+				console.log(e);
+			}
+
+			reader.readAsDataURL(file);
+		}
+	}
 }

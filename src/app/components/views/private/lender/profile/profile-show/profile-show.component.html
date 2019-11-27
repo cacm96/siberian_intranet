@@ -20,7 +20,8 @@
 									</div>
 								</h2>
 								<div class="row justify-content-center">
-									<button mat-raised-button color="accent" [routerLink]="['/auth/lender/profile/show/1']">
+									<input #File type="file" accept="image/*" style="display:none" (change)="uploadPic($event)"/>
+									<button mat-raised-button color="accent" (click)="file.nativeElement.click()">
 										<mat-icon>photo_library</mat-icon>
 										Cambiar Foto de Perfil
 									</button>

@@ -81,11 +81,11 @@
                           <input matInput name="twitter" [(ngModel)]="twitter" placeholder="Twitter">
                         </mat-form-field>
 
-                        <div class="row">
-                          <div class="col-sm-12">
-                            <input #File (change)="onFileChange($event)" type="file" />
-                          </div>
-                        </div>
+												<input #File type="file" accept="image/*" style="display:none !important" (change)="uploadPic($event)"/>
+												<a mat-raised-button color="accent" (click)="file.nativeElement.click()">
+													<mat-icon>photo_library</mat-icon>
+													Logo de la empresa
+												</a>
 
                       </div>
 
