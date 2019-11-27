@@ -68,7 +68,7 @@
 						<ng-container matColumnDef="date">
 							<th mat-header-cell *matHeaderCellDef> Fecha de Revisión</th>
 							<td mat-cell *matCellDef="let row">
-								{{ row.calendars.date |date:"longDate"}} - 
+								{{ row.calendars.date |date: 'dd/MM/yyyy'}} - 
 								<div *ngIf="row.calendars.turn=='morning'">Mañana</div>
 								<div *ngIf="row.calendars.turn=='afternoon'">Tarde</div>
 							</td>
