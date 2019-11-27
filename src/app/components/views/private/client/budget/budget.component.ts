@@ -26,7 +26,7 @@ export class BudgetComponent implements OnInit {
   public message:string;
   public failedConect:string;
 
-  displayedColumns: string[] = ['id','equipinfras','amount','warrantyTime','serviceDetails','status','approved','rejected'];
+  displayedColumns: string[] = ['id','equipinfras','amount','warrantyTime','serviceDetails','status'];
   dataSource: MatTableDataSource<ServiceOrder>; //,'revision','serviceDetails'
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

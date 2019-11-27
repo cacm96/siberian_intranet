@@ -10,6 +10,7 @@ import { Notification } from "../../../models/notification";
 })
 export class NotificationService extends HeaderService {
   url: string = environment.api + "notification";
+  url2: string = environment.api + "usernotifications";
 
   constructor(private http: HttpClient) {
     super();
@@ -38,4 +39,9 @@ export class NotificationService extends HeaderService {
   deleteOne(id): Observable<any> {
     return this.http.delete(this.url + "/" + id, { headers: this.header });
   }
+
+  getUserNotifications(userid:any): Observable<any>{
+    return this.http.get(this.url2+"/"+userid, {headers: this.header});
+  }
+
 }
