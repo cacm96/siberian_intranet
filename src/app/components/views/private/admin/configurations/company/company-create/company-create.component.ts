@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import {Location} from '@angular/common';
 import {NgForm} from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -14,10 +14,10 @@ import { SnackBarService } from 'src/app/core/services/snack-bar.service';
 })
 export class CompanyCreateComponent implements OnInit {
 
+	@ViewChild('File') file: ElementRef;
 	public company: Company;
 	public message: string;
 	public failedConect: string;
-	public imageUrl:string="dsadsa";
 
 	constructor(
 		private _route: ActivatedRoute,
@@ -32,10 +32,21 @@ export class CompanyCreateComponent implements OnInit {
 	ngOnInit() {
 	}
 
-	onFileChange(event)
-	{
-		console.log(event);
-		
+	onFileChange(event) {
+		let file: File = event.target.files[0];
+		if (file) {
+			let reader = new FileReader();
+
+			reader.onload = (e: any) => {
+				this.company.imageUrl = e.target.result;
+			}
+
+			reader.onerror = (e) => {
+				console.log(e);
+			}
+
+			reader.readAsDataURL(file);
+		}
 	}
 
 	register(form: NgForm) {
@@ -49,7 +60,6 @@ export class CompanyCreateComponent implements OnInit {
 			this.company.vision = form.value.vision;
 			this.company.aboutUs = form.value.aboutUs;
 			this.company.address = form.value.address;
-			this.company.imageUrl=this.imageUrl;
 			this.company.phoneOne = form.value.phoneOne;
 			this.company.phoneTwo = form.value.phoneTwo;
 			this.company.revisionPrice = form.value.revisionPrice;

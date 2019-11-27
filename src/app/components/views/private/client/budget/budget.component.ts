@@ -26,7 +26,7 @@ export class BudgetComponent implements OnInit {
   public message:string;
   public failedConect:string;
 
-  displayedColumns: string[] = ['id','equipinfras','amount','warrantyTime','serviceDetails','status','approved','rejected'];
+  displayedColumns: string[] = ['id','equipinfras','amount','warrantyTime','serviceDetails','status'];
   dataSource: MatTableDataSource<ServiceOrder>; //,'revision','serviceDetails'
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -112,7 +112,7 @@ export class BudgetComponent implements OnInit {
       {
         if (response==true)
         {
-          this.approvedServiceOrder(id);
+          //this.approvedServiceOrder(id);
         }else
         {
           console.log(response);
@@ -122,23 +122,7 @@ export class BudgetComponent implements OnInit {
   }
 
 
-  approvedServiceOrder(id)
-  {
-    this._serviceOrderService.approve(id).subscribe
-    (
-      response =>
-      {
-        console.log(response);
-        this.message = response.message.text;
-        this.snackBar.openSnackBarSuccess(this.message);
-        this.getServiceOrder(this.userID);
-      },
-      error =>
-      {
-        console.log(<any>error);
-      }
-      )
-  }
+ 
 
 
   onRejected(id){

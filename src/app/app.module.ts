@@ -46,6 +46,13 @@ import { ReportStatisticalFilterDialogComponent } from './components/shared/repo
 
 import { EquipinfrasService } from 'src/app/core/services/admin/equipinfras.service';
 
+import { HomeSuperComponent } from './components/views/private/super/home-super/home-super.component';
+
+import { CalendarDialogComponent } from './components/shared/calendar-dialog/calendar-dialog.component';
+import {DpDatePickerModule} from 'ng2-date-picker';
+import { ServiceOrderService } from 'src/app/core/services/client/serviceOrder.service';
+
+
 
 @NgModule({
   declarations: [
@@ -72,6 +79,10 @@ import { EquipinfrasService } from 'src/app/core/services/admin/equipinfras.serv
     RejectedDiagnosisDialogComponent,
     DateDialogComponent,
     ReportStatisticalFilterDialogComponent,
+
+    HomeSuperComponent,
+
+    CalendarDialogComponent
   ],
   imports: [
     CommonModule,
@@ -83,7 +94,8 @@ import { EquipinfrasService } from 'src/app/core/services/admin/equipinfras.serv
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MaterialModule,
-    MatPaginatorModule,
+		MatPaginatorModule,
+		DpDatePickerModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory
@@ -97,7 +109,8 @@ import { EquipinfrasService } from 'src/app/core/services/admin/equipinfras.serv
     MotiveService,
     QuestionService,
     ServiceDetailService,
-    EquipinfrasService,
+		EquipinfrasService,
+		ServiceOrderService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass : TokenInterceptorService,
@@ -119,7 +132,8 @@ import { EquipinfrasService } from 'src/app/core/services/admin/equipinfras.serv
     RejectedRequestDialogComponent,
     RejectedDiagnosisDialogComponent,
     DateDialogComponent,
-    ReportStatisticalFilterDialogComponent,
+		ReportStatisticalFilterDialogComponent,
+		CalendarDialogComponent
   ]
 })
 export class AppModule { }

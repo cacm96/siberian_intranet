@@ -22,13 +22,12 @@ export class DeliveryComponent implements OnInit {
   public serviceOrder:any;
   public serviceOrders: Array < ServiceOrder > = new Array < ServiceOrder > ();
   public total:number=0;
-  //public lenderID:string;
-  public userID:string;
+  public lenderID:string;
   public message:string;
   public failedConect:string;
 
   displayedColumns: string[] = ['id','equipinfras','amount','warrantyTime','serviceDetails','status'];
-  dataSource: MatTableDataSource<ServiceOrder>; //,'revision','serviceDetails'
+  dataSource: MatTableDataSource<ServiceOrder>; 
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -45,24 +44,21 @@ export class DeliveryComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.userID = localStorage.getItem('resID');
-    this.getServiceOrder(this.userID);
-    /*this.lenderID = localStorage.getItem('resID');
-    this.getServiceOrder(this.lenderID);*/
+    this.getServiceOrder(this.lenderID);
+    this.lenderID = localStorage.getItem('resID');
+    this.getServiceOrder(this.lenderID);
   }
 
-  getServiceOrder(userID)
-  //getServiceOrder(lenderID)
+  getServiceOrder(id)
   {
-    this._serviceOrderService.getServiceOrderUser(userID).subscribe
-    //this._serviceOrderService.getServiceOrderLender(lenderID).subscribe
+    this._serviceOrderService.getServiceOrderLender(id).subscribe
     (
       response =>
       {
         if (response.status==true)
         {
           this.serviceOrders = response.serviceOrders;
-          this.serviceOrders= this.serviceOrders.filter(serviceOrder=>{return serviceOrder.status =="approved" || serviceOrder.status =="completed"});
+          this.serviceOrders= this.serviceOrders.filter(serviceOrder=>{return serviceOrder.status =="completed"});
           this.total = this.serviceOrders.length;
           console.log(this.serviceOrders);
           this.table();

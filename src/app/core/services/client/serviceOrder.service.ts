@@ -45,8 +45,8 @@ export class ServiceOrderService extends HeaderService{
 		return this.http.get(this.url+"/lender/"+lenderid, {headers: this.header});
 	}
 
-	approve(id): Observable<any>{
-		return this.http.put(this.url+'/'+id+'/approve', {}, {headers: this.header});
+	approve(id, serviceOrderDetails): Observable<any>{
+		return this.http.put(this.url+'/'+id+'/approve', { serviceOrderDetails }, {headers: this.header});
 	}
 
 	warranty(id): Observable<any>{

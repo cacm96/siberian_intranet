@@ -26,7 +26,7 @@ export class ClaimComponent implements OnInit {
   public failedConect:string;
 
   displayedColumns: string[] = ['id','equipinfras','amount','warrantyTime','serviceDetails','status','claim'];
-  dataSource: MatTableDataSource<ServiceOrder>; //,'revision','serviceDetails'
+  dataSource: MatTableDataSource<ServiceOrder>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -49,14 +49,14 @@ export class ClaimComponent implements OnInit {
 
   getServiceOrder(userID)
   {
-    this._serviceOrderService.getServiceOrderUser(userID).subscribe
+    this._serviceOrderService.getServiceOrderLender(userID).subscribe
     (
       response =>
       {
         if (response.status==true)
         {
           this.serviceOrders = response.serviceOrders;
-          this.serviceOrders= this.serviceOrders.filter(serviceOrder=>{return serviceOrder.status =="finalized" || serviceOrder.status =="warranty"|| serviceOrder.status =="approved"});
+          this.serviceOrders= this.serviceOrders.filter(serviceOrder=>{return serviceOrder.status =="warranty"});
           this.total = this.serviceOrders.length;
           console.log(this.serviceOrders);
           this.table();

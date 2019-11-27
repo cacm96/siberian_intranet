@@ -1,6 +1,5 @@
-
 <div class="container">
-  <form #registerForm="ngForm" (ngSubmit)="register(registerForm)" >
+  <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
     <div class="row">
       <div class="col-sm-12">
         <div class="row">
@@ -10,7 +9,9 @@
         </div>
         <div class="row">
           <div class="col-sm-12">
-            <button mat-raised-button color="primary" (click)="goBack()" matTooltip="Volver" matTooltipPosition="above"><mat-icon>arrow_back</mat-icon></button>
+            <button mat-raised-button color="primary" (click)="goBack()" matTooltip="Volver" matTooltipPosition="above">
+              <mat-icon>arrow_back</mat-icon>
+            </button>
           </div>
         </div>
         <hr>
@@ -29,27 +30,28 @@
                         <mat-form-field>
                           <input matInput name="rif" [(ngModel)]="rif" placeholder="RIF" required>
                         </mat-form-field>
-                  
+
                         <mat-form-field>
                           <input matInput name="name" [(ngModel)]="name" placeholder="Nombre" required>
                         </mat-form-field>
-                  
+
                         <mat-form-field>
                           <textarea matInput name="mision" [(ngModel)]="mision" placeholder="Misión"></textarea>
-                        </mat-form-field>	
-                
+                        </mat-form-field>
+
                         <mat-form-field>
                           <textarea matInput name="vision" [(ngModel)]="vision" placeholder="Visión"></textarea>
                         </mat-form-field>
-                  
+
                         <mat-form-field>
-                          <textarea matInput name="aboutUs" [(ngModel)]="aboutUs" placeholder="¿Quiénes somos?"></textarea>
+                          <textarea matInput name="aboutUs" [(ngModel)]="aboutUs"
+                            placeholder="¿Quiénes somos?"></textarea>
                         </mat-form-field>
 
                         <mat-form-field>
                           <input matInput name="phoneOne" [(ngModel)]="phoneOne" placeholder="Primer Teléfono" required>
                         </mat-form-field>
-                
+
                         <mat-form-field>
                           <input matInput name="phoneTwo" [(ngModel)]="phoneTwo" placeholder="Segundo Teléfono">
                         </mat-form-field>
@@ -63,26 +65,27 @@
                         </mat-form-field>
 
                         <mat-form-field>
-                          <input matInput name="revisionPrice" [(ngModel)]="revisionPrice" placeholder="Precio Revisión">
+                          <input matInput name="revisionPrice" [(ngModel)]="revisionPrice"
+                            placeholder="Precio Revisión">
                         </mat-form-field>
 
                         <mat-form-field>
                           <input matInput name="facebook" [(ngModel)]="facebook" placeholder="Facebook">
                         </mat-form-field>
-            
+
                         <mat-form-field>
                           <input matInput name="instagram" [(ngModel)]="instagram" placeholder="Instagram">
                         </mat-form-field>
-            
+
                         <mat-form-field>
                           <input matInput name="twitter" [(ngModel)]="twitter" placeholder="Twitter">
                         </mat-form-field>
 
-                        <!--<div class="row">
-                              <div class="col-sm-12">
-                                <input name="imageUrl" [(ngModel)]="imageUrl" (change)="onFileChange($event)" type="file"/>
-                              </div>
-                            </div>-->
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <input #File (change)="onFileChange($event)" type="file" />
+                          </div>
+                        </div>
 
                       </div>
 
@@ -90,8 +93,9 @@
 
                     <div class="row">
                       <div class="col-sm-12">
-                      <!--  <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.form.valid">Registrar</button>-->
-                        <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.form.valid">Registrar</button>
+                        <!--  <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.form.valid">Registrar</button>-->
+                        <button mat-raised-button color="primary" type="submit"
+                          [disabled]="!registerForm.form.valid">Registrar</button>
                       </div>
                     </div>
 
