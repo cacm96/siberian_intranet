@@ -9,6 +9,10 @@ import { FormControl, Validators } from '@angular/forms';
 import { ServiceDetailService } from 'src/app/core/services/admin/serviceDetail.service';
 import { ServiceDetail } from 'src/app/models/serviceDetail';
 import { DatePipe } from '@angular/common';
+import {Location} from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Global } from 'src/app/core/services/global';
+import { SnackBarService } from 'src/app/core/services/snack-bar.service';
 
 @Component({
   selector: 'sib-report-statistical',
@@ -18,43 +22,83 @@ import { DatePipe } from '@angular/common';
 export class ReportStatisticalComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'gender', 'type'];
   dataSource: MatTableDataSource<ServiceDetail>;
-  public dateIn: any;
-  public dateFin: any;
+  public serviceDetails: any;
+  public dateIn: any = [];
+  public dateFin: any = [];
+  public servicios: any = [];
   public gender: string;
+  public message: string;
+  public failedConect: string;
   public serviceType: string;
   public serviceName: string;
+  servicesOrders = [];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
     private dialogService: DialogService,
+    private _serviceDetailService: ServiceDetailService,
+    //private _route: ActivatedRoute,
+    private _router: Router,
+    private _location: Location,
+    private snackBar: SnackBarService,
   ) { }
-
-  servicesOrders = [];
 
   ngOnInit() {
     this.OrdenesServicios();
+    this.AllServices();
   }
 
-  openDate() {
+  AllServices() {
+    this._serviceDetailService.getAll().subscribe
+    (
+      response => {
+        if (response.status==true) {
+          this.serviceDetails = response.serviceDetails;
+          console.log(this.serviceDetails);
+
+          for (let i = 0; i < this.serviceDetails.length; i++) {
+            this.servicios.push(this.serviceDetails[i].count);
+            }
+          console.log(this.servicios);
+
+        }
+        else {
+          this.serviceDetails = [];
+          this.message = response.message.text;
+          console.log(this.message);
+        }
+
+      },
+      error => {
+        console.log(<any>error);
+        if (error instanceof HttpErrorResponse) {
+          if (error.status===0) {
+            this.failedConect = Global.failed;
+          }
+        }
+      }
+      )
+ }
+
+
+  openDate(){
     this.dialogService.openDateDialog().afterClosed();
   }
-  openFiltros() {
-    {
+  openFiltros(){
       this.dialogService.openStatisticalFilterDialog().afterClosed();
-    }
   }
 
   OrdenesServicios() {
     this.servicesOrders = new Chart ('servicesOrders', {
-      type: 'line',
+      type: 'bar',
     data: {
-        labels: [], //valores eje x
+        labels: ['Reparación', 'Mantenimiento'], //valores eje x
         datasets: [
             {
-                backgroundColor: '#000000',
+                backgroundColor: '#242451',
                 borderWidth: 1,
-                data: [], //data grafica
+                data: [ 3 , 1 ], // this.servicios,this.servicios,//, //data grafica
                 fill: false,
                 lineTension: 0.2,
                 borderColor: '#242451',
@@ -66,7 +110,7 @@ export class ReportStatisticalComponent implements OnInit {
             intersect: true,
         },
         title: {
-            text: ['Servicios más solicitados'],
+            text: ['Tipo de servicios más solicitados'],
             display: true,
         },
         tooltips: {

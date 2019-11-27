@@ -82,10 +82,10 @@
                         </mat-form-field>
 
                         <div class="row">
-                          <div class="col-sm-12">
-                            <input #File (change)="onFileChange($event)" type="file" />
+                            <div class="col-sm-12">
+                              <input name="imageUrl" [(ngModel)]="imageUrl" (change)="onFileChange($event)" type="file"/>
+                            </div>
                           </div>
-                        </div>
 
                       </div>
 

@@ -60,6 +60,7 @@ export class CompanyCreateComponent implements OnInit {
 			this.company.vision = form.value.vision;
 			this.company.aboutUs = form.value.aboutUs;
 			this.company.address = form.value.address;
+			this.company.imageUrl = form.value.imageUrl;
 			this.company.phoneOne = form.value.phoneOne;
 			this.company.phoneTwo = form.value.phoneTwo;
 			this.company.revisionPrice = form.value.revisionPrice;
