@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   api: 'https://siberian-api.herokuapp.com/api/',
+  //api: '192.168.43.227:4200',
   //api: 'http://localhost:12225/api/',
   imgURL: 'http://localhost:12225/',
 };

@@ -5,7 +5,7 @@
         </div>
     </div>
 
-    <div class="row" *ngIf="!company">
+    <!-- <div class="row" *ngIf="!company">
         <div class="col-sm-12 company">
             <br>
             <br>
@@ -19,12 +19,13 @@
                 <button mat-raised-button  matTooltip="Comenzar" matTooltipPosition="above"color="primary" class="mr-3" [routerLink]="['/auth/admin/configurations/company/create']">Comenzar</button>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div *ngIf="company">
         <div class="row" >
             <div class="col-sm-12">
                 <button mat-raised-button  matTooltip="Editar" matTooltipPosition="above"color="primary" class="mr-3" [routerLink]="['edit',company.id]"><mat-icon>edit</mat-icon></button>
+                <button mat-raised-button  matTooltip="Comenzar" matTooltipPosition="above"color="primary" class="mr-3" [routerLink]="['/auth/admin/configurations/company/create']">Crear</button>
             </div>
         </div>
             

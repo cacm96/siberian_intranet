@@ -6,8 +6,8 @@
       <div class="col-sm-12">
         <h4 class="titulo text-center">
           Cierre de Servicio
-          <span *ngIf="serviceOrder.status=='diagnosticated'" class="badge badge-warning">Diagnosticada</span>
-          <span *ngIf="serviceOrder.status=='finalized'" class="badge badge-success">Finalizada</span>
+          <span *ngIf="serviceOrder.status=='completed'" class="badge badge-warning">Completado</span>
+          <span *ngIf="serviceOrder.status=='warranty'" class="badge badge-success">En garantía</span>
         </h4>
       </div>
     </div>
@@ -92,7 +92,7 @@
                   </div>
                 </div>
                 <div class="col-sm-1">
-                  <button mat-raised-button color="primary" class="mr-3" (click)="onApproved(serviceOrder.id)">Cerrar Servicio</button>
+                  <button *ngIf="serviceOrder.status=='completed'" mat-raised-button color="primary" class="mr-3" (click)="onApproved(serviceOrder.id)">Cerrar Servicio</button>
                 </div>
 
               </div>
