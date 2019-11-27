@@ -79,11 +79,10 @@ import { ServiceOrderService } from 'src/app/core/services/client/serviceOrder.s
     RejectedDiagnosisDialogComponent,
     DateDialogComponent,
     ReportStatisticalFilterDialogComponent,
-<<<<<<< HEAD
+
     HomeSuperComponent,
-=======
+
     CalendarDialogComponent
->>>>>>> 8d1206601df70d629ce43e14cf1f871cac0376c9
   ],
   imports: [
     CommonModule,

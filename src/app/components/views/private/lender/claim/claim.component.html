@@ -67,9 +67,11 @@
           <ng-container matColumnDef="status">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Estatus </th>
           <td mat-cell *matCellDef="let row">
-            <span *ngIf="row.status=='finalized'" class="badge badge-success">Finalizado</span>
-            <span *ngIf="row.status=='warranty'" class="badge badge-primary-two">En Garantia</span>
-            <span *ngIf="row.status=='approved'" class="badge badge-primary">Aprobado</span>
+           
+            
+             <span *ngIf="row.status=='warranty'" class="badge badge-dark">En Garantia</span>
+             
+           
           </td>
           </ng-container>
   
