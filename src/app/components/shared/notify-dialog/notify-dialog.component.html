@@ -1,4 +1,29 @@
-<div class="alert alert-primary" role="alert">
+
+<div class="row justify-content-center">
+<div mat-dialog-content>
+    <h1 mat-dialog-title>Notificaciones</h1>
+    
+          <mat-card>
+              
+                <mat-list>
+                    <mat-list-item *ngFor="let noti of data.notification">
+                      <h4 mat-line><b>Nombre: </b> {{data.notificationDetail.name}}</h4>
+                    </mat-list-item>
+                    <!--<mat-list-item><h4 mat-line><b>Mensaje: </b>{{data.notificationDetail.message}}</h4></mat-list-item>-->
+                  </mat-list>
+          </mat-card>
+            <div mat-dialog-actions>
+                <p class="text-center">
+                    <button mat-raised-button color="primary" [mat-dialog-close]="false" matTooltip="Volver" matTooltipPosition="above"><mat-icon>arrow_back</mat-icon></button>
+                </p>
+              </div>
+
+</div>     
+</div>
+
+
+
+<!--<div class="alert alert-primary" role="alert">
   This is a primary alert—check it out!
 </div>
 <div class="alert alert-secondary" role="alert">
@@ -21,4 +46,4 @@
 </div>
 <div class="alert alert-dark" role="alert">
   This is a dark alert—check it out!
-</div>
+</div>-->
