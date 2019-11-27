@@ -58,7 +58,7 @@
 										<mat-label>Subir Foto del Equipo (Opcional)</mat-label>
 										<div class="row">
 											<div class="col-sm-12">
-												<input name="image_url" [(ngModel)]="image_url" type="file"/>
+												<input name="image_url" type="file" (change)="getImage($event)" accept="image/*">
 											</div>
 										</div>
 

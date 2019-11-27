@@ -418,7 +418,24 @@ export class StepperComponent implements OnInit
         console.log(res);
       }
     });
-  }
+	}
+	
+	getImage(event) {
+		let file: File = event.target.files[0];
+		if (file) {
+			let reader = new FileReader();
+
+			reader.onload = (e: any) => {
+				this.revision.imageRequestUrl = e.target.result;
+			}
+
+			reader.onerror = (e) => {
+				console.log(e);
+			}
+
+			reader.readAsDataURL(file);
+		}
+	}
 
   register()
   {
