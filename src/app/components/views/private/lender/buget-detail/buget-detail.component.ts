@@ -159,37 +159,73 @@ export class BugetDetailComponent implements OnInit
 
     console.log("hola ", this.serviceOrder);
 
-    if(form.valid)
-    {
-      this._serviceOrderService.create(this.serviceOrder).subscribe
-      (
-        response =>
-        {
-          if(response.status==true)
+    //if(this.revision.status=="diagnosticated")
+    //{
+      if(form.valid)
+      {
+        this._serviceOrderService.create(this.serviceOrder).subscribe
+        (
+          response =>
           {
-            console.log(response);
-            this.message  = response.message.text;
-            this.snackBar.openSnackBar(this.message,'');
-            this.getRevision(this.revisionId);
-          }
-          else
+            if(response.status==true)
+            {
+              console.log(response);
+              this.message  = response.message.text;
+              this.snackBar.openSnackBar(this.message,'');
+              this.getRevision(this.revisionId);
+            }
+            else
+            {
+              console.log(response);
+              this.message  = response.message.text;
+              this.snackBar.openSnackBar(this.message,'');
+              this.getRevision(this.revisionId);
+            }
+          },
+          error =>
           {
-            console.log(response);
-            this.message  = response.message.text;
+            console.log(error);
+            this.message  = error.error.message;
             this.snackBar.openSnackBar(this.message,'');
-            this.getRevision(this.revisionId);
           }
-        },
-        error =>
-        {
-          console.log(error);
-          this.message  = error.error.message;
-          this.snackBar.openSnackBar(this.message,'');
-        }
         );
-    }else
+      }
+    //}
+
+    /*
+    if(this.revision.status=="finalized")
     {
-    }
+      if(form.valid)
+      {
+        this._serviceOrderService.update(this.serviceOrder).subscribe
+        (
+          response =>
+          {
+            if(response.status==true)
+            {
+              console.log(response);
+              this.message  = response.message.text;
+              this.snackBar.openSnackBar(this.message,'');
+              this.getRevision(this.revisionId);
+            }
+            else
+            {
+              console.log(response);
+              this.message  = response.message.text;
+              this.snackBar.openSnackBar(this.message,'');
+              this.getRevision(this.revisionId);
+            }
+          },
+          error =>
+          {
+            console.log(error);
+            this.message  = error.error.message;
+            this.snackBar.openSnackBar(this.message,'');
+          }
+          );
+      }
+    }*/
+
 
   }
 

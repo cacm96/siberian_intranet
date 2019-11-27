@@ -83,6 +83,8 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('accessToken',response.accessToken);
       localStorage.setItem('resID', response.user.id);
       localStorage.setItem('role', response.user.role.id);
+      localStorage.setItem('firstName', response.user.firstName);
+      localStorage.setItem('lastName', response.user.lastName);
       this._router.navigate(['/loginWeit']);
       var actualRoute = window.location.origin;
       window.location.replace(actualRoute+'/perfil/'+this.resID);

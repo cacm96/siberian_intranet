@@ -23,13 +23,12 @@ export class ExecuteComponent implements OnInit {
   public serviceOrder:any;
   public serviceOrders: Array < ServiceOrder > = new Array < ServiceOrder > ();
   public total:number=0;
-  public userID:string;
-  //public lenderID:string;
+  public lenderID:string;
   public message:string;
   public failedConect:string;
 
   displayedColumns: string[] = ['id','equipinfras','amount','warrantyTime','serviceDetails','status'];
-  dataSource: MatTableDataSource<ServiceOrder>; //,'revision','serviceDetails'
+  dataSource: MatTableDataSource<ServiceOrder>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -48,17 +47,14 @@ export class ExecuteComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userID = localStorage.getItem('resID');
-    this.getServiceOrder(this.userID);
-    /*this.lenderID = localStorage.getItem('resID');
-    this.getServiceOrder(this.lenderID);*/
+    this.lenderID = localStorage.getItem('resID');
+    this.getServiceOrder(this.lenderID);
   }
 
- getServiceOrder(userID)
-   //getServiceOrder(lenderID)
+ getServiceOrder(id)
   {
-    this._serviceOrderService.getServiceOrderUser(userID).subscribe
-    //this._serviceOrderService.getServiceOrderLender(lenderID).subscribe
+    //this._serviceOrderService.getServiceOrderUser(lenderID).subscribe
+    this._serviceOrderService.getServiceOrderLender(id).subscribe
     (
       response =>
       {

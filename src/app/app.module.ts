@@ -45,9 +45,13 @@ import { DateDialogComponent } from './components/shared/date-dialog/date-dialog
 import { ReportStatisticalFilterDialogComponent } from './components/shared/report-statistical-filter-dialog/report-statistical-filter-dialog.component';
 
 import { EquipinfrasService } from 'src/app/core/services/admin/equipinfras.service';
+
+import { HomeSuperComponent } from './components/views/private/super/home-super/home-super.component';
+
 import { CalendarDialogComponent } from './components/shared/calendar-dialog/calendar-dialog.component';
 import {DpDatePickerModule} from 'ng2-date-picker';
 import { ServiceOrderService } from 'src/app/core/services/client/serviceOrder.service';
+
 
 
 @NgModule({
@@ -75,6 +79,9 @@ import { ServiceOrderService } from 'src/app/core/services/client/serviceOrder.s
     RejectedDiagnosisDialogComponent,
     DateDialogComponent,
     ReportStatisticalFilterDialogComponent,
+
+    HomeSuperComponent,
+
     CalendarDialogComponent
   ],
   imports: [

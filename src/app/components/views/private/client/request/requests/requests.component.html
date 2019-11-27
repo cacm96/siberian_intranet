@@ -62,7 +62,7 @@
 
 						<ng-container matColumnDef="date">
 							<th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha de Revisión </th>
-							<td mat-cell *matCellDef="let row">{{ row.calendars.date |date:"longDate"}}</td>
+							<td mat-cell *matCellDef="let row">{{ row.calendars.date |date: 'dd/MM/yyyy'}}</td>
 						</ng-container>
 
 						<ng-container matColumnDef="lender">
