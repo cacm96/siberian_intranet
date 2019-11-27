@@ -54,7 +54,7 @@ export class ServiceOrderService extends HeaderService{
 	}
 
 	rejected(id,motive,note): Observable<any>{
-		return this.http.put(this.url+'/'+id+'/reject', {}, {headers: this.header});
+		return this.http.put(this.url + '/' + id + '/reject' + '/' + motive, {}, {headers: this.header});
 	}
 
 

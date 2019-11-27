@@ -17,14 +17,10 @@ export class CalendarDialogComponent implements OnInit {
 	turns = [];
 	min: any;
 	datePickerConfig = {
-		allowMultiSelect: true
+		allowMultiSelect: true,
+		min: moment(new Date())
 	};
-	serviceOrder: any;
-	max = 5;
 
-	dates: [];
-	selectedTurns: [];
-	//TODO: CAMBIAR MAX POR LA CANTIDAD DE DIAS CON EL SERVICE ORDER Y QUE EL DIA MINIMO SEA HOY
 	//instale la libreria moment para que manejen las fechas USENLAAAAA
 
   ngOnInit() {

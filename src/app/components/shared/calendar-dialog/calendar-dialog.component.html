@@ -6,15 +6,19 @@
   <div class="justify-content-center">
     <div class="row">
       <div class="col-md-6">
-        <p>Selecciona los dias para tu servicio.</p>
+        <p>Selecciona los&nbsp; {{data.days}}&nbsp; días para tu servicio.</p>
       </div>
       <div class="col-md-6">
         <dp-date-picker matInput [(ngModel)]="data.selectedDates" [config]="datePickerConfig" [minDate]="min"
-          [theme]="dp-material" [disabled]="data.selectedDates.length >= max"></dp-date-picker>
+          [theme]="dp-material" [disabled]="data.selectedDates.length >= data.days"></dp-date-picker>
       </div>
 		</div>
 		
-    <div class="row">&nbsp;</div>
+    <div class="row">
+			<div class="col-md-6">
+				<p>Días seleccionados: &nbsp; {{data.selectedDates.length}}</p>
+			</div>
+		</div>
     <div class="row">&nbsp;</div>
     <div class="row">&nbsp;</div>
     <div class="row">&nbsp;</div>
@@ -30,8 +34,8 @@
 </div>
 
 <div mat-dialog-actions>
-  <div class="justify-content-between">
+  <div class="text-center">
     <button mat-raised-button color="warn" [mat-dialog-close]="false">Cancelar</button>
-    <button mat-raised-button color="primary" [mat-dialog-close]="data.selectedDates">Aceptar</button>
+    <button mat-raised-button color="primary" [disabled]="data.selectedDates.length != data.days" [mat-dialog-close]="data.selectedDates">Aceptar</button>
   </div>
 </div>
