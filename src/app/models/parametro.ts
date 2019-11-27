@@ -8,5 +8,7 @@ export class Parametro{
   	GroupId:string;
   	status:string;
   	users: Array < User > = new Array < User >();
-  	promotions: Array < Promotion > = new Array < Promotion >();
+	promotions: Array < Promotion > = new Array < Promotion >();
+	createdAt:Date;
+  	updatedAt:Date;
 }
