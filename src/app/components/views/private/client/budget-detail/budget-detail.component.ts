@@ -76,7 +76,8 @@ export class BudgetDetailComponent implements OnInit {
     this._serviceOrderService.getOne(id).subscribe(response => {
 				this.serviceOrder = response.serviceOrder;
 				this.data = {
-					selectedDates: []
+					selectedDates: [],
+					days: this.serviceOrder.serviceOrderDetails[0].duration
 				};
         console.log("serviceOrder", this.serviceOrder);
       }, error => {
@@ -89,9 +90,21 @@ export class BudgetDetailComponent implements OnInit {
       });
   }
 
-
   goBack() {
     this._location.back();
   }
 
+
+	reject() {
+		this.dialogService.openConfirmDialog('¿Estás seguro de rechazar este presupuesto?')
+		.afterClosed().subscribe(response => {
+      if (response) {
+				this._serviceOrderService.rejected(this.serviceOrder.id, 4, '').subscribe(_ => {
+					this.snackBar.openSnackBarSuccess('Presupuesto rechazado.');
+					this.goBack();
+				});
+			} 
+    });
+	}
+	
 }

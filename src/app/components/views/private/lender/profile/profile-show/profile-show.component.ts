@@ -69,11 +69,14 @@ export class ProfileShowComponent implements OnInit {
 			let reader = new FileReader();
 
 			reader.onload = (e: any) => {
-				this.lender.imageUrl = e.target.result;
-				this._userService.update(this.lender).subscribe(_ => {
-					console.log(_)
-					this.lender = _.lender;
-				}, e => console.log(e))
+				console.log(this.lender)
+				this._userService.getOne(this.lender.id).subscribe(_ => {
+					_.user.imageUrl = e.target.result;
+					this._userService.update(_.user).subscribe(_ => {
+						console.log(_)
+						this.lender.imageUrl = _.user.imageUrl;
+					}, e => console.log(e));
+				},e => console.log(e));
 			}
 
 			reader.onerror = (e) => {
