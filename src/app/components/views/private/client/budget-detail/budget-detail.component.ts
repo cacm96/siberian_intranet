@@ -11,18 +11,17 @@ import { ServiceOrderDetail } from 'src/app/models/serviceOrderDetail';
 import { ServiceDetailResource } from 'src/app/models/serviceDetailResource';
 import { ServiceOrderService } from 'src/app/core/services/client/serviceOrder.service';
 import { environment } from 'src/environments/environment';
+import * as moment from 'moment';
 
-const BASE_URL = environment.imgURL;
 
 @Component({
   selector: 'sib-budget-detail',
   templateUrl: './budget-detail.component.html',
   styleUrls: ['./budget-detail.component.scss']
 })
-export class BudgetDetailComponent implements OnInit
-{
+export class BudgetDetailComponent implements OnInit {
 
-  public serviceOrder:ServiceOrder;
+  public serviceOrder:any;
   public serviceDetails:any;
   public serviceOrderId:any;
   public message: string;
@@ -30,48 +29,60 @@ export class BudgetDetailComponent implements OnInit
   public isServiceDetail:boolean=false;
   public amountTotal:any=0;
   public urldelafault:string="assets/img/request/revision_3.jpg";
-  public totalResoucesSelected:number=0;
+	public totalResoucesSelected:number=0;
+	data = {};
 
-  constructor(
-    private dialogService: DialogService,
+  constructor(private dialogService: DialogService,
     private snackBar: SnackBarService,
     private _serviceOrderService: ServiceOrderService,
-    private _route: ActivatedRoute,
-    private _location: Location
-    ) {
+		private _route: ActivatedRoute,
+		private dialog: DialogService,
+    private _location: Location) {}
 
+  ngOnInit() {
+    this._route.params.subscribe(params => {
+      let id = params.id;
+      this.serviceOrderId = id;
+      this.getServiceOrder(id);
+    });
+	}
+	
+	openDialog(): void {
+		let res = this.dialog.openCalendarDialog(this.data);
+		let calendars = []
+		res.afterClosed().subscribe(result => {
+			if (result) {
+				result.forEach(x => {
+					calendars.push({
+						type: "serviceOrderDetail",
+						date: moment(x).format('YYYY-MM-DD'),
+	        	turn: "morning",
+	        	LenderId: this.serviceOrder.revision.calendar.lender.id
+					});
+				});
+				console.log(calendars)
 
-  }
+				let sod = this.serviceOrder.serviceOrderDetails;
+				sod[0].calendars = calendars;
+				console.log({serviceOrderDetails: sod})
+				this._serviceOrderService.approve(this.serviceOrder.id, sod).subscribe(_ => {
+					this.goBack();
+				}, e => this.snackBar.openSnackBarSuccess('Error al aceptar el presupuesto'));
+			}
+    });
+	}
 
-  ngOnInit()
-  {
-    this._route.params.subscribe
-    (
-      params =>
-      {
-        let id = params.id;
-        this.serviceOrderId = id;
-        this.getServiceOrder(id);
-      }
-      );
-  }
-
-  getServiceOrder(id)
-  {
-    this._serviceOrderService.getOne(id).subscribe
-    (
-      response =>
-      {
-        this.serviceOrder = response.serviceOrder;
+  getServiceOrder(id) {
+    this._serviceOrderService.getOne(id).subscribe(response => {
+				this.serviceOrder = response.serviceOrder;
+				this.data = {
+					selectedDates: []
+				};
         console.log("serviceOrder", this.serviceOrder);
-      },
-      error =>
-      {
+      }, error => {
         console.log(<any>error);
-        if(error instanceof HttpErrorResponse)
-        {
-          if(error.status===0)
-          {
+        if(error instanceof HttpErrorResponse) {
+          if(error.status===0) {
             this.failedConect = Global.failed;
           }
         }
@@ -79,8 +90,7 @@ export class BudgetDetailComponent implements OnInit
   }
 
 
-  goBack()
-  {
+  goBack() {
     this._location.back();
   }
 

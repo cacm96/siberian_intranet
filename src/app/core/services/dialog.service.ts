@@ -14,6 +14,7 @@ import { ReportStatisticalFilterDialogComponent } from '../../components/shared/
 
 
 import {MatDialog} from '@angular/material/dialog';
+import { CalendarDialogComponent } from 'src/app/components/shared/calendar-dialog/calendar-dialog.component';
 
 @Injectable({
   providedIn: 'root'
@@ -94,6 +95,11 @@ export class DialogService {
     });
   }
 
-
+	openCalendarDialog(data) {
+		return this.dialog.open(CalendarDialogComponent, {
+			data: data,
+			width: '800px'
+		});
+	}
 
 }

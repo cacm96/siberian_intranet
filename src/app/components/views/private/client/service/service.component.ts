@@ -123,7 +123,7 @@ export class ServiceComponent implements OnInit
 
   approvedServiceOrder(id)
   {
-    this._serviceOrderService.approve(id).subscribe
+    this._serviceOrderService.approve(id, {}).subscribe
     (
       response =>
       {
