@@ -56,28 +56,18 @@ export class ToolbarComponent implements OnInit {
   }*/
 
 	notification(): void {
-	let res=null
-		
-		
-		this._notificationService.getUserNotifications(this.userid).subscribe
-	(
-		response =>
-		{
-			
-		  this.notification = response.notification;
-		  res= this.dialogService.openNotifyDialog(this.notification);
-		   console.log(this.notification)
-			//console.log(response) 
-			res.afterClosed().subscribe(result => {console.log(result);
-			});
-		}
-	); 
-	
-		
-		
-		
+	  let res = null;
 
-	  }
+	  this._notificationService.getUserNotifications(this.userid).subscribe(response => {
+	    this.notification = response.notifications;
+	    res = this.dialogService.openNotifyDialog(this.notification);
+	    console.log(this.notification)
+	    console.log(response) 
+	    res.afterClosed().subscribe(result => {
+	      console.log(result);
+	    });
+	  });
+	}
 	
 
 

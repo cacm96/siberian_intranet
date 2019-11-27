@@ -6,6 +6,7 @@ import { SnackBarService } from "../../../core/services/snack-bar.service";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import { Global } from "../../../core/services/global";
 import {NgForm} from '@angular/forms';
+import * as moment from 'moment';
 
 @Component({
   selector: 'sib-notify-dialog',
@@ -14,38 +15,19 @@ import {NgForm} from '@angular/forms';
 })
 export class NotifyDialogComponent implements OnInit {
 
-    public notification:any;
-    //public notiticationDetails:any;
-    public message:string;
-    public failedConect:string;
-    public userid: string;
-
-  constructor
-  (
-  	@Inject(MAT_DIALOG_DATA) public data,
-    public dialogRef: MatDialogRef<NotifyDialogComponent>,
-    private _notificationService: NotificationService,
-    private _route: ActivatedRoute,
-    private _router: Router,
-    //private _location: Location,
-    private snackBar: SnackBarService,
-  ) { 
-    
-  }
+	date = [];
+  constructor(@Inject(MAT_DIALOG_DATA) public data,
+		public dialogRef: MatDialogRef<NotifyDialogComponent>) {}
+		
   ngOnInit() {
-    
+    this.data.notification.forEach(_ => {
+			let d = moment(new Date(_.createdAt).toISOString()).format('hh:mm - DD/MM/YYYY');
+			this.date.push(d);
+		})
   }
-
- 
-
-closeDialog(){
+	c
+	loseDialog(){
 		this.dialogRef.close();
 	}
-
-	save(form: NgForm) {
-	this.dialogRef.close(this.data);
-	}
-
-
 }
 

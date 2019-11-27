@@ -31,12 +31,13 @@ export class DialogService {
   	});
   }
 
- openNotifyDialog(notification){
+ openNotifyDialog(notification) {
     return this.dialog.open(NotifyDialogComponent,{
-    data:{
-      notification:notification
-    }
-  });
+    	data:{
+      	notification: notification
+			 },
+			 width: '500px'
+  	});
   }
 
   openAddLocationDialog(){
