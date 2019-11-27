@@ -86,6 +86,7 @@ export class ParametrosComponent implements OnInit {
   }
 
   table() {
+    this.parameters = this.snackBar.orderByDateAsc(this.parameters);
     this.dataSource = new MatTableDataSource(this.parameters);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
