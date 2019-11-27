@@ -31,8 +31,12 @@ export class DialogService {
   	});
   }
 
-  openNotifyDialog(){
-    return this.dialog.open(NotifyDialogComponent);
+ openNotifyDialog(notification){
+    return this.dialog.open(NotifyDialogComponent,{
+    data:{
+      notification:notification
+    }
+  });
   }
 
   openAddLocationDialog(){
