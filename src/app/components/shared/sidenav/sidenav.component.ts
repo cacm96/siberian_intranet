@@ -15,6 +15,7 @@ export class SidenavComponent implements OnInit {
 	public role:string;
 	public user:any;
 	public failedConect:string;
+	public firstName:string=localStorage.getItem('firstName');
 	functions: any;
 
 	constructor

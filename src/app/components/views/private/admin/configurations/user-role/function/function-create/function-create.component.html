@@ -35,7 +35,7 @@
               <div class="row">
                 <div class="col-sm-6 offset-3">
                   <mat-selection-list #functionAll [(ngModel)]="roleFunctions" [compareWith]="compareFn">
-                    <mat-list-option [disabled]="roleSelected == 1 || roleSelected == 4" *ngFor="let function of functions" [value]='function'>
+                    <mat-list-option [disabled]="roleSelected == 4" *ngFor="let function of functions" [value]='function'>
                       {{function?.description}}
                     </mat-list-option>
                   </mat-selection-list>
