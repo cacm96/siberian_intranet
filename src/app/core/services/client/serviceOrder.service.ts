@@ -49,13 +49,18 @@ export class ServiceOrderService extends HeaderService{
 		return this.http.put(this.url+'/'+id+'/approve', { serviceOrderDetails }, {headers: this.header});
 	}
 
+	rejected(id,motive,note): Observable<any>{
+		return this.http.put(this.url + '/' + id + '/reject' + '/' + motive, {}, {headers: this.header});
+	}
+	
+	completed(id): Observable<any>{
+		return this.http.put(this.url+'/'+id+'/completed', {}, {headers: this.header});
+	}
+
 	warranty(id): Observable<any>{
 		return this.http.put(this.url+'/'+id+'/warranty', {}, {headers: this.header});
 	}
 
-	rejected(id,motive,note): Observable<any>{
-		return this.http.put(this.url + '/' + id + '/reject' + '/' + motive, {}, {headers: this.header});
-	}
 
 
 }

@@ -32,13 +32,14 @@ export class CompanyCreateComponent implements OnInit {
 	ngOnInit() {
 	}
 
-	onFileChange(event) {
+	uploadPic(event) {
 		let file: File = event.target.files[0];
 		if (file) {
 			let reader = new FileReader();
 
 			reader.onload = (e: any) => {
 				this.company.imageUrl = e.target.result;
+				console.log(this.company.imageUrl);
 			}
 
 			reader.onerror = (e) => {
@@ -60,7 +61,7 @@ export class CompanyCreateComponent implements OnInit {
 			this.company.vision = form.value.vision;
 			this.company.aboutUs = form.value.aboutUs;
 			this.company.address = form.value.address;
-			this.company.imageUrl = form.value.imageUrl;
+			//this.company.imageUrl = form.value.imageUrl;
 			this.company.phoneOne = form.value.phoneOne;
 			this.company.phoneTwo = form.value.phoneTwo;
 			this.company.revisionPrice = form.value.revisionPrice;

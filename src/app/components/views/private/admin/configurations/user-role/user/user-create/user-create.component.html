@@ -24,6 +24,7 @@
 			<mat-card-content>
 			  <div class="row">
 				<div class="col-sm-8 offset-2">
+					<br>
 				  <form #registerForm="ngForm" (ngSubmit)="register(registerForm)" enctype="multipart/form-data">
 					<mat-form-field>
 						<input matInput name="email" [(ngModel)]="email" placeholder="Email" required>

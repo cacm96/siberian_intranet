@@ -77,7 +77,7 @@ export class BudgetDetailComponent implements OnInit {
 				this.serviceOrder = response.serviceOrder;
 				this.data = {
 					selectedDates: [],
-					days: this.serviceOrder.serviceOrderDetails[0].duration
+					duration: this.serviceOrder.serviceOrderDetails[0].duration
 				};
         console.log("serviceOrder", this.serviceOrder);
       }, error => {

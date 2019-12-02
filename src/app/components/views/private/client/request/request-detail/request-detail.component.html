@@ -197,10 +197,12 @@
                   <div *ngFor="let bitacora of revision.bitacoras">
                     <div *ngIf="bitacora.eventType=='closure'">
                       <mat-list-item>
-                        <span class="ml-3 badge badge-gray">
-                          <h4 mat-line><b>Motivo: </b> {{ bitacora.motive.name }} - {{ bitacora.motive.description }} -
-                            {{ bitacora.description }}</h4>
+                        <h4 mat-line>
+                        <span class="badge badge-gray">
+                          <b>Motivo: </b> {{ bitacora.motive.name }} - {{ bitacora.motive.description }} -
+                            {{ bitacora.description }}
                         </span>
+                        </h4>
                       </mat-list-item>
                     </div>
                   </div>
@@ -236,10 +238,12 @@
                   <div *ngFor="let bitacora of revision.bitacoras">
                     <div *ngIf="bitacora.eventType=='closure'">
                       <mat-list-item>
-                        <span class="ml-3 badge badge-gray">
-                          <h4 mat-line><b>Motivo: </b> {{ bitacora.motive.name }} - {{ bitacora.motive.description }} -
-                            {{ bitacora.description }}</h4>
+                        <h4 mat-line>
+                        <span class="badge badge-gray">
+                          <b>Motivo: </b> {{ bitacora.motive.name }} - {{ bitacora.motive.description }} -
+                            {{ bitacora.description }}
                         </span>
+                      </h4>
                       </mat-list-item>
                     </div>
                   </div>

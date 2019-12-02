@@ -5,7 +5,13 @@
       <mat-card-header class="side_nav_header">
         <mat-card-title>{{user.firstName | titlecase }} {{user.lastName | titlecase}}</mat-card-title>
         <mat-card-subtitle>{{this.user.role.name}}</mat-card-subtitle>
-        <div mat-card-avatar class="side_nav_avatar"></div>
+        <div mat-card-avatar class="side_nav_avatar">
+          <img *ngIf="role==1" class="profile" src="../../../../assets/img/profile/juan.png" alt="..."/>
+          <img *ngIf="role==2" class="profile" src="../../../../assets/img/profile/leo.png" alt="..."/>
+          <img *ngIf="firstName=='Victoria'" class="profile" src="../../../../assets/img/profile/victoria.png" alt="..."/>
+          <img *ngIf="firstName=='Sofia'" class="profile" src="../../../../assets/img/profile/sofia.png" alt="..."/>
+
+        </div>
       </mat-card-header>
     </mat-nav-list>
 
